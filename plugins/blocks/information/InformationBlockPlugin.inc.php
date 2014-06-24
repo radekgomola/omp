@@ -50,7 +50,8 @@ class InformationBlockPlugin extends BlockPlugin {
 
 		$templateMgr->assign('forReaders', $press->getLocalizedSetting('readerInformation'));
 		$templateMgr->assign('forAuthors', $press->getLocalizedSetting('authorInformation'));
-		$templateMgr->assign('forLibrarians', $press->getLocalizedSetting('librarianInformation'));
+		$templateMgr->assign('forLibrarians', $press->getLocalizedSetting('informaceDistributori'));
+                $templateMgr->assign('proDistributory', $press->getLocalizedSetting('informaceDistributori'));
 		return parent::getContents($templateMgr);
 	}
 }

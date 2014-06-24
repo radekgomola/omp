@@ -66,6 +66,10 @@
 		<name>librarianInformation</name>
 		<value>{translate key="default.pressSettings.forLibrarians"}</value>
 	</setting>
+        <setting type="string" locale="1">
+		<name>informaceDistributori</name>
+		<value>{translate key="default.pressSettings.proDistributory"}</value>
+	</setting>
 	<setting type="object" locale="0">
 		<name>supportedFormLocales</name>
 		<value>

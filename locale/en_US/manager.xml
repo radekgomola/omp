@@ -250,6 +250,7 @@ You may optionally provide the user with a reason for disabling their account.</
 	<message key="manager.setup.information.description">Brief descriptions of the press for librarians and prospective authors and readers are available in the "Information" section of the sidebar.</message>
 	<message key="manager.setup.information.forAuthors">For Authors</message>
 	<message key="manager.setup.information.forLibrarians">For Librarians</message>
+        <message key="manager.setup.information.forLibrarians">For Distributors</message>
 	<message key="manager.setup.information.forReaders">For Readers</message>
 	<message key="manager.setup.institution">Institution</message>
 	<message key="manager.setup.labelName">Label Name</message>

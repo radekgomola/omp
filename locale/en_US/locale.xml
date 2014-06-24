@@ -306,8 +306,10 @@
 	<message key="navigation.catalog.administration.series">Series</message>
 	<message key="navigation.infoForAuthors">For Authors</message>
 	<message key="navigation.infoForLibrarians">For Librarians</message>
+        <message key="navigation.infoProDistributory">For Distributors</message>
 	<message key="navigation.infoForAuthors.long">Information For Authors</message>
 	<message key="navigation.infoForLibrarians.long">Information For Librarians</message>
+        <message key="navigation.infoProDistributory.long">Information For Distributors</message>
 	<message key="navigation.newReleases">New Releases</message>
 	<message key="navigation.published">Published</message>
 	<message key="navigation.wizard">Wizard</message>

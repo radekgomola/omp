@@ -53,6 +53,11 @@ class InformationHandler extends Handler {
 				$pageTitle = 'navigation.infoForLibrarians.long';
 				$pageCrumbTitle = 'navigation.infoForLibrarians';
 				break;
+                        case 'distributori':
+				$content = $press->getLocalizedSetting('informaceDistributori');
+				$pageTitle = 'navigation.infoProDistributory.long';
+				$pageCrumbTitle = 'navigation.infoProDistributory';
+				break;
 			case 'competingInterestPolicy':
 				$content = $press->getLocalizedSetting('competingInterestPolicy');
 				$pageTitle = $pageCrumbTitle = 'navigation.competingInterestPolicy';
@@ -85,6 +90,10 @@ class InformationHandler extends Handler {
 
 	function librarians($args, $request) {
 		$this->index(array('librarians'), $request);
+	}
+        
+        function distributori($args, $request) {
+		$this->index(array('distributori'), $request);
 	}
 
 	function competingInterestPolicy($args, $request) {
