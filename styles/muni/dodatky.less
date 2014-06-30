@@ -1,0 +1,79 @@
+/**
+ * @file styles/muni/dodatky.less
+ *
+ * Pomocná kaskáda
+ *
+ */
+
+/** 
+* Jssor Slider
+*/
+
+.jssorb03 div, .jssorb03 div:hover, .jssorb03 .av
+{
+    
+    overflow:hidden;
+    cursor: pointer;
+    background: url({$baseUrl}/images/img/b21.png) no-repeat;
+}
+.jssorb03 div { 
+    background-position: -5px -5px; 
+}
+.jssorb03 div:hover, .jssorb03 .av:hover { 
+    background-position: -24px -5px; 
+}
+.jssorb03 .av { 
+    background-position: -45px -5px; 
+}
+.jssorb03 .dn, .jssorb03 .dn:hover { 
+    background-position: -65px -5px; 
+}
+            
+.jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn
+{
+	position: absolute;
+	cursor: pointer;
+	display: block;
+        background: url({$baseUrl}/images/img/a16.png) no-repeat;
+        overflow:hidden;
+}
+.jssora03l { 
+    background-position: -3px 10px;
+}
+.jssora03r { 
+    background-position: -40px 10px; 
+}
+.jssora03l:hover { 
+    background-position: -69px 10px; 
+}
+.jssora03r:hover { 
+    background-position: -103px 10px; 
+}
+.jssora03ldn { 
+    background-position: -135px 10px; 
+}
+.jssora03rdn { 
+    background-position: -167px 10px; 
+}
+
+img.connectUs{
+    display:inline;
+}
+
+img.bannery{
+    padding-bottom: 5px;
+}
+img.link_img{
+	-webkit-transform:scale(1.0); /*Webkit: Scale down image to 0.8x original size*/
+  -moz-transform:scale(1.0); /*Mozilla scale version*/
+  -o-transform:scale(1.0); /*Opera scale version*/
+  -webkit-transition-duration: 0.5s; /*Webkit: Animation duration*/
+  -moz-transition-duration: 0.5s; /*Mozilla duration version*/
+  -o-transition-duration: 0.5s; /*Opera duration version*/
+}
+
+img.link_img:hover{
+	-webkit-transform:scale(1.1); /*Webkit: Scale up image to 1.2x original size*/
+ 	-moz-transform:scale(1.1); /*Mozilla scale version*/
+ 	-o-transform:scale(1.1); /*Opera scale version*/
+}
