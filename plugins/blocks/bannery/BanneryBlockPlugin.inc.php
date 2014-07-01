@@ -17,16 +17,6 @@ import('lib.pkp.classes.plugins.BlockPlugin');
 
 class BanneryBlockPlugin extends BlockPlugin {
         
-    
-//        function register($category, $path) {
-//		if (parent::register($category, $path)) {
-//                    if ($this->getEnabled()) {
-//                        HookRegistry::register('TemplateManager::display', array($this, 'callback'));
-//			return true;
-//                    }
-//		}
-//		return false;
-//	}
 
     /**
 	 * Install default settings on journal creation.

@@ -13,7 +13,7 @@
   -->
  
 <locale name="en_US" full_name="U.S. English">
-	<message key="plugins.block.distribuce.displayName">Distribution Block</message>
-	<message key="plugins.block.distribuce.description">This plugin provides sidebar with links for distribution.</message>
-	<message key="plugins.block.distribuce.link">Distribution</message>
+	<message key="plugins.block.bannery.displayName">Banners Block</message>
+	<message key="plugins.block.bannery.description">This plugin provides sidebar with banners.</message>
+	<message key="plugins.block.bannery.link">Banners</message>
 </locale>

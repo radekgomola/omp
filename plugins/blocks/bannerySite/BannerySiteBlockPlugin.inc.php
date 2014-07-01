@@ -29,14 +29,14 @@ class BannerySiteBlockPlugin extends BlockPlugin {
 	 * @return String
 	 */
 	function getDisplayName() {
-		return __('plugins.block.bannery.displayName');
+		return __('plugins.block.bannerySite.displayName');
 	}
 
 	/**
 	 * Get a description of the plugin.
 	 */
 	function getDescription() {
-		return __('plugins.block.bannery.description');
+		return __('plugins.block.bannerySite.description');
 	}
         
 }

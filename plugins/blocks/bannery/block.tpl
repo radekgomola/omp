@@ -7,10 +7,10 @@
 <div class="block" id="sidebarInformation">
 {*	<span class="blockTitle">{translate key="plugins.block.distribuce.link"}</span>*}
 
-    	
+<div style="padding-left: 5px;">	
     <!-- Jssor Slider Begin -->
     <!-- You can move inline styles to css file or css block. -->
-    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 184px;
+    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 180px;
         height: 80px; margin-bottom: 15px;">
 
         <!-- Loading Screen -->
@@ -24,7 +24,7 @@
         </div>
 
         <!-- Slides Container -->
-        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 184px; height: 66px;
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 180px; height: 65px;
             overflow: hidden;">
             <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/01.jpg" /></a></div>
             <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/02.jpg" /></a></div>
@@ -64,4 +64,5 @@
     <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/bannery/01.png" class="link_img bannery" /></a></div>
     <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>
     <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" /></a></div>
+  </div>
 </div>

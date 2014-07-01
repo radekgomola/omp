@@ -112,6 +112,8 @@ class TinyMCEPlugin extends GenericPlugin {
                         
                         
                         ;
+                
+                //FIXME - tohle sem určitě nepatří. Jen musím přijít na způsob jak to přesunout tam, kde to má být.
                 $banneryScript = '
                      
                 <script type="text/javascript" src="'.$baseUrl.'/js/bannerSlider/jssor.core.js"></script>
