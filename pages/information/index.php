@@ -22,6 +22,8 @@ switch ($op) {
 	case 'authors':
 	case 'librarians':
         case 'distributori':
+        case 'media':
+        case 'stahovani':
 	case 'competingInterestPolicy':
 	case 'sampleCopyrightWording':
 		define('HANDLER_CLASS', 'InformationHandler');

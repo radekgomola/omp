@@ -16,6 +16,8 @@
 		{if !empty($forAuthors)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="authors"}">{translate key="navigation.infoForAuthors"}</a></li>{/if}
 		{if !empty($forLibrarians)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="librarians"}">{translate key="navigation.infoForLibrarians"}</a></li>{/if}
                 {if !empty($proDistributory)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="distributori"}">{translate key="navigation.infoProDistributory"}</a></li>{/if}
+                {if !empty($proMedia)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="media"}">{translate key="navigation.infoProMedia"}</a></li>{/if}
+                {if !empty($keStazeni)}<br /><li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="stahovani"}">{translate key="navigation.infoKeStazeni"}</a></li>{/if}
 	</ul>
 </div>
 {/if}
