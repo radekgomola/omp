@@ -252,7 +252,8 @@ You may optionally provide the user with a reason for disabling their account.</
 	<message key="manager.setup.information.forLibrarians">For Librarians</message>
         <message key="manager.setup.information.proDistributory">For Distributors</message>
         <message key="manager.setup.information.proMedia">For Media</message>
-        <message key="manager.setup.information.keStazeni">For Download</message>
+        <message key="manager.setup.information.keStazeni">Download</message>
+        <message key="manager.setup.information.doiCrossref">Doi, CrossRef</message>
 	<message key="manager.setup.information.forReaders">For Readers</message>
 	<message key="manager.setup.institution">Institution</message>
 	<message key="manager.setup.labelName">Label Name</message>

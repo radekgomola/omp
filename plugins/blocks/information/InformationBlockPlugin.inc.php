@@ -54,6 +54,7 @@ class InformationBlockPlugin extends BlockPlugin {
                 $templateMgr->assign('proDistributory', $press->getLocalizedSetting('informaceDistributori'));
                 $templateMgr->assign('proMedia', $press->getLocalizedSetting('informaceMedia'));
                 $templateMgr->assign('keStazeni', $press->getLocalizedSetting('informaceKeStazeni'));
+                $templateMgr->assign('doiCrossref', $press->getLocalizedSetting('informaceDoiCrossref'));
 		return parent::getContents($templateMgr);
 	}
 }

@@ -68,6 +68,11 @@ class InformationHandler extends Handler {
                                 $pageTitle = 'navigation.infoKeStazeni.long';
                                 $pageCrumbTitle = 'navigation.infoKeStazeni';
                                 break;
+                        case 'crossref':
+                                $content = $press->getLocalizedSetting('informaceDoiCrossref');
+                                $pageTitle = 'navigation.infoDoiCrossref.long';
+                                $pageCrumbTitle = 'navigation.infoDoiCrossref';
+                                break;   
 			case 'competingInterestPolicy':
 				$content = $press->getLocalizedSetting('competingInterestPolicy');
 				$pageTitle = $pageCrumbTitle = 'navigation.competingInterestPolicy';
@@ -112,6 +117,10 @@ class InformationHandler extends Handler {
         
         function stahovani($args, $request) {
 		$this->index(array('stahovani'), $request);
+	}
+        
+        function crossref($args, $request) {
+		$this->index(array('crossref'), $request);
 	}
 
 	function competingInterestPolicy($args, $request) {

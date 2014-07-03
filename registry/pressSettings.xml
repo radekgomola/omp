@@ -78,6 +78,10 @@
 		<name>informaceKeStazeni</name>
 		<value>{translate key="default.pressSettings.keStazeni"}</value>
 	</setting>
+        <setting type="string" locale="1">
+		<name>informaceDoiCrossref</name>
+		<value>{translate key="default.pressSettings.doiCrossref"}</value>
+	</setting>
 	<setting type="object" locale="0">
 		<name>supportedFormLocales</name>
 		<value>

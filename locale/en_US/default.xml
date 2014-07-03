@@ -66,4 +66,6 @@ ________________________________________________________________________
         <message key="default.pressSettings.proDistributory"><![CDATA[Default text for distributors.]]></message>
         <message key="default.pressSettings.proMedia"><![CDATA[Default text for media. ]]></message>
         <message key="default.pressSettings.keStazeni"><![CDATA[Default data for download.]]></message>
+        <message key="default.pressSettings.proMedia"><![CDATA[Default text for media. ]]></message>
+        <message key="default.pressSettings.keStazeni"><![CDATA[Default data for doi/crossref page.]]></message>
 </locale>
