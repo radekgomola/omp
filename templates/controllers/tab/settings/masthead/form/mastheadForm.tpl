@@ -34,7 +34,11 @@
 		{fbvFormSection label="manager.setup.pressDescription" for="description" description="manager.setup.pressDescription.description"}
 			{fbvElement type="textarea" multilingual=true name="description" id="description" value=$description rich=true height=$fbvStyles.height.SHORT}
 		{/fbvFormSection}
-
+                
+                {fbvFormSection label="manager.setup.pressPartneri" for="partneri" description="manager.setup.pressPartneri.description"}
+			{fbvElement type="textarea" multilingual=true name="partneri" id="partneri" value=$partneri rich=true height=$fbvStyles.height.SHORT}
+		{/fbvFormSection}
+                
 		{fbvFormSection list=true}
 			{if $enabled}{assign var="enabled" value="checked"}{/if}
 			{fbvElement type="checkbox" id="pressEnabled" value="1" checked=$enabled label="manager.setup.enablePressInstructions"}
@@ -44,7 +48,7 @@
 		{/fbvFormSection}
 		<div {if $wizardMode}class="pkp_form_hidden"{/if}>
 			{fbvFormSection label="common.mailingAddress" for="mailingAddress" group=true description="manager.setup.mailingAddress.description"}
-				{fbvElement type="textarea" id="mailingAddress" value=$mailingAddress height=$fbvStyles.height.SHORT}
+				{fbvElement type="textarea" id="mailingAddress" value=$mailingAddress rich=true height=$fbvStyles.height.SHORT}
 			{/fbvFormSection}
 		</div>
 	{/fbvFormArea}

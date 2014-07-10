@@ -66,6 +66,22 @@
 		<name>librarianInformation</name>
 		<value>{translate key="default.pressSettings.forLibrarians"}</value>
 	</setting>
+        <setting type="string" locale="1">
+		<name>informaceDistributori</name>
+		<value>{translate key="default.pressSettings.proDistributory"}</value>
+	</setting>
+        <setting type="string" locale="1">
+		<name>informaceMedia</name>
+		<value>{translate key="default.pressSettings.proMedia"}</value>
+	</setting>
+        <setting type="string" locale="1">
+		<name>informaceKeStazeni</name>
+		<value>{translate key="default.pressSettings.keStazeni"}</value>
+	</setting>
+        <setting type="string" locale="1">
+		<name>informaceDoiCrossref</name>
+		<value>{translate key="default.pressSettings.doiCrossref"}</value>
+	</setting>
 	<setting type="object" locale="0">
 		<name>supportedFormLocales</name>
 		<value>

@@ -11,13 +11,13 @@
 <script src="{$pluginJSPath}/inlinePdf.js"></script>
 <script src="{$baseUrl}/lib/pkp/lib/pdfobject/pdfobject.js"></script>
 
-{url|assign:"pdfUrl" op="download" path=$publishedMonograph->getId()|to_array:$submissionFile->getAssocId():$submissionFile->getFileIdAndRevision() escape=false}{* Assoc ID is publication format *}
+{url|assign:"pdfUrl" op="download" path=$publishedMonograph->getId()|to_array:$submissionFile->getAssocId():$submissionFile->getFileIdAndRevision() inline=true escape=false}{* Assoc ID is publication format *}
 
 {translate|assign:"noPluginText" key="submission.pdf.pluginMissing"}
 <script type="text/javascript"><!--{literal}
 	$(document).ready(function(){
 		if ($.browser.webkit) { // PDFObject does not correctly work with safari's built-in PDF viewer
-			var embedCode = "<object id='pdfObject' type='application/pdf' data='{/literal}{$pdfUrl|escape:'javascript'}{literal}' width='99%' height='800px'><div id='pluginMissing'>{/literal}{$noPluginText|escape:'javascript'}{literal}</div></object>";
+			var embedCode = "<object id='pdfObject' type='application/pdf' data='{/literal}{$pdfUrl|escape:'javascript'}{literal}' width='99%' height='99%'><div id='pluginMissing'>{/literal}{$noPluginText|escape:'javascript'}{literal}</div></object>";
 			$("#inlinePdf").html(embedCode);
 			if($("#pluginMissing").is(":hidden")) {
 				$('#fullscreenShow').show();

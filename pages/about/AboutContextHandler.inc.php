@@ -65,6 +65,19 @@ class AboutContextHandler extends Handler implements IAboutContextInfoProvider {
 		$templateMgr->assign('descriptionInfo', AboutContextHandler::getDescriptionInfo($context));
 		$templateMgr->display('about/description.tpl');
 	}
+        
+        /**
+	 * Display partners page.
+	 * @param $args array
+	 * @param $request PKPRequest
+	 */
+	function partneri($args, $request) {
+		$context = $request->getContext();
+
+		$templateMgr = TemplateManager::getManager($request);
+		$templateMgr->assign('partneriInfo', AboutContextHandler::getPartneriInfo($context));
+		$templateMgr->display('about/partneri.tpl');
+	}
 
 	/**
 	 * Display sponsorship page.
@@ -162,6 +175,21 @@ class AboutContextHandler extends Handler implements IAboutContextInfoProvider {
 		return $descriptionSettings;
 	}
 
+        /**
+	 * Get partners information used by description operation.
+	 * @param $context Press
+	 * @return Array
+	 */
+	static protected function getPartneriInfo($context) {
+		$partneriSettings =  array(
+				'partneri' => $context->getLocalizedSetting('partneri')
+		);
+
+		// Remove empty elements.
+		$partneriSettings = array_filter($partneriSettings);
+		return $partneriSettings;
+	}
+        
 	/**
 	 * Get sponsorship information used by sponsorship operation.
 	 * @param $context Press
@@ -254,6 +282,7 @@ class AboutContextHandler extends Handler implements IAboutContextInfoProvider {
 		return array(
 			'contact' => AboutContextHandler::getContactInfo($context),
 			'description' => AboutContextHandler::getDescriptionInfo($context),
+                        'partneri' => AboutContextHandler::getPartneriInfo($context),
 			'sponsorship' => AboutContextHandler::getSponsorshipInfo($context),
 			'editorialTeam' => AboutContextHandler::getEditorialTeamInfo($context),
 			'editorialPolicies' => AboutContextHandler::getEditorialPoliciesInfo($context),

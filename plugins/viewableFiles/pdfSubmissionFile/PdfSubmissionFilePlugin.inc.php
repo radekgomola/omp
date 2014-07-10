@@ -17,6 +17,19 @@ import('classes.plugins.ViewableFilePlugin');
 
 class PdfSubmissionFilePlugin extends ViewableFilePlugin {
 	/**
+	 * @see Plugin::register()
+	 */
+	function register($category, $path) {
+		if (parent::register($category, $path)) {
+			if ($this->getEnabled()) {
+				HookRegistry::register('CatalogBookHandler::download', array($this, 'downloadCallback'));
+			}
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Install default settings on journal creation.
 	 * @return string
 	 */
@@ -52,17 +65,40 @@ class PdfSubmissionFilePlugin extends ViewableFilePlugin {
 	function displaySubmissionFile($publishedMonograph, $submissionFile) {
 		$request = $this->getRequest();
 		$templateMgr = TemplateManager::getManager($this->getRequest());
-		$templateMgr->assign('pluginJSPath', $this->getJSPath($request));
+		$templateMgr->assign('pluginJSPath', $this->getPluginUrl($request) . '/js');
+		$templateMgr->addStyleSheet($this->getPluginUrl($request) . '/styles.css', STYLE_SEQUENCE_LATE);
 		return parent::displaySubmissionFile($publishedMonograph, $submissionFile);
 	}
 
 	/**
-	 * returns the base path for JS included in this plugin.
+	 * Callback for download function
+	 * @param $hookName string
+	 * @param $params array
+	 * @return boolean
+	 */
+	function downloadCallback($hookName, $params) {
+		$publishedMonograph =& $params[1];
+		$submissionFile =& $params[2];
+		$inline =& $params[3];
+
+		if ($this->canHandle($publishedMonograph, $submissionFile) && Request::getUserVar('inline')) {
+			// Turn on the inline flag to ensure that the content
+			// disposition header doesn't foil the PDF embedding
+			// plugin.
+			$inline = true;
+		}
+
+		// Return to regular handling
+		return false;
+	}
+
+	/**
+	 * Get the plugin path.
 	 * @param $request PKPRequest
 	 * @return string
 	 */
-	function getJSPath($request) {
-		return $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js';
+	function getPluginUrl($request) {
+		return $request->getBaseUrl() . '/' . $this->getPluginPath();
 	}
 }
 

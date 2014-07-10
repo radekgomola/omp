@@ -53,6 +53,26 @@ class InformationHandler extends Handler {
 				$pageTitle = 'navigation.infoForLibrarians.long';
 				$pageCrumbTitle = 'navigation.infoForLibrarians';
 				break;
+                        case 'distributori':
+				$content = $press->getLocalizedSetting('informaceDistributori');
+				$pageTitle = 'navigation.infoProDistributory.long';
+				$pageCrumbTitle = 'navigation.infoProDistributory';
+				break;
+                        case 'media':
+                                $content = $press->getLocalizedSetting('informaceMedia');
+                                $pageTitle = 'navigation.infoProMedia.long';
+                                $pageCrumbTitle = 'navigation.infoProMedia';
+                                break;
+                        case 'stahovani':
+                                $content = $press->getLocalizedSetting('informaceKeStazeni');
+                                $pageTitle = 'navigation.infoKeStazeni.long';
+                                $pageCrumbTitle = 'navigation.infoKeStazeni';
+                                break;
+                        case 'crossref':
+                                $content = $press->getLocalizedSetting('informaceDoiCrossref');
+                                $pageTitle = 'navigation.infoDoiCrossref.long';
+                                $pageCrumbTitle = 'navigation.infoDoiCrossref';
+                                break;   
 			case 'competingInterestPolicy':
 				$content = $press->getLocalizedSetting('competingInterestPolicy');
 				$pageTitle = $pageCrumbTitle = 'navigation.competingInterestPolicy';
@@ -85,6 +105,22 @@ class InformationHandler extends Handler {
 
 	function librarians($args, $request) {
 		$this->index(array('librarians'), $request);
+	}
+        
+        function distributori($args, $request) {
+		$this->index(array('distributori'), $request);
+	}
+        
+        function media($args, $request) {
+		$this->index(array('media'), $request);
+	}
+        
+        function stahovani($args, $request) {
+		$this->index(array('stahovani'), $request);
+	}
+        
+        function crossref($args, $request) {
+		$this->index(array('crossref'), $request);
 	}
 
 	function competingInterestPolicy($args, $request) {

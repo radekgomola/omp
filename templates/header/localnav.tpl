@@ -21,6 +21,9 @@
 				{if not empty($contextInfo.description)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="description"}">{translate key="about.description"}</a></li>
 				{/if}
+                                {if not empty($contextInfo.partneri)}
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="partneri"}">{translate key="about.partneri"}</a></li>
+				{/if}
 				{if not empty($contextInfo.editorialTeam)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="editorialTeam"}">{translate key="about.editorialTeam"}</a></li>
 				{/if}
