@@ -15,7 +15,7 @@
   -->
  
 <locale name="cs_CZ" full_name="Czech">
-	<message key="plugins.block.distribuce.displayName">Distribuční blik</message>
-	<message key="plugins.block.distribuce.description">Plugin poskytne blok distribuce pro munipress.</message>
-	<message key="plugins.block.distribuce.link">Distribuce</message>
+	<message key="plugins.block.munispace.displayName">Block Munispace</message>
+	<message key="plugins.block.munispace.description">Plugin poskytně blok s odkazy pro Munispace.</message>
+        <message key="plugins.block.munispace.link">Munispace</message>
 </locale>
