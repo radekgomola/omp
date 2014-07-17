@@ -35,8 +35,114 @@
 			{if !is_null($sharingCode) || !empty($blocks)}
 				<li><a href="#sharingTab">{translate key="submission.sharing"}</a></li>
 			{/if}
+                        <li><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
 		</ul>
 
+                <div id="viceInfoTab">
+                    <table class="viceInformaci">
+                        <tbody>
+                            {if ! empty($publishedMonograph->getLocalizedPocetStran())}
+                            <tr>
+                                <td>
+                                    {translate key="submission.pocetStran"} 
+                                </td>
+                                <td>
+                                    {$publishedMonograph->getLocalizedPocetStran(null)|strip_unsafe_html}
+                                </td>
+                            </tr>
+                            {/if}
+                            {if ! empty($publishedMonograph->getLocalizedMuPracoviste())}
+                            <tr>
+                                <td>
+                                    {translate key="submission.muPracoviste"} 
+                                </td>
+                                <td >
+                                    {$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
+                                </td>
+                            </tr>
+                            {/if}
+                            {if ! empty($publishedMonograph->getLocalizedUrlOC())}
+                            <tr>
+                                <td>
+                                    {translate key="submission.url.oc"} 
+                                </td>
+                                <td >
+                                    {assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
+                                    <a href={$urlOC} target="_blank">{translate key="informace.url.oc"}</a>
+                                </td>
+                            </tr>
+                            {/if}
+                            {if ! empty($publishedMonograph->getLocalizedUrlWeb())}
+                            <tr>
+                                <td>
+                                    {translate key="submission.url.web"} 
+                                </td>
+                                <td >
+                                    {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
+                                    <a href={$urlWeb} target="_blank">{translate key="informace.url.web"}</a>
+                                </td>
+                            </tr>
+                            {/if}
+                            {if ! empty($publishedMonograph->getLocalizedBibliografickaCitace())}
+                            <tr>
+                                <td>
+                                    {translate key="submission.bibliografickaCitace"} 
+                                </td>
+                                <td >
+                                    {$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
+                                </td>
+                            </tr>
+                            {/if}
+                            {if ! empty($publishedMonograph->getLocalizedPoznamka())}
+                            <tr>
+                                <td>
+                                    {translate key="submission.poznamka"} 
+                                </td>
+                                <td >
+                                    {$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
+                                </td>
+                            </tr>
+                            {/if}
+                            <tr>
+                                <td colspan="2">
+                                    <hr />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {translate key="submission.rights.typ"} 
+                                </td>
+                                <td >
+                                    {$publishedMonograph->getLocalizedRightsTyp()|strip_unsafe_html}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {translate key="submission.rights.drzitel"} 
+                                </td>
+                                <td >
+                                    {$publishedMonograph->getLocalizedRightsDrzitel()|strip_unsafe_html}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {translate key="submission.rights.trvani"} 
+                                </td>
+                                <td >
+                                    {$publishedMonograph->getLocalizedRightsTrvani()|strip_unsafe_html}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {translate key="submission.dedikace"} 
+                                </td>
+                                <td >
+                                    {$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 
