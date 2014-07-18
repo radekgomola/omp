@@ -250,10 +250,6 @@ You may optionally provide the user with a reason for disabling their account.</
 	<message key="manager.setup.information.description">Brief descriptions of the press for librarians and prospective authors and readers are available in the "Information" section of the sidebar.</message>
 	<message key="manager.setup.information.forAuthors">For Authors</message>
 	<message key="manager.setup.information.forLibrarians">For Librarians</message>
-        <message key="manager.setup.information.proDistributory">For Distributors</message>
-        <message key="manager.setup.information.proMedia">For Media</message>
-        <message key="manager.setup.information.keStazeni">Download</message>
-        <message key="manager.setup.information.doiCrossref">Doi, CrossRef</message>
 	<message key="manager.setup.information.forReaders">For Readers</message>
 	<message key="manager.setup.institution">Institution</message>
 	<message key="manager.setup.labelName">Label Name</message>
@@ -297,8 +293,6 @@ You may optionally provide the user with a reason for disabling their account.</
 	<message key="manager.setup.appearanceDescription">Various components of the press appearance can be configured from this page, including header and footer elements, the press style and theme, and how lists of information are presented to users.</message>
 	<message key="manager.setup.pressDescription">Press Description</message>
 	<message key="manager.setup.pressDescription.description">A general description of the press should be included here. This description will be available on the press homepage.</message>
-        <message key="manager.setup.pressPartneri">Press Partners</message>
-	<message key="manager.setup.pressPartneri.description">Page for partners and cooperation.</message>
 	<message key="manager.setup.pressArchiving">Press Archiving</message>
 	<message key="manager.setup.homepageContent">Press Homepage Content</message>
 	<message key="manager.setup.homepageContentDescription">The press homepage consists of navigation links by default. Additional homepage content can be appended by using one or all of the following options, which will appear in the order shown.</message>

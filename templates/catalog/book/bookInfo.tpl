@@ -35,8 +35,109 @@
 			{if !is_null($sharingCode) || !empty($blocks)}
 				<li><a href="#sharingTab">{translate key="submission.sharing"}</a></li>
 			{/if}
-		</ul>
-
+                        <li><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
+                </ul>
+                <div id="viceInfoTab">
+                    <table class="viceInformaci">
+                        <tbody>
+                            {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}
+                            <tr {if empty($pocetStran)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.pocetStran"} </h3>
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    {$pocetStran}
+                                </td>
+                            </tr>
+                            {assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
+                            <tr {if empty($muPracoviste)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.muPracoviste"} </h3>
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    {$muPracoviste}
+                                </td>
+                            </tr>
+                            {assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
+                            <tr {if empty($urlOC)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.url.oc"}</h3> 
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    <a href={$urlOC} target="_blank">{translate key="informace.url.oc"}</a>
+                                </td>
+                            </tr>
+                            {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
+                            <tr {if empty($urlWeb)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.url.web"} </h3>
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    <a href={$urlWeb} target="_blank">{translate key="informace.url.web"}</a>
+                                </td>
+                            </tr>
+                            {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
+                            <tr {if empty($bibliografickaCitace)}style="display:none;"{/if}>
+                                <td colspan="2">
+                                   <h3> {translate key="submission.bibliografickaCitace"} </h3>
+                                   <div class="viceInfoBlok"> 
+                                        {$bibliografickaCitace}
+                                   </div>
+                                </td>
+                            </tr>
+                            {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
+                            <tr {if empty($poznamka)}style="display:none;"{/if}>
+                                <td colspan="2">
+                                    <h3>{translate key="submission.poznamka"}</h3> 
+                                    <div class="viceInfoBlok"> 
+                                        {$poznamka}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr {if empty($poznamka)&& empty($bibliografickaCitace)&& empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran)}style="display:none;"{/if}>
+                                <td colspan="2">
+                                    <hr />
+                                </td>
+                            </tr>
+                             {assign var="rightsTyp" value=$publishedMonograph->getLocalizedRightsTyp()|strip_unsafe_html}
+                            <tr {if empty($rightsTyp)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.rights.typ"}</h3> 
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    {$rightsTyp}
+                                </td>
+                            </tr>
+                            {assign var="rightsDrzitel" value=$publishedMonograph->getLocalizedRightsDrzitel()|strip_unsafe_html}
+                            <tr {if empty($rightsDrzitel)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.rights.drzitel"}</h3> 
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    {$rightsDrzitel}
+                                </td>
+                            </tr>
+                            {assign var="rightsTrvani" value=$publishedMonograph->getLocalizedRightsTrvani()|strip_unsafe_html}
+                            <tr {if empty($rightsTrvani)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.rights.trvani"}</h3> 
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    {$rightsTrvani}
+                                </td>
+                            </tr>
+                            {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
+                            <tr {if empty($dedikace)}style="display:none;"{/if}>
+                                <td colspan="2">
+                                    <h3>{translate key="submission.dedikace"} </h3>
+                                    <div class="viceInfoBlok"> 
+                                        {$dedikace}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 
