@@ -608,4 +608,16 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
         <message key="informace.doplnkove.zakladni">More information</message>
         <message key="informace.doplnkove.dalsi">More information - extended</message>
         
+        <message key="footer.publisher">MU Publisher</message>
+        <message key="footer.contacts">Contacts:</message>
+        <message key="footer.novotna">(assistant manager, editor)</message>
+        <message key="footer.brodecka">(editor)</message>
+        <message key="footer.gomola">(editor, adminitration)</message>
+        <message key="footer.uvt">Hosted by 
+Institute of Computer Science,
+Masaryk University</message>
+        <message key="footer.uvt.link">http://www.muni.cz/ics/?lang=en</message>
+        <message key="footer.muni">Masaryk University</message>
+        <message key="footer.muni.link">http://www.muni.cz/?lang=en</message>
+        
 </locale>
