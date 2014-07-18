@@ -43,30 +43,30 @@
                         <tbody>
                             {if ! empty($publishedMonograph->getLocalizedPocetStran())}
                             <tr>
-                                <td>
-                                    {translate key="submission.pocetStran"} 
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.pocetStran"} </h3>
                                 </td>
-                                <td>
+                                <td class="pravyBlokBlok">
                                     {$publishedMonograph->getLocalizedPocetStran(null)|strip_unsafe_html}
                                 </td>
                             </tr>
                             {/if}
                             {if ! empty($publishedMonograph->getLocalizedMuPracoviste())}
                             <tr>
-                                <td>
-                                    {translate key="submission.muPracoviste"} 
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.muPracoviste"} </h3>
                                 </td>
-                                <td >
+                                <td class="pravyBlokBlok">
                                     {$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
                                 </td>
                             </tr>
                             {/if}
                             {if ! empty($publishedMonograph->getLocalizedUrlOC())}
                             <tr>
-                                <td>
-                                    {translate key="submission.url.oc"} 
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.url.oc"}</h3> 
                                 </td>
-                                <td >
+                                <td class="pravyBlokBlok">
                                     {assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
                                     <a href={$urlOC} target="_blank">{translate key="informace.url.oc"}</a>
                                 </td>
@@ -74,10 +74,10 @@
                             {/if}
                             {if ! empty($publishedMonograph->getLocalizedUrlWeb())}
                             <tr>
-                                <td>
-                                    {translate key="submission.url.web"} 
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.url.web"} </h3>
                                 </td>
-                                <td >
+                                <td class="pravyBlokBlok">
                                     {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
                                     <a href={$urlWeb} target="_blank">{translate key="informace.url.web"}</a>
                                 </td>
@@ -85,21 +85,21 @@
                             {/if}
                             {if ! empty($publishedMonograph->getLocalizedBibliografickaCitace())}
                             <tr>
-                                <td>
-                                    {translate key="submission.bibliografickaCitace"} 
-                                </td>
-                                <td >
-                                    {$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
+                                <td colspan="2">
+                                   <h3> {translate key="submission.bibliografickaCitace"} </h3>
+                                   <div class="viceInfoBlok"> 
+                                        {$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
+                                   </div>
                                 </td>
                             </tr>
                             {/if}
                             {if ! empty($publishedMonograph->getLocalizedPoznamka())}
                             <tr>
-                                <td>
-                                    {translate key="submission.poznamka"} 
-                                </td>
-                                <td >
-                                    {$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
+                                <td colspan="2">
+                                    <h3>{translate key="submission.poznamka"}</h3> 
+                                    <div class="viceInfoBlok"> 
+                                        {$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
+                                    </div>
                                 </td>
                             </tr>
                             {/if}
@@ -109,35 +109,35 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    {translate key="submission.rights.typ"} 
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.rights.typ"}</h3> 
                                 </td>
-                                <td >
+                                <td class="pravyBlokBlok">
                                     {$publishedMonograph->getLocalizedRightsTyp()|strip_unsafe_html}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    {translate key="submission.rights.drzitel"} 
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.rights.drzitel"}</h3> 
                                 </td>
-                                <td >
+                                <td class="pravyBlokBlok">
                                     {$publishedMonograph->getLocalizedRightsDrzitel()|strip_unsafe_html}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    {translate key="submission.rights.trvani"} 
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.rights.trvani"}</h3> 
                                 </td>
-                                <td >
+                                <td class="pravyBlokBlok">
                                     {$publishedMonograph->getLocalizedRightsTrvani()|strip_unsafe_html}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    {translate key="submission.dedikace"} 
-                                </td>
-                                <td >
-                                    {$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
+                                <td colspan="2">
+                                    <h3>{translate key="submission.dedikace"} </h3>
+                                    <div class="viceInfoBlok"> 
+                                        {$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

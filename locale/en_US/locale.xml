@@ -600,9 +600,12 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
         <message key="submission.muPracoviste">MU workplace</message>
         <message key="submission.url.oc">Url on-line bookstore</message>
         <message key="submission.url.web">Url web</message>
-        <message key="submission.bibliografickaCitace">Bibgliographic citation</message>
+        <message key="submission.bibliografickaCitace">Bibliographic citation</message>
         <message key="submission.poznamka">Note</message>
         <message key="submission.dedikace">Dedication</message>
         <message key="informace.url.web">Go to www</message>
         <message key="informace.url.oc">Go to on-line bookstore</message>
+        <message key="informace.doplnkove.zakladni">More information</message>
+        <message key="informace.doplnkove.dalsi">More information - extended</message>
+        
 </locale>
