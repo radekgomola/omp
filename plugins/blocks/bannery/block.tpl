@@ -64,5 +64,6 @@
     <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/bannery/01.png" class="link_img bannery" /></a></div>
     <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>
     <div><a href="https://journals.muni.cz/" target="_blank"><img u="image" src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" /></a></div>
+    <div><a href="{$baseUrl}/public/download_files/Katalog2014jaro.pdf" target="_blank"><img u="image" src="{$baseUrl}/images/img/bannery/04.png" class="link_img bannery" /></a></div>
   </div>
 </div>
