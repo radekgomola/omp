@@ -26,17 +26,17 @@
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 180px; height: 65px;
             overflow: hidden;">
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/01.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/02.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/03.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/04.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/05.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/06.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/07.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/08.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/09.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/10.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/11.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/01.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/02.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/03.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/04.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/05.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/06.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/07.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/08.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/09.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/10.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/11.jpg" /></a></div>
         </div>
 
         <!-- bullet navigator container -->
@@ -61,8 +61,8 @@
     </div>
     <!-- Jssor Slider End -->
     
-    <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/bannery/01.png" class="link_img bannery" /></a></div>
-    <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>
+    <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/01.png" class="link_img bannery" /></a></div>
+    <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>
     <div><a href="https://journals.muni.cz/" target="_blank"><img u="image" src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" /></a></div>
     <div><a href="{$baseUrl}/public/download_files/Katalog2014jaro.pdf" target="_blank"><img u="image" src="{$baseUrl}/images/img/bannery/04.png" class="link_img bannery" /></a></div>
   </div>

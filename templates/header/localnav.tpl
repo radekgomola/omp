@@ -9,7 +9,7 @@
  *}
 
 {capture assign="publicMenu"}
-	{if $currentPress}
+    	{if $currentPress}
 		{if $enableAnnouncements}
 			<li><a href="{url router=$smarty.const.ROUTE_PAGE page="announcement"}">{translate key="announcement.announcements"}</a></li>
 		{/if}
@@ -27,6 +27,7 @@
 				{if not empty($contextInfo.editorialTeam)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="editorialTeam"}">{translate key="about.editorialTeam"}</a></li>
 				{/if}
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="seznamAutoru"}">{translate key="seznam.vypisAutoru.short"}</a></li>
 				{if not empty($contextInfo.editorialPolicies)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="editorialPolicies"}">{translate key="about.policies"}</a></li>
 				{/if}	
@@ -34,8 +35,10 @@
 				{if not empty($contextInfo.sponsorship)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="sponsorship"}">{translate key="about.pressSponsorship"}</a></li>
 				{/if}
+                                
 			</ul>
 		</li>
+                
 	{/if}
 {/capture}
 

@@ -620,4 +620,8 @@ Masaryk University</message>
         <message key="footer.muni">Masaryk University</message>
         <message key="footer.muni.link">http://www.muni.cz/?lang=en</message>
         
+        <message key="user.titulPred">Title before name</message>
+        <message key="seznam.vypisAutoru">List of authors</message>
+        <message key="seznam.vypisAutoru.profil">Profil</message>
+        <message key="seznam.vypisAutoru.short">Our Authors</message>
 </locale>
