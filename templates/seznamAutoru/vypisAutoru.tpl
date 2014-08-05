@@ -26,7 +26,7 @@
 
 	<ol class="editorialTeam">
 		{foreach from=$autori item=autor}
-			<div class="member"><li>&#187; <a href="javascript:openRTWindow('{url op="vypisAutoruBio" path=$autor->getId()}')">{$autor->getFullName(true)|escape}</a>{if $autor->getSalutation() || $autor->getSuffix()} ({/if}{if $autor->getSalutation()}{$autor->getSalutation()|escape}{/if}{if $autor->getSalutation() && $autor->getSuffix()}, {/if}{if $autor->getSuffix()}{$autor->getSuffix()}{/if}{if $autor->getSalutation() || $autor->getSuffix()}){/if}{if $autor->getLocalizedAffiliation()}, {$autor->getLocalizedAffiliation()|escape}{/if}{if $autor->getCountry()}{assign var=countryCode value=$autor->getCountry()}{assign var=country value=$countries.$countryCode}, {$country|escape}{/if}</li></div>
+                    <div class="member"><li class="autor">&#187; <a href="{url op="vypisAutoruBio" path=$autor->getId()}" {literal}onclick="return hs.htmlExpand(this, {objectType: 'iframe'})"{/literal}>{$autor->getFullName(true)|escape}</a>{if $autor->getSalutation() || $autor->getSuffix()} ({/if}{if $autor->getSalutation()}{$autor->getSalutation()|escape}{/if}{if $autor->getSalutation() && $autor->getSuffix()}, {/if}{if $autor->getSuffix()}{$autor->getSuffix()}{/if}{if $autor->getSalutation() || $autor->getSuffix()}){/if}{if $autor->getLocalizedAffiliation()}, {$autor->getLocalizedAffiliation()|escape}{/if}{if $autor->getCountry()}{assign var=countryCode value=$autor->getCountry()}{assign var=country value=$countries.$countryCode}, {$country|escape}{/if}</li></div>
 		{/foreach}
 	</ol>
 	</div>

@@ -59,8 +59,6 @@
 	{if $user->getLocalizedAffiliation()}{$user->getLocalizedAffiliation()|escape}{assign var=needsComma value=1}{/if}{if $country}{if $needsComma}, {/if}{$country|escape}{/if}
   {$user->getLocalizedBiography()|nl2br|strip_unsafe_html}</p>
 
-<input type="button" onclick="window.close()" value="{translate key="common.close"}" class="button defaultButton" />
-
 </div><!-- content -->
 </div><!-- mainContent -->
 </div><!-- main -->
