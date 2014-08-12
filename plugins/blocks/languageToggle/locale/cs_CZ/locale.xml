@@ -8,14 +8,10 @@
   * Copyright (c) 2003-2014 John Willinsky
   * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
   *
-  * Localization strings for this plugin in Czech.
-  *
-  * Translated by František Chmelik, frantisek.chmelik 'at' upol.cz
-  *
+  * Localization strings for the en_US (U.S. English) locale.
   -->
- 
+
 <locale name="cs_CZ" full_name="Čeština">
-	<message key="plugins.block.bannery.displayName">Blok bannerů</message>
-	<message key="plugins.block.bannery.description">Plugin poskytuje blok bannerů pro munipress.</message>
-	<message key="plugins.block.bannery.link">Bannery</message>
+	<message key="plugins.block.languageToggle.displayName">Blok přepínače jazyků</message>
+	<message key="plugins.block.languageToggle.description">Tento doplňek poskytně postranní panel pro přepínání jazyků</message>
 </locale>

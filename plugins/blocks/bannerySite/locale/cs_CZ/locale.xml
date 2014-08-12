@@ -14,7 +14,7 @@
   *
   -->
  
-<locale name="cs_CZ" full_name="Czech">
+<locale name="cs_CZ" full_name="Čeština">
 	<message key="plugins.block.bannerySite.displayName">Block "Spojte se"</message>
 	<message key="plugins.block.bannerySite.description">Plugin poskytně blok s odkazy na sociální sítě a newsletter.</message>
 	<message key="plugins.block.bannerySite.link">Spojte se s námi</message>
