@@ -10,6 +10,7 @@
 
 {capture assign="publicMenu"}
     	{if $currentPress}
+{*            <li><a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori" }">TEST</a></li>*}
 		{if $enableAnnouncements}
 			<li><a href="{url router=$smarty.const.ROUTE_PAGE page="announcement"}">{translate key="announcement.announcements"}</a></li>
 		{/if}

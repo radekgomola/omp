@@ -17,19 +17,7 @@
 <div id="editorialTeam">
 {if count($autori) > 0}
 	<div id="authors">
-        
-{*	{if count($autori) == 1}
-		<h3>{translate key="user.role.author"}</h3>
-	{else}
-		<h3>{translate key="user.role.authors"}</h3>
-	{/if}*}
-        {php}
-        $this->assign('abeceda',
-            array('A', 'B', 'C', 'Č', 'D', 'Ď', 'E',  
-                  'F', 'G', 'H', 'Ch', 'I', 'J', 'K', 'L', 
-                  'M', 'N', 'Ň', 'O', 'P', 'Q', 'R', 'Ř', 'S', 
-                  'Š', 'T', 'Ť', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž', 'ostatni'));
-        {/php}
+                
         {foreach from=$abeceda item=pismeno}
             {assign var=neprazdne value==false}
             
@@ -59,8 +47,14 @@
                 </ol>
             {/if}
         {/foreach}
+        
+        
 	</div>
 {/if}
+{foreach from=$autoriPrispevku item='test'}
+    {$test->getLastName()} + email {$test->getUrl()}<br />
+
+{/foreach}
 </div>
 
 {include file="common/footer.tpl"}

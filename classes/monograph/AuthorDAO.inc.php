@@ -59,7 +59,7 @@ class AuthorDAO extends PKPAuthorDAO {
 				CAST(\'\' AS CHAR) AS url,
 				a.author_id AS author_id,
 				a.submission_id AS submission_id,
-				CAST(\'\' AS CHAR) AS email,
+                                a.email AS email,
 				0 AS primary_contact,
 				0 AS seq,
 				a.first_name AS first_name,

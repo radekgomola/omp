@@ -58,6 +58,18 @@
 	{if $user->getUrl()}<a href="{$user->getUrl()|escape:"quotes"}" target="_new">{$user->getUrl()|escape}</a><br/>{/if}
 	{if $user->getLocalizedAffiliation()}{$user->getLocalizedAffiliation()|escape}{assign var=needsComma value=1}{/if}{if $country}{if $needsComma}, {/if}{$country|escape}{/if}
   {$user->getLocalizedBiography()|nl2br|strip_unsafe_html}</p>
+<p>
+<h3>{translate key=prispevky.publikace}</h3>
+    {foreach from=$autoriPrispevku item='prispevek'}
+            {if $prispevek->getLastName() == $user->getLastName() && 
+                $prispevek->getFirstName() == $user->getFirstName() &&
+                $prispevek->getEmail() == $user->getEmail()}
+                
+                {assign var=idecko value=$prispevek->getSubmissionId()}
+                &#187;<a href="{url page="catalog" op="book" path=$idecko}" target="_blank">{$prispevkyMonograph.$idecko->getLocalizedTitle()}</a><br />
+            {/if}
+    {/foreach}
+</p>
 
 </div><!-- content -->
 </div><!-- mainContent -->

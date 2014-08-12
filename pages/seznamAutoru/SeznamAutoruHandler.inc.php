@@ -14,6 +14,9 @@
 
 import('classes.handler.Handler');
 import('lib.pkp.classes.security.PKPRoleDAO');
+import('classes.monograph.AuthorDAO');
+import('classes.monograph.MonographDAO');
+import('classes.monograph.PublishedMonographDAO');
 
 
 class SeznamAutoruHandler extends Handler {
@@ -34,20 +37,22 @@ class SeznamAutoruHandler extends Handler {
 //
 		$press =& Request::getPress();
 		$templateMgr =& TemplateManager::getManager();
-
-		$countryDao =& DAORegistry::getDAO('CountryDAO');
-		$countries =& $countryDao->getCountries();
-		$templateMgr->assign_by_ref('countries', $countries);
-
-			// Don't use the Editorial Team feature. Generate
-			// Editorial Team information using Role info.
-			$roleDao =& DAORegistry::getDAO('RoleDAO');
-
-			$autori =& $roleDao->getUsersByRoleId(ROLE_ID_AUTHOR, $press->getId());
-			$autori =& $autori->toArray();
-
-			$templateMgr->assign_by_ref('autori', $autori);
-			$templateMgr->display('seznamAutoru/vypisAutoru.tpl');
+		
+                // Don't use the Editorial Team feature. Generate
+                // Editorial Team information using Role info.
+                $roleDao =& DAORegistry::getDAO('RoleDAO');
+                
+                $autori =& $roleDao->getUsersByRoleId(ROLE_ID_AUTHOR, $press->getId());
+                $autori =& $autori->toArray();
+                
+                $templateMgr->assign('abeceda', array('A', 'B', 'C', 'Č', 'D', 'Ď', 'E',  
+                                    'F', 'G', 'H', 'Ch', 'I', 'J', 'K', 'L', 
+                                    'M', 'N', 'Ň', 'O', 'P', 'Q', 'R', 'Ř', 'S', 
+                                    'Š', 'T', 'Ť', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž', 'ostatni'));
+                
+                               
+                $templateMgr->assign_by_ref('autori', $autori);
+                $templateMgr->display('seznamAutoru/vypisAutoru.tpl');
 	}
 
 	/**
@@ -89,9 +94,22 @@ class SeznamAutoruHandler extends Handler {
                                 break;
                         }
                 }
+                
+                $authorDao =& DAORegistry::getDAO('AuthorDAO');
+                $monographDao =& DAORegistry::getDAO('MonographDAO');
+                $publishedMonographDao =& DAORegistry::getDAO('PublishedMonographDAO');
 
+
+                
+                $autoriPrispevku =& $authorDao->getAuthorsAlphabetizedByPress($press->getId(),null, null);
+                $autoriPrispevku =& $autoriPrispevku->toArray();
+                foreach ($autoriPrispevku as $autor) {                
+                    $prispevkyMonograph[$autor->getSubmissionId()] = $publishedMonographDao->getById($autor->getSubmissionId(),$press->getId());      }
+                //$prispevkyMonograph =& $prispevkyMonograph->toArray();
+                
                 // Currently we always publish emails in this mode.
                 $publishEmail = false;
+                
 
 		if (!$user) Request::redirect(null, 'seznamAutoru', 'vypisAutoru');
 
@@ -101,6 +119,8 @@ class SeznamAutoruHandler extends Handler {
 			$templateMgr->assign('country', $country);
 		}
 
+                $templateMgr->assign_by_ref('autoriPrispevku', $autoriPrispevku);
+                $templateMgr->assign_by_ref('prispevkyMonograph', $prispevkyMonograph);
 		$templateMgr->assign_by_ref('user', $user);
 		$templateMgr->assign_by_ref('publishEmail', $publishEmail);
 		$templateMgr->display('seznamAutoru/vypisAutoruBio.tpl');

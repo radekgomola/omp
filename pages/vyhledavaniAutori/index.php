@@ -18,8 +18,8 @@
 
 switch ($op) {
 	case 'index':
-		define('HANDLER_CLASS', 'VyhledejAutoryHandler');
-		import('pages.vyhledavaniAutori.VyhledejAutoryHandler');
+		define('HANDLER_CLASS', 'VyhledavaniAutoriHandler');
+		import('pages.vyhledavaniAutori.VyhledavaniAutoriHandler');
 		break;
 }
 
