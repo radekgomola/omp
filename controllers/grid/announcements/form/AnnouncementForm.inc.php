@@ -117,12 +117,12 @@ class AnnouncementForm extends PKPAnnouncementForm {
 				$pressId, ASSOC_TYPE_ANNOUNCEMENT, $announcement->getId()
 			);
 		}
-		$notificationManager->sendToMailingList($request,
-			$notificationManager->createNotification(
-				$request, UNSUBSCRIBED_USER_NOTIFICATION, NOTIFICATION_TYPE_NEW_ANNOUNCEMENT,
-				$pressId, ASSOC_TYPE_ANNOUNCEMENT, $announcement->getId()
-			)
-		);
+//		$notificationManager->sendToMailingList($request,
+//			$notificationManager->createNotification(
+//				$request, UNSUBSCRIBED_USER_NOTIFICATION, NOTIFICATION_TYPE_NEW_ANNOUNCEMENT,
+//				$pressId, ASSOC_TYPE_ANNOUNCEMENT, $announcement->getId()
+//			)
+//		);
 
 		return $announcement->getId();
 	}
