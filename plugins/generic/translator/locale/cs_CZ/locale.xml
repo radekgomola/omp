@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * locale.xml
+  *
+  * Copyright (c) 2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  -->
+
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.generic.translator.name">Překladový plugin</message>
+	<message key="plugins.generic.translator.description">Tento doplňek umožňuje správu souborů lokalizací přímo z webového rozhraní.</message>
+	<message key="plugins.generic.translator.longdescription">Tato oblast umoňuje Administrátorovi stránky vytvářet, upravovat a kontrolovat překlady OMP. Tyto změny jsou globální a nelze je použít pro úpravu jazyka jednoho Nakladatelství v OMP. Pokud opravíte nebo vytvoříte překlad, prosím zvažte odeslání do Public Knowledge Project k distribuci s pozdějšími verzemi.</message>
+	<message key="plugins.generic.translator.localeDescription">Tato stránka zobrazuje všechny součásti překladu OMP a poskytuje překladatele s možností upravit každou součást. Úplný překlad by měl obsahovat kompletní překlad všech součástí.</message>
+
+	<message key="plugins.generic.translator.tarMissing">Funkce exportu pro tento plugin byla vypnuta, protože nelze nalézt konfiguraci příkazu tar. Prosím ujistěte se, že máte nainstalovaný tar program a nastavte cestu k příkazu v konfiguračním souboru config.inc.php v [cli] sekci!</message>
+
+	<message key="plugins.generic.translator.localeName">Název lokalizace</message>
+	<message key="plugins.generic.translator.localeKey">Klíč</message>
+	<message key="plugins.generic.translator.localeKey.description">Vložte celý klíč lokalizace pro vyhledávání.</message>
+	<message key="plugins.generic.translator.localeKeyValue">Hodnota</message>
+	<message key="plugins.generic.translator.translate">Překlad</message>
+	<message key="plugins.generic.translator.availableLocales">Dostupné lokalizace</message>
+	<message key="plugins.generic.translator.check">Zkontrolovat</message>
+
+	<message key="plugins.generic.translator.errors">Chyby lokalizace</message>
+
+	<message key="plugins.generic.translator.errors.LOCALE_ERROR_MISSING_KEY.title">Chybí klíč</message>
+	<message key="plugins.generic.translator.errors.LOCALE_ERROR_EXTRA_KEY.title">Klíč navíc</message>
+	<message key="plugins.generic.translator.errors.LOCALE_ERROR_DIFFERING_PARAMS.title">Odlišný seznam parametrů</message>
+	<message key="plugins.generic.translator.errors.LOCALE_ERROR_MISSING_FILE.title">Chybějící soubor lokalizace</message>
+	<message key="plugins.generic.translator.errors.EMAIL_ERROR_MISSING_EMAIL.title">Chybějící e-maily</message>
+	<message key="plugins.generic.translator.errors.EMAIL_ERROR_EXTRA_EMAIL.title">E-maily navíc</message>
+	<message key="plugins.generic.translator.errors.EMAIL_ERROR_DIFFERING_PARAMS.title">Odlišní seznam parametrů v e-mailu</message>
+
+	<message key="plugins.generic.translator.errors.LOCALE_ERROR_MISSING_KEY.message">Chybějící klíč "{$key}" v souboru "{$filename}". Anglická verze je poskytnuta jako výchozí.</message>
+	<message key="plugins.generic.translator.errors.LOCALE_ERROR_EXTRA_KEY.message">Klíč "{$key}" již není dále používán a může být ze souboru "{$filename}" odstraněn.</message>
+	<message key="plugins.generic.translator.errors.LOCALE_ERROR_DIFFERING_PARAMS.message">Klíč "{$key}" v souboru "{$filename}" se odlišuje od výchozí lokalizace v použití parametrů. Prosím, překontrolujte, že obsahuje všechny důležité parametry. Neodpovídající parametry jsou:</message>
+	<message key="plugins.generic.translator.errors.LOCALE_ERROR_MISSING_FILE.message">Soubor "{$filename}" chybí nebo nelze přečíst.</message>
+	<message key="plugins.generic.translator.errors.EMAIL_ERROR_MISSING_EMAIL.message">E-mailová zpráva "{$key}" v překladu chybí.</message>
+	<message key="plugins.generic.translator.errors.EMAIL_ERROR_EXTRA_EMAIL.message">E-mailová zpráva "{$key}" již není dále používána a může být odstraněna.</message>
+	<message key="plugins.generic.translator.errors.EMAIL_ERROR_DIFFERING_PARAMS.message">E-mailová zpráva "{$key}" se odlišuje od výchozí lokalizace v použití parametrů. Prosím, překontrolujte, že obsahuje všechny důležité parametry. Neodpovídající parametry jsou:</message>
+
+	<message key="plugins.generic.translator.locale">{$locale} Lakalizace</message>
+	<message key="plugins.generic.translator.localeFiles">Soubory lokalizace</message>
+	<message key="plugins.generic.translator.miscFiles">Lišící se soubory</message>
+	<message key="plugins.generic.translator.emails">Šablony e-mailů</message>
+	<message key="plugins.generic.translator.file.filename">Soubor</message>
+	<message key="plugins.generic.translator.file.edit">Upravujete {$filename}</message>
+	<message key="plugins.generic.translator.email.edit">Upravujete {$emailKey}</message>
+	<message key="plugins.generic.translator.file.reference">Výchozí verze</message>
+	<message key="plugins.generic.translator.file.translation">Překlad</message>
+	<message key="plugins.generic.translator.email.reference">Výchozí verze</message>
+	<message key="plugins.generic.translator.email.translation">Překlad</message>
+	<message key="plugins.generic.translator.file.reset">Reset</message>
+	<message key="plugins.generic.translator.file.resetToReference">Resetovat na výchozí</message>
+	<message key="plugins.generic.translator.email.reset">Reset</message>
+	<message key="plugins.generic.translator.email.resetToReference">Resetovat na výchozí</message>
+	<message key="plugins.generic.translator.file.resetConfirm">Jste si jistý, že chcete resetovat obsah souboru?</message>
+	<message key="plugins.generic.translator.email.resetConfirm">Jste si jistý, že chcete resetovat obsah e-mailu?</message>
+	<message key="plugins.generic.translator.file.doesNotExistNote">* Tento soubor ještě nebyl přeložen.</message>
+	<message key="plugins.generic.translator.file.confirmCreate">Soubor "{$filename}" bude vytvořen pomocí anglické verze; budete muset přeložit všechny řetězce v souboru. Přejete si pokračovat?</message>
+	<message key="plugins.generic.translator.email.description">V následujících polích přeložte šáblonu e-mailu: Název, Tělo a Popis. Popis je pouze pro potřeby Manažera nakladatelství.</message>
+	<message key="plugins.generic.translator.confirmDelete">Jste si jisty, že chcete odstranit tuto položku? Tuto akci nelze vzít zpět.</message>
+	<message key="plugins.generic.translator.deleteKey">Odstranit klíč</message>
+	<message key="plugins.generic.translator.deleteEmail">Odstranit e-mail</message>
+	<message key="plugins.generic.translator.saveBeforeContinuing">Přesvědčte se, že jste uložili všechny provedené změny než budete pokračovat, v opačném případě budou všechny neuložené změny ztraceny. Přejete si pokračovat?</message>
+</locale>

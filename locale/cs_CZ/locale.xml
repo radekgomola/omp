@@ -225,7 +225,7 @@
     <message key="catalog.dateAdded">Přidáno: {$dateAdded}</message>
     <message key="catalog.publicationInfo">Informace o publikaci</message>
     <message key="catalog.relatedCategories">Související kategorie</message>
-    <message key="catalog.aboutTheAuthor">Informace o {$roleName}</message>
+    <message key="catalog.aboutTheAuthor">Informace o autorovi</message>
     <message key="catalog.noBioInfo">Aktuálně není k dispozici žádná biografie.</message>
     <message key="catalog.loginRequiredForPayment">Poznámka: Před nákupem se nejprve musíte přihlásit. Výběr položky k nákupu Vás přesměruje na přihlašovací stránku. Jakoukoli položku označenou ikonou Otevřený zdroj (Open Access) můžete stáhnout zdarma a bez přihlášení.</message>
     <message key="common.prefix">Prefix</message>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/paymethod/paypal/locale/cs_CZ/locale.xml
+  *
+  * Copyright (c) 2014 Simon Fraser University Library
+  * Copyright (c) 2006-2009 Gunther Eysenbach, Juan Pablo Alperin, MJ Suhonos
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the cs_CZ (Čeština) locale.
+  -->
+ 
+<locale name="cs_CZ" full_name="Čeština">
+	<message key="plugins.paymethod.paypal.displayName">Platba přes PayPal</message>
+
+	<!-- PayPal Settings Form -->
+	<message key="plugins.paymethod.paypal.settings.paypalenable">Povolit PayPal</message>
+	<message key="plugins.paymethod.paypal.settings.paypalurl">IPN URL</message>
+	<message key="plugins.paymethod.paypal.settings.paypalurl.description"><![CDATA[Toto je URL adresa pro PayPal službu Instant Payment Notification (IPN). Pro otestování či registraci, použijte <a href="https://www.sandbox.paypal.com/cgi-bin/webscr" target="_blank">https://www.sandbox.paypal.com/cgi-bin/webscr</a>.]]></message>
+	<message key="plugins.paymethod.paypal.settings.selleraccount">Účet prodejce</message>
+	<message key="plugins.paymethod.paypal.settings.selleraccount.description">Uživatelské jméno pro PayPal účet prodejce, typicky e-mailová adresa. Ujistěte se, že máte aktivovano Instant Payment Notification (IPN) v nastavení profilu svého účtu prodejce.</message>
+	<message key="plugins.paymethod.paypal.settings.curlNotInstalled">Varování: Podpora CURL pro PHP není nainstalována. Podpora plateb přes PayPal vyžaduje knihovnu CURL a nebude funkční, dokud nebude knihovna nainstalována!</message>
+	<message key="plugins.paymethod.paypal.settings">Nastavení PayPal</message>
+
+	<!-- PayPal -->
+	<message key="plugins.paymethod.paypal">Platba přes PayPal</message>
+	<message key="plugins.paymethod.paypal.description"><![CDATA[PayPal umožňuje uživatelům, ať už jsou či nejsou členy PayPal, použivat pro platby všechny hlavní typy platebních karet. Nakladatelství musí nastavit svůj <a href="http://www.paypal.com" target="_blank">PayPal Business Account</a>.]]></message>
+	<message key="plugins.paymethod.paypal.warning">Tlačítko pro pokračování níže Vás přesměruje na stránku PayPal, kde můžete zaplatit platební kartou (bez nutnosti připojit se k PayPal). Po dokončení platby použíjte PayPal tlačítko "Return to Merchant", které povede zpět na stránku, kde bude zakoupený titul dostupný ke stažení.</message>
+	<message key="plugins.paymethod.paypal.purchase.title">Název</message>
+	<message key="plugins.paymethod.paypal.purchase.fee">Cena</message>
+	<message key="plugins.paymethod.paypal.purchase.description">Popis</message>
+	<message key="plugins.paymethod.paypal.purchase.cancelled">Vaše objednávka byla zrušena.</message>
+	<message key="plugins.paymethod.paypal.purchase.cancelled.title">Objednávka zrušena</message>
+</locale>
