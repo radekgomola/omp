@@ -579,4 +579,15 @@ Masarykovy univerzity</message>
         <message key="abeceda.ostatni">Ostatní</message>
         
         <message key="prispevky.publikace">Publikováno</message>
+        
+        <message key="newsletter.popis">Nové tituly, pozvánky na křty a besedy, slevové akce a další zprávy z Nakladatelství Masarykovy univerzity přímo do Vaší e-mailové schránky!</message>
+        <message key="newsletter.prihlasit.title">Přihlaste se k odběru našeho newsletteru</message>
+        <message key="newsletter.archiv">Předchozí Newslettery</message>
+        <message key="newsletter.archiv.long">Seznam předešlých newsletterů</message>
+        <message key="newsletter.email">E-mail</message>
+        <message key="newsletter.jmeno">Jméno a příjmení</message>
+        <message key="newsletter.organizace">Organizace</message>
+        <message key="newsletter.prihlasit">Přihlásit se k odběru</message>
+        <message key="newsletter.required">Povinné položky</message>
+        <message key="newsletter.czechOnly"></message>
   </locale>

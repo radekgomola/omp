@@ -17,14 +17,14 @@
 	<li class="current"><a href="{url op="check" path=$locale}">{translate key="plugins.generic.translator.check"}</a></li>
 </ul>
 
-<br/>
+<br />
 
 <form class="pkp_form" action="{url op="saveLocaleChanges" path=$locale}" method="post">
 <input type="hidden" name="redirectUrl" value="{url op="index"}" />
 
 {foreach from=$errors key=type item=categoryErrors}
 	{if !empty($categoryErrors)}
-		<h2>{translate key="plugins.generic.translator.errors.$type.title"}</h2>
+		<h3>{translate key="plugins.generic.translator.errors.$type.title"}</h3>
 		<ul>
 	{/if}
 	{assign var=categoryCount value=0}
@@ -83,7 +83,7 @@
 
 {foreach from=$emailErrors key=type item=categoryErrors}
 	{if !empty($categoryErrors)}
-		<h2>{translate key="plugins.generic.translator.errors.$type.title"}</h2>
+		<h3>{translate key="plugins.generic.translator.errors.$type.title"}</h3>
 		<ul>
 	{/if}
 	{foreach from=$categoryErrors item=error}

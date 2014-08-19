@@ -660,5 +660,17 @@ Masaryk University</message>
         <message key="abeceda.Z">Z</message>
         <message key="abeceda.Ž">Ž</message>
         <message key="abeceda.ostatni">Others</message>
+        
+        <message key="newsletter.popis">Updates on new titles, book launches and other events as well as discounts and sales from Masaryk University Press directly to your inbox!</message>
+        <message key="newsletter.prihlasit.title">Subscribe to our Newsletter</message>
+        <message key="newsletter.archiv">Previous Newsletters</message>
+        <message key="newsletter.archiv.long">List of previous Newsletters</message>
+        <message key="newsletter.email">Email</message>
+        <message key="newsletter.jmeno">Firstname and Surname</message>
+        <message key="newsletter.organizace">Organisation</message>
+        <message key="newsletter.prihlasit">Subscribe</message>
+        <message key="newsletter.required">indicates required</message>
+        <message key="newsletter.czechOnly">(CZECH ONLY)</message>
+        
 
 </locale>
