@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
   <!-- * locale/cs_CZ/locale.xml * * Copyright (c) 2014 Masaryk university * * Localization strings ( ). -->
-  <locale name="cs_CZ" full_name="Czech">
-    <message key="klic">česky</message>
+  <locale name="cs_CZ" full_name="Čeština">
     <message key="monograph.audience">Audience</message>
     <message key="monograph.coverImage">Obálka</message>
     <message key="monograph.coverImage.uploadInstructions">Ujistěte se, že výška obrázku nepřesahuje 150 % šířky, jinak se v kolotiči nezobrazí celý.</message>
@@ -305,11 +304,11 @@
     <message key="about.editorialPolicies">Redakční zásady</message>
     <message key="about.focusAndScope">Zaměření a oblast působnosti</message>
     <message key="about.seriesPolicies">Zásady pro edice a kategorie</message>
-    <message key="about.submissions">Návrhy na publikace</message>
+    <message key="about.submissions">Příspěvky</message>
     <message key="about.sponsors">Sponzoři</message>
     <message key="about.contributors">Poskytovatelé podpory</message>
-    <message key="about.onlineSubmissions">Návrhy na publikace online</message>
-    <message key="about.onlineSubmissions.haveAccount">Máte již uživatelské jméno a heslo do nakladatelství {$ presstitle}?</message>
+    <message key="about.onlineSubmissions">Příspěvky online</message>
+    <message key="about.onlineSubmissions.haveAccount">Máte již uživatelské jméno a heslo do nakladatelství {$pressTitle}?</message>
     <message key="about.onlineSubmissions.login">Přihlaste se</message>
     <message key="about.onlineSubmissions.needAccount">Potřebujete uživatelské jméno a heslo?</message>
     <message key="about.onlineSubmissions.registration">Registrujte se</message>
@@ -319,6 +318,7 @@
     <message key="about.submissionPreparationChecklist.description">Autoři jsou v rámci procesu předložení návrhu na publikací povinni ověřit, že jejich příspěvky vyhovují následujícím pravidlům. Příspěvky nesplňující tato pravidla mohou být vráceny.</message>
     <message key="about.copyrightNotice">Informace o autorských právech</message>
     <message key="about.privacyStatement">Prohlášení o osobních údajích</message>
+    <message key="about.peerReviewProcess">Recenzní řízení</message>
     <message key="about.reviewPolicy">Pravidla recenzního řízení</message>
     <message key="about.publicationFrequency">Frekvence vydávání publikací</message>
     <message key="about.openAccessPolicy">Pravidla volného přístupu k dílům</message>
@@ -371,8 +371,8 @@
     <message key="installer.upgradeComplete">
       <![CDATA[<p>Aktualizace OMP na verzi {$version} byla úspěšně dokončena.</p> <p>Nezapomeňte nastavit možnost "installed" v konfiguračním souboru config.inc.php zpět na <em>On</em>.</p> <p>Pokud jste se dosud neregistroval/a máte zájem o příjem novinek a aktualizací, <strong>registrujte se prosím na <a href="http://pkp.sfu.ca/omp/register" target="_blank">http://pkp.sfu.ca/omp/register</a>.</strong> Pokud máte otázky nebo komentáře, obraťte se prosím na <a href="http://pkp.sfu.ca/support/forum" target="_blank">fórum podpory</a>.</p>]]>
     </message>
-    <message key="log.review.reviewCleared">Kolo č. {$round} recenzního řízení (Recenzent: {$reviewerName}) návrhu na publikaci č. {$submissionId} bylo úspěšně uzavřeno.</message>
-    <message key="log.review.reviewDueDateSet">Termín pro kolo č. {$round} recenzního řízení (Recenzent: {$reviewerName}) byl nastaven na datum {$dueDate}.</message>
+    <message key="log.review.reviewCleared">Kolo č. {$round} recenzního řízení (Recenzent: {$reviewerName}) příspěvku č. {$submissionId} bylo úspěšně uzavřeno.</message>
+    <message key="log.review.reviewDueDateSet">Termín pro kolo č. {$round} recenzního řízení příspěvku č. {$submissionId} (Recenzent: {$reviewerName}) byl nastaven na datum {$dueDate}.</message>
     <message key="log.review.reviewDeclined">Recenzent {$reviewerName} odmítl kolo č. {$round} recenzního řízení pro návrh č. {$submissionId}.</message>
     <message key="log.review.reviewAccepted">Recenzent {$reviewerName} odsouhlasil kolo č. {$round} recenzního řízení pro návrh č. {$submissionId}.</message>
     <message key="log.review.reviewUnconsidered">Editor {$editorName} označil kolo č. {$round} recenzního řízení pro návrh č. {$submissionId} za nerozhodnuté.</message>
@@ -464,130 +464,132 @@
     <message key="payment.directSales.monograph.description">Touto transakcí čtenář zaplatí za stažení jednotlivé monografie nebo její kapitoly.</message>
     <message key="debug.notes.currencyListLoad">Seznam měn "{$filename}" načtený z XML</message>
     <message key="debug.notes.helpMappingLoad">Obnovený instrukční soubor XML {$filename}: Hledání {$id}.</message>
+    
+    <!-- RT Entities -->
+	<message key="rt.metadata.pkp.peerReviewed">Recenzovaný článek</message>
+        
     <message key="rt.metadata.pkp.dctype">Kniha</message>
     <message key="plugins.categories.viewableFiles">Zveřejněné zásuvné moduly (pluginy) pro typy souborů</message>
     <message key="plugins.categories.viewableFiles.description">Zveřejněné zásuvné moduly (pluginy) pro typy souborů přidávají podporu pro vkládání různých typů souborů (např. přímý náhled na soubor PDF).</message>
     <message key="submission.pdf.download">Stáhnout tento soubor PDF</message>
-
     <!--doplnkove lokalizace Munipress-->
-         <!--default.xml -->
-        <message key="default.pressSettings.proDistributory"><![CDATA[Výchozí text pro distribuci.]]></message>
-        <message key="default.pressSettings.proMedia"><![CDATA[Výchozí text pro media. ]]></message>
-        <message key="default.pressSettings.keStazeni"><![CDATA[výchozí text pro download.]]></message>
-        <message key="default.pressSettings.proMedia"><![CDATA[Default text for media. ]]></message>
-        <message key="default.pressSettings.keStazeni"><![CDATA[Default data for doi/crossref page.]]></message>
-        
-        <!--locale.sml -->
-        <message key="navigation.infoProDistributory">Pro distributory</message>
-        <message key="navigation.infoProMedia">Pro media</message>
-        <message key="navigation.infoKeStazeni">Ke stažení</message>
-        <message key="navigation.infoDoiCrossref">Doi, CrossRef</message>
-        <message key="navigation.infoProDistributory.long">Informace pro distributory</message>
-        <message key="navigation.infoProMedia.long">Informace pro media</message>
-        <message key="navigation.infoKeStazeni.long">Data ke stažení</message>
-        <message key="navigation.infoDoiCrossref.long">Informace o Doi a Crossref</message>
-        <message key="navigation.objednavkaVMuniPressu">Objednat v Nakladatelství</message>
-        <message key="navigation.knihkupectvi">Internetové knihkupectví</message>
-        <message key="navigation.prodejny">Prodejny knih na MU</message>
-        <message key="navigation.objednavkaVMuniPressu.zprava">mailto:%6e%61%6d%75%40%72%65%63%74%2e%6d%75%6e%69%2e%63%7a?subject=Objednavka publikace&amp;body=Dobry den, &#xD;&#xA;&#xD;&#xA;%0A%0A objednavam publikaci vydanou Nakladatelstvim Masarykovy univerzity: &#xD;&#xA;&#xD;&#xA; &#xD;&#xA;&#xD;&#xA;%0A%0A Jmeno objednavajiciho: &#xD;&#xA;%0A Nazev firmy, ICO, DIC: &#xD;&#xA;%0A Adresa: &#xD;&#xA;&#xD;&#xA;%0A%0A Zpusob doruceni objednavky: (osobni odber + platba v hotovosti / dobirka / postovni balik + platba predem na fakturu)&#xD;&#xA;&#xD;&#xA;%0A%0A Kontaktujte me prosim za ucelem dokonceni objednavky. &#xD;&#xA;%0A Dekuji, &#xD;&#xA;</message>
-        <message key="navigation.munispace.books">Knihy</message>
-        <message key="navigation.munispace.coursebooks">Učebnice</message>
-        <message key="navigation.munispace.symposiums">Sborníky</message>
-        <message key="navigation.munispace.digiLib">Digitální knihovna FF</message>
-        
-        <!--manager.xml-->
-        <message key="manager.setup.information.proDistributory">Pro distributory</message>
-        <message key="manager.setup.information.proMedia">Pro media</message>
-        <message key="manager.setup.information.keStazeni">Ke stažení</message>
-        <message key="manager.setup.information.doiCrossref">Doi, CrossRef</message>
-        <message key="manager.setup.pressPartneri">Partneři Nakladatelství</message>
-	      <message key="manager.setup.pressPartneri.description">Stránka pro partnery a spolupraci.</message>
-        
-        <message key="about.partneri">Partneři</message>
-        <message key="about.partneri.long">Partneři a spolupráce</message>
-        
-        <message key="submission.rights.typ">Práva: typ</message>
-        <message key="submission.rights.typ.tip">Můžete zadat typ práv.</message>
-        <message key="submission.rights.drzitel">Práva: držitel</message>
-        <message key="submission.rights.drzitel.tip">Můžete zadat držitele práv</message>
-        <message key="submission.rights.trvani">Práva: datum expirace</message>
-        <message key="submission.viceInformaci">Více informací</message>
-        
-        <message key="submission.pocetStran">Stránky</message>
-        <message key="submission.muPracoviste">Pracoviště MU</message>
-        <message key="submission.url.oc">Url obchodní centrum</message>
-        <message key="submission.url.web">Url web</message>
-        <message key="submission.bibliografickaCitace">Bibliografická citace</message>
-        <message key="submission.poznamka">Poznámka</message>
-        <message key="submission.dedikace">Dedikace</message>
-        <message key="informace.url.web">Přejít na www</message>
-        <message key="informace.url.oc">Přejít do obchodního centra</message>
-        <message key="informace.doplnkove.zakladni">Více informací</message>
-        <message key="informace.doplnkove.dalsi">Více informací - další</message>
-        
-        <message key="footer.publisher">Nakladatelství MU</message>
-        <message key="footer.contacts">Kontakty:</message>
-        <message key="footer.novotna">(zástupce ředitelky, redaktorka)</message>
-        <message key="footer.brodecka">(redaktorka)</message>
-        <message key="footer.gomola">(redaktor, andministrátor)</message>
-        <message key="footer.uvt">Provoz serveru technicky zajišťuje
-Ústav výpočetní techniky
-Masarykovy univerzity</message>
-        <message key="footer.uvt.link">http://www.muni.cz/ics/</message>
-        <message key="footer.muni">Masarykova univerzita</message>
-        <message key="footer.muni.link">http://www.muni.cz/</message>
-        
-        <message key="user.titulPred">Titul před jménem</message>
-        <message key="seznam.vypisAutoru">Seznam autorů</message>
-        <message key="seznam.vypisAutoru.profil">Profil</message>
-        <message key="seznam.vypisAutoru.short">Naši autoři</message>
-
-        <message key="abeceda.A">A</message>
-        <message key="abeceda.B">B</message>
-        <message key="abeceda.C">C</message>
-        <message key="abeceda.Č">Č</message>
-        <message key="abeceda.D">D</message>
-        <message key="abeceda.Ď">Ď</message>
-        <message key="abeceda.E">E</message>
-        <message key="abeceda.F">F</message>
-        <message key="abeceda.G">G</message>
-        <message key="abeceda.H">H</message>
-        <message key="abeceda.Ch">Ch</message>
-        <message key="abeceda.I">I</message>
-        <message key="abeceda.J">J</message>
-        <message key="abeceda.K">K</message>
-        <message key="abeceda.L">L</message>
-        <message key="abeceda.M">M</message>
-        <message key="abeceda.N">N</message>
-        <message key="abeceda.Ň">Ň</message>
-        <message key="abeceda.O">O</message>
-        <message key="abeceda.P">P</message>
-        <message key="abeceda.Q">Q</message>
-        <message key="abeceda.R">R</message>
-        <message key="abeceda.Ř">Ř</message>
-        <message key="abeceda.S">S</message>
-        <message key="abeceda.Š">Š</message>
-        <message key="abeceda.T">T</message>
-        <message key="abeceda.Ť">Ť</message>
-        <message key="abeceda.U">U</message>
-        <message key="abeceda.V">V</message>
-        <message key="abeceda.W">W</message>
-        <message key="abeceda.X">X</message>
-        <message key="abeceda.Y">Y</message>
-        <message key="abeceda.Z">Z</message>
-        <message key="abeceda.Ž">Ž</message>
-        <message key="abeceda.ostatni">Ostatní</message>
-        
-        <message key="prispevky.publikace">Publikováno</message>
-        
-        <message key="newsletter.popis">Nové tituly, pozvánky na křty a besedy, slevové akce a další zprávy z Nakladatelství Masarykovy univerzity přímo do Vaší e-mailové schránky!</message>
-        <message key="newsletter.prihlasit.title">Přihlaste se k odběru našeho newsletteru</message>
-        <message key="newsletter.archiv">Předchozí Newslettery</message>
-        <message key="newsletter.archiv.long">Seznam předešlých newsletterů</message>
-        <message key="newsletter.email">E-mail</message>
-        <message key="newsletter.jmeno">Jméno a příjmení</message>
-        <message key="newsletter.organizace">Organizace</message>
-        <message key="newsletter.prihlasit">Přihlásit se k odběru</message>
-        <message key="newsletter.required">Povinné položky</message>
-        <message key="newsletter.czechOnly"></message>
+    <!--default.xml -->
+    <message key="default.pressSettings.proDistributory">
+      <![CDATA[Výchozí text pro distribuci.]]>
+    </message>
+    <message key="default.pressSettings.proMedia">
+      <![CDATA[Výchozí text pro media. ]]>
+    </message>
+    <message key="default.pressSettings.keStazeni">
+      <![CDATA[výchozí text pro download.]]>
+    </message>
+    <message key="default.pressSettings.proMedia">
+      <![CDATA[Default text for media. ]]>
+    </message>
+    <message key="default.pressSettings.keStazeni">
+      <![CDATA[Default data for doi/crossref page.]]>
+    </message>
+    <!--locale.sml -->
+    <message key="navigation.infoProDistributory">Pro distributory</message>
+    <message key="navigation.infoProMedia">Pro media</message>
+    <message key="navigation.infoKeStazeni">Ke stažení</message>
+    <message key="navigation.infoDoiCrossref">Doi, CrossRef</message>
+    <message key="navigation.infoProDistributory.long">Informace pro distributory</message>
+    <message key="navigation.infoProMedia.long">Informace pro media</message>
+    <message key="navigation.infoKeStazeni.long">Data ke stažení</message>
+    <message key="navigation.infoDoiCrossref.long">Informace o Doi a Crossref</message>
+    <message key="navigation.objednavkaVMuniPressu">Objednat v Nakladatelství</message>
+    <message key="navigation.knihkupectvi">Internetové knihkupectví</message>
+    <message key="navigation.prodejny">Prodejny knih na MU</message>
+    <message key="navigation.objednavkaVMuniPressu.zprava">mailto:%6e%61%6d%75%40%72%65%63%74%2e%6d%75%6e%69%2e%63%7a?subject=Objednavka publikace&amp;body=Dobry den, &#xD;&#xA;&#xD;&#xA;%0A%0A objednavam publikaci vydanou Nakladatelstvim Masarykovy univerzity: &#xD;&#xA;&#xD;&#xA; &#xD;&#xA;&#xD;&#xA;%0A%0A Jmeno objednavajiciho: &#xD;&#xA;%0A Nazev firmy, ICO, DIC: &#xD;&#xA;%0A Adresa: &#xD;&#xA;&#xD;&#xA;%0A%0A Zpusob doruceni objednavky: (osobni odber + platba v hotovosti / dobirka / postovni balik + platba predem na fakturu)&#xD;&#xA;&#xD;&#xA;%0A%0A Kontaktujte me prosim za ucelem dokonceni objednavky. &#xD;&#xA;%0A Dekuji, &#xD;&#xA;</message>
+    <message key="navigation.munispace.books">Knihy</message>
+    <message key="navigation.munispace.coursebooks">Učebnice</message>
+    <message key="navigation.munispace.symposiums">Sborníky</message>
+    <message key="navigation.munispace.digiLib">Digitální knihovna FF</message>
+    <!--manager.xml-->
+    <message key="manager.setup.information.proDistributory">Pro distributory</message>
+    <message key="manager.setup.information.proMedia">Pro media</message>
+    <message key="manager.setup.information.keStazeni">Ke stažení</message>
+    <message key="manager.setup.information.doiCrossref">Doi, CrossRef</message>
+    <message key="manager.setup.pressPartneri">Partneři Nakladatelství</message>
+    <message key="manager.setup.pressPartneri.description">Stránka pro partnery a spolupraci.</message>
+    <message key="about.partneri">Partneři</message>
+    <message key="about.partneri.long">Partneři a spolupráce</message>
+    <message key="submission.rights.typ">Práva: typ</message>
+    <message key="submission.rights.typ.tip">Můžete zadat typ práv.</message>
+    <message key="submission.rights.drzitel">Práva: držitel</message>
+    <message key="submission.rights.drzitel.tip">Můžete zadat držitele práv</message>
+    <message key="submission.rights.trvani">Práva: datum expirace</message>
+    <message key="submission.viceInformaci">Více informací</message>
+    <message key="submission.pocetStran">Stránky</message>
+    <message key="submission.muPracoviste">Pracoviště MU</message>
+    <message key="submission.url.oc">Url obchodní centrum</message>
+    <message key="submission.url.web">Url web</message>
+    <message key="submission.bibliografickaCitace">Bibliografická citace</message>
+    <message key="submission.poznamka">Poznámka</message>
+    <message key="submission.dedikace">Dedikace</message>
+    <message key="informace.url.web">Přejít na www</message>
+    <message key="informace.url.oc">Přejít do obchodního centra</message>
+    <message key="informace.doplnkove.zakladni">Více informací</message>
+    <message key="informace.doplnkove.dalsi">Více informací - další</message>
+    <message key="footer.publisher">Nakladatelství MU</message>
+    <message key="footer.contacts">Kontakty:</message>
+    <message key="footer.novotna">(zástupce ředitelky, redaktorka)</message>
+    <message key="footer.brodecka">(redaktorka)</message>
+    <message key="footer.gomola">(redaktor, andministrátor)</message>
+    <message key="footer.uvt">Provoz serveru technicky zajišťuje Ústav výpočetní techniky Masarykovy univerzity</message>
+    <message key="footer.uvt.link">http://www.muni.cz/ics/</message>
+    <message key="footer.muni">Masarykova univerzita</message>
+    <message key="footer.muni.link">http://www.muni.cz/</message>
+    <message key="user.titulPred">Titul před jménem</message>
+    <message key="seznam.vypisAutoru">Seznam autorů</message>
+    <message key="seznam.vypisAutoru.profil">Profil</message>
+    <message key="seznam.vypisAutoru.short">Naši autoři</message>
+    <message key="abeceda.A">A</message>
+    <message key="abeceda.B">B</message>
+    <message key="abeceda.C">C</message>
+    <message key="abeceda.Č">Č</message>
+    <message key="abeceda.D">D</message>
+    <message key="abeceda.Ď">Ď</message>
+    <message key="abeceda.E">E</message>
+    <message key="abeceda.F">F</message>
+    <message key="abeceda.G">G</message>
+    <message key="abeceda.H">H</message>
+    <message key="abeceda.Ch">Ch</message>
+    <message key="abeceda.I">I</message>
+    <message key="abeceda.J">J</message>
+    <message key="abeceda.K">K</message>
+    <message key="abeceda.L">L</message>
+    <message key="abeceda.M">M</message>
+    <message key="abeceda.N">N</message>
+    <message key="abeceda.Ň">Ň</message>
+    <message key="abeceda.O">O</message>
+    <message key="abeceda.P">P</message>
+    <message key="abeceda.Q">Q</message>
+    <message key="abeceda.R">R</message>
+    <message key="abeceda.Ř">Ř</message>
+    <message key="abeceda.S">S</message>
+    <message key="abeceda.Š">Š</message>
+    <message key="abeceda.T">T</message>
+    <message key="abeceda.Ť">Ť</message>
+    <message key="abeceda.U">U</message>
+    <message key="abeceda.V">V</message>
+    <message key="abeceda.W">W</message>
+    <message key="abeceda.X">X</message>
+    <message key="abeceda.Y">Y</message>
+    <message key="abeceda.Z">Z</message>
+    <message key="abeceda.Ž">Ž</message>
+    <message key="abeceda.ostatni">Ostatní</message>
+    <message key="prispevky.publikace">Publikováno</message>
+    <message key="newsletter.popis">Nové tituly, pozvánky na křty a besedy, slevové akce a další zprávy z Nakladatelství Masarykovy univerzity přímo do Vaší e-mailové schránky!</message>
+    <message key="newsletter.prihlasit.title">Přihlaste se k odběru našeho newsletteru</message>
+    <message key="newsletter.archiv">Předchozí Newslettery</message>
+    <message key="newsletter.archiv.long">Seznam předešlých newsletterů</message>
+    <message key="newsletter.email">E-mail</message>
+    <message key="newsletter.jmeno">Jméno a příjmení</message>
+    <message key="newsletter.organizace">Organizace</message>
+    <message key="newsletter.prihlasit">Přihlásit se k odběru</message>
+    <message key="newsletter.required">Povinné položky</message>
+    
+    <message key="newsletter.czechOnly"></message>
   </locale>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * locale.xml
+  *
+  * Copyright (c) 2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the cs_CZ (Čeština) locale.
+  *
+  -->
+
+<locale name="cs_CZ" full_name="Čeština">
+	<message key="plugins.importexport.onix30.displayName">Doplněk pro export monografií ONIX 3.0</message>
+	<message key="plugins.importexport.onix30.description">Exportuje metadata monografií ve formátu ONIX 3.0</message>
+	<message key="plugins.importexport.onix30.cliUsage"><![CDATA[Použití: {$scriptName} {$pluginName} [xmlFileName] [pressPath] [monographId] ]]></message>
+	<message key="plugins.importexport.onix30.cliError">CHYBA:</message>
+	<message key="plugins.importexport.onix30.error.unknownPress">Specifikovaná cesta k nakladatelství "{$pressPath}," neexistuje.</message>
+	<message key="plugins.importexport.onix30.export.error.couldNotWrite">Nelze zapisovat do souboru "{$fileName}".</message>
+	<message key="plugins.importexport.onix30.export.error.monographNotFound">Nebyla nalezena žádná monografie odpovídající zadanému ID "{$monographId}".</message>
+	<message key="plugins.importexport.onix30.noFormats">Monografie bez formátů publikaci nejsou zobrazeny.</message>
+	<message key="plugins.importexport.onix30.selectMonograph">Vyberte monografie k exportu:</message>
+	<message key="plugins.importexport.onix30.exportButton">Export</message>
+	<message key="plugins.importexport.onix30.exportFormats">Dostupné formáty</message>
+	<message key="plugins.importexport.onix30.unavailable">Nedostupné</message>
+	<message key="plugins.importexport.onix30.validityStatus">Stav ONIX</message>
+	<message key="plugins.importexport.onix30.formatValid">Platný</message>
+	<message key="plugins.importexport.onix30.formatInvalid">Neplatný</message>
+	<message key="plugins.importexport.onix30.pressMissingFields">Schází nekolik povinně vyžadovaných informací ohledně nakladatelství. Prosím přejděte do Správy &gt; Nastavení &gt; Publikace &gt; Produkce a doplňte chybějící detaily.</message>
+	
+	<!-- Information form keys -->
+	<message key="plugins.importexport.onix30.form.addresseeField">Adresát (příjemce)tohoto exportu</message>
+	<message key="plugins.importexport.onix30.form.addresseeField.tip"><![CDATA[Můžete nechat toto polé prázdné a udělat obecný export. Výsledkem toho bude, že ONIX export nebude přidružen k žádnému &lt;Adresátu&gt;. ]]></message>
+</locale>
