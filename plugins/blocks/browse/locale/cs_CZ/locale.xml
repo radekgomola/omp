@@ -13,7 +13,7 @@
   -->
  
 <locale name="cs_CZ" full_name="Čeština">
-	<message key="plugins.block.browse">Procházet</message>
+	<message key="plugins.block.browse">Prohlížet</message>
 	<message key="plugins.block.browse.displayName">Blok prohlédávání</message>
 	<message key="plugins.block.browse.description">Tento plugin poskytuje prohledávací nástroje.</message>
 	<message key="plugins.block.browse.category">Prohledat kategorie</message>
