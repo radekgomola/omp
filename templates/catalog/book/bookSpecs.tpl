@@ -30,26 +30,25 @@
 					{/if}
 				{/foreach}
 			{/if}
+                        {if count($publicationFormats) > 1}
+                                {foreach from=$publicationFormats item="publicationFormat"}
+                                        {if $publicationFormat->getIsApproved()}
+                                                {*<h3><a href="#">{$publicationFormat->getLocalizedName()|escape}</a></h3>*}
+                                                <div class="publicationFormat">
+                                                        {include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
+                                                </div>{* publicationFormat *}
+                                        {/if}{* $publicationFormat->getIsApproved() *}
+                                {/foreach}{* $publicationFormats *}
+                        {/if}{* publicationFormats > 1 *}
 			{if $series}
 				<div class="seriesLink">{translate key="series.series"}: <a href="{url page="catalog" op="series" path=$series->getPath()}">{$series->getLocalizedFullTitle()}</a></div>
 			{/if}
 
 		</div>
 
-		{if count($publicationFormats) > 1}
-			{foreach from=$publicationFormats item="publicationFormat"}
-				{if $publicationFormat->getIsApproved()}
-					<h3><a href="#">{$publicationFormat->getLocalizedName()|escape}</a></h3>
-					<div class="publicationFormat">
-						{include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
-					</div>{* publicationFormat *}
-				{/if}{* $publicationFormat->getIsApproved() *}
-			{/foreach}{* $publicationFormats *}
-		{/if}{* publicationFormats > 1 *}
-
 		{assign var=categories value=$publishedMonograph->getCategories()}
 		{if !$categories->wasEmpty()}
-			<h3><a href="#">{translate key="catalog.relatedCategories}</a></h3>
+			<h3><a href="#">{translate key="catalog.relatedCategories"}</a></h3>
 			<ul class="relatedCategories">
 				{iterate from=categories item=category}
 					<li><a href="{url op="category" path=$category->getPath()}">{$category->getLocalizedTitle()|strip_unsafe_html}</a></li>

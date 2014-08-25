@@ -31,11 +31,12 @@
 			<li><a href="#abstractTab">{translate key="submission.synopsis"}</a></li>
 			{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}<li><a href="#contentsTab">{translate key="common.contents"}</a></li>{/if}
 			{if $availableFiles|@count != 0}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
+                        <li><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
 			{call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
 			{if !is_null($sharingCode) || !empty($blocks)}
 				<li><a href="#sharingTab">{translate key="submission.sharing"}</a></li>
 			{/if}
-                        <li><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
+                        
                 </ul>
                 <div id="viceInfoTab">
                     <table class="viceInformaci">
