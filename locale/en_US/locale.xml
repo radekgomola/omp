@@ -305,9 +305,9 @@
 	<message key="navigation.catalog.administration">Catalog Administration</message>
 	<message key="navigation.catalog.administration.categories">Categories</message>
 	<message key="navigation.catalog.administration.series">Series</message>
-	<message key="navigation.infoForAuthors">For Authors</message>
+	<message key="navigation.infoForAuthors">Publish with us</message>
 	<message key="navigation.infoForLibrarians">For Librarians</message> 
-	<message key="navigation.infoForAuthors.long">Information For Authors</message>
+	<message key="navigation.infoForAuthors.long">Publish with Munipress</message>
 	<message key="navigation.infoForLibrarians.long">Information For Librarians</message>
 	<message key="navigation.newReleases">New Releases</message>
 	<message key="navigation.published">Published</message>

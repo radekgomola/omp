@@ -248,9 +248,9 @@
     <message key="navigation.catalog.administration">Správa katalogu</message>
     <message key="navigation.catalog.administration.categories">Kategorie</message>
     <message key="navigation.catalog.administration.series">Edice</message>
-    <message key="navigation.infoForAuthors">Pro autory</message>
+    <message key="navigation.infoForAuthors">Publikujte s námi</message>
     <message key="navigation.infoForLibrarians">Pro knihovníky</message>
-    <message key="navigation.infoForAuthors.long">Informace pro autory</message>
+    <message key="navigation.infoForAuthors.long">Publikujte s Nakladatelstvím MU Munipress</message>
     <message key="navigation.infoForLibrarians.long">Informace pro knihovníky</message>
     <message key="navigation.newReleases">Nové publikace</message>
     <message key="navigation.published">Zveřejněno</message>
