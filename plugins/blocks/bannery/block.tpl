@@ -8,7 +8,7 @@
 {*	<span class="blockTitle">{translate key="plugins.block.distribuce.link"}</span>*}
 
 <div style="padding-left: 5px;">	
-    <!-- Jssor Slider Begin -->
+    {*<!-- Jssor Slider Begin -->
     <!-- You can move inline styles to css file or css block. -->
     <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 180px;
         height: 80px; margin-bottom: 15px;">
@@ -62,7 +62,7 @@
     <!-- Jssor Slider End -->
     
     <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/01.png" class="link_img bannery" /></a></div>
-    <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>
+    <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>*}
     <div><a href="https://journals.muni.cz/" target="_blank"><img u="image" src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" /></a></div>
     <div><a href="{$baseUrl}/public/download_files/Katalog2014jaro.pdf" target="_blank"><img u="image" src="{$baseUrl}/images/img/bannery/04.png" class="link_img bannery" /></a></div>
   </div>

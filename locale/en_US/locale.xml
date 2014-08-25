@@ -298,7 +298,7 @@
 	<message key="common.homePageHeader.altText">Homepage Header</message>
 
 	<!-- Navigation -->
-	<message key="navigation.catalog">Catalog</message>
+	<message key="navigation.catalog">Production</message>
 	<message key="navigation.competingInterestPolicy">Competing Interest Policy</message>
 	<message key="navigation.catalog.manage">Manage</message>
 	<message key="navigation.catalog.administration.short">Administration</message>
@@ -673,5 +673,8 @@ Masaryk University</message>
         <message key="newsletter.required">indicates required</message>
         <message key="newsletter.czechOnly">(CZECH ONLY)</message>
         
-
+        <message key="jazyk.vyber">en_US</message>
+        <message key="navigation.munispace.link">Munispace</message>
+        <message key="navigation.produkce.knihy">Books</message>
+        <message key="navigation.produkce.casopisy">Journals</message>
 </locale>

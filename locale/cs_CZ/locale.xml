@@ -241,7 +241,7 @@
     <message key="common.openMonographPress">Open Monograph Press</message>
     <message key="common.omp">OMP</message>
     <message key="common.homePageHeader.altText">Záhlaví úvodní stránky</message>
-    <message key="navigation.catalog">Katalog</message>
+    <message key="navigation.catalog">Produkce</message>
     <message key="navigation.competingInterestPolicy">Zásady týkající se střetu zájmů</message>
     <message key="navigation.catalog.manage">Spravovat</message>
     <message key="navigation.catalog.administration.short">Správa</message>
@@ -469,8 +469,8 @@
 	<message key="rt.metadata.pkp.peerReviewed">Recenzovaný článek</message>
         
     <message key="rt.metadata.pkp.dctype">Kniha</message>
-    <message key="plugins.categories.viewableFiles">Zveřejněné zásuvné moduly (pluginy) pro typy souborů</message>
-    <message key="plugins.categories.viewableFiles.description">Zveřejněné zásuvné moduly (pluginy) pro typy souborů přidávají podporu pro vkládání různých typů souborů (např. přímý náhled na soubor PDF).</message>
+    <message key="plugins.categories.viewableFiles">Doplňky pro zveřejněné soubory</message>
+    <message key="plugins.categories.viewableFiles.description">Doplňky pro zveřejněné typy souborů přidávají podporu pro zobrazování soborů uvnitř stránky (např. přímý náhled na soubory PDF).</message>
     <message key="submission.pdf.download">Stáhnout tento soubor PDF</message>
     <!--doplnkove lokalizace Munipress-->
     <!--default.xml -->
@@ -592,4 +592,8 @@
     <message key="newsletter.required">Povinné položky</message>
     
     <message key="newsletter.czechOnly"></message>
+    <message key="jazyk.vyber">cs_CZ</message>
+    <message key="navigation.munispace.link">Munispace</message>
+    <message key="navigation.produkce.knihy">Knihy</message>
+    <message key="navigation.produkce.casopisy">Časopisy</message>
   </locale>

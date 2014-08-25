@@ -13,9 +13,9 @@
   -->
  
 <locale name="cs_CZ" full_name="Čeština">
-	<message key="plugins.block.browse">Vyhledat</message>
-	<message key="plugins.block.browse.displayName">Blok vyhledávače</message>
-	<message key="plugins.block.browse.description">Tento plugin poskytuje vyhledávací nástroje.</message>
+	<message key="plugins.block.browse">Procházet</message>
+	<message key="plugins.block.browse.displayName">Blok prohlédávání</message>
+	<message key="plugins.block.browse.description">Tento plugin poskytuje prohledávací nástroje.</message>
 	<message key="plugins.block.browse.category">Prohledat kategorie</message>
 	<message key="plugins.block.browse.series">Prohledat edice</message>
 	<message key="plugins.block.browse.newReleases">Prohledat novinky</message>

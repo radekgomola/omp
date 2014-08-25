@@ -59,11 +59,25 @@
 	{if $user->getLocalizedAffiliation()}{$user->getLocalizedAffiliation()|escape}{assign var=needsComma value=1}{/if}{if $country}{if $needsComma}, {/if}{$country|escape}{/if}
   {$user->getLocalizedBiography()|nl2br|strip_unsafe_html}</p>
 <p>
-<h3>{translate key=prispevky.publikace}</h3>
+
+{assign var=uLastName value=$user->getLastName()}
+{assign var=uFirstName value=$user->getFirstName()}
+{assign var=uEmail value=$user->getEmail()}
+{assign var=poprve value="false"}
+
     {foreach from=$autoriPrispevku item='prispevek'}
-            {if $prispevek->getLastName() == $user->getLastName() && 
-                $prispevek->getFirstName() == $user->getFirstName() &&
-                $prispevek->getEmail() == $user->getEmail()}
+        {assign var=pLastName value=$prispevek->getLastName()}
+        {assign var=pFirstName value=$prispevek->getFirstName()}
+        {assign var=pEmail value=$prispevek->getEmail()}
+        
+        
+            {if $pLastName == $uLastName && 
+                $pFirstName == $uFirstName &&
+                $pEmail == $uEmail}
+                {if $poprve == "false"}
+                    <h3>{translate key=prispevky.publikace}</h3>
+                    {assign var=poprve value="true"}
+                {/if}
                 
                 {assign var=idecko value=$prispevek->getSubmissionId()}
                 &#187;<a href="{url page="catalog" op="book" path=$idecko}" target="_blank">{$prispevkyMonograph.$idecko->getLocalizedTitle()}</a><br />

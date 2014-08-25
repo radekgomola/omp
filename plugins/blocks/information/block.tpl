@@ -14,7 +14,7 @@
 	<ul>
 		{if !empty($forReaders)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="readers"}">{translate key="navigation.infoForReaders"}</a></li>{/if}
 		{if !empty($forAuthors)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="authors"}">{translate key="navigation.infoForAuthors"}</a></li>{/if}
-		{if !empty($forLibrarians)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="librarians"}">{translate key="navigation.infoForLibrarians"}</a></li>{/if}
+		{*{if !empty($forLibrarians)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="librarians"}">{translate key="navigation.infoForLibrarians"}</a></li>{/if}*}
                 {if !empty($proDistributory)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="distributori"}">{translate key="navigation.infoProDistributory"}</a></li>{/if}
                 {if !empty($proMedia)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="media"}">{translate key="navigation.infoProMedia"}</a></li>{/if}
                 {if !empty($doiCrossref)}<li><a href="{url router=$smarty.const.ROUTE_PAGE page="information" op="crossref"}">{translate key="navigation.infoDoiCrossref"}</a></li>{/if}
