@@ -45,7 +45,7 @@
 
 	<div class="pkp_helpers_clear"></div>
 
-	{fbvFormArea id="audienceInformation" title="monograph.audience" class="border"}
+	{*{fbvFormArea id="audienceInformation" title="monograph.audience" class="border"}
 		{fbvFormSection for="audience"}
 			{fbvElement label="monograph.audience" type="select" from=$audienceCodes selected=$audience translate=false id="audience" defaultValue="" defaultLabel=""}
 			{fbvElement label="monograph.audience.rangeQualifier" type="select" from=$audienceRangeQualifiers selected=$audienceRangeQualifier translate=false id="audienceRangeQualifier" defaultValue="" defaultLabel=""}
@@ -53,7 +53,7 @@
 			{fbvElement label="monograph.audience.rangeTo" type="select" from=$audienceRanges selected=$audienceRangeTo translate=false id="audienceRangeTo" defaultValue="" defaultLabel=""}
 			{fbvElement label="monograph.audience.rangeExact" type="select" from=$audienceRanges selected=$audienceRangeExact translate=false id="audienceRangeExact" defaultValue="" defaultLabel=""}
 		{/fbvFormSection}
-	{/fbvFormArea}
+	{/fbvFormArea}*}
 
 	{fbvFormArea id="representatives"}
 		{fbvFormSection description="grid.catalogEntry.representativesDescription"}

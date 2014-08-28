@@ -15,7 +15,7 @@
 	<div class="pkp_catalog_monographDetails">
 		<div class="pkp_catalog_monographTitle"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="book" path=$publishedMonograph->getId()}">{$publishedMonograph->getLocalizedFullTitle()}</a></div>
 		<div class="pkp_catalog_monograph_authorship pkp_helpers_clear">
-			{$publishedMonograph->getAuthorString()|escape}
+                    {$publishedMonograph->getAuthorString()|escape}
 		</div>
 	</div>
 	<div class="pkp_catalog_monograph_date">

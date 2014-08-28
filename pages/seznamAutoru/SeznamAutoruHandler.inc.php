@@ -54,6 +54,31 @@ class SeznamAutoruHandler extends Handler {
                 $templateMgr->assign_by_ref('autori', $autori);
                 $templateMgr->display('seznamAutoru/vypisAutoru.tpl');
 	}
+        
+        function sloupce() {
+		$this->addCheck(new HandlerValidatorPress($this));
+		$this->validate();
+		$this->setupTemplate($request);
+//
+		$press =& Request::getPress();
+		$templateMgr =& TemplateManager::getManager();
+		
+                // Don't use the Editorial Team feature. Generate
+                // Editorial Team information using Role info.
+                $roleDao =& DAORegistry::getDAO('RoleDAO');
+                
+                $autori =& $roleDao->getUsersByRoleId(ROLE_ID_AUTHOR, $press->getId());
+                $autori =& $autori->toArray();
+                
+                $templateMgr->assign('abeceda', array('A', 'B', 'C', 'Č', 'D', 'Ď', 'E',  
+                                    'F', 'G', 'H', 'Ch', 'I', 'J', 'K', 'L', 
+                                    'M', 'N', 'Ň', 'O', 'P', 'Q', 'R', 'Ř', 'S', 
+                                    'Š', 'T', 'Ť', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž', 'ostatni'));
+                
+                               
+                $templateMgr->assign_by_ref('autori', $autori);
+                $templateMgr->display('seznamAutoru/vypisAutoru2.tpl');
+	}
 
 	/**
 	 * Display a biography for an editorial team member.

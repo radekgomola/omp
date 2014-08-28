@@ -15,6 +15,7 @@
 {/strip}
 <p class="nahoru"><a href="#kotva2">&uarr;</a></p>
 <div id="editorialTeam">
+    <a href="{url router=$smarty.const.ROUTE_PAGE page="seznamAutoru" op="sloupce"}">Sloupcový výpis</a><br />
 {if count($autori) > 0}
 	<div id="authors">
                 
@@ -51,10 +52,8 @@
         
 	</div>
 {/if}
-{foreach from=$autoriPrispevku item='test'}
-    {$test->getLastName()} + email {$test->getUrl()}<br />
 
-{/foreach}
+
 </div>
 
 {include file="common/footer.tpl"}

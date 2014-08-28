@@ -54,6 +54,7 @@
                             <ul>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}" target="_self">{translate key="navigation.produkce.knihy"}</a></li>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}" target="_self">{translate key="navigation.produkce.casopisy"} </a></li>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}" target="_self">{translate key="navigation.produkce.eknihy"} </a></li>
                             </ul>    
                         </li>
                         <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace" target="_self">{translate key="navigation.munispace.link"}</a>
@@ -102,6 +103,7 @@
                             <ul>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}" target="_self">{translate key="navigation.produkce.knihy"}</a></li>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}" target="_self">{translate key="navigation.produkce.casopisy"} </a></li>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}" target="_self">{translate key="navigation.produkce.eknihy"} </a></li>
                             </ul>   
                         </li>
                         <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace" target="_self">{translate key="navigation.munispace.link"}</a>

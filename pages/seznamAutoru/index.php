@@ -18,6 +18,7 @@
 
 switch($op) {
 	case 'vypisAutoruBio':
+        case 'sloupce':
 	case 'index':
 		define('HANDLER_CLASS', 'SeznamAutoruHandler');
 		import('pages.seznamAutoru.SeznamAutoruHandler');

@@ -33,10 +33,7 @@
                         {if count($publicationFormats) > 1}
                                 {foreach from=$publicationFormats item="publicationFormat"}
                                         {if $publicationFormat->getIsApproved()}
-                                                {*<h3><a href="#">{$publicationFormat->getLocalizedName()|escape}</a></h3>*}
-                                                <div class="publicationFormat">
-                                                        {include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
-                                                </div>{* publicationFormat *}
+                                            {include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
                                         {/if}{* $publicationFormat->getIsApproved() *}
                                 {/foreach}{* $publicationFormats *}
                         {/if}{* publicationFormats > 1 *}
