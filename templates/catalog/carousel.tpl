@@ -34,12 +34,12 @@
 				<div class="details_box" id="publishedMonograph-{$submissionId}-details">
 					<h4>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h4>
 					<div class="pkp_catalog_monograph_authorship">{$publishedMonograph->getAuthorString()|escape}</div>
-					{if $publishedMonograph->getPublicationFormatString()}
+					{*{if $publishedMonograph->getPublicationFormatString()}
 						<div class="pkp_catalog_formats">
 							<strong>{translate key="monograph.carousel.publicationFormats"}</strong><br />
 							{$publishedMonograph->getPublicationFormatString()|escape}
 						</div>
-					{/if}
+					{/if}*}
 					<div class="pkp_catalog_readMore"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="book" path=$submissionId}">{translate key="common.plusMore"}</a></div>
 				</div>
 				<div class="pkp_helpers_progressIndicator"></div>
