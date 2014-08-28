@@ -597,4 +597,9 @@
     <message key="navigation.produkce.knihy">Knihy</message>
     <message key="navigation.produkce.casopisy">Časopisy</message>
     <message key="navigation.produkce.eknihy">E-knihy</message>
+    
+    <message key="user.uco">UČO</message>
+    <message key="vizitka.identifikace">Osobní identifikace</message>
+    <message key="vizitka.uco">(univerzitní číslo osoby UČO)</message>
+    <message key="vizitka.url">Vizitkové URL</message>
   </locale>

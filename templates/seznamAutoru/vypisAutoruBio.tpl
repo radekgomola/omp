@@ -56,6 +56,25 @@
 		<p><strong>E-mail:</strong> {icon name="mail" url=$address}</p>
 	{/if}
 	{if $user->getUrl()}<a href="{$user->getUrl()|escape:"quotes"}" target="_new">{$user->getUrl()|escape}</a><br/>{/if}
+        {if $user->getUCO()}
+            <table style="border:none">
+                <tbody>
+                    <tr>
+                        <td style="padding-right:15px;">
+                            {translate key="vizitka.identifikace"}
+                        </td><td>
+                            {$user->getUCO()|escape} <em>{translate key="vizitka.uco"}</em>
+                        </td>
+                    </tr><tr>
+                        <td>                    
+                            {translate key="vizitka.url"}
+                        </td><td>
+                            <a href="http://www.muni.cz/people/{$user->getUCO()|escape:"quotes"}" target="_new">http://www.muni.cz/people/{$user->getUCO()|escape}</a><br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        {/if}
 	{if $user->getLocalizedAffiliation()}{$user->getLocalizedAffiliation()|escape}{assign var=needsComma value=1}{/if}{if $country}{if $needsComma}, {/if}{$country|escape}{/if}
   {$user->getLocalizedBiography()|nl2br|strip_unsafe_html}</p>
 <p>

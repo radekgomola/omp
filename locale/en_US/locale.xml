@@ -677,4 +677,9 @@ Masaryk University</message>
         <message key="navigation.produkce.knihy">Books</message>
         <message key="navigation.produkce.casopisy">Journals</message>
         <message key="navigation.produkce.eknihy">E-books</message>
+        
+        <message key="user.uco">UČO</message>
+        <message key="vizitka.identifikace">Personal identification</message>
+        <message key="vizitka.uco">(personal university number (UCO))</message>
+        <message key="vizitka.url">Personal URL</message>
 </locale>
