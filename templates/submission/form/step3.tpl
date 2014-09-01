@@ -19,4 +19,4 @@
 	{include file="submission/form/categories.tpl"}
 {/capture}
 
-{include file="core:submission/form/step3.tpl"}
+{include file="core:submission/form/step3.tpl" disableExtraFormData=true}

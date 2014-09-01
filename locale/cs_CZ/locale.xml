@@ -521,6 +521,9 @@
     <message key="submission.rights.drzitel.tip">Můžete zadat držitele práv</message>
     <message key="submission.rights.trvani">Práva: datum expirace</message>
     <message key="submission.viceInformaci">Více informací</message>
+    
+    <message key="submission.cena">Cena</message>
+    <message key="submission.cena.mena">Kč</message>
     <message key="submission.pocetStran">Stránky</message>
     <message key="submission.muPracoviste">Pracoviště MU</message>
     <message key="submission.url.oc">Url obchodní centrum</message>

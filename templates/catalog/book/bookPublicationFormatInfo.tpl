@@ -31,7 +31,7 @@
 	<div class="bookIdentificationSpecs">
 	{foreach from=$identificationCodes item=identificationCode}
 		<div id="bookIdentificationSpecs-{$publicationFormat->getId()}-{$identificationCode->getCode()|escape}">
-			{$identificationCode->getNameForONIXCode()|escape}: {$identificationCode->getValue()|escape}
+                    <span style="font-weight: bold;">{$identificationCode->getNameForONIXCode()|escape} ({$publicationFormat->getLocalizedName()}):</span><br />&nbsp;&nbsp;{$identificationCode->getValue()|escape}
 		</div>
 	{/foreach}{* identification codes *}
 	</div>
@@ -42,7 +42,7 @@
 	<div class="bookPublicationDateSpecs">
 	{foreach from=$publicationDates item=publicationDate}
 		<div id="bookPublicationDateSpecs-{$publicationDate->getId()|escape}">
-			{$publicationDate->getNameForONIXCode()|escape}:
+                    <span style="font-weight: bold;">{$publicationDate->getNameForONIXCode()|escape}:</span><br />&nbsp;
 			{assign var=dates value=$publicationDate->getReadableDates()}
 			{* note: these dates have dateFormatShort applied to them in getReadableDates() if they need it *}
 			{if $publicationDate->isFreeText() || $dates|@count == 1}
@@ -61,7 +61,7 @@
 			<div id="bookPubId-{$publicationFormat->getId()|escape}-{$pubIdType|escape}">
 				{assign var=storedPubId value=$publicationFormat->getStoredPubId($pubIdType)}
 				{if $storedPubId != ''}
-					pub-id::{$pubIdType}: {$storedPubId|escape}
+                                    <span style="font-weight: bold;">pub-id::{$pubIdType}:</span><br />&nbsp;&nbsp;{if $pubIdType == "doi"}<a href="http://dx.doi.org/{$storedPubId|escape}">{$storedPubId|escape}</a>{else}{$storedPubId|escape}{/if}
 				{/if}
 			</div>
 		{/foreach}

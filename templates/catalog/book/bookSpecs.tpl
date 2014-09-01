@@ -23,14 +23,14 @@
 		<div class="publicationInfo">
 			{*<div class="dateAdded">{translate key="catalog.dateAdded" dateAdded=$publishedMonograph->getDatePublished()|date_format:$dateFormatShort}</div>*}
 			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats(true)}
-			{if count($publicationFormats) === 1}
+			{*{if count($publicationFormats) === 1}
 				{foreach from=$publicationFormats item="publicationFormat"}
 					{if $publicationFormat->getIsApproved()}
 						{include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
 					{/if}
 				{/foreach}
-			{/if}
-                        {if count($publicationFormats) > 1}
+			{/if}*}
+                        {if count($publicationFormats) >= 1}
                                 {foreach from=$publicationFormats item="publicationFormat"}
                                         {if $publicationFormat->getIsApproved()}
                                             {include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}

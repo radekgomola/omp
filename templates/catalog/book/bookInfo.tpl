@@ -21,6 +21,7 @@
 </script>
 
 <div class="bookInfo">
+    {assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
     {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}
     {assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
     {assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
@@ -44,7 +45,7 @@
 			{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}<li><a href="#contentsTab">{translate key="common.contents"}</a></li>{/if}
 			{if $availableFiles|@count != 0}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
                         
-                        <li {if (empty($poznamka) && empty($bibliografickaCitace) && empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran) && empty($rightsTyp) && empty($rightsDrzitel) && empty($rightsTrvani) && empty($dedikace))}style="display:none"{/if}><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
+                        <li {if (empty($cena) && empty($poznamka) && empty($bibliografickaCitace) && empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran) && empty($rightsTyp) && empty($rightsDrzitel) && empty($rightsTrvani) && empty($dedikace))}style="display:none"{/if}><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
 			{call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
 			{if !is_null($sharingCode) || !empty($blocks)}
 				<li><a href="#sharingTab">{translate key="submission.sharing"}</a></li>
@@ -54,7 +55,14 @@
                 <div id="viceInfoTab">
                     <table class="viceInformaci">
                         <tbody>
-                            
+                            <tr {if empty($cena)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.cena"} </h3>
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    <span style="font-weight: bold; color: red;">{$cena} {translate key="submission.cena.mena"}</span>
+                                </td>
+                            </tr>
                             <tr {if empty($pocetStran)}style="display:none;"{/if}>
                                 <td class="levyBlok">
                                     <h3>{translate key="submission.pocetStran"} </h3>
@@ -108,7 +116,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr {if (empty($poznamka)&& empty($bibliografickaCitace)&& empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran)) || (empty($rightsTyp)&&empty($rightsDrzitel)&&empty($rightsTrvani)&&empty($dedikace))} style="display:none;"{/if}>
+                            <tr {if (empty($cena) && empty($poznamka)&& empty($bibliografickaCitace)&& empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran)) || (empty($rightsTyp)&&empty($rightsDrzitel)&&empty($rightsTrvani)&&empty($dedikace))} style="display:none;"{/if}>
                                 <td colspan="2" style="padding-bottom: 10px; border-top: 1px solid #999999;">
                                 </td>
                             </tr>

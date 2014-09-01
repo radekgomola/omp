@@ -595,6 +595,8 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
         <message key="submission.rights.trvani">Rights: expiration date</message>
         <message key="submission.viceInformaci">More information</message>
         
+        <message key="submission.cena">Price</message>
+        <message key="submission.cena.mena">CZK</message>
         <message key="submission.pocetStran">Pages</message>
         <message key="submission.muPracoviste">MU workplace</message>
         <message key="submission.url.oc">Url on-line bookstore</message>
