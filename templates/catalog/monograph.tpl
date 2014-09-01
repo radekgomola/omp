@@ -18,7 +18,7 @@
                     {$publishedMonograph->getAuthorString()|escape}
 		</div>
 	</div>
-	<div class="pkp_catalog_monograph_date">
+	{*<div class="pkp_catalog_monograph_date">
 			{$publishedMonograph->getDatePublished()|date_format:$dateFormatShort}
-	</div>
+	</div>*}
 </li>

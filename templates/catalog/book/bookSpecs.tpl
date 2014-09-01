@@ -21,7 +21,7 @@
 	<div id="bookAccordion">
 		<h3><a href="#">{translate key="catalog.publicationInfo"}</a></h3>
 		<div class="publicationInfo">
-			<div class="dateAdded">{translate key="catalog.dateAdded" dateAdded=$publishedMonograph->getDatePublished()|date_format:$dateFormatShort}</div>
+			{*<div class="dateAdded">{translate key="catalog.dateAdded" dateAdded=$publishedMonograph->getDatePublished()|date_format:$dateFormatShort}</div>*}
 			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats(true)}
 			{if count($publicationFormats) === 1}
 				{foreach from=$publicationFormats item="publicationFormat"}
