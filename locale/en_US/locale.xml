@@ -535,7 +535,7 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
 	<message key="payment.directSales.price.description">File formats can be made available for downloading from the press website through open access at no cost to readers or direct sales (using an online payment processor, as configured in Distribution). For this file indicate the basis of access.</message>
 	<message key="payment.directSales.validPriceRequired">A valid numeric price is required.</message>
 	<message key="payment.directSales.purchase">Purchase ({$amount} {$currency})</message>
-	<message key="payment.directSales.download">Download</message>
+	<message key="payment.directSales.download">Preview or download</message>
 	<message key="payment.directSales.monograph.name">Purchase Monograph or Chapter Download</message>
 	<message key="payment.directSales.monograph.description">This transaction is for the purchase of a direct download of a single monograph or monograph chapter.</message>
 
@@ -692,4 +692,6 @@ Masaryk University</message>
     
     <message key="catalog.autori">Authors</message>
     <message key="highslide.zavrit">Close</message>
+    
+    <message key="book.rozmery">Format</message>
 </locale>

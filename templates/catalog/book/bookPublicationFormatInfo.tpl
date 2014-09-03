@@ -8,23 +8,7 @@
  * Publication format information to be presented in book page.
  *}
 
-<div class="bookDimensionSpecs">
-{assign var=notFirst value=0}
-{if $publicationFormat->getWidth()}
-	{$publicationFormat->getWidth()|escape} {$publicationFormat->getWidthUnitCode()|escape}
-	{assign var=notFirst value=1}
-{/if}
-{if $publicationFormat->getHeight()}
-	{if $notFirst} x {/if}
-	{$publicationFormat->getHeight()|escape} {$publicationFormat->getHeightUnitCode()|escape}
-	{assign var=notFirst value=1}
-{/if}
-{if $publicationFormat->getThickness()}
-	{if $notFirst} x {/if}
-	{$publicationFormat->getThickness()|escape} {$publicationFormat->getThicknessUnitCode()|escape}
-	{assign var=notFirst value=1}
-{/if}
-</div>
+
 {assign var=identificationCodes value=$publicationFormat->getIdentificationCodes()}
 {assign var=identificationCodes value=$identificationCodes->toArray()}
 {if $identificationCodes}
@@ -36,6 +20,28 @@
 	{/foreach}{* identification codes *}
 	</div>
 {/if}{* $identificationCodes *}
+        
+        <div class="bookDimensionSpecs">
+            {if $publicationFormat->getWidth()|| $publicationFormat->getHeight() || $publicationFormat->getThickness()}
+                <span style="font-weight: bold;">{translate key="book.rozmery"}:</span><br />&nbsp;
+            {/if}
+            {assign var=notFirst value=0}
+            {if $publicationFormat->getWidth()}
+                {$publicationFormat->getWidth()|escape} {$publicationFormat->getWidthUnitCode()|escape}
+                {assign var=notFirst value=1}
+            {/if}
+            {if $publicationFormat->getHeight()}
+                {if $notFirst} x {/if}
+                {$publicationFormat->getHeight()|escape} {$publicationFormat->getHeightUnitCode()|escape}
+                {assign var=notFirst value=1}
+            {/if}
+            {if $publicationFormat->getThickness()}
+                {if $notFirst} x {/if}
+                {$publicationFormat->getThickness()|escape} {$publicationFormat->getThicknessUnitCode()|escape}
+                {assign var=notFirst value=1}
+            {/if}
+        </div>
+        
 {assign var=publicationDates value=$publicationFormat->getPublicationDates()}
 {assign var=publicationDates value=$publicationDates->toArray()}
 {if $publicationDates}
@@ -55,6 +61,7 @@
 	{/foreach}{* publicationDates *}
 	</div>
 {/if}{* $publicationDates *}
+        
 {if $enabledPubIdTypes|@count > 0}
 	<div class="bookPubIds-{$publicationFormat->getId()|escape}">
 		{foreach from=$enabledPubIdTypes item=pubIdType}

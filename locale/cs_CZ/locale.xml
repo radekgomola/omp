@@ -459,7 +459,7 @@
     <message key="payment.directSales.price.description">Formáty souborů mohou být čtenářům zpřístupněny ke stažení z webových stránek nakladatelství - buď zdarma v režimu Open Access, nebo prostřednictvím přímého prodeje (za použití online platební brány podle nastavení v sekci Distribuce). Nastavte režim přístupu pro tento soubor.</message>
     <message key="payment.directSales.validPriceRequired">Platná cena je povinná položka.</message>
     <message key="payment.directSales.purchase">Nákup: ({$amount} {$currency})</message>
-    <message key="payment.directSales.download">Stáhnout</message>
+    <message key="payment.directSales.download">Prohlédnout nebo stáhnout</message>
     <message key="payment.directSales.monograph.name">Zakoupit monografii nebo stáhnout kapitolu</message>
     <message key="payment.directSales.monograph.description">Touto transakcí čtenář zaplatí za stažení jednotlivé monografie nebo její kapitoly.</message>
     <message key="debug.notes.currencyListLoad">Seznam měn "{$filename}" načtený z XML</message>
@@ -612,4 +612,33 @@
     
     <message key="catalog.autori">Autoři</message>
     <message key="highslide.zavrit">Zavřít</message>
+    
+    <message key="book.rozmery">Formát</message>
+    
+    <!--Pro autory-->
+    <message key="proAurory.edicniOddeleni.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.edicniOddeleni.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(skrýt)]]></message>
+    <message key="proAurory.odbornaKniha.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Odborná kniha </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.odbornaKniha.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Odborná kniha</h3>(skrýt)]]></message>
+    <message key="proAurory.rukopis.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Rukopis</h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.rukopis.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Rukopis </h3>(skrýt)]]></message>
+    <message key="proAurory.recenzniRizeni.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Recenzní řízení </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.recenzniRizeni.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Recenzní řízení </h3>(skrýt)]]></message>
+    <message key="proAurory.navrhovyList.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Návrhový list </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.navrhovyList.skryj"><![CDATA[<h3 style="font-size: 1.2em; width:100%">Návrhový list </h3>(skrýt)]]></message>
+    <message key="proAurory.medotikaHodnoceni.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.medotikaHodnoceni.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(skrýt)]]></message>
+    <message key="proAurory.licenceCC.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Licence Creative Commons </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.licenceCC.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Licence Creative Commons </h3>(skrýt)]]></message>
+    <message key="proAurory.autorskyZakon.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Autorský zákon – použití děl jiných autorů ve výuce </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.autorskyZakon.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Autorský zákon – použití děl jiných autorů ve výuce </h3>(skrýt)]]></message>
+    
   </locale>

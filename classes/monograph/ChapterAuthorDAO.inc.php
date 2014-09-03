@@ -60,6 +60,7 @@ class ChapterAuthorDAO extends DAO {
 				a.email,
 				a.url,
 				a.user_group_id
+                                a.uco
 			FROM	authors a
 				JOIN submission_chapter_authors sca ON (a.author_id = sca.author_id)
 				LEFT JOIN author_settings aspl ON (sca.author_id = aspl.author_id AND aspl.setting_name = ? AND aspl.locale = ?)
@@ -171,7 +172,8 @@ class ChapterAuthorDAO extends DAO {
 		$chapterAuthor->setEmail($author->getEmail());
 		$chapterAuthor->setUrl($author->getUrl());
 		$chapterAuthor->setUserGroupId($author->getUserGroupId());
-
+                $chapterAuthor->setUCO($author->getUCO());
+                
 		// Add additional data that is chapter author specific
 		$chapterAuthor->setPrimaryContact($row['primary_contact']);
 		$chapterAuthor->setSequence($row['seq']);		;
