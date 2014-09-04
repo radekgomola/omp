@@ -167,33 +167,61 @@
                         {translate key="catalog.autori"}:
 			{foreach from=$authors item=author}
                             {assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
-                            <p>{if $biography != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio' {rdelim} )" class="highslide">
+                            {assign var=url value=$author->getUrl()|strip_unsafe_html}
+                            {assign var=uco value=$author->getUCO()|strip_unsafe_html}
+                            <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
                                     <strong>{$author->getFullName()}</strong></a>
-				{else}<strong>{$author->getFullName()}</strong>{/if}</p>
+				{elseif $uco != '' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>
+                                {else}
+                                    <strong>{$author->getFullName()}</strong>
+                                {/if}</p>
                                  
-                                    
-                                    <div class="highslide-html-content" id="autor_bio">
-                                        <div class="highslide-header">
+                                    {if $biography != '' || $url != ''}
+                                        <div class="highslide-html-content" id="autor_bio_{$author->getId()}">
+                                            <div class="highslide-header">
                                                 <ul>
-                                                        <li class="highslide-close">
-                                                                <a href="#" onclick="return hs.close(this)">{translate key="highslide.zavrit"}</a>
-                                                        </li>
+                                                    <li class="highslide-close">
+                                                        <a href="#" onclick="return hs.close(this)">{translate key="highslide.zavrit"}</a>
+                                                    </li>
                                                 </ul>
+                                            </div>
+                                            <div class="highslide-body">
+                                                <h3>
+                                                    {$author->getFullName()}
+                                                </h3>
+                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$user->getUrl()|escape}</a><br/>{/if}
+                                                {if $uco != ''}
+                                                    <table style="border:none">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding-right:15px;">
+                                                                    {translate key="vizitka.identifikace"}
+                                                                </td><td>
+                                                                    {$uco|escape} <em>{translate key="vizitka.uco"}</em>
+                                                                </td>
+                                                            </tr><tr>
+                                                                <td>                    
+                                                                    {translate key="vizitka.url"}
+                                                                </td><td>
+                                                                    <a href="http://www.muni.cz/people/{$uco|escape:"quotes"}" target="_new">http://www.muni.cz/people/{$uco|escape}</a><br/>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                {/if}
+                                                {if $biography != ''}
+                                                    <p>{$biography}</p>
+                                                {/if}
+                                            </div>
+                                            <div class="highslide-footer">
+                                                <div>
+                                                    <span class="highslide-resize" title="Resize">
+                                                        <span></span>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="highslide-body">
-                                            <h3>
-                                               {$author->getFullName()}
-                                            </h3>
-                                               <p>{$biography}</p>
-                                        </div>
-                                    <div class="highslide-footer">
-                                        <div>
-                                            <span class="highslide-resize" title="Resize">
-                                                <span></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+                                    {/if}
 			{/foreach}
 		</div>
 		{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}
