@@ -32,11 +32,11 @@
 
 	{* Include the carousel view of featured content *}
 	{if $featuredMonographIds|@count}
-		{include file="catalog/carousel.tpl" publishedMonographs=$publishedMonographs featuredMonographIds=$featuredMonographIds}
+		{include file="catalog/carousel.tpl" publishedMonographs=$publishedMonographsFeature featuredMonographIds=$featuredMonographIds}
 	{/if}
 
 	{* Include the highlighted feature *}
-	{include file="catalog/feature.tpl" publishedMonographs=$publishedMonographs featuredMonographIds=$featuredMonographIds}
+	{include file="catalog/feature.tpl" publishedMonographs=$publishedMonographsFeature featuredMonographIds=$featuredMonographIds}
 
 	{* Include the new release monograph list *}
 	{if !empty($newReleasesMonographs)}
