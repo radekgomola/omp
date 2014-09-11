@@ -19,14 +19,20 @@
 	{if $monographListTitleKey}
 		{translate|assign:"monographListTitle" key=$monographListTitleKey}
 	{else}
-		{translate|assign:"monographListTitle" key="catalog.browseTitles" numTitles=$publishedMonographs|@count}
+		{translate|assign:"monographListTitle" key="catalog.browseTitles" numTitles=$publishedMonographs->getCount()}
 	{/if}
 	<h2><em>{$monographListTitle}</em></h2>
-	{if $publishedMonographs|@count}
-		<ul class="pkp_helpers_clear">
-		{foreach from=$publishedMonographs item=publishedMonograph}
+	<div class="pagingPanel" style="border: 2px #000 solid">
+            <br />
+            {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
+            {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs}{* This generates the individual page links *}
+            <br />
+        </div>
+	{if $publishedMonographs->getCount()>0}
+ 		<ul class="pkp_helpers_clear">
+		{iterate from=publishedMonographs item=publishedMonograph}
 			{include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph}
-		{/foreach}
+		{/iterate}
 		</ul>
 	{/if}
 </div>
