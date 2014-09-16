@@ -171,7 +171,7 @@
                             {assign var=uco value=$author->getUCO()|strip_unsafe_html}
                             <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
                                     <strong>{$author->getFullName()}</strong></a>
-				{elseif $uco != '' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>
+				{elseif $uco != '' && $uco != '0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>
                                 {else}
                                     <strong>{$author->getFullName()}</strong>
                                 {/if}</p>
@@ -189,8 +189,8 @@
                                                 <h3>
                                                     {$author->getFullName()}
                                                 </h3>
-                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$user->getUrl()|escape}</a><br/>{/if}
-                                                {if $uco != ''}
+                                                {if $url != ''}<a href="{$url|escape:"quotes"}" target="_blank">{$url|escape}</a><br/>{/if}
+                                                {if $uco != '' && $uco != '0'}
                                                     <table style="border:none">
                                                         <tbody>
                                                             <tr>

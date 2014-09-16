@@ -59,12 +59,18 @@ class ChapterAuthorDAO extends DAO {
 				a.country,
 				a.email,
 				a.url,
-				a.user_group_id
-                                a.uco
+				a.user_group_id,
+                                munia.uco,
+                                munia.mu,
+                                munia.tituly_pred,
+                                munia.tituly_za,
+                                munia.rodne_cislo,
+                                munia.poznamka
 			FROM	authors a
 				JOIN submission_chapter_authors sca ON (a.author_id = sca.author_id)
 				LEFT JOIN author_settings aspl ON (sca.author_id = aspl.author_id AND aspl.setting_name = ? AND aspl.locale = ?)
-				LEFT JOIN author_settings asl ON (sca.author_id = asl.author_id AND asl.setting_name = ? AND asl.locale = ?)' .
+				LEFT JOIN author_settings asl ON (sca.author_id = asl.author_id AND asl.setting_name = ? AND asl.locale = ?)
+                                JOIN munipress_author_metadata munia ON (sca.author_id = munia.author_id)'.
 			( (count($params)> 0)?' WHERE':'' ) .
 			(  isset($monographId)?' a.submission_id = ?':'' ) .
 			(  (isset($monographId) && isset($chapterId))?' AND':'' ) .
@@ -172,7 +178,12 @@ class ChapterAuthorDAO extends DAO {
 		$chapterAuthor->setEmail($author->getEmail());
 		$chapterAuthor->setUrl($author->getUrl());
 		$chapterAuthor->setUserGroupId($author->getUserGroupId());
-                $chapterAuthor->setUCO($author->getUCO());
+                $chapterAuthor->setUCO($author->getUCO()); /*MUNIPRESS*/
+                $chapterAuthor->setMU($author->getMU());/*MUNIPRESS*/
+                $chapterAuthor->setTitulyPred($author->getTitulyPred());/*MUNIPRESS*/
+                $chapterAuthor->setTitulyZa($author->getTitulyZa());/*MUNIPRESS*/
+                $chapterAuthor->setRodneCislo($author->getRodneCislo());/*MUNIPRESS*/
+                $chapterAuthor->setPoznamka($author->getPoznamka());/*MUNIPRESS*/
                 
 		// Add additional data that is chapter author specific
 		$chapterAuthor->setPrimaryContact($row['primary_contact']);
