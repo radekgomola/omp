@@ -515,6 +515,9 @@
     <message key="manager.setup.pressPartneri.description">Stránka pro partnery a spolupraci.</message>
     <message key="about.partneri">Partneři</message>
     <message key="about.partneri.long">Partneři a spolupráce</message>
+    
+    
+    
     <message key="submission.rights.typ">Práva: typ</message>
     <message key="submission.rights.typ.tip">Můžete zadat typ práv.</message>
     <message key="submission.rights.drzitel">Práva: držitel</message>
@@ -522,19 +525,58 @@
     <message key="submission.rights.trvani">Práva: datum expirace</message>
     <message key="submission.viceInformaci">Více informací</message>
     
-    <message key="submission.cena">Cena</message>
+    <!--Metadata munipress-->
+        
+    <message key="submission.licence">Licence</message>
+    <message key="submission.licence.openAccess">Open Access</message>
+    <message key="submission.licence.munipress">Munipress</message>
+    <message key="submission.licence.jinyTyp">Jiná</message>
+    <message key="submission.licence.vznik">Vznik</message>
+    <message key="submission.licence.zverejnit">Zveřejnit</message>    
+    <message key="submission.licence.typ">Licence: typ</message>
+    <message key="submission.licence.typ.tip">Můžete zadat typ práv.</message>
+    <message key="submission.licence.drzitel">Licence: držitel</message>
+    <message key="submission.licence.drzitel.tip">Můžete zadat držitele práv</message>
+    <message key="submission.licence.trvani">Licence: datum expirace</message>
+    <message key="submission.ceny">Ceny</message>
+    <message key="submission.ceny.kniha">Cena</message>
+    <message key="submission.ceny.ekniha">Cena e-kniha</message>
+    <message key="submission.metadata.url.oc">ID pro OC</message>
+    <message key="submission.metadata.url.oc.kniha">ID kniha</message>
+    <message key="submission.metadata.url.oc.ekniha">ID e-kniha</message>
     <message key="submission.cena.mena">Kč</message>
-    <message key="submission.pocetStran">Stránky</message>
+    <message key="submission.pocetStran">Počet stran</message>
     <message key="submission.muPracoviste">Pracoviště MU</message>
-    <message key="submission.url.oc">Url obchodní centrum</message>
-    <message key="submission.url.web">Url web</message>
+    <message key="submission.url.oc">URL obchodní centrum</message>
     <message key="submission.bibliografickaCitace">Bibliografická citace</message>
     <message key="submission.poznamka">Poznámka</message>
     <message key="submission.dedikace">Dedikace</message>
+    <message key="submission.informace.verejne">Veřejné informace</message>
+    <message key="submission.a_kolektiv">a kol.</message>
+    <message key="submission.ostatni">Další</message>
+    <message key="submission.cisloVydani">Číslo vydání</message>
+    <message key="submission.typ_02_58">Typ 02/58</message>
+    <message key="submission.url.web">URL web</message>
+    <message key="submission.souvisejiciPublikace">Související publikace</message>
+    <message key="submission.klicovaSlova">Klíčová slova</message>
+    <message key="submission.jazyky">Jazyky</message>
+    <message key="submission.informace.munipress">Informace Munipress</message>
+    <message key="submission.naklad">Náklad</message>
+    <message key="submission.honorar">Honorář</message>
+    <message key="submission.honorar.celkem">Celkem</message>
+    <message key="submission.honorar.vyplata">Výplata</message>
+    <message key="submission.povinneVytisky">Povinné výtisky</message>
+    <message key="submission.povinneVytisky.dosly">Došly</message>
+    <message key="submission.povinneVytisky.odesly">odešly</message>
+    <message key="submission.tiskarna">Tiskárna</message>
+    <message key="submission.poznamka.admin">Poznámka neveřejná</message>
+       
     <message key="informace.url.web">Přejít na www</message>
     <message key="informace.url.oc">Přejít do obchodního centra</message>
     <message key="informace.doplnkove.zakladni">Více informací</message>
     <message key="informace.doplnkove.dalsi">Více informací - další</message>
+    
+    
     <message key="footer.publisher">Nakladatelství MU</message>
     <message key="footer.contacts">Kontakty:</message>
     <message key="footer.novotna">(zástupce ředitelky, redaktorka)</message>

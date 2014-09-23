@@ -57,9 +57,14 @@ class CatalogHandler extends Handler {
 
 		// Fetch the monographs to display
 		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
-		$rangeInfo = $this->getRangeInfo($request, 'catalogPaging');                
+                
+		$rangeInfo = $this->getRangeInfo($request, 'catalogPaging');
 		$publishedMonographs = $publishedMonographDao->getByPressId($press->getId(), null, $rangeInfo);
 		$templateMgr->assign('publishedMonographs', $publishedMonographs);
+                
+                $publishedMonographsFeature =& $publishedMonographDao->getByPressId($press->getId());
+                $templateMgr->assign('publishedMonographsFeature', $publishedMonographsFeature->toAssociativeArray());
+
                 $templateMgr->assign('itemsPerPageHelp', $rangeInfo->getCount());
                 
 		// Display
@@ -113,7 +118,6 @@ class CatalogHandler extends Handler {
                         
                         $publishedMonographsFeature =& $publishedMonographDao->getByCategoryId($category->getId(), $press->getId());
 			$templateMgr->assign('publishedMonographsFeature', $publishedMonographsFeature->toAssociativeArray());
-                        
                         $templateMgr->assign('itemsPerPageHelp', $rangeInfo->getCount());
                         
 			// Expose the featured monograph IDs and associated params

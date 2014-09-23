@@ -208,7 +208,7 @@ class PublishedMonographDAO extends MonographDAO {
 		$result->Close();
 		return $returner;
 	}
-
+        
 	/**
 	 * Generate and return a new data object.
 	 * @return PublishedMonograph

@@ -36,7 +36,7 @@
 	{/if}
 
 	{* Include the highlighted feature *}
-	{include file="catalog/feature.tpl" publishedMonographs=$publishedMonographsFeature featuredMonographIds=$featuredMonographIds}
+	{*{include file="catalog/feature.tpl" publishedMonographs=$publishedMonographsFeature featuredMonographIds=$featuredMonographIds}*}
 
 	{* Include the new release monograph list *}
 	{if !empty($newReleasesMonographs)}

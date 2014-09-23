@@ -588,27 +588,6 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
         <message key="about.partneri">Partners</message>
         <message key="about.partneri.long">Partners and Cooperations</message>
         
-        <message key="submission.rights.typ">Rights: type</message>
-        <message key="submission.rights.typ.tip">You can write the type of rights</message>
-        <message key="submission.rights.drzitel">Rights: holder</message>
-        <message key="submission.rights.drzitel.tip">You can write the holder of rights</message>
-        <message key="submission.rights.trvani">Rights: expiration date</message>
-        <message key="submission.viceInformaci">More information</message>
-        
-        <message key="submission.cena">Price</message>
-        <message key="submission.cena.mena">CZK</message>
-        <message key="submission.pocetStran">Pages</message>
-        <message key="submission.muPracoviste">MU workplace</message>
-        <message key="submission.url.oc">Url on-line bookstore</message>
-        <message key="submission.url.web">Url web</message>
-        <message key="submission.bibliografickaCitace">Bibliographic citation</message>
-        <message key="submission.poznamka">Note</message>
-        <message key="submission.dedikace">Dedication</message>
-        <message key="informace.url.web">Go to www</message>
-        <message key="informace.url.oc">Go to on-line bookstore</message>
-        <message key="informace.doplnkove.zakladni">More information</message>
-        <message key="informace.doplnkove.dalsi">More information - extended</message>
-        
         <message key="footer.publisher">MU Publisher</message>
         <message key="footer.contacts">Contacts:</message>
         <message key="footer.novotna">(assistant manager, editor)</message>
@@ -694,4 +673,57 @@ Masaryk University</message>
     <message key="highslide.zavrit">Close</message>
     
     <message key="book.rozmery">Format</message>
+    
+    <!--Metadata munipress-->
+        
+    <message key="submission.licence">Rights</message>
+    <message key="submission.licence.openAccess">Open Access</message>
+    <message key="submission.licence.munipress">Munipress</message>
+    <message key="submission.licence.jinyTyp">Other</message>
+    <message key="submission.licence.vznik">Founded</message>
+    <message key="submission.licence.zverejnit">Publish</message>    
+    <message key="submission.licence.typ">Rights: type</message>
+    <message key="submission.licence.typ.tip">You can write the type of rights</message>
+    <message key="submission.licence.drzitel">Rights: holder</message>
+    <message key="submission.licence.drzitel.tip">You can write the holder of rights</message>
+    <message key="submission.licence.trvani">Rights: expiration date</message>
+    <message key="submission.ceny">Prices</message>
+    <message key="submission.ceny.kniha">Price</message>
+    <message key="submission.ceny.ekniha">Price e-book</message>
+    <message key="submission.metadata.url.oc">ID for OC</message>
+    <message key="submission.metadata.url.oc.kniha">ID book</message>
+    <message key="submission.metadata.url.oc.ekniha">ID e-book</message>
+    <message key="submission.cena.mena">CZK</message>
+    <message key="submission.pocetStran">Number of Pages</message>
+    <message key="submission.muPracoviste">MU workplace</message>
+    <message key="submission.url.oc">Url on-line bookstore</message>
+    <message key="submission.url.web">Url web</message>
+    <message key="submission.bibliografickaCitace">Bibliographic citation</message>
+    <message key="submission.poznamka">Note</message>
+    <message key="submission.dedikace">Dedication</message>
+    <message key="submission.informace.verejne">Public information</message>
+    <message key="submission.a_kolektiv">et al.</message>
+    <message key="submission.ostatni">Others</message>
+    <message key="submission.cisloVydani">Issue number</message>
+    <message key="submission.typ_02_58">Type 02/58</message>
+    <message key="submission.url.web">URL web</message>
+    <message key="submission.souvisejiciPublikace">Related publications</message>
+    <message key="submission.klicovaSlova">Keywords</message>
+    <message key="submission.jazyky">Languages</message>
+    <message key="submission.informace.munipress">Munipress information</message>
+    <message key="submission.naklad">Impression</message>
+    <message key="submission.honorar">Fee</message>
+    <message key="submission.honorar.celkem">Total</message>
+    <message key="submission.honorar.vyplata">Payment</message>
+    <message key="submission.povinneVytisky">Legal deposit</message>
+    <message key="submission.povinneVytisky.dosly">Come</message>
+    <message key="submission.povinneVytisky.odesly">Left</message>
+    <message key="submission.tiskarna">Printer</message>
+    <message key="submission.poznamka.admin">Note Confidential</message>
+    
+    
+    <message key="informace.url.web">Go to www</message>
+    <message key="informace.url.oc">Go to on-line bookstore</message>
+    <message key="informace.doplnkove.zakladni">More information</message>
+    <message key="informace.doplnkove.dalsi">More information - extended</message>
 </locale>

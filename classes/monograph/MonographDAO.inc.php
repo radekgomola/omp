@@ -91,8 +91,35 @@ class MonographDAO extends SubmissionDAO {
 				(int) $monograph->getWorkType(),
 			)
 		);
-
-		$monograph->setId($this->getInsertId());
+                
+                $monograph->setId($this->getInsertId());
+                
+                $this->update(
+			sprintf('INSERT INTO munipress_metadata
+				(submission_id, a_kol, cena, cena_ebook, urlOC, urlOC_ebook, pocetStran, cisloVydani, licenceTypPrepinac, licenceTyp, licenceDrzitel, licenceExpirace, licenceVznik, licenceZverejnit, naklad, ,tiskarna, poznamkaAdmin, honorarCelkem, honorarVyplata, povVytiskyDosly, povVytiskyOdesly)
+				VALUES
+				(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, %s, %s, ?, ?, ?, ?, ?, ?, %s, %s)',
+				$this->datetimeToDB($monograph->getLicenceExpirace()), $this->datetimeToDB($monograph->getLicenceVznik()), $this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly())),
+			array(
+                                (int) $monograph->getId(),
+				(int) $monograph->getAKolektiv(),
+				(int) $monograph->getCena(),
+				(int) $monograph->cena_ebook(),
+				(int) $monograph->urlOC(),
+				(int) $monograph->urlOC_ebook(),
+				(int) $monograph->getPocetStran(),
+				(int) $monograph->getCisloVydani(),
+				(int) $monograph->getTypLicencePrepinac(),
+				$monograph->getLicenceTyp(),
+				$monograph->getLicenceDrzitel(),
+				(int) $monograph->getLicenceZverejnit(),
+				(int) $monograph->getNaklad(),
+				$monograph->getHonorarCelkem(),
+				$monograph->getHonorarVyplata(),
+                                $monograph->getTiskarna(),
+                                $monograph->getPoznamkaAdmin(),
+			)
+		);
 		$this->updateLocaleFields($monograph);
 
 		return $monograph->getId();

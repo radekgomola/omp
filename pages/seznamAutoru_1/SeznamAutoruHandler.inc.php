@@ -30,12 +30,10 @@ class SeznamAutoruHandler extends Handler {
 	/**
 	 * Display authors page.
 	 */
-	function index($args) {
+	function index() {
 		$this->addCheck(new HandlerValidatorPress($this));
 		$this->validate();
 		$this->setupTemplate($request);
-                
-                $pismeno = isset($args[0])?$args[0]:'A';
 //
 		$press =& Request::getPress();
 		$templateMgr =& TemplateManager::getManager();
@@ -47,78 +45,13 @@ class SeznamAutoruHandler extends Handler {
                 $autori =& $roleDao->getUsersByRoleId(ROLE_ID_AUTHOR, $press->getId());
                 $autori =& $autori->toArray();
                 
-                $abeceda = array('A', 'B', 'C', 'Č', 'D', 'Ď', 'E',  
+                $templateMgr->assign('abeceda', array('A', 'B', 'C', 'Č', 'D', 'Ď', 'E',  
                                     'F', 'G', 'H', 'Ch', 'I', 'J', 'K', 'L', 
                                     'M', 'N', 'Ň', 'O', 'P', 'Q', 'R', 'Ř', 'S', 
-                                    'Š', 'T', 'Ť', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž', 'ostatni');
+                                    'Š', 'T', 'Ť', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž', 'ostatni'));
                 
-                $poleAutoru = array();                
-                
-                foreach($autori as $autor){
-                    $firstletter=substr($autor->getLastName(),0,1);
-                    $first2letters=substr($autor->getLastName(),0,2);
-                    if ($first2letters==$pismeno){
-                        array_push($poleAutoru, $autor);
-                            
-                    } elseif ($firstletter == $pismeno) {
-                        array_push($poleAutoru, $autor);
-                            
-                    } elseif ($pismeno == 'ostatni' && !in_array ($first2letters, $abeceda) && !in_array($firstletter, $abeceda) ) {                        
-                            array_push($poleAutoru, $autor);
-                        
-                    }
-//                        
-                }           
-                
-                $authorDao =& DAORegistry::getDAO('AuthorDAO');
-                $publishedMonographDao =& DAORegistry::getDAO('PublishedMonographDAO');
-
-
-                
-                $autoriPrispevku =& $authorDao->getAuthorsAlphabetizedByPress($press->getId(),null, null);
-                $autoriPrispevku =& $autoriPrispevku->toArray();
-                
-                foreach ($autoriPrispevku as $autorPrispevek) {
-                    $pLastName=$autorPrispevek->getLastName();
-                    $pFirstName=$autorPrispevek->getFirstName();
-                    $pEmail=$autorPrispevek->getEmail();
-                    foreach($poleAutoru as $user){
-                        $uLastName=$user->getLastName();
-                        $uFirstName=$user->getFirstName();
-                        $uEmail=$user->getEmail();
-                        if ($pLastName == $uLastName && 
-                            $pFirstName == $uFirstName &&
-                            $pEmail == $uEmail){
-//                                $prispevkyMonograph[$user->getId()] = $publishedMonographDao->getById($autorPrispevek->getSubmissionId(),$press->getId());                       
-                                if(!$prispevkyMonograph[$user->getId()]){
-                                $prispevkyMonograph[$user->getId()] = array();
-                                }
-                                array_push($prispevkyMonograph[$user->getId()], $publishedMonographDao->getById($autorPrispevek->getSubmissionId(),$press->getId()));
-                            }
-                             
-                    }
-                    
-                }
-                
-                
-                
-                
-                $publishEmail = false;
-
-		$countryDao =& DAORegistry::getDAO('CountryDAO');
-		if ($user && $user->getCountry() != '') {
-			$country = $countryDao->getCountry($user->getCountry());
-			$templateMgr->assign('country', $country);
-		}
-
-                $templateMgr->assign_by_ref('prispevkyMonograph', $prispevkyMonograph);
-		$templateMgr->assign_by_ref('publishEmail', $publishEmail);
-
-                $templateMgr->assign_by_ref('abeceda', $abeceda);
-                
-                $templateMgr->assign_by_ref('poleAutoru', $poleAutoru);
-                
-//                $templateMgr->assign_by_ref('autori', $autori);
+                               
+                $templateMgr->assign_by_ref('autori', $autori);
                 $templateMgr->display('seznamAutoru/vypisAutoru.tpl');
 	}
         

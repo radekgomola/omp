@@ -15,6 +15,8 @@
 		);
 	{rdelim});
 </script>
+{$publishedMonographs->getCount()}<br />
+{$itemsPerPageHelp}<br />
 <div class="pkp_catalog_monographs" id="monographListContainer">
 	{if $monographListTitleKey}
 		{translate|assign:"monographListTitle" key=$monographListTitleKey}
