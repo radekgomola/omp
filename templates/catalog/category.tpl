@@ -39,8 +39,12 @@
 	{*{include file="catalog/feature.tpl" publishedMonographs=$publishedMonographsFeature featuredMonographIds=$featuredMonographIds}*}
 
 	{* Include the new release monograph list *}
-	{if !empty($newReleasesMonographs)}
-		{include file="catalog/monographs.tpl" publishedMonographs=$newReleasesMonographs monographListTitleKey="navigation.newReleases"}
+	{if !$newReleasesMonographs->wasEmpty()}
+		{include file="catalog/monographs.tpl" 
+                        publishedMonographs=$newReleasesMonographs 
+                        monographListTitleKey="navigation.newReleases"
+                        paging = 'false'
+                }
 	{/if}
 
 	{* Include the full monograph list *}

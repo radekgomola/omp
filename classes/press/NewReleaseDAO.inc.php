@@ -71,7 +71,9 @@ class NewReleaseDAO extends DAO {
 		}
 
 		$result->Close();
-		return $returner;
+                
+                import('lib.pkp.classes.core.ArrayItemIterator');
+		return new ArrayItemIterator($returner);
 	}
 
 	/**

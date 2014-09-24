@@ -23,12 +23,16 @@
 		{translate|assign:"monographListTitle" key="catalog.browseTitles" numTitles=$publishedMonographs->getCount()}
 	{/if}
 	<h2><em>{$monographListTitle}</em></h2>
-	<div class="pagingPanel" style="border: 2px #000 solid">
-            <br />
-            {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
-            {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs}{* This generates the individual page links *}
-            <br />
-        </div>
+        {if $paging != 'false'}
+            <div class="pagingPanel" style="border: 2px #000 solid">
+                <br />
+
+                {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
+                {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs}{* This generates the individual page links *}
+
+                <br />
+            </div>
+        {/if}
 	{if $publishedMonographs->getCount()>0}
  		<ul class="pkp_helpers_clear">
 		{iterate from=publishedMonographs item=publishedMonograph}

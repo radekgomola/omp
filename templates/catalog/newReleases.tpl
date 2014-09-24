@@ -13,6 +13,9 @@
 {/strip}
 
 {* Include the new release monograph list *}
-{include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs}
+{include file="catalog/monographs.tpl" 
+            publishedMonographs=$publishedMonographs
+            paging = 'false'
+}
 
 {include file="common/footer.tpl"}
