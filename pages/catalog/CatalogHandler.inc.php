@@ -185,7 +185,8 @@ class CatalogHandler extends Handler {
 		$templateMgr = TemplateManager::getManager($request);
 		$press = $request->getPress();
 		$this->setupTemplate($request);
-
+                //$rangeInfo = $this->getRangeInfo($request, 'catalogPaging');
+                
 		$query = $request->getUserVar('query');
 		$templateMgr->assign('searchQuery', $query);
 

@@ -47,23 +47,43 @@ class PublishedMonographDAO extends MonographDAO {
 		if ($searchText !== null) {
 			$params[] = $params[] = $params[] = "%$searchText%";
 		}
-
-		$result = $this->retrieveRange(
-			'SELECT	' . ($searchText !== null?'DISTINCT ':'') . '
-				ps.*,
+//		$result = $this->retrieveRange(
+//			'SELECT	' . ($searchText !== null?'DISTINCT ':'') . '
+//				ps.*,
+//				s.*,
+//				COALESCE(f.seq, ?) AS order_by,
+//				' . $this->_getFetchColumns() . '
+//			FROM	published_submissions ps
+//				JOIN submissions s ON ps.submission_id = s.submission_id
+//				' . $this->_getFetchJoins() . '
+//				' . ($searchText !== null?'
+//					LEFT JOIN authors a ON s.submission_id = a.submission_id
+//					LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
+//				':'') . '
+//				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
+//			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
+//				' . ($searchText !== null?' AND (st.setting_value LIKE ? OR a.first_name LIKE ? OR a.last_name LIKE ?)':'') . '
+//			ORDER BY order_by, ps.date_published',
+//			$params,
+//			$rangeInfo
+//		);
+                
+                $result = $this->retrieveRange(
+			'SELECT	DISTINCT
+                              ps.*,
 				s.*,
 				COALESCE(f.seq, ?) AS order_by,
 				' . $this->_getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
 				' . $this->_getFetchJoins() . '
-				' . ($searchText !== null?'
-					LEFT JOIN authors a ON s.submission_id = a.submission_id
-					LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
+                                ' . ($searchText !== null?'
+                                LEFT JOIN authors a ON s.submission_id = a.submission_id
+				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
 				':'') . '
 				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
 			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
-				' . ($searchText !== null?' AND (st.setting_value LIKE ? OR a.first_name LIKE ? OR a.last_name LIKE ?)':'') . '
+                                ' . ($searchText !== null?' AND (st.setting_value LIKE ? OR a.first_name LIKE ? OR a.last_name LIKE ?)':'') . '
 			ORDER BY order_by, ps.date_published',
 			$params,
 			$rangeInfo

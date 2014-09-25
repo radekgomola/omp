@@ -683,4 +683,8 @@
 </message>
     <message key="proAurory.autorskyZakon.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Autorský zákon – použití děl jiných autorů ve výuce </h3>(skrýt)]]></message>
     
+    <message key="plugins.block.category">Kategorie</message>
+    <message key="plugins.block.edice">Edice</message>
+    
+    
   </locale>
