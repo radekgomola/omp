@@ -15,7 +15,8 @@
 }
 
 .authorName {
-	color: #999999;
+	color: #808080;
+        font-size: 14px;
 }
 
 .monographAbstract {
@@ -39,7 +40,7 @@
 		width: 50px;
 		height: 50px;
 		position: absolute;
-		top: 65%;
+		top: 50%;
 		z-index: 1000;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -61,9 +62,9 @@
 		
 	.pkp_catalog_carousel {
 		width: 72%;
-		height: 380px;
+		height: 350px;
 		margin:auto;
-		margin-bottom: 30px;
+		margin-bottom: 120px;
 		background-color: white;
 	
 		.pkp_helpers_progressIndicator {
@@ -95,6 +96,10 @@
 			img {
 				width: 100%;
 				padding:0px;
+                                box-shadow: 5px 5px 10px #788a9c; 
+                                -moz-box-shadow: 5px 5px 10px #788a9c; 
+                                -webkit-box-shadow: 5px 5px 10px #788a9c; 
+                                -khtml-box-shadow: 5px 5px 10px #788a9c; 
 			}
 		}
 		
@@ -122,15 +127,15 @@
 			background-color: white;
                         opacity: 1;
                         border: 0;
-                        border-left: 2px solid blue;
-                        border-right: 2px solid blue;                        
-			left: -150px;
-                        top: 300px;
+                        border-left: 2px solid #003366;
+                        border-right: 2px solid #003366;                        
+			left: -190px;
+                        top: 350px;
 			min-height: 50px;
-                        height: 50px;
+                        
 			padding: 5px 15px 5px 15px;
 			position: absolute;			
-			width: 500px;
+			width: 600px;
 			filter: alpha(opacity=100%) !important;
 			
 			.pkp_catalog_formats {
@@ -149,6 +154,15 @@
 
 .pkp_catalog_readMore {
 	margin-top: 10px;
+        margin-right: 10px;
+        padding-bottom: 5px;
+        width: 250px;
+        border-bottom: 6px solid #003366;
+        
+        a {
+            text-decoration: none;            
+            font-size: 16px;
+        }
 }
 
 .pkp_catalog_seriesDescription, .pkp_catalog_categoryDescription {
@@ -157,24 +171,40 @@
 }
 
 .pkp_catalog_monographs {
-	clear: both;
 	padding-top: 10px;	
 
 	.pkp_catalog_monograph {
-		width: 150px;
+		width: 245px;
 		float: left;
-		margin: 3px 10px 3px 0;
+		margin: 3px 10px 20px 0;
 		color: #999;
 
 		.pkp_catalog_monograph_thumbnail {
 			margin-bottom: 5px;
+                        box-shadow: 5px 5px 10px #788a9c; 
+                        -moz-box-shadow: 5px 5px 10px #788a9c; 
+                        -webkit-box-shadow: 5px 5px 10px #788a9c; 
+                        -khtml-box-shadow: 5px 5px 10px #788a9c; 
 		}
 
 		.pkp_catalog_monographSubtitle {
 			font-style: italic;
 		}
+                
+                .pkp_catalog_monographTitle{
+                        margin-top: 5px;
+                        
+                        a{
+                            text-decoration: none;
+                        }
+                }
 	}
+        
+        ul{
+           padding: 0px; 
+        }
 }
+
 
 .pkp_catalog_monograph_authorship {
 	padding-bottom: 2px;
@@ -201,6 +231,7 @@
 		width: 33%;
 		overflow: hidden;
 		
+                padding-right:10px; 
 		img {
 			width: 100%;
 		}
@@ -209,7 +240,7 @@
 	.bookInfo {
 		/* Floated to keep tab interface from messing up */
 		float: right;
-		width: 67%;
+		width: 65%;
 
 		.bookInfoHeader {
 			padding-left: 18px;
@@ -237,7 +268,7 @@
 	}
 	
 	.ui-tabs-panel {
-		border-bottom: 1px solid #999999;
+		border-bottom: none;
 		border-radius: 0px;
 		padding-bottom: 50px;
 	}
@@ -254,15 +285,33 @@
 	h4 {
 		.h4ItemTitle;
 	}
+        ul{
+            padding: 0px;
+        }
+        
+        table{
+            border-collapse: inherit;
+            border-spacing: 0;
+            
+            td{
+                vertical-align: top;
+            }
+        }
 }
 
 .pkp_catalog_spotlight {
-	border-top: 1px solid #C8C7C7;
+        border-top: none;
 	font-size: 100%;
 	line-height: 18px;
-	margin-left: 15px;
+	margin-left: 0px;
+        margin-right: 10px;
 	padding-top: 10px;
+        width: 250px;
 	
+        .pkp_catalog_spotlight_itemTitle{
+            color: #003366;
+            font-weight: bold;
+        }
 	.pkp_catalog_spotlight_itemAuthorship {
 		.authorName;
 		margin-bottom: 10px;
@@ -270,9 +319,12 @@
 	
 	.pkp_catalog_spotlight_itemDescription {
 		.authorName;
-		
+                color: #003366;
+                padding-top: 10px;
+		display: block;
+                clear: both;
 		p {
-			display: inline;
+			display: block;
 		}
 	}
 }

@@ -21,7 +21,7 @@
 </script>
 
 <div class="bookInfo">
-    {assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
+   {* {assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
     {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}
     {assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
     {assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
@@ -32,7 +32,7 @@
     {assign var="rightsDrzitel" value=$publishedMonograph->getLocalizedRightsDrzitel()|strip_unsafe_html}
     {assign var="rightsTrvani" value=$publishedMonograph->getLocalizedRightsTrvani()|strip_unsafe_html}
     {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
-    
+    *}
     
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
@@ -53,7 +53,7 @@
                         
                 </ul>
                 <div id="viceInfoTab">
-                    <table class="viceInformaci">
+                    {*<table class="viceInformaci">
                         <tbody>
                             <tr {if empty($cena)}style="display:none;"{/if}>
                                 <td class="levyBlok">
@@ -157,7 +157,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>*}
                 </div>
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
@@ -170,10 +170,10 @@
                             {assign var=url value=$author->getUrl()|strip_unsafe_html}
                             {assign var=uco value=$author->getUCO()|strip_unsafe_html}
                             <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
-                                    <strong>{$author->getFullName()}</strong></a>
-				{elseif $uco != '' && $uco != '0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>
+                                    {$author->getFullName()}</a>
+				{elseif $uco != '' && $uco != '0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank">{$author->getFullName()}</a>
                                 {else}
-                                    <strong>{$author->getFullName()}</strong>
+                                    {$author->getFullName()}
                                 {/if}</p>
                                  
                                     {if $biography != '' || $url != ''}
@@ -240,7 +240,7 @@
 		<div id="downloadTab">
 			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
 			{assign var=currency value=$currentPress->getSetting('currency')}
-			{if !$loggedInUsername}<p>{translate key="catalog.loginRequiredForPayment"}</p>{/if}
+			{*{if !$loggedInUsername}<p>{translate key="catalog.loginRequiredForPayment"}</p>{/if}*}
 			{if $useCollapsedView}
 				<ul class="odr_prazdne">
 					{foreach from=$publicationFormats item=publicationFormat}

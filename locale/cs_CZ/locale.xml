@@ -218,7 +218,7 @@
     <message key="catalog.manage.manageSeries">Spravovat edice</message>
     <message key="catalog.manage.manageCategories">Spravovat kategorie</message>
     <message key="catalog.manage.noMonographs">Nejsou přiděleny žádné monografie.</message>
-    <message key="catalog.browseTitles">Procházet tituly (Počet: {$numTitles})</message>
+    <message key="catalog.browseTitles">Procházet tituly</message>
     <message key="catalog.feature">Důležité</message>
     <message key="catalog.featuredBooks">Důležité knihy</message>
     <message key="catalog.dateAdded">Přidáno: {$dateAdded}</message>
@@ -300,7 +300,7 @@
     <message key="site.pressView">Zobrazit webovou stránku nakladatelství</message>
     <message key="about.pressContact">Kontakt</message>
     <message key="about.aboutThePress">O nakladatelství</message>
-    <message key="about.editorialTeam">Redakční tým</message>
+    <message key="about.editorialTeam"><![CDATA[Redakční&nbsp;tým]]></message>
     <message key="about.editorialPolicies">Redakční zásady</message>
     <message key="about.focusAndScope">Zaměření a oblast působnosti</message>
     <message key="about.seriesPolicies">Zásady pro edice a kategorie</message>
@@ -658,33 +658,39 @@
     <message key="book.rozmery">Formát</message>
     
     <!--Pro autory-->
-    <message key="proAurory.edicniOddeleni.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(zobrazit)]]>
+    <message key="proAurory.edicniOddeleni.zobraz"><![CDATA[<h3 class="proAutory">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(zobrazit)]]>
 </message>
-    <message key="proAurory.edicniOddeleni.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(skrýt)]]></message>
-    <message key="proAurory.odbornaKniha.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Odborná kniha </h3>(zobrazit)]]>
+    <message key="proAurory.edicniOddeleni.skryj"><![CDATA[<h3 class="proAutory">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(skrýt)]]></message>
+    <message key="proAurory.odbornaKniha.zobraz"><![CDATA[<h3 class="proAutory">Odborná kniha </h3>(zobrazit)]]>
 </message>
-    <message key="proAurory.odbornaKniha.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Odborná kniha</h3>(skrýt)]]></message>
-    <message key="proAurory.rukopis.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Rukopis</h3>(zobrazit)]]>
+    <message key="proAurory.odbornaKniha.skryj"><![CDATA[<h3 class="proAutory">Odborná kniha</h3>(skrýt)]]></message>
+    <message key="proAurory.rukopis.zobraz"><![CDATA[<h3 class="proAutory">Rukopis</h3>(zobrazit)]]>
 </message>
-    <message key="proAurory.rukopis.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Rukopis </h3>(skrýt)]]></message>
-    <message key="proAurory.recenzniRizeni.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Recenzní řízení </h3>(zobrazit)]]>
+    <message key="proAurory.rukopis.skryj"><![CDATA[<h3 class="proAutory">Rukopis </h3>(skrýt)]]></message>
+    <message key="proAurory.recenzniRizeni.zobraz"><![CDATA[<h3 class="proAutory">Recenzní řízení </h3>(zobrazit)]]>
 </message>
-    <message key="proAurory.recenzniRizeni.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Recenzní řízení </h3>(skrýt)]]></message>
-    <message key="proAurory.navrhovyList.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Návrhový list </h3>(zobrazit)]]>
+    <message key="proAurory.recenzniRizeni.skryj"><![CDATA[<h3 class="proAutory">Recenzní řízení </h3>(skrýt)]]></message>
+    <message key="proAurory.navrhovyList.zobraz"><![CDATA[<h3 class="proAutory">Návrhový list </h3>(zobrazit)]]>
 </message>
-    <message key="proAurory.navrhovyList.skryj"><![CDATA[<h3 style="font-size: 1.2em; width:100%">Návrhový list </h3>(skrýt)]]></message>
-    <message key="proAurory.medotikaHodnoceni.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(zobrazit)]]>
+    <message key="proAurory.navrhovyList.skryj"><![CDATA[<h3 class="proAutory">Návrhový list </h3>(skrýt)]]></message>
+    <message key="proAurory.medotikaHodnoceni.zobraz"><![CDATA[<h3 class="proAutory">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(zobrazit)]]>
 </message>
-    <message key="proAurory.medotikaHodnoceni.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(skrýt)]]></message>
-    <message key="proAurory.licenceCC.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Licence Creative Commons </h3>(zobrazit)]]>
+    <message key="proAurory.medotikaHodnoceni.skryj"><![CDATA[<h3 class="proAutory">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(skrýt)]]></message>
+    <message key="proAurory.licenceCC.zobraz"><![CDATA[<h3 class="proAutory">Licence Creative Commons </h3>(zobrazit)]]>
 </message>
-    <message key="proAurory.licenceCC.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Licence Creative Commons </h3>(skrýt)]]></message>
-    <message key="proAurory.autorskyZakon.zobraz"><![CDATA[<h3 style="font-size: 1.2em;">Autorský zákon – použití děl jiných autorů ve výuce </h3>(zobrazit)]]>
+    <message key="proAurory.licenceCC.skryj"><![CDATA[<h3 class="proAutory">Licence Creative Commons </h3>(skrýt)]]></message>
+    <message key="proAurory.autorskyZakon.zobraz"><![CDATA[<h3 class="proAutory">Autorský zákon – použití děl jiných autorů ve výuce </h3>(zobrazit)]]>
 </message>
-    <message key="proAurory.autorskyZakon.skryj"><![CDATA[<h3 style="font-size: 1.2em;">Autorský zákon – použití děl jiných autorů ve výuce </h3>(skrýt)]]></message>
+    <message key="proAurory.autorskyZakon.skryj"><![CDATA[<h3 class="proAutory">Autorský zákon – použití děl jiných autorů ve výuce </h3>(skrýt)]]></message>
     
     <message key="plugins.block.category">Kategorie</message>
     <message key="plugins.block.edice">Edice</message>
     
+    <message key="footer.publisher.logo">zapati_logo_cz</message>
     
-  </locale>
+    <message key="vizitka.affiliation">Pracoviště</message>
+    <message key="vizitka.country">Země původu</message>
+    <message key="vizitka.web">Webová stránka</message>
+    <message key="vizitka.biography">Biografie</message>
+    
+</locale>

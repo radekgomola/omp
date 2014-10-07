@@ -22,12 +22,6 @@
 
 {assign var=pageTitleTranslated value=$user->getFullName()|escape}
 {if !$pageTitleTranslated}{translate|assign:"pageTitleTranslated" key=$pageTitle}{/if}
-
-<div id="container" style="padding-top:10px">
-<div id="body">
-<div id="top"></div>
-<h1>{translate key="seznam.vypisAutoru.profil"}</h1>
-<div class="separator"></div>
 <div id="main">
 
 {literal}
@@ -38,46 +32,57 @@
 </script>
 {/literal}
 
-<div id="profilePicContent" style="float: right;">
+{*<div id="profilePicContent" style="float: right;">
 	{assign var="profileImage" value=$user->getSetting('profileImage')}
 	{if $profileImage}
 		<img height="{$profileImage.height|escape}" width="{$profileImage.width|escape}" alt="{translate key="user.profile.profileImage"}" src="{$sitePublicFilesDir}/{$profileImage.uploadName}" />
 	{/if}
-</div>
+</div>*}
 
 <div id="mainContent">
 <h2>{$pageTitleTranslated}</h2>
+<div id="content" class="vypisAutoruBio">
 
-<div id="content" style="top:0px; width:600px;">
-<p>
 	
-	{if $publishEmail}
-		{assign_mailto var=address address=$user->getEmail()|escape}
-		<p><strong>E-mail:</strong> {icon name="mail" url=$address}</p>
-	{/if}
-	{if $user->getUrl()}<a href="{$user->getUrl()|escape:"quotes"}" target="_new">{$user->getUrl()|escape}</a><br/>{/if}
-        {if $user->getUCO()}
-            <table style="border:none">
-                <tbody>
-                    <tr>
-                        <td style="padding-right:15px;">
-                            {translate key="vizitka.identifikace"}
-                        </td><td>
-                            {$user->getUCO()|escape} <em>{translate key="vizitka.uco"}</em>
-                        </td>
-                    </tr><tr>
-                        <td>                    
-                            {translate key="vizitka.url"}
-                        </td><td>
-                            <a href="http://www.muni.cz/people/{$user->getUCO()|escape:"quotes"}" target="_new">http://www.muni.cz/people/{$user->getUCO()|escape}</a><br/>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        {/if}
-	{if $user->getLocalizedAffiliation()}{$user->getLocalizedAffiliation()|escape}{assign var=needsComma value=1}{/if}{if $country}{if $needsComma}, {/if}{$country|escape}{/if}
-  {$user->getLocalizedBiography()|nl2br|strip_unsafe_html}</p>
-<p>
+    {if $publishEmail || $user->getUrl() || $user->getUCO() || $user->getLocalizedAffiliation() || $country}                 
+        <div class="tabulka_bio">
+            <ul>
+                {if $publishEmail}
+                    {assign_mailto var=address address=$user->getEmail()|escape}
+                    <li>
+                        E-mail <span class="vpravo">{icon name="mail" url=$address}</span>
+                    </li>
+                {/if}
+                {if $user->getUCO()}
+                    <li>
+                        {translate key="vizitka.identifikace"} <span class="vpravo">{$user->getUCO()|escape}</span><br />{translate key="vizitka.uco"}
+                    </li>
+                    <li>
+                        {translate key="vizitka.url"} <span class="vpravo"><a href="http://www.muni.cz/people/{$user->getUCO()|escape:"quotes"}" target="_new">http://www.muni.cz/people/{$user->getUCO()|escape}</a></span>
+                    </li>
+                {/if}
+                {if $user->getLocalizedAffiliation()}
+                    <li>
+                        {translate key="vizitka.affiliation"}<span class="vpravo">{$user->getLocalizedAffiliation()|escape}</span>
+                    </li>
+                {/if}
+                {if $user->getUrl()}
+                    <li>
+                        {translate key="vizitka.web"} <span class="vpravo"><a href="{$user->getUrl()|escape:"quotes"}" target="_new">{$user->getUrl()|escape}</a></span>
+                    </li>
+                {/if}
+                {if $country}
+                    <li>
+                        {translate key="vizitka.country"}<span class="vpravo">{$country|escape}</span>
+                    </li>
+                {/if}
+            </ul>            
+        </div>
+    {/if}
+    
+    <h3>{translate key="vizitka.biografie"}</h3>
+    {$user->getLocalizedBiography()|nl2br|strip_unsafe_html}
+    
 
 {assign var=uLastName value=$user->getLastName()}
 {assign var=uFirstName value=$user->getFirstName()}
@@ -107,8 +112,6 @@
 </div><!-- content -->
 </div><!-- mainContent -->
 </div><!-- main -->
-</div><!-- body -->
-</div><!-- container -->
 </body>
 </html>
 

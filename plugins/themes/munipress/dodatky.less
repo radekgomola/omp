@@ -178,7 +178,7 @@ table.tabulkaZapati td{
 }
 
 .horniZapati{
-    border-bottom: #E2E2E2 solid 1px; 
+    border-bottom: 1px solid #525252; 
 }
 
 li.autor {
@@ -199,9 +199,9 @@ ol.vypisAutoru {
 }
 
 #mc_embed_signup form {display:block; 
-      position:relative; 
-      text-align:left; 
-      padding:10px 0 10px 3%;
+                       position:relative; 
+                       text-align:left; 
+                       padding:10px 0 10px 3%;
 }
 
 #mc_embed_signup h2 {
@@ -424,21 +424,21 @@ ol.vypisAutoru {
 }
 
 input.lang_cz_en {
-  margin: 0;
-  padding: 0;
-  border: none;
-  width:32px;
-  height:30px;
-  cursor: pointer;
-  text-indent: 110%;
-  white-space: nowrap;
-  overflow: hidden;
-  -webkit-transform:scale(1.0); /*Webkit: Scale down image to 0.8x original size*/
-  -moz-transform:scale(1.0); /*Mozilla scale version*/
-  -o-transform:scale(1.0); /*Opera scale version*/
-  -webkit-transition-duration: 0.5s; /*Webkit: Animation duration*/
-  -moz-transition-duration: 0.5s; /*Mozilla duration version*/
-  -o-transition-duration: 0.5s; /*Opera duration version*/
+    margin: 0;
+    padding: 0;
+    border: none;
+    width:32px;
+    height:30px;
+    cursor: pointer;
+    text-indent: 110%;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-transform:scale(1.0); /*Webkit: Scale down image to 0.8x original size*/
+    -moz-transform:scale(1.0); /*Mozilla scale version*/
+    -o-transform:scale(1.0); /*Opera scale version*/
+    -webkit-transition-duration: 0.5s; /*Webkit: Animation duration*/
+    -moz-transition-duration: 0.5s; /*Mozilla duration version*/
+    -o-transition-duration: 0.5s; /*Opera duration version*/
 }
 
 input.lang_cz_en:hover{
@@ -453,32 +453,32 @@ input.lang_cz_en:active{
 
 input.en{
     background: url({$baseUrl}/images/vlajky/en_square_small.png) no-repeat left top;
-    margin-left: 15px;
+margin-left: 15px;
 }
 
 input.cz{
     background: url({$baseUrl}/images/vlajky/cz_square_small.png) no-repeat left top;
-    float:left;
-    margin-right: 15px;
+float:left;
+margin-right: 15px;
 }
 
 input.lang_cz_en_small {
-  margin: 0;
-  padding: 0;
-  border: none;
-  width:16px;
-  height:16px;
-  cursor: pointer;
-  text-indent: 120%;
-  white-space: nowrap;
-  overflow: hidden;
-  margin-top: 1px;
-  -webkit-transform:scale(1.0); /*Webkit: Scale down image to 0.8x original size*/
-  -moz-transform:scale(1.0); /*Mozilla scale version*/
-  -o-transform:scale(1.0); /*Opera scale version*/
-  -webkit-transition-duration: 0.5s; /*Webkit: Animation duration*/
-  -moz-transition-duration: 0.5s; /*Mozilla duration version*/
-  -o-transition-duration: 0.5s; /*Opera duration version*/
+    margin: 0;
+    padding: 0;
+    border: none;
+    width:32px;
+    height:32px;
+    cursor: pointer;
+    text-indent: 120%;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 1px;
+    -webkit-transform:scale(1.0); /*Webkit: Scale down image to 0.8x original size*/
+    -moz-transform:scale(1.0); /*Mozilla scale version*/
+    -o-transform:scale(1.0); /*Opera scale version*/
+    -webkit-transition-duration: 0.5s; /*Webkit: Animation duration*/
+    -moz-transition-duration: 0.5s; /*Mozilla duration version*/
+    -o-transition-duration: 0.5s; /*Opera duration version*/
 }
 
 input.lang_cz_en_small:hover{
@@ -488,16 +488,154 @@ input.lang_cz_en_small:hover{
 }
 
 input.en_small{
-    background: url({$baseUrl}/images/vlajky/en_square_small2.png) no-repeat left top;
-    margin-left: 15px;
+    background: url({$baseUrl}/images/vlajky/en_square_small.png) no-repeat left top;
+margin-left: 15px;
 }
 
 input.cz_small{
-    background: url({$baseUrl}/images/vlajky/cz_square_small2.png) no-repeat left top;
-    margin-right: 15px;
-    float: left;
+    background: url({$baseUrl}/images/vlajky/cz_square_small.png) no-repeat left top;
+margin-right: 15px;
+float: left;
 }
 
 .cover_img{
-    border: 1px solid #cccccc;
+    border: 1px solid #808080;
 }
+
+.size1of2{width:25%;}
+.size1of3{width:25%;}
+.size1of4{width:25%;}
+
+.proAutory{
+    font-size: 1.2em;
+    padding: 0;
+}
+.blok_seznamu_autoru{
+    padding-top: 15px;
+    a{
+        text-decoration: none;
+        font-size: 15px;
+        padding-right: 5px;
+        padding-left: 0px;
+    }
+    td{
+        border: 1px solid #000;
+        vertical-align: top;
+    }
+    
+    img{
+        padding: 2px 0 15px 0;
+    }
+    
+    .pismeno_selected{
+        font-size: 22px;
+        font-weight: bold;
+        color: #777778;
+        padding-right: 5px;
+    }
+    
+    hr {
+        margin-top: 5px;
+    }
+    
+    .seznamAutoru a:hover{
+        font-weight: 800;
+    
+    }
+    .seznamAutoru {
+        position: relative;
+        color: #000000; 
+        padding: 0; 
+        margin: 0; 
+        list-style-type: none;
+        float:left;
+        display: block;
+        height: 100%;
+        ul {
+            position: inherit;
+            padding-left:0px;
+            top: -0px;
+            margin-top: 0px; 
+            visibility: hidden; 
+            margin: 0; 
+            margin: 0; 
+            list-style-type: none;
+            width: 760px;
+        }
+        li {
+            height: 30px;
+            float: left; 
+            display: block;
+            padding: 2px 0 0 0; 
+            width: 700px; 
+        }
+
+        a {
+            font-size: 12px;
+            text-align: left; 
+            color: #003366; 
+            text-decoration: none; 
+            font-weight: bold;
+        }
+        
+        ul a:link {
+            color: #fff; 
+            border-bottom: none; 
+            padding-left: 15px;
+        }
+        ul a:visited {
+            color: #fff;
+            border-bottom: none; 
+            padding-left: 15px; 
+        }
+        ul a:hover {
+            color: #4f4f4f; 
+            background-color: rgb(233,233,233);
+        }
+        li:hover ul, ul.seznamAutoru li.hover ul { 
+            visibility: visible;
+        }
+
+        li li {
+            float: left; 
+            border: none; 
+            padding: 0; 
+            margin-left: 350px; 
+            min-height: 350px; 
+        }
+
+        .profil{
+            width: 400px;
+            height: 100%;
+        }
+    }
+}
+
+.vypisAutoruBio{
+    padding: 15px 0 0 0;
+    width: 400px;
+    color: #808080;
+
+    h3{
+        font-size: 1.2em;
+    }
+    .tabulka_bio{
+        width: 400px;
+        clear: both;
+        ul{
+            padding-left:0;
+            
+        }
+        li{
+            padding-bottom: 10px;
+        }
+        .vpravo{
+            float: right;
+            color: #003366;
+        }
+    }   
+
+
+}
+
+

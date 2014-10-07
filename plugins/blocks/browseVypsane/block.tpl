@@ -10,9 +10,9 @@
 *}
 <div class="block" id="sidebarBrowse">
 
-    <span class="blockTitle pkp_helpers_dotted_underline"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="newReleases"}">{translate key="navigation.newReleases"}</a></span>
+    <span class="blockTitle munipress_underline_gray" style="padding-top: 0px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="newReleases"}">{translate key="navigation.newReleases"}</a></span>
     <span class="blockTitle">{translate key="plugins.block.category"}</span>
-        <div id="browseCategoryContainer pkp_helpers_dotted_underline">
+        <div class="browseCategoryContainer munipress_underline_gray">
             {assign var=test value=true}
             {iterate from=browseCategories item=browseCategory}
                 {if !$browseCategory->getParentId()}                                    
@@ -22,7 +22,7 @@
                     {else}
                         {if !empty($content)}
                             {capture assign='cont'}
-                                <ul class="odr_classic">
+                                <ul class="block_ul_browse block_ul">
                                     {foreach from=$content item=jeden}
                                         {$jeden}
                                     {/foreach}
@@ -64,9 +64,8 @@
                     {/if}
                     {capture append='content'} 
                         <li>
-                            {if $activeChild}<u>{/if}
-                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$browseCategory->getPath()}">{$browseCategory->getLocalizedTitle()|escape}</a>
-                            {if $activeChild}</u>{/if}
+                            
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$browseCategory->getPath()}" class="{if $activeChild}munipress_helpers_bold munipress_helpers_black{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
                         </li>
                     {/capture}
                 {/if}
@@ -97,13 +96,12 @@
         </div> 
             
         <div id="browseSeriesContainer">
-            <span class="blockTitle">{translate key="plugins.block.edice"}</span>
-                <ul class="odr">
+            <span class="blockTitle" style="padding-top:10px;">{translate key="plugins.block.edice"}</span>
+                <ul class="block_ul">
                 {iterate from=browseSeries item=browseSeriesItem}
                 <li>
-                    {if $browseBlockSelectedSeries == $browseSeriesItem->getPath()}<u>{/if}
-                    <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="series" path=$browseSeriesItem->getPath()}">{$browseSeriesItem->getLocalizedTitle()|escape}</a>
-                    {if $browseBlockSelectedSeries == $browseSeriesItem->getPath()}</u>{/if}
+                    
+                    <a class="block_link {if $browseBlockSelectedSeries == $browseSeriesItem->getPath()}munipress_helpers_bold munipress_helpers_black{/if}" href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="series" path=$browseSeriesItem->getPath()}">{$browseSeriesItem->getLocalizedTitle()|escape}</a>
                 </li>
                 {/iterate}    
         </div>

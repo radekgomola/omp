@@ -25,26 +25,22 @@
     
 	{if $monographListTitleKey}
 		{translate|assign:"monographListTitle" key=$monographListTitleKey}
+                {*<h3>{$monographListTitle}</h3><br />*}
+                
 	{else}
-		{translate|assign:"monographListTitle" key="catalog.browseTitles" numTitles=$count}
+		{translate|assign:"monographListTitle" key="catalog.browseTitles"}
 	{/if}
-	<h2><em>{$monographListTitle}</em></h2>
+        <h3>{$monographListTitle}</h3>
         {if $paging != 'false'}
-            <div class="pagingPanel">
-{*                <div class="gridItemsPerPage pkp_helpers_align_left pkp_form">
-		{translate key=common.itemsPerPage}:<select class="itemsPerPage"></select>
+            <div class="pagingPanel {if $novePub=='true'}munipress_underline_top{/if}">
+                <div class="pkp_helpers_align_left">
+                    {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}    
                 </div>
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />*}
-                {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
-                <br />
-                {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs}{* This generates the individual page links *}
-
-                <br />
+                
+                <div class="pkp_helpers_align_right">
+                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs}{* This generates the individual page links *}
+                </div>
+                
             </div>
         {/if}
 	{if $count>0}
@@ -54,8 +50,9 @@
                         {include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph}
                     {/foreach}
                 {else}
-		{iterate from=publishedMonographs item=publishedMonograph}
-			{include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph}
+
+		{iterate from=publishedMonographs item=publishedMonograph name=loop}
+			{include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph inline=true}
 		{/iterate}
                 {/if}
 		</ul>

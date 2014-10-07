@@ -16,14 +16,14 @@
 
 .sf-menu a {
 	text-decoration: none;
-	padding: .5em 1.2em .4em;
+	padding: .8em .9em .4em;
 }
 
 .sf-menu a, .sf-menu a:visited {
 
 
 /* visited pseudo selector so IE6 applies text colour*/
-color: blue;
+        color: #003366;
 	pointer: hand;
 	cursor: pointer;
 }
@@ -32,7 +32,7 @@ color: blue;
 }
 
 .sf-menu li li {
-	background-color: #a2c6dc;
+	background-color: #bbbec1;
 }
 
 .sf-menu li li li {
@@ -42,13 +42,14 @@ color: blue;
 .sf-menu li:hover, .sf-menu li.sfHover,
 .sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
 	outline: 0;
-	color: #666;
+	color: #fff;
+        font-weight: normal;
 }
 
 /*** arrows **/
 
 .sf-menu a.sf-with-ul {
-	padding-right: 2.25em;
+	padding-right: .9em;
 	min-width: 1px;
 /*
 
@@ -56,30 +57,20 @@ trigger IE7 hasLayout so spans position accurately */
 }
 
 .sf-sub-indicator {
-	position: absolute;
-	display: block;
-	right: .75em;
-	top: 1.05em;
-	/* IE 6 only */
-	width: 10px;
-	height: 10px;
-	text-indent: -999em;
-	overflow: hidden;
-	background: url({$baseUrl}/lib/pkp/templates/images/structure/superfish/arrows-ffffff.png) no-repeat -10px -100px;
+	display: none;
 /* 8-bit in dexed alpha png. IE6 gets solid image only */
 }
 
 a > .sf-sub-indicator {
-
-
-/* give all except IE6 the correct values */
-	top: .8em;
-	background-position: 0 -100px;
-/*
-
-use translucent arrow for modern browsers*/
+        display: none;
 }
 
+.sf-menu ul{
+    width: 11em;
+}
+.sf-menu ul ul{
+    width: 13em;
+}
 /* apply hovers to modern browsers */
 
 a:focus > .sf-sub-indicator,
@@ -88,6 +79,7 @@ a:active > .sf-sub-indicator,
 li:hover > a > .sf-sub-indicator,
 li.sfHover > a > .sf-sub-indicator {
 	background-position: -10px -100px;
+        font-weight: normal;
 
 
 /* arrow hovers for modern browsers*/

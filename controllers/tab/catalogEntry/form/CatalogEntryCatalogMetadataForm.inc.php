@@ -19,12 +19,12 @@ define('SUBMISSION_IMAGE_TYPE_CATALOG', 2);
 
 // Thumbnails will be scaled down to fall within these dimensions, preserving
 // aspect ratio, and not scaling up beyond the present resolution.
-define('THUMBNAIL_MAX_WIDTH', 106);
+define('THUMBNAIL_MAX_WIDTH', 70);
 define('THUMBNAIL_MAX_HEIGHT', 100);
 
 // Define a second pair for the Catalog display, to ensure correct rendering
 // of the page.
-define('CATALOG_MAX_WIDTH', 240);
+define('CATALOG_MAX_WIDTH', 210);
 define('CATALOG_MAX_HEIGHT', 303);
 
 import('lib.pkp.classes.form.Form');

@@ -65,5 +65,7 @@
     <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>*}
     <div><a href="https://journals.muni.cz/" target="_blank"><img u="image" src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" /></a></div>
     <div><a href="{$baseUrl}/public/download_files/Katalog2014jaro.pdf" target="_blank"><img u="image" src="{$baseUrl}/images/img/bannery/04.png" class="link_img bannery" /></a></div>
+
+    <div><a href="//v.calameo.com/?bkcode=00384337035a0472a9b9c" onclick="return hs.htmlExpand(this, {ldelim} objectType: 'iframe' {rdelim} )"><img u="image" src="{$baseUrl}/images/img/bannery/04.png" class="link_img bannery" /></a></div>
   </div>
 </div>

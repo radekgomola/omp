@@ -15,7 +15,7 @@
 
 import('lib.pkp.classes.form.Form');
 
-define('THUMBNAIL_MAX_WIDTH', 106);
+define('THUMBNAIL_MAX_WIDTH', 70);
 define('THUMBNAIL_MAX_HEIGHT', 100);
 
 class CategoryForm extends Form {

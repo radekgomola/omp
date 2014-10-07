@@ -262,7 +262,7 @@
 	<message key="catalog.manage.noMonographs">There are no assigned monographs.</message>
 
 	<!-- Catalog -->
-	<message key="catalog.browseTitles">Browse {$numTitles} Titles</message>
+	<message key="catalog.browseTitles">Browse Titles</message>
 	<message key="catalog.feature">Feature</message>
 	<message key="catalog.featuredBooks">Featured Books</message>
 	<message key="catalog.dateAdded">Added {$dateAdded}</message>
@@ -729,4 +729,11 @@ Masaryk University</message>
     
     <message key="plugins.block.category">Categories</message>
     <message key="plugins.block.edice">Series</message>
+    
+    <message key="footer.publisher.logo">zapati_logo_en</message>
+    
+    <message key="vizitka.affiliation">Workplace</message>
+    <message key="vizitka.country">Country</message>
+    <message key="vizitka.web">Web page</message>
+    <message key="vizitka.biography">Biography</message>
 </locale>

@@ -30,7 +30,7 @@ class SeznamAutoruHandler extends Handler {
 	/**
 	 * Display authors page.
 	 */
-	function index($args) {
+	function index(&$args, $request) {
 		$this->addCheck(new HandlerValidatorPress($this));
 		$this->validate();
 		$this->setupTemplate($request);
@@ -117,6 +117,8 @@ class SeznamAutoruHandler extends Handler {
                 $templateMgr->assign_by_ref('abeceda', $abeceda);
                 
                 $templateMgr->assign_by_ref('poleAutoru', $poleAutoru);
+                
+                $templateMgr->assign('cestaPismeno', $pismeno);
                 
 //                $templateMgr->assign_by_ref('autori', $autori);
                 $templateMgr->display('seznamAutoru/vypisAutoru.tpl');
