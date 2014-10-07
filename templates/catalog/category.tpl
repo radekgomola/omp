@@ -46,12 +46,11 @@
                         monographListTitleKey="navigation.newReleases"
                         paging = 'false'
                 }
-                {assign var=novePub value="true"}
 	{/if}
         
 
 	{* Include the full monograph list *}
-	{include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs novePub=$novePub}
+	{include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs}
 {/if}
 </div><!-- catalogContainer -->
 

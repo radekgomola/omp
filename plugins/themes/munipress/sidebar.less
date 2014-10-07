@@ -1,0 +1,76 @@
+/**
+ * @file styles/structure/sidebar.less
+ *
+ * Copyright (c) 2014 Simon Fraser University Library
+ * Copyright (c) 2003-2014 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * 
+ * @ingroup pkp_structure_sidebar
+ *
+ * @brief Classes for the sidebar structure(s)
+ */
+
+.pkp_structure_nosidebar {
+    padding-top: 10px;
+    margin-right: 20px;
+}
+
+.pkp_structure_sidebar {
+    border-top: 1px solid #bbbec1;        
+
+    div.block, div.block span.blockTitle {
+        padding-top: 10px; 
+        padding-bottom: 5px;
+    }
+
+    ul {
+        padding-top: 0px;
+        padding-left: 2px;
+    }
+
+    div.block {
+        border-bottom: 1px solid #bbbec1;
+
+        span.blockTitle {
+            
+            padding-left: 2px;
+            display:list-item;
+            list-style: none inside;
+            font-size: 14px;
+            font-family:  Arial,Helvetica,sans-serif;
+            font-weight: bold;
+            text-transform: none;
+            color: #003366;
+        }
+
+        span.blockTitle:first-child {
+            padding-top: 0px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    }
+
+    .browseCategoryContainer{
+        padding-left: 2px;
+    }
+    
+    
+}
+
+.pkp_structure_sidebar_left {
+    float: left;
+    width: 202px;
+    margin-right: 13px;
+}
+
+.pkp_structure_sidebar_right {
+    float: right;
+    width: 200px;
+    margin-left: 15px;
+}

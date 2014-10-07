@@ -30,9 +30,9 @@
 	{else}
 		{translate|assign:"monographListTitle" key="catalog.browseTitles"}
 	{/if}
-        <h3>{$monographListTitle}</h3>
+        <h3 class="pkp_helpers_munipress_underline">{$monographListTitle}</h3>
         {if $paging != 'false'}
-            <div class="pagingPanel {if $novePub=='true'}munipress_underline_top{/if}">
+            <div class="pagingPanel">
                 <div class="pkp_helpers_align_left">
                     {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}    
                 </div>
