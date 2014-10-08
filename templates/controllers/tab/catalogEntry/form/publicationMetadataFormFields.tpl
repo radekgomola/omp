@@ -99,6 +99,12 @@
 			{fbvElement type="text" name="imprint" id="imprint" value=$imprint maxlength="255"}
 		{/fbvFormSection}
 	{/fbvFormArea}
+        
+        {fbvFormArea id="calameoHash" title="monograph.publicationFormat.calameoHash" class="border"}
+		{fbvFormSection for="calameoHash"}
+                        {fbvElement type="text" multilingual=true name="calameoHash" id="calameoHash" value=$calameoHash maxlength="255" readonly=$readOnly}
+		{/fbvFormSection}
+	{/fbvFormArea}
 
 	{foreach from=$pubIdPlugins item=pubIdPlugin}
 		{assign var=pubIdMetadataFile value=$pubIdPlugin->getPubIdMetadataFile()}

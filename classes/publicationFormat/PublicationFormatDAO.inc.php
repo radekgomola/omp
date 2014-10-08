@@ -289,7 +289,7 @@ class PublicationFormatDAO extends RepresentationDAO {
 	 * @return array
 	 */
 	function getLocaleFieldNames() {
-		return array('name');
+		return array('name', 'calameoHash');
 	}
 
 	/**

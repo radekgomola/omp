@@ -693,4 +693,6 @@
     <message key="vizitka.web">Webová stránka</message>
     <message key="vizitka.biografie">Biografie</message>
     
+    <message key="bookfile.download">Stáhnout</message>
+    
 </locale>

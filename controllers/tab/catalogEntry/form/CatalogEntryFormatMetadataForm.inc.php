@@ -159,7 +159,9 @@ class CatalogEntryFormatMetadataForm extends Form {
 			'returnableIndicatorCode' => $publicationFormat->getReturnableIndicatorCode() != '' ? $publicationFormat->getReturnableIndicatorCode() : 'Y',
 			'isApproved' => (bool) $publicationFormat->getIsApproved(),
 			// the pubId plugin needs the format object.
-			'publicationFormat' => $publicationFormat
+			'publicationFormat' => $publicationFormat,
+                        
+                        'calameoHash' => $publicationFormat->getCalameoHash(null)
 		);
 
 		// initialize the pubId fields.
@@ -192,7 +194,8 @@ class CatalogEntryFormatMetadataForm extends Form {
 			'productAvailabilityCode',
 			'technicalProtectionCode',
 			'returnableIndicatorCode',
-			'isApproved'
+			'isApproved',
+                        'calameoHash'
 		));
 
 		// consider the additional field names from the public identifer plugins
@@ -253,6 +256,7 @@ class CatalogEntryFormatMetadataForm extends Form {
 		$publicationFormat->setTechnicalProtectionCode($this->getData('technicalProtectionCode'));
 		$publicationFormat->setReturnableIndicatorCode($this->getData('returnableIndicatorCode'));
 		$publicationFormat->setIsApproved($this->getData('isApproved')?true:false);
+                $publicationFormat->setCalameoHash($this->getData('calameoHash'), null);
 
 		// consider the additional field names from the public identifer plugins
 		$pubIdPluginHelper = $this->_getPubIdPluginHelper();

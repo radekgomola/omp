@@ -20,6 +20,10 @@
 	{rdelim});
 </script>
 
+<script type="text/javascript">
+    hs.minWidth=1100;
+</script>
+
 <div class="bookInfo">
    {* {assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
     {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}
