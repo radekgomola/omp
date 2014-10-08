@@ -21,10 +21,12 @@
 </script>
 
 <div class="bookInfo">
-   {* {assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
+    {assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
+    {assign var="cena_ebook" value=$publishedMonograph->getLocalizedCenaEbook()|strip_unsafe_html}
     {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}
     {assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
     {assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
+    {assign var="urlOC_ebook" value=$publishedMonograph->getLocalizedUrlOCEbook()|strip_unsafe_html}
     {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
     {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
     {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
@@ -32,7 +34,7 @@
     {assign var="rightsDrzitel" value=$publishedMonograph->getLocalizedRightsDrzitel()|strip_unsafe_html}
     {assign var="rightsTrvani" value=$publishedMonograph->getLocalizedRightsTrvani()|strip_unsafe_html}
     {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
-    *}
+    
     
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
@@ -45,7 +47,7 @@
 			{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}<li><a href="#contentsTab">{translate key="common.contents"}</a></li>{/if}
 			{if $availableFiles|@count != 0}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
                         
-                        <li {if (empty($cena) && empty($poznamka) && empty($bibliografickaCitace) && empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran) && empty($rightsTyp) && empty($rightsDrzitel) && empty($rightsTrvani) && empty($dedikace))}style="display:none"{/if}><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
+                        <li {if (empty($cena_ebook) &&empty($cena) && empty($poznamka) && empty($bibliografickaCitace) && empty($urlWeb) && empty($urlOC) && empty($urlOC_ebook) &&empty($muPracoviste) && empty($pocetStran) && empty($rightsTyp) && empty($rightsDrzitel) && empty($rightsTrvani) && empty($dedikace))}style="display:none"{/if}><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
 			{call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
 			{if !is_null($sharingCode) || !empty($blocks)}
 				<li><a href="#sharingTab">{translate key="submission.sharing"}</a></li>
@@ -53,14 +55,22 @@
                         
                 </ul>
                 <div id="viceInfoTab">
-                    {*<table class="viceInformaci">
+                    <table class="viceInformaci">
                         <tbody>
                             <tr {if empty($cena)}style="display:none;"{/if}>
                                 <td class="levyBlok">
-                                    <h3>{translate key="submission.cena"} </h3>
+                                    <h3>{translate key="submission.ceny.kniha"} </h3>
                                 </td>
                                 <td class="pravyBlokBlok">
                                     <span style="font-weight: bold; color: red;">{$cena} {translate key="submission.cena.mena"}</span>
+                                </td>
+                            </tr>
+                            <tr {if empty($cena_ebook)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.ceny.ekniha"} </h3>
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    <span style="font-weight: bold; color: red;">{$cena_ebook} {translate key="submission.cena.mena"}</span>
                                 </td>
                             </tr>
                             <tr {if empty($pocetStran)}style="display:none;"{/if}>
@@ -87,6 +97,14 @@
                                 </td>
                                 <td class="pravyBlokBlok">
                                     <a href={$urlOC} target="_blank">{translate key="informace.url.oc"}</a>
+                                </td>
+                            </tr>
+                            <tr {if empty($urlOC_ebook)}style="display:none;"{/if}>
+                                <td class="levyBlok">
+                                    <h3>{translate key="submission.url.oc.ebook"}</h3> 
+                                </td>
+                                <td class="pravyBlokBlok">
+                                    <a href={$urlOC_ebook} target="_blank">{translate key="informace.url.oc"}</a>
                                 </td>
                             </tr>
                             
@@ -116,7 +134,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr {if (empty($cena) && empty($poznamka)&& empty($bibliografickaCitace)&& empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran)) || (empty($rightsTyp)&&empty($rightsDrzitel)&&empty($rightsTrvani)&&empty($dedikace))} style="display:none;"{/if}>
+                            <tr {if (empty($cena_ebook) && empty($cena) && empty($poznamka)&& empty($bibliografickaCitace)&& empty($urlWeb) && empty($urlOC) && empty($urlOC_ebook) && empty($muPracoviste) && empty($pocetStran)) || (empty($rightsTyp)&&empty($rightsDrzitel)&&empty($rightsTrvani)&&empty($dedikace))} style="display:none;"{/if}>
                                 <td colspan="2" style="padding-bottom: 10px; border-top: 1px solid #999999;">
                                 </td>
                             </tr>
@@ -157,7 +175,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>*}
+                    </table>
                 </div>
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
@@ -189,7 +207,7 @@
                                                 <h3>
                                                     {$author->getFullName()}
                                                 </h3>
-                                                {if $url != ''}<a href="{$url|escape:"quotes"}" target="_blank">{$url|escape}</a><br/>{/if}
+                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$user->getUrl()|escape}</a><br/>{/if}
                                                 {if $uco != '' && $uco != '0'}
                                                     <table style="border:none">
                                                         <tbody>
@@ -240,7 +258,7 @@
 		<div id="downloadTab">
 			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
 			{assign var=currency value=$currentPress->getSetting('currency')}
-			{*{if !$loggedInUsername}<p>{translate key="catalog.loginRequiredForPayment"}</p>{/if}*}
+			{if !$loggedInUsername}<p>{translate key="catalog.loginRequiredForPayment"}</p>{/if}
 			{if $useCollapsedView}
 				<ul class="odr_prazdne">
 					{foreach from=$publicationFormats item=publicationFormat}
