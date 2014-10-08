@@ -8,8 +8,7 @@
 * Display spotlights on a press' home page.
 *}
 <div id="spotlightsHome">
-    <hr />
-    <h2 class="pkp_helpers_text_left">{translate key="spotlight.title.homePage"}</h2>
+    <h2 class="pkp_helpers_text_left pkp_helpers_munipress_underline">{translate key="spotlight.title.homePage"}</h2>
     <ul>
             {foreach from=$spotlights item=spotlight name=loop}
                 {assign var="item" value=$spotlight->getSpotlightItem()}

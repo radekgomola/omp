@@ -66,8 +66,9 @@
 				// Get the max number of monographs that fit in a row.
 				monographWidth = $monographs.first().width() + 10,
 				containerWidth = this.getHtmlElement().width(),
-				maxInRow = Math.floor(containerWidth / monographWidth),
-				i;
+//				maxInRow = Math.floor(containerWidth / monographWidth),
+//				i;
+                                maxInRow = 3;
 
 		// Iterate over our monographs in groups, normalizing the
 		// element detail heights.

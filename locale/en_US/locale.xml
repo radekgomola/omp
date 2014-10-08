@@ -674,6 +674,12 @@ Masaryk University</message>
     
     <message key="book.rozmery">Format</message>
     
+    
+    
+    <message key="submission.rights.typ">Rights: type</message>
+    <message key="submission.rights.drzitel">Rights: holder</message>
+    <message key="submission.rights.trvani">Rights: expiration</message>
+    <message key="submission.viceInformaci">More informations</message>
     <!--Metadata munipress-->
         
     <message key="submission.licence">Rights</message>
