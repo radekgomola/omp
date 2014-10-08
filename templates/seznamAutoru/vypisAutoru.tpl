@@ -31,10 +31,15 @@
 <div id="editorialTeam">
     <div id="authors" class="blok_seznamu_autoru">
         {foreach from=$abeceda item=pismeno}
+            {if $pismeno == 'ostatni'}
+                {translate|assign:"zobrazenePismeno" key=abeceda.ostatni}
+            {else}
+                {assign var=zobrazenePismeno value=$pismeno}
+            {/if}
             {if $pismeno == $cestaPismeno}
-                <span class="pismeno_selected">{$pismeno}</span>
+                <span class="pismeno_selected">{$zobrazenePismeno}</span>
             {else}    
-                <a href="{url op="index" path=$pismeno}" >{$pismeno}</a>
+                <a href="{url op="index" path=$pismeno}" >{$zobrazenePismeno}</a>
             {/if}
         {/foreach}
         <hr />
