@@ -21,24 +21,45 @@
 	<div id="bookAccordion">
 		<h3><a href="#">{translate key="catalog.publicationInfo"}</a></h3>
 		<div class="publicationInfo">
-			{*<div class="dateAdded">{translate key="catalog.dateAdded" dateAdded=$publishedMonograph->getDatePublished()|date_format:$dateFormatShort}</div>*}
-			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats(true)}
-			{*{if count($publicationFormats) === 1}
-				{foreach from=$publicationFormats item="publicationFormat"}
-					{if $publicationFormat->getIsApproved()}
-						{include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
-					{/if}
-				{/foreach}
-			{/if}*}
-                        {if count($publicationFormats) >= 1}
-                                {foreach from=$publicationFormats item="publicationFormat"}
-                                        {if $publicationFormat->getIsApproved()}
-                                            {include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
-                                        {/if}{* $publicationFormat->getIsApproved() *}
-                                {/foreach}{* $publicationFormats *}
-                        {/if}{* publicationFormats > 1 *}
+			{assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
+                        {assign var="cena_ebook" value=$publishedMonograph->getLocalizedCenaEbook()|strip_unsafe_html}
+                        {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}
+			{assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
+                        {assign var="urlOC_ebook" value=$publishedMonograph->getLocalizedUrlOCEbook()|strip_unsafe_html}
+                        
+                        {if !empty($cena)}
+                            <div class="infoPodKnihou">
+                            <span>{translate key="submission.ceny.kniha"}:</span>
+                            &nbsp;<span style="font-size: 1.3em; color: red;">{$cena} {translate key="submission.cena.mena"}</span><br />
+                                {if !empty($urlOC)}
+                                    &nbsp;&nbsp;<span ><a href="{$urlOC}" target="_blank">{translate key="informace.url.oc"}</a></span>
+                            {/if}
+                            </div>
+                        {/if}
+                        
+                        {if !empty($cena_ebook)}
+                            <div class="infoPodKnihou">
+                            <span >{translate key="submission.ceny.ekniha"}:</span>
+                            &nbsp;<span style="font-size: 1.3em; color: red;">{$cena_ebook} {translate key="submission.cena.mena"}</span><br />
+                            {if !empty($urlOC_ebook)}
+                                &nbsp;&nbsp;<span><a href="{$urlOC_ebook}" target="_blank">{translate key="informace.url.oc"}</a></span>
+                            {/if}
+                            </div>
+                        {/if}
+                        
+                        {if empty($cena) && empty($cena_ebook)}
+                            <div class="infoPodKnihou">
+                            <span class="openAccess">{translate key="submission.ceny.openAccess"}</span><br />
+                            </div>
+                        {/if}
+                        {if !empty($pocetStran)}
+                            <div class="infoPodKnihou">
+                            <span >{translate key="submission.pocetStran"}:</span>
+                            &nbsp;{$pocetStran}
+                            </div>
+                        {/if}
 			{if $series}
-				<div class="seriesLink">{translate key="series.series"}: <a href="{url page="catalog" op="series" path=$series->getPath()}">{$series->getLocalizedFullTitle()}</a></div>
+                <div class="seriesLink">{translate key="series.series"}: <a href="{url page="catalog" op="series" path=$series->getPath()}">{$series->getLocalizedFullTitle()}</a></div>
 			{/if}
 
 		</div>

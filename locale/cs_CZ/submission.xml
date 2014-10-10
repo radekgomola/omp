@@ -7,7 +7,8 @@
     <message key="submission.title">Název knihy</message>
     <message key="submission.title.tip"><![CDATA[Typ příspěvku obvykle může být ""obraz"", ""text"" nebo multimetidální typy, jako je ""software"" nebo ""interkativní typ"".  Vyberte prosím jeden typ, který je pro Váš příspěvek nejvhodnější.  Příklady typů najdete na adrese <a target=""_blank"" href=""http://dublincore.org/documents/2001/04/12/usageguide/generic.shtml$$$type"">http://dublincore.org/documents/2001/04/12/usageguide/generic.shtml$$$type</a>]]></message>
     <message key="submission.select">Vybrat příspěvek</message>
-    <message key="submission.synopsis">Synopse</message>
+    <message key="submission.synopsis">Anotace</message>
+    <!--<message key="submission.synopsis">Synopse</message>-->
     <message key="submission.workType">Druh knihy</message>
     <message key="submission.workType.description">Monografie je knižní dílo kompletně vytvořené jedním či více autory. Sborník je kniha, ve které má každá kapitola jiného autora (detaily kapitol se zadávají později.)</message>
     <message key="submission.workType.editedVolume">Sborník</message>
@@ -23,7 +24,8 @@
     <message key="submission.copyedit">Redakce</message>
     <message key="submission.publicationFormats">Publikační formáty</message>
     <message key="submission.proofs">Korekturní výtisky</message>
-    <message key="submission.download">Stáhnout</message>
+<!--    <message key="submission.download">Stáhnout</message>-->
+     <message key="submission.download">Ke stažení</message>
     <message key="submission.sharing">Sdílet</message>
     <message key="manuscript.submission">Předložený rukopis</message>
     <message key="submission.round">

@@ -122,9 +122,11 @@
     <message key="grid.action.addRepresentative">Přidat zástupce</message>
     <message key="grid.action.editRepresentative">Upravit tohoto zástupce</message>
     <message key="grid.action.deleteRepresentative">Odstranit tohoto zástupce</message>
-    <message key="spotlight.spotlights">Doporučujeme</message>
+<!--    <message key="spotlight.spotlights">Doporučujeme</message>-->
+    <message key="spotlight.spotlights">Aktuality</message>
     <message key="spotlight.noneExist">Aktuálně nemáte zvoleny žádné doporučené publikace.</message>
-    <message key="spotlight.title.homePage">Doporučujeme</message>
+<!--    <message key="spotlight.title.homePage">Doporučujeme</message>-->
+    <message key="spotlight.title.homePage">Aktuality</message>
     <message key="spotlight.author">Autor,</message>
     <message key="grid.content.spotlights.spotlightItemTitle">Doporučená položka</message>
     <message key="grid.content.spotlights.category.homepage">Úvodní stránka</message>
@@ -252,7 +254,8 @@
     <message key="navigation.infoForLibrarians">Pro knihovníky</message>
     <message key="navigation.infoForAuthors.long">Publikujte s Nakladatelstvím MU Munipress</message>
     <message key="navigation.infoForLibrarians.long">Informace pro knihovníky</message>
-    <message key="navigation.newReleases">Nové publikace</message>
+<!--    <message key="navigation.newReleases">Nové publikace</message>-->
+    <message key="navigation.newReleases">Novinky</message>
     <message key="navigation.published">Zveřejněno</message>
     <message key="navigation.wizard">Průvodce</message>
     <message key="navigation.linksAndMedia">Odkazy a sociální média</message>
@@ -578,7 +581,7 @@
     
     
     <message key="footer.publisher">Nakladatelství MU</message>
-    <message key="footer.contacts">Kontakty:</message>
+    <message key="footer.contacts">Kontakt:</message>
     <message key="footer.novotna">(zástupce ředitelky, redaktorka)</message>
     <message key="footer.brodecka">(redaktorka)</message>
     <message key="footer.gomola">(redaktor, andministrátor)</message>
@@ -683,7 +686,7 @@
 </message>
     <message key="proAurory.autorskyZakon.skryj"><![CDATA[<h3 class="proAutory">Autorský zákon – použití děl jiných autorů ve výuce </h3>(skrýt)]]></message>
     
-    <message key="plugins.block.category">Kategorie</message>
+    <message key="plugins.block.category">Ediční řady</message>
     <message key="plugins.block.edice">Edice</message>
     
     <message key="footer.publisher.logo">zapati_logo_cz</message>
@@ -694,5 +697,6 @@
     <message key="vizitka.biografie">Biografie</message>
     
     <message key="bookfile.download">Stáhnout</message>
-    
+    <message key="submission.flipbook">Prohlížet</message>
+    <message key="submission.ceny.openAccess">Open Access</message>
 </locale>

@@ -153,7 +153,8 @@
 	<!--  Spotlights management -->
 	<message key="spotlight.spotlights">Spotlights</message>
 	<message key="spotlight.noneExist">There are no current spotlights.</message>
-	<message key="spotlight.title.homePage">In the Spotlight</message>
+	<!--<message key="spotlight.title.homePage">In the Spotlight</message>-->
+        <message key="spotlight.title.homePage">Actuality</message>
 	<message key="spotlight.author">Author, </message>
 	<message key="grid.content.spotlights.spotlightItemTitle">Spotlight Item</message>
 	<message key="grid.content.spotlights.category.homepage">Homepage</message>
@@ -309,7 +310,8 @@
 	<message key="navigation.infoForLibrarians">For Librarians</message> 
 	<message key="navigation.infoForAuthors.long">Publish with Munipress</message>
 	<message key="navigation.infoForLibrarians.long">Information For Librarians</message>
-	<message key="navigation.newReleases">New Releases</message>
+	<!--<message key="navigation.newReleases">New Releases</message>-->
+        <message key="navigation.newReleases">Novelties</message>
 	<message key="navigation.published">Published</message>
 	<message key="navigation.wizard">Wizard</message>
 	<message key="navigation.linksAndMedia">Links and Social Media</message>
@@ -589,7 +591,7 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
         <message key="about.partneri.long">Partners and Cooperations</message>
         
         <message key="footer.publisher">MU Publisher</message>
-        <message key="footer.contacts">Contacts:</message>
+        <message key="footer.contacts">Contact:</message>
         <message key="footer.novotna">(assistant manager, editor)</message>
         <message key="footer.brodecka">(editor)</message>
         <message key="footer.gomola">(editor, adminitration)</message>
@@ -733,7 +735,7 @@ Masaryk University</message>
     <message key="informace.doplnkove.zakladni">More information</message>
     <message key="informace.doplnkove.dalsi">More information - extended</message>
     
-    <message key="plugins.block.category">Categories</message>
+    <message key="plugins.block.category">Editorial lines</message>
     <message key="plugins.block.edice">Series</message>
     
     <message key="footer.publisher.logo">zapati_logo_en</message>
@@ -744,4 +746,6 @@ Masaryk University</message>
     <message key="vizitka.biografie">Biography</message>
     
     <message key="bookfile.download">Download</message>
+    <message key="submission.flipbook">View</message>
+    <message key="submission.ceny.openAccess">Open Access</message>
 </locale>

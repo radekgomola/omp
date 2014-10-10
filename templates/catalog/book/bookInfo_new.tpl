@@ -21,7 +21,7 @@
 </script>
 
 <script type="text/javascript">
-    hs.minWidth=1100;
+    hs.minWidth=1000;
 </script>
 
 <div class="bookInfo">
