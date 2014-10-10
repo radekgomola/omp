@@ -28,16 +28,19 @@
     {*{assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
     {assign var="cena_ebook" value=$publishedMonograph->getLocalizedCenaEbook()|strip_unsafe_html}
     {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}*}
-    {assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
+    
     {*{assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
     {assign var="urlOC_ebook" value=$publishedMonograph->getLocalizedUrlOCEbook()|strip_unsafe_html}*}
-    {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
+    
+    
+    {*{assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
     {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
     {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
     {assign var="rightsTyp" value=$publishedMonograph->getLocalizedRightsTyp()|strip_unsafe_html}
     {assign var="rightsDrzitel" value=$publishedMonograph->getLocalizedRightsDrzitel()|strip_unsafe_html}
     {assign var="rightsTrvani" value=$publishedMonograph->getLocalizedRightsTrvani()|strip_unsafe_html}
     {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
+    {assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}*}
     
     
 	<div class="bookInfoHeader">
@@ -51,14 +54,14 @@
 			{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}<li><a href="#contentsTab">{translate key="common.contents"}</a></li>{/if}
 			{if $availableFiles|@count != 0}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
                         
-                        <li {if (empty($poznamka) && empty($bibliografickaCitace) && empty($urlWeb)&&empty($muPracoviste) && empty($pocetStran) && empty($rightsTyp) && empty($rightsDrzitel) && empty($rightsTrvani) && empty($dedikace))}style="display:none"{/if}><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
+                       {* <li {if (empty($poznamka) && empty($bibliografickaCitace) && empty($urlWeb)&&empty($muPracoviste) && empty($pocetStran) && empty($rightsTyp) && empty($rightsDrzitel) && empty($rightsTrvani) && empty($dedikace))}style="display:none"{/if}><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>*}
 			{call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
 			{if !is_null($sharingCode) || !empty($blocks)}
 				<li><a href="#sharingTab">{translate key="submission.sharing"}</a></li>
 			{/if}
                         
                 </ul>
-                <div id="viceInfoTab">
+                {*<div id="viceInfoTab">
                     {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats(true)}
                     <div class="tabulka_info">
                         <ul>
@@ -67,8 +70,8 @@
                                 {foreach from=$publicationFormats item="publicationFormat"}
                                         {if $publicationFormat->getIsApproved()}
                                             {include file="catalog/book/bookPublicationFormatInfoMunipress.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
-                                        {/if}{* $publicationFormat->getIsApproved() *}
-                                {/foreach}{* $publicationFormats *}
+                                        {/if}{* $publicationFormat->getIsApproved() 
+                                {/foreach}{* $publicationFormats 
                                         {assign var=viceInformaci value=1}
                     {/if}
                     {if !empty($muPracoviste)}
@@ -131,7 +134,7 @@
                         {/if}
 
                     </div>
-                </div>
+                </div>*}
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 

@@ -21,7 +21,7 @@
 	<div id="bookAccordion">
 		<h3><a href="#">{translate key="catalog.publicationInfo"}</a></h3>
 		<div class="publicationInfo">
-			{*{assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
+			{assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
                         {assign var="cena_ebook" value=$publishedMonograph->getLocalizedCenaEbook()|strip_unsafe_html}
                         {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}
 			{assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
@@ -57,7 +57,7 @@
                             <span >{translate key="submission.pocetStran"}:</span>
                             &nbsp;{$pocetStran}
                             </div>
-                        {/if}*}
+                        {/if}
 			{if $series}
                 <div class="seriesLink">{translate key="series.series"}: <a href="{url page="catalog" op="series" path=$series->getPath()}">{$series->getLocalizedFullTitle()}</a></div>
 			{/if}

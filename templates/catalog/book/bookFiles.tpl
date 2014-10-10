@@ -20,7 +20,7 @@
                 {/if}
 
                 {if $calameoHash}
-                    <a href="//v.calameo.com/?bkcode={$calameoHash}" {literal}onclick="return hs.htmlExpand(this, {objectType: 'iframe'});"{/literal}><img src="{$baseUrl}/images/design/flash_player_logo.png" />{translate key="submission.flipbook"}</a>
+                    <a href="https://v.calameo.com/?bkcode={$calameoHash}" {literal}onclick="return hs.htmlExpand(this, {objectType: 'iframe'});"{/literal}><img src="{$baseUrl}/images/design/flash_player_logo.png" />{translate key="submission.flipbook"}</a>
                 {/if}
                 <a href="{$downloadUrl}">
                     <span title="{$availableFile->getDocumentType()|upper|escape}" class="sprite {$availableFile->getDocumentType()|escape}"></span>                    {if $availableFile->getDirectSalesPrice()}

@@ -21,14 +21,13 @@
 </script>
 
 <script type="text/javascript">
-    hs.minWidth=1000;
+  hs.minWidth = 1100;
 </script>
 
 <div class="bookInfo">
-   {* {assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
-    {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}
+
     {assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
-    {assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
+
     {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
     {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
     {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
@@ -36,7 +35,7 @@
     {assign var="rightsDrzitel" value=$publishedMonograph->getLocalizedRightsDrzitel()|strip_unsafe_html}
     {assign var="rightsTrvani" value=$publishedMonograph->getLocalizedRightsTrvani()|strip_unsafe_html}
     {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
-    *}
+    
     
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
@@ -49,7 +48,7 @@
 			{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}<li><a href="#contentsTab">{translate key="common.contents"}</a></li>{/if}
 			{if $availableFiles|@count != 0}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
                         
-                        <li {if (empty($cena) && empty($poznamka) && empty($bibliografickaCitace) && empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran) && empty($rightsTyp) && empty($rightsDrzitel) && empty($rightsTrvani) && empty($dedikace))}style="display:none"{/if}><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
+                        <li {if (empty($poznamka) && empty($bibliografickaCitace) && empty($urlWeb)&&empty($muPracoviste) && empty($pocetStran) && empty($rightsTyp) && empty($rightsDrzitel) && empty($rightsTrvani) && empty($dedikace))}style="display:none"{/if}><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
 			{call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
 			{if !is_null($sharingCode) || !empty($blocks)}
 				<li><a href="#sharingTab">{translate key="submission.sharing"}</a></li>
@@ -57,111 +56,78 @@
                         
                 </ul>
                 <div id="viceInfoTab">
-                    {*<table class="viceInformaci">
-                        <tbody>
-                            <tr {if empty($cena)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.cena"} </h3>
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    <span style="font-weight: bold; color: red;">{$cena} {translate key="submission.cena.mena"}</span>
-                                </td>
-                            </tr>
-                            <tr {if empty($pocetStran)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.pocetStran"} </h3>
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$pocetStran}
-                                </td>
-                            </tr>
-                           
-                            <tr {if empty($muPracoviste)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.muPracoviste"} </h3>
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$muPracoviste}
-                                </td>
-                            </tr>
-                            
-                            <tr {if empty($urlOC)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.url.oc"}</h3> 
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    <a href={$urlOC} target="_blank">{translate key="informace.url.oc"}</a>
-                                </td>
-                            </tr>
-                            
-                            <tr {if empty($urlWeb)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.url.web"} </h3>
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    <a href={$urlWeb} target="_blank">{translate key="informace.url.web"}</a>
-                                </td>
-                            </tr>
-                            
-                            <tr {if empty($bibliografickaCitace)}style="display:none;"{/if}>
-                                <td colspan="2">
-                                   <h3> {translate key="submission.bibliografickaCitace"} </h3>
-                                   <div class="viceInfoBlok"> 
-                                        {$bibliografickaCitace}
-                                   </div>
-                                </td>
-                            </tr>
-                            
-                            <tr {if empty($poznamka)}style="display:none;"{/if}>
-                                <td colspan="2">
-                                    <h3>{translate key="submission.poznamka"}</h3> 
-                                    <div class="viceInfoBlok"> 
-                                        {$poznamka}
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr {if (empty($cena) && empty($poznamka)&& empty($bibliografickaCitace)&& empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran)) || (empty($rightsTyp)&&empty($rightsDrzitel)&&empty($rightsTrvani)&&empty($dedikace))} style="display:none;"{/if}>
-                                <td colspan="2" style="padding-bottom: 10px; border-top: 1px solid #999999;">
-                                </td>
-                            </tr>
-                             
-                            <tr {if empty($rightsTyp)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.rights.typ"}</h3> 
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$rightsTyp}
-                                </td>
-                            </tr>
-                            
-                            <tr {if empty($rightsDrzitel)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.rights.drzitel"}</h3> 
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$rightsDrzitel}
-                                </td>
-                            </tr>
-                            
-                            <tr {if empty($rightsTrvani)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.rights.trvani"}</h3> 
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$rightsTrvani}
-                                </td>
-                            </tr>
-                            
-                            <tr {if empty($dedikace)}style="display:none;"{/if}>
-                                <td colspan="2">
-                                    <h3>{translate key="submission.dedikace"} </h3>
-                                    <div class="viceInfoBlok"> 
-                                        {$dedikace}
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>*}
+                    {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats(true)}
+                    <div class="tabulka_info">
+                        <ul>
+                    {assign var=viceInformaci value=0}
+                    {if count($publicationFormats) >= 1}
+                                {foreach from=$publicationFormats item="publicationFormat"}
+                                        {if $publicationFormat->getIsApproved()}
+                                            {include file="catalog/book/bookPublicationFormatInfoMunipress.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
+                                        {/if}{* $publicationFormat->getIsApproved() *}
+                                {/foreach}{* $publicationFormats *}
+                                        {assign var=viceInformaci value=1}
+                    {/if}
+                    {if !empty($muPracoviste)}
+                        <li>
+                            {translate key="submission.muPracoviste"} <span class="vpravo">{$muPracoviste}</span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}
+                    {if !empty($urlWeb)}
+                        <li>
+                            {translate key="submission.url.web"} <span class="vpravo"><a href={$urlWeb} target="_blank">{translate key="informace.url.web"}</a></span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}
+                    </ul>                
+                    </div>
+                    <div class="textoveInfo">
+
+                        {if !empty($bibliografickaCitace)}
+                            <h3>{translate key="submission.bibliografickaCitace"}</h3> 
+                            {$bibliografickaCitace}
+                            {assign var=viceInformaci value=1}
+                        {/if}
+
+                        {if !empty($poznamka)}
+                            <h3>{translate key="submission.poznamka"}</h3> 
+                            {$poznamka}
+                            {assign var=viceInformaci value=1}
+                        {/if}
+                    </div>
+
+
+                    {if $viceInformaci == 1 && (!empty($rightTyp) || !empty($rightsDrzitel) || !empty($rightsTrvani) || !empty($dedikace)) }<hr />{/if}
+
+
+                    <div class="tabulka_info">
+                        <ul>
+                    {if !empty($rightsTyp)}
+                        <li>
+                            {translate key="submission.rights.typ"} <span class="vpravo">{$rightsTyp}</span>
+                        </li>
+                    {/if}
+                    {if !empty($rightsDrzitel)}
+                        <li>
+                            {translate key="submission.rights.drzitel"} <span class="vpravo">{$rightsDrzitel}</span>
+                        </li>
+                    {/if}
+                    {if !empty($rightsTrvani)}
+                        <li>
+                            {translate key="submission.rights.trvani"} <span class="vpravo">{$rightsTrvani}</span>
+                        </li>
+                    {/if}
+                    </ul>                
+                    </div>
+                    <div class="textoveInfo">
+
+                        {if !empty($dedikace)}
+                            <h3>{translate key="submission.dedikace"}</h3> 
+                            {$dedikace}
+                        {/if}
+
+                    </div>
                 </div>
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
@@ -174,10 +140,10 @@
                             {assign var=url value=$author->getUrl()|strip_unsafe_html}
                             {assign var=uco value=$author->getUCO()|strip_unsafe_html}
                             <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
-                                    {$author->getFullName()}</a>
-				{elseif $uco != '' && $uco != '0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank">{$author->getFullName()}</a>
+                                    <strong>{$author->getFullName()}</strong></a>
+				{elseif $uco != '' && $uco !='0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>
                                 {else}
-                                    {$author->getFullName()}
+                                    <strong>{$author->getFullName()}</strong>
                                 {/if}</p>
                                  
                                     {if $biography != '' || $url != ''}
@@ -193,7 +159,7 @@
                                                 <h3>
                                                     {$author->getFullName()}
                                                 </h3>
-                                                {if $url != ''}<a href="{$url|escape:"quotes"}" target="_blank">{$url|escape}</a><br/>{/if}
+                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$user->getUrl()|escape}</a><br/>{/if}
                                                 {if $uco != '' && $uco != '0'}
                                                     <table style="border:none">
                                                         <tbody>
@@ -244,7 +210,7 @@
 		<div id="downloadTab">
 			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
 			{assign var=currency value=$currentPress->getSetting('currency')}
-			{*{if !$loggedInUsername}<p>{translate key="catalog.loginRequiredForPayment"}</p>{/if}*}
+			{if !$loggedInUsername}<p>{translate key="catalog.loginRequiredForPayment"}</p>{/if}
 			{if $useCollapsedView}
 				<ul class="odr_prazdne">
 					{foreach from=$publicationFormats item=publicationFormat}
