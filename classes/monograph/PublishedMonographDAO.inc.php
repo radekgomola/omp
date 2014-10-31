@@ -77,14 +77,12 @@ class PublishedMonographDAO extends MonographDAO {
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
 				' . $this->_getFetchJoins() . '
-                                ' . ($searchText !== null?'
                                 LEFT JOIN authors a ON s.submission_id = a.submission_id
 				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
-				':'') . '
 				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
 			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
                                 ' . ($searchText !== null?' AND (st.setting_value LIKE ? OR a.first_name LIKE ? OR a.last_name LIKE ?)':'') . '
-			ORDER BY order_by, ps.date_published',
+			ORDER BY st.setting_value',
 			$params,
 			$rangeInfo
 		);
@@ -92,6 +90,162 @@ class PublishedMonographDAO extends MonographDAO {
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
 
+        
+        /**
+	 * Retrieve all published monographs for author.
+	 * @param $authorId int
+	 * @return DAOResultFactory
+	 */
+	function getByAuthorId($authorId) {
+		$primaryLocale = AppLocale::getPrimaryLocale();
+		$locale = AppLocale::getLocale();
+
+		$params = array_merge(
+			array(REALLY_BIG_NUMBER),
+			$this->_getFetchParameters(),
+			array(
+				ASSOC_TYPE_PRESS
+			)
+		);
+                
+                $params[] = $params[] = $params[] = $authorId;
+                
+                $result = $this->retrieveRange(
+			'SELECT	DISTINCT
+                                ps.*,
+				s.*,
+				COALESCE(f.seq, ?) AS order_by,
+				' . $this->_getFetchColumns() . '
+			FROM	published_submissions ps
+				JOIN submissions s ON ps.submission_id = s.submission_id
+				' . $this->_getFetchJoins() . '
+                                LEFT JOIN authors a ON s.submission_id = a.submission_id
+				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
+				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
+			WHERE	ps.date_published IS NOT NULL 
+                                    AND a.first_name = (SELECT aa.first_name FROM authors AS aa WHERE aa.author_id = ?)  
+                                    AND a.last_name = (SELECT aa.last_name FROM authors AS aa WHERE aa.author_id = ?)  
+                                    AND a.email = (SELECT aa.email FROM authors AS aa WHERE aa.author_id = ?)  
+			ORDER BY st.setting_value',
+			$params
+		);
+
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+        
+        /**
+	 * Retrieve all published monographs for author.
+	 * @param $authorId int
+	 * @return DAOResultFactory
+	 */
+	function getByUserAuthorId($userId) {
+		$primaryLocale = AppLocale::getPrimaryLocale();
+		$locale = AppLocale::getLocale();
+
+		$params = array_merge(
+			array(REALLY_BIG_NUMBER),
+			$this->_getFetchParameters(),
+			array(
+				ASSOC_TYPE_PRESS
+			)
+		);
+                
+                $params[] = $params[] = $params[] = $userId;
+                
+                $result = $this->retrieveRange(
+			'SELECT	DISTINCT
+                                ps.*,
+				s.*,
+				COALESCE(f.seq, ?) AS order_by,
+				' . $this->_getFetchColumns() . '
+			FROM	published_submissions ps
+				JOIN submissions s ON ps.submission_id = s.submission_id
+				' . $this->_getFetchJoins() . '
+                                LEFT JOIN authors a ON s.submission_id = a.submission_id
+				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
+				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
+			WHERE	ps.date_published IS NOT NULL 
+                                    AND a.first_name = (SELECT u.first_name FROM users AS u WHERE u.user_id = ?)  
+                                    AND a.last_name = (SELECT u.last_name FROM users AS u WHERE u.user_id = ?)  
+                                    AND a.email = (SELECT u.email FROM users AS u WHERE u.user_id = ?)  
+			ORDER BY st.setting_value',
+			$params
+		);
+
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+        
+        
+        /**
+	 * Vrací autora z uživatele, pokud je.
+	 * @param $authorId int
+	 * @return int
+	 */
+//        function getAuthorIdFromUserId($userId){
+//            $params[] = $params[] = $params[] = $userId;
+//        
+//            $result = $this->retrieveRange(
+//                    'SELECT DISTINCT
+//                                a.author_id
+//			FROM	authors AS a
+//			WHERE	a.first_name = (SELECT u.first_name FROM users AS u WHERE u.user_id = ?)
+//                                AND a.last_name = (SELECT u.last_name FROM users AS u WHERE u.user_id = ?)
+//                                AND a.email = (SELECT u.email FROM users AS u WHERE u.user_id = ?)', 
+//			$params
+//		);
+//            $returner = null;
+//            if ($result->RecordCount() != 0) {
+//                    $returner = $this->_fromRow($result->GetRowAssoc(false));
+//            }
+//
+//            $result->Close();
+//            return $returner;
+//        }
+        
+        
+        /**
+	 * Retrieve all published monographs for author.
+	 * @param $authorId int
+	 * @return DAOResultFactory
+	 */
+//	function getByAuthor($authorName, $authorSurname, $authorEmail) {
+//		$primaryLocale = AppLocale::getPrimaryLocale();
+//		$locale = AppLocale::getLocale();
+//
+//		$params = array_merge(
+//			array(REALLY_BIG_NUMBER),
+//			$this->_getFetchParameters(),
+//			array(
+//				ASSOC_TYPE_PRESS,
+//                                $authorName,
+//                                $authorSurname,
+//                                $authorEmail
+//			)
+//		);
+//                
+//                $result = $this->retrieveRange(
+//			'SELECT	DISTINCT
+//                                ps.*,
+//				s.*,
+//				COALESCE(f.seq, ?) AS order_by,
+//				' . $this->_getFetchColumns() . '
+//			FROM	published_submissions ps
+//				JOIN submissions s ON ps.submission_id = s.submission_id
+//				' . $this->_getFetchJoins() . '
+//                                LEFT JOIN authors a ON s.submission_id = a.submission_id
+//				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
+//				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
+//			WHERE	ps.date_published IS NOT NULL 
+//                                    AND a.first_name = ? 
+//                                    AND a.last_name = ?
+//                                    AND a.email = ?
+//			ORDER BY st.setting_value',
+//			$params
+//		);
+//
+//		return new DAOResultFactory($result, $this, '_fromRow');
+//	}
+        
 	/**
 	 * Retrieve featured monographs for the press homepage.
 	 * @param $pressId int
@@ -137,7 +291,22 @@ class PublishedMonographDAO extends MonographDAO {
 
 		$params[] = REALLY_BIG_NUMBER; // For feature sorting
 
-		$result = $this->retrieveRange(
+//		$result = $this->retrieveRange(
+//			'SELECT	ps.*,
+//				s.*,
+//				' . $this->_getFetchColumns() . '
+//			FROM	published_submissions ps
+//				JOIN submissions s ON ps.submission_id = s.submission_id
+//				' . $this->_getFetchJoins() . '
+//				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = se.series_id)
+//			WHERE	ps.date_published IS NOT NULL AND se.series_id = ?
+//				' . ($pressId?' AND s.context_id = ?':'' ) . '
+//			ORDER BY COALESCE(f.seq, ?) ASC, ps.date_published',
+//			$params,
+//			$rangeInfo
+//		);
+                
+                $result = $this->retrieveRange(
 			'SELECT	ps.*,
 				s.*,
 				' . $this->_getFetchColumns() . '
@@ -145,9 +314,10 @@ class PublishedMonographDAO extends MonographDAO {
 				JOIN submissions s ON ps.submission_id = s.submission_id
 				' . $this->_getFetchJoins() . '
 				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = se.series_id)
+                                LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
 			WHERE	ps.date_published IS NOT NULL AND se.series_id = ?
 				' . ($pressId?' AND s.context_id = ?':'' ) . '
-			ORDER BY COALESCE(f.seq, ?) ASC, ps.date_published',
+			ORDER BY st.setting_value',
 			$params,
 			$rangeInfo
 		);
@@ -174,7 +344,26 @@ class PublishedMonographDAO extends MonographDAO {
 
 		if ($pressId) $params[] = (int) $pressId;
 
-		$result = $this->retrieveRange(
+//		$result = $this->retrieveRange(
+//			'SELECT	DISTINCT ps.*,
+//				s.*,
+//				COALESCE(f.seq, ?) AS order_by,
+//				' . $this->_getFetchColumns() . '
+//			FROM	published_submissions ps
+//				JOIN submissions s ON ps.submission_id = s.submission_id
+//				' . $this->_getFetchJoins() . '
+//				LEFT JOIN submission_categories sc ON (sc.submission_id = s.submission_id AND sc.category_id = ?)
+//				LEFT JOIN series_categories sca ON (sca.series_id = se.series_id)
+//				LEFT JOIN categories c ON (c.category_id = sca.category_id AND c.category_id = ?)
+//				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = ?)
+//			WHERE	ps.date_published IS NOT NULL AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)
+//				' . ($pressId?' AND s.context_id = ?':'' ) . '
+//			ORDER BY order_by, ps.date_published',
+//			$params,
+//			$rangeInfo
+//		);
+                
+                $result = $this->retrieveRange(
 			'SELECT	DISTINCT ps.*,
 				s.*,
 				COALESCE(f.seq, ?) AS order_by,
@@ -186,9 +375,10 @@ class PublishedMonographDAO extends MonographDAO {
 				LEFT JOIN series_categories sca ON (sca.series_id = se.series_id)
 				LEFT JOIN categories c ON (c.category_id = sca.category_id AND c.category_id = ?)
 				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = ?)
+                                LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
 			WHERE	ps.date_published IS NOT NULL AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)
 				' . ($pressId?' AND s.context_id = ?':'' ) . '
-			ORDER BY order_by, ps.date_published',
+			ORDER BY st.setting_value',
 			$params,
 			$rangeInfo
 		);

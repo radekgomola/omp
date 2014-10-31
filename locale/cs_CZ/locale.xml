@@ -699,4 +699,7 @@
     <message key="bookfile.download">Stáhnout</message>
     <message key="submission.flipbook">Prohlížet</message>
     <message key="submission.ceny.openAccess">Open Access</message>
+    
+    <message key="browse.munispace">Munispace</message>
+    <message key="browse.faculties">Fakulty a pracoviště</message>
 </locale>

@@ -18,6 +18,7 @@
 
 switch ($op) {
 	case 'index':
+        case 'seznam_publikaci':
 		define('HANDLER_CLASS', 'VyhledavaniAutoriHandler');
 		import('pages.vyhledavaniAutori.VyhledavaniAutoriHandler');
 		break;

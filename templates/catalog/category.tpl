@@ -15,13 +15,14 @@
 	<h2 class="pkp_helpers_text_left">{$category->getLocalizedTitle()}</h2>
 {/if}
 
-<div class="catalogContainer">
+<div class="catalogContainer" style="max-width: 765px;">
 
 {if $category}
 	{assign var="image" value=$category->getImage()}
 
 	{* Include the carousel view of featured content *}
 	{if $featuredMonographIds|@count}
+            
 		{include file="catalog/carousel.tpl" publishedMonographs=$publishedMonographsFeature featuredMonographIds=$featuredMonographIds}
 	{/if}
         

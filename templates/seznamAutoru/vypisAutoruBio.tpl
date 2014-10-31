@@ -83,31 +83,14 @@
     <h3>{translate key="vizitka.biografie"}</h3>
     {$user->getLocalizedBiography()|nl2br|strip_unsafe_html}
     
-
-{assign var=uLastName value=$user->getLastName()}
-{assign var=uFirstName value=$user->getFirstName()}
-{assign var=uEmail value=$user->getEmail()}
-{assign var=poprve value="false"}
-
-    {foreach from=$autoriPrispevku item='prispevek'}
-        {assign var=pLastName value=$prispevek->getLastName()}
-        {assign var=pFirstName value=$prispevek->getFirstName()}
-        {assign var=pEmail value=$prispevek->getEmail()}
-        
-        
-            {if $pLastName == $uLastName && 
-                $pFirstName == $uFirstName &&
-                $pEmail == $uEmail}
-                {if $poprve == "false"}
-                    <h3>{translate key=prispevky.publikace}</h3>
-                    {assign var=poprve value="true"}
-                {/if}
-                
-                {assign var=idecko value=$prispevek->getSubmissionId()}
-                &#187;<a href="{url page="catalog" op="book" path=$idecko}" target="_blank">{$prispevkyMonograph.$idecko->getLocalizedFullTitle()}</a><br />
-            {/if}
-    {/foreach}
-</p>
+    {if $prispevkyMonograph->getCount() > 0}
+         <h3>{translate key=prispevky.publikace}</h3>
+    {/if}
+    {iterate from=prispevkyMonograph item=autorovaKniha name=loop}
+        {assign var=idecko value=$autorovaKniha->getId()}
+        {assign var=titul value=$autorovaKniha->getLocalizedFullTitle()}
+	&#187;<a href="{url page="catalog" op="book" path=$idecko}" target="_blank">{$titul}</a><br />
+    {/iterate}
 
 </div><!-- content -->
 </div><!-- mainContent -->

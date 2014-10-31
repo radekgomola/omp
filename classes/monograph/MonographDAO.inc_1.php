@@ -167,6 +167,9 @@ class MonographDAO extends SubmissionDAO {
 			)
 		);
                 
+                $file = fopen("c:/local_servers/test.txt", w); 
+                fwrite($file, $monograph->getLicenceExpirace());
+                fclose($file);
                 $this->update(
 			sprintf('UPDATE munipress_metadata
 				SET	a_kol = ?,
@@ -192,25 +195,26 @@ class MonographDAO extends SubmissionDAO {
 				WHERE	submission_id = ?',
                                 $this->datetimeToDB($monograph->getLicenceExpirace()), $this->datetimeToDB($monograph->getLicenceVznik()), $this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly())),			
 			array(
-                                    (int) $monograph->getAKolektiv(),
-                                    (int) $monograph->getCena(),
-                                    (int) $monograph->getCenaEbook(),
-                                    (int) $monograph->getUrlOC(),
-                                    (int) $monograph->getUrlOCEbook(),
-                                    (int) $monograph->getPocetStran(),
-                                    (int) $monograph->getCisloVydani(),
-                                    (int) $monograph->getTypLicencePrepinac(),
-                                    $monograph->getLicenceTyp(),
-                                    $monograph->getLicenceDrzitel(),
-                                    (int) $monograph->getLicenceZverejnit(),
-                                    (int) $monograph->getNaklad(),
-                                    $monograph->getTiskarna(),
-                                    $monograph->getPoznamkaAdmin(),
-                                    $monograph->getHonorarCelkem(),
-                                    $monograph->getHonorarVyplata(),
+                                (int) $monograph->getAKolektiv(),
+                                (int) $monograph->getCena(),
+                                (int) $monograph->getCenaEbook(),
+                                (int) $monograph->getUrlOC(),
+                                (int) $monograph->getUrlOCEbook(),
+                                (int) $monograph->getPocetStran(),
+                                (int) $monograph->getCisloVydani(),
+                                (int) $monograph->getTypLicencePrepinac(),
+                                $monograph->getLicenceTyp(),
+                                $monograph->getLicenceDrzitel(),
+                                (int) $monograph->getLicenceZverejnit(),
+                                (int) $monograph->getNaklad(),
+                                $monograph->getTiskarna(),
+                                $monograph->getPoznamkaAdmin(),
+                                $monograph->getHonorarCelkem(),
+                                $monograph->getHonorarVyplata(),
 				(int) $monograph->getId()
 			)
 		);
+                
 		$this->updateLocaleFields($monograph);
 		$this->flushCache();
 	}

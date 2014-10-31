@@ -71,40 +71,39 @@ class SeznamAutoruHandler extends Handler {
                 foreach($autori as $autor){
                     $firstletter=substr($autor->getLastName(),0,1);
                     $first2letters=substr($autor->getLastName(),0,2);
-                    if (in_array($first2letters, $klicSeznamu) || in_array($firstletter,$klicSeznamu)){
+                    if (in_array($first2letters, $klicSeznamu)){
                         array_push($poleAutoru, $autor);                            
-                    }                     
+                    } elseif (in_array($firstletter,$klicSeznamu) && !in_array($first2letters, $klicSeznamu)){
+                        array_push($poleAutoru, $autor);  
+                    }                    
                 }           
                 
-                $authorDao =& DAORegistry::getDAO('AuthorDAO');
                 $publishedMonographDao =& DAORegistry::getDAO('PublishedMonographDAO');
-
-
                 
-                $autoriPrispevku =& $authorDao->getAuthorsAlphabetizedByPress($press->getId(),null, null);
-                $autoriPrispevku =& $autoriPrispevku->toArray();
-                
-                foreach ($autoriPrispevku as $autorPrispevek) {
-                    $pLastName=$autorPrispevek->getLastName();
-                    $pFirstName=$autorPrispevek->getFirstName();
-                    $pEmail=$autorPrispevek->getEmail();
-                    foreach($poleAutoru as $user){
-                        $uLastName=$user->getLastName();
-                        $uFirstName=$user->getFirstName();
-                        $uEmail=$user->getEmail();
-                        if ($pLastName == $uLastName && 
-                            $pFirstName == $uFirstName &&
-                            $pEmail == $uEmail){
-//                                $prispevkyMonograph[$user->getId()] = $publishedMonographDao->getById($autorPrispevek->getSubmissionId(),$press->getId());                       
-                                if(!$prispevkyMonograph[$user->getId()]){
-                                $prispevkyMonograph[$user->getId()] = array();
-                                }
-                                array_push($prispevkyMonograph[$user->getId()], $publishedMonographDao->getById($autorPrispevek->getSubmissionId(),$press->getId()));
-                            }
-                             
-                    }
-                    
-                }          
+//                $autoriPrispevku =& $authorDao->getAuthorsAlphabetizedByPress($press->getId(),null, null);
+//                $autoriPrispevku =& $autoriPrispevku->toArray();
+//                
+//                foreach ($autoriPrispevku as $autorPrispevek) {
+//                    $pLastName=$autorPrispevek->getLastName();
+//                    $pFirstName=$autorPrispevek->getFirstName();
+//                    $pEmail=$autorPrispevek->getEmail();
+//                    foreach($poleAutoru as $user){
+//                        $uLastName=$user->getLastName();
+//                        $uFirstName=$user->getFirstName();
+//                        $uEmail=$user->getEmail();
+//                        if ($pLastName == $uLastName && 
+//                            $pFirstName == $uFirstName &&
+//                            $pEmail == $uEmail){
+////                                $prispevkyMonograph[$user->getId()] = $publishedMonographDao->getById($autorPrispevek->getSubmissionId(),$press->getId());                       
+//                                if(!$prispevkyMonograph[$user->getId()]){
+//                                $prispevkyMonograph[$user->getId()] = array();
+//                                }
+//                                array_push($prispevkyMonograph[$user->getId()], $publishedMonographDao->getById($autorPrispevek->getSubmissionId(),$press->getId()));
+//                            }
+//                             
+//                    }
+//                    
+//                }          
                 
                 $publishEmail = false;
 
@@ -114,7 +113,7 @@ class SeznamAutoruHandler extends Handler {
 			$templateMgr->assign('country', $country);
 		}
 
-                $templateMgr->assign_by_ref('prispevkyMonograph', $prispevkyMonograph);
+//                $templateMgr->assign_by_ref('prispevkyMonograph', $prispevkyMonograph);
 		$templateMgr->assign_by_ref('publishEmail', $publishEmail);
 
                 $templateMgr->assign_by_ref('abeceda', $abeceda);                
@@ -164,14 +163,27 @@ class SeznamAutoruHandler extends Handler {
                         }
                 }
                 
-                $authorDao =& DAORegistry::getDAO('AuthorDAO');
-                $monographDao =& DAORegistry::getDAO('MonographDAO');
                 $publishedMonographDao =& DAORegistry::getDAO('PublishedMonographDAO');
+
+                $prispevkyMonograph = $publishedMonographDao->getByUserAuthorId($userId);
                 
-                $autoriPrispevku =& $authorDao->getAuthorsAlphabetizedByPress($press->getId(),null, null);
-                $autoriPrispevku =& $autoriPrispevku->toArray();
-                foreach ($autoriPrispevku as $autor) {                
-                    $prispevkyMonograph[$autor->getSubmissionId()] = $publishedMonographDao->getById($autor->getSubmissionId(),$press->getId());                    }
+//                foreach($poleAutoru as $user){
+//                    $lastName=$user->getLastName();
+//                    $firstName=$user->getFirstName();
+//                    $email=$user->getEmail();
+//                    $publishedMonographs = $publishedMonographDao->getByAuthor($firstName, $lastName, $email);
+//                    if($publishedMonographs != NULL){
+//                        if(!$prispevkyMonograph[$user->getId()]){
+//                                $prispevkyMonograph[$user->getId()] = array();
+//                        }
+//                        array_push($prispevkyMonograph[$user->getId()], $publishedMonographs);
+//                    }
+//                }
+//                
+//                $autoriPrispevku =& $authorDao->getAuthorsAlphabetizedByPress($press->getId(),null, null);
+//                $autoriPrispevku =& $autoriPrispevku->toArray();
+//                foreach ($autoriPrispevku as $autor) {                
+//                    $prispevkyMonograph[$autor->getSubmissionId()] = $publishedMonographDao->getById($autor->getSubmissionId(),$press->getId());                    }
                 //$prispevkyMonograph =& $prispevkyMonograph->toArray();
                 
                 // Currently we always publish emails in this mode.
@@ -188,7 +200,6 @@ class SeznamAutoruHandler extends Handler {
 			$templateMgr->assign('country', $country);
 		}
 
-                $templateMgr->assign_by_ref('autoriPrispevku', $autoriPrispevku);
                 $templateMgr->assign_by_ref('prispevkyMonograph', $prispevkyMonograph);
 		$templateMgr->assign_by_ref('user', $user);
 		$templateMgr->assign_by_ref('publishEmail', $publishEmail);

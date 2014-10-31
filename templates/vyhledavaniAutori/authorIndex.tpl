@@ -14,14 +14,23 @@
 {/strip}
 
 <div id="authors">
+    <div class="authors_left">
 {iterate from=authors item=author}
-	{assign var=lastFirstLetter value=$firstLetter}
-	{assign var=firstLetter value=$author->getLastName()|String_substr:0:1}
 
-	{if $lastFirstLetter|lower != $firstLetter|lower}
-			<div id="{$firstLetter|escape}">
-		<h3>{$firstLetter|escape}</h3>
-			</div>
+	{assign var=lastFirstLetter value=$zobrazenePismeno}
+	{assign var=firstLetter value=$author->getLastName()|String_substr:0:1}
+        {assign var=first2Letters value=$author->getLastName()|String_substr:0:2}
+
+        {if $first2Letters|lower == "ch"}
+            {assign var=zobrazenePismeno value=$first2Letters}
+        {else}
+            {assign var=zobrazenePismeno value=$firstLetter}
+        {/if}
+	{if $lastFirstLetter|lower != $zobrazenePismeno|lower}
+
+            <div id="{$zobrazenePismeno|escape}">
+                    <h3>{$zobrazenePismeno|escape}</h3>
+            </div>
 	{/if}
 
 	{assign var=lastAuthorName value=$authorName}
@@ -33,27 +42,21 @@
 	{assign var=authorFirstName value=$author->getFirstName()}
 	{assign var=authorMiddleName value=$author->getMiddleName()}
 	{assign var=authorLastName value=$author->getLastName()}
-        {assign var=submissionId value=$author->getSubmissionId()}
-        {$author->getSubmissionId()}
+        {assign var=authorId value=$author->getId()}
 	{assign var=authorName value="$authorLastName, $authorFirstName"}
-
 	{if $authorMiddleName != ''}{assign var=authorName value="$authorName $authorMiddleName"}{/if}
 	{strip}
-		<a href="{url op="index" path="view" submissionId=$submissionId}">{$authorName|escape}</a>
+		<a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori" op="seznam_publikaci" authorId=$authorId}">{$authorName|escape}</a>
 		{if $authorAffiliation}, {$authorAffiliation|escape}{/if}
-		{if $lastAuthorName == $authorName && $lastAuthorCountry != $authorCountry}
-			{* Disambiguate with country if necessary (i.e. if names are the same otherwise) *}
-			
-		{/if}
-
 	{/strip}
 	<br/>
 {/iterate}
 {if !$authors->wasEmpty()}
 	<br />
-	{page_info iterator=$authors}&nbsp;&nbsp;&nbsp;&nbsp;{page_links anchor="authors" iterator=$authors name="authors" searchInitial=$searchInitial}
-{else}
+        <h4>{page_links anchor="authors" iterator=$authors name="authors" searchInitial=$searchInitial }</h4>
 {/if}
+
+
 </div>
 {include file="common/footer.tpl"}
 

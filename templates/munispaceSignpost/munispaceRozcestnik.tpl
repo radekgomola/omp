@@ -8,9 +8,9 @@
 {include file="common/header.tpl" suppressPageTitle=true}
 {/strip}
 <div>
-    <h2 class="pkp_helpers_text_center"><em>{translate key="munispace.ostatni"}</em></h2>
+    <h2 class="pkp_helpers_text_left">{translate key="munispace.ostatni"}</h2>
     <p>{translate key="munispace.ostatni.description"}</p>
-    <ul class="odr1">
+    <ul class="odr2">
         <li><a href="http://digilib.phil.muni.cz/" target="_blank">http://digilib.phil.muni.cz/</a></li>
         <li><a href="http://is.muni.cz/elportal/studovna.pl" target="_blank">http://is.muni.cz/elportal/studovna.pl</a></li>
         <li><a href="http://eknihy.knihovna.cz/" target="_blank">http://eknihy.knihovna.cz/</a></li>
