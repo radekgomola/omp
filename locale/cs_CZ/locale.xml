@@ -702,4 +702,6 @@
     
     <message key="browse.munispace">Munispace</message>
     <message key="browse.faculties">Fakulty a pracoviště</message>
+    <message key="browse.byAuthors">Procházet podle autorů</message>
+    <message key="search.authorIndex">Procházet podle autorů</message>
 </locale>

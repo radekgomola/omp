@@ -68,9 +68,14 @@ class VyhledavaniAutoriHandler extends Handler {
             
             $templateMgr =& TemplateManager::getManager();
             
+            $authorDao =& DAORegistry::getDAO('AuthorDAO');
+            
+            $author = $authorDao->getById($authorId);
+            
             $publishedMonographDao =& DAORegistry::getDAO('PublishedMonographDAO');
             
             $publishedMonographs =& $publishedMonographDao->getByAuthorId($authorId);
+            $templateMgr->assign('author', $author);
             $templateMgr->assign('publishedMonographs', $publishedMonographs);
             $templateMgr->display('vyhledavaniAutori/authorDetails.tpl');
             

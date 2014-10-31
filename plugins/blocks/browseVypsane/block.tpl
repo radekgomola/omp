@@ -11,7 +11,7 @@
 <div class="block" id="sidebarBrowse">
 
     <span class="blockTitle munipress_underline_gray" style="padding-top: 0px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="newReleases"}">{translate key="navigation.newReleases"}</a></span>
-    <span class="blockTitle munipress_underline_gray" style="padding-top: 0px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori"}">AUTORI</a></span>
+    
     <span class="blockTitle">{translate key="plugins.block.category"}</span>
     <div class="browseCategoryContainer munipress_underline_gray">
         {assign var=test value=true}
@@ -155,6 +155,9 @@
         <span class="blockTitle {if  $browseBlockSelectedCategory == 'munispace'}munipress_helpers_bolder{/if}" style="padding-top: 10px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" path="munispace" op="category"}">{translate key="browse.munispace"}</a></span>
         {$munispace}
     </div>
+    
+    <span class="blockTitle munipress_underline_gray" style="padding-top: 10px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori"}">{translate key="browse.byAuthors"}</a></span>
+    
     <div id="browseFaculties" class="munipress_underline_gray">
         <span class="blockTitle" style="padding-top: 10px;">{translate key="browse.faculties"}</span>
         {$faculties}

@@ -751,4 +751,6 @@ Masaryk University</message>
     
     <message key="browse.munispace">Munispace</message>
     <message key="browse.faculties">Faculties &amp; workplaces</message>
+    <message key="browse.byAuthors">Browse by Authors</message>
+    <message key="search.authorIndex">Browse by Authors</message>
 </locale>
