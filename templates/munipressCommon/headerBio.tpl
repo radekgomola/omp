@@ -9,7 +9,8 @@
  *}
 <!DOCTYPE html>
 <html>
-<head>
+    {include file="core:common/headerHead.tpl"}
+{*<head>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
 	<title>{$pageTitleTranslated|strip_tags}</title>
 	<meta name="description" content="{$metaSearchDescription|escape}" />
@@ -19,14 +20,14 @@
 	{if $displayFavicon}<link rel="icon" href="{$faviconDir}/{$displayFavicon.uploadName|escape:"url"}" type="{$displayFavicon.mimeType|escape}" />{/if}
 
 	
-	{* FIXME: Replace with a smarty template that includes {translate} keys, see #6443. *}
+	{* FIXME: Replace with a smarty template that includes {translate} keys, see #6443. 
 	{if $currentLocale !== 'en_US'}<script src="{$baseUrl}/lib/pkp/js/lib/plupload/i18n/{$currentLocale|escape}.js"></script>{/if}
 
-	{foreach from=$stylesheets item=styleSheetList}{* For all priority sets STYLE_PRIORITY_... *}
-		{foreach from=$styleSheetList item=cssUrl}{* For all stylesheet URLs within this priority set *}
+	{foreach from=$stylesheets item=styleSheetList}{* For all priority sets STYLE_PRIORITY_... 
+		{foreach from=$styleSheetList item=cssUrl}{* For all stylesheet URLs within this priority set 
 			<link rel="stylesheet" href="{$cssUrl}" type="text/css" />
 		{/foreach}
 	{/foreach}
-</head>
+</head>*}
 <body>
 

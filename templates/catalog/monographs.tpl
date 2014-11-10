@@ -52,7 +52,7 @@
                 {else}
 
 		{iterate from=publishedMonographs item=publishedMonograph name=loop}
-			{include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph inline=true}
+			{include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph inline=true vyhledavaniAutori=$vyhledavaniAutori}
 		{/iterate}
                 {/if}
 		</ul>

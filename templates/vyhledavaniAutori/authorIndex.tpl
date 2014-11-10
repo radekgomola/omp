@@ -12,7 +12,9 @@
 {assign var="pageTitle" value="search.authorIndex"}
 {include file="common/header.tpl"}
 {/strip}
-
+<script type="text/javascript">
+  hs.minWidth = 800;
+</script>
 <div id="authors">
     <div class="authors_left">
 {iterate from=authors item=author}
@@ -46,7 +48,7 @@
 	{assign var=authorName value="$authorLastName, $authorFirstName"}
 	{if $authorMiddleName != ''}{assign var=authorName value="$authorName $authorMiddleName"}{/if}
 	{strip}
-		<a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori" op="seznam_publikaci" authorId=$authorId}">{$authorName|escape}</a>
+		<a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori" op="seznam_publikaci" authorId=$authorId}" onclick="return hs.htmlExpand(this, {ldelim}objectType: 'iframe'{rdelim})">{$authorName|escape}</a>
 		{if $authorAffiliation}, {$authorAffiliation|escape}{/if}
 	{/strip}
 	<br/>

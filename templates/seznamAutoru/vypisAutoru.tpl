@@ -50,7 +50,7 @@
              <ul class="seznamAutoru">
     {foreach from=$poleAutoru item=autor}              
                     
-                    <li><a href="{url op="vypisAutoruBio" path=$autor->getId()}" {literal}onclick="return hs.htmlExpand(this, {objectType: 'iframe'})"{/literal}>
+                    <li><a href="{url op="vypisAutoruBio" path=$autor->getId()}" onclick="return hs.htmlExpand(this, {ldelim}objectType: 'iframe'{rdelim})">
                     {$autor->getFullName(true)|escape}
                         </a>
                 {if $autor->getSalutation() || $autor->getSuffix()} ({/if}

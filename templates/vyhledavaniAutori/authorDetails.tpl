@@ -10,12 +10,12 @@
  *}
 {strip}
 {assign var="pageTitleName" value=$author->getFullName()}
-{include file="common/header.tpl"}
+{include file="munipressCommon/headerBio.tpl"}
 {/strip}
 <div id="authorDetails">
 
-{include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs}
+{include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs vyhledavaniAutori="true"}
 
 </div>
-{include file="common/footer.tpl"}
+
 

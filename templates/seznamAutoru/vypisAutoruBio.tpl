@@ -10,7 +10,7 @@
  *}
 {strip}
 {assign var="pageTitle" value="seznam.vypisAutoru.profil"}
-{include file="seznamAutoru/headerBio.tpl"}
+{include file="munipressCommon/headerBio.tpl"}
 {/strip}
 {literal}
 <script type="text/javascript">
