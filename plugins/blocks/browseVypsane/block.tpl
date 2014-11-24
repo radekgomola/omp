@@ -12,8 +12,8 @@
 
     <span class="blockTitle munipress_underline_gray" style="padding-top: 0px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="newReleases"}">{translate key="navigation.newReleases"}</a></span>
     
-    <span class="blockTitle">{translate key="plugins.block.category"}</span>
-    <div class="browseCategoryContainer munipress_underline_gray">
+    {*<span class="blockTitle">{translate key="plugins.block.category"}</span>*}
+    <div class="browseCategoryContainer {*munipress_underline_gray*}">
         {assign var=test value=true}
         {iterate from=browseCategories item=browseCategory}
         {assign var=categoryParentId value=$browseCategory->getParentId()}
@@ -24,6 +24,7 @@
                 {assign var=active value=false}
             {else}
                 {if $id <> 26 && $id <> 32}
+                    {*
                     {if !empty($content)}
                         {capture assign='cont'}
                             <ul class="block_ul_browse block_ul">
@@ -46,7 +47,7 @@
                                                               extraContent=$cont
                                                               cesta=$cesta
                         }
-                    </div>
+                    </div>*}
                 {elseif $id == 26}
                     {if !empty($content)}
                         {capture assign='munispace'}
@@ -103,7 +104,7 @@
         {*            Iteruje posledni polozku -> protoze vypisuji kategorie zpetne*}
         
         {if $id <> 26 && $id <> 32}
-            {if !empty($content)}
+           {* {if !empty($content)}
                 {capture assign='cont'}
                     <ul class="odr_classic2">
                         {foreach from=$content item=jeden}
@@ -123,7 +124,7 @@
                         extraContent=$cont
                         cesta=$cesta
             }
-            </div> 
+            </div> *}
         {elseif $id == 26}
             {if !empty($content)}
                 {capture assign='munispace'}
@@ -158,11 +159,11 @@
     
     <span class="blockTitle munipress_underline_gray" style="padding-top: 10px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori"}">{translate key="browse.byAuthors"}</a></span>
     
-    <div id="browseFaculties" class="munipress_underline_gray">
+    <div id="browseFaculties" {*class="munipress_underline_gray"*}>
         <span class="blockTitle" style="padding-top: 10px;">{translate key="browse.faculties"}</span>
         {$faculties}
     </div>
-    <div id="browseSeriesContainer">
+    {*<div id="browseSeriesContainer">
         <span class="blockTitle" style="padding-top:10px;">{translate key="plugins.block.edice"}</span>
         <ul class="block_ul">
             {iterate from=browseSeries item=browseSeriesItem}
@@ -171,5 +172,5 @@
                 <a class="block_link {if $browseBlockSelectedSeries == $browseSeriesItem->getPath()}munipress_helpers_bold munipress_helpers_black{/if}" href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="series" path=$browseSeriesItem->getPath()}">{$browseSeriesItem->getLocalizedTitle()|escape}</a>
             </li>
             {/iterate}    
-    </div>
+    </div>*}
 </div>

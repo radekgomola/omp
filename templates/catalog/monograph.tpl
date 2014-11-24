@@ -9,7 +9,7 @@
  *}
 
 <li class="pkp_catalog_monograph {if $inline}pkp_helpers_align_left{/if}">
-	<a class="pkp_helpers_image_left" href="{url page="catalog" op="book" path=$publishedMonograph->getId()}">
+	<a class="pkp_helpers_image_left" href="{url page="catalog" op="book" path=$publishedMonograph->getId()}" {if $vyhledavaniAutori=="true"}target="_blank"{/if}>
 		{include file="controllers/monographList/coverImage.tpl" monograph=$publishedMonograph}
 	</a>
 {*	<div class="pkp_catalog_monographDetails">*}

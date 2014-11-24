@@ -9,6 +9,11 @@
  *}
 <!DOCTYPE html>
 <html>
+    {if $pageTitleName}
+        {assign var=pageTitleTranslated value=$pageTitleName}
+    {else}
+        {if !$pageTitleTranslated}{translate|assign:"pageTitleTranslated" key=$pageTitle}{/if}
+    {/if}
     {include file="core:common/headerHead.tpl"}
 {*<head>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />

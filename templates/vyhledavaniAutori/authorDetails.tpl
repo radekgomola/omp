@@ -13,7 +13,7 @@
 {include file="munipressCommon/headerBio.tpl"}
 {/strip}
 <div id="authorDetails">
-
+    <h2>{$pageTitleName}</h2>
 {include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs vyhledavaniAutori="true"}
 
 </div>

@@ -120,7 +120,7 @@
                     {/if}
                     {if !empty($rightsTrvani)}
                         <li>
-                            </strong>{translate key="submission.rights.trvani"}</strong> <span class="vpravo">{$rightsTrvani}</span>
+                            <strong>{translate key="submission.rights.trvani"}</strong> <span class="vpravo">{$rightsTrvani}</span>
                         </li>
                     {/if}
                     </ul>                

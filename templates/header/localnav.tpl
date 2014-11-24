@@ -51,13 +51,13 @@
 				<li><a href="{url router=$smarty.const.ROUTE_PAGE page="dashboard"}">{translate key="navigation.dashboard"}</a></li>
 			{/if}
 			{if $currentPress}
-                        <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">{translate key="navigation.catalog"}</a>
+                        {*<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">{translate key="navigation.catalog"}</a>
                             <ul>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="monography"}" target="_self">{translate key="navigation.produkce.knihy"}</a></li>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="journals"}" target="_self">{translate key="navigation.produkce.casopisy"} </a></li>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="e_books"}" target="_self">{translate key="navigation.produkce.eknihy"} </a></li>
                             </ul>    
-                        </li>
+                        </li>*}
                         <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace" target="_self">{translate key="navigation.munispace.link"}</a>
                             <ul>
                                 <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_books" target="_self">{translate key="navigation.munispace.books"}</a></li>
@@ -100,13 +100,13 @@
 	{else}{* !$isUserLoggedIn *}
 		<ul class="sf-menu">
 			<li><a href="{url router=$smarty.const.ROUTE_PAGE page="index"}">{translate key="navigation.home"}</a></li>
-			<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">{translate key="navigation.catalog"}</a>
+			{*<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">{translate key="navigation.catalog"}</a>
                             <ul>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="monography"}" target="_self">{translate key="navigation.produkce.knihy"}</a></li>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="journals"}" target="_self">{translate key="navigation.produkce.casopisy"} </a></li>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="e_books"}" target="_self">{translate key="navigation.produkce.eknihy"} </a></li>
                             </ul>   
-                        </li>
+                        </li>*}
                         <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace" target="_self">{translate key="navigation.munispace.link"}</a>
                             <ul>
                                 <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_books" target="_self">{translate key="navigation.munispace.books"}</a></li>

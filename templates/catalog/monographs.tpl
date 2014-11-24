@@ -44,7 +44,7 @@
             </div>
         {/if}
 	{if $count>0}
- 		<ul class="pkp_helpers_clear">
+ 		<ul class="pkp_helpers_clear" style="margin-left: 5px;">
                 {if $search=='ano'}
                     {foreach from=$publishedMonographs item=publishedMonograph}
                         {include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph}
