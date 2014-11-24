@@ -4,14 +4,14 @@
  * Under construction page.
  *}
 {strip}
-{assign var="pageTitle" value="seznam.vypisAutoru"}
-{include file="common/header.tpl" suppressPageTitle=true}
+{assign var="pageTitle" value="informace.publikujteSnami"}
+{include file="common/header.tpl"}
 {/strip}
 <div id="proAutory">
     <p class="nahoru"><a href="#kotva">&uarr;</a></p>
 <div style="width: 97%; text-align: justify;">
   <a name="kotva"></a>
-  
+  <br />
   <h2 style="font-size: 1.3em;"><strong>Vážení autoři a editoři,</strong></h2>
   <p>Masarykova univerzita si váží Vašeho tvůrčího potenciálu a podporuje Vaši ambici psaným slovem zprostředkovat výsledky vědeckého bádání akademické i širší odborné veřejnosti. Psaní odborné práce je dlouhodobá, namáhavá a náročná činnost, se kterou si z větší části budete muset poradit sami. Naše Nakladatelství Vám však může pomoci dotvořit Váš text do podoby kvalitní publikace, jež bezpochyby obstojí v současné nabídce odborné literatury. Vašim rukopisům se u nás dostane odborné redakční péče, nadstandardní typografické a grafické úpravy a dobrého polygrafického zpracování. Zvláštní pozornost věnujeme uvedení díla na knižní trh. To vše pod prestižní univerzitní značkou Munipress.
   </p>

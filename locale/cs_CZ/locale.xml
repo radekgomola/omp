@@ -500,7 +500,7 @@
     <message key="navigation.infoProDistributory.long">Informace pro distributory</message>
     <message key="navigation.infoProMedia.long">Informace pro media</message>
     <message key="navigation.infoKeStazeni.long">Data ke stažení</message>
-    <message key="navigation.infoDoiCrossref.long">Informace o Doi a Crossref</message>
+    <message key="navigation.infoDoiCrossref.long">DOI, CrossRef a možnosti jejich využití na MU</message>
     <message key="navigation.objednavkaVMuniPressu">Objednat v Nakladatelství</message>
     <message key="navigation.knihkupectvi">Internetové knihkupectví</message>
     <message key="navigation.prodejny">Prodejny knih na MU</message>
@@ -704,4 +704,25 @@
     <message key="browse.faculties">Fakulty a pracoviště</message>
     <message key="browse.byAuthors">Procházet podle autorů</message>
     <message key="search.authorIndex">Procházet podle autorů</message>
+
+    <message key="doiCrossref.aktualni.zobraz"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.aktualni.skryj"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(skrýt)]]></message>
+    <message key="doiCrossref.zakladni.zobraz"><![CDATA[<h3  class="proAutory"><a name="zakladni"></a>Základní informace o&nbsp;DOI a&nbsp;CrossRef</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.zakladni.skryj"><![CDATA[<h3  class="proAutory"><a name="zakladni"></a>Základní informace o&nbsp;DOI a&nbsp;CrossRef</h3>(skrýt)]]></message>
+    <message key="doiCrossref.povinnosti.zobraz"><![CDATA[<h3  class="proAutory"><a name="povinnosti"></a>Jaké jsou povinnosti členů CrossRef při přidělování DOI?</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.povinnosti.skryj"><![CDATA[<h3  class="proAutory"><a name="povinnosti"></a>Jaké jsou povinnosti členů CrossRef při přidělování DOI?</h3>(skrýt)]]></message>
+    <message key="doiCrossref.zapojeni.zobraz"><![CDATA[<h3  class="proAutory"><a name="zapojeni"></a>Zapojení MU do DOI/CrossRef</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.zapojeni.skryj"><![CDATA[<h3  class="proAutory"><a name="zapojeni"></a>Zapojení MU do DOI/CrossRef</h3>(skrýt)]]></message>
+    <message key="doiCrossref.doplnujici.zobraz"><![CDATA[<h3  class="proAutory"><a name="doplnujici"></a>Doplňující informace o&nbsp;DOI/CrossRef</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.doplnujici.skryj"><![CDATA[<h3  class="proAutory"><a name="doplnujici"></a>Doplňující informace o&nbsp;DOI/CrossRef</h3>(skrýt)]]></message>
+    <message key="doiCrossref.zdroje.zobraz"><![CDATA[<h3  class="proAutory">Hlavní použité zdroje:</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.zdroje.skryj"><![CDATA[<h3  class="proAutory">Hlavní použité zdroje:</h3>(skrýt)]]></message>
+    
+    <message key="informace.publikujteSnami">Publikujte s námi</message>
 </locale>

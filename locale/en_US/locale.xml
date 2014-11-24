@@ -569,7 +569,7 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
         <message key="navigation.infoProDistributory.long">Information For Distributors</message>
         <message key="navigation.infoProMedia.long">Information For Media</message>
         <message key="navigation.infoKeStazeni.long">Information Download</message>
-        <message key="navigation.infoDoiCrossref.long">Information about Doi, Crossref</message>
+        <message key="navigation.infoDoiCrossref.long">DOI, CrossRef and their use at MU (Czech only)</message>
         <message key="navigation.objednavkaVMuniPressu">Order at MU Press</message>
         <message key="navigation.knihkupectvi">Munipress on-line bookstore</message>
         <message key="navigation.prodejny">Bookstores at MU</message>
@@ -753,4 +753,52 @@ Masaryk University</message>
     <message key="browse.faculties">Faculties &amp; workplaces</message>
     <message key="browse.byAuthors">Browse by Authors</message>
     <message key="search.authorIndex">Browse by Authors</message>
+    
+    <!--Doi crossref-->
+    <message key="doiCrossref.aktualni.zobraz"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.aktualni.skryj"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(skrýt)]]></message>
+    <message key="doiCrossref.zakladni.zobraz"><![CDATA[<h3  class="proAutory"><a name="zakladni"></a>Základní informace o&nbsp;DOI a&nbsp;CrossRef</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.zakladni.skryj"><![CDATA[<h3  class="proAutory"><a name="zakladni"></a>Základní informace o&nbsp;DOI a&nbsp;CrossRef</h3>(skrýt)]]></message>
+    <message key="doiCrossref.povinnosti.zobraz"><![CDATA[<h3  class="proAutory"><a name="povinnosti"></a>Jaké jsou povinnosti členů CrossRef při přidělování DOI?</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.povinnosti.skryj"><![CDATA[<h3  class="proAutory"><a name="povinnosti"></a>Jaké jsou povinnosti členů CrossRef při přidělování DOI?</h3>(skrýt)]]></message>
+    <message key="doiCrossref.zapojeni.zobraz"><![CDATA[<h3  class="proAutory"><a name="zapojeni"></a>Zapojení MU do DOI/CrossRef</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.zapojeni.skryj"><![CDATA[<h3  class="proAutory"><a name="zapojeni"></a>Zapojení MU do DOI/CrossRef</h3>(skrýt)]]></message>
+    <message key="doiCrossref.doplnujici.zobraz"><![CDATA[<h3  class="proAutory"><a name="doplnujici"></a>Doplňující informace o&nbsp;DOI/CrossRef</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.doplnujici.skryj"><![CDATA[<h3  class="proAutory"><a name="doplnujici"></a>Doplňující informace o&nbsp;DOI/CrossRef</h3>(skrýt)]]></message>
+    <message key="doiCrossref.zdroje.zobraz"><![CDATA[<h3  class="proAutory">Hlavní použité zdroje:</h3>(zobrazit)]]>
+</message>
+    <message key="doiCrossref.zdroje.skryj"><![CDATA[<h3  class="proAutory">Hlavní použité zdroje:</h3>(skrýt)]]></message>
+    
+    <!--Pro autory-->
+    <message key="proAurory.edicniOddeleni.zobraz"><![CDATA[<h3 class="proAutory">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.edicniOddeleni.skryj"><![CDATA[<h3 class="proAutory">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(skrýt)]]></message>
+    <message key="proAurory.odbornaKniha.zobraz"><![CDATA[<h3 class="proAutory">Odborná kniha </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.odbornaKniha.skryj"><![CDATA[<h3 class="proAutory">Odborná kniha</h3>(skrýt)]]></message>
+    <message key="proAurory.rukopis.zobraz"><![CDATA[<h3 class="proAutory">Rukopis</h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.rukopis.skryj"><![CDATA[<h3 class="proAutory">Rukopis </h3>(skrýt)]]></message>
+    <message key="proAurory.recenzniRizeni.zobraz"><![CDATA[<h3 class="proAutory">Recenzní řízení </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.recenzniRizeni.skryj"><![CDATA[<h3 class="proAutory">Recenzní řízení </h3>(skrýt)]]></message>
+    <message key="proAurory.navrhovyList.zobraz"><![CDATA[<h3 class="proAutory">Návrhový list </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.navrhovyList.skryj"><![CDATA[<h3 class="proAutory">Návrhový list </h3>(skrýt)]]></message>
+    <message key="proAurory.medotikaHodnoceni.zobraz"><![CDATA[<h3 class="proAutory">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.medotikaHodnoceni.skryj"><![CDATA[<h3 class="proAutory">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(skrýt)]]></message>
+    <message key="proAurory.licenceCC.zobraz"><![CDATA[<h3 class="proAutory">Licence Creative Commons </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.licenceCC.skryj"><![CDATA[<h3 class="proAutory">Licence Creative Commons </h3>(skrýt)]]></message>
+    <message key="proAurory.autorskyZakon.zobraz"><![CDATA[<h3 class="proAutory">Autorský zákon – použití děl jiných autorů ve výuce </h3>(zobrazit)]]>
+</message>
+    <message key="proAurory.autorskyZakon.skryj"><![CDATA[<h3 class="proAutory">Autorský zákon – použití děl jiných autorů ve výuce </h3>(skrýt)]]></message>
+    
+    <message key="informace.publikujteSnami">Publish with us (Czech only)</message>
 </locale>
