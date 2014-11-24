@@ -20,6 +20,9 @@
     <a href="#zakladni">Základní informace o&nbsp;DOI a&nbsp;CrossRef</a>
   </li>
   <li>
+    <a href="#povinnosti">Jaké jsou povinnosti členů CrossRef při přidělování DOI?</a>
+  </li>
+  <li>
     <a href="#zapojeni">Zapojení MU do DOI/CrossRef</a>
   </li>
   <li>
