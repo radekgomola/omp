@@ -97,7 +97,7 @@ class MonographDAO extends SubmissionDAO {
                 
                 $this->update(
 			sprintf('INSERT INTO munipress_metadata
-				(submission_id, a_kol, cena, cena_ebook, urlOC, urlOC_ebook, pocetStran, cisloVydani, licenceTypPrepinac, licenceTyp, licenceDrzitel, licenceExpirace, licenceVznik, licenceZverejnit, naklad, tiskarna, poznamkaAdmin, honorarCelkem, honorarVyplata, povVytiskyDosly, povVytiskyOdesly)
+				(submission_id, a_kol, cena, cena_ebook, url_oc, url_oc_ebook, pocet_stran, cislo_vydani, licence_typ_prepinac, licence_typ, licence_drzitel, licence_expirace, licence_vznik, licence_zverejnit, naklad_db, tiskarna_db, poznamka_admin, honorar_celkem, honorar_vyplata, pov_vytisky_dosly, pov_vytisky_odesly)
 				VALUES
 				(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, %s, %s, ?, ?, ?, ?, ?, ?, %s, %s)',
 				$this->datetimeToDB($monograph->getLicenceExpirace()), $this->datetimeToDB($monograph->getLicenceVznik()), $this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly())),
@@ -172,23 +172,23 @@ class MonographDAO extends SubmissionDAO {
 				SET	a_kol = ?,
                                         cena = ?,
                                         cena_ebook = ?,
-					urlOC = ?,
-					urlOC_ebook = ?,
-                                        pocetStran = ?,
-					cisloVydani = ?,
-					licenceTypPrepinac = ?,
-					licenceTyp = ?,
-					licenceDrzitel = ?,
-					licenceExpirace = %s,
-					licenceVznik = %s,
-					licenceZverejnit = ?,
-					naklad = ?,
-                                        tiskarna = ?,
-					poznamkaAdmin = ?,
-                                        honorarCelkem = ?,
-					honorarVyplata = ?,
-                                        povVytiskyDosly = %s,
-					povVytiskyOdesly = %s
+					url_oc = ?,
+					url_oc_ebook = ?,
+                                        pocet_stran = ?,
+					cislo_vydani = ?,
+					licence_typ_prepinac = ?,
+					licence_typ = ?,
+					licence_drzitel = ?,
+					licence_expirace = %s,
+					licence_vznik = %s,
+					licence_zverejnit = ?,
+					naklad_db = ?,
+                                        tiskarna_db = ?,
+					poznamka_admin = ?,
+                                        honorar_celkem = ?,
+					honorar_vyplata = ?,
+                                        pov_vytisky_dosly = %s,
+					pov_vytisky_odesly = %s
 				WHERE	submission_id = ?',
                                 $this->datetimeToDB($monograph->getLicenceExpirace()), $this->datetimeToDB($monograph->getLicenceVznik()), $this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly())),			
 			array(
