@@ -239,7 +239,7 @@
     <message key="common.listbuilder.selectValidOption">Vyberte prosím platnou položku ze seznamu.</message>
     <message key="common.listbuilder.itemExists">Stejnou položku nelze přidat dvakrát.</message>
     <message key="common.catalogInformation">Katalogové informace je (vedle jména a abstraktu) třeba vyplnit při prvotním zadávání díla do systému.</message>
-    <message key="common.prefixAndTitle.tip">Pokud název knihy začíná znaky ôçťa "ôçł, ôçťtheôçł nebo podobnými, zadejte slovo do pole Prefix.</message>
+    <message key="common.prefixAndTitle.tip">Pokud kniha začíná nějakým prefixem, například anglickým "A'" nebo "The" (nebo něčím podobným, co má být vyňato z lexikografického třídění) vložte slovo do pole pro Prefix.</message>
     <message key="common.openMonographPress">Open Monograph Press</message>
     <message key="common.omp">OMP</message>
     <message key="common.homePageHeader.altText">Záhlaví úvodní stránky</message>
@@ -304,7 +304,7 @@
     <message key="about.pressContact">Kontakt</message>
     <message key="about.aboutThePress">O nakladatelství</message>
     <message key="about.editorialTeam"><![CDATA[Redakční&nbsp;tým]]></message>
-    <message key="about.editorialPolicies">Redakční zásady</message>
+    <message key="about.editorialPolicies">Ediční zásady</message>
     <message key="about.focusAndScope">Zaměření a oblast působnosti</message>
     <message key="about.seriesPolicies">Zásady pro edice a kategorie</message>
     <message key="about.submissions">Příspěvky</message>
