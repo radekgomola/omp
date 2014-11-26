@@ -97,9 +97,9 @@ class MonographDAO extends SubmissionDAO {
                 
                 $this->update(
 			sprintf('INSERT INTO munipress_metadata
-				(submission_id, a_kol, cena, cena_ebook, url_oc, url_oc_ebook, pocet_stran, cislo_vydani, licence_typ_prepinac, licence_typ, licence_drzitel, licence_expirace, licence_vznik, licence_zverejnit, naklad_db, tiskarna_db, poznamka_admin, honorar_celkem, honorar_vyplata, pov_vytisky_dosly, pov_vytisky_odesly)
+				(submission_id, a_kol, cena, cena_ebook, url_oc, url_oc_ebook, pocet_stran, cislo_vydani, archiv, licence_typ_prepinac, licence_typ, licence_drzitel, licence_expirace, licence_vznik, licence_zverejnit, naklad_db, tiskarna_db, poznamka_admin, honorar_celkem, honorar_vyplata, pov_vytisky_dosly, pov_vytisky_odesly)
 				VALUES
-				(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, %s, %s, ?, ?, ?, ?, ?, ?, %s, %s)',
+				(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, %s, %s, ?, ?, ?, ?, ?, ?, %s, %s)',
 				$this->datetimeToDB($monograph->getLicenceExpirace()), $this->datetimeToDB($monograph->getLicenceVznik()), $this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly())),
 			array(
                                 (int) $monograph->getId(),
@@ -110,6 +110,7 @@ class MonographDAO extends SubmissionDAO {
 				(int) $monograph->getUrlOCEbook(),
 				(int) $monograph->getPocetStran(),
 				(int) $monograph->getCisloVydani(),
+                                $monograph->getArchivace() ? 1:0,
 				(int) $monograph->getTypLicencePrepinac(),
 				$monograph->getLicenceTyp(),
 				$monograph->getLicenceDrzitel(),
@@ -176,6 +177,7 @@ class MonographDAO extends SubmissionDAO {
 					url_oc_ebook = ?,
                                         pocet_stran = ?,
 					cislo_vydani = ?,
+                                        archiv = ?,
 					licence_typ_prepinac = ?,
 					licence_typ = ?,
 					licence_drzitel = ?,
@@ -199,6 +201,7 @@ class MonographDAO extends SubmissionDAO {
                                     (int) $monograph->getUrlOCEbook(),
                                     (int) $monograph->getPocetStran(),
                                     (int) $monograph->getCisloVydani(),
+                                    $monograph->getArchivace() ? 1:0,
                                     (int) $monograph->getTypLicencePrepinac(),
                                     $monograph->getLicenceTyp(),
                                     $monograph->getLicenceDrzitel(),

@@ -573,6 +573,8 @@
     <message key="submission.povinneVytisky.odesly">odešly</message>
     <message key="submission.tiskarna">Tiskárna</message>
     <message key="submission.poznamka.admin">Poznámka neveřejná</message>
+    <message key="submission.archivace">Archivovat příspěvek</message>
+    <message key="submission.archivace.description">Archivovaný příspěvěk se nebude zobrazovat ve výpisu publikací, ani ve správě produkce.</message>
        
     <message key="informace.url.web">Přejít na www</message>
     <message key="informace.url.oc">Přejít do obchodního centra</message>
@@ -725,4 +727,5 @@
     <message key="doiCrossref.zdroje.skryj"><![CDATA[<h3  class="proAutory">Hlavní použité zdroje:</h3>(skrýt)]]></message>
     
     <message key="informace.publikujteSnami">Publikujte s námi</message>
+    
 </locale>

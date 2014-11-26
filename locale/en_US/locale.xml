@@ -728,6 +728,8 @@ Masaryk University</message>
     <message key="submission.povinneVytisky.odesly">Left</message>
     <message key="submission.tiskarna">Printer</message>
     <message key="submission.poznamka.admin">Note Confidential</message>
+    <message key="submission.archivace">Archive submission</message>
+    <message key="submission.archivace.description">Archived submissions will not appear in the list of publications, nor in production management. </message>
     
     
     <message key="informace.url.web">Go to www</message>
