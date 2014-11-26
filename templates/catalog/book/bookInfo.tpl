@@ -25,26 +25,31 @@
 </script>
 
 <div class="bookInfo">
-    {*{assign var="cena" value=$publishedMonograph->getLocalizedCena()|strip_unsafe_html}
-    {assign var="cena_ebook" value=$publishedMonograph->getLocalizedCenaEbook()|strip_unsafe_html}
-    {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}*}
-    {assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
-    {*{assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
-    {assign var="urlOC_ebook" value=$publishedMonograph->getLocalizedUrlOCEbook()|strip_unsafe_html}*}
+    {*{assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}*}
     {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
-    {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
+    {assign var="cisloVydani" value=$publishedMonograph->getCisloVydani()|strip_unsafe_html}
+    {if $publishedMonograph->getLicenceZverejnit()==1}
+        {assign var="rightsTyp" value=$publishedMonograph->getLicenceTyp()|strip_unsafe_html}
+        {assign var="rightsDrzitel" value=$publishedMonograph->getLicenceDrzitel()|strip_unsafe_html}
+        {assign var="rightsTrvani" value=$publishedMonograph->getLicenceExpirace()|strip_unsafe_html}
+    {/if}
+   
+    {assign var="typPublikace" value=$publishedMonograph->getLocalizedTypPublikace()|strip_unsafe_html}
     {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
-    {assign var="rightsTyp" value=$publishedMonograph->getLocalizedRightsTyp()|strip_unsafe_html}
-    {assign var="rightsDrzitel" value=$publishedMonograph->getLocalizedRightsDrzitel()|strip_unsafe_html}
-    {assign var="rightsTrvani" value=$publishedMonograph->getLocalizedRightsTrvani()|strip_unsafe_html}
+    {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
     {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
+    
+    {if $publishedMonograph->getAKolektiv()==1}
+        {assign var="a_kol" value=", a kol."}
+    {else}
+        {assign var="a_kol" value=""}
+    {/if}
     
     
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
-		<div class="authorName">{$publishedMonograph->getAuthorString()}</div>
+		<div class="authorName">{$publishedMonograph->getAuthorString()}{$a_kol}</div>
 	</div>
-
 	<div id="bookInfoTabs">
 		<ul>
 			<li><a href="#abstractTab">{translate key="submission.synopsis"}</a></li>
@@ -72,6 +77,18 @@
                                         {assign var=viceInformaci value=1}
                                         <br />
                     {/if}
+                    {if !empty($typPublikace)}
+                        <li>
+                            <strong>{translate key="submission.typ_02_58"}</strong><span class="vpravo">{$typPublikace}</a></span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}
+                    {if !empty($cisloVydani) && $cisloVydani !=0}
+                        <li>
+                            <strong>{translate key="submission.cisloVydani"}</strong><span class="vpravo">{$cisloVydani}</a></span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}
                     {if !empty($muPracoviste)}
                         <li>
                             <strong>{translate key="submission.muPracoviste"}</strong> <span class="vpravo">{$muPracoviste}</span>
@@ -84,6 +101,7 @@
                         </li>
                         {assign var=viceInformaci value=1}
                     {/if}
+                    
                     </ul>                
                     </div>
                     <div class="textoveInfo">
@@ -142,7 +160,7 @@
                         {translate key="catalog.autori"}:
 			{foreach from=$authors item=author}
                             {assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
-                            {assign var=url value=$author->getUrl()|strip_unsafe_html}
+{*                            {assign var=url value=$author->getUrl()|strip_unsafe_html}*}
                             {assign var=uco value=$author->getUCO()|strip_unsafe_html}
                             <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
                                     <strong>{$author->getFullName()}</strong></a>
@@ -164,7 +182,7 @@
                                                 <h3>
                                                     {$author->getFullName()}
                                                 </h3>
-                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$user->getUrl()|escape}</a><br/>{/if}
+{*                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$autor->getUrl()|escape}</a><br/>{/if}*}
                                                 {if $uco != '' && $uco != '0'}
                                                     <table style="border:none">
                                                         <tbody>

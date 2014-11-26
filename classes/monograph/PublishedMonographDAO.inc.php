@@ -72,10 +72,12 @@ class PublishedMonographDAO extends MonographDAO {
 			'SELECT	DISTINCT
                               ps.*,
 				s.*,
+                                munis.*,
 				COALESCE(f.seq, ?) AS order_by,
 				' . $this->_getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->_getFetchJoins() . '
                                 LEFT JOIN authors a ON s.submission_id = a.submission_id
 				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
@@ -114,10 +116,12 @@ class PublishedMonographDAO extends MonographDAO {
 			'SELECT	DISTINCT
                                 ps.*,
 				s.*,
+                                munis.*,
 				COALESCE(f.seq, ?) AS order_by,
 				' . $this->_getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->_getFetchJoins() . '
                                 LEFT JOIN authors a ON s.submission_id = a.submission_id
 				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
@@ -156,10 +160,12 @@ class PublishedMonographDAO extends MonographDAO {
 			'SELECT	DISTINCT
                                 ps.*,
 				s.*,
+                                munis.*,
 				COALESCE(f.seq, ?) AS order_by,
 				' . $this->_getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->_getFetchJoins() . '
                                 LEFT JOIN authors a ON s.submission_id = a.submission_id
 				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
@@ -260,6 +266,7 @@ class PublishedMonographDAO extends MonographDAO {
 		$result = $this->retrieveRange(
 			'SELECT	ps.*,
 				s.*,
+                                munis.*,
 				' . $this->_getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
@@ -309,9 +316,11 @@ class PublishedMonographDAO extends MonographDAO {
                 $result = $this->retrieveRange(
 			'SELECT	ps.*,
 				s.*,
+                                munis.*,
 				' . $this->_getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->_getFetchJoins() . '
 				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = se.series_id)
                                 LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
@@ -366,10 +375,12 @@ class PublishedMonographDAO extends MonographDAO {
                 $result = $this->retrieveRange(
 			'SELECT	DISTINCT ps.*,
 				s.*,
+                                munis.*,
 				COALESCE(f.seq, ?) AS order_by,
 				' . $this->_getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->_getFetchJoins() . '
 				LEFT JOIN submission_categories sc ON (sc.submission_id = s.submission_id AND sc.category_id = ?)
 				LEFT JOIN series_categories sca ON (sca.series_id = se.series_id)
@@ -400,9 +411,11 @@ class PublishedMonographDAO extends MonographDAO {
 		$result = $this->retrieve(
 			'SELECT	s.*,
 				ps.*,
+                                munis.*,
 				' . $this->_getFetchColumns() . '
 			FROM	submissions s
 				JOIN published_submissions ps ON (ps.submission_id = s.submission_id)
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->_getFetchJoins() . '
 			WHERE	s.submission_id = ?
 				' . ($pressId?' AND s.context_id = ?':'')
