@@ -16,7 +16,7 @@
     <h3 style="font-size: 1.1em;">{$publicationFormat->getLocalizedName()}:</h3>
     {foreach from=$identificationCodes item=identificationCode}
         <li id="bookIdentificationSpecs-{$publicationFormat->getId()}-{$identificationCode->getCode()|escape}">
-            {$identificationCode->getNameForONIXCode()|escape} 
+            {$identificationCode->getNameForONIXCode()|escape}:
             <span class="vpravo">{$identificationCode->getValue()|escape}</span>
         </li>
     {/foreach}
@@ -72,7 +72,7 @@
                             {assign var=storedPubId value=$publicationFormat->getStoredPubId($pubIdType)}
                             {if $storedPubId != ''}
                                 <li id="bookPubId-{$publicationFormat->getId()|escape}-{$pubIdType|escape}">
-                                    pub-id::{$pubIdType}:
+                                    <span class="identifikator">{$pubIdType}</span>:
                                     <span class="vpravo">
                                         {if $pubIdType == "doi"}<a href="http://dx.doi.org/{$storedPubId|escape}" target="_blank">{$storedPubId|escape}</a>{else}{$storedPubId|escape}
                                         {/if}
