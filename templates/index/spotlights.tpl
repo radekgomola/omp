@@ -8,13 +8,14 @@
 * Display spotlights on a press' home page.
 *}
 <div id="spotlightsHome">
-    <h2 class="pkp_helpers_text_left pkp_helpers_munipress_underline">{translate key="spotlight.title.homePage"}</h2>
+{*    <h2 class="pkp_helpers_text_left pkp_helpers_munipress_underline">{translate key="spotlight.title.homePage"}</h2>*}
     <ul>
         <table>
             <tr><td>
             {foreach from=$spotlights item=spotlight name=loop}
                 {assign var="item" value=$spotlight->getSpotlightItem()}
                 <li  class="pkp_helpers_align_left">
+                    <h3 class="pkp_helpers_text_center pkp_helpers_munipress_underline" style="margin-right:10px;">{$spotlight->getLocalizedTitle()|strip_unsafe_html}</h3>
                     <div class="pkp_catalog_spotlight" {if $smarty.foreach.loop.iteration == 3}style="margin-right:0px;"{/if}>
                         {if $spotlight->getAssocType() == $smarty.const.SPOTLIGHT_TYPE_BOOK}
                             
@@ -29,7 +30,7 @@
                                                 {if $spotlight->getLocalizedDescription()}
                                                     {$spotlight->getLocalizedDescription()|strip_unsafe_html}
                                                 {else}
-                                                    {$item->getLocalizedAbstract()|truncate:150|strip_unsafe_html}
+                                                    {$item->getLocalizedAbstract()|strip_unsafe_html}
                                                 {/if}
                                             </div>
                             {capture append=content}
