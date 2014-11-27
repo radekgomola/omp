@@ -21,12 +21,12 @@
 	<div id="bookAccordion">
 		<h3><a href="#">{translate key="catalog.publicationInfo"}</a></h3>
 		<div class="publicationInfo">
+                    
 			{assign var="cena" value=$publishedMonograph->getCena()|strip_unsafe_html}
                         {assign var="cena_ebook" value=$publishedMonograph->getCenaEbook()|strip_unsafe_html}
                         {assign var="pocetStran" value=$publishedMonograph->getPocetStran()|strip_unsafe_html}
 			{assign var="urlOC" value=$publishedMonograph->getUrlOC()|strip_unsafe_html}
                         {assign var="urlOC_ebook" value=$publishedMonograph->getUrlOCEbook()|strip_unsafe_html}
-                        
                         {if !empty($cena) && $cena != 0}
                             <div class="infoPodKnihou">
                             <span>{translate key="submission.ceny.kniha"}:</span>

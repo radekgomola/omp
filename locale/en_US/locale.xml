@@ -804,4 +804,11 @@ Masaryk University</message>
     <message key="proAurory.autorskyZakon.skryj"><![CDATA[<h3 class="proAutory">Autorský zákon – použití děl jiných autorů ve výuce </h3>(skrýt)]]></message>
     
     <message key="informace.publikujteSnami">Publish with us (Czech only)</message>
+    
+    <!--Munipress data pro autory-->
+    <message key="author.munipress">Munipress data</message>
+    <message key="author.munipress.titulyPred">Titles before name</message>
+    <message key="uthor.munipress.tituly_za">Titles after name</message>
+    <message key="author.munipress.rodneCislo">personal identification number</message>
+    <message key="author.munipress.mu">MU number</message>
 </locale>

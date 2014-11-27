@@ -56,7 +56,7 @@
 			{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}<li><a href="#contentsTab">{translate key="common.contents"}</a></li>{/if}
 			{if $availableFiles|@count != 0}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
                         
-                        <li {if (empty($poznamka) && empty($bibliografickaCitace) && empty($urlWeb)&&empty($muPracoviste) && empty($pocetStran) && empty($rightsTyp) && empty($rightsDrzitel) && empty($rightsTrvani) && empty($dedikace))}style="display:none"{/if}><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
+                        <li><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
 			{call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
 			{if !is_null($sharingCode) || !empty($blocks)}
 				<li><a href="#sharingTab">{translate key="submission.sharing"}</a></li>
@@ -160,7 +160,7 @@
                         {translate key="catalog.autori"}:
 			{foreach from=$authors item=author}
                             {assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
-{*                            {assign var=url value=$author->getUrl()|strip_unsafe_html}*}
+                            {assign var=url value=$author->getUrl()|strip_unsafe_html}
                             {assign var=uco value=$author->getUCO()|strip_unsafe_html}
                             <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
                                     <strong>{$author->getFullName()}</strong></a>
@@ -182,7 +182,7 @@
                                                 <h3>
                                                     {$author->getFullName()}
                                                 </h3>
-{*                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$autor->getUrl()|escape}</a><br/>{/if}*}
+                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$autor->getUrl()|escape}</a><br/>{/if}
                                                 {if $uco != '' && $uco != '0'}
                                                     <table style="border:none">
                                                         <tbody>

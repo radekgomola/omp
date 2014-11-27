@@ -729,4 +729,11 @@
     
     <message key="informace.publikujteSnami">Publikujte s námi</message>
     
+    <!--Munipress data pro autory-->
+    <message key="author.munipress">Munipress data</message>
+    <message key="author.munipress.titulyPred">Tituly před jménem</message>
+    <message key="uthor.munipress.tituly_za">Tituly za jménem</message>
+    <message key="author.munipress.rodneCislo">Rodné číslo</message>
+    <message key="author.munipress.mu">Číslo MU</message>
+    
 </locale>

@@ -77,7 +77,8 @@
                                         {if $pubIdType == "doi"}<a href="http://dx.doi.org/{$storedPubId|escape}" target="_blank">{$storedPubId|escape}</a>{else}{$storedPubId|escape}
                                         {/if}
                                     </span>
+                                    </li>
                                 {/if}
-                            </li>
+                            
                         {/foreach}
                 {/if}
