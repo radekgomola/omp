@@ -21128,7 +21128,7 @@
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="01">
 				<xs:annotation>
-					<xs:documentation>Publication date</xs:documentation>
+					<xs:documentation>Datum vyd{á}ní</xs:documentation>
 					<xs:documentation>Nominal date of publication.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>

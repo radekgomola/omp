@@ -808,7 +808,8 @@ Masaryk University</message>
     <!--Munipress data pro autory-->
     <message key="author.munipress">Munipress data</message>
     <message key="author.munipress.titulyPred">Titles before name</message>
-    <message key="uthor.munipress.tituly_za">Titles after name</message>
+    <message key="author.munipress.tituly_za">Titles after name</message>
     <message key="author.munipress.rodneCislo">personal identification number</message>
     <message key="author.munipress.mu">MU number</message>
+    <message key="author.munipress.poznamka">Note</message>
 </locale>

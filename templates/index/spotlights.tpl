@@ -30,7 +30,7 @@
                                                 {if $spotlight->getLocalizedDescription()}
                                                     {$spotlight->getLocalizedDescription()|strip_unsafe_html}
                                                 {else}
-                                                    {$item->getLocalizedAbstract()|strip_unsafe_html}
+                                                    {$item->getLocalizedAbstract()|truncate:350|strip_unsafe_html}
                                                 {/if}
                                             </div>
                             {capture append=content}

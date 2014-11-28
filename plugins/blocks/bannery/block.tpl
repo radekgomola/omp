@@ -64,6 +64,6 @@
     <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/01.png" class="link_img bannery" /></a></div>
     <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>*}
     <div><a href="https://journals.muni.cz/" target="_blank"><img src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" /></a></div>
-    <div><a href="http://en.calameo.com/read/0039505795a5a83938c25" target="_blank"><img src="{$baseUrl}/images/img/bannery/05.png" class="link_img bannery" /></a></div>
+    <div><a href="http://en.calameo.com/read/00395057973c8fe7c36a6" target="_blank"><img src="{$baseUrl}/images/img/bannery/05.png" class="link_img bannery" /></a></div>
   </div>
 </div>

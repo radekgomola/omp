@@ -16,7 +16,7 @@
     <h3 style="font-size: 1.1em;">{$publicationFormat->getLocalizedName()}:</h3>
     {foreach from=$identificationCodes item=identificationCode}
         <li id="bookIdentificationSpecs-{$publicationFormat->getId()}-{$identificationCode->getCode()|escape}">
-            {$identificationCode->getNameForONIXCode()|escape}:
+            <strong>{$identificationCode->getNameForONIXCode()|escape}</strong>
             <span class="vpravo">{$identificationCode->getValue()|escape}</span>
         </li>
     {/foreach}
@@ -24,7 +24,7 @@
 
     {if $publicationFormat->getWidth()|| $publicationFormat->getHeight() || $publicationFormat->getThickness()}
         <li>
-            {translate key="book.rozmery"}:
+            <strong>{translate key="book.rozmery"}</strong>
 
             <span class="vpravo">
                 {assign var=notFirst value=0}
@@ -52,7 +52,7 @@
     {if $publicationDates}
         {foreach from=$publicationDates item=publicationDate}
             <li id="bookPublicationDateSpecs-{$publicationDate->getId()|escape}">
-                {$publicationDate->getNameForONIXCode()|escape}:
+                <strong>{$publicationDate->getNameForONIXCode()|escape}</strong>
                 <span class="vpravo">
                     {assign var=dates value=$publicationDate->getReadableDates()}
                     {* note: these dates have dateFormatShort applied to them in getReadableDates() if they need it *}
@@ -72,7 +72,7 @@
                             {assign var=storedPubId value=$publicationFormat->getStoredPubId($pubIdType)}
                             {if $storedPubId != ''}
                                 <li id="bookPubId-{$publicationFormat->getId()|escape}-{$pubIdType|escape}">
-                                    <span class="identifikator">{$pubIdType}</span>:
+                                    <span class="identifikator"><strong>{$pubIdType}</strong></span>:
                                     <span class="vpravo">
                                         {if $pubIdType == "doi"}<a href="http://dx.doi.org/{$storedPubId|escape}" target="_blank">{$storedPubId|escape}</a>{else}{$storedPubId|escape}
                                         {/if}
