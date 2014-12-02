@@ -49,7 +49,7 @@
 	{if $authorMiddleName != ''}{assign var=authorName value="$authorName $authorMiddleName"}{/if}
 	{strip}
 		<a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori" op="seznam_publikaci" authorId=$authorId}" onclick="return hs.htmlExpand(this, {ldelim}objectType: 'iframe'{rdelim})">{$authorName|escape}</a>
-		{if $authorAffiliation}, {$authorAffiliation|escape}{/if}
+		
 	{/strip}
 	<br/>
 {/iterate}

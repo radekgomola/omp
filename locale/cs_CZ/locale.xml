@@ -508,6 +508,7 @@
     <message key="navigation.munispace.books">Knihy</message>
     <message key="navigation.munispace.coursebooks">Učebnice</message>
     <message key="navigation.munispace.symposiums">Sborníky</message>
+    <message key="navigation.munispace.signpost">Knihovny</message>
     <message key="navigation.munispace.digiLib">Digitální knihovna FF</message>
     <!--manager.xml-->
     <message key="manager.setup.information.proDistributory">Pro distributory</message>
@@ -654,8 +655,11 @@
     <message key="vizitka.uco">(univerzitní číslo osoby UČO)</message>
     <message key="vizitka.url">Vizitkové URL</message>
     
-    <message key="munispace.ostatni">Munispace ostatní</message>
-    <message key="munispace.ostatni.description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</message>
+    <message key="munispace.ostatni">Digitální knihovny Masarykovy univerzity</message>
+    <message key="munispace.ostatni.description"><![CDATA[<p>Masarykova univerzita jako první česká vysoká škola podepsala v roce 2010 tzv. Berlínskou deklaraci (<a href="http://openaccess.mpg.de/Berlin-Declaration" target="_blank">Berlin Declaration on Open Access to Knowledge in Sciences and Humanities</a>), čímž se přihlásila k celosvětovému šíření otevřeného přístupu k výsledkům vědecké práce.</p>
+
+<p>Knihy vydané Masarykovou univerzitou v režimu Open Access najdete v těchto digitálních knihovnách:</p>]]> </message>
+    <message key="munispace.ostatni.napisteNam"><![CDATA[Víte o knihovně, která v seznamu není a měla by být? Napište nám o ní na <a href="mailto:%6d%75%6e%69%70%72%65%73%73%40%70%72%65%73%73%2e%6d%75%6e%69%2e%63%7a " target="_blank">munipress@press.muni.cz</a>!]]></message>
     <message key="munispace.digilib">Digitální knihovna Filozofické fakulty</message>
     
     <message key="catalog.autori">Autoři</message>
@@ -736,5 +740,7 @@
     <message key="author.munipress.rodneCislo">Rodné číslo</message>
     <message key="author.munipress.mu">Číslo MU</message>
     <message key="author.munipress.poznamka">Poznámka</message>
+    
+    <message key="monograph.publicationFormat.calameoHash">Calameo hash kód</message>
     
 </locale>

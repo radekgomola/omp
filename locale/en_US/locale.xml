@@ -577,6 +577,7 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
         <message key="navigation.munispace.books">Books</message>
         <message key="navigation.munispace.coursebooks">Coursebooks</message>
         <message key="navigation.munispace.symposiums">Symposiums</message>
+        <message key="navigation.munispace.signpost">Libraries</message>
         <message key="navigation.munispace.digiLib">FF Digital Library</message>
         
         <!--manager.xml-->
@@ -666,8 +667,11 @@ Masaryk University</message>
         <message key="vizitka.uco">(personal university number (UCO))</message>
         <message key="vizitka.url">Personal URL</message>
         
-        <message key="munispace.ostatni">Munispace others</message>
-    <message key="munispace.ostatni.description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</message>
+        <message key="munispace.ostatni">Digitální knihovny Masarykovy univerzity</message>
+    <message key="munispace.ostatni.description"><![CDATA[<p>Masarykova univerzita jako první česká vysoká škola podepsala v roce 2010 tzv. Berlínskou deklaraci (<a href="http://openaccess.mpg.de/Berlin-Declaration" target="_blank">Berlin Declaration on Open Access to Knowledge in Sciences and Humanities</a>), čímž se přihlásila k celosvětovému šíření otevřeného přístupu k výsledkům vědecké práce.</p>
+
+<p>Knihy vydané Masarykovou univerzitou v režimu Open Access najdete v těchto digitálních knihovnách:</p>]]> </message>
+    <message key="munispace.ostatni.napisteNam"><![CDATA[Víte o knihovně, která v seznamu není a měla by být? Napište nám o ní na <a href="mailto:%6d%75%6e%69%70%72%65%73%73%40%70%72%65%73%73%2e%6d%75%6e%69%2e%63%7a " target="_blank">munipress@press.muni.cz</a>!]]></message>
     <message key="munispace.digilib">Digital library FF</message>
     
     
@@ -812,4 +816,6 @@ Masaryk University</message>
     <message key="author.munipress.rodneCislo">personal identification number</message>
     <message key="author.munipress.mu">MU number</message>
     <message key="author.munipress.poznamka">Note</message>
+    
+    <message key="monograph.publicationFormat.calameoHash">Calameo hash code</message>
 </locale>

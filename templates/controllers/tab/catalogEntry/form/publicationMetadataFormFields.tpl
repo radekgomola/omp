@@ -54,7 +54,7 @@
 		{/fbvFormSection}
 	{/fbvFormArea}
 
-	{fbvFormArea id="salesRights"}
+	{*{fbvFormArea id="salesRights"}
 		{fbvFormSection}
 			<!-- Sales rights and regions -->
 			{assign var="divId" value="salesRightsGridContainer"|concat:$publicationFormatId|escape}
@@ -70,7 +70,7 @@
 			{url|assign:marketsGridUrl router=$smarty.const.ROUTE_COMPONENT component="grid.catalogEntry.MarketsGridHandler" op="fetchGrid" submissionId=$submissionId publicationFormatId=$publicationFormatId escape=false}
 			{load_url_in_div id=$divId url=$marketsGridUrl}
 		{/fbvFormSection}
-	{/fbvFormArea}
+	{/fbvFormArea}*}
 
 	{fbvFormArea id="publicationDates"}
 		{fbvFormSection}
@@ -82,9 +82,9 @@
 	{/fbvFormArea}
 
 	{fbvFormArea id="productComposition" class="border"}
-		{fbvFormSection for="productCompositionCode" title="monograph.publicationFormat.productComposition" required="true"}
-			{fbvElement type="select" from=$productCompositionCodes selected=$productCompositionCode translate=false id="productCompositionCode" required="true" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}
-			{fbvElement type="select" label="monograph.publicationFormat.productFormDetailCode" from=$productFormDetailCodes selected=$productFormDetailCode translate=false id="productFormDetailCode" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}
+		{fbvFormSection for="productCompositionCode" title="monograph.publicationFormat.productFormDetailCode" }
+			{*{fbvElement type="select" from=$productCompositionCodes selected=$productCompositionCode translate=false id="productCompositionCode" required="true" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}*}
+			{fbvElement type="select" from=$productFormDetailCodes selected=$productFormDetailCode translate=false id="productFormDetailCode" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}
 		{/fbvFormSection}
 	{/fbvFormArea}
 

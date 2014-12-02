@@ -15,7 +15,7 @@
 			<li><a href="{url router=$smarty.const.ROUTE_PAGE page="announcement"}">{translate key="announcement.announcements"}</a></li>
 		{/if}
                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="seznamAutoru"}">{translate key="seznam.vypisAutoru.short"}</a></li>
-		<li><a href="#">{translate key="navigation.about"}</a>
+		{*<li><a href="#">{translate key="navigation.about"}</a>
 			<ul>
 				{if not empty($contextInfo.contact)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="contact"}">{translate key="about.contact"}</a></li>
@@ -39,7 +39,7 @@
 				{/if}
                                 
 			</ul>
-		</li>
+		</li>*}
                 
 	{/if}
 {/capture}
@@ -65,6 +65,7 @@
                                 <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_symposiums" target="_self">{translate key="navigation.munispace.symposiums"} </a></li>
                             </ul>
                         </li>
+                        <li><a href="{$baseUrl}/index.php/munipress/munispaceSignpost" target="_self">{translate key="navigation.munispace.signpost"} </a></li>
 				{if array_intersect(array(ROLE_ID_MANAGER, ROLE_ID_SUB_EDITOR), $userRoles)}
 					<li>
 						<a href="#">{translate key="navigation.management"}</a>
@@ -114,6 +115,7 @@
                                 <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_symposiums" target="_self">{translate key="navigation.munispace.symposiums"} </a></li>
                             </ul>
                         </li>
+                        <li><a href="{$baseUrl}/index.php/munipress/munispaceSignpost" target="_self">{translate key="navigation.munispace.signpost"} </a></li>
 			{$publicMenu}
 		</ul>
 	{/if}{* $isUserLoggedIn *}

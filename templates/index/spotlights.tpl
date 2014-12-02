@@ -24,7 +24,7 @@
                                                 <a class="pkp_helpers_image_left" href="{url page="catalog" op="book" path=$item->getId()}">
                                                     <img alt="{$item->getLocalizedFullTitle()|strip_tags|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="thumbnail" submissionId=$item->getId()}" /></a>
                                                 {/if}
-                                            <div class="pkp_catalog_spotlight_itemTitle">{$item->getLocalizedFullTitle()|strip_unsafe_html}</div>
+                                                <div class="pkp_catalog_spotlight_itemTitle"><a href="{url page="catalog" op="book" path=$item->getId()}">{$item->getLocalizedFullTitle()|strip_unsafe_html}</a></div>
                                             <div class="pkp_catalog_spotlight_itemAuthorship">{$item->getAuthorString()|strip_unsafe_html}</div>
                                             <div class="pkp_catalog_spotlight_itemDescription">
                                                 {if $spotlight->getLocalizedDescription()}

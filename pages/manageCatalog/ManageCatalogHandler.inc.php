@@ -135,8 +135,11 @@ class ManageCatalogHandler extends Handler {
 
 		// Fetch the monographs to display
 		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
-		$publishedMonographs =& $publishedMonographDao->getByPressId($press->getId());
+                $rangeInfo = $this->getRangeInfo($request, 'managerCatalogPaging');
+		$publishedMonographs =& $publishedMonographDao->getByPressId($press->getId(), null, $rangeInfo);
 		$templateMgr->assign('publishedMonographs', $publishedMonographs);
+                
+                $templateMgr->assign('itemsPerPageHelp', $rangeInfo->getCount());
 
 		// Display the monograph list
 		$templateMgr->display('manageCatalog/monographs.tpl');

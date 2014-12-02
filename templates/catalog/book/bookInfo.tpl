@@ -25,7 +25,6 @@
 </script>
 
 <div class="bookInfo">
-    {*{assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}*}
     {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
     {assign var="cisloVydani" value=$publishedMonograph->getCisloVydani()|strip_unsafe_html}
     {if $publishedMonograph->getLicenceZverejnit()==1}
@@ -38,6 +37,7 @@
     {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
     {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
     {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
+    {assign var="muPracoviste" value=$publishedMonograph->getLocalizedFakulta()|strip_unsafe_html}
     
     {if $publishedMonograph->getAKolektiv()==1}
         {assign var="a_kol" value=", a kol."}
@@ -79,13 +79,13 @@
                     {/if}
                     {if !empty($typPublikace)}
                         <li>
-                            <strong>{translate key="submission.typ_02_58"}</strong><span class="vpravo">{$typPublikace}</a></span>
+                            <strong>{translate key="submission.typ_02_58"}</strong><span class="vpravo">{$typPublikace}</span>
                         </li>
                         {assign var=viceInformaci value=1}
                     {/if}
                     {if !empty($cisloVydani) && $cisloVydani !=0}
                         <li>
-                            <strong>{translate key="submission.cisloVydani"}</strong><span class="vpravo">{$cisloVydani}</a></span>
+                            <strong>{translate key="submission.cisloVydani"}</strong><span class="vpravo">{$cisloVydani}.</span>
                         </li>
                         {assign var=viceInformaci value=1}
                     {/if}

@@ -35,6 +35,21 @@
 			{if $includeFeatureAction && !$publishedMonographs->wasEmpty()}{null_link_action id="feature-$monographContainerId" key="common.feature" image="feature"}{/if}
 		</div>
 	</div>
+                <div id="test">
+        <br />
+        <br />
+        {if $paging != 'false'}
+            <div class="pagingPanel">
+                <div class="pkp_helpers_align_left">
+                    {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}    
+                </div>
+                
+                <div class="pkp_helpers_align_right">
+                    {page_links anchor="test" name="managerCatalogPaging" iterator=$publishedMonographs}{* This generates the individual page links *}
+                </div>
+                
+            </div>
+        {/if}
 	<br />
 	<br />
 	<ul class="pkp_manageCatalog_monographList pkp_helpers_container_center">
@@ -46,4 +61,5 @@
 			<p>{translate key="catalog.manage.noMonographs"}</p>
 		{/if}
 	</ul>
+                </div>
 </div>
