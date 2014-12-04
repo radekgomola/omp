@@ -8,6 +8,7 @@
  * Display a public-facing category view in the catalog.
  *}
 {strip}
+{assign var="pageTitleName" value=$category->getLocalizedTitle()}
 {include file="common/header.tpl" suppressPageTitle=true}
 {/strip}
 
@@ -41,13 +42,13 @@
 	{*{include file="catalog/feature.tpl" publishedMonographs=$publishedMonographsFeature featuredMonographIds=$featuredMonographIds}*}
 
 	{* Include the new release monograph list *}
-	{if !$newReleasesMonographs->wasEmpty()}
+	{*{if !$newReleasesMonographs->wasEmpty()}
 		{include file="catalog/monographs.tpl" 
                         publishedMonographs=$newReleasesMonographs 
                         monographListTitleKey="navigation.newReleases"
                         paging = 'false'
                 }
-	{/if}
+	{/if}*}
         
 
 	{* Include the full monograph list *}
