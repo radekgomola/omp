@@ -47,7 +47,7 @@
     {/if}
 
 
-    {assign var=publicationDates value=$publicationFormat->getPublicationDates()}
+    {*{assign var=publicationDates value=$publicationFormat->getPublicationDates()}
     {assign var=publicationDates value=$publicationDates->toArray()}
     {if $publicationDates}
         {foreach from=$publicationDates item=publicationDate}
@@ -55,7 +55,7 @@
                 <strong>{$publicationDate->getNameForONIXCode()|escape}</strong>
                 <span class="vpravo">
                     {assign var=dates value=$publicationDate->getReadableDates()}
-                    {* note: these dates have dateFormatShort applied to them in getReadableDates() if they need it *}
+                    {* note: these dates have dateFormatShort applied to them in getReadableDates() if they need it 
                     {if $publicationDate->isFreeText() || $dates|@count == 1}
                         {$dates[0]|escape}
                     {else}
@@ -64,7 +64,7 @@
                     {if $publicationDate->isHijriCalendar()}({translate key="common.dateHijri"}){/if}
                 </span>
             </li>
-        {/foreach}{* publicationDates *}
+        {/foreach}{* publicationDates 
             {/if}{* $publicationDates *}
 
                     {if $enabledPubIdTypes|@count > 0}
