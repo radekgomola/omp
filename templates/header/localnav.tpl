@@ -62,7 +62,8 @@
                             <ul>
                                 <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_books" target="_self">{translate key="navigation.munispace.books"}</a></li>
                                 <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_coursebooks" target="_self">{translate key="navigation.munispace.coursebooks"} </a></li>
-                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_symposiums" target="_self">{translate key="navigation.munispace.symposiums"} </a></li>
+                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_proceedings" target="_self">{translate key="navigation.munispace.proceedings"} </a></li>
+                                <li><a href="https://journals.muni.cz" target="_blank">{translate key="navigation.munispace.journals"} </a></li>
                             </ul>
                         </li>
                         <li><a href="{$baseUrl}/index.php/munipress/munispaceSignpost" target="_self">{translate key="navigation.munispace.signpost"} </a></li>
@@ -112,7 +113,8 @@
                             <ul>
                                 <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_books" target="_self">{translate key="navigation.munispace.books"}</a></li>
                                 <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_coursebooks" target="_self">{translate key="navigation.munispace.coursebooks"} </a></li>
-                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_symposiums" target="_self">{translate key="navigation.munispace.symposiums"} </a></li>
+                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_symposiums" target="_self">{translate key="navigation.munispace.proceedings"} </a></li>
+                                <li><a href="https://journals.muni.cz" target="_blank">{translate key="navigation.munispace.journals"} </a></li>
                             </ul>
                         </li>
                         <li><a href="{$baseUrl}/index.php/munipress/munispaceSignpost" target="_self">{translate key="navigation.munispace.signpost"} </a></li>

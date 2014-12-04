@@ -507,8 +507,9 @@
     <message key="navigation.objednavkaVMuniPressu.zprava">mailto:%6e%61%6d%75%40%72%65%63%74%2e%6d%75%6e%69%2e%63%7a?subject=Objednavka publikace&amp;body=Dobry den, &#xD;&#xA;&#xD;&#xA;%0A%0A objednavam publikaci vydanou Nakladatelstvim Masarykovy univerzity: &#xD;&#xA;&#xD;&#xA; &#xD;&#xA;&#xD;&#xA;%0A%0A Jmeno objednavajiciho: &#xD;&#xA;%0A Nazev firmy, ICO, DIC: &#xD;&#xA;%0A Adresa: &#xD;&#xA;&#xD;&#xA;%0A%0A Zpusob doruceni objednavky: (osobni odber + platba v hotovosti / dobirka / postovni balik + platba predem na fakturu)&#xD;&#xA;&#xD;&#xA;%0A%0A Kontaktujte me prosim za ucelem dokonceni objednavky. &#xD;&#xA;%0A Dekuji, &#xD;&#xA;</message>
     <message key="navigation.munispace.books">Knihy</message>
     <message key="navigation.munispace.coursebooks">Učebnice</message>
-    <message key="navigation.munispace.symposiums">Sborníky</message>
+    <message key="navigation.munispace.proceedings">Sborníky</message>
     <message key="navigation.munispace.signpost">Knihovny</message>
+    <message key="navigation.munispace.journals">Časopisy</message>
     <message key="navigation.munispace.digiLib">Digitální knihovna FF</message>
     <!--manager.xml-->
     <message key="manager.setup.information.proDistributory">Pro distributory</message>
