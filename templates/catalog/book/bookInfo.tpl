@@ -33,11 +33,11 @@
         {assign var="rightsTrvani" value=$publishedMonograph->getLicenceExpirace()|strip_unsafe_html}
     {/if}
    
-    {assign var="typPublikace" value=$publishedMonograph->getLocalizedTypPublikace()|strip_unsafe_html}
     {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
     {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
     {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
     {assign var="muPracoviste" value=$publishedMonograph->getLocalizedFakulta()|strip_unsafe_html}
+    {assign var=authors value=$publishedMonograph->getAuthors()}
     
     {if $publishedMonograph->getAKolektiv()==1}
         {assign var="a_kol" value=", a kol."}
@@ -77,12 +77,6 @@
                                         {assign var=viceInformaci value=1}
                                         <br />
                     {/if}
-                    {if !empty($typPublikace)}
-                        <li>
-                            <strong>{translate key="submission.typ_02_58"}</strong><span class="vpravo">{$typPublikace}</span>
-                        </li>
-                        {assign var=viceInformaci value=1}
-                    {/if}
                     {if !empty($cisloVydani) && $cisloVydani !=0}
                         <li>
                             <strong>{translate key="submission.cisloVydani"}</strong><span class="vpravo">{$cisloVydani}.</span>
@@ -101,7 +95,15 @@
                         </li>
                         {assign var=viceInformaci value=1}
                     {/if}
-                    
+                    {foreach from=$authors item=author}
+                        {if $author->getZobrazOstatni() == 1}
+                            {assign var=uco value=$author->getUCO()}
+                            <li>
+                                <strong>{$author->getLocalizedUserGroupName()}</strong> <span class="vpravo">{if $uco != '' && $uco !='0'}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank">{$author->getFullName()}</a>{else}{$author->getFullName()}{/if}</span>
+                            </li>
+                        {assign var=viceInformaci value=1}
+                        {/if}
+                    {/foreach}
                     </ul>                
                     </div>
                     <div class="textoveInfo">
@@ -156,9 +158,10 @@
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 
 			<br />
-                        {assign var=authors value=$publishedMonograph->getAuthors()}
+                        
                         {translate key="catalog.autori"}:
 			{foreach from=$authors item=author}
+                            {if $author->getZobrazAutori() == 1}
                             {assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
                             {assign var=url value=$author->getUrl()|strip_unsafe_html}
                             {assign var=uco value=$author->getUCO()|strip_unsafe_html}
@@ -215,6 +218,7 @@
                                             </div>
                                         </div>
                                     {/if}
+                                {/if}
 			{/foreach}
 		</div>
 		{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}
