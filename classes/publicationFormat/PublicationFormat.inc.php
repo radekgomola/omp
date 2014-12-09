@@ -517,6 +517,182 @@ class PublicationFormat extends Representation {
 	function getPressId() {
 		return $this->getContextId();
 	}
+        
+        
+        /***********
+         * MUNIPRESS
+         **************/
+        
+        /**
+	 * Vrací číslo přepínače typu licence (0-Open acces, 1-Munipress, 2-jiné)
+	 * @return int
+	 */
+	function getTypLicencePrepinac() {
+		return $this->getData('licenceTypPrepinac');
+        }
+
+	/**
+	 * Nastavuje číslo přepínače typu licence
+	 * @param $licenceTypPrepinac int
+	 */
+	function setTypLicencePrepinac($licenceTypPrepinac) {
+		return $this->setData('licenceTypPrepinac', $licenceTypPrepinac);
+	}
+        
+	/**
+	 * Get typ licence.
+	 * @return string
+	 */
+	function getLicenceTyp() {
+		return $this->getData('licenceTyp');
+	}
+
+	/**
+	 * Set typ licence.
+	 * @param $licenceTyp string
+	 */
+	function setLicenceTyp($licenceTyp) {
+		return $this->setData('licenceTyp', $licenceTyp);
+	}
+
+	/**
+	 * Get držitele licence.
+	 * @return string
+	 */
+	function getLicenceDrzitel() {
+		return $this->getData('licenceDrzitel');
+	}
+
+	/**
+	 * Set držitele licence.
+	 * @param $licenceDrzitel string
+	 */
+	function setLicenceDrzitel($licenceDrzitel) {
+		return $this->setData('licenceDrzitel', $licenceDrzitel);
+	}
+
+	/**
+	 * Get datum expirace.
+	 * @return date
+	 */
+	function getLicenceExpirace() {
+            return $this->getData('licenceExpirace');
+	}
+
+	/**
+	 * Set datum expirace.
+	 * @param $licenceExpirace date
+	 */
+	function setLicenceExpirace($licenceExpirace) {
+		return $this->setData('licenceExpirace', $licenceExpirace);
+	}
+        
+        /**
+	 * Get datum vzniku licence.
+	 * @return date
+	 */
+	function getLicenceVznik() {
+		return $this->getData('licenceVznik');
+	}
+
+	/**
+	 * Set datum vzniku licence.
+	 * @param $licenceVznik date
+	 */
+	function setLicenceVznik($licenceVznik) {
+		return $this->setData('licenceVznik', $licenceVznik);
+	}
+        
+        /**
+	 * Vrací naklad
+	 * @return int
+	 */
+	function getNaklad() {
+		return $this->getData('naklad');
+        }
+
+	/**
+	 * Nastavuje naklad
+	 * @param $naklad int
+	 */
+	function setNaklad($naklad) {
+		return $this->setData('naklad', $naklad);
+	}
+        
+        /**
+	 * Vrací pocet stran 
+	 * @return int
+	 */
+	function getPocetStran() {
+		return $this->getData('pocetStran');
+        }
+
+	/**
+	 * Nastavuje pocet stran
+	 * @param $pocetStran int
+	 */
+	function setPocetStran($pocetStran) {
+		return $this->setData('pocetStran', $pocetStran);
+	}
+        
+         /**
+	 * Vrací poradi vydani
+	 * @return string
+	 */
+	function getPoradiVydani() {
+		return $this->getData('poradiVydani');
+        }
+
+	/**
+	 * Nastavuje poradi vydani
+	 * @param $poradiVydani string
+	 */
+	function setPoradiVydani($poradiVydani) {
+		return $this->setData('poradiVydani', $poradiVydani);
+	}
+        
+        /**
+	 * Vrací poradi vydani
+	 * @return string
+	 */
+	function getDatumVydani() {
+		return $this->getData('datumVydani');
+        }
+
+	/**
+	 * Nastavuje poradi vydani
+	 * @param $datumVydani string
+	 */
+	function setDatumVydani($datumVydani) {
+		return $this->setData('datumVydani', $datumVydani);
+	} 
+
+        /**
+	 * Vraci lokalizovanou bibliografickou citaci
+	 * @return string
+	 */
+	function getLocalizedBibliografickaCitace() {
+		return $this->getLocalizedData('bibliografickaCitace');
+	}
+
+	/**
+	 * Vrací bibliografickou citaci
+	 * @param $locale
+	 * @return string
+	 */
+	function getBibliografickaCitace($locale) {
+		return $this->getData('bibliografickaCitace', $locale);
+	}
+
+	/**
+	 * Nastavuje bibliografickou citaci
+	 * @param $bibliografickaCitace string
+	 * @param $locale
+	 */
+	function setBibliografickaCitace($bibliografickaCitace, $locale) {
+		return $this->setData('bibliografickaCitace', $bibliografickaCitace, $locale);
+	}
+        
 }
 
 ?>

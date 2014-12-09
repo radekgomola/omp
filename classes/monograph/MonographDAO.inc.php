@@ -97,10 +97,10 @@ class MonographDAO extends SubmissionDAO {
                 
                 $this->update(
 			sprintf('INSERT INTO munipress_metadata
-				(submission_id, a_kol, cena, cena_ebook, url_oc, url_oc_ebook, pocet_stran, cislo_vydani, archiv, licence_typ_prepinac, licence_typ, licence_drzitel, licence_expirace, licence_vznik, licence_zverejnit, naklad_db, tiskarna_db, poznamka_admin, honorar_celkem, honorar_vyplata, pov_vytisky_dosly, pov_vytisky_odesly)
+				(submission_id, a_kol, cena, cena_ebook, url_oc, url_oc_ebook, archiv, tiskarna_db, poznamka_admin, pov_vytisky_dosly, pov_vytisky_odesly, datum_vydani, mu_pracoviste)
 				VALUES
-				(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, %s, %s, ?, ?, ?, ?, ?, ?, %s, %s)',
-				$this->datetimeToDB($monograph->getLicenceExpirace()), $this->datetimeToDB($monograph->getLicenceVznik()), $this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly())),
+				(?, ?, ?, ?, ?, ?, ?, ?, %s, %s, %s, ?)',
+				$this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly()),$this->datetimeToDB($monograph->getDatumVydani())),
 			array(
                                 (int) $monograph->getId(),
 				$monograph->getAKolektiv() ? 1:0,
@@ -108,18 +108,10 @@ class MonographDAO extends SubmissionDAO {
 				(int) $monograph->getCenaEbook(),
 				(int) $monograph->getUrlOC(),
 				(int) $monograph->getUrlOCEbook(),
-				(int) $monograph->getPocetStran(),
-				(int) $monograph->getCisloVydani(),
                                 $monograph->getArchivace() ? 1:0,
-				(int) $monograph->getTypLicencePrepinac(),
-				$monograph->getLicenceTyp(),
-				$monograph->getLicenceDrzitel(),
-				$monograph->getLicenceZverejnit() ? 1:0,
-				(int) $monograph->getNaklad(),
 				$monograph->getTiskarna(),
                                 $monograph->getPoznamkaAdmin(),
-				$monograph->getHonorarCelkem(),
-				$monograph->getHonorarVyplata()
+                                $monograph->getFakulta(),
 			)
 		);
                
@@ -175,43 +167,27 @@ class MonographDAO extends SubmissionDAO {
                                         cena_ebook = ?,
 					url_oc = ?,
 					url_oc_ebook = ?,
-                                        pocet_stran = ?,
-					cislo_vydani = ?,
                                         archiv = ?,
-					licence_typ_prepinac = ?,
-					licence_typ = ?,
-					licence_drzitel = ?,
-					licence_expirace = %s,
-					licence_vznik = %s,
-					licence_zverejnit = ?,
-					naklad_db = ?,
                                         tiskarna_db = ?,
 					poznamka_admin = ?,
-                                        honorar_celkem = ?,
-					honorar_vyplata = ?,
                                         pov_vytisky_dosly = %s,
-					pov_vytisky_odesly = %s
+					pov_vytisky_odesly = %s,
+                                        datum_vydani = %s,
+                                        mu_pracoviste = ?
+                                        
 				WHERE	submission_id = ?',
-                                $this->datetimeToDB($monograph->getLicenceExpirace()), $this->datetimeToDB($monograph->getLicenceVznik()), $this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly())),			
+                               $this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly()),$this->datetimeToDB($monograph->getDatumVydani())),			
 			array(
                                     $monograph->getAKolektiv() ? 1:0,
                                     (int) $monograph->getCena(),
                                     (int) $monograph->getCenaEbook(),
                                     (int) $monograph->getUrlOC(),
                                     (int) $monograph->getUrlOCEbook(),
-                                    (int) $monograph->getPocetStran(),
-                                    (int) $monograph->getCisloVydani(),
-                                    $monograph->getArchivace() ? 1:0,
-                                    (int) $monograph->getTypLicencePrepinac(),
-                                    $monograph->getLicenceTyp(),
-                                    $monograph->getLicenceDrzitel(),
-                                    $monograph->getLicenceZverejnit() ? 1:0,
-                                    (int) $monograph->getNaklad(),
+                                    $monograph->getArchivace() ? 1:0,                                    
                                     $monograph->getTiskarna(),
                                     $monograph->getPoznamkaAdmin(),
-                                    $monograph->getHonorarCelkem(),
-                                    $monograph->getHonorarVyplata(),
-				(int) $monograph->getId()
+                                    $monograph->getFakulta(),
+                                    (int) $monograph->getId()
 			)
 		);
 		$this->updateLocaleFields($monograph);

@@ -741,7 +741,29 @@
     <message key="author.munipress.rodneCislo">Rodné číslo</message>
     <message key="author.munipress.mu">Číslo MU</message>
     <message key="author.munipress.poznamka">Poznámka</message>
+    <message key="author.munipress.druhePrijmeni">Druhé příjmení</message>
+    <message key="author.munipress.obcanskeJmeno">Občanské jméno</message>
+    <message key="author.munipress.obcanskePrijmeni">Občanské příjmení</message>
+    <message key="author.munipress.honorar">Honorář</message>
+    <message key="author.munipress.honorarVyplaceno">Honorář vyplacen</message>
+    <message key="author.munipress.stylZobrazeni">Styl zobrazení:</message>
+    <message key="author.munipress.zobrazeni.zobrazitVHlavicce">V hlavičce</message>
+    <message key="author.munipress.zobrazeni.zobrazitMeziAutory">Mezi autory</message>
+    <message key="author.munipress.zobrazeni.zobrazitVOstatnich">Ve více informacích</message>
     
     <message key="monograph.publicationFormat.calameoHash">Calameo hash kód</message>
+    
+    <message key="submission.datumVydani">Datum vydání</message>
+    <message key="munipress.fakulty.esf">Ekonomicko-správní fakulta</message>
+    <message key="munipress.fakulty.fi">Fakulta informatiky</message>
+    <message key="munipress.fakulty.fss">Fakulta sociálních studií</message>
+    <message key="munipress.fakulty.fsps">Fakulta sportovních studií</message>
+    <message key="munipress.fakulty.ff">Filozofická fakulta</message>
+    <message key="munipress.fakulty.lf">Lékařská fakulta</message>
+    <message key="munipress.fakulty.pdf">Pedagogická fakulta</message>
+    <message key="munipress.fakulty.pf">Právnická fakulta</message>
+    <message key="munipress.fakulty.prf">Přírodovědecká fakulta</message>
+    <message key="munipress.fakulty.rekt">Rektorát</message>
+
     
 </locale>

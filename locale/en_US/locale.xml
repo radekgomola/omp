@@ -817,6 +817,27 @@ Masaryk University</message>
     <message key="author.munipress.rodneCislo">personal identification number</message>
     <message key="author.munipress.mu">MU number</message>
     <message key="author.munipress.poznamka">Note</message>
+    <message key="author.munipress.druhePrijmeni">Second Last name</message>
+    <message key="author.munipress.obcanskeJmeno">Civil First name</message>
+    <message key="author.munipress.obcanskePrijmeni">Civil Last name</message>
+    <message key="author.munipress.honorar">Fee</message>
+    <message key="author.munipress.honorarVyplaceno">Fee paid</message>
+    <message key="author.munipress.stylZobrazeni">Style of displaying:</message>
+    <message key="author.munipress.zobrazeni.zobrazitVHlavicce">In the header</message>
+    <message key="author.munipress.zobrazeni.zobrazitMeziAutory">Between authors</message>
+    <message key="author.munipress.zobrazeni.zobrazitVOstatnich">In the section More information</message>
     
     <message key="monograph.publicationFormat.calameoHash">Calameo hash code</message>
+    
+    <message key="submission.datumVydani">Publication date</message>
+    <message key="munipress.fakulty.esf">Faculty of Economics</message>
+    <message key="munipress.fakulty.fi">Faculty of Informatics</message>
+    <message key="munipress.fakulty.fss">Faculty of Social Studies</message>
+    <message key="munipress.fakulty.fsps">Faculty of Sports Studies</message>
+    <message key="munipress.fakulty.ff">Faculty of Arts</message>
+    <message key="munipress.fakulty.lf">Faculty of Medicine</message>
+    <message key="munipress.fakulty.pdf">Faculty of Education</message>
+    <message key="munipress.fakulty.pf">Faculty of Law</message>
+    <message key="munipress.fakulty.prf">Faculty of Science</message>
+    <message key="munipress.fakulty.rekt">Rector's office</message>
 </locale>

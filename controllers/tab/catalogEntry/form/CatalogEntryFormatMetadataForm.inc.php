@@ -161,7 +161,21 @@ class CatalogEntryFormatMetadataForm extends Form {
 			// the pubId plugin needs the format object.
 			'publicationFormat' => $publicationFormat,
                         
-                        'calameoHash' => $publicationFormat->getCalameoHash(null)
+                    
+                        /*************
+                         * MUNIPRESS
+                         *************/
+                        'pocetStran' => $publicationFormat->getPocetStran(),
+                        'poradiVydani' => $publicationFormat->getPoradiVydani(),
+                        'licenceTypPrepinac' => $publicationFormat->getTypLicencePrepinac(),                         
+                        'licenceTyp' => $publicationFormat->getLicenceTyp(), 
+                        'licenceDrzitel' => $publicationFormat->getLicenceDrzitel(),
+                        'licenceExpirace' => $publicationFormat->getLicenceExpirace(), 
+                        'licenceVznik' => $publicationFormat->getLicenceVznik(),
+                        'datumVydani' => $publicationFormat->getDatumVydani(),
+                        'naklad' => $publicationFormat->getNaklad(),
+                        'bibliografickaCitace' => $publicationFormat->getBibliografickaCitace(null), // Localized
+                        'calameoHash' => $publicationFormat->getCalameoHash(null)// Localized
 		);
 
 		// initialize the pubId fields.
@@ -195,6 +209,16 @@ class CatalogEntryFormatMetadataForm extends Form {
 			'technicalProtectionCode',
 			'returnableIndicatorCode',
 			'isApproved',
+                        'pocetStran',
+                        'poradiVydani',
+                        'licenceTypPrepinac',                         
+                        'licenceTyp', 
+                        'licenceDrzitel',
+                        'licenceExpirace', 
+                        'licenceVznik',
+                        'datumVydani',
+                        'naklad',
+                        'bibliografickaCitace',
                         'calameoHash'
 		));
 
@@ -256,7 +280,25 @@ class CatalogEntryFormatMetadataForm extends Form {
 		$publicationFormat->setTechnicalProtectionCode($this->getData('technicalProtectionCode'));
 		$publicationFormat->setReturnableIndicatorCode($this->getData('returnableIndicatorCode'));
 		$publicationFormat->setIsApproved($this->getData('isApproved')?true:false);
+
+                /************
+                 * MUNIPRESS
+                 ************/
+                
+                $publicationFormat->setPocetStran($this->getData('pocetStran'));
+                $publicationFormat->setPoradiVydani($this->getData('poradiVydani'));
+                $publicationFormat->setTypLicencePrepinac($this->getData('licenceTypPrepinac'));
+                $publicationFormat->setLicenceTyp($this->getData('licenceTyp'));
+                $publicationFormat->setLicenceDrzitel($this->getData('licenceDrzitel'));
+                $publicationFormat->setLicenceExpirace($this->getData('licenceExpirace'));
+                $publicationFormat->setLicenceVznik($this->getData('licenceVznik'));
+                $publicationFormat->setDatumVydani($this->getData('datumVydani'));
+                $publicationFormat->setNaklad($this->getData('naklad'));
+                $publicationFormat->setBibliografickaCitace($this->getData('bibliografickaCitace'), NULL);
                 $publicationFormat->setCalameoHash($this->getData('calameoHash'), null);
+                
+                
+                
 
 		// consider the additional field names from the public identifer plugins
 		$pubIdPluginHelper = $this->_getPubIdPluginHelper();

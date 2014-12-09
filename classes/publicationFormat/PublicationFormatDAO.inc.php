@@ -37,8 +37,9 @@ class PublicationFormatDAO extends RepresentationDAO {
 		if ($pressId) $params[] = (int) $pressId;
 
 		$result = $this->retrieve(
-			'SELECT pf.*
+			'SELECT pf.*, munipf.*
 			FROM	publication_formats pf
+                        LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			' . ($pressId?' JOIN submissions s ON (s.submission_id = pf.submission_id)':'') . '
 			WHERE	pf.publication_format_id = ?' .
 			($monographId?' AND pf.submission_id = ?':'') .
@@ -62,8 +63,9 @@ class PublicationFormatDAO extends RepresentationDAO {
 	 */
 	function getBySubmissionId($submissionId) {
 		$result = $this->retrieve(
-			'SELECT *
-			FROM	publication_formats
+			'SELECT pf.*, munipf.*
+			FROM	publication_formats pf                        
+                        LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			WHERE	submission_id = ?',
 			(int) $submissionId
 		);
@@ -170,6 +172,20 @@ class PublicationFormatDAO extends RepresentationDAO {
 		$publicationFormat->setTechnicalProtectionCode($row['technical_protection_code']);
 		$publicationFormat->setReturnableIndicatorCode($row['returnable_indicator_code']);
 		$publicationFormat->setIsAvailable($row['is_available']);
+                
+                /**********
+                 * MUNIPRESS
+                 ***********/
+                
+                $publicationFormat->setTypLicencePrepinac($row['licence_typ_prepinac']);
+                $publicationFormat->setLicenceTyp($row['licence_typ']);
+                $publicationFormat->setLicenceDrzitel($row['licence_drzitel']);
+                $publicationFormat->setLicenceExpirace($this->dateFromDB($row['licence_expirace']));
+                $publicationFormat->setLicenceVznik($this->dateFromDB($row['licence_vznik']));
+                $publicationFormat->setDatumVydani($this->dateFromDB($row['datum_vydani']));
+                $publicationFormat->setNaklad($row['naklad_db']);
+		$publicationFormat->setPocetStran($row['pocet_stran']);
+                $publicationFormat->setPoradiVydani($row['poradi_vydani']);
 
 		$this->getDataObjectSettings('publication_format_settings', 'publication_format_id', $row['publication_format_id'], $publicationFormat);
 
@@ -217,6 +233,25 @@ class PublicationFormatDAO extends RepresentationDAO {
 		);
 
 		$publicationFormat->setId($this->_getInsertId('publication_formats', 'publication_format_id'));
+                
+                $this->update(
+			sprintf('INSERT INTO munipress_publication_formats
+				(publication_format_id, pocet_stran, licence_typ_prepinac, licence_typ, licence_drzitel, licence_expirace, licence_vznik, naklad_db, poznamka_admin, datum_vydani, poradi_vydani)
+			VALUES
+				(?, ?, ?, ?, ?, %s, %s, ?, ?, %s, ?)',
+                                $this->datetimeToDB($publicationFormat->getLicenceExpirace()), $this->datetimeToDB($publicationFormat->getLicenceVznik()), $this->datetimeToDB($publicationFormat->getDatumVydani())),
+			array(
+				(int) $publicationFormat->getId(),
+				(int) $publicationFormat->getPocetStran(),
+                                $publicationFormat->getTypLicencePrepinac(),
+                                $publicationFormat->getLicenceTyp(),
+                                $publicationFormat->getLicenceDrzitel(),
+                                (int) $publicationFormat->getNaklad(),
+                                $publicationFormat->getPoznamkaAdmin(),
+                                $publicationFormat->getPoradiVydani()
+			)
+		);
+                
 		$this->updateLocaleFields($publicationFormat);
 
 		return $publicationFormat->getId();
@@ -279,6 +314,32 @@ class PublicationFormatDAO extends RepresentationDAO {
 				(int) $publicationFormat->getIsAvailable(),
 				(int) $publicationFormat->getId()
 			)
+		);
+                
+                
+                $this->update(
+			sprintf('UPDATE munipress_publication_formats
+			SET	pocet_stran = ?,
+                                licence_typ_prepinac = ?,
+                                licence_typ = ?,
+                                licence_drzitel = ?,
+                                licence_expirace = %s,
+                                licence_vznik = %s,
+                                naklad_db = ?,
+                                datum_vydani = %s,
+                                poradi_vydani = ?
+			WHERE	publication_format_id = 50',
+                        $this->datetimeToDB($publicationFormat->getLicenceExpirace()), $this->datetimeToDB($publicationFormat->getLicenceVznik()), $this->datetimeToDB($publicationFormat->getDatumVydani())),
+                        array(
+				(int) $publicationFormat->getPocetStran(),
+                                $publicationFormat->getTypLicencePrepinac(),
+                                $publicationFormat->getLicenceTyp(),
+                                $publicationFormat->getLicenceDrzitel(),
+                                (int) $publicationFormat->getNaklad(),
+                                $publicationFormat->getPoradiVydani(),
+//                                (int) $publicationFormat->getId(),
+			)
+                               
 		);
 
 		$this->updateLocaleFields($publicationFormat);
