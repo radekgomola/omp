@@ -26,17 +26,12 @@
 
 <div class="bookInfo">
     {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
-    {assign var="cisloVydani" value=$publishedMonograph->getCisloVydani()|strip_unsafe_html}
-    {if $publishedMonograph->getLicenceZverejnit()==1}
-        {assign var="rightsTyp" value=$publishedMonograph->getLicenceTyp()|strip_unsafe_html}
-        {assign var="rightsDrzitel" value=$publishedMonograph->getLicenceDrzitel()|strip_unsafe_html}
-        {assign var="rightsTrvani" value=$publishedMonograph->getLicenceExpirace()|strip_unsafe_html}
-    {/if}
    
     {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
-    {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
     {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
-    {assign var="muPracoviste" value=$publishedMonograph->getLocalizedFakulta()|strip_unsafe_html}
+    {assign var="muPracovisteCode" value=$publishedMonograph->getFakulta()}
+    {assign var="munipress" value="munipress.fakulty."}    
+    {translate|assign:"muPracoviste" key="munipress.fakulty.$muPracovisteCode"}
     {assign var=authors value=$publishedMonograph->getAuthors()}
     
     {if $publishedMonograph->getAKolektiv()==1}
@@ -65,8 +60,8 @@
                 </ul>
                 <div id="viceInfoTab">
                     {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats(true)}
-                    <div class="tabulka_info">
-                        <ul>
+                    
+                       
                     {assign var=viceInformaci value=0}
                     {if count($publicationFormats) >= 1}
                                 {foreach from=$publicationFormats item="publicationFormat"}
@@ -75,8 +70,9 @@
                                         {/if}{* $publicationFormat->getIsApproved() *}
                                 {/foreach}{* $publicationFormats *}
                                         {assign var=viceInformaci value=1}
-                                        <br />
                     {/if}
+                        <div class="tabulka_info">
+                    <ul>
                     {if !empty($cisloVydani) && $cisloVydani !=0}
                         <li>
                             <strong>{translate key="submission.cisloVydani"}</strong><span class="vpravo">{$cisloVydani}.</span>
@@ -108,51 +104,18 @@
                     </div>
                     <div class="textoveInfo">
 
-                        {if !empty($bibliografickaCitace)}
-                            <strong>{translate key="submission.bibliografickaCitace"}</strong> <br />
-                            {$bibliografickaCitace}
-                            {assign var=viceInformaci value=1}
-                            <br />
-                        {/if}
-
                         {if !empty($poznamka)}
                             <strong>{translate key="submission.poznamka"}</strong> <br />
                             {$poznamka}
                             {assign var=viceInformaci value=1}
                         {/if}
-                    </div>
-
-
-                    {if $viceInformaci == 1 && (!empty($rightTyp) || !empty($rightsDrzitel) || !empty($rightsTrvani) || !empty($dedikace)) }<hr />{/if}
-
-
-                    <div class="tabulka_info">
-                        <ul>
-                    {if !empty($rightsTyp)}
-                        <li>
-                            <strong>{translate key="submission.rights.typ"}</strong> <span class="vpravo">{$rightsTyp}</span>
-                        </li>
-                    {/if}
-                    {if !empty($rightsDrzitel)}
-                        <li>
-                            <strong>{translate key="submission.rights.drzitel"}</strong> <span class="vpravo">{$rightsDrzitel}</span>
-                        </li>
-                    {/if}
-                    {if !empty($rightsTrvani)}
-                        <li>
-                            <strong>{translate key="submission.rights.trvani"}</strong> <span class="vpravo">{$rightsTrvani}</span>
-                        </li>
-                    {/if}
-                    </ul>                
-                    </div>
-                    <div class="textoveInfo">
-
+                        
                         {if !empty($dedikace)}
                             <strong>{translate key="submission.dedikace"}</strong> <br />
                             {$dedikace}
                         {/if}
-
                     </div>
+
                 </div>
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
@@ -164,7 +127,6 @@
                             {if $author->getZobrazAutori() == 1}
                             {assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
                             {assign var=url value=$author->getUrl()|strip_unsafe_html}
-                            {assign var=uco value=$author->getUCO()|strip_unsafe_html}
                             <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
                                     <strong>{$author->getFullName()}</strong></a>
 				{elseif $uco != '' && $uco !='0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>

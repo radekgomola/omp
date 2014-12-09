@@ -559,7 +559,7 @@
     <message key="submission.informace.verejne">Veřejné informace</message>
     <message key="submission.a_kolektiv">a kol.</message>
     <message key="submission.ostatni">Další</message>
-    <message key="submission.cisloVydani">Číslo vydání</message>
+    <message key="submission.poradiVydani">Pořadí vydání</message>
     <message key="submission.typ_02_58">Typ 02/58</message>
     <message key="submission.url.web">URL web</message>
     <message key="submission.souvisejiciPublikace">Související publikace</message>
@@ -578,6 +578,8 @@
     <message key="submission.archivace">Archivovat příspěvek</message>
     <message key="submission.archivace.description">Archivovaný příspěvěk se nebude zobrazovat ve výpisu publikací, ani ve správě produkce.</message>
     <message key="submission.obchodniCentrum.prepinacJazyku"></message>
+    <message key="book.vaha">Váha</message>
+    
        
     <message key="informace.url.web">Přejít na www</message>
     <message key="informace.url.oc">Přejít do obchodního centra</message>

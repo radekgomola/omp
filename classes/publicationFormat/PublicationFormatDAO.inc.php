@@ -81,8 +81,9 @@ class PublicationFormatDAO extends RepresentationDAO {
 	function getByPressId($pressId) {
 		$params = array((int) $pressId);
 		$result = $this->retrieve(
-			'SELECT pf.*
-			FROM	publication_formats pf
+			'SELECT pf.*, munipf.*
+			FROM	publication_formats pf                    
+                        LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			JOIN	submissions s ON (s.submission_id = pf.submission_id)
 			WHERE	s.context_id = ?',
 			$params
@@ -98,8 +99,9 @@ class PublicationFormatDAO extends RepresentationDAO {
 	 */
 	function getApprovedBySubmissionId($submissionId) {
 		$result = $this->retrieve(
-			'SELECT *
-			FROM	publication_formats
+			'SELECT pf.*, munipf.*
+			FROM	publication_formats  pf
+                        LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			WHERE	submission_id = ? AND is_approved = 1',
 			(int) $submissionId
 		);
@@ -350,7 +352,7 @@ class PublicationFormatDAO extends RepresentationDAO {
 	 * @return array
 	 */
 	function getLocaleFieldNames() {
-		return array('name', 'calameoHash');
+		return array('name', 'calameoHash', 'bibliografickaCitace');
 	}
 
 	/**

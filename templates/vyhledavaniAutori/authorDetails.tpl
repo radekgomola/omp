@@ -8,12 +8,13 @@
  * Index of published articles by author.
  *
  *}
-{strip}
+{strip}        
 {assign var="pageTitleName" value=$author->getFullName()}
 {include file="munipressCommon/headerBio.tpl"}
 {/strip}
 <div id="authorDetails">
-    <h2>{$pageTitleName}</h2>
+    <h2>{$pageTitleName} {if $author->getZobrazHlavicka() != 1}({$author->getLocalizedUserGroupName()}){/if}
+    </h2>
 {include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs vyhledavaniAutori="true"}
 
 </div>
