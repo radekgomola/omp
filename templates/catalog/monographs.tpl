@@ -42,7 +42,7 @@
                         {if $trideni && $trideni == 'pub_desc'}
                             <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="pub_asc"}" target="_self" class="sorting desc">Podle data vydání</a>
                         {else}
-                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="pub_desc"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc'} stejne {else}asc{/if}">Podle data vydání</a>
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="pub_desc"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">Podle data vydání</a>
                         {/if}
                 </div>
                 

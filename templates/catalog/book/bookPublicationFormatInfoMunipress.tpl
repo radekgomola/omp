@@ -67,7 +67,7 @@
                 <li>
                     <strong>{translate key="submission.datumVydani"}</strong>
                     <span class="vpravo">
-                    {$publicationFormat->getDatumVydani()|escape}
+                    {$publicationFormat->getDatumVydani()|date_format:$dateFormatShort}
                     </span>
                 </li>
             {/if}
