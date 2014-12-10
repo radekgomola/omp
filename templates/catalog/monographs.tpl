@@ -34,11 +34,23 @@
         {if $paging != 'false'}
             <div class="pagingPanel">
                 <div class="pkp_helpers_align_left">
-                    {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}    
+                        {if $trideni && $trideni == 'lex_desc'}
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="lex_asc"}" target="_self" class="sorting desc">Abecedně</a> | 
+                        {else}
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="lex_desc"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">Abecedně</a> | 
+                        {/if}
+                        {if $trideni && $trideni == 'pub_desc'}
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="pub_asc"}" target="_self" class="sorting desc">Podle data vydání</a>
+                        {else}
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="pub_desc"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc'} stejne {else}asc{/if}">Podle data vydání</a>
+                        {/if}
                 </div>
                 
                 <div class="pkp_helpers_align_right">
-                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs}{* This generates the individual page links *}
+                    <div class="vypis_polozek">
+                        {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
+                    </div>
+                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs sort=$trideni}{* This generates the individual page links *}
                 </div>
                 
             </div>

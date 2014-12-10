@@ -47,6 +47,21 @@ class PublishedMonographDAO extends MonographDAO {
 		if ($searchText !== null) {
 			$params[] = $params[] = $params[] = "%$searchText%";
 		}
+                
+                $setrid = '';
+                switch($trideni) {                    
+                    case "lex_desc":
+                        $setrid .='st.setting_value DESC';
+                        break;
+                    case "pub_asc":                         
+                        $setrid .= 'munis.datum_vydani ASC';
+                        break;
+                    case "pub_desc":
+                        $setrid .='munis.datum_vydani DESC';
+                        break;
+                    default:                       
+                        $setrid .= 'st.setting_value ASC';
+                }
 //		$result = $this->retrieveRange(
 //			'SELECT	' . ($searchText !== null?'DISTINCT ':'') . '
 //				ps.*,
@@ -84,7 +99,7 @@ class PublishedMonographDAO extends MonographDAO {
 				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
 			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
                                 ' . ($searchText !== null?' AND (st.setting_value LIKE ? OR a.first_name LIKE ? OR a.last_name LIKE ?)':'') . '
-			ORDER BY st.setting_value',
+			ORDER BY ' .$setrid,
 			$params,
 			$rangeInfo
 		);
@@ -297,6 +312,21 @@ class PublishedMonographDAO extends MonographDAO {
 		if ($pressId) $params[] = (int) $pressId;
 
 		$params[] = REALLY_BIG_NUMBER; // For feature sorting
+                
+                $setrid = '';
+                switch($trideni) {                    
+                    case "lex_desc":
+                        $setrid .='st.setting_value DESC';
+                        break;
+                    case "pub_asc":                         
+                        $setrid .= 'munis.datum_vydani ASC';
+                        break;
+                    case "pub_desc":
+                        $setrid .='munis.datum_vydani DESC';
+                        break;
+                    default:                       
+                        $setrid .= 'st.setting_value ASC';
+                }
 
 //		$result = $this->retrieveRange(
 //			'SELECT	ps.*,
@@ -326,7 +356,7 @@ class PublishedMonographDAO extends MonographDAO {
                                 LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
 			WHERE	ps.date_published IS NOT NULL AND se.series_id = ?
 				' . ($pressId?' AND s.context_id = ?':'' ) . '
-			ORDER BY st.setting_value',
+			ORDER BY ' .$setrid,
 			$params,
 			$rangeInfo
 		);
@@ -341,7 +371,7 @@ class PublishedMonographDAO extends MonographDAO {
 	 * @param $rangeInfo object optional
 	 * @return DAOResultFactory
 	 */
-	function getByCategoryId($categoryId, $pressId = null, $rangeInfo = null) {
+	function getByCategoryId($categoryId, $pressId = null, $rangeInfo = null, $trideni = null) {
 		$params = array_merge(
 			array(REALLY_BIG_NUMBER),
 			$this->_getFetchParameters(),
@@ -350,7 +380,21 @@ class PublishedMonographDAO extends MonographDAO {
 				ASSOC_TYPE_SERIES
 			)
 		);
-
+                $setrid = '';
+                switch($trideni) {                    
+                    case "lex_desc":
+                        $setrid .='st.setting_value DESC';
+                        break;
+                    case "pub_asc":                         
+                        $setrid .= 'munis.datum_vydani ASC';
+                        break;
+                    case "pub_desc":
+                        $setrid .='munis.datum_vydani DESC';
+                        break;
+                    default:                       
+                        $setrid .= 'st.setting_value ASC';
+                }
+                
 		if ($pressId) $params[] = (int) $pressId;
 
 //		$result = $this->retrieveRange(
@@ -389,7 +433,7 @@ class PublishedMonographDAO extends MonographDAO {
                                 LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
 			WHERE	ps.date_published IS NOT NULL AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)
 				' . ($pressId?' AND s.context_id = ?':'' ) . '
-			ORDER BY st.setting_value',
+			ORDER BY ' .$setrid,
 			$params,
 			$rangeInfo
 		);
