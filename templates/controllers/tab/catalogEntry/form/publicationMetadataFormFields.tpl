@@ -81,12 +81,12 @@
 		{/fbvFormSection}
 	{/fbvFormArea}
 
-	{fbvFormArea id="productComposition" class="border"}
+	{*{fbvFormArea id="productComposition" class="border"}
 		{fbvFormSection for="productCompositionCode" title="monograph.publicationFormat.productFormDetailCode" }
-			{*{fbvElement type="select" from=$productCompositionCodes selected=$productCompositionCode translate=false id="productCompositionCode" required="true" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}*}
+			{fbvElement type="select" from=$productCompositionCodes selected=$productCompositionCode translate=false id="productCompositionCode" required="true" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}
 			{fbvElement type="select" from=$productFormDetailCodes selected=$productFormDetailCode translate=false id="productFormDetailCode" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}
 		{/fbvFormSection}
-	{/fbvFormArea}
+	{/fbvFormArea}*}
 
 	{fbvFormArea id="productAvailability" title="monograph.publicationFormat.productAvailability" class="border"}
 		{fbvFormSection for="productAvailability" required="true"}

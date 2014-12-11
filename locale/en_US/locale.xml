@@ -737,6 +737,8 @@ Masaryk University</message>
     <message key="submission.archivace.description">Archived submissions will not appear in the list of publications, nor in production management. </message>
     <message key="submission.obchodniCentrum.prepinacJazyku">?lang=en</message>
     <message key="book.vaha">Weight</message>
+    <message key="book.velikost">File size</message>
+    <message key="submission.aKol">et al.</message>
     
     
     <message key="informace.url.web">Go to www</message>
@@ -840,5 +842,5 @@ Masaryk University</message>
     <message key="munipress.fakulty.pdf">Faculty of Education</message>
     <message key="munipress.fakulty.pf">Faculty of Law</message>
     <message key="munipress.fakulty.prf">Faculty of Science</message>
-    <message key="munipress.fakulty.rekt">Rector's office</message>
+    <message key="munipress.fakulty.Rmu">Rector's office</message>
 </locale>

@@ -14,19 +14,19 @@
 		$('#bookAccordion').accordion({ldelim} autoHeight: false {rdelim});
 	{rdelim});
 </script>
-
+{assign var="cena" value=$publishedMonograph->getCena()|strip_unsafe_html}
+{assign var="cena_ebook" value=$publishedMonograph->getCenaEbook()|strip_unsafe_html}
+{assign var="urlOC" value=$publishedMonograph->getUrlOC()|strip_unsafe_html}
+{assign var="urlOC_ebook" value=$publishedMonograph->getUrlOCEbook()|strip_unsafe_html}
 <div class="bookSpecs">
 	{assign var=coverImage value=$publishedMonograph->getCoverImage()}
 	<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$bookImageLinkUrl}" onclick="return hs.expand(this)"><img class="pkp_helpers_container_center cover_img" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="catalog" submissionId=$publishedMonograph->getId()}" /></a>
 	<div id="bookAccordion">
+                {if $cena || $cena_ebook || $urlOC || $urlOC_ebook}
 		<h3><a href="#">{translate key="catalog.publicationInfo"}</a></h3>
 		<div class="publicationInfo">
                     
-			{assign var="cena" value=$publishedMonograph->getCena()|strip_unsafe_html}
-                        {assign var="cena_ebook" value=$publishedMonograph->getCenaEbook()|strip_unsafe_html}
-                        {assign var="pocetStran" value=$publishedMonograph->getPocetStran()|strip_unsafe_html}
-			{assign var="urlOC" value=$publishedMonograph->getUrlOC()|strip_unsafe_html}
-                        {assign var="urlOC_ebook" value=$publishedMonograph->getUrlOCEbook()|strip_unsafe_html}
+			
                         {if !empty($cena) && $cena != 0}
                             <div class="infoPodKnihou">
                             <span>{translate key="submission.ceny.kniha"}:</span>
@@ -63,7 +63,7 @@
 			{/if}
 
 		</div>
-
+                {/if}
 		{assign var=categories value=$publishedMonograph->getCategories()}
 		{if !$categories->wasEmpty()}
 			<h3><a href="#">{translate key="catalog.relatedCategories"}</a></h3>

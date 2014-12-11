@@ -55,6 +55,14 @@
                     </span>
                 </li>
             {/if}
+            {if $publicationFormat->getCalculatedFileSize()}
+                <li>
+                    <strong>{translate key="book.velikost"}</strong>
+                    <span class="vpravo">
+                    {$publicationFormat->getCalculatedFileSize()|escape} MiB
+                    </span>
+                </li>
+            {/if}
             {if $publicationFormat->getPocetStran()}
                 <li>
                     <strong>{translate key="submission.pocetStran"}</strong>

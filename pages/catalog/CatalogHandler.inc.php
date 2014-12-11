@@ -130,7 +130,8 @@ class CatalogHandler extends Handler {
 			$featuredMonographIds = $featureDao->getSequencesByAssoc(ASSOC_TYPE_CATEGORY, $category->getId());
 			$templateMgr->assign('featuredMonographIds', $featuredMonographIds);
                         
-    
+                        $templateMgr->assign('cesta', $categoryPath);
+                        
                         $templateMgr ->assign('trideni',$trideni);
                         
 			// Provide a list of new releases to browse
@@ -174,6 +175,7 @@ class CatalogHandler extends Handler {
 		$featuredMonographIds = $featureDao->getSequencesByAssoc(ASSOC_TYPE_SERIES, $series->getId());
 		$templateMgr->assign('featuredMonographIds', $featuredMonographIds);
                 
+                $templateMgr->assign('cesta', $seriesPath);
                 $templateMgr ->assign('trideni',$trideni);
 
 		// Provide a list of new releases to browse

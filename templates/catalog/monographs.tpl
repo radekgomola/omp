@@ -31,19 +31,34 @@
 		{translate|assign:"monographListTitle" key="catalog.browseTitles"}
 	{/if}
         <h3 class="pkp_helpers_munipress_underline">{$monographListTitle}</h3>
-        {if $paging != 'false'}
+        {if $paging != 'false' }
             <div class="pagingPanel">
                 <div class="pkp_helpers_align_left">
-                        {if $trideni && $trideni == 'lex_desc'}
-                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="lex_asc"}" target="_self" class="sorting desc">Abecedně</a> | 
-                        {else}
-                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="lex_desc"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">Abecedně</a> | 
-                        {/if}
-                        {if $trideni && $trideni == 'pub_desc'}
-                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="pub_asc"}" target="_self" class="sorting desc">Podle data vydání</a>
-                        {else}
-                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace" sort="pub_desc"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">Podle data vydání</a>
-                        {/if}
+                    {if !$vyhledavaniAutori}
+                       {* {if $cesta}*}
+                            {if $trideni && $trideni == 'lex_desc'}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_asc"}" target="_self" class="sorting desc">Abecedně</a> | 
+                            {else}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_desc"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">Abecedně</a> | 
+                            {/if}
+                            {if $trideni && $trideni == 'pub_desc'}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_asc"}" target="_self" class="sorting desc">Podle data vydání</a>
+                            {else}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_desc"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">Podle data vydání</a>
+                            {/if}
+                        {*{else}
+                            {if $trideni && $trideni == 'lex_desc'}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="lex_asc"}" target="_self" class="sorting desc">Abecedně</a> | 
+                            {else}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="lex_desc"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">Abecedně</a> | 
+                            {/if}
+                            {if $trideni && $trideni == 'pub_desc'}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="pub_asc"}" target="_self" class="sorting desc">Podle data vydání</a>
+                            {else}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="pub_desc"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">Podle data vydání</a>
+                            {/if}
+                        {/if}*}
+                    {/if}
                 </div>
                 
                 <div class="pkp_helpers_align_right">

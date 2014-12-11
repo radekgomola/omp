@@ -236,11 +236,13 @@ class PublicationFormatDAO extends RepresentationDAO {
 
 		$publicationFormat->setId($this->_getInsertId('publication_formats', 'publication_format_id'));
                 
+                $this->updateLocaleFields($publicationFormat);
+                
                 $this->update(
 			sprintf('INSERT INTO munipress_publication_formats
-				(publication_format_id, pocet_stran, licence_typ_prepinac, licence_typ, licence_drzitel, licence_expirace, licence_vznik, naklad_db, poznamka_admin, datum_vydani, poradi_vydani)
+				(publication_format_id, pocet_stran, licence_typ_prepinac, licence_typ, licence_drzitel, licence_expirace, licence_vznik, naklad_db, datum_vydani, poradi_vydani)
 			VALUES
-				(?, ?, ?, ?, ?, %s, %s, ?, ?, %s, ?)',
+				(?, ?, ?, ?, ?, %s, %s, ?, %s, ?)',
                                 $this->datetimeToDB($publicationFormat->getLicenceExpirace()), $this->datetimeToDB($publicationFormat->getLicenceVznik()), $this->datetimeToDB($publicationFormat->getDatumVydani())),
 			array(
 				(int) $publicationFormat->getId(),
@@ -249,12 +251,12 @@ class PublicationFormatDAO extends RepresentationDAO {
                                 $publicationFormat->getLicenceTyp(),
                                 $publicationFormat->getLicenceDrzitel(),
                                 (int) $publicationFormat->getNaklad(),
-                                $publicationFormat->getPoznamkaAdmin(),
                                 $publicationFormat->getPoradiVydani()
+                                
 			)
 		);
                 
-		$this->updateLocaleFields($publicationFormat);
+		
 
 		return $publicationFormat->getId();
 	}
@@ -330,7 +332,7 @@ class PublicationFormatDAO extends RepresentationDAO {
                                 naklad_db = ?,
                                 datum_vydani = %s,
                                 poradi_vydani = ?
-			WHERE	publication_format_id = 50',
+			WHERE	publication_format_id = ?',
                         $this->datetimeToDB($publicationFormat->getLicenceExpirace()), $this->datetimeToDB($publicationFormat->getLicenceVznik()), $this->datetimeToDB($publicationFormat->getDatumVydani())),
                         array(
 				(int) $publicationFormat->getPocetStran(),
@@ -339,7 +341,7 @@ class PublicationFormatDAO extends RepresentationDAO {
                                 $publicationFormat->getLicenceDrzitel(),
                                 (int) $publicationFormat->getNaklad(),
                                 $publicationFormat->getPoradiVydani(),
-//                                (int) $publicationFormat->getId(),
+                                (int) $publicationFormat->getId(),
 			)
                                
 		);

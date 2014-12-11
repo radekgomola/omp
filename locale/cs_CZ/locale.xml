@@ -579,6 +579,8 @@
     <message key="submission.archivace.description">Archivovaný příspěvěk se nebude zobrazovat ve výpisu publikací, ani ve správě produkce.</message>
     <message key="submission.obchodniCentrum.prepinacJazyku"></message>
     <message key="book.vaha">Váha</message>
+    <message key="book.velikost">Velikost souboru</message>
+    <message key="submission.aKol">a kol.</message>
     
        
     <message key="informace.url.web">Přejít na www</message>
@@ -765,7 +767,7 @@
     <message key="munipress.fakulty.pdf">Pedagogická fakulta</message>
     <message key="munipress.fakulty.pf">Právnická fakulta</message>
     <message key="munipress.fakulty.prf">Přírodovědecká fakulta</message>
-    <message key="munipress.fakulty.rekt">Rektorát</message>
+    <message key="munipress.fakulty.Rmu">Rektorát</message>
 
     
 </locale>

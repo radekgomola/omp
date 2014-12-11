@@ -15,7 +15,7 @@
 	<div class="pkp_catalog_monographDetails">
 		<div class="pkp_catalog_monographTitle"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="book" path=$publishedMonograph->getId()}" {if $vyhledavaniAutori=="true"}target="_blank"{/if}>{$publishedMonograph->getLocalizedFullTitle()}</a></div>
 		<div class="pkp_catalog_monograph_authorship">
-                    {$publishedMonograph->getAuthorString()|escape}
+                    {$publishedMonograph->getAuthorString()|escape}, {if $publishedMonograph->getAKolektiv()==1}{translate key="submission.aKol"}{/if}
 		</div>
         </div>
 	<div class="pkp_catalog_monograph_date">

@@ -30,20 +30,16 @@
     {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
     {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
     {assign var="muPracovisteCode" value=$publishedMonograph->getFakulta()}
+    
     {assign var="munipress" value="munipress.fakulty."}    
     {translate|assign:"muPracoviste" key="munipress.fakulty.$muPracovisteCode"}
     {assign var=authors value=$publishedMonograph->getAuthors()}
     
-    {if $publishedMonograph->getAKolektiv()==1}
-        {assign var="a_kol" value=", a kol."}
-    {else}
-        {assign var="a_kol" value=""}
-    {/if}
     
     
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
-		<div class="authorName">{$publishedMonograph->getAuthorString()}{$a_kol}</div>
+		<div class="authorName">{$publishedMonograph->getAuthorString()}{if $publishedMonograph->getAKolektiv()==1}{translate key="submission.aKol"}{/if}</div>
 	</div>
 	<div id="bookInfoTabs">
 		<ul>
@@ -79,7 +75,7 @@
                         </li>
                         {assign var=viceInformaci value=1}
                     {/if}
-                    {if !empty($muPracoviste)}
+                    {if !empty($muPracovisteCode)}
                         <li>
                             <strong>{translate key="submission.muPracoviste"}</strong> <span class="vpravo">{$muPracoviste}</span>
                         </li>
@@ -125,6 +121,7 @@
                         {translate key="catalog.autori"}:
 			{foreach from=$authors item=author}
                             {if $author->getZobrazAutori() == 1}
+                            {assign var=uco value=$author->getUCO()|strip_unsafe_html}
                             {assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
                             {assign var=url value=$author->getUrl()|strip_unsafe_html}
                             <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
