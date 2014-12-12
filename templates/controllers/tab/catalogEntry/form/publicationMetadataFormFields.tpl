@@ -148,7 +148,19 @@
                         {fbvElement type="text" label="submission.datumVydani" id="datumVydani" name="datumVydani" value=$datumVydani|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
                 {/fbvFormSection}
                 
+                {fbvFormSection title="submission.povinneVytisky"}
+                <script>
+                    $('input[id^="povVytiskyOdesly"]').datepicker({ldelim} dateFormat: 'yy-mm-dd' {rdelim});
+                    $('input[id^="povVytiskyDosly"]').datepicker({ldelim} dateFormat: 'yy-mm-dd' {rdelim});
+                </script>
+                        {fbvElement type="text" label="submission.povinneVytisky.dosly" id="povVytiskyDosly" name="povVytiskyDosly" value=$povVytiskyDosly|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
+                        {fbvElement type="text" label="submission.povinneVytisky.odesly" id="povVytiskyOdesly" name="povVytiskyOdesly" value=$povVytiskyOdesly|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
+                {/fbvFormSection} 
 
+                {fbvFormSection title="submission.tiskarna"}
+                        {fbvElement type="textarea" name="tiskarna" id="tiskarna" value=$tiskarna rich=true}
+                {/fbvFormSection} 
+                
                 {fbvFormSection title="submission.bibliografickaCitace" for="bibliografickaCitace"}
                         {fbvElement type="textarea" multilingual=true name="bibliografickaCitace" id="bibliografickaCitace" value=$bibliografickaCitace rich=true readonly=$readOnly}
                 {/fbvFormSection}

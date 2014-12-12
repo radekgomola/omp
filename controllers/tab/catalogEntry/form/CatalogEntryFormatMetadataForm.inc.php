@@ -174,6 +174,9 @@ class CatalogEntryFormatMetadataForm extends Form {
                         'licenceVznik' => $publicationFormat->getLicenceVznik(),
                         'datumVydani' => $publicationFormat->getDatumVydani(),
                         'naklad' => $publicationFormat->getNaklad(),
+                        'povVytiskyDosly' => $publicationFormat->getPovVytiskyDosly(),
+                        'povVytiskyOdesly' => $publicationFormat->getPovVytiskyOdesly(),   
+                        'tiskarna' => $publicationFormat->getTiskarna(),
                         'bibliografickaCitace' => $publicationFormat->getBibliografickaCitace(null), // Localized
                         'calameoHash' => $publicationFormat->getCalameoHash(null)// Localized
 		);
@@ -218,6 +221,9 @@ class CatalogEntryFormatMetadataForm extends Form {
                         'licenceVznik',
                         'datumVydani',
                         'naklad',
+                        'povVytiskyDosly', 
+                        'povVytiskyOdesly', 
+                        'tiskarna', 
                         'bibliografickaCitace',
                         'calameoHash'
 		));
@@ -294,6 +300,9 @@ class CatalogEntryFormatMetadataForm extends Form {
                 $publicationFormat->setLicenceVznik($this->getData('licenceVznik'));
                 $publicationFormat->setDatumVydani($this->getData('datumVydani'));
                 $publicationFormat->setNaklad($this->getData('naklad'));
+                $publicationFormat->setPovVytiskyDosly($this->getData('povVytiskyDosly'));
+                $publicationFormat->setPovVytiskyOdesly($this->getData('povVytiskyOdesly')); 
+                $publicationFormat->setTiskarna($this->getData('tiskarna'));
                 $publicationFormat->setBibliografickaCitace($this->getData('bibliografickaCitace'), NULL);
                 $publicationFormat->setCalameoHash($this->getData('calameoHash'), null);
                 

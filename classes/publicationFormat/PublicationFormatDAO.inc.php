@@ -188,6 +188,9 @@ class PublicationFormatDAO extends RepresentationDAO {
                 $publicationFormat->setNaklad($row['naklad_db']);
 		$publicationFormat->setPocetStran($row['pocet_stran']);
                 $publicationFormat->setPoradiVydani($row['poradi_vydani']);
+                $publicationFormat->setTiskarna($row['tiskarna_db']);
+                $publicationFormat->setPovVytiskyDosly($this->dateFromDB($row['pov_vytisky_dosly']));
+                $publicationFormat->setPovVytiskyOdesly($this->dateFromDB($row['pov_vytisky_odesly']));
 
 		$this->getDataObjectSettings('publication_format_settings', 'publication_format_id', $row['publication_format_id'], $publicationFormat);
 
@@ -240,10 +243,10 @@ class PublicationFormatDAO extends RepresentationDAO {
                 
                 $this->update(
 			sprintf('INSERT INTO munipress_publication_formats
-				(publication_format_id, pocet_stran, licence_typ_prepinac, licence_typ, licence_drzitel, licence_expirace, licence_vznik, naklad_db, datum_vydani, poradi_vydani)
+				(publication_format_id, pocet_stran, licence_typ_prepinac, licence_typ, licence_drzitel, licence_expirace, licence_vznik, naklad_db, datum_vydani, poradi_vydani, pov_vytisky_dosly, pov_vytisky_odesly, tiskarna_db)
 			VALUES
-				(?, ?, ?, ?, ?, %s, %s, ?, %s, ?)',
-                                $this->datetimeToDB($publicationFormat->getLicenceExpirace()), $this->datetimeToDB($publicationFormat->getLicenceVznik()), $this->datetimeToDB($publicationFormat->getDatumVydani())),
+				(?, ?, ?, ?, ?, %s, %s, ?, %s, ?, %s, %s, ?)',
+                                $this->datetimeToDB($publicationFormat->getLicenceExpirace()), $this->datetimeToDB($publicationFormat->getLicenceVznik()), $this->datetimeToDB($publicationFormat->getDatumVydani()),$this->datetimeToDB($publicationFormat->getPovVytiskyDosly()),$this->datetimeToDB($publicationFormat->getPovVytiskyOdesly())),
 			array(
 				(int) $publicationFormat->getId(),
 				(int) $publicationFormat->getPocetStran(),
@@ -251,7 +254,8 @@ class PublicationFormatDAO extends RepresentationDAO {
                                 $publicationFormat->getLicenceTyp(),
                                 $publicationFormat->getLicenceDrzitel(),
                                 (int) $publicationFormat->getNaklad(),
-                                $publicationFormat->getPoradiVydani()
+                                $publicationFormat->getPoradiVydani(),
+                                $publicationFormat->getTiskarna()
                                 
 			)
 		);
@@ -331,9 +335,12 @@ class PublicationFormatDAO extends RepresentationDAO {
                                 licence_vznik = %s,
                                 naklad_db = ?,
                                 datum_vydani = %s,
-                                poradi_vydani = ?
+                                poradi_vydani = ?,
+                                pov_vytisky_dosly = %s,
+                                pov_vytisky_odesly = %s,
+                                tiskarna_db = ?
 			WHERE	publication_format_id = ?',
-                        $this->datetimeToDB($publicationFormat->getLicenceExpirace()), $this->datetimeToDB($publicationFormat->getLicenceVznik()), $this->datetimeToDB($publicationFormat->getDatumVydani())),
+                        $this->datetimeToDB($publicationFormat->getLicenceExpirace()), $this->datetimeToDB($publicationFormat->getLicenceVznik()), $this->datetimeToDB($publicationFormat->getDatumVydani()),$this->datetimeToDB($publicationFormat->getPovVytiskyDosly()),$this->datetimeToDB($publicationFormat->getPovVytiskyOdesly())),
                         array(
 				(int) $publicationFormat->getPocetStran(),
                                 $publicationFormat->getTypLicencePrepinac(),
@@ -341,6 +348,7 @@ class PublicationFormatDAO extends RepresentationDAO {
                                 $publicationFormat->getLicenceDrzitel(),
                                 (int) $publicationFormat->getNaklad(),
                                 $publicationFormat->getPoradiVydani(),
+                                $publicationFormat->getTiskarna(),
                                 (int) $publicationFormat->getId(),
 			)
                                

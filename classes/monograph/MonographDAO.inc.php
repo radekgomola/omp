@@ -97,10 +97,10 @@ class MonographDAO extends SubmissionDAO {
                 
                 $this->update(
 			sprintf('INSERT INTO munipress_metadata
-				(submission_id, a_kol, cena, cena_ebook, url_oc, url_oc_ebook, archiv, tiskarna_db, poznamka_admin, pov_vytisky_dosly, pov_vytisky_odesly, datum_vydani, mu_pracoviste)
+				(submission_id, a_kol, cena, cena_ebook, url_oc, url_oc_ebook, archiv,poznamka_admin, datum_vydani, mu_pracoviste)
 				VALUES
-				(?, ?, ?, ?, ?, ?, ?, ?, %s, %s, %s, ?)',
-				$this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly()),$this->datetimeToDB($monograph->getDatumVydani())),
+				(?, ?, ?, ?, ?, ?, ?, ?, %s, ?)',
+				$this->datetimeToDB($monograph->getDatumVydani())),
 			array(
                                 (int) $monograph->getId(),
 				$monograph->getAKolektiv() ? 1:0,
@@ -109,7 +109,6 @@ class MonographDAO extends SubmissionDAO {
 				(int) $monograph->getUrlOC(),
 				(int) $monograph->getUrlOCEbook(),
                                 $monograph->getArchivace() ? 1:0,
-				$monograph->getTiskarna(),
                                 $monograph->getPoznamkaAdmin(),
                                 $monograph->getFakulta(),
 			)
@@ -168,23 +167,19 @@ class MonographDAO extends SubmissionDAO {
 					url_oc = ?,
 					url_oc_ebook = ?,
                                         archiv = ?,
-                                        tiskarna_db = ?,
 					poznamka_admin = ?,
-                                        pov_vytisky_dosly = %s,
-					pov_vytisky_odesly = %s,
                                         datum_vydani = %s,
                                         mu_pracoviste = ?
                                         
 				WHERE	submission_id = ?',
-                               $this->datetimeToDB($monograph->getPovVytiskyDosly()),$this->datetimeToDB($monograph->getPovVytiskyOdesly()),$this->datetimeToDB($monograph->getDatumVydani())),			
+                               $this->datetimeToDB($monograph->getDatumVydani())),			
 			array(
                                     $monograph->getAKolektiv() ? 1:0,
                                     (int) $monograph->getCena(),
                                     (int) $monograph->getCenaEbook(),
                                     (int) $monograph->getUrlOC(),
                                     (int) $monograph->getUrlOCEbook(),
-                                    $monograph->getArchivace() ? 1:0,                                    
-                                    $monograph->getTiskarna(),
+                                    $monograph->getArchivace() ? 1:0,
                                     $monograph->getPoznamkaAdmin(),
                                     $monograph->getFakulta(),
                                     (int) $monograph->getId()
