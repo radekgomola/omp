@@ -13,7 +13,15 @@
 <li>    
     <strong>{$publicationFormat->getLocalizedName()|escape|truncate:100:"..."}</strong>
     
-     <div class="publicationFormatLink">   
+     <div class="publicationFormatLink">
+         {if $keStazeniUrl}
+            <div class="oneLink">
+                <a href="{$keStazeniUrl}" target="_blank">
+                    <img src="{$baseUrl}/images/design/download_square_small.png"/>{translate key="submission.keStazeni"}
+                </a>
+            </div>
+        {/if}
+        
         {if $calameoHash}
             <div class="oneLink">
                 <a href="https://v.calameo.com/?bkcode={$calameoHash}" {literal}onclick="return hs.htmlExpand(this, {objectType: 'iframe'});"{/literal}>
@@ -22,13 +30,7 @@
             </div>
         {/if}
     
-        {if $keStazeniUrl}
-            <div class="oneLink">
-                <a href="{$keStazeniUrl}" target="_blank">
-                    <img src="{$baseUrl}/images/design/download_square_small.png"/>{translate key="submission.keStazeni"}
-                </a>
-            </div>
-        {/if}
+        
 
         {foreach from=$availableFiles[$publicationFormatId] item=availableFile}{* There will be at most one of these *}
                 {if $availableFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF && !$calameoHash}

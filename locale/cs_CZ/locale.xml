@@ -581,6 +581,8 @@
     <message key="book.vaha">Váha</message>
     <message key="book.velikost">Velikost souboru</message>
     <message key="submission.aKol">a kol.</message>
+    <message key="submission.url.keStazeni">URL ke stažení</message>
+    <message key="submission.keStazeni">Ke stažení ZDE</message>
     
        
     <message key="informace.url.web">Přejít na www</message>

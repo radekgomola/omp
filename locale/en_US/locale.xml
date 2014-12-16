@@ -748,6 +748,8 @@ Masaryk University</message>
     <message key="book.vaha">Weight</message>
     <message key="book.velikost">File size</message>
     <message key="submission.aKol">et al.</message>
+    <message key="submission.url.keStazeni">Download URL</message>
+    <message key="submission.keStazeni">Download HERE</message>
     
     
     <message key="informace.url.web">Go to www</message>

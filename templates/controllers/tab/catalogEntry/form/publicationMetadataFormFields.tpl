@@ -110,7 +110,7 @@
                         {fbvElement type="text" label="submission.datumVydani" id="datumVydani" name="datumVydani" value=$datumVydani|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
                 {/fbvFormSection}
                 {fbvFormSection label="submission.url.keStazeni" for="urlWeb"}
-                        {fbvElement type="text" name="urlStazeni" multilingual="true" id="urlStazeni" value=$urlWeb maxlength="255" readonly=$readOnly}
+                        {fbvElement type="text" name="urlStazeni" multilingual="true" id="urlStazeni" value=$urlStazeni maxlength="255" readonly=$readOnly}
                 {/fbvFormSection}
 		{fbvFormSection for="calameoHash" label="monograph.publicationFormat.calameoHash"}
                         {fbvElement type="text" multilingual=true name="calameoHash" id="calameoHash" value=$calameoHash maxlength="255" readonly=$readOnly }
