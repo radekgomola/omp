@@ -694,6 +694,32 @@ class PublicationFormat extends Representation {
 	}
         
         /**
+	 * Vraci lokalizovaný odkaz ke stazeni publikace
+	 * @return string
+	 */
+	function getLocalizedUrlStazeni() {
+		return $this->getLocalizedData('urlStazeni');
+	}
+
+	/**
+	 * Vrací odkaz ke stazeni publikace
+	 * @param $locale
+	 * @return string
+	 */
+	function getUrlStazeni($locale) {
+		return $this->getData('urlStazeni', $locale);
+	}
+
+	/**
+	 * Nastavuje odkaz ke staženi publikace
+	 * @param $urlStazeni string
+	 * @param $locale
+	 */
+	function setUrlStazeni($urlStazeni, $locale) {
+		return $this->setData('urlStazeni', $urlStazeni, $locale);
+	}
+        
+        /**
 	 * Get tiskarnu
 	 * @return text
 	 */

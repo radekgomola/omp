@@ -178,6 +178,7 @@ class CatalogEntryFormatMetadataForm extends Form {
                         'povVytiskyOdesly' => $publicationFormat->getPovVytiskyOdesly(),   
                         'tiskarna' => $publicationFormat->getTiskarna(),
                         'bibliografickaCitace' => $publicationFormat->getBibliografickaCitace(null), // Localized
+                        'urlStazeni' => $publicationFormat->getUrlStazeni(null), // Localized
                         'calameoHash' => $publicationFormat->getCalameoHash(null)// Localized
 		);
 
@@ -225,6 +226,7 @@ class CatalogEntryFormatMetadataForm extends Form {
                         'povVytiskyOdesly', 
                         'tiskarna', 
                         'bibliografickaCitace',
+                        'urlStazeni',
                         'calameoHash'
 		));
 
@@ -304,6 +306,7 @@ class CatalogEntryFormatMetadataForm extends Form {
                 $publicationFormat->setPovVytiskyOdesly($this->getData('povVytiskyOdesly')); 
                 $publicationFormat->setTiskarna($this->getData('tiskarna'));
                 $publicationFormat->setBibliografickaCitace($this->getData('bibliografickaCitace'), NULL);
+                $publicationFormat->setUrlStazeni($this->getData('urlStazeni'), NULL);
                 $publicationFormat->setCalameoHash($this->getData('calameoHash'), null);
                 
                 

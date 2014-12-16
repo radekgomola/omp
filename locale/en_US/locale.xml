@@ -668,12 +668,21 @@ Masaryk University</message>
         <message key="vizitka.uco">(personal university number (UCO))</message>
         <message key="vizitka.url">Personal URL</message>
         
-        <message key="munispace.ostatni">Digitální knihovny Masarykovy univerzity</message>
-    <message key="munispace.ostatni.description"><![CDATA[<p>Masarykova univerzita jako první česká vysoká škola podepsala v roce 2010 tzv. Berlínskou deklaraci (<a href="http://openaccess.mpg.de/Berlin-Declaration" target="_blank">Berlin Declaration on Open Access to Knowledge in Sciences and Humanities</a>), čímž se přihlásila k celosvětovému šíření otevřeného přístupu k výsledkům vědecké práce.</p>
+        <message key="munispace.ostatni">Digital libraries of Masaryk University</message>
+    <message key="munispace.ostatni.description"><![CDATA[<p>Masaryk University was the first Czech university to sign the <a href="http://openaccess.mpg.de/Berlin-Declaration" target="_blank">Berlin Declaration on Open Access to Knowledge in Sciences and Humanities</a> in 2010 and thus has engaged in worldwide access of outcomes of scientific research. </p>
 
-<p>Knihy vydané Masarykovou univerzitou v režimu Open Access najdete v těchto digitálních knihovnách:</p>]]> </message>
-    <message key="munispace.ostatni.napisteNam"><![CDATA[Víte o knihovně, která v seznamu není a měla by být? Napište nám o ní na <a href="mailto:%6d%75%6e%69%70%72%65%73%73%40%70%72%65%73%73%2e%6d%75%6e%69%2e%63%7a " target="_blank">munipress@press.muni.cz</a>!]]></message>
-    <message key="munispace.digilib">Digital library FF</message>
+<p>Open access publications of Masaryk University are available in these digital libraries:</p>]]> </message>
+    <message key="munispace.ostatni.napisteNam"><![CDATA[Do you know about any other library that should be in the list? Please let us know via <a href="mailto:%6d%75%6e%69%70%72%65%73%73%40%70%72%65%73%73%2e%6d%75%6e%69%2e%63%7a " target="_blank">munipress@press.muni.cz</a>!]]></message>
+    <message key="signpost.munispace">Munispace reading room</message>
+    <message key="signpost.digilib">Digital library of the Faculty of Arts</message>
+    <message key="signpost.elportal">Elportal – electronic textbooks of MU</message>
+    <message key="signpost.knihovnictvi">Books by the Division of Information and Library Studies’ authors, Faculty of Arts</message>
+    <message key="signpost.med">Multimedia support in the education of clinical and health care disciplines – Portal of the Faculty of Medicine</message>
+    <message key="signpost.etnologie">Electronic library of the Department of European ethnology, Faculty of Arts</message>
+    <message key="signpost.evropskaStudia">Publications by the Department of international relations and European studies, Faculty of Social studies</message>
+    <message key="signpost.knihovnaFSPS">Portal of electronic textbooks of the Faculty of Sports studies</message>
+    <message key="signpost.kinantropologie">Publications of the Cooperation in Kinanthropology project, Faculty of Sports studies</message>
+    <message key="signpost.tvodicka">http://www.fsps.muni.cz/~tvodicka/library/</message>
     
     
     <message key="catalog.autori">Authors</message>

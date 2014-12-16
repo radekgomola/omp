@@ -665,7 +665,18 @@
 
 <p>Knihy vydané Masarykovou univerzitou v režimu Open Access najdete v těchto digitálních knihovnách:</p>]]> </message>
     <message key="munispace.ostatni.napisteNam"><![CDATA[Víte o knihovně, která v seznamu není a měla by být? Napište nám o ní na <a href="mailto:%6d%75%6e%69%70%72%65%73%73%40%70%72%65%73%73%2e%6d%75%6e%69%2e%63%7a " target="_blank">munipress@press.muni.cz</a>!]]></message>
-    <message key="munispace.digilib">Digitální knihovna Filozofické fakulty</message>
+        
+    <message key="signpost.munispace">Čítárna Munispace</message>
+    <message key="signpost.digilib">Digitální knihovna Filozofické fakulty Masarykovy univerzity</message>
+    <message key="signpost.elportal">Elportál – elektronické výukové publikace MU</message>
+    <message key="signpost.med">Multimediální podpora výuky klinických a zdravotnických oborů – portál LF MU</message>
+    <message key="signpost.knihovnictvi">Knihy autorů z Kabinetu informačních studií a knihovnictví FF MU</message>
+    <message key="signpost.etnologie">Elektronická knihovna Ústavu evropské etnologie FF MU</message>
+    <message key="signpost.evropskaStudia">Publikace Katedry mezinárodních vztahů a evropských studií FSS MU</message>
+    <message key="signpost.knihovnaFSPS">Portál elektronických studijních materiálů FSpS MU</message>
+    <message key="signpost.kinantropologie">Knihy vydané v rámci projektu Spolupráce v kinantropologii na FSpS MU</message>
+    <message key="signpost.tvodicka">http://www.fsps.muni.cz/~tvodicka/library/</message>
+    
     
     <message key="catalog.autori">Autoři</message>
     <message key="highslide.zavrit">Zavřít</message>

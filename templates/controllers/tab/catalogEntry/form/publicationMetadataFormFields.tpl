@@ -101,9 +101,25 @@
 	{/fbvFormArea}
        
         {fbvFormArea id="munipressFormArea" title="submission.informace.munipress" class="border"}
+                {fbvFormSection label="submission.ostatni"}
+                        {fbvElement type="text" name="pocetStran" id="pocetStran" value=$pocetStran maxlength="40" inline=true size=$fbvStyles.size.SMALL label="submission.pocetStran"}
+                        {fbvElement type="text" name="poradiVydani" id="poradiVydani" value=$poradiVydani maxlength="40" inline=true size=$fbvStyles.size.SMALL label="submission.poradiVydani"}
+                        <script>
+                            $('input[id^="datumVydani"]').datepicker({ldelim} dateFormat: 'yy-mm-dd' {rdelim});
+                        </script>
+                        {fbvElement type="text" label="submission.datumVydani" id="datumVydani" name="datumVydani" value=$datumVydani|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
+                {/fbvFormSection}
+                {fbvFormSection label="submission.url.keStazeni" for="urlWeb"}
+                        {fbvElement type="text" name="urlStazeni" multilingual="true" id="urlStazeni" value=$urlWeb maxlength="255" readonly=$readOnly}
+                {/fbvFormSection}
 		{fbvFormSection for="calameoHash" label="monograph.publicationFormat.calameoHash"}
                         {fbvElement type="text" multilingual=true name="calameoHash" id="calameoHash" value=$calameoHash maxlength="255" readonly=$readOnly }
 		{/fbvFormSection}
+                
+                {fbvFormSection title="submission.bibliografickaCitace" for="bibliografickaCitace"}
+                        {fbvElement type="textarea" multilingual=true name="bibliografickaCitace" id="bibliografickaCitace" value=$bibliografickaCitace rich=true readonly=$readOnly}
+                {/fbvFormSection}
+                                
                 {fbvFormSection list="true" title="submission.licence"}
                         {if $licenceTypPrepinac eq "0"}
 				{assign var="checked" value=true}
@@ -138,14 +154,8 @@
                         {fbvElement type="text" label="submission.licence.vznik" id="licenceVznik" name="licenceVznik" value=$licenceVznik|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
                 {/fbvFormSection} 
 
-                {fbvFormSection label="submission.ostatni"}
-                        {fbvElement type="text" name="naklad" id="naklad" value=$naklad maxlength="40" inline=true size=$fbvStyles.size.SMALL label="submission.naklad"}
-                        {fbvElement type="text" name="pocetStran" id="pocetStran" value=$pocetStran maxlength="40" inline=true size=$fbvStyles.size.SMALL label="submission.pocetStran"}
-                        {fbvElement type="text" name="poradiVydani" id="poradiVydani" value=$poradiVydani maxlength="40" inline=true size=$fbvStyles.size.SMALL label="submission.poradiVydani"}
-                        <script>
-                            $('input[id^="datumVydani"]').datepicker({ldelim} dateFormat: 'yy-mm-dd' {rdelim});
-                        </script>
-                        {fbvElement type="text" label="submission.datumVydani" id="datumVydani" name="datumVydani" value=$datumVydani|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
+                {fbvFormSection label="submission.naklad"}
+                        {fbvElement type="text" name="naklad" id="naklad" value=$naklad maxlength="40" inline=true size=$fbvStyles.size.MEDIUM}
                 {/fbvFormSection}
                 
                 {fbvFormSection title="submission.povinneVytisky"}
@@ -161,9 +171,7 @@
                         {fbvElement type="textarea" name="tiskarna" id="tiskarna" value=$tiskarna rich=true}
                 {/fbvFormSection} 
                 
-                {fbvFormSection title="submission.bibliografickaCitace" for="bibliografickaCitace"}
-                        {fbvElement type="textarea" multilingual=true name="bibliografickaCitace" id="bibliografickaCitace" value=$bibliografickaCitace rich=true readonly=$readOnly}
-                {/fbvFormSection}
+                
                 
 	{/fbvFormArea}
 
