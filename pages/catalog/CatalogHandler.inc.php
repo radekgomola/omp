@@ -109,6 +109,12 @@ class CatalogHandler extends Handler {
 		$categoryDao = DAORegistry::getDAO('CategoryDAO');
 		$categoryPath = array_shift($args);
 		$category =& $categoryDao->getByPath($categoryPath, $press->getId());
+                
+                // Provide a list of categories to browse
+		$categoryDao = DAORegistry::getDAO('CategoryDAO');
+		$categories = $categoryDao->getByPressId($press->getId());
+		$templateMgr->assign('browseCategories', $categories);
+                
 		if (isset($category)) {
 			$templateMgr->assign('category', $category);
 			$additionalArgs = array('type' => 'category', 'path' => $category->getPath());

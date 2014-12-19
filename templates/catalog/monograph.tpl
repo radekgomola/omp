@@ -19,7 +19,7 @@
 		</div>
         </div>
 	<div class="pkp_catalog_monograph_date">
-			{$publishedMonograph->getDatumVydani()|date_format:$dateFormatShort}
+			{translate key="submission.datumVydani"}: {$publishedMonograph->getDatumVydani()|date_format:"%Y"}
 	</div>
 </li>
 

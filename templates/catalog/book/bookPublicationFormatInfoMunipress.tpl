@@ -55,11 +55,11 @@
                     </span>
                 </li>
             {/if}
-            {if $publicationFormat->getCalculatedFileSize()}
+            {if $publicationFormat->getFileSize()}
                 <li>
                     <strong>{translate key="book.velikost"}</strong>
                     <span class="vpravo">
-                    {$publicationFormat->getCalculatedFileSize()|escape} MiB
+                    {$publicationFormat->getFileSize()|escape} MiB
                     </span>
                 </li>
             {/if}
@@ -75,7 +75,7 @@
                 <li>
                     <strong>{translate key="submission.datumVydani"}</strong>
                     <span class="vpravo">
-                    {$publicationFormat->getDatumVydani()|date_format:$dateFormatShort}
+                    {$publicationFormat->getDatumVydani()|date_format:"%Y"}
                     </span>
                 </li>
             {/if}

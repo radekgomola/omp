@@ -35,7 +35,12 @@
     {translate|assign:"muPracoviste" key="munipress.fakulty.$muPracovisteCode"}
     {assign var=authors value=$publishedMonograph->getAuthors()}
     
-    
+    {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+    {foreach from=$publicationFormats item=publicationFormat}
+        {if $publicationFormat->getCalameoHash() || $publicationFormat->getUrlStazeni()}
+            {assign var=zobrazDownload value=1}
+        {/if}
+    {/foreach}
     
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
@@ -45,7 +50,7 @@
 		<ul>
 			<li><a href="#abstractTab">{translate key="submission.synopsis"}</a></li>
 			{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}<li><a href="#contentsTab">{translate key="common.contents"}</a></li>{/if}
-			{if $availableFiles|@count != 0}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
+			{if $availableFiles|@count != 0 || $zobrazDownload}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
                         
                         <li><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
 			{call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
@@ -192,9 +197,10 @@
 				{/foreach}
 			</div>
 		{/if}
-		{if $availableFiles|@count != 0}
+                
+		{if $availableFiles|@count != 0 || $zobrazDownload}
 		<div id="downloadTab">
-			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+			
 			{assign var=currency value=$currentPress->getSetting('currency')}
 			{if $useCollapsedView}
 				<ul class="odr_prazdne">

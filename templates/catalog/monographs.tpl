@@ -34,8 +34,18 @@
         {if $paging != 'false' }
             <div class="pagingPanel">
                 <div class="pkp_helpers_align_left">
+                    <form class="pkp_form" action="#">
+                        <div id="browseCategoryContainer">
+                                <select class="applyPlugin selectMenu" size="1" name="browseCategory" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="CATEGORY_PATH"}'.replace('CATEGORY_PATH', this.options[this.selectedIndex].value))">
+                                        <option disabled="disabled"{if !$browseBlockSelectedCategory} selected="selected"{/if}>{translate key="plugins.block.browse.category"}</option>
+                                        {iterate from=browseCategories item=browseCategory}
+                                                <option {if $browseBlockSelectedCategory == $browseCategory->getPath()}selected="selected"{/if} value="{$browseCategory->getPath()|escape}">{if $browseCategory->getParentId()}&nbsp;&nbsp;{/if}{$browseCategory->getLocalizedTitle()|escape}</option>
+                                        {/iterate}
+                                </select>
+                        </div>
+                </form>
                     {if !$vyhledavaniAutori}
-                       {* {if $cesta}*}
+                       {* {if $cesta} - TODO: problematické v celé produkci tohle bude potreba vyresit *}
                             {if $trideni && $trideni == 'lex_desc'}
                                 <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_asc"}" target="_self" class="sorting desc">Abecedně</a> | 
                             {else}

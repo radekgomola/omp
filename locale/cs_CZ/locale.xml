@@ -770,7 +770,7 @@
     
     <message key="monograph.publicationFormat.calameoHash">Calameo hash kód</message>
     
-    <message key="submission.datumVydani">Datum vydání</message>
+    <message key="submission.datumVydani">Rok vydání</message>
     <message key="munipress.fakulty.esf">Ekonomicko-správní fakulta</message>
     <message key="munipress.fakulty.fi">Fakulta informatiky</message>
     <message key="munipress.fakulty.fss">Fakulta sociálních studií</message>
