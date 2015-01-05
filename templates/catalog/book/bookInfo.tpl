@@ -183,6 +183,13 @@
                                         </div>
                                     {/if}
                                 {/if}
+{*=======
+				{if $author->getIncludeInBrowse()}
+					<p>{translate key="catalog.aboutTheAuthor" roleName=$author->getLocalizedUserGroupName()}: <strong>{$author->getFullName()}</strong></p>
+					{assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
+					{if $biography != ''}{$biography}{else}{translate key="catalog.noBioInfo"}{/if}
+				{/if}
+>>>>>>> omp-1_1_1-0*}
 			{/foreach}
 		</div>
 		{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}

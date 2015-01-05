@@ -52,6 +52,12 @@ session_lifetime = 30
 ; execute periodically
 scheduled_tasks = Off
 
+; Scheduled tasks will send email about processing
+; only in case of errors. Set to off to receive
+; all other kind of notification, including success,
+; warnings and notices.
+scheduled_tasks_report_error_only = On
+
 ; Short and long date formats
 date_format_trunc = "%m-%d"
 date_format_short = "%Y-%m-%d"
@@ -81,6 +87,11 @@ allow_url_fopen = Off
 ; base_url[index] = http://www.myUrl.com
 ; base_url[myPress] = http://www.myUrl.com/myPress
 ; base_url[myOtherPress] = http://myOtherPress.myUrl.com
+
+; Generate RESTful URLs using mod_rewrite.  This requires the
+; rewrite directive to be enabled in your .htaccess or httpd.conf.
+; See FAQ for more details.
+restful_urls = Off
 
 ; Allow javascript files to be served through a content delivery network (set to off to use local files)
 enable_cdn = On
@@ -224,7 +235,8 @@ encryption = md5
 ; Use e.g. "img[src,alt],p" to allow "src" and "alt" attributes to the "img"
 ; tag, and also to permit the "p" paragraph tag. Unspecified attributes will be
 ; stripped.
-allowed_html = "a[href|target],em,strong,cite,code,ul,ol,li,dl,dt,dd,b,i,u,img[src|alt],sup,sub,br,p"
+
+allowed_html = "a[href|target],em,strong,cite,code,ul,ol,li[class],dl,dt,dd,b,i,u,img[src|alt],sup,sub,br,p"
 
 ;Is implicit authentication enabled or not
 
@@ -287,6 +299,9 @@ time_between_emails = 3600
 ; Maximum number of recipients that can be included in a single email
 ; (either as To:, Cc:, or Bcc: addresses) for a non-priveleged user
 max_recipients = 10
+
+; If enabled, email addresses must be validated before login is possible.
+require_validation = Off
 
 ; Maximum number of days before an unvalidated account expires and is deleted
 validation_timeout = 14

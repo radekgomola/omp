@@ -439,7 +439,7 @@ class PublishedMonographDAO extends MonographDAO {
 			$this->_getFetchParameters(),
 			array(
 				(int) $categoryId, (int) $categoryId, (int) $categoryId,
-				ASSOC_TYPE_SERIES
+				ASSOC_TYPE_CATEGORY
 			)
 		);
                 $setrid = '';

@@ -44,6 +44,14 @@ class NativeXmlMonographFilter extends NativeXmlSubmissionFilter {
 	}
 
 	/**
+	 * Get the method name for inserting a published submission.
+	 * @return string
+	 */
+	function getPublishedSubmissionInsertMethod(){
+		return 'insertObject';
+	}
+
+	/**
 	 * Populate the submission object from the node
 	 * @param $submission Submission
 	 * @param $node DOMElement
@@ -120,7 +128,6 @@ class NativeXmlMonographFilter extends NativeXmlSubmissionFilter {
 		$importFilter = $this->getImportFilter($n->tagName);
 		assert($importFilter); // There should be a filter
 
-		import('plugins.importexport.native.Onix30ExportDeployment');
 		$existingDeployment = $this->getDeployment();
 		$onixDeployment = new Onix30ExportDeployment(Request::getContext(), Request::getUser());
 		$onixDeployment->setSubmission($existingDeployment->getSubmission());
@@ -128,6 +135,24 @@ class NativeXmlMonographFilter extends NativeXmlSubmissionFilter {
 		$formatDoc = new DOMDocument();
 		$formatDoc->appendChild($formatDoc->importNode($n, true));
 		return $importFilter->execute($formatDoc);
+	}
+
+	/**
+	 * Get the representation export filter group name
+	 * @return string
+	 */
+	function getRepresentationExportFilterGroupName() {
+		return 'publication-format=>native-xml';
+	}
+
+	/**
+	 * Class-specific methods for published submissions.
+	 * @param PublishedMonograph $submission
+	 * @param DOMElement $node
+	 * @return PublishedMonograph
+	 */
+	function populatePublishedSubmission($submission, $node) {
+		return $submission;
 	}
 }
 

@@ -69,6 +69,7 @@
 				{assign var=storedPubId value=$publicationFormat->getStoredPubId($pubIdType)}
 				{if $storedPubId != ''}
                                     <span style="font-weight: bold;">pub-id::{$pubIdType}:</span><br />&nbsp;&nbsp;{if $pubIdType == "doi"}<a href="http://dx.doi.org/{$storedPubId|escape}">{$storedPubId|escape}</a>{else}{$storedPubId|escape}{/if}
+
 				{/if}
 			</div>
 		{/foreach}

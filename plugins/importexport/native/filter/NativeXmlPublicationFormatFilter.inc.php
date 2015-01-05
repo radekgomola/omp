@@ -93,7 +93,6 @@ class NativeXmlPublicationFormatFilter extends NativeXmlRepresentationFilter {
 	 */
 	function _processProductNode($node, $deployment, &$representation) {
 
-		import('plugins.importexport.native.Onix30ExportDeployment');
 		$onixDeployment = new Onix30ExportDeployment(Request::getContext(), Request::getUser());
 
 		$representation->setProductCompositionCode($this->_extractTextFromNode($node, $onixDeployment, 'ProductComposition'));
@@ -189,10 +188,9 @@ class NativeXmlPublicationFormatFilter extends NativeXmlRepresentationFilter {
 						case 'onix:CountriesExcluded': $salesRights->setCountriesExcluded(preg_split('/\s+/', $o->textContent)); break;
 					}
 				}
+				$salesRightsDao->insertObject($salesRights);
+				unset($salesRights);
 			}
-
-			$salesRightsDao->insertObject($salesRights);
-			unset($salesRights);
 		}
 
 		// Extract ProductSupply elements.  Contains Markets, Pricing, Suppliers, and Sales Agents.

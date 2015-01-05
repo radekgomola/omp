@@ -265,7 +265,7 @@
 	<message key="catalog.dateAdded">Incluído em {$dateAdded}</message>
 	<message key="catalog.publicationInfo">Dados da publicação</message>
 	<message key="catalog.relatedCategories">Categorias relacionadas</message>
-	<message key="catalog.aboutTheAuthor">Sobre o autor</message>
+	<message key="catalog.aboutTheAuthor">Sobre o {$roleName}</message>
 	<message key="catalog.noBioInfo">Nenhuma biografia disponível no momento.</message>
 	<message key="catalog.loginRequiredForPayment">Nota: Para adquirir itens, é necessário acessar o sistema primeiro. Escolher um item para compra o levará a página de login.</message>
 
@@ -369,7 +369,7 @@
 	<message key="about.submissionPreparationChecklist.description">Como parte do processo de submissão, é necessário que os autores verifiquem que sua submissão atende aos seguintes requisitos, sendo que elas serão devolvidas submissão que não atendam a estas diretrizes.</message>
 	<message key="about.copyrightNotice">Aviso de direito autoral</message>
 	<message key="about.privacyStatement">Declaração de privacidade</message>
-	<message key="about.peerReviewProcess">Processo de avaliação pelos pares</message>
+	<message key="about.reviewPolicy">Processo de avaliação pelos pares</message>
 	<message key="about.publicationFrequency">Periodicidade de publicação</message>
 	<message key="about.openAccessPolicy">Política de acesso aberto</message>
 	<message key="about.pressSponsorship">Patrocínio da editora</message>
@@ -391,7 +391,7 @@
 
 <h4>Atualização</h4>
 
-<p>Caso esteja atualizando uma versão existente no OMP 0.x, <a href="{$upgradeUrl}">clique aqui</a> para proceder.</p>]]></message>
+<p>Caso esteja atualizando uma versão existente no OMP, <a href="{$upgradeUrl}">clique aqui</a> para proceder.</p>]]></message>
 	<message key="installer.preInstallationInstructionsTitle">Antes de instalar</message>
 	<message key="installer.preInstallationInstructions"><![CDATA[<p>1. Os seguintes arquivos e pastas (e seus conteúdos) devem possuir permissão de escrita:</p>
 <ul>
@@ -526,8 +526,6 @@ Suporte à biblioteca mbstring: <strong>{$supportsMBString}</strong>]]></message
 	<message key="debug.notes.currencyListLoad">Lista de moedas carregadas do arquivo XML "{$filename}" </message>
 	<message key="debug.notes.helpMappingLoad">Arquivo de mapeamento de ajuda XML {$filename} recarregado, na busca por {$id}.</message>
 
-	<!-- RT Entities -->
-	<message key="rt.metadata.pkp.peerReviewed">Artigo avaliado pelos pares</message>
 	<message key="grid.action.createContext">Criar nova Editora</message>
 	<message key="grid.action.submissionEmail">Clique para ler o email</message>
 	<message key="context.context">Editora</message>
