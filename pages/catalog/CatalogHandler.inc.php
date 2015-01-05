@@ -112,8 +112,12 @@ class CatalogHandler extends Handler {
                 
                 // Provide a list of categories to browse
 		$categoryDao = DAORegistry::getDAO('CategoryDAO');
-		$categories = $categoryDao->getByPressId($press->getId());
-		$templateMgr->assign('browseCategories', $categories);
+		$obory = $categoryDao->getByParentId(1,$press->getId());
+		$templateMgr->assign('obory', $obory);
+                
+                $obor =$request->getUserVar('obor');
+                
+                $templateMgr->assign('prochazeniOborCesta', $obor);
                 
 		if (isset($category)) {
 			$templateMgr->assign('category', $category);
@@ -123,7 +127,7 @@ class CatalogHandler extends Handler {
                         // Fetch the monographs to display
 			$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
 			$rangeInfo = $this->getRangeInfo($request, 'catalogPaging');
-			$publishedMonographs =& $publishedMonographDao->getByCategoryId($category->getId(), $press->getId(), $rangeInfo, $trideni);
+			$publishedMonographs =& $publishedMonographDao->getByCategoryIdFiltry($category->getId(), $press->getId(), $rangeInfo, $trideni, $obor);
 			$templateMgr->assign('publishedMonographs', $publishedMonographs);
                         
                         $publishedMonographsFeature =& $publishedMonographDao->getByCategoryId($category->getId(), $press->getId());
@@ -137,6 +141,8 @@ class CatalogHandler extends Handler {
 			$templateMgr->assign('featuredMonographIds', $featuredMonographIds);
                         
                         $templateMgr->assign('cesta', $categoryPath);
+                        
+                        
                         
                         $templateMgr ->assign('trideni',$trideni);
                         

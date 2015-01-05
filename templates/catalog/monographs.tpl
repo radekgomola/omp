@@ -34,27 +34,45 @@
         {if $paging != 'false' }
             <div class="pagingPanel">
                 <div class="pkp_helpers_align_left">
-                    <form class="pkp_form" action="#">
-                        <div id="browseCategoryContainer">
-                                <select class="applyPlugin selectMenu" size="1" name="browseCategory" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="CATEGORY_PATH"}'.replace('CATEGORY_PATH', this.options[this.selectedIndex].value))">
-                                        <option disabled="disabled"{if !$browseBlockSelectedCategory} selected="selected"{/if}>{translate key="plugins.block.browse.category"}</option>
-                                        {iterate from=browseCategories item=browseCategory}
-                                                <option {if $browseBlockSelectedCategory == $browseCategory->getPath()}selected="selected"{/if} value="{$browseCategory->getPath()|escape}">{if $browseCategory->getParentId()}&nbsp;&nbsp;{/if}{$browseCategory->getLocalizedTitle()|escape}</option>
-                                        {/iterate}
-                                </select>
-                        </div>
-                </form>
-                    {if !$vyhledavaniAutori}
+                    
+                    {if !$vyhledavaniAutori}      
+                        
+                        {*{iterate from=obory item=obor}
+                            {*{$obor->getParentId()}
+                             {$prochazeniOborCesta}
+                            {if $prochazeniOborCesta == $obor->getPath() && $obor->getParentId()==1}
+                                {assign var=kategorieOboru value="true"}
+                                {$kategorieOboru}
+                            {/if}
+                            {capture append='oborySelectVypis'}
+                                
+                            {/capture}
+                        {/iterate}*}
+                        
+                        {if !$kategorieOboru}    
+                            <form class="pkp_form" action="#">
+                                <div id="browseCategoryContainer">
+                                        <select class="applyPlugin selectMenu" size="1" name="obory" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta obor="OBOR_CESTA" sort=$trideni}'.replace('OBOR_CESTA', this.options[this.selectedIndex].value))">
+                                                <option {if !$prochazeniOborCesta} selected="selected"{/if} value="">{translate key="plugins.block.browse.category"}</option>
+                                            {iterate from=obory item=obor}
+                                                <option {if $prochazeniOborCesta == $obor->getPath()}selected="selected"{/if} value="{$obor->getPath()|escape}">{$obor->getLocalizedTitle()|escape}</option>
+                                            {/iterate}
+                                        </select>
+                                </div>
+                            </form>
+                        {/if}
+                                
+                                
                        {* {if $cesta} - TODO: problematické v celé produkci tohle bude potreba vyresit *}
                             {if $trideni && $trideni == 'lex_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_asc"}" target="_self" class="sorting desc">Abecedně</a> | 
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_asc" obor=$prochazeniOborCesta}" target="_self" class="sorting desc">Abecedně</a> | 
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_desc"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">Abecedně</a> | 
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_desc" obor=$prochazeniOborCesta}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">Abecedně</a> | 
                             {/if}
                             {if $trideni && $trideni == 'pub_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_asc"}" target="_self" class="sorting desc">Podle data vydání</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_asc" obor=$prochazeniOborCesta}" target="_self" class="sorting desc">Podle data vydání</a>
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_desc"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">Podle data vydání</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_desc" obor=$prochazeniOborCesta}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">Podle data vydání</a>
                             {/if}
                         {*{else}
                             {if $trideni && $trideni == 'lex_desc'}

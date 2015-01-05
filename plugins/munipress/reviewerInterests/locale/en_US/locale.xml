@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/reviewerInterests/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2013-2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Reviewer Interests plugin localization strings
+  -->
+ 
+<locale name="en_US" full_name="U.S. English">
+
+	<!-- Reviewer Interests -->
+	<message key="plugins.generic.reviewerInterests.displayName">Reviewer Interests Plugin</message>
+	<message key="plugins.generic.reviewerInterests.description"><![CDATA[Administer a list of interests that a reviewer can choose from when editing their profile.]]></message>
+
+	<!-- Reviewer Interests Settings Management -->
+	<message key="plugins.generic.reviewerInterests.manager.settings">Settings</message>
+	<message key="plugins.generic.reviewerInterests.manager.reviewerInterestsSettings">Reviewer Interests Settings</message>
+	<message key="plugins.generic.reviewerInterests.manager.settings.description"><![CDATA[<p>With this plugin enabled, an administrator can configure a list of reviewer interests.</p>]]></message>
+
+	<!-- Form Validation -->
+	<message key="plugins.generic.reviewerInterests.manager.settings.reviewerInterestsRequired">At least one interest must be specified.</message>
+
+	<!--  Form Keys -->
+	<message key="plugins.generic.reviewerInterests.manager.settings.createNewInterest">Create a new interest</message>
+	<message key="plugins.generic.reviewerInterests.manager.settings.syncInterests">Sync Interests</message>
+	<message key="plugins.generic.reviewerInterests.manager.settings.confirmDelete">Confirm Deletion?</message>
+</locale>

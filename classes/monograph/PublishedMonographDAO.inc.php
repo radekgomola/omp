@@ -364,6 +364,68 @@ class PublishedMonographDAO extends MonographDAO {
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
 
+        /**
+	 * Retrieve all published monographs in a category tříděné a filtrované.
+	 * @param $categoryId int
+	 * @param $pressId int
+	 * @param $rangeInfo object optional
+	 * @return DAOResultFactory
+	 */
+	function getByCategoryIdFiltry($categoryId, $pressId = null, $rangeInfo = null, $trideni = null, $obor = null, $rok_vydani = null, $jazyk = null) {
+		$params = array_merge(
+			array(REALLY_BIG_NUMBER),
+			$this->_getFetchParameters(),
+			array(
+				(int) $categoryId, (int) $categoryId, (int) $categoryId,
+				ASSOC_TYPE_SERIES
+			)
+		);
+                $setrid = '';
+                switch($trideni) {                    
+                    case "lex_desc":
+                        $setrid .='st.setting_value DESC';
+                        break;
+                    case "pub_asc":                         
+                        $setrid .= 'munis.datum_vydani ASC';
+                        break;
+                    case "pub_desc":
+                        $setrid .='munis.datum_vydani DESC';
+                        break;
+                    default:                       
+                        $setrid .= 'st.setting_value ASC';
+                }
+                
+		if ($pressId) $params[] = (int) $pressId;
+                if ($obor) $params[] = $obor;
+                if ($rok_vydani) $params[] = $rok_vydani;
+                if ($jazyk) $params[] = $jazyk;
+
+                $result = $this->retrieveRange(
+			'SELECT	DISTINCT ps.*,
+				s.*,
+                                munis.*,
+				COALESCE(f.seq, ?) AS order_by,
+				' . $this->_getFetchColumns() . '
+			FROM	published_submissions ps
+				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
+				' . $this->_getFetchJoins() . '
+				LEFT JOIN submission_categories sc ON (sc.submission_id = s.submission_id AND sc.category_id = ?)
+				LEFT JOIN series_categories sca ON (sca.series_id = se.series_id)
+				LEFT JOIN categories c ON (c.category_id = sca.category_id AND c.category_id = ?)
+				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = ?)
+                                LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
+			WHERE	ps.date_published IS NOT NULL AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)
+				' . ($pressId ?' AND s.context_id = ?':'' ) . '
+                                ' . ($obor ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '
+			ORDER BY ' .$setrid,
+			$params,
+			$rangeInfo
+		);
+
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+        
 	/**
 	 * Retrieve all published monographs in a category.
 	 * @param $categoryId int

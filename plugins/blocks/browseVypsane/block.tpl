@@ -11,8 +11,7 @@
 <div class="block" id="sidebarBrowse">
 
     <span class="blockTitle munipress_underline_gray" style="padding-top: 0px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="newReleases"}">{translate key="navigation.newReleases"}</a></span>
-    <span class="blockTitle" style="padding-top: 10px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" path="munispace" op="category"}">{translate key="browse.munispace"}</a></span> 
-   {*<span class="blockTitle">{translate key="plugins.block.category"}</span>*}
+   <span class="blockTitle">{translate key="plugins.block.category"}</span>
     <div class="browseCategoryContainer munipress_underline_gray" style="padding-top:10px;">
         {assign var=test value=true}
         {iterate from=browseCategories item=browseCategory}
@@ -24,7 +23,7 @@
                 {assign var=active value=false}
             {else}
                 {if $id <> 26 && $id <> 32 && $id <> 31}                    
-                    {*{if !empty($content)}
+                    {if !empty($content)}
                         {capture assign='cont'}
                             <ul class="block_ul_browse block_ul">
                                 {foreach from=$content item=jeden}
@@ -46,7 +45,7 @@
                                                               extraContent=$cont
                                                               cesta=$cesta
                         }
-                    </div>*}
+                    </div>
                 {elseif $id == 26}
                     {if !empty($content)}
                         {capture assign='munispace'}
@@ -61,18 +60,7 @@
                         {/capture}
                     {else}
                         {assign var=munispace value=''}
-                    {/if}
-                    <div id="menu" class="left full">
-                        {include file="controllers/extrasOnDemand.tpl"
-                                                              active = $active
-                                                              id=$id
-                                                              widgetWrapper="#menu"
-                                                              moreDetailsTextNT=$name
-                                                              lessDetailsTextNT=$name
-                                                              extraContent=$munispace
-                                                              cesta=$cesta
-                        }
-                    </div>
+                    {/if}                    
                 {elseif $id == 32}
                     {if !empty($content)}
                         {capture assign='faculties'}
@@ -117,7 +105,7 @@
         {*            Iteruje posledni polozku -> protoze vypisuji kategorie zpetne*}
         
         {if $id <> 26 && $id <> 32 && $id <> 31}
-            {*{if !empty($content)}
+            {if !empty($content)}
                 {capture assign='cont'}
                     <ul class="odr_classic2">
                         {foreach from=$content item=jeden}
@@ -137,7 +125,7 @@
                         extraContent=$cont
                         cesta=$cesta
             }
-            </div> *}
+            </div>
         {elseif $id == 26}
             {if !empty($content)}
                 {capture assign='munispace'}
@@ -150,16 +138,7 @@
             {else}
                 {assign var=munispace value=''}
             {/if}
-            {include file="controllers/extrasOnDemand.tpl"
-                        id=$id
-                        widgetWrapper="#userExtraFormFields"
-                        moreDetailsTextNT=$name
-                        lessDetailsTextNT=$name
-                        extraContent=$munispace
-                        cesta=$cesta
-            }
-            </div> 
-        {elseif $id == 32}
+         {elseif $id == 32}
             {if !empty($content)}
                 {capture assign='faculties'}
                     <ul class="block_ul">
@@ -174,10 +153,10 @@
         {/if}
     </div> 
 
-    {*<div id="browseMunispace" class="munipress_underline_gray">
+    <div id="browseMunispace" class="munipress_underline_gray">
         <span class="blockTitle {if  $browseBlockSelectedCategory == 'munispace'}munipress_helpers_bolder{/if}" style="padding-top: 10px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" path="munispace" op="category"}">{translate key="browse.munispace"}</a></span>
         {$munispace}
-    </div>*}
+    </div>
     
     <span class="blockTitle munipress_underline_gray" style="padding-top: 10px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori"}">{translate key="browse.byAuthors"}</a></span>
     
