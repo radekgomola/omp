@@ -58,11 +58,14 @@ class CatalogHandler extends Handler {
                 $rok = $request->getUserVar('rok');
                 $obor = $request->getUserVar('obor');
                 $jazyk = $request->getUserVar('jazyk');
+                $fakulta = $request->getUserVar('fakulta');
 
                 $categoryDao = DAORegistry::getDAO('CategoryDAO');
                 // Provide a list of categories to browse
 		$obory = $categoryDao->getByParentId(1,$press->getId());
 		$templateMgr->assign('obory', $obory);
+                $fakulty= $categoryDao->getByParentId(32,$press->getId());
+		$templateMgr->assign('fakulty', $fakulty);
                 
                 $monographDao = DAORegistry::getDAO('MonographDAO');
                 $templateMgr->assign('filtrRoky', $monographDao->getYears(2015,2000));
@@ -71,12 +74,13 @@ class CatalogHandler extends Handler {
                 $templateMgr->assign('filtrovaniObor', $obor);
                 $templateMgr->assign('filtrovaniRok', $rok);
                 $templateMgr->assign('filtrovaniJazyk', $jazyk);
+                $templateMgr->assign('filtrovaniFakulta', $fakulta);
                 
 		// Fetch the monographs to display
 		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
                 
 		$rangeInfo = $this->getRangeInfo($request, 'catalogPaging');
-		$publishedMonographs = $publishedMonographDao->getByPressIdFiltered($press->getId(), null, $rangeInfo, $trideni, $obor, $rok, $jazyk);
+		$publishedMonographs = $publishedMonographDao->getByPressIdFiltered($press->getId(), null, $rangeInfo, $trideni, $obor, $rok, $jazyk, $fakulta);
 		$templateMgr->assign('publishedMonographs', $publishedMonographs);
                 
                 $publishedMonographsFeature =& $publishedMonographDao->getByPressId($press->getId());
@@ -122,6 +126,7 @@ class CatalogHandler extends Handler {
                 $rok = $request->getUserVar('rok');
                 $obor = $request->getUserVar('obor');
                 $jazyk = $request->getUserVar('jazyk');
+                $fakulta = $request->getUserVar('fakulta');
 		$this->setupTemplate($request);
                
 		// Get the category
@@ -131,6 +136,8 @@ class CatalogHandler extends Handler {
                 // Provide a list of categories to browse
 		$obory = $categoryDao->getByParentId(1,$press->getId());
 		$templateMgr->assign('obory', $obory);
+                $fakulty= $categoryDao->getByParentId(32,$press->getId());
+		$templateMgr->assign('fakulty', $fakulty);
                 
                 $monographDao = DAORegistry::getDAO('MonographDAO');
                 $templateMgr->assign('filtrRoky', $monographDao->getYears(2015,2000));
@@ -139,6 +146,7 @@ class CatalogHandler extends Handler {
                 $templateMgr->assign('filtrovaniObor', $obor);
                 $templateMgr->assign('filtrovaniRok', $rok);
                 $templateMgr->assign('filtrovaniJazyk', $jazyk);
+                $templateMgr->assign('filtrovaniFakulta', $fakulta);
                 
 		if (isset($category)) {
 			$templateMgr->assign('category', $category);
@@ -148,7 +156,7 @@ class CatalogHandler extends Handler {
                         // Fetch the monographs to display
 			$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
 			$rangeInfo = $this->getRangeInfo($request, 'catalogPaging');
-			$publishedMonographs =& $publishedMonographDao->getByCategoryIdFiltry($category->getId(), $press->getId(), $rangeInfo, $trideni, $obor, $rok, $jazyk);
+			$publishedMonographs =& $publishedMonographDao->getByCategoryIdFiltry($category->getId(), $press->getId(), $rangeInfo, $trideni, $obor, $rok, $jazyk, $fakulta);
 			$templateMgr->assign('publishedMonographs', $publishedMonographs);
                         
                         $publishedMonographsFeature =& $publishedMonographDao->getByCategoryId($category->getId(), $press->getId());
