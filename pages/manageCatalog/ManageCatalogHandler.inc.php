@@ -111,7 +111,54 @@ class ManageCatalogHandler extends Handler {
 				__('catalog.manage.manageSeries'),
 				'manage'
 			);
+                
+                /************
+                 * MUNIPRESS - zobrazeni publikovanych monografii plus strizeni, strankova a filtrovani
+                *************/
+                // Set up the monograph list template
+		$press = $request->getPress();
+		$this->_setupMonographsTemplate(
+			$request,
+			true, 'homepage', 'catalog.manage.homepageDescription',
+			ASSOC_TYPE_PRESS, $press->getId()
+		);
 
+                $trideni = $request->getUserVar('sort');
+                $rok = $request->getUserVar('rok');
+                $obor = $request->getUserVar('obor');
+                $jazyk = $request->getUserVar('jazyk');
+                $fakulta = $request->getUserVar('fakulta');
+               
+		// Get the category
+		$categoryDao = DAORegistry::getDAO('CategoryDAO');
+		$categoryPath = array_shift($args);
+		$category =& $categoryDao->getByPath($categoryPath, $press->getId());
+                // Provide a list of categories to browse
+		$obory = $categoryDao->getByParentId(1,$press->getId());
+		$templateMgr->assign('obory', $obory);
+                
+                $fakulty= $categoryDao->getByParentId(32,$press->getId());
+		$templateMgr->assign('fakulty', $fakulty);
+                
+                $monographDao = DAORegistry::getDAO('MonographDAO');
+                $templateMgr->assign('filtrRoky', $monographDao->getYears(2015,2000));
+                $templateMgr->assign('filtrJazyky', $monographDao->getLanguagesForFilter());            
+                
+                $templateMgr->assign('filtrovaniObor', $obor);
+                $templateMgr->assign('filtrovaniRok', $rok);
+                $templateMgr->assign('filtrovaniJazyk', $jazyk);
+                $templateMgr->assign('filtrovaniFakulta', $fakulta);
+                
+		// Fetch the monographs to display
+		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
+                $rangeInfo = $this->getRangeInfo($request, 'managerCatalogPaging');
+		$publishedMonographs =& $publishedMonographDao->getByPressIdFiltered($press->getId(), null, $rangeInfo, $trideni, $obor, $rok, $jazyk, $fakulta);
+		$templateMgr->assign('publishedMonographs', $publishedMonographs);
+                
+                $templateMgr->assign('itemsPerPageHelp', $rangeInfo->getCount());  
+                $templateMgr ->assign('trideni',$trideni);
+                
+                
 		$templateMgr->assign('manageCategoriesLinkAction', $manageCategoriesLinkAction);
 		$templateMgr->assign('manageSeriesLinkAction', $manageSeriesLinkAction);
 		$templateMgr->display('manageCatalog/index.tpl');
@@ -123,7 +170,7 @@ class ManageCatalogHandler extends Handler {
 	 * @param $request PKPRequest
 	 */
 	function homepage($args, $request) {
-		// Set up the monograph list template
+                // Set up the monograph list template
 		$press = $request->getPress();
 		$this->_setupMonographsTemplate(
 			$request,
@@ -267,6 +314,7 @@ class ManageCatalogHandler extends Handler {
 		// Fetch the monographs to display
 		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
 		$publishedMonographs = $publishedMonographDao->getByPressId($press->getId(), $searchText);
+                $templateMgr->assign('vyhledavani', 1);
 		$templateMgr->assign('publishedMonographs', $publishedMonographs);
 
 		// Display the monograph list

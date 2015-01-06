@@ -31,7 +31,7 @@ class PublishedMonographDAO extends MonographDAO {
 	 * @param $rangeInfo object optional
 	 * @return DAOResultFactory
 	 */
-	function getByPressIdFiltered($pressId, $searchText = null, $rangeInfo = null, $trideni = null, $obor = null, $rok_vydani = null, $jazyk = null) {
+	function getByPressIdFiltered($pressId, $searchText = null, $rangeInfo = null, $trideni = null, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
 		$primaryLocale = AppLocale::getPrimaryLocale();
 		$locale = AppLocale::getLocale();
 
@@ -75,7 +75,7 @@ class PublishedMonographDAO extends MonographDAO {
                 } else {
                     $obor = '';
                 }
-                
+                               
                 $rok_vydani = (int) $rok_vydani;
                 if ($rok_vydani && $rok_vydani<10000 && $rok_vydani>1900){
                     $params[] = $rok_vydani."-01-01";
@@ -90,6 +90,18 @@ class PublishedMonographDAO extends MonographDAO {
                     $params[] = $jazykyPole[$jazyk];
                 } else {
                     $jazyk = '';
+                }
+                
+                $fakultyIterator = $categoryDao->getByParentId(32,$pressId);
+                $fakultyPole = array();
+                while ($result = $fakultyIterator->next()) {
+                    $fakultyPole[] = $result->getPath();
+                }
+
+                if ($fakulta && in_array($fakulta, $fakultyPole)) {
+                    $params[] = $fakulta;
+                } else {
+                    $fakulta = '';
                 }
                 
                 $result = $this->retrieveRange(
@@ -113,6 +125,7 @@ class PublishedMonographDAO extends MonographDAO {
                                 ' . ($jazyk ?' AND s.submission_id IN (SELECT cv.assoc_id FROM controlled_vocabs cv 
 LEFT JOIN controlled_vocab_entries cve ON (cv.controlled_vocab_id = cve.controlled_vocab_id)
 JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cves.controlled_vocab_entry_id AND cves.setting_name = \'submissionLanguage\' AND LOWER(cves.setting_value) = ?))':'' ) . '
+                                ' . ($fakulta ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '  
 			ORDER BY ' .$setrid,
 			$params,
 			$rangeInfo

@@ -18,7 +18,7 @@
 
 switch ($op) {
 	case 'index':
-	case 'homepage':
+	//case 'homepage':
 	case 'getCategories':
 	case 'category':
 	case 'getSeries':

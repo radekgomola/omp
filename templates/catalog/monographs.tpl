@@ -35,7 +35,7 @@
             
             {if !$vyhledavaniAutori}
                 <div class="filterPanel">
-                    <div class="popis">
+                    <div class="popis_pod">
                         {translate key="filtr.filtrovat"}:
                     </div>
                 {if $category}

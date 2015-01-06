@@ -788,6 +788,7 @@ Masaryk University</message>
     <message key="filtr.jazyky.por">Portuguese</message>
     <message key="filtr.filtrovat">Filter</message>
     <message key="filtr.tridit">Order</message>
+    <message key="filtr.fakulty">Faculties - all</message>
     
     <!--Doi crossref-->
     <message key="doiCrossref.aktualni.zobraz"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(zobrazit)]]>
