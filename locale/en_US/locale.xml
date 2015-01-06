@@ -775,6 +775,19 @@ Masaryk University</message>
     <message key="browse.faculties">Faculties &amp; workplaces</message>
     <message key="browse.byAuthors">Browse by Authors</message>
     <message key="search.authorIndex">Browse by Authors</message>
+    <message key="browse.obory">Branches</message>
+    <message key="browse.zobrazit">Show</message>
+    <message key="browse.skryt">Hide</message>
+    <message key="filtr.obory">Branches - all</message>
+    <message key="filtr.roky">Years - all</message>
+    <message key="filtr.jazyky">Languages - all</message>
+    <message key="filtr.jazyky.cze">Czech</message>
+    <message key="filtr.jazyky.eng">English</message>
+    <message key="filtr.jazyky.slo">Slovak</message>
+    <message key="filtr.jazyky.ger">German</message>
+    <message key="filtr.jazyky.por">Portuguese</message>
+    <message key="filtr.filtrovat">Filter</message>
+    <message key="filtr.tridit">Order</message>
     
     <!--Doi crossref-->
     <message key="doiCrossref.aktualni.zobraz"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(zobrazit)]]>

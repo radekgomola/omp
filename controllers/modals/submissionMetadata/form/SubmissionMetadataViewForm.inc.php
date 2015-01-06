@@ -36,11 +36,6 @@ class SubmissionMetadataViewForm extends PKPSubmissionMetadataViewForm {
 		$submission = $this->getSubmission();
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('isEditedVolume', $submission->getWorkType() == WORK_TYPE_EDITED_VOLUME);
-
-                //option pro fakulty
-//                $submissionDao = DAORegistry::getDAO('SubmissionDAO');
-//
-//		$templateMgr->assign('faculties', $submissionDao->getFaculties());
                 
 		// Get series for this press
 		$seriesDao = DAORegistry::getDAO('SeriesDAO');

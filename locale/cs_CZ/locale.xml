@@ -729,6 +729,21 @@
     <message key="browse.faculties">Fakulty a pracoviště</message>
     <message key="browse.byAuthors">Procházet podle autorů</message>
     <message key="search.authorIndex">Procházet podle autorů</message>
+    <message key="browse.obory">Obory</message>
+    <message key="browse.zobrazit">Zobrazit</message>
+    <message key="browse.skryt">Skrýt</message>
+    <message key="filtr.obory">Obory - vše</message>
+    <message key="filtr.roky">Roky - vše</message>
+    <message key="filtr.jazyky">Jazyky - vše</message>
+    <message key="filtr.jazyky.cze">Čeština</message>
+    <message key="filtr.jazyky.eng">Angličtina</message>
+    <message key="filtr.jazyky.slo">Slovenština</message>
+    <message key="filtr.jazyky.ger">Němčina</message>
+    <message key="filtr.jazyky.por">Portugalština</message>
+    <message key="filtr.filtrovat">Filtrovat</message>
+    <message key="filtr.tridit">Třídit</message>
+
+    
 
     <message key="doiCrossref.aktualni.zobraz"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(zobrazit)]]>
 </message>

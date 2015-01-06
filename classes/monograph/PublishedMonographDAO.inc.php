@@ -395,11 +395,36 @@ class PublishedMonographDAO extends MonographDAO {
                         $setrid .= 'st.setting_value ASC';
                 }
                 
+                $categoryDao = DAORegistry::getDAO('CategoryDAO');
+                $oboryIterator = $categoryDao->getByParentId(1,$pressId);
+                $oboryPole = array();
+                while ($result = $oboryIterator->next()) {
+                    $oboryPole[] = $result->getPath();
+                }
+                                
 		if ($pressId) $params[] = (int) $pressId;
-                if ($obor) $params[] = $obor;
-                if ($rok_vydani) $params[] = $rok_vydani;
-                if ($jazyk) $params[] = $jazyk;
+                if ($obor && in_array($obor, $oboryPole)) {
+                    $params[] = $obor;
+                } else {
+                    $obor = '';
+                }
 
+                
+                $rok_vydani = (int) $rok_vydani;
+                if ($rok_vydani && $rok_vydani<10000 && $rok_vydani>1900){
+                    $params[] = $rok_vydani."-01-01";
+                    $params[] = $rok_vydani."-12-31";
+                } else {
+                    $rok_vydani = '';
+                }
+                
+                $monographDao = DAORegistry::getDAO('MonographDAO');
+                $jazykyPole = $monographDao -> getLanguagesForDao();
+                if ($jazyk && array_key_exists($jazyk, $jazykyPole)) {
+                    $params[] = $jazykyPole[$jazyk];
+                } else {
+                    $jazyk = '';
+                }
                 $result = $this->retrieveRange(
 			'SELECT	DISTINCT ps.*,
 				s.*,
@@ -417,12 +442,15 @@ class PublishedMonographDAO extends MonographDAO {
                                 LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
 			WHERE	ps.date_published IS NOT NULL AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)
 				' . ($pressId ?' AND s.context_id = ?':'' ) . '
-                                ' . ($obor ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '
+                                ' . ($obor ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '  
+                                ' . ($rok_vydani ?' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?': '' ) . '
+                                ' . ($jazyk ?' AND s.submission_id IN (SELECT cv.assoc_id FROM controlled_vocabs cv 
+LEFT JOIN controlled_vocab_entries cve ON (cv.controlled_vocab_id = cve.controlled_vocab_id)
+JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cves.controlled_vocab_entry_id AND cves.setting_name = \'submissionLanguage\' AND LOWER(cves.setting_value) = ?))':'' ) . '
 			ORDER BY ' .$setrid,
 			$params,
 			$rangeInfo
 		);
-
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
         

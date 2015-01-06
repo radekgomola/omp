@@ -469,6 +469,48 @@ class MonographDAO extends SubmissionDAO {
 			LEFT JOIN series_settings sapl ON (se.series_id = sapl.series_id AND sapl.setting_name = ? AND sapl.locale = ?)
 			LEFT JOIN series_settings sal ON (se.series_id = sal.series_id AND sal.setting_name = ? AND sal.locale = ?)';
 	}
+        
+        /**
+	 * Return a list of Years.
+         * @param $lastYear - poslední použitý rok;
+         * @param $firstYear - první použitý rok;
+	 * @return array
+	 */
+	function getYears($firstYear, $lastYear) {
+            $years = array();
+            for($i=$firstYear; $i>=$lastYear; $i--){
+                $years[$i] = $i;
+            }
+		return $years;
+	}
+        
+        /**
+	 * Return a list of languages.
+	 * @return array
+	 */
+	function getLanguagesForFilter() {
+            return array (
+                'cze' => 'filtr.jazyky.cze',
+                'eng' => 'filtr.jazyky.eng',
+                'slo' => 'filtr.jazyky.slo',
+                'ger' => 'filtr.jazyky.ger',
+                'por' => 'filtr.jazyky.por'
+            );
+	}
+        
+        /**
+	 * Return a list of languages for dao
+	 * @return array
+	 */
+	function getLanguagesForDao() {
+            return array (
+                'cze' => 'czech',
+                'eng' => 'english',
+                'slo' => 'slovak',
+                'ger' => 'german',
+                'por' => 'portuguese'
+            );
+	}
 }
 
 ?>
