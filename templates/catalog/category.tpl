@@ -8,7 +8,9 @@
  * Display a public-facing category view in the catalog.
  *}
 {strip}
-{assign var="pageTitleName" value=$category->getLocalizedTitle()}
+{if $category}
+    {assign var="pageTitleName" value=$category->getLocalizedTitle()}
+{/if}
 {include file="common/header.tpl" suppressPageTitle=true}
 {/strip}
 
@@ -19,6 +21,7 @@
 <div class="catalogContainer" style="max-width: 765px;">
 
 {if $category}
+    
 	{assign var="image" value=$category->getImage()}
 
 	{* Include the carousel view of featured content *}

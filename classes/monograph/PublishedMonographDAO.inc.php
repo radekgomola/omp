@@ -25,6 +25,102 @@ class PublishedMonographDAO extends MonographDAO {
 		parent::MonographDAO();
 	}
 
+        /**
+	 * Retrieve all published monographs in a press.
+	 * @param $pressId int
+	 * @param $rangeInfo object optional
+	 * @return DAOResultFactory
+	 */
+	function getByPressIdFiltered($pressId, $searchText = null, $rangeInfo = null, $trideni = null, $obor = null, $rok_vydani = null, $jazyk = null) {
+		$primaryLocale = AppLocale::getPrimaryLocale();
+		$locale = AppLocale::getLocale();
+
+		$params = array_merge(
+			array(REALLY_BIG_NUMBER),
+			$this->_getFetchParameters(),
+			array(
+				ASSOC_TYPE_PRESS,
+				(int) $pressId
+			)
+		);
+
+		if ($searchText !== null) {
+			$params[] = $params[] = $params[] = "%$searchText%";
+		}
+                
+                $setrid = '';
+                switch($trideni) {                    
+                    case "lex_desc":
+                        $setrid .='st.setting_value DESC';
+                        break;
+                    case "pub_asc":                         
+                        $setrid .= 'munis.datum_vydani ASC';
+                        break;
+                    case "pub_desc":
+                        $setrid .='munis.datum_vydani DESC';
+                        break;
+                    default:                       
+                        $setrid .= 'st.setting_value ASC';
+                }
+                
+                $categoryDao = DAORegistry::getDAO('CategoryDAO');
+                $oboryIterator = $categoryDao->getByParentId(1,$pressId);
+                $oboryPole = array();
+                while ($result = $oboryIterator->next()) {
+                    $oboryPole[] = $result->getPath();
+                }
+
+                if ($obor && in_array($obor, $oboryPole)) {
+                    $params[] = $obor;
+                } else {
+                    $obor = '';
+                }
+                
+                $rok_vydani = (int) $rok_vydani;
+                if ($rok_vydani && $rok_vydani<10000 && $rok_vydani>1900){
+                    $params[] = $rok_vydani."-01-01";
+                    $params[] = $rok_vydani."-12-31";
+                } else {
+                    $rok_vydani = '';
+                }
+                
+                $monographDao = DAORegistry::getDAO('MonographDAO');
+                $jazykyPole = $monographDao -> getLanguagesForDao();
+                if ($jazyk && array_key_exists($jazyk, $jazykyPole)) {
+                    $params[] = $jazykyPole[$jazyk];
+                } else {
+                    $jazyk = '';
+                }
+                
+                $result = $this->retrieveRange(
+			'SELECT	DISTINCT
+                              ps.*,
+				s.*,
+                                munis.*,
+				COALESCE(f.seq, ?) AS order_by,
+				' . $this->_getFetchColumns() . '
+			FROM	published_submissions ps
+				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
+				' . $this->_getFetchJoins() . '
+                                LEFT JOIN authors a ON s.submission_id = a.submission_id
+				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
+				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
+			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
+                                ' . ($searchText !== null?' AND (st.setting_value LIKE ? OR a.first_name LIKE ? OR a.last_name LIKE ?)':'') . '
+                                ' . ($obor ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '  
+                                ' . ($rok_vydani ?' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?': '' ) . '
+                                ' . ($jazyk ?' AND s.submission_id IN (SELECT cv.assoc_id FROM controlled_vocabs cv 
+LEFT JOIN controlled_vocab_entries cve ON (cv.controlled_vocab_id = cve.controlled_vocab_id)
+JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cves.controlled_vocab_entry_id AND cves.setting_name = \'submissionLanguage\' AND LOWER(cves.setting_value) = ?))':'' ) . '
+			ORDER BY ' .$setrid,
+			$params,
+			$rangeInfo
+		);
+
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+        
 	/**
 	 * Retrieve all published monographs in a press.
 	 * @param $pressId int
@@ -195,33 +291,6 @@ class PublishedMonographDAO extends MonographDAO {
 
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
-        
-        
-        /**
-	 * Vrací autora z uživatele, pokud je.
-	 * @param $authorId int
-	 * @return int
-	 */
-//        function getAuthorIdFromUserId($userId){
-//            $params[] = $params[] = $params[] = $userId;
-//        
-//            $result = $this->retrieveRange(
-//                    'SELECT DISTINCT
-//                                a.author_id
-//			FROM	authors AS a
-//			WHERE	a.first_name = (SELECT u.first_name FROM users AS u WHERE u.user_id = ?)
-//                                AND a.last_name = (SELECT u.last_name FROM users AS u WHERE u.user_id = ?)
-//                                AND a.email = (SELECT u.email FROM users AS u WHERE u.user_id = ?)', 
-//			$params
-//		);
-//            $returner = null;
-//            if ($result->RecordCount() != 0) {
-//                    $returner = $this->_fromRow($result->GetRowAssoc(false));
-//            }
-//
-//            $result->Close();
-//            return $returner;
-//        }
         
         
         /**

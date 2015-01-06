@@ -55,12 +55,28 @@ class CatalogHandler extends Handler {
 		$this->setupTemplate($request);
 		$press = $request->getPress();
                 $trideni = $request->getUserVar('sort');
+                $rok = $request->getUserVar('rok');
+                $obor = $request->getUserVar('obor');
+                $jazyk = $request->getUserVar('jazyk');
 
+                $categoryDao = DAORegistry::getDAO('CategoryDAO');
+                // Provide a list of categories to browse
+		$obory = $categoryDao->getByParentId(1,$press->getId());
+		$templateMgr->assign('obory', $obory);
+                
+                $monographDao = DAORegistry::getDAO('MonographDAO');
+                $templateMgr->assign('filtrRoky', $monographDao->getYears(2015,2000));
+                $templateMgr->assign('filtrJazyky', $monographDao->getLanguagesForFilter());            
+                
+                $templateMgr->assign('filtrovaniObor', $obor);
+                $templateMgr->assign('filtrovaniRok', $rok);
+                $templateMgr->assign('filtrovaniJazyk', $jazyk);
+                
 		// Fetch the monographs to display
 		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
                 
 		$rangeInfo = $this->getRangeInfo($request, 'catalogPaging');
-		$publishedMonographs = $publishedMonographDao->getByPressId($press->getId(), null, $rangeInfo, $trideni);
+		$publishedMonographs = $publishedMonographDao->getByPressIdFiltered($press->getId(), null, $rangeInfo, $trideni, $obor, $rok, $jazyk);
 		$templateMgr->assign('publishedMonographs', $publishedMonographs);
                 
                 $publishedMonographsFeature =& $publishedMonographDao->getByPressId($press->getId());
@@ -145,10 +161,7 @@ class CatalogHandler extends Handler {
 			$featuredMonographIds = $featureDao->getSequencesByAssoc(ASSOC_TYPE_CATEGORY, $category->getId());
 			$templateMgr->assign('featuredMonographIds', $featuredMonographIds);
                         
-                        $templateMgr->assign('cesta', $categoryPath);
-                        
-                        
-                        
+                        $templateMgr->assign('cesta', $categoryPath);    
                         $templateMgr ->assign('trideni',$trideni);
                         
 			// Provide a list of new releases to browse

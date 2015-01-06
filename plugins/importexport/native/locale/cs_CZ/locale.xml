@@ -19,5 +19,5 @@
 	<message key="plugins.importexport.native.export">Export</message>
 	<message key="plugins.importexport.native.results">Výsledek</message>
 	<message key="plugins.inportexport.native.uploadFile">Prosím nahrajte soubor v části "import" pro pokračování.</message>
-	<message key="plugins.importexport.native.importComplete">Import byl úspoěšně dokončet. Byly importovány následující položky:</message>
+	<message key="plugins.importexport.native.importComplete">Import byl úspěšně dokončen. Byly importovány následující položky:</message>
 </locale>
