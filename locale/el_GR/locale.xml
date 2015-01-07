@@ -378,7 +378,7 @@
 	<message key="about.submissionPreparationChecklist.description">Ως μέρος της διαδικασίας υποβολής, είναι απαραίτητο οι συγγραφείας να ελέγχουν τη συμμόρφωση της υποβολής με όλα τα ακόλουθα τεκμήρια, ενώ οι υποβολές που δεν τηρούν τις Οδηγίες για τους συγγραφείς μπορεί να επιστραφούν στους συγγραφείς.</message>
 	<message key="about.copyrightNotice">Ενημέρωση για τα πνευματικά δικαιώματα</message>
 	<message key="about.privacyStatement">Πολιτική Προστασίας Προσωπικών Δεδομένων</message>
-	<message key="about.peerReviewProcess">Διαδικασία αξιολόγησης από ομότιμους αξιολογητές</message>
+	<message key="about.reviewPolicy">Διαδικασία αξιολόγησης από ομότιμους αξιολογητές</message>
 	<message key="about.publicationFrequency">Συχνότητα δημοσίευσης</message>
 	<message key="about.openAccessPolicy">Πολιτική Ανοικτής Πρόσβασης</message>
 	<message key="about.pressSponsorship">Χορηγοί Εκδόσεων</message>
@@ -399,7 +399,7 @@
 
 <h4>Upgrade</h4>
 
-<p>If you are upgrading an existing installation of OMP 0.x, <a href="{$upgradeUrl}">click here</a> to proceed.</p>]]></message>
+<p>If you are upgrading an existing installation of OMP, <a href="{$upgradeUrl}">click here</a> to proceed.</p>]]></message>
 	<message key="installer.preInstallationInstructionsTitle">Pre-Installation Steps</message>
 	<message key="installer.preInstallationInstructions"><![CDATA[<p>1. The following files and directories (and their contents) must be made writable:</p>
 <ul>
@@ -532,7 +532,4 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
 	<!-- Debug messages -->
 	<message key="debug.notes.currencyListLoad">Η λίστα νομισματικών μονάδων "{$filename}" φορτώθηκε από XML</message>
 	<message key="debug.notes.helpMappingLoad">Η επαναφόρτωση XML βοηθάει τη χαρτογράφηση του αρχείου {$filename} για την αναζήτηση {$id}.</message>
-
-	<!-- RT Entities -->
-	<message key="rt.metadata.pkp.peerReviewed">Άρθρο που αξιολογήθηκε από ομότιμους αξιολογητές</message>
 </locale>

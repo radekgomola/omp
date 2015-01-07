@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE email_texts SYSTEM "../../../../../lib/pkp/dtd/emailTemplateData.dtd">
+
+<!--
+  * plugins/paymethod/manual/locale/en_US/emailTemplates.xml
+  *
+  * Copyright (c) 2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localized email templates XML file.
+  -->
+
+<email_texts locale="cs_CZ">
+	<email_text key="MANUAL_PAYMENT_NOTIFICATION">
+		<subject>Oznámení o manuální platbě</subject>
+		<body>Je potřeba zpracovat manuální platbu pro nakladatelství {$contextName} a uživatele {$userFullName} (uživatelské jméno: "{$userName}").
+
+Položka bude zaplacena pro "{$itemName}".
+Cena je {$itemCost} ({$itemCurrencyCode}).
+
+Tento e-mail byl vygenerován automaticky doplňkem pro manuální platby Open Monograph Press.</body>
+		<description>Tato e-mailová šablona je použita pro zpravení manažera nakladatelství, že byla vyžádána manuální platba.</description>
+	</email_text>
+</email_texts>

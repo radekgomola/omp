@@ -87,7 +87,8 @@ class SeriesGridHandler extends SetupGridHandler {
 			$gridData[$seriesId] = array(
 				'title' => $series->getLocalizedTitle(),
 				'categories' => $categoriesString,
-				'editors' => $editorsString
+				'editors' => $editorsString,
+				'seq' => $series->getSequence()
 			);
 		}
 
@@ -131,6 +132,15 @@ class SeriesGridHandler extends SetupGridHandler {
 	function initFeatures($request, $args) {
 		import('lib.pkp.classes.controllers.grid.feature.OrderGridItemsFeature');
 		return array(new OrderGridItemsFeature());
+	}
+
+	/**
+	 * Get the list of "publish data changed" events.
+	 * Used to update the site context switcher upon create/delete.
+	 * @return array
+	 */
+	function getPublishChangeEvents() {
+		return array('updateSidebar');
 	}
 
 	/**

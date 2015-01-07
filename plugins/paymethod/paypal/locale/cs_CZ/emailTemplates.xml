@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE email_texts SYSTEM "../../../../../lib/pkp/dtd/emailTemplateData.dtd">
+
+<!--
+  * plugins/paymethod/paypal/locale/en_US/emailTemplates.xml
+  *
+  * Copyright (c) 2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localized email templates XML file.
+  -->
+
+<email_texts locale="cs_CZ">
+	<email_text key="PAYPAL_INVESTIGATE_PAYMENT">
+		<subject>Neobvyklá aktivita PayPal</subject>
+		<body>Open Monograph Press zjistil neobvyklou aktivitu spojenou s podporou plateb přes PayPal pro toto nakladatelství {$contextName}. Tato aktivita bude možná potřebovat pozdější prošetření a manuální zásah.
+                       
+Tento e-amil byl generován PayPal doplňkem pro Open Monograph Press.
+
+Plné znění zaslaných informací pro tento požadavek:
+{$postInfo}
+
+Dodatečné informace (pokud byly poskytnuty):
+{$additionalInfo}
+
+Serverové proměnné:
+{$serverVars}
+</body>
+		<description>Tato e-amilová šablona je použita pro zpravení primární kontakt nakladatelství, o podezřelé aktivitě či aktivitě, která vyžaduje manuální zásah, zjištěné doplňkem PayPal.</description>
+	</email_text>
+</email_texts>

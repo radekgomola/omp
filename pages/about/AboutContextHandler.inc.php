@@ -147,7 +147,7 @@ class AboutContextHandler extends Handler implements IAboutContextInfoProvider {
 		// Remove empty elements.
 		$contactSettings = array_filter($contactSettings);
 
-		$contactLocalizedSettingNames = array('contactTitle', 'contactAffiliation', 'contactMailingAddress',
+		$contactLocalizedSettingNames = array('mailingAddress','contactTitle', 'contactAffiliation', 'contactMailingAddress',
 				'contactTitle', 'contactAffiliation', 'contactMailingAddress');
 
 		foreach ($contactLocalizedSettingNames as $settingName) {
@@ -250,14 +250,14 @@ class AboutContextHandler extends Handler implements IAboutContextInfoProvider {
 	 * @param $context Press
 	 */
 	static protected function getSubmissionsInfo($context) {
-		$submissionSettingNames = array('authorGuidelines', 'copyrightNotice', 'privacyStatement');
+		$submissionSettingNames = array('authorGuidelines', 'copyrightNotice', 'privacyStatement', 'reviewPolicy');
 
 		$submissionInfo = array();
 
 		foreach ($submissionSettingNames as $settingName) {
 			$settingValue = $context->getLocalizedSetting($settingName);
 			if ($settingValue) {
-				$editorialPoliciesInfo[$settingName] = $settingValue;
+				$submissionInfo[$settingName] = $settingValue;
 			}
 		}
 

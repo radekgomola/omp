@@ -45,7 +45,7 @@ class MastheadForm extends ContextSettingsForm {
 	 * Get all locale field names
 	 */
 	function getLocaleFieldNames() {
-		return array('name', 'acronym', 'description', 'customAboutItems', 'masthead', 'partneri');
+		return array('name', 'acronym', 'description', 'customAboutItems', 'masthead', 'partneri', 'mailingAddress');
 	}
 
 	//

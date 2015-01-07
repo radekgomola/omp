@@ -1,0 +1,425 @@
+/**
+ * @file plugins/themes/default/styles/index.less
+ *
+ * Copyright (c) 2014 Simon Fraser University Library
+ * Copyright (c) 2003-2014 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * @brief Default theme stylesheet
+ *
+ */
+
+@import url("notificationIcons.css");
+@import url("pnotify.css");
+@import url("superfish.css");
+@import url("extrasOnDemand.less");
+@import url("dodatky.less");
+@import url("catalog.less");
+@import url("navigation.less");
+@import url("helpers.less");
+@import url("sidebar.less");
+@import url("foot.less");
+@import url("manageCatalog.less");
+
+/* @group Structure Overrides */
+
+.pkp_structure_head {
+	background-image: url("{$baseUrl}/templates/images/munipressDesign/backgroundHeader.png");
+        background-repeat: repeat-x;
+        height: 110px;
+}
+
+.pkp_structure_body {
+        border: none;
+	margin-bottom: 3px;
+	min-height: 400px;
+        color: #808080;
+}
+
+.pkp_structure_head_localNav {
+	text-transform: uppercase;
+	font-size: 16px;
+        font-family: "Arial",Helvetica,sans-serif;
+        color: #003366;
+}
+
+.pkp_structure_footer {
+	background-color: #bbbec1;
+}
+
+.pkp_structure_masthead {
+        height: 105px;
+        padding-top: 5px;
+	background-color: transparent !important;
+}
+
+.pkp_structure_head_siteNav {
+        height: 60px;
+	border-color: #003366;
+}
+
+/* @end */
+
+/* @group Content Overrides */
+
+body {
+	color: #333;
+	font-family: "Arial",Helvetica,sans-serif;
+	font-size: 12px;
+}
+
+a {
+	color: #003366;
+}
+
+a:hover {
+	font-weight: bold;
+}
+
+h1, .h1, h1 a, h1 a:hover {
+	color: #333;
+}
+
+h1 a {
+	text-decoration:none;
+}
+
+h2, .h2 {
+        padding-top: 0px;
+	color: #003366;
+        font-weight: bold;
+	font-family: "Arial",Helvetica,sans-serif;
+}
+
+h3, .h3 {
+    a:hover{
+        font-weight:bolder;
+    }
+	color: #003366;
+        font-weight: bold;
+        font-size: 16px;
+	font-family: "Arial",Helvetica,sans-serif;
+}
+
+h4, .h4 {
+	color: #003366;
+	font-family: "Arial",Helvetica,sans-serif;
+        font-size: 14px;
+}
+
+p {
+	line-height: 18px;
+}
+
+.pkp_structure_head_siteNav a {
+	color: #fff;
+}
+
+
+
+.pkp_structure_content {
+	margin: 0 auto;
+	width: 1200px;
+        
+}
+
+.pkp_structure_body .pkp_structure_main {
+    border-top: 1px solid #003366;
+}
+
+.pkp_catalog_seriesDescription, .pkp_catalog_categoryDescription {
+    padding-bottom: 5px;
+    border-top: none;
+}
+.size1of5{
+    width: 200px;
+}
+.size4of5{
+    width: 1000px;
+}
+
+/* @group Grid */
+
+.pkp_controllers_grid a {
+	color: #569bbe;
+}
+
+div.pkp_controllers_grid table {
+	background-color: #fff;
+}
+
+div.pkp_controllers_grid tr.alternate_row, div.pkp_controllers_grid tr.alternate_row .row_file {
+	background-color: #f8f8f8;
+}
+
+div.pkp_controllers_grid th {
+	color: #000000;
+}
+
+div.pkp_controllers_grid .row_actions {
+	background-color: #f9f6f3;
+}
+
+div.pkp_controllers_grid .default_category_style .row_actions {
+	background-color: transparent;
+}
+
+a.task:hover {
+	background-color: #F2EEE9;
+}
+
+/* @end */
+
+/* @group jQuery UI */
+
+/* General */
+
+.ui-widget-content a {
+	color: #808080;
+        text-decoration: none;
+}
+
+.ui-widget-content a:hover {
+        color: #000;
+	font-weight: bold;
+}
+
+.ui-tabs {
+	background: none !important;
+}
+
+.ui-tabs-nav {
+	border: 0;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+
+/* Accordian */
+
+.ui-accordion, .ui-accordion-header, .ui-accordion-content, .ui-accordion-content-active {
+	border: 0 !important;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+
+.ui-accordion-header {
+	border-bottom: 1px dotted #999;
+	color: #569bbe;
+	background: none !important;
+	text-transform: none;
+	font: 100% "Arial",Helvetica,sans-serif;
+	font-weight: normal !important;
+
+}
+
+.ui-accordion-content {
+	font-size: 100%;
+}
+
+.ui-accordion-content-active {
+	border-bottom: 1px dotted #999;
+}
+
+/* Tabs */
+.ui-tabs {
+	border: 0;
+}
+
+.ui-tabs-nav {
+	border: 0;
+	border: none;
+	background-image: none;
+	background-color: transparent;
+	font: 100% "Arial",Helvetica,sans-serif;
+	font-weight: bold;
+}
+
+.ui-tabs-nav .ui-state-default {
+	background-color: #fff;
+	background-image: none;
+	color: #808080;
+	border-color: transparent;
+	font-weight: bold;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited{
+    color: #808080;    
+}
+
+.ui-state-default a:hover{
+    color: #000;
+}
+
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited .ui-state-active a:hover{
+	color: #003366;
+        font-weight: normal;
+}
+
+.ui-tabs-nav .ui-state-hover a {
+	color: #000;
+}
+
+.ui-tabs-nav .ui-state-active {
+	border-color: #003366;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 4px solid #003366;
+	font-weight: bold;
+}
+
+.ui-tabs-nav .ui-state-active a {
+	margin-top: 1px;
+	margin-bottom: -1px;
+        color: #003366;
+}
+
+
+
+
+/* Button */
+
+.buy_now {
+	color: #fff;
+	background-color: #6c9348;
+	background-image: none;
+	border: 0;
+	line-height: 90%;
+}
+
+
+/* Dialog */
+
+.ui-dialog {
+
+}
+
+.ui-dialog-titlebar {
+	display: none;
+}
+
+.ui-dialog-custom-titlebar {
+	padding:0.5em 1em 0.3em;
+	position:relative;
+}
+
+/* Select elements */
+
+.selectBox-dropdown {
+	background-image: none !important;
+	background-color: white !important;
+	line-height: 1em !important;
+	height: 19px;
+	box-shadow: none !important;
+	color: #333 !important;
+}
+
+.selectBox-dropdown:hover {
+	color: #333 !important
+}
+
+.selectBox-dropdown .selectBox-arrow {
+	background: url("{$baseUrl}/lib/pkp/templates/images/structure/select-arrow-down.png") no-repeat scroll 50% center transparent !important;
+	border-left: none !important;
+	width: 20px !important;
+}
+
+.ui-icon { 
+    width: 16px;
+    height: 15px; 
+    background-image: url("{$baseUrl}/templates/images/munipressDesign/ui-icon_square_cross.png"); 
+}
+.ui-icon-triangle-1-s { background-position: 1px 2px; }
+.ui-icon-triangle-1-e { background-position: 1px 2px; }
+
+.munipress_search{
+    display:block;
+    float: left;
+}
+
+.munipress_user{
+    position: relative;
+    float: right;
+}
+
+/*block part*/
+
+.block_ul{
+    margin: 0;
+    padding: 0;
+    a {
+        color: #787a7c;
+    }
+    
+    a:hover {
+        color: #000;
+    }
+    
+    li {
+        margin-bottom: 5px;
+    }
+}
+
+.block_ul_browse{
+    margin-left: 17px;
+}
+
+#abstractTab a{
+   color: #003366;  
+}
+
+#abstractTab a:hover{
+   font-weight: bolder !important; 
+}
+
+.pagingPanel{
+    padding-left: 5px;
+    padding-top: 10px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.filterPanel{
+    padding-left: 5px;
+    height:40px; 
+    padding-top: 15px;
+    
+    #filterCategoryContainer{
+        padding-right: 5px; 
+        float:left; 
+        min-width: 200px;
+    }
+    
+    #filterYearsContainer{
+        float:left; 
+        padding-right: 5px;
+    }
+    
+    #filterLanguageContainer{
+       float:left;  
+    }
+}
+
+.popis{
+    min-width:60px; 
+    float:left; 
+    font-size: 14px;
+}
+
+.popis_pod{
+    font-size: 14px;
+}
+hr {
+	border: 1px solid #003366;
+	border-width: 0 0 1px 0;
+        margin-top: 0px;
+}
+
+/*
+
+@end */
+

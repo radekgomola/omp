@@ -372,7 +372,7 @@
 	<message key="about.submissionPreparationChecklist.description">Como parte del proceso de entrega de propuestas, se exige a los autores que comprueben que la propuesta está de acuerdo con todos los siguientes elementos, y las propuestas que no se acojan a estas directrices pueden ser devueltas a los autores.</message>
 	<message key="about.copyrightNotice">Aviso de copyright</message>
 	<message key="about.privacyStatement">Declaración de privacidad</message>
-	<message key="about.peerReviewProcess">Proceso de revisión por pares</message>
+	<message key="about.reviewPolicy">Proceso de revisión por pares</message>
 	<message key="about.publicationFrequency">Periodicidad de la publicación</message>
 	<message key="about.openAccessPolicy">Política de acceso abierto</message>
 	<message key="about.pressSponsorship">Patrocinio de la editorial</message>
@@ -393,7 +393,7 @@
 
 <h4>Actualizar</h4>
 
-<p>Si estás actualizando una instalación previa de OMP 0.x, <a href="{$upgradeUrl}">haz clic aquí</a> para continuar.</p>]]></message>
+<p>Si estás actualizando una instalación previa de OMP, <a href="{$upgradeUrl}">haz clic aquí</a> para continuar.</p>]]></message>
 	<message key="installer.preInstallationInstructionsTitle">Pasos para preinstalación</message>
 	<message key="installer.preInstallationInstructions"><![CDATA[<p>1. Los siguientes archivos y directorios ( y sus contenidos) deben tener permiso de escritura:</p>
 <ul>
@@ -524,7 +524,4 @@ Tu servidor soporta actualmente mbstring: <strong>{$supportsMBString}</strong>]]
 	<!-- Debug messages -->
 	<message key="debug.notes.currencyListLoad">Lista de divisas cargada "{$filename}" desde XML</message>
 	<message key="debug.notes.helpMappingLoad">XML actualizado ayuda al fichero de mapeo {$filename} en la búsqueda de {$id}.</message>
-
-	<!-- RT Entities -->
-	<message key="rt.metadata.pkp.peerReviewed">Artículo revisado por pares</message>
 </locale>

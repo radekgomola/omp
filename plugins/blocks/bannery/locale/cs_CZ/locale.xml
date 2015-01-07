@@ -14,7 +14,7 @@
   *
   -->
  
-<locale name="cs_CZ" full_name="Czech">
+<locale name="cs_CZ" full_name="Čeština">
 	<message key="plugins.block.bannery.displayName">Blok bannerů</message>
 	<message key="plugins.block.bannery.description">Plugin poskytuje blok bannerů pro munipress.</message>
 	<message key="plugins.block.bannery.link">Bannery</message>

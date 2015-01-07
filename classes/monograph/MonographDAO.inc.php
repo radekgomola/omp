@@ -68,6 +68,7 @@ class MonographDAO extends SubmissionDAO {
 	 */
 	function insertObject($monograph) {
 		$monograph->stampModified();
+                           
 		$this->update(
 			sprintf('INSERT INTO submissions
 				(locale, user_id, context_id, series_id, series_position, language, comments_to_ed, date_submitted, date_status_modified, last_modified, status, submission_progress, stage_id, pages, hide_author, comments_status, edited_volume)
@@ -92,7 +93,27 @@ class MonographDAO extends SubmissionDAO {
 			)
 		);
 
-		$monograph->setId($this->getInsertId());
+                $monograph->setId($this->getInsertId()); 
+                
+                $this->update(
+			sprintf('INSERT INTO munipress_metadata
+				(submission_id, a_kol, cena, cena_ebook, url_oc, url_oc_ebook, archiv,poznamka_admin, datum_vydani, mu_pracoviste)
+				VALUES
+				(?, ?, ?, ?, ?, ?, ?, ?, %s, ?)',
+				$this->datetimeToDB($monograph->getDatumVydani())),
+			array(
+                                (int) $monograph->getId(),
+				$monograph->getAKolektiv() ? 1:0,
+				(int) $monograph->getCena(),
+				(int) $monograph->getCenaEbook(),
+				(int) $monograph->getUrlOC(),
+				(int) $monograph->getUrlOCEbook(),
+                                $monograph->getArchivace() ? 1:0,
+                                $monograph->getPoznamkaAdmin(),
+                                $monograph->getFakulta(),
+			)
+		);
+               
 		$this->updateLocaleFields($monograph);
 
 		return $monograph->getId();
@@ -135,6 +156,33 @@ class MonographDAO extends SubmissionDAO {
 				(int) $monograph->getWorkType(),
 				(int) $monograph->getHideAuthor(),
 				(int) $monograph->getId()
+			)
+		);
+                
+                $this->update(
+			sprintf('UPDATE munipress_metadata
+				SET	a_kol = ?,
+                                        cena = ?,
+                                        cena_ebook = ?,
+					url_oc = ?,
+					url_oc_ebook = ?,
+                                        archiv = ?,
+					poznamka_admin = ?,
+                                        datum_vydani = %s,
+                                        mu_pracoviste = ?
+                                        
+				WHERE	submission_id = ?',
+                               $this->datetimeToDB($monograph->getDatumVydani())),			
+			array(
+                                    $monograph->getAKolektiv() ? 1:0,
+                                    (int) $monograph->getCena(),
+                                    (int) $monograph->getCenaEbook(),
+                                    (int) $monograph->getUrlOC(),
+                                    (int) $monograph->getUrlOCEbook(),
+                                    $monograph->getArchivace() ? 1:0,
+                                    $monograph->getPoznamkaAdmin(),
+                                    $monograph->getFakulta(),
+                                    (int) $monograph->getId()
 			)
 		);
 		$this->updateLocaleFields($monograph);
@@ -420,6 +468,48 @@ class MonographDAO extends SubmissionDAO {
 			LEFT JOIN series_settings stl ON (se.series_id = stl.series_id AND stl.setting_name = ? AND stl.locale = ?)
 			LEFT JOIN series_settings sapl ON (se.series_id = sapl.series_id AND sapl.setting_name = ? AND sapl.locale = ?)
 			LEFT JOIN series_settings sal ON (se.series_id = sal.series_id AND sal.setting_name = ? AND sal.locale = ?)';
+	}
+        
+        /**
+	 * Return a list of Years.
+         * @param $lastYear - poslední použitý rok;
+         * @param $firstYear - první použitý rok;
+	 * @return array
+	 */
+	function getYears($firstYear, $lastYear) {
+            $years = array();
+            for($i=$firstYear; $i>=$lastYear; $i--){
+                $years[$i] = $i;
+            }
+		return $years;
+	}
+        
+        /**
+	 * Return a list of languages.
+	 * @return array
+	 */
+	function getLanguagesForFilter() {
+            return array (
+                'cze' => 'filtr.jazyky.cze',
+                'eng' => 'filtr.jazyky.eng',
+                'slo' => 'filtr.jazyky.slo',
+                'ger' => 'filtr.jazyky.ger',
+                'por' => 'filtr.jazyky.por'
+            );
+	}
+        
+        /**
+	 * Return a list of languages for dao
+	 * @return array
+	 */
+	function getLanguagesForDao() {
+            return array (
+                'cze' => 'czech',
+                'eng' => 'english',
+                'slo' => 'slovak',
+                'ger' => 'german',
+                'por' => 'portuguese'
+            );
 	}
 }
 

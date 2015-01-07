@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * @file plugins/pubIds/doi/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * DOI plugin localization strings
+  -->
+ 
+<locale name="cs_CZ" full_name="Čeština">
+	<message key="plugins.pubIds.doi.displayName">DOI</message>
+	<message key="plugins.pubIds.doi.description">Tento doplněk umožní přidělovat Digital Object Identifiers (DOI) k publikovaným formátům v OMP.</message>
+
+	<!-- settings form -->
+	<message key="plugins.pubIds.doi.manager.settings.doiSettings">Nastavení doplňku pro DOI</message>
+	<message key="plugins.pubIds.doi.manager.settings.description">Prosím nastavte doplněk pro DOI, aby bylo možne spravovat a používat DOI v OMP:</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSettingsUpdated">Nastavení doplňku pro DOI bylo aktualizováno.</message>
+
+	<message key="plugins.pubIds.doi.manager.settings.doiObjects">Obsah formátu publikace.</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiObjectsRequired">Prosím, vyberte objekty, ke kterým mají být přiřazeny identifikátory DOI.</message>
+	<message key="plugins.pubIds.doi.manager.settings.explainDois">Prosím vyberte formáty publikací, ke kterým by měly být přiřazeny Digital Object Identifiers (DOI):</message>
+	
+	<message key="plugins.pubIds.doi.manager.settings.doiPrefix">DOI Prefix</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiPrefixDescription"><![CDATA[DOI Prefix je přiřazen při registraci (např. na <a href="http://www.crossref.org" target="_new">CrossRef</a>) a je ve tvaru 10.xxxx (např. 10.1234):]]></message>
+	<message key="plugins.pubIds.doi.manager.settings.doiPrefixPattern">DOI prefix je povinný a musí být ve tvaru 10.xxxx.</message>
+
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffix">DOI Suffix</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffixRequired">Je potřeba vybrat DOI Suffix.</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffixDescription">DOI suffix může být libovolného  tvaru, ale musí být jedinečný pro všechny formáty publikací s přiřazeným stejným DOI prefixem.</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffixPattern">Použijte vzor vložený níže pro vygenerování DOI suffixů. Použijte %p pro iniciály nakladatelství, %m pro id monografií a %f pro jedinečné id formátu publikace.</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffixPattern.publicationFormats">pro formáty publikací</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffixPattern.example">Například, press%ppub%f vytvoří DOI ve tvaru 10.1234/pressESPpub100</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffixDefault">Použít výchozí vzory.</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffixDefault.description"><![CDATA[%p.%m.%f formáty publikací.]]></message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffixPublisherId">Použít "Uživatelské identifikátory" pro publikované položky pro DOI suffix (musí být povoleno v kroku 4.). Toto je stejný identifikátor jako je použit pro veřejné URL adresy.</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiSuffixCustomIdentifier">Vložit individuálně DOI suffix pro každou publikovanou položku nezávisle a odlišně od "Uživatelských identifikátorů" zmíněných v předchozím nastavení. Naleznete dodatečné pole pro vložení DOI u metadat každé položky.</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiPublicationFormatSuffixPatternRequired">Prosím vložte vzor pro DOI suffix pro formáty publikací.</message>
+	
+	<message key="plugins.pubIds.doi.manager.settings.doiReassign">Znovu přiřadit DOI</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiReassign.description">pokud změníte své nastavení DOI, identifikátory DOI, které již byly přiřazeny toto nijak neovlivní. Pokud je konfigurace DOI jednou již uložena, použíjte toto tlačítko pro vymazání vše existujících DOI, tak že nové nastavení ovlivní všechny exstující formáty publikací.</message>
+        <message key="plugins.pubIds.doi.manager.settings.doiReassign.confirm">Jste si jistý, že chcete smazat všechny existující DOI</message>
+	<message key="plugins.pubIds.doi.manager.settings.doiReassign.success">Znovu-přiřazení DOI proběhlo úspěšně.</message>
+	<message key="grid.action.reassignDOIs">Znovu přiřadit existující DOI</message>
+
+	<!-- metadata form -->
+	<message key="plugins.pubIds.doi.editor.doi">DOI</message>
+	<message key="plugins.pubIds.doi.editor.doiObjectTypePublicationFormat">formát publikací</message>
+	<message key="plugins.pubIds.doi.editor.doiNotYetGenerated">Toto je přehled DOI, které mohou být nekompletní. DOI ještě nebylo vygenerováno. Publikování monografie a navštívení veřejné stránky katalogu monografií, automaticky vygeneruje unikátní DOI pro tento formát publikace.</message>
+	<message key="plugins.pubIds.doi.editor.doiSuffixCustomIdentifierNotUnique">Přiřazený DOI suffix je již používán jinou publikací. Prosím vložte unikátní DOI suffix pro každou položku.</message>
+</locale>

@@ -48,7 +48,7 @@
 		{/fbvFormSection}
 		<div {if $wizardMode}class="pkp_form_hidden"{/if}>
 			{fbvFormSection label="common.mailingAddress" for="mailingAddress" group=true description="manager.setup.mailingAddress.description"}
-				{fbvElement type="textarea" id="mailingAddress" value=$mailingAddress rich=true height=$fbvStyles.height.SHORT}
+				{fbvElement multilingual=true type="textarea" id="mailingAddress" value=$mailingAddress rich=true height=$fbvStyles.height.SHORT}
 			{/fbvFormSection}
 		</div>
 	{/fbvFormArea}

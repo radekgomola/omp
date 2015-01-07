@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * locale.xml
+  *
+  * Copyright (c) 2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  -->
+
+<locale name="cs_CZ" full_name="Čeština">
+	<message key="plugins.importexport.users.displayName">Plugin pro XML uživatelů</message>
+	<message key="plugins.importexport.users.description">Import a export uživatelů</message>
+
+	<message key="plugins.importexport.users.cliUsage"><![CDATA[Užití: {$scriptName} {$pluginName} [příkaz] ...
+příkazy:
+	import [xmlFileName] [press_path] [optional flags]
+	export [xmlFileName] [press_path]
+	export [xmlFileName] [press_path] [role_path1] [role_path2] ...
+
+Volitelné parametry:
+	continue_on_error: Pokud bute specifikováno, tak import bude pokračovat i přes vzniklé chyby.
+
+	send_notify: Pokud bude specifikováno, budou importovaní uživatelé zpraveni e-mailem.
+
+Příklady:
+	Import uživatelů do mojeNakladatelství z XMLUzivateluImport.xml, pokračuje i přes chyby:
+	{$scriptName} {$pluginName} import XMLUzivateluImport.xml, mojeNakladatelství continue_on_error
+
+	Export všech uživatelů z mojeNakladatelství
+	{$scriptName} {$pluginName} export XMLUzivateluExport.xml, mojeNakladatelství
+
+	Export všech uživatelů s rolí recenzent:
+	{$scriptName} {$pluginName} export XMLUzivateluExport.xml, mojeNakladatelství reviewer
+]]></message>
+	<message key="plugins.importexport.users.import.importUsers">Import uživatelů</message>
+	<message key="plugins.importexport.users.import.instructions"><![CDATA[Vyberte soubor s XML daty obsahujicí uživatelské informace pro import do tohoto nakladatelství. Pro větší detaily ohledně formátování tohoto souboru navštivte help - část pro nakladatelství.<br /><br />Vemte prosím navědomí, že pokud soubor obsahuje uživatelská jména a e-maily, které již v systému existují, tak uživatel nebude vytvořena a všechna uživatelská data a role budou přidruženy k již existujícímu uživateli..]]></message>
+	<message key="plugins.importexport.users.import.dataFile">Soubor s daty uživatelů</message>
+	<message key="plugins.importexport.users.import.sendNotify">Zaslat e-mail oznámení všem importovaným uživatelům obsahující jejich uživatelské jméno a heslo.</message>
+        <message key="plugins.importexport.users.import.continueOnError">Pokračovat importem dalších uživatelů v případě, že se objeví chyba</message>
+	<message key="plugins.importexport.users.import.usersWereImported">Následující uživatelé byli úspěšně importování do systémů.</message>
+	<message key="plugins.importexport.users.import.errorsOccurred">Během importu se objevily chyby</message>
+	<message key="plugins.importexport.users.import.confirmUsers">Potvrďte, že toto jsou skutečně uživatelé, které chcete importovat do systému</message>
+	<message key="plugins.importexport.users.import.warning">Varování</message>
+	<message key="plugins.importexport.users.import.encryptionMismatch">Nelze vložit hesla hashována s pomocí {$importHash}; OMP je nastaven na používání {$ompHash}. Pokud budete pokračovat, bude potřeba resetovat heslo importovaného uživatele.</message>
+	<message key="plugins.importexport.users.unknownPress">Byla specifikována neznámá cesta k nakladatelství "{$pressPath}".</message>
+
+	<message key="plugins.importexport.users.export.exportUsers">Export uživatelů</message>
+	<message key="plugins.importexport.users.export.exportByRole">Exportovat podle role</message>
+	<message key="plugins.importexport.users.export.exportAllUsers">Exportovat vše</message>
+	<message key="plugins.importexport.users.export.errorsOccurred">Během exportu se objevila chyba</message>
+	<message key="plugins.importexport.users.export.couldNotWriteFile">Není možné zapisovat do souboru "{$fileName}".</message>
+	<message key="plugins.importexport.users.importComplete">Import proběhl úspěšně. Uživatelé se svými uživatelskými jméney a e-mailovými adresami, které ještě nebyly použity, byli importování a společně s nimi i náležité skupiny uživatelů.</message>
+	<message key="plugins.importexport.users.results">Výsledek</message>
+</locale>

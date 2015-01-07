@@ -30,7 +30,6 @@
 
 {* Our own functions (depend on plug-ins) *}
 <script src="{$baseUrl}/lib/pkp/js/functions/general.js"></script>
-<script src="{$baseUrl}/lib/pkp/js/functions/jqueryValidatorI18n.js"></script>
 
 {* Our own classes (depend on plug-ins) *}
 <script src="{$baseUrl}/lib/pkp/js/classes/Helper.js"></script>
@@ -41,6 +40,7 @@
 <script src="{$baseUrl}/lib/pkp/js/classes/linkAction/OpenWindowRequest.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/classes/linkAction/PostAndRedirectRequest.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/classes/linkAction/NullAction.js"></script>
+<script src="{$baseUrl}/lib/pkp/js/classes/linkAction/EventAction.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/classes/linkAction/AjaxRequest.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/classes/linkAction/ModalRequest.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/classes/notification/NotificationHelper.js"></script>
@@ -116,7 +116,10 @@
 <script src="{$baseUrl}/lib/pkp/js/pages/workflow/EditorDecisionsHandler.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/pages/workflow/ProductionHandler.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/controllers/grid/users/reviewer/AdvancedReviewerSearchHandler.js"></script>
+<script src="{$baseUrl}/lib/pkp/js/controllers/grid/users/reviewer/form/LimitFilesFormHandler.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/controllers/grid/users/reviewer/form/AddReviewerFormHandler.js"></script>
+<script src="{$baseUrl}/lib/pkp/js/controllers/grid/users/reviewer/form/ReviewerFormFooterHandler.js"></script>
+<script src="{$baseUrl}/lib/pkp/js/controllers/grid/users/reviewer/form/AdvancedSearchReviewerFilterFormHandler.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/controllers/grid/users/stageParticipant/form/StageParticipantNotifyHandler.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/controllers/grid/users/stageParticipant/form/AddParticipantFormHandler.js"></script>
 <script src="{$baseUrl}/lib/pkp/js/pages/reviewer/ReviewerTabHandler.js"></script>
@@ -127,6 +130,7 @@
 <script src="{$baseUrl}/js/controllers/modals/catalogEntry/form/RepresentativeFormHandler.js"></script>
 <script src="{$baseUrl}/js/controllers/modals/catalogEntry/form/PublicationFormatMetadataFormHandler.js"></script>
 <script src="{$baseUrl}/js/controllers/modals/submissionMetadata/MonographlessCatalogEntryHandler.js"></script>
+<script src="{$baseUrl}/js/controllers/modals/expeditedSubmission/form/ExpeditedSubmissionMetadataFormHandler.js"></script>
 <script src="{$baseUrl}/js/controllers/grid/files/proof/form/ApprovedProofFormHandler.js"></script>
 <script src="{$baseUrl}/js/controllers/tab/catalogEntry/CatalogEntryTabHandler.js"></script>
 <script src="{$baseUrl}/js/controllers/tab/publicationFormat/PublicationFormatsTabHandler.js"></script>

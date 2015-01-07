@@ -20,132 +20,176 @@
 	{rdelim});
 </script>
 
+<script type="text/javascript">
+  hs.minWidth = 1100;
+</script>
+
 <div class="bookInfo">
+    {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
+   
+    {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
+    {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
+    {assign var="muPracovisteCode" value=$publishedMonograph->getFakulta()}
+    
+    {assign var="munipress" value="munipress.fakulty."}    
+    {translate|assign:"muPracoviste" key="munipress.fakulty.$muPracovisteCode"}
+    {assign var=authors value=$publishedMonograph->getAuthors()}
+    
+    {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+    {foreach from=$publicationFormats item=publicationFormat}
+        {if $publicationFormat->getCalameoHash() || $publicationFormat->getUrlStazeni()}
+            {assign var=zobrazDownload value=1}
+        {/if}
+    {/foreach}
+    
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
-		<div class="authorName">{$publishedMonograph->getAuthorString()}</div>
+		<div class="authorName">{$publishedMonograph->getAuthorString()}{if $publishedMonograph->getAKolektiv()==1}{translate key="submission.aKol"}{/if}</div>
 	</div>
-
 	<div id="bookInfoTabs">
 		<ul>
 			<li><a href="#abstractTab">{translate key="submission.synopsis"}</a></li>
 			{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}<li><a href="#contentsTab">{translate key="common.contents"}</a></li>{/if}
-			{if $availableFiles|@count != 0}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
+			{if $availableFiles|@count != 0 || $zobrazDownload}<li><a href="#downloadTab">{translate key="submission.download"}</a></li>{/if}
+                        
+                        <li><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
 			{call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
 			{if !is_null($sharingCode) || !empty($blocks)}
 				<li><a href="#sharingTab">{translate key="submission.sharing"}</a></li>
 			{/if}
-                        <li><a href="#viceInfoTab">{translate key="submission.viceInformaci"}</a></li>
+                        
                 </ul>
                 <div id="viceInfoTab">
-                    <table class="viceInformaci">
-                        <tbody>
-                            {assign var="pocetStran" value=$publishedMonograph->getLocalizedPocetStran()|strip_unsafe_html}
-                            <tr {if empty($pocetStran)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.pocetStran"} </h3>
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$pocetStran}
-                                </td>
-                            </tr>
-                            {assign var="muPracoviste" value=$publishedMonograph->getLocalizedMuPracoviste()|strip_unsafe_html}
-                            <tr {if empty($muPracoviste)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.muPracoviste"} </h3>
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$muPracoviste}
-                                </td>
-                            </tr>
-                            {assign var="urlOC" value=$publishedMonograph->getLocalizedUrlOC()|strip_unsafe_html}
-                            <tr {if empty($urlOC)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.url.oc"}</h3> 
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    <a href={$urlOC} target="_blank">{translate key="informace.url.oc"}</a>
-                                </td>
-                            </tr>
-                            {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
-                            <tr {if empty($urlWeb)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.url.web"} </h3>
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    <a href={$urlWeb} target="_blank">{translate key="informace.url.web"}</a>
-                                </td>
-                            </tr>
-                            {assign var="bibliografickaCitace" value=$publishedMonograph->getLocalizedBibliografickaCitace()|strip_unsafe_html}
-                            <tr {if empty($bibliografickaCitace)}style="display:none;"{/if}>
-                                <td colspan="2">
-                                   <h3> {translate key="submission.bibliografickaCitace"} </h3>
-                                   <div class="viceInfoBlok"> 
-                                        {$bibliografickaCitace}
-                                   </div>
-                                </td>
-                            </tr>
-                            {assign var="poznamka" value=$publishedMonograph->getLocalizedPoznamka()|strip_unsafe_html}
-                            <tr {if empty($poznamka)}style="display:none;"{/if}>
-                                <td colspan="2">
-                                    <h3>{translate key="submission.poznamka"}</h3> 
-                                    <div class="viceInfoBlok"> 
-                                        {$poznamka}
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr {if empty($poznamka)&& empty($bibliografickaCitace)&& empty($urlWeb) && empty($urlOC) && empty($muPracoviste) && empty($pocetStran)}style="display:none;"{/if}>
-                                <td colspan="2">
-                                    <hr />
-                                </td>
-                            </tr>
-                             {assign var="rightsTyp" value=$publishedMonograph->getLocalizedRightsTyp()|strip_unsafe_html}
-                            <tr {if empty($rightsTyp)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.rights.typ"}</h3> 
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$rightsTyp}
-                                </td>
-                            </tr>
-                            {assign var="rightsDrzitel" value=$publishedMonograph->getLocalizedRightsDrzitel()|strip_unsafe_html}
-                            <tr {if empty($rightsDrzitel)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.rights.drzitel"}</h3> 
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$rightsDrzitel}
-                                </td>
-                            </tr>
-                            {assign var="rightsTrvani" value=$publishedMonograph->getLocalizedRightsTrvani()|strip_unsafe_html}
-                            <tr {if empty($rightsTrvani)}style="display:none;"{/if}>
-                                <td class="levyBlok">
-                                    <h3>{translate key="submission.rights.trvani"}</h3> 
-                                </td>
-                                <td class="pravyBlokBlok">
-                                    {$rightsTrvani}
-                                </td>
-                            </tr>
-                            {assign var="dedikace" value=$publishedMonograph->getLocalizedDedikace()|strip_unsafe_html}
-                            <tr {if empty($dedikace)}style="display:none;"{/if}>
-                                <td colspan="2">
-                                    <h3>{translate key="submission.dedikace"} </h3>
-                                    <div class="viceInfoBlok"> 
-                                        {$dedikace}
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats(true)}
+                    
+                       
+                    {assign var=viceInformaci value=0}
+                    {if count($publicationFormats) >= 1}
+                                {foreach from=$publicationFormats item="publicationFormat"}
+                                        {if $publicationFormat->getIsApproved()}
+                                            {include file="catalog/book/bookPublicationFormatInfoMunipress.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
+                                        {/if}{* $publicationFormat->getIsApproved() *}
+                                {/foreach}{* $publicationFormats *}
+                                        {assign var=viceInformaci value=1}
+                    {/if}
+                        <div class="tabulka_info">
+                    <ul>
+                    {if !empty($cisloVydani) && $cisloVydani !=0}
+                        <li>
+                            <strong>{translate key="submission.cisloVydani"}</strong><span class="vpravo">{$cisloVydani}.</span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}
+                    {if !empty($muPracovisteCode)}
+                        <li>
+                            <strong>{translate key="submission.muPracoviste"}</strong> <span class="vpravo">{$muPracoviste}</span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}
+                    {if !empty($urlWeb)}
+                        <li>
+                            <strong>{translate key="submission.url.web"}</strong> <span class="vpravo"><a href={$urlWeb} target="_blank">{translate key="informace.url.web"}</a></span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}
+                    {foreach from=$authors item=author}
+                        {if $author->getZobrazOstatni() == 1}
+                            {assign var=uco value=$author->getUCO()}
+                            <li>
+                                <strong>{$author->getLocalizedUserGroupName()}</strong> <span class="vpravo">{if $uco != '' && $uco !='0'}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank">{$author->getFullName()}</a>{else}{$author->getFullName()}{/if}</span>
+                            </li>
+                        {assign var=viceInformaci value=1}
+                        {/if}
+                    {/foreach}
+                    </ul>                
+                    </div>
+                    <div class="textoveInfo">
+
+                        {if !empty($poznamka)}
+                            <strong>{translate key="submission.poznamka"}</strong> <br />
+                            {$poznamka}
+                            {assign var=viceInformaci value=1}
+                        {/if}
+                        
+                        {if !empty($dedikace)}
+                            <strong>{translate key="submission.dedikace"}</strong> <br />
+                            {$dedikace}
+                        {/if}
+                    </div>
+
                 </div>
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 
-			{assign var=authors value=$publishedMonograph->getAuthors()}
+			<br />
+                        
+                        {translate key="catalog.autori"}:
 			{foreach from=$authors item=author}
-				<p>{translate key="catalog.aboutTheAuthor"}: <strong>{$author->getFullName()}</strong></p>
-				{assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
-				{if $biography != ''}{$biography}{else}{translate key="catalog.noBioInfo"}{/if}
+                            {if $author->getZobrazAutori() == 1}
+                            {assign var=uco value=$author->getUCO()|strip_unsafe_html}
+                            {assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
+                            {assign var=url value=$author->getUrl()|strip_unsafe_html}
+                            <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
+                                    <strong>{$author->getFullName()}</strong></a>
+				{elseif $uco != '' && $uco !='0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>
+                                {else}
+                                    <strong>{$author->getFullName()}</strong>
+                                {/if}</p>
+                                 
+                                    {if $biography != '' || $url != ''}
+                                        <div class="highslide-html-content" id="autor_bio_{$author->getId()}">
+                                            <div class="highslide-header">
+                                                <ul>
+                                                    <li class="highslide-close">
+                                                        <a href="#" onclick="return hs.close(this)">{translate key="highslide.zavrit"}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="highslide-body">
+                                                <h3>
+                                                    {$author->getFullName()}
+                                                </h3>
+                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$autor->getUrl()|escape}</a><br/>{/if}
+                                                {if $uco != '' && $uco != '0'}
+                                                    <table style="border:none">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding-right:15px;">
+                                                                    {translate key="vizitka.identifikace"}
+                                                                </td><td>
+                                                                    {$uco|escape} <em>{translate key="vizitka.uco"}</em>
+                                                                </td>
+                                                            </tr><tr>
+                                                                <td>                    
+                                                                    {translate key="vizitka.url"}
+                                                                </td><td>
+                                                                    <a href="http://www.muni.cz/people/{$uco|escape:"quotes"}" target="_new">http://www.muni.cz/people/{$uco|escape}</a><br/>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                {/if}
+                                                {if $biography != ''}
+                                                    <p>{$biography}</p>
+                                                {/if}
+                                            </div>
+                                            <div class="highslide-footer">
+                                                <div>
+                                                    <span class="highslide-resize" title="Resize">
+                                                        <span></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/if}
+                                {/if}
+{*=======
+				{if $author->getIncludeInBrowse()}
+					<p>{translate key="catalog.aboutTheAuthor" roleName=$author->getLocalizedUserGroupName()}: <strong>{$author->getFullName()}</strong></p>
+					{assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
+					{if $biography != ''}{$biography}{else}{translate key="catalog.noBioInfo"}{/if}
+				{/if}
+>>>>>>> omp-1_1_1-0*}
 			{/foreach}
 		</div>
 		{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}
@@ -160,15 +204,16 @@
 				{/foreach}
 			</div>
 		{/if}
-		{if $availableFiles|@count != 0}
+                
+		{if $availableFiles|@count != 0 || $zobrazDownload}
 		<div id="downloadTab">
-			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+			
 			{assign var=currency value=$currentPress->getSetting('currency')}
-			{if !$loggedInUsername}<p>{translate key="catalog.loginRequiredForPayment"}</p>{/if}
 			{if $useCollapsedView}
-				<ul>
+				<ul class="odr_prazdne">
 					{foreach from=$publicationFormats item=publicationFormat}
 						{if $publicationFormat->getIsAvailable()}
+                                                    {*<strong>{$publicationFormat->getLocalizedName()|escape}</strong>*}
 							{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
 						{/if}
 					{/foreach}
@@ -179,7 +224,7 @@
 					{if $publicationFormat->getIsAvailable() && $availableFiles[$publicationFormatId]}
 						<div class="publicationFormatDownload" id="publicationFormat-download-{$publicationFormatId|escape}">
 							{$publicationFormat->getLocalizedName()|escape}
-							<ul>
+							<ul class="odr_prazdne">
 								{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormatId publishedMonograph=$publishedMonograph currency=$currency}
 							</ul>
 						</div>
@@ -200,3 +245,5 @@
 		{/if}
 	</div>
 </div>
+
+

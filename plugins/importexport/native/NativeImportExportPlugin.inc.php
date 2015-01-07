@@ -115,7 +115,7 @@ class NativeImportExportPlugin extends ImportExportPlugin {
 				$user = $request->getUser();
 				$temporaryFile = $temporaryFileDao->getTemporaryFile($temporaryFileId, $user->getId());
 				if (!$temporaryFile) {
-					$json = new JSONMessage(true, __('plugins.inportexport.native.uploadFile'));
+					$json = new JSONMessage(true, __('plugins.importexport.native.uploadFile'));
 					return $json->getString();
 				}
 				$temporaryFilePath = $temporaryFile->getFilePath();

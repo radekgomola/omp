@@ -1,0 +1,438 @@
+/**
+ * @file styles/pages/catalog.less
+ *
+ * Copyright (c) 2014 Simon Fraser University Library
+ * Copyright (c) 2003-2014 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * @brief Styles for the public catalog
+ *
+ */
+
+.h4ItemTitle {
+	color:black;
+	font-size: 125%;
+}
+
+.authorName {
+	color: #808080;
+        font-size: 14px;
+}
+
+.monographAbstract {
+	text-align: justify;
+}
+
+.pkp_catalog_carousel_wrapper {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	
+	.pkp_catalog_monograph_authorship {
+		.authorName;
+	}
+	
+	h4 {
+		.h4ItemTitle;
+	}
+		
+	.carousel_control {
+		width: 50px;
+		height: 50px;
+		position: absolute;
+		top: 50%;
+		z-index: 1000;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	
+	.carousel_control:hover {
+		opacity: 0.6;
+		cursor: pointer;
+	}
+	
+	#nextCarouselItem {
+		left:92%;
+		background-image: url({$baseUrl}/lib/pkp/templates/images/structure/carousel_next.png);
+	}
+	
+	#previousCarouselItem {
+		background-image: url({$baseUrl}/lib/pkp/templates/images/structure/carousel_previous.png);
+	}
+		
+	.pkp_catalog_carousel {
+		width: 72%;
+		height: 400px;
+		margin:auto;
+		margin-bottom: 115px;
+		background-color: white;
+	
+		.pkp_helpers_progressIndicator {
+			background-position: 50% 50%;
+			background-color: white;
+			float: none;
+			position: absolute;
+			top: 0;
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+	
+		li.mover { 
+			width: 240px;
+			height: 303px;
+			display: table;
+			filter: none !important;
+
+			span.moverImg {
+				vertical-align:middle;
+				display: table-cell;
+			}
+			
+			div.pkp_helpers_black_bg {
+				filter: alpha(opacity=100%);
+			}
+
+			img {
+				width: 100%;
+				padding:0px;
+                                box-shadow: 5px 5px 10px #788a9c; 
+                                -moz-box-shadow: 5px 5px 10px #788a9c; 
+                                -webkit-box-shadow: 5px 5px 10px #788a9c; 
+                                -khtml-box-shadow: 5px 5px 10px #788a9c; 
+			}
+		}
+		
+		li.placeholder {
+			box-shadow: none !important;
+			background-color: inherit !important;
+			margin-left: -10%;
+			padding-left: 5%;
+			padding-right: 15%;
+		}
+	
+		li.placeholder:hover {
+			cursor: default !important;
+		}
+	
+		li.mover:hover {
+			cursor: pointer;
+		}
+		
+		li.roundabout-in-focus:hover {
+			cursor: default;
+		}
+		
+		.details_box {
+			background-color: white;
+                        opacity: 1;
+                        border: 0;
+                        border-left: 2px solid #003366;
+                        border-right: 2px solid #003366;                        
+			left: -190px;
+                        top: 380px;
+			min-height: 50px;
+                        
+			padding: 2px 15px 5px 15px;
+			position: absolute;			
+			min-width: 600px;
+			filter: alpha(opacity=100%) !important;
+			
+			.pkp_catalog_formats {
+				margin-top: 10px;
+			}
+                        a{
+                            font-size:14px;
+                            text-decoration: none;
+                        }
+		}
+	}
+}
+
+/* Chrome only: prevent the carousel from getting cut off at the bottom */
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+        .pkp_catalog_carousel_wrapper {
+                padding-bottom: 15px;
+        }
+}
+
+.pkp_catalog_readMore {
+	margin-top: 10px;
+        margin-right: 10px;
+        padding-bottom: 5px;
+        width: 248px;
+        border-bottom: 6px solid #003366;
+        
+        a {
+            text-decoration: none;            
+            font-size: 16px;
+        }
+}
+
+.pkp_catalog_seriesDescription, .pkp_catalog_categoryDescription {
+	border-top: 1px dotted #999999;
+	padding-top: 10px;
+}
+
+.pkp_catalog_monographs {
+	padding-top: 10px;	
+
+	.pkp_catalog_monograph {
+		width: 243px;
+		float: left;
+		margin: 3px 10px 20px 0;
+		color: #999;
+
+                .pkp_catalog_monographDetails{
+                    min-height: 110px;
+                }
+		.pkp_catalog_monograph_thumbnail {
+			margin-bottom: 5px;
+                        box-shadow: 5px 5px 10px #788a9c; 
+                        -moz-box-shadow: 5px 5px 10px #788a9c; 
+                        -webkit-box-shadow: 5px 5px 10px #788a9c; 
+                        -khtml-box-shadow: 5px 5px 10px #788a9c; 
+		}
+
+		.pkp_catalog_monographSubtitle {
+			font-style: italic;
+		}
+                
+                .pkp_catalog_monographTitle{
+                        margin-top: 5px;
+                        
+                        a{
+                            text-decoration: none;
+                        }
+                }
+                .pkp_catalog_monograph_date{
+                    margin-left:1px;
+                    font-weight: bold;
+                    font-size: 110%;
+                }
+	}
+        
+        ul{
+           padding: 0px; 
+        }
+                   
+}
+
+.vypis_polozek {
+    display: inline;
+    padding-right: 10px;
+}
+.sorting{
+    padding-left: 30px;
+    padding-right: 5px;
+}
+.asc{
+    background: url({$baseUrl}/images/img/trideni_asc.png) no-repeat;
+}
+.desc{
+    background: url({$baseUrl}/images/img/trideni_desc.png) no-repeat;
+}
+.stejne{
+    background: url({$baseUrl}/images/img/trideni_sipky_male.png) no-repeat;
+}
+
+.pkp_catalog_monograph_authorship {
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+
+.pkp_catalog_feature {
+	padding-top: 10px;
+	margin-left: 10px;
+	line-height: 18px;
+
+	.pkp_catalog_feature_abstract {
+		.monographAbstract;
+	}
+
+	.pkp_catalog_feature_authorName {
+		.authorName;
+	}
+}
+
+.pkp_catalog_book {
+	.bookSpecs {
+                font-size: 1.1em;
+		float: left;
+		width: 33%;
+		overflow: hidden;
+		
+                padding-right:12px; 
+		
+                .cover_img{
+                    margin-bottom: 20px;
+                    box-shadow: 5px 5px 10px #788a9c; 
+                    -moz-box-shadow: 5px 5px 10px #788a9c; 
+                    -webkit-box-shadow: 5px 5px 10px #788a9c; 
+                    -khtml-box-shadow: 5px 5px 10px #788a9c; 
+                }
+                span{
+                    font-weight: bold;
+                    color: #003366;
+                }
+                .openAccess{
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                }
+                .infoPodKnihou{
+                    margin-bottom: 10px;
+                }
+	}
+
+	.bookInfo {
+		/* Floated to keep tab interface from messing up */
+		float: right;
+		width: 65%;
+
+		.bookInfoHeader {
+			padding-left: 13px;
+			margin-bottom: 25px;
+			
+			.authorName {
+				.authorName;
+			}
+		}
+		
+		.publicationFormatName {
+			float: left;
+			width: 50%;
+		}
+
+		#abstractTab {
+			.monographAbstract;
+		}
+                h3{
+                    font-size: 1.1em;
+                }
+                
+                .publicationFormatLink {
+                    a{
+                    padding-right: 10px;
+                    border-right: 1px solid #808080;
+                    }
+                    .oneLink{
+                        margin-top: 3px;
+                        display: inline-block;
+                    }
+                    img{
+                        margin-top:-3px;
+                        float:left;
+                        margin-right:10px;
+                    }
+                    img:hover{
+                        box-shadow: 2px 2px 3px #788a9c; 
+                        -moz-box-shadow: 2px 2px 3px #788a9c; 
+                        -webkit-box-shadow: 2px 2px 3px #788a9c; 
+                        -khtml-box-shadow: 2px 2px 3px #788a9c;  
+                    }
+                }
+                #viceInfoTab{
+                    h3{
+                        font-size: 1.2em;
+                    }
+                    .tabulka_info{
+                        margin-bottom: 5px;
+                        width: 350px;
+                        clear: both;
+                        ul{
+                            padding-left:0;
+
+                        }
+                        li{
+                            padding-bottom: 10px;
+                        }
+                        .vpravo{
+                            float: right;
+                            color: #003366;
+                        }
+                    }
+                    .identifikator{
+                        text-transform: uppercase
+                    }
+                    .textInfo{
+                        width: 450px;
+                    }
+                    a{
+                        color: #003366;
+                    }
+                }
+	}
+	
+	#bookAccordion {
+		.ui-accordion-content {
+			color: #999999;
+		}
+	}
+	
+	.ui-tabs-panel {
+		border-bottom: none;
+		border-radius: 0px;
+		padding-bottom: 50px;
+	}
+}
+
+#spotlightsHome {
+	padding-bottom: 15px;
+	overflow: auto;
+
+	.pkp_helpers_third {
+		width: 33%;
+	}
+	
+	h4 {
+		.h4ItemTitle;
+	}
+        ul{
+            padding: 0px;
+        }
+        
+        table{
+            border-collapse: inherit;
+            border-spacing: 0;
+            
+            td{
+                vertical-align: top;
+            }
+        }
+}
+
+.pkp_catalog_spotlight {
+        border-top: none;
+	font-size: 100%;
+	line-height: 18px;
+	margin-left: 0px;
+        margin-right: 10px;
+	padding-top: 10px;
+        width: 248px;
+	
+        .pkp_catalog_spotlight_itemTitle{
+            color: #003366;
+            font-weight: bold;
+            a {
+                text-decoration: none;
+            }
+            a:hover{
+                font-weight:bolder;
+            }
+        }
+	.pkp_catalog_spotlight_itemAuthorship {
+		.authorName;
+		margin-bottom: 10px;
+	}
+	
+	.pkp_catalog_spotlight_itemDescription {
+		.authorName;
+                color: #003366;
+                padding-top: 10px;
+		display: block;
+                clear: both;
+		p {
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
+  <!-- * locale/cs_CZ/admin.xml * * Copyright (c) 2014 Masaryk university * * Localization strings ( ). -->
+  <locale name="cs_CZ" full_name="Čeština">
+    <message key="admin.hostedPresses">Nakladatelství v systému</message>
+    <message key="admin.settings.pressRedirect">Přesměrování na nakladatelství</message>
+    <message key="admin.settings.pressRedirectInstructions">Návštěvníci hlavní stránky budou přesměrováni na toto nakladatelství. To je užitečné například tehdy, pokud systém používá pouze jedna instituce.</message>
+    <message key="admin.settings.noPressRedirect">Nepřesměrovávat</message>
+    <message key="admin.languages.primaryLocaleInstructions">Toto bude výchozí jazyk systému a všech nakladatelství.</message>
+    <message key="admin.languages.supportedLocalesInstructions">Vyberte všechna místní nastavení, která má systém podporovat. Vybraná místní nastavení budou k dispozici všem nakladatelstvím v systému a objeví se také jako možnosti v nabídce možností, která se nachází na každé stránce systému (nastavení stránek specifických pro dané nakladatelství má ale přednost a může tuto možnost zrušit). Pokud nevyberete více místních nastavení, možnost změny jazyka se nezobrazí a rozšířená nastavení jazyka nakladatelstvím nebudou k dispozici.</message>
+    <message key="admin.locale.maybeIncomplete">Místní nastavení označená * mohou být nekompletní.</message>
+    <message key="admin.languages.confirmUninstall">Opravdu chcete odstranit toto místní nastavení? Může to mít vliv na všechna nakladatelství, které jej aktuálně používají.</message>
+    <message key="admin.languages.installNewLocalesInstructions">Vyberte jakákoli dodatečná místní nastavení, které má systém podporovat. Místní nastavení musí být nainstalovaná ještě před prvním použitím. Informace o přidávání podpory dalších jazyků jsou k dispozici v dokumentaci OMP.</message>
+    <message key="admin.languages.noLocalesToDownload">Žádná místní nastavení nejsou k dispozici.</message>
+    <message key="admin.languages.downloadFailed">Stažení místního nastavení se nezdařilo. Detaily jsou popsány v chybovém hlášení níže.</message>
+    <message key="admin.languages.downloadUnavailable">
+      <![CDATA[<p>Stažení jazykových balíčků ze serveru Public Knowledge Project aktuálně není možné, protože:</p> <ul> <li>Váš server nepodporuje nebo nemá povoleno použití utility GNU "tar"</li> <li>OMP se nepodařilo změnit konfigurační soubor místních nastavení - obvykle "registry/locales.xml".</li> </ul> <p>Jazykové balíčky můžete stáhnout ručně z <a href="http://pkp.sfu.ca" target="_blank">webové stránky PKP</a>.</p>]]>
+    </message>
+    <message key="admin.languages.confirmDisable">Opravdu chcete zakázat toto místní nastavení? Může to mít vliv na všechna nakladatelství, které jej aktuálně používají.</message>
+    <message key="admin.systemVersion">Verze OMP</message>
+    <message key="admin.systemConfiguration">Konfigurace OMP</message>
+    <message key="admin.systemConfigurationDescription">
+      <![CDATA[Nastavení konfikurace OMP: <tt>config.inc.php</tt>.]]>
+    </message>
+    <message key="admin.presses.pressSettings">Nastavení nakladatelství</message>
+    <message key="admin.presses.noneCreated">Nebyla vytvořena žádná nakladatelství.</message>
+    <message key="admin.contexts.confirmDelete">Opravdu chcete trvale odstranit toto nakladatelství a veškerý jeho obsah?</message>
+    <message key="admin.contexts.create">Vytvořit nakladatelství</message>
+    <message key="admin.presses.createInstructions">Systém Vás automaticky označí za správce tohoto nakladatelství. Po vytvoření nakladatelství budete přesměrováni na průvodce, s jehož pomocí základní nastavení dokončíte.</message>
+    <message key="admin.presses.urlWillBe">Adresa nakladatelství bude {$sampleUrl}</message>
+    <message key="admin.contexts.form.titleRequired">Je třeba zadat jméno.</message>
+    <message key="admin.contexts.form.pathRequired">Je třeba zadat adresu.</message>
+    <message key="admin.contexts.form.pathAlphaNumeric">Adresa smí obsahovat pouze alfanumerické znaky, podtržítka a pomlčky. Musí začínat a končit alfanumerickým znakem.</message>
+    <message key="admin.contexts.form.pathExists">Zvolenou adresu již používá jiné nakladatelství.</message>
+    <message key="admin.presses.enablePressInstructions">Zveřejnit toto nakladatelství v systému</message>
+    <message key="admin.presses.pressDescription">Popis nakladatelství</message>
+    <message key="admin.presses.addPress">Přidat nakladatelství</message>
+    <message key="admin.overwriteConfigFileInstructions">
+      <![CDATA[<h4>VAROVÁNÍ!</div> <p>Systému se nepodařilo automaticky přepsat konfigurační soubor. Pokud chcete změny uplatnit, je nutné otevřít soubor <tt>config.inc.php</tt> ve vhodném textovém editoru a nahradit jeho obsah obsahem textového pole níže.</p>]]>
+    </message>
+  </locale>

@@ -56,20 +56,21 @@
 
 <li class="pkp_manageCatalog_monograph monograph_id_{$submissionId|escape}{if !$isFeatured} not_sortable{/if} pkp_helpers_text_center" id="{$monographContainerId|escape}">
 	<div class="pkp_manageCatalog_monographDetails pkp_helpers_clear">
-		<div class="pkp_manageCatalog_monograph_image">
+		<div class="pkp_manageCatalog_monograph_image pkp_helpers_image_left">
 			{include file="controllers/monographList/coverImage.tpl" monograph=$monograph}
 		</div>
 		<div class="pkp_manageCatalog_monograph_title">
-			{assign var="monographTitle" value=$monograph->getLocalizedPrefix()|concat:' ':$monograph->getLocalizedTitle()|strip_unsafe_html}
+			{assign var="monographTitle" value=$monograph->getLocalizedPrefix()|concat:' ':$monograph->getLocalizedFullTitle()|strip_unsafe_html}
 			{null_link_action key=$monographTitle id="publicCatalog-"|concat:$submissionId translate=false}
 		</div>
 		<div class="pkp_manageCatalog_monograph_authorship">
 			{$monograph->getAuthorString()|escape}
 		</div>
+                
 	</div>
 	<div class="pkp_manageCatalog_monograph_date">
 			{$monograph->getDatePublished()|date_format:$dateFormatShort}
-	</div>
+                </div>
 	<div class="pkp_manageCatalog_monograph_series">
 		{$monograph->getSeriesTitle()|strip_unsafe_html}
 	</div>
@@ -78,7 +79,7 @@
 	</div>
 	<div class="pkp_manageCatalog_featureTools pkp_helpers_invisible pkp_linkActions pkp_helpers_text_left">
 		<ul>
-			<li>
+			<li style="padding-right: 8px;">
 				{if $isFeatured}{assign var="featureImage" value="star_highlighted"}{else}{assign var="featureImage" value="star"}{/if}
 				{null_link_action id="featureMonograph-"|concat:$submissionId image=$featureImage}
 			</li>

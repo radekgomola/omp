@@ -32,6 +32,7 @@
 	{include file="core:submission/submissionMetadataFormTitleFields.tpl" readOnly=$formParams.readOnly}
 
 	{if !$formParams.anonymous}
+                
 		<!--  Contributors -->
 		{* generate a unique ID for the form *}
 		{assign var="authorsGridContainer" value="authorsGridContainer-"|uniqid|escape}

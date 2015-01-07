@@ -8,7 +8,7 @@
 {*	<span class="blockTitle">{translate key="plugins.block.distribuce.link"}</span>*}
 
 <div style="padding-left: 5px;">	
-    <!-- Jssor Slider Begin -->
+    {*<!-- Jssor Slider Begin -->
     <!-- You can move inline styles to css file or css block. -->
     <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 180px;
         height: 80px; margin-bottom: 15px;">
@@ -26,17 +26,17 @@
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 180px; height: 65px;
             overflow: hidden;">
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/01.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/02.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/03.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/04.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/05.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/06.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/07.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/08.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/09.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/10.jpg" /></a></div>
-            <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/banner_press/11.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/01.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/02.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/03.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/04.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/05.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/06.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/07.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/08.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/09.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/10.jpg" /></a></div>
+            <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/banner_press/11.jpg" /></a></div>
         </div>
 
         <!-- bullet navigator container -->
@@ -61,8 +61,10 @@
     </div>
     <!-- Jssor Slider End -->
     
-    <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/bannery/01.png" class="link_img bannery" /></a></div>
-    <div><a href="http://seznam.cz"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>
-    <div><a href="https://journals.muni.cz/" target="_blank"><img u="image" src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" /></a></div>
+    <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/01.png" class="link_img bannery" /></a></div>
+    <div><a href="{url router=$smarty.const.ROUTE_PAGE page="underConstruction"}"><img u="image" src="{$baseUrl}/images/img/bannery/02.png" class="link_img bannery" /></a></div>*}
+    <div><a href="https://journals.muni.cz/" target="_blank"><img src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" /></a></div>
+    <div><a href="http://en.calameo.com/read/00395057973c8fe7c36a6" target="_blank"><img src="{$baseUrl}/images/img/bannery/05.png" class="link_img bannery" /></a></div>
+{*    <div><a href="http://en.calameo.com/read/003950579dd3875a74b80" target="_blank"><img src="{$baseUrl}/images/img/bannery/06.png" class="link_img" style="width:180px;"/></a></div>*}
   </div>
 </div>

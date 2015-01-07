@@ -270,7 +270,7 @@
 	<message key="catalog.dateAdded">Ajouté le {$dateAdded}</message>
 	<message key="catalog.publicationInfo">Renseignements sur la publication</message>
 	<message key="catalog.relatedCategories">Catégories connexes</message>
-	<message key="catalog.aboutTheAuthor">À propos de l'auteur</message>
+	<message key="catalog.aboutTheAuthor">À propos de le {$roleName}</message>
 	<message key="catalog.noBioInfo">Aucune biographie n'est disponible pour le moment.</message>
 	<message key="catalog.loginRequiredForPayment">Note: Pour acheter des ouvrages, vous devez d'abord ouvrir une session. Choisissez un ouvrage que vous souhaitez acheter et vous serez acheminé vers la page d'ouverture de session.</message>
 
@@ -382,7 +382,7 @@
 	<message key="about.submissionPreparationChecklist.description">Dans le cadre du processus de soumission, les auteurs doivent s'assurer que leur soumission respecte les directives énoncées dans les documents suivants. Les soumissions qui ne respectent pas les lignes directrices peuvent être retournées à leur auteur.</message>
 	<message key="about.copyrightNotice">Avis de droit d'auteur</message>
 	<message key="about.privacyStatement">Énoncé de confidentialité</message>
-	<message key="about.peerReviewProcess">Processus d'évaluation par les pairs</message>
+	<message key="about.reviewPolicy">Processus d'évaluation par les pairs</message>
 	<message key="about.publicationFrequency">Fréquence de publication</message>
 	<message key="about.openAccessPolicy">Politique concernant le libre accès</message>
 	<message key="about.pressSponsorship">Parrainer la presse</message>
@@ -404,7 +404,7 @@
 
 <h4>Upgrade</h4>
 
-<p>S'il s'agit d'une mise à jour d'OMP 0.x, <a href="{$upgradeUrl}">cliquez ici</a> pour continuer.</p>]]></message>
+<p>S'il s'agit d'une mise à jour d'OMP, <a href="{$upgradeUrl}">cliquez ici</a> pour continuer.</p>]]></message>
 	<message key="installer.preInstallationInstructionsTitle">Étapes de Pré-installation</message>
 	<message key="installer.preInstallationInstructions"><![CDATA[<p>1. Les fichiers et répertoires suivants (et leur contenu) doivent être inscriptibles:</p>
 <ul>
@@ -549,9 +549,6 @@ Votre serveur supporte actuellement mbstring: <strong>{$supportsMBString}</stron
 	<!-- Debug messages -->
 	<message key="debug.notes.currencyListLoad">La liste des devises "{$filename}" fut téléchargée à partir de XML</message>
 	<message key="debug.notes.helpMappingLoad">Le fichier de mappage d'aide XML {$filename} a été téléchargé à nouveau pour trouver {$id}.</message>
-
-	<!-- RT Entities -->
-	<message key="rt.metadata.pkp.peerReviewed">Article revu par les pairs</message>
 
 	<message key="grid.action.createContext">Créer une nouvelle presse</message>
 	<message key="context.select">Sélectionner une presse...</message>

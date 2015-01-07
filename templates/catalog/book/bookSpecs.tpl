@@ -14,42 +14,59 @@
 		$('#bookAccordion').accordion({ldelim} autoHeight: false {rdelim});
 	{rdelim});
 </script>
-
+{assign var="cena" value=$publishedMonograph->getCena()|strip_unsafe_html}
+{assign var="cena_ebook" value=$publishedMonograph->getCenaEbook()|strip_unsafe_html}
+{assign var="urlOC" value=$publishedMonograph->getUrlOC()|strip_unsafe_html}
+{assign var="urlOC_ebook" value=$publishedMonograph->getUrlOCEbook()|strip_unsafe_html}
 <div class="bookSpecs">
 	{assign var=coverImage value=$publishedMonograph->getCoverImage()}
-	<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$bookImageLinkUrl}" onclick="return hs.expand(this)"><img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="catalog" submissionId=$publishedMonograph->getId()}" /></a>
+	<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$bookImageLinkUrl}" onclick="return hs.expand(this)"><img class="pkp_helpers_container_center cover_img" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="catalog" submissionId=$publishedMonograph->getId()}" /></a>
 	<div id="bookAccordion">
+                {if $cena || $cena_ebook || $urlOC || $urlOC_ebook}
 		<h3><a href="#">{translate key="catalog.publicationInfo"}</a></h3>
 		<div class="publicationInfo">
-			<div class="dateAdded">{translate key="catalog.dateAdded" dateAdded=$publishedMonograph->getDatePublished()|date_format:$dateFormatShort}</div>
-			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats(true)}
-			{if count($publicationFormats) === 1}
-				{foreach from=$publicationFormats item="publicationFormat"}
-					{if $publicationFormat->getIsApproved()}
-						{include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
-					{/if}
-				{/foreach}
-			{/if}
+                    
+			
+                        {if !empty($cena) && $cena != 0}
+                            <div class="infoPodKnihou">
+                            <span>{translate key="submission.ceny.kniha"}:</span>
+                            &nbsp;<span style="font-size: 1.3em; color: red;">{$cena} {translate key="submission.cena.mena"}</span><br />
+                                {if !empty($urlOC) && $urlOC != 0}
+                                    &nbsp;&nbsp;<span ><a href="http://is.muni.cz/obchod/baleni/{$urlOC}{translate key="submission.obchodniCentrum.prepinacJazyku"}" target="_blank">{translate key="informace.url.oc"}</a></span>
+                            {/if}
+                            </div>
+                        {/if}
+                        
+                        {if !empty($cena_ebook) && $cena_ebook !=0}
+                            <div class="infoPodKnihou">
+                            <span >{translate key="submission.ceny.ekniha"}:</span>
+                            &nbsp;<span style="font-size: 1.3em; color: red;">{$cena_ebook} {translate key="submission.cena.mena"}</span><br />
+                            {if !empty($urlOC_ebook) && $urlOC_ebook != 0}
+                                &nbsp;&nbsp;<span><a href="http://is.muni.cz/obchod/baleni/{$urlOC_ebook}{translate key="submission.obchodniCentrum.prepinacJazyku"}" target="_blank">{translate key="informace.url.oc"}</a></span>
+                            {/if}
+                            </div>
+                        {/if}
+                        
+                        {if (empty($cena) && empty($cena_ebook)) || ($cena == 0 && $cena_ebook == 0)}
+                            <div class="infoPodKnihou">
+                            <span class="openAccess">{translate key="submission.ceny.openAccess"}</span><br />
+                            </div>
+                        {/if}
+                        {if !empty($pocetStran)}
+                            <div class="infoPodKnihou">
+                            <span >{translate key="submission.pocetStran"}:</span>
+                            &nbsp;{$pocetStran}
+                            </div>
+                        {/if}
 			{if $series}
-				<div class="seriesLink">{translate key="series.series"}: <a href="{url page="catalog" op="series" path=$series->getPath()}">{$series->getLocalizedFullTitle()}</a></div>
+                <div class="seriesLink">{translate key="series.series"}: <a href="{url page="catalog" op="series" path=$series->getPath()}">{$series->getLocalizedFullTitle()}</a></div>
 			{/if}
 
 		</div>
-
-		{if count($publicationFormats) > 1}
-			{foreach from=$publicationFormats item="publicationFormat"}
-				{if $publicationFormat->getIsApproved()}
-					<h3><a href="#">{$publicationFormat->getLocalizedName()|escape}</a></h3>
-					<div class="publicationFormat">
-						{include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
-					</div>{* publicationFormat *}
-				{/if}{* $publicationFormat->getIsApproved() *}
-			{/foreach}{* $publicationFormats *}
-		{/if}{* publicationFormats > 1 *}
-
+                {/if}
 		{assign var=categories value=$publishedMonograph->getCategories()}
 		{if !$categories->wasEmpty()}
-			<h3><a href="#">{translate key="catalog.relatedCategories}</a></h3>
+			<h3><a href="#">{translate key="catalog.relatedCategories"}</a></h3>
 			<ul class="relatedCategories">
 				{iterate from=categories item=category}
 					<li><a href="{url op="category" path=$category->getPath()}">{$category->getLocalizedTitle()|strip_unsafe_html}</a></li>

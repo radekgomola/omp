@@ -26,6 +26,9 @@ class OAIHandler extends Handler {
 		parent::Handler();
 	}
 
+	/**
+	 * @copydoc PKPHandler::authorize
+	 */
 	function authorize($request, &$args, $roleAssignments) {
 		$returner = parent::authorize($request, $args, $roleAssignments);
 
@@ -44,7 +47,7 @@ class OAIHandler extends Handler {
 	function index($args, $request) {
 		PluginRegistry::loadCategory('oaiMetadataFormats', true);
 
-		$oai = new PressOAI(new OAIConfig($request->getRequestUrl(), Config::getVar('oai', 'repository_id')));
+		$oai = new PressOAI(new OAIConfig($request->url(null, 'oai'), Config::getVar('oai', 'repository_id')));
 		$oai->execute();
 	}
 }

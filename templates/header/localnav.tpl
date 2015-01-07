@@ -9,11 +9,13 @@
  *}
 
 {capture assign="publicMenu"}
-	{if $currentPress}
+    	{if $currentPress}
+{*            <li><a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori" }">TEST</a></li>*}
 		{if $enableAnnouncements}
 			<li><a href="{url router=$smarty.const.ROUTE_PAGE page="announcement"}">{translate key="announcement.announcements"}</a></li>
 		{/if}
-		<li><a href="#">{translate key="navigation.about"}</a>
+                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="seznamAutoru"}">{translate key="seznam.vypisAutoru.short"}</a></li>
+		{*<li><a href="#">{translate key="navigation.about"}</a>
 			<ul>
 				{if not empty($contextInfo.contact)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="contact"}">{translate key="about.contact"}</a></li>
@@ -21,9 +23,7 @@
 				{if not empty($contextInfo.description)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="description"}">{translate key="about.description"}</a></li>
 				{/if}
-                                {if not empty($contextInfo.partneri)}
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="partneri"}">{translate key="about.partneri"}</a></li>
-				{/if}
+                                
 				{if not empty($contextInfo.editorialTeam)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="editorialTeam"}">{translate key="about.editorialTeam"}</a></li>
 				{/if}
@@ -31,11 +31,16 @@
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="editorialPolicies"}">{translate key="about.policies"}</a></li>
 				{/if}	
 				<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="submissions"}">{translate key="about.submissions"}</a></li>
+                                {if not empty($contextInfo.partneri)}
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="partneri"}">{translate key="about.partneri"}</a></li>
+				{/if}
 				{if not empty($contextInfo.sponsorship)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="sponsorship"}">{translate key="about.pressSponsorship"}</a></li>
 				{/if}
+                                
 			</ul>
-		</li>
+		</li>*}
+                
 	{/if}
 {/capture}
 
@@ -46,7 +51,22 @@
 				<li><a href="{url router=$smarty.const.ROUTE_PAGE page="dashboard"}">{translate key="navigation.dashboard"}</a></li>
 			{/if}
 			{if $currentPress}
-				<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">{translate key="navigation.catalog"}</a>
+                        {*<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">{translate key="navigation.catalog"}</a>
+                            <ul>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="monography"}" target="_self">{translate key="navigation.produkce.knihy"}</a></li>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="journals"}" target="_self">{translate key="navigation.produkce.casopisy"} </a></li>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="e_books"}" target="_self">{translate key="navigation.produkce.eknihy"} </a></li>
+                            </ul>    
+                        </li>*}
+                        <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace" target="_self">{translate key="navigation.munispace.link"}</a>
+                            <ul>
+                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_books" target="_self">{translate key="navigation.munispace.books"}</a></li>
+                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_coursebooks" target="_self">{translate key="navigation.munispace.coursebooks"} </a></li>
+                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_proceedings" target="_self">{translate key="navigation.munispace.proceedings"} </a></li>
+                                <li><a href="https://journals.muni.cz" target="_blank">{translate key="navigation.munispace.journals"} </a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{$baseUrl}/index.php/munipress/munispaceSignpost" target="_self">{translate key="navigation.munispace.signpost"} </a></li>
 				{if array_intersect(array(ROLE_ID_MANAGER, ROLE_ID_SUB_EDITOR), $userRoles)}
 					<li>
 						<a href="#">{translate key="navigation.management"}</a>
@@ -82,7 +102,22 @@
 	{else}{* !$isUserLoggedIn *}
 		<ul class="sf-menu">
 			<li><a href="{url router=$smarty.const.ROUTE_PAGE page="index"}">{translate key="navigation.home"}</a></li>
-			<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">{translate key="navigation.catalog"}</a>
+			{*<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">{translate key="navigation.catalog"}</a>
+                            <ul>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="monography"}" target="_self">{translate key="navigation.produkce.knihy"}</a></li>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="journals"}" target="_self">{translate key="navigation.produkce.casopisy"} </a></li>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="e_books"}" target="_self">{translate key="navigation.produkce.eknihy"} </a></li>
+                            </ul>   
+                        </li>*}
+                        <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace" target="_self">{translate key="navigation.munispace.link"}</a>
+                            <ul>
+                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_books" target="_self">{translate key="navigation.munispace.books"}</a></li>
+                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_coursebooks" target="_self">{translate key="navigation.munispace.coursebooks"} </a></li>
+                                <li><a href="{$baseUrl}/index.php/munipress/catalog/category/munispace_symposiums" target="_self">{translate key="navigation.munispace.proceedings"} </a></li>
+                                <li><a href="https://journals.muni.cz" target="_blank">{translate key="navigation.munispace.journals"} </a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{$baseUrl}/index.php/munipress/munispaceSignpost" target="_self">{translate key="navigation.munispace.signpost"} </a></li>
 			{$publicMenu}
 		</ul>
 	{/if}{* $isUserLoggedIn *}

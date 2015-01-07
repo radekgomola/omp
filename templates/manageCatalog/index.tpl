@@ -81,12 +81,17 @@
 	<div class="pkp_helpers_clear"></div>
 	<div id="catalogTabs">
 		<ul>
-			<li><a href="{url op="homepage"}">{translate key="catalog.manage.homepage"}</a></li>
+{*			<li><a href="{url op="homepage"}">{translate key="catalog.manage.homepage"}</a></li>*}
+                        <li><a href="#publishedMonographs">{translate key="catalog.manage.homepage"}</a></li>
 			<li><a href="#categoryTab">{translate key="catalog.manage.category"}</a></li>
 			<li><a href="#seriesTab">{translate key="catalog.manage.series"}</a></li>
 			{if $isManager}<li><a href="#spotlightsTab">{translate key="spotlight.spotlights"}</a></li>{/if}
 			<li><a href="{url}">{translate key="search.searchResults"}</a></li>
 		</ul>
+                
+                <div id="publishedMonographs">
+                    {include file="manageCatalog/monographs.tpl"}
+                </div>
 		<div id="categoryTab">
 				<div class="pkp_controllers_grid">
 					<div class="pkp_helpers_align_right grid_header_bar pkp_helpers_full">

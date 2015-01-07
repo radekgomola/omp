@@ -1,0 +1,35 @@
+/**
+ * @defgroup pkp_controllers_extrasOnDemand
+ */
+
+/**
+ * @file styles/controllers/extrasOnDemand.less
+ *
+ * Copyright (c) 2014 Simon Fraser University Library
+ * Copyright (c) 2003-2014 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * 
+ * @ingroup pkp_controllers_extrasOnDemand
+ *
+ * @brief Styles for pkp_controllers_extrasOnDemand
+ */
+
+.pkp_controllers_extrasOnDemand {
+	.ui-icon {
+		float:left;
+	}
+	.toggleExtras {
+                margin-top: 0px;
+		margin-bottom:10px;
+		cursor:pointer;
+		float:left;
+                width: 100%;
+		/* The following allows us to
+		   implement a graceful fallback in case
+		   JS is disabled. */
+		display: none;
+	}
+        .toggleExtras-active{
+            color: #000;
+        }
+}
