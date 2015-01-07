@@ -68,8 +68,11 @@
 		</div>
                 
 	</div>
+        <div class="pkp_manageCatalog_monograph_date">
+			{translate key="submission.manazer.datumVydani"}: {$monograph->getDatumVydani()|date_format:$dateFormatShort}
+	</div>
 	<div class="pkp_manageCatalog_monograph_date">
-			{$monograph->getDatePublished()|date_format:$dateFormatShort}
+			{translate key="submission.manazer.datumPosledniZmeny"}: {$monograph->getDatePublished()|date_format:$dateFormatShort}
                 </div>
 	<div class="pkp_manageCatalog_monograph_series">
 		{$monograph->getSeriesTitle()|strip_unsafe_html}

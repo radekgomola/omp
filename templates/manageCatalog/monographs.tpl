@@ -39,9 +39,15 @@
                 <div id="manageMonographsContainer">
                     <br />
                     <br />
-                    {if !$category && !$series && !$vyhledavani}
+                    {if !$category && !$series && !$vyhledavani}                        
                         <div class="filterPanel" style="height: 40px;">
-                            <div class="font-size:14px;">
+                            <div class="pkp_helpers_align_right" style="font-size: 14px;">
+                                <div class="vypis_polozek">
+                                    {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
+                                </div>
+                                {page_links anchor="manageMonographsContainer" name="managerCatalogPaging" iterator=$publishedMonographs}
+                            </div>
+                            <div style="font-size:14px;">
                                 {translate key="filtr.filtrovat"}:
                             </div>
                                 <form class="pkp_form" action="#">
@@ -85,31 +91,32 @@
                                 </div>
                             </form>
                         </div>
+                        
                         <div class="pagingPanel">
-                            <div class="popis">
+                            <div>
                                 {translate key="filtr.tridit"}:                           
                            </div>
+                           
                             <div class="pkp_helpers_align_left">
                                 {if $trideni && $trideni == 'lex_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="lex_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">Abecedně</a> | 
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="lex_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.alphabetically"}</a> | 
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="lex_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">Abecedně</a> | 
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="lex_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc' || $trideni == 'change_asc' || $trideni == 'change_desc'} stejne {else}asc{/if}">{translate key="sorting.alphabetically"}</a> | 
                             {/if}
                             {if $trideni && $trideni == 'pub_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="pub_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">Podle data vydání</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="pub_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.byPublishingDate"}</a>
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="pub_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">Podle data vydání</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="pub_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || $trideni == 'change_asc' || $trideni == 'change_desc' || !$trideni} stejne {else}asc{/if}">{translate key="sorting.byPublishingDate"}</a>
+                            {/if}
+                            {if $trideni && $trideni == 'change_desc'}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="change_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.byLastModificationDate"}</a>
+                            {else}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="change_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || $trideni == 'pub_asc' || $trideni == 'pub_desc' || !$trideni} stejne {else}asc{/if}">{translate key="sorting.byLastModificationDate"}</a>
                             {/if}
                             </div>
-
-                            <div class="pkp_helpers_align_right">
-                                <div class="vypis_polozek">
-                                    {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
-                                </div>
-                                {page_links anchor="manageMonographsContainer" name="managerCatalogPaging" iterator=$publishedMonographs}
-                            </div>
-
-                        </div>
+                            
+                        </div>                     
+                            
                     {/if}
                     <br />
                     <br />

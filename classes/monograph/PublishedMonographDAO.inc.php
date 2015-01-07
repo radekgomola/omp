@@ -59,6 +59,12 @@ class PublishedMonographDAO extends MonographDAO {
                     case "pub_desc":
                         $setrid .='munis.datum_vydani DESC';
                         break;
+                    case "change_asc":
+                        $setrid .= 'ps.date_published ASC';
+                        break;
+                    case "change_desc":
+                        $setrid .= 'ps.date_published DESC';
+                        break;
                     default:                       
                         $setrid .= 'st.setting_value ASC';
                 }
@@ -108,7 +114,7 @@ class PublishedMonographDAO extends MonographDAO {
 			'SELECT	DISTINCT
                               ps.*,
 				s.*,
-                                munis.*,
+                                munis.datum_vydani,
 				COALESCE(f.seq, ?) AS order_by,
 				' . $this->_getFetchColumns() . '
 			FROM	published_submissions ps
@@ -167,6 +173,12 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
                         break;
                     case "pub_desc":
                         $setrid .='munis.datum_vydani DESC';
+                        break;
+                    case "change_asc":
+                        $setrid .= 's.last_modified ASC';
+                        break;
+                    case "change_desc":
+                        $setrid .= 's.last_modified DESC';
                         break;
                     default:                       
                         $setrid .= 'st.setting_value ASC';
@@ -472,6 +484,12 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
                         break;
                     case "pub_desc":
                         $setrid .='munis.datum_vydani DESC';
+                        break;
+                    case "change_asc":
+                        $setrid .= 's.last_modified ASC';
+                        break;
+                    case "change_desc":
+                        $setrid .= 's.last_modified DESC';
                         break;
                     default:                       
                         $setrid .= 'st.setting_value ASC';

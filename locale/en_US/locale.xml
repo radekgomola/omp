@@ -789,6 +789,9 @@ Masaryk University</message>
     <message key="filtr.filtrovat">Filter</message>
     <message key="filtr.tridit">Order</message>
     <message key="filtr.fakulty">Faculties - all</message>
+    <message key="sorting.alphabetically">Alphabetically</message>
+    <message key="sorting.byPublishingDate">By Publishing Date</message>
+    <message key="sorting.byLastModificationDate">By Last Modification Date</message>
     
     <!--Doi crossref-->
     <message key="doiCrossref.aktualni.zobraz"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(zobrazit)]]>
@@ -858,6 +861,10 @@ Masaryk University</message>
     <message key="monograph.publicationFormat.calameoHash">Calameo hash code</message>
     
     <message key="submission.datumVydani">Publication year</message>
+    <message key="submission.manazer.datumVydani">Publication date</message>
+    <message key="submission.manazer.datumPosledniZmeny">Last modification date</message>
+    
+    
     <message key="munipress.fakulty.esf">Faculty of Economics</message>
     <message key="munipress.fakulty.fi">Faculty of Informatics</message>
     <message key="munipress.fakulty.fss">Faculty of Social Studies</message>
