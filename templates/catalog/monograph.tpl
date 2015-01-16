@@ -8,7 +8,7 @@
  * Display a public-facing monograph in the catalog.
  *}
 
-<li class="pkp_catalog_monograph {if $inline}pkp_helpers_align_left{/if}">
+<li class="pkp_catalog_monograph {if $inline}pkp_helpers_align_left{/if} {if $souvisejiciPublikace}souvisejici_publikace{/if}" >
 	<a class="pkp_helpers_image_left" href="{url page="catalog" op="book" path=$publishedMonograph->getId()}" {if $vyhledavaniAutori=="true"}target="_blank"{/if}>
 		{include file="controllers/monographList/coverImage.tpl" monograph=$publishedMonograph}
 	</a>
@@ -18,8 +18,10 @@
                     {$publishedMonograph->getAuthorString()|escape}, {if $publishedMonograph->getAKolektiv()==1}{translate key="submission.aKol"}{/if}
 		</div>
         </div>
-	<div class="pkp_catalog_monograph_date">
-			{translate key="submission.datumVydani"}: {$publishedMonograph->getDatumVydani()|date_format:"%Y"}
-	</div>
+        {if !$souvisejiciPublikace}
+            <div class="pkp_catalog_monograph_date">
+                            {translate key="submission.datumVydani"}: {$publishedMonograph->getDatumVydani()|date_format:"%Y"}
+            </div>
+        {/if}
 </li>
 

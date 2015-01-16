@@ -126,7 +126,7 @@
     <message key="spotlight.spotlights">Aktuality</message>
     <message key="spotlight.noneExist">Aktuálně nemáte zvoleny žádné doporučené publikace.</message>
 <!--    <message key="spotlight.title.homePage">Doporučujeme</message>-->
-    <message key="spotlight.title.homePage">Aktuality</message>
+    <message key="spotlight.title.homePage">Mohlo by Vás zajímat</message>
     <message key="spotlight.author">Autor,</message>
     <message key="grid.content.spotlights.spotlightItemTitle">Doporučená položka</message>
     <message key="grid.content.spotlights.category.homepage">Úvodní stránka</message>
@@ -809,5 +809,6 @@
     <message key="munipress.fakulty.prf">Přírodovědecká fakulta</message>
     <message key="munipress.fakulty.Rmu">Rektorát</message>
 
+    <message key="catalog.souvisejiciPublikace">Související publikace</message>
     
 </locale>

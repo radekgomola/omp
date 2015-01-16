@@ -154,7 +154,7 @@
 	<message key="spotlight.spotlights">Spotlights</message>
 	<message key="spotlight.noneExist">There are no current spotlights.</message>
 	<!--<message key="spotlight.title.homePage">In the Spotlight</message>-->
-        <message key="spotlight.title.homePage">Actuality</message>
+        <message key="spotlight.title.homePage">For Your Interest</message>
 	<message key="spotlight.author">Author, </message>
 	<message key="grid.content.spotlights.spotlightItemTitle">Spotlight Item</message>
 	<message key="grid.content.spotlights.category.homepage">Homepage</message>
@@ -876,4 +876,6 @@ Masaryk University</message>
     <message key="munipress.fakulty.pf">Faculty of Law</message>
     <message key="munipress.fakulty.prf">Faculty of Science</message>
     <message key="munipress.fakulty.Rmu">Rector's office</message>
+    
+    <message key="catalog.souvisejiciPublikace">Related publications</message>
 </locale>

@@ -135,6 +135,39 @@ class CatalogBookHandler extends Handler {
 			$templateMgr->assign('series', $series);
 		}
 
+                $site = $request->getSite();
+                $locales = $site->getSupportedLocales();
+                
+                $locale = AppLocale::getLocale();
+                $submissionKeywordDao = DAORegistry::getDAO('SubmissionKeywordDAO');
+                $submissionLanguageDao = DAORegistry::getDAO('SubmissionLanguageDAO');       
+
+                $allKeywords = $submissionKeywordDao->getKeywords($publishedMonograph->getId(), $locales);
+                $templateMgr->assign('keywords', $allKeywords[$locale]);
+
+                $allLanguages = $submissionLanguageDao->getLanguages($publishedMonograph->getId(), $locales);
+                $templateMgr->assign('languages', $allLanguages[$locale]);
+
+                /***********
+                 * MUNIPRESS - použito pro souvisejici publikace
+                 **********/
+                
+                $publishedMonographsDao = DAORegistry::getDAO('PublishedMonographDAO');
+                $submissionSubjectDao = DAORegistry::getDAO('SubmissionSubjectDAO');
+                $allPublikace = $submissionSubjectDao->getSubjects($publishedMonograph->getId(), $locales);
+                $souvisejiciPublikace = array();
+                
+                foreach($allPublikace[$locale] as $idPublikace){
+                    $publikace = $publishedMonographsDao->getById($idPublikace);
+                    if($publikace){
+                        $souvisejiciPublikace[] = $publikace;
+                    }
+                    
+                }
+                
+                $templateMgr->assign('souvisejiciPublikace', $souvisejiciPublikace);
+                
+                
 		// Display
 		$templateMgr->display('catalog/book/book.tpl');
 	}

@@ -101,6 +101,40 @@
                         {assign var=viceInformaci value=1}
                         {/if}
                     {/foreach}
+                    {if $keywords}
+                        <li>
+                            <strong>{translate key="common.keywords"}</strong>
+                            <span class="vpravo">
+                                {assign var=prvni value=1}
+                                {foreach from=$keywords item=klicoveSlovo}
+                                    {if $prvni}
+                                        {$klicoveSlovo}
+                                        {assign var=prvni value=0}
+                                    {else}
+                                    , {$klicoveSlovo}
+                                    {/if}
+                                {/foreach}
+                            </span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}
+                    {if $languages}
+                        <li>
+                            <strong>{translate key="common.languages"}</strong>
+                            <span class="vpravo">
+                                {assign var=prvni value=1}
+                                {foreach from=$languages item=jedenJazyk}
+                                    {if $prvni}
+                                        {$jedenJazyk}
+                                        {assign var=prvni value=0}
+                                    {else}
+                                    , {$jedenJazyk}
+                                    {/if}
+                                {/foreach}
+                            </span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}                    
                     </ul>                
                     </div>
                     <div class="textoveInfo">
@@ -115,8 +149,7 @@
                             <strong>{translate key="submission.dedikace"}</strong> <br />
                             {$dedikace}
                         {/if}
-                    </div>
-
+                    </div>                    
                 </div>
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
