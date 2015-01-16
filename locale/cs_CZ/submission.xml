@@ -100,5 +100,5 @@
     <message key="submission.event.publicationMetadataUpdated">Metadata publikačního formátu {$formatName} byla aktualizována.</message>
     <message key="submission.event.publicationFormatCreated">Publikační formát {$formatName} byl vytvořen.</message>
     <message key="submission.event.publicationFormatRemoved">Publikační formát {$formatName} byl odstraněn.</message>
-    <message key="submission.submit.titleAndSummary">Jméno a souhrn</message>
+    <message key="submission.submit.titleAndSummary">Název a abstrakt (veřejné)</message>
   </locale>

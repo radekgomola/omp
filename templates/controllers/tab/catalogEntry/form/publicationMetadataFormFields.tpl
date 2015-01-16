@@ -88,11 +88,13 @@
 		{/fbvFormSection}
 	{/fbvFormArea}*}
 
-	{fbvFormArea id="productAvailability" title="monograph.publicationFormat.productAvailability" class="border"}
+	{*{fbvFormArea id="productAvailability" title="monograph.publicationFormat.productAvailability" class="border"}
 		{fbvFormSection for="productAvailability" required="true"}
 			{fbvElement type="select" from=$productAvailabilityCodes required=true selected=$productAvailabilityCode translate=false id="productAvailabilityCode"}
 		{/fbvFormSection}
-	{/fbvFormArea}
+	{/fbvFormArea}*}
+        
+        <input type="hidden" name="productAvailabilityCode" value={$productAvailabilityCode} />
 
 	{fbvFormArea id="imprintFormArea" title="monograph.publicationFormat.imprint"}
 		{fbvFormSection for="imprint"}
@@ -100,14 +102,15 @@
 		{/fbvFormSection}
 	{/fbvFormArea}
        
-        {fbvFormArea id="munipressFormArea" title="submission.informace.munipress" class="border"}
+        
+        {fbvFormArea id="verejneInformace" title="submission.informace.verejne" class="border"}
                 {fbvFormSection label="submission.ostatni"}
                         {fbvElement type="text" name="pocetStran" id="pocetStran" value=$pocetStran maxlength="40" inline=true size=$fbvStyles.size.SMALL label="submission.pocetStran"}
                         {fbvElement type="text" name="poradiVydani" id="poradiVydani" value=$poradiVydani maxlength="40" inline=true size=$fbvStyles.size.SMALL label="submission.poradiVydani"}
                         <script>
                             $('input[id^="datumVydani"]').datepicker({ldelim} dateFormat: 'yy-mm-dd' {rdelim});
                         </script>
-                        {fbvElement type="text" label="submission.datumVydani" id="datumVydani" name="datumVydani" value=$datumVydani|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
+                        {fbvElement type="text" label="submission.manazer.datumVydani" id="datumVydani" name="datumVydani" value=$datumVydani|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
                 {/fbvFormSection}
                 {fbvFormSection label="submission.url.keStazeni" for="urlWeb"}
                         {fbvElement type="text" name="urlStazeni" multilingual="true" id="urlStazeni" value=$urlStazeni maxlength="255" readonly=$readOnly}
@@ -119,7 +122,8 @@
                 {fbvFormSection title="submission.bibliografickaCitace" for="bibliografickaCitace"}
                         {fbvElement type="textarea" multilingual=true name="bibliografickaCitace" id="bibliografickaCitace" value=$bibliografickaCitace rich=true readonly=$readOnly}
                 {/fbvFormSection}
-                                
+        {/fbvFormArea}                       
+        {fbvFormArea id="munipressFormArea" title="submission.informace.munipress" class="border"}
                 {fbvFormSection list="true" title="submission.licence"}
                         {if $licenceTypPrepinac eq "0"}
 				{assign var="checked" value=true}

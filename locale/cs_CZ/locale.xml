@@ -26,7 +26,7 @@
     <message key="monograph.publicationFormat.backMatterCount">Koncové stránky</message>
     <message key="monograph.publicationFormat.productComposition">Skladba publikace</message>
     <message key="monograph.publicationFormat.productFormDetailCode">Detaily publikace (volitelné)</message>
-    <message key="monograph.publicationFormat.productIdentifierType">Identifikace publikace</message>
+    <message key="monograph.publicationFormat.productIdentifierType">Identifikace publikace (veřejné)</message>
     <message key="monograph.publicationFormat.price">Cena</message>
     <message key="monograph.publicationFormat.priceRequired">Je třeba zadat cenu.</message>
     <message key="monograph.publicationFormat.priceType">Typ ceny</message>
@@ -555,6 +555,7 @@
     <message key="submission.url.oc">URL obchodní centrum</message>
     <message key="submission.bibliografickaCitace">Bibliografická citace</message>
     <message key="submission.poznamka">Poznámka</message>
+    <message key="submission.poznamka.description">Poznámka se zobrazuje u příspěvku v části "Více informací" pod informacemi o jednotlivých formátech.</message>
     <message key="submission.dedikace">Dedikace</message>
     <message key="submission.informace.verejne">Veřejné informace</message>
     <message key="submission.a_kolektiv">a kol.</message>
@@ -564,8 +565,9 @@
     <message key="submission.url.web">URL web</message>
     <message key="submission.souvisejiciPublikace">Související publikace</message>
     <message key="submission.klicovaSlova">Klíčová slova</message>
+    <message key="submission.jazyky.description">Je nutné vyplnit jazyky i anglicky pro potřeby filtrování podle jazyků.</message>
     <message key="submission.jazyky">Jazyky</message>
-    <message key="submission.informace.munipress">Informace Munipress</message>
+    <message key="submission.informace.munipress">Informace Munipress (neveřejné)</message>
     <message key="submission.naklad">Náklad</message>
     <message key="submission.honorar">Honorář</message>
     <message key="submission.honorar.celkem">Celkem</message>
@@ -776,6 +778,7 @@
     <message key="author.munipress.tituly_za">Tituly za jménem</message>
     <message key="author.munipress.rodneCislo">Rodné číslo</message>
     <message key="author.munipress.mu">Číslo MU</message>
+    <message key="author.munipress.uco">UČO (veřejné)</message>
     <message key="author.munipress.poznamka">Poznámka</message>
     <message key="author.munipress.druhePrijmeni">Druhé příjmení</message>
     <message key="author.munipress.obcanskeJmeno">Občanské jméno</message>
@@ -783,7 +786,7 @@
     <message key="author.munipress.honorar">Honorář</message>
     <message key="author.munipress.honorarVyplaceno">Honorář vyplacen</message>
     <message key="author.munipress.stylZobrazeni">Styl zobrazení:</message>
-    <message key="author.munipress.zobrazeni.zobrazitVHlavicce">V hlavičce</message>
+    <message key="author.munipress.zobrazeni.zobrazitVHlavicce">V hlavičce (pod titulem)</message>
     <message key="author.munipress.zobrazeni.zobrazitMeziAutory">Mezi autory</message>
     <message key="author.munipress.zobrazeni.zobrazitVOstatnich">Ve více informacích</message>
     
@@ -791,6 +794,7 @@
     
     <message key="submission.datumVydani">Rok vydání</message>
     <message key="submission.manazer.datumVydani">Datum vydání</message>
+    <message key="submission.manazer.datumVydani.description">Napomáhá vyhledávání a třídění - tento údaj je nadřazený datům vydání jednotlivých formátů!</message>
     <message key="submission.manazer.datumPosledniZmeny">Datum poslední změny</message>
     
     

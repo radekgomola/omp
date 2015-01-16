@@ -847,6 +847,7 @@ Masaryk University</message>
     <message key="author.munipress.tituly_za">Titles after name</message>
     <message key="author.munipress.rodneCislo">personal identification number</message>
     <message key="author.munipress.mu">MU number</message>
+    <message key="author.munipress.uco">UČO (public)</message>
     <message key="author.munipress.poznamka">Note</message>
     <message key="author.munipress.druhePrijmeni">Second Last name</message>
     <message key="author.munipress.obcanskeJmeno">Civil First name</message>
@@ -854,7 +855,7 @@ Masaryk University</message>
     <message key="author.munipress.honorar">Fee</message>
     <message key="author.munipress.honorarVyplaceno">Fee paid</message>
     <message key="author.munipress.stylZobrazeni">Style of displaying:</message>
-    <message key="author.munipress.zobrazeni.zobrazitVHlavicce">In the header</message>
+    <message key="author.munipress.zobrazeni.zobrazitVHlavicce">In the header (under title)</message>
     <message key="author.munipress.zobrazeni.zobrazitMeziAutory">Between authors</message>
     <message key="author.munipress.zobrazeni.zobrazitVOstatnich">In the section More information</message>
     
