@@ -56,4 +56,5 @@
 	<xsl:template match="onix:Subject"/>
 	<xsl:template match="onix:CollateralDetail"/>
 	<xsl:template match="onix:Imprint" />
+        <xsl:template match="onix:ProductIdentifier" />
 </xsl:stylesheet>

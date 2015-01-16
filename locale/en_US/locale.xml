@@ -775,10 +775,10 @@ Masaryk University</message>
     <message key="browse.faculties">Faculties &amp; workplaces</message>
     <message key="browse.byAuthors">Browse by Authors</message>
     <message key="search.authorIndex">Browse by Authors</message>
-    <message key="browse.obory">Branches</message>
+    <message key="browse.obory">Domains</message>
     <message key="browse.zobrazit">Show</message>
     <message key="browse.skryt">Hide</message>
-    <message key="filtr.obory">Branches - all</message>
+    <message key="filtr.obory">Domains - all</message>
     <message key="filtr.roky">Years - all</message>
     <message key="filtr.jazyky">Languages - all</message>
     <message key="filtr.jazyky.cze">Czech</message>

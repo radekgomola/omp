@@ -47,7 +47,7 @@
     <message key="editor.monograph.legend.uploaded">Soubor nahrán uživatelem uvedeným v záhlaví sloupce</message>
     <message key="editor.submission.introduction">V sekci Příspěvek editor po prohlédnutí předložených souborů zvolí příslušný krok (tato akce zároveň odešle oznámení autorovi): Odeslat do vnitřního recenzního řízení (zahrnuje výběr souborů k posouzení); Odeslat do vnějšího recenzního řízení (zahrnuje výběr souborů k posouzení); Přijmout rukopis (zahrnuje výběr souborů pro redakci); Odmítnout rukopis (Předložený rukopis se archivuje).</message>
     <message key="editor.submission.editorial.finalDraftDescription">
-      <![CDATA[V případě sbornílů, kde má každá kapitola jiného autora, může být soubor s rukopisem před redakcí rozdělen na jednotlivé kapitoly. Autoři kapitol mohou na úpravy reagovat, jakmile jsou soubory nahrány do sekce<span class="pkp_help_title">Redakce</span>.]]>
+      <![CDATA[V případě sborníků, kde má každá kapitola jiného autora, může být soubor s rukopisem před redakcí rozdělen na jednotlivé kapitoly. Autoři kapitol mohou na úpravy reagovat, jakmile jsou soubory nahrány do sekce <span class="pkp_help_title">Redakce</span>.]]>
     </message>
     <message key="editor.monograph.editorial.fairCopy">Čistopis</message>
     <message key="editor.monograph.editorial.fairCopyDescription">Před tím, než se soubor odešle k redakci, redaktor nahraje čistopis rukopisu za účelem přezkoumání editorem.</message>

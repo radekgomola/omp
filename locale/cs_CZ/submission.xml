@@ -9,10 +9,10 @@
     <message key="submission.select">Vybrat příspěvek</message>
     <message key="submission.synopsis">Anotace</message>
     <!--<message key="submission.synopsis">Synopse</message>-->
-    <message key="submission.workType">Druh knihy</message>
-    <message key="submission.workType.description">Monografie je knižní dílo kompletně vytvořené jedním či více autory. Sborník je kniha, ve které má každá kapitola jiného autora (detaily kapitol se zadávají později.)</message>
-    <message key="submission.workType.editedVolume">Sborník</message>
-    <message key="submission.workType.authoredWork">Monografie</message>
+    <message key="submission.workflowType">Druh knihy</message>
+    <message key="submission.workflowType.description">Monografie je knižní dílo kompletně vytvořené jedním či více autory. Sborník je kniha, ve které má každá kapitola jiného autora (detaily kapitol se zadávají později.)</message>
+    <message key="submission.workflowType.editedVolume">Sborník: Autoři jsou přiřazeni k jednotlivým kapitolám.</message>
+    <message key="submission.workflowType.authoredWork">Monografie: Autoři jsou přiřazeni ke knize jako k celku.</message>
     <message key="submission.published">Připraveno k tisku</message>
     <message key="submission.fairCopy">Čistopis</message>
     <message key="submission.artwork.permissions">Oprávnění</message>
@@ -47,7 +47,7 @@
     <message key="submission.submit.cancelSubmission">Později můžete tento příspěvek doplnit v sekci Aktuální příspěvky na domácí stránce autora.</message>
     <message key="submission.submit.copyrightNoticeAgree">Souhlasím s dodržováním podmínek Prohlášení o autorských právech.</message>
     <message key="submission.submit.selectSeries">Vyberte edici...</message>
-    <message key="submission.submit.seriesPosition">Pozice v rámci této edice (např. Kniha 2, Sborník 2)</message>
+    <message key="submission.submit.seriesPosition">Číslo svazku v edici (např. Kniha 2, Sborník 2)</message>
     <message key="submission.submit.form.localeRequired">Vyberte jazyk příspěvku.</message>
     <message key="submission.submit.submissionChecklist">Kontrolní seznam návrhu</message>
     <message key="submission.submit.submissionChecklistDescription">Než budete pokračovat, je třeba doplnit a odškrtnout následující požadavky na předkládané příspěvky. Níže můžete přidat případné komentáře pro editora.</message>
