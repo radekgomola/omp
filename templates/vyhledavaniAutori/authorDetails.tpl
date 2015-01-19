@@ -15,7 +15,7 @@
 <div id="authorDetails">
     <h2>{$pageTitleName} {if $author->getZobrazHlavicka() != 1}({$author->getLocalizedUserGroupName()}){/if}
     </h2>
-{include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs vyhledavaniAutori="true"}
+{include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs vyhledavaniAutori="true" title ='false'}
 
 </div>
 
