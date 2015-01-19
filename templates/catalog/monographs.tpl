@@ -30,7 +30,8 @@
 	{else}
 		{translate|assign:"monographListTitle" key="catalog.browseTitles"}
 	{/if}
-        <h3 class="pkp_helpers_munipress_underline">{$monographListTitle}</h3>
+        {if $title !='false'}<h3 class="pkp_helpers_munipress_underline">{$monographListTitle}</h3>{/if}
+            
         {if $paging != 'false' }
             
             {if !$vyhledavaniAutori}

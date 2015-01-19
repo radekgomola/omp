@@ -562,7 +562,7 @@
     <message key="submission.ostatni">Další</message>
     <message key="submission.poradiVydani">Pořadí vydání</message>
     <message key="submission.typ_02_58">Typ 02/58</message>
-    <message key="submission.url.web">URL web</message>
+    <message key="submission.url.web">Webová stránka</message>
     <message key="submission.souvisejiciPublikace">Související publikace</message>
     <message key="submission.klicovaSlova">Klíčová slova</message>
     <message key="submission.jazyky.description">Je nutné vyplnit jazyky i anglicky pro potřeby filtrování podle jazyků.</message>
@@ -734,9 +734,9 @@
     <message key="browse.obory">Obory</message>
     <message key="browse.zobrazit">Zobrazit</message>
     <message key="browse.skryt">Skrýt</message>
-    <message key="filtr.obory">Obory - vše</message>
-    <message key="filtr.roky">Roky - vše</message>
-    <message key="filtr.jazyky">Jazyky - vše</message>
+    <message key="filtr.obory">Všechny obory</message>
+    <message key="filtr.roky">Všechny roky</message>
+    <message key="filtr.jazyky">Všechny jazyky</message>
     <message key="filtr.jazyky.cze">Čeština</message>
     <message key="filtr.jazyky.eng">Angličtina</message>
     <message key="filtr.jazyky.slo">Slovenština</message>
@@ -744,7 +744,7 @@
     <message key="filtr.jazyky.por">Portugalština</message>
     <message key="filtr.filtrovat">Filtrovat</message>
     <message key="filtr.tridit">Třídit</message>
-    <message key="filtr.fakulty">Fakulty - vše</message>
+    <message key="filtr.fakulty">Všechny fakulty</message>
     <message key="sorting.alphabetically">Abecedně</message>
     <message key="sorting.byPublishingDate">Podle data vydání</message>
     <message key="sorting.byLastModificationDate">Podle data poslední změny</message>

@@ -44,7 +44,7 @@
     
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
-		<div class="authorName">{$publishedMonograph->getAuthorString()}{if $publishedMonograph->getAKolektiv()==1}{translate key="submission.aKol"}{/if}</div>
+		<div class="authorName">{$publishedMonograph->getAuthorString()}{if $publishedMonograph->getAKolektiv()==1}, {translate key="submission.aKol"}{/if}</div>
 	</div>
 	<div id="bookInfoTabs">
 		<ul>
@@ -80,12 +80,12 @@
                         </li>
                         {assign var=viceInformaci value=1}
                     {/if}
-                    {if !empty($muPracovisteCode)}
+                    {*{if !empty($muPracovisteCode)}
                         <li>
                             <strong>{translate key="submission.muPracoviste"}</strong> <span class="vpravo">{$muPracoviste}</span>
                         </li>
                         {assign var=viceInformaci value=1}
-                    {/if}
+                    {/if}*}
                     {if !empty($urlWeb)}
                         <li>
                             <strong>{translate key="submission.url.web"}</strong> <span class="vpravo"><a href={$urlWeb} target="_blank">{translate key="informace.url.web"}</a></span>
@@ -122,15 +122,17 @@
                         <li>
                             <strong>{translate key="common.languages"}</strong>
                             <span class="vpravo">
-                                {assign var=prvni value=1}
-                                {foreach from=$languages item=jedenJazyk}
-                                    {if $prvni}
-                                        {$jedenJazyk}
-                                        {assign var=prvni value=0}
-                                    {else}
-                                    , {$jedenJazyk}
-                                    {/if}
-                                {/foreach}
+                                {strip}
+                                    {assign var=prvni value=1}
+                                    {foreach from=$languages item=jedenJazyk}
+                                        {if $prvni}
+                                            {$jedenJazyk}
+                                            {assign var=prvni value=0}
+                                        {else}
+                                            , {$jedenJazyk}
+                                        {/if}
+                                    {/foreach}
+                                {/strip}
                             </span>
                         </li>
                         {assign var=viceInformaci value=1}

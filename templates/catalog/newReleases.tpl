@@ -16,6 +16,7 @@
 {include file="catalog/monographs.tpl" 
             publishedMonographs=$publishedMonographs
             paging = 'false'
+            title = 'false'
 }
 
 {include file="common/footer.tpl"}

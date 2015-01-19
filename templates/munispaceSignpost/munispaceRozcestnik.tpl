@@ -20,7 +20,6 @@
         <li><a href="http://www.opvk.fss.muni.cz/ensec/publikace" target="_blank">{translate key="signpost.evropskaStudia"}</a></li>
         <li><a href="http://www.fsps.muni.cz/impact/knihovna/" target="_blank">{translate key="signpost.knihovnaFSPS"}</a></li>
         <li><a href="https://publi.cz/eMUNI/" target="_blank">{translate key="signpost.kinantropologie"}</a></li>
-        <li><a href="http://www.fsps.muni.cz/~tvodicka/library/" target="_blank">{translate key="signpost.tvodicka"}</a></li>
     </ul>
     <p>{translate key="munispace.ostatni.napisteNam"}</p>
 </div>

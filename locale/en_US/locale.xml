@@ -719,7 +719,7 @@ Masaryk University</message>
     <message key="submission.pocetStran">Number of Pages</message>
     <message key="submission.muPracoviste">MU workplace</message>
     <message key="submission.url.oc">Url on-line bookstore</message>
-    <message key="submission.url.web">Url web</message>
+<!--    <message key="submission.url.web">Url web</message>-->
     <message key="submission.bibliografickaCitace">Bibliographic citation</message>
     <message key="submission.poznamka">Note</message>
     <message key="submission.dedikace">Dedication</message>
@@ -728,7 +728,7 @@ Masaryk University</message>
     <message key="submission.ostatni">Others</message>
     <message key="submission.poradiVydani">Issue number</message>
     <message key="submission.typ_02_58">Type 02/58</message>
-    <message key="submission.url.web">URL web</message>
+    <message key="submission.url.web">Web page</message>
     <message key="submission.souvisejiciPublikace">Related publications</message>
     <message key="submission.klicovaSlova">Keywords</message>
     <message key="submission.jazyky">Languages</message>
@@ -778,9 +778,9 @@ Masaryk University</message>
     <message key="browse.obory">Domains</message>
     <message key="browse.zobrazit">Show</message>
     <message key="browse.skryt">Hide</message>
-    <message key="filtr.obory">Domains - all</message>
-    <message key="filtr.roky">Years - all</message>
-    <message key="filtr.jazyky">Languages - all</message>
+    <message key="filtr.obory">All Domains</message>
+    <message key="filtr.roky">All Years</message>
+    <message key="filtr.jazyky">All Languages</message>
     <message key="filtr.jazyky.cze">Czech</message>
     <message key="filtr.jazyky.eng">English</message>
     <message key="filtr.jazyky.slo">Slovak</message>
@@ -788,7 +788,7 @@ Masaryk University</message>
     <message key="filtr.jazyky.por">Portuguese</message>
     <message key="filtr.filtrovat">Filter</message>
     <message key="filtr.tridit">Order</message>
-    <message key="filtr.fakulty">Faculties - all</message>
+    <message key="filtr.fakulty">All Faculties</message>
     <message key="sorting.alphabetically">Alphabetically</message>
     <message key="sorting.byPublishingDate">By Publishing Date</message>
     <message key="sorting.byLastModificationDate">By Last Modification Date</message>
