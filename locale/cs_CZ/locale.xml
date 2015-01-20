@@ -789,6 +789,7 @@
     <message key="author.munipress.zobrazeni.zobrazitVHlavicce">V hlavičce (pod titulem)</message>
     <message key="author.munipress.zobrazeni.zobrazitMeziAutory">Mezi autory</message>
     <message key="author.munipress.zobrazeni.zobrazitVOstatnich">Ve více informacích</message>
+    <message key="author.publikace">Autorovy publikace</message>
     
     <message key="monograph.publicationFormat.calameoHash">Calameo hash kód</message>
     

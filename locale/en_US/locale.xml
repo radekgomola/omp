@@ -793,6 +793,8 @@ Masaryk University</message>
     <message key="sorting.byPublishingDate">By Publishing Date</message>
     <message key="sorting.byLastModificationDate">By Last Modification Date</message>
     
+    <message key="author.publikace">Authors publications</message>
+    
     <!--Doi crossref-->
     <message key="doiCrossref.aktualni.zobraz"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(zobrazit)]]>
 </message>

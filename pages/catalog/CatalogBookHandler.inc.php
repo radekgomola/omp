@@ -61,6 +61,9 @@ class CatalogBookHandler extends Handler {
 		$publishedMonograph = $this->getAuthorizedContextObject(ASSOC_TYPE_PUBLISHED_MONOGRAPH);
 		$templateMgr->assign('publishedMonograph', $publishedMonograph);
 
+                $authors = $publishedMonograph->getAuthors();
+                $templateMgr->assign('authors', $authors);
+                
 		// Get Social media blocks enabled for the catalog
 		$socialMediaDao = DAORegistry::getDAO('SocialMediaDAO');
 		$socialMedia = $socialMediaDao->getEnabledForContextByContextId($publishedMonograph->getContextId());
@@ -166,6 +169,19 @@ class CatalogBookHandler extends Handler {
                 }
                 
                 $templateMgr->assign('souvisejiciPublikace', $souvisejiciPublikace);
+                
+                /***********                   
+                 * MUNIPRESS - jednotlivé publikace k autorům
+                 ***********/
+                
+                $publishedMonographDao =& DAORegistry::getDAO('PublishedMonographDAO');
+                $autorskePublikace[] = array();
+                foreach($authors as $jedenAutor){
+                    $authorId = $jedenAutor -> getId();
+                    $autorskePublikace[$authorId] = $publishedMonographDao->getByAuthorId($authorId);
+                }
+
+                $templateMgr->assign('autorskePublikace', $autorskePublikace);             
                 
                 
 		// Display
