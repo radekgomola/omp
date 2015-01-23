@@ -329,6 +329,25 @@ class CategoryDAO extends DAO {
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
 
+        
+        function getPublicationCoutByCategoryId($categoryId, $pressId = null){
+                $params = array((int) $categoryId);
+		if ($pressId) $params[] = (int) $pressId;
+                
+                $result = $this->retrieve(
+			'SELECT	COUNT(*)
+			FROM	submission_categories sc
+                                LEFT JOIN categories c ON (sc.category_id = c.category_id)
+                                LEFT JOIN published_submissions ps ON (sc.submission_id = ps.submission_id)                                
+			WHERE	sc.category_id = ? AND ps.date_published IS NOT NULL
+                        ' . ($pressId?' AND c.press_id = ?':''),                        
+			$params
+		);
+
+		$returner = $result->fields[0];
+		$result->Close();
+		return $returner;
+        }
 	/**
 	 * Get the ID of the last inserted category.
 	 * @return int

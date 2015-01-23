@@ -14,7 +14,7 @@
     <span class="blockTitle munipress_underline_gray" style="padding-top: 10px;"><a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori"}">{translate key="browse.byAuthors"}</a></span>
    
         {assign var=test value=true}
-        {iterate from=browseCategories item=browseCategory}
+        {foreach from=$browseCategories item=browseCategory}
             {assign var=categoryParentId value=$browseCategory->getParentId()}
             {assign var=categoryId value=$browseCategory->getId()} 
             {assign var=name value=$browseCategory->getLocalizedTitle()|escape}
@@ -50,7 +50,7 @@
                 {/capture}
             {/if}           
            
-        {/iterate}
+        {/foreach}
     {*<span class="blockTitle">{translate key="plugins.block.category"}</span>
     <div class="munipress_underline_gray">
         <ul class="block_ul">

@@ -311,7 +311,7 @@
 	<message key="navigation.infoForAuthors.long">Publish with Munipress</message>
 	<message key="navigation.infoForLibrarians.long">Information For Librarians</message>
 	<!--<message key="navigation.newReleases">New Releases</message>-->
-        <message key="navigation.newReleases">Novelties</message>
+        <message key="navigation.newReleases">News</message>
 	<message key="navigation.published">Published</message>
 	<message key="navigation.wizard">Wizard</message>
 	<message key="navigation.linksAndMedia">Links and Social Media</message>
@@ -695,7 +695,7 @@ Masaryk University</message>
     <message key="submission.rights.typ">Rights: type</message>
     <message key="submission.rights.drzitel">Rights: holder</message>
     <message key="submission.rights.trvani">Rights: expiration</message>
-    <message key="submission.viceInformaci">More informations</message>
+    <message key="submission.viceInformaci">More information</message>
     <!--Metadata munipress-->
         
     <message key="submission.licence">Rights</message>
@@ -775,10 +775,10 @@ Masaryk University</message>
     <message key="browse.faculties">Faculties &amp; workplaces</message>
     <message key="browse.byAuthors">Browse by Authors</message>
     <message key="search.authorIndex">Browse by Authors</message>
-    <message key="browse.obory">Domains</message>
+    <message key="browse.obory">Subjects</message>
     <message key="browse.zobrazit">Show</message>
     <message key="browse.skryt">Hide</message>
-    <message key="filtr.obory">All Domains</message>
+    <message key="filtr.obory">All Subjects</message>
     <message key="filtr.roky">All Years</message>
     <message key="filtr.jazyky">All Languages</message>
     <message key="filtr.jazyky.cze">Czech</message>

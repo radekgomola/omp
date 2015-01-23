@@ -43,7 +43,7 @@
     
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
-		<div class="authorName">{$publishedMonograph->getAuthorString()}{if $publishedMonograph->getAKolektiv()==1}, {translate key="submission.aKol"}{/if}</div>
+		<div class="authorName">{$publishedMonograph->getAuthorString()}{if $publishedMonograph->getAKolektiv()==1} {translate key="submission.a_kolektiv"}{/if}</div>
 	</div>
 	<div id="bookInfoTabs">
 		<ul>
@@ -156,7 +156,6 @@
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 
 			<br />
-                        
                         {translate key="catalog.autori"}:
                         {foreach from=$authors item=author}
                             {if $author->getZobrazAutori() == 1}
