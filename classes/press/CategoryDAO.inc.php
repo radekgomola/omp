@@ -329,6 +329,26 @@ class CategoryDAO extends DAO {
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
 
+        /**
+	 * Retrieve all categories for a parent category.
+	 * @return DAOResultFactory containing Category ordered by sequence
+	 */
+	function getByParentIdNotEmpty($parentId, $pressId = null) {
+		$params = array((int) $parentId);
+		if ($pressId) $params[] = (int) $pressId;
+
+		$result = $this->retrieveRange(
+			'SELECT	c.*
+                        FROM	categories c
+                                RIGHT JOIN submission_categories sc ON (sc.category_id = c.category_id) 
+                                LEFT JOIN published_submissions ps ON sc.submission_id = ps.submission_id                            
+                        WHERE	c.parent_id = ? AND ps.date_published IS NOT NULL
+			' . ($pressId?' AND c.press_id = ?':'') . '
+                        GROUP BY c.category_id',
+			$params
+		);
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
         
         function getPublicationCoutByCategoryId($categoryId, $pressId = null){
                 $params = array((int) $categoryId);
