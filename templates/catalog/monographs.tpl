@@ -30,8 +30,8 @@
 	{else}
 		{translate|assign:"monographListTitle" key="catalog.browseTitles"}
 	{/if}
-        {if $title !='false'}<h3 class="pkp_helpers_munipress_underline">{$monographListTitle}</h3>{/if}
-            
+        {*{if $title !='false'}<h3 class="pkp_helpers_munipress_underline">{$monographListTitle}</h3>{/if}*}
+            <hr />
         {if $paging != 'false' }
             
             {if !$vyhledavaniAutori}
@@ -165,6 +165,7 @@
             </div>
         {/if}
 	{if $count>0}
+            <div class="monografie_seznam">
  		<ul class="pkp_helpers_clear" style="margin-left: 5px;">
                 {if $search=='ano'}
                     {foreach from=$publishedMonographs item=publishedMonograph}
@@ -177,5 +178,14 @@
 		{/iterate}
                 {/if}
 		</ul>
+            </div>
 	{/if}
+        {if $paging != 'false' }                
+                <div class="pkp_helpers_align_right paging_dole pagingPanel">
+                    <div class="vypis_polozek">
+                        {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
+                    </div>
+                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs sort=$trideni}{* This generates the individual page links *}
+                </div>
+        {/if}
 </div>

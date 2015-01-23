@@ -44,7 +44,7 @@
 	<message key="submission.publicationFormats">Publication Formats</message>
 	<message key="submission.proofs">Proofs</message>
 	<message key="submission.download">Download</message>
-	<message key="submission.sharing">Sharemessage>
+	<message key="submission.sharing">Share</message>
 	<message key="manuscript.submission">Manuscript Submission</message>
 	<message key="submission.round"><![CDATA[Round&nbsp;{$round}]]></message>
 	<message key="submissions.queuedReview">In Review</message>

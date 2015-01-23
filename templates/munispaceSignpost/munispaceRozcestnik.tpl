@@ -11,7 +11,7 @@
     <h2 class="pkp_helpers_text_left">{translate key="munispace.ostatni"}</h2>
     {translate key="munispace.ostatni.description"}
     <ul class="odr_classic2">
-        <li><a href="https://omp.ics.muni.cz/index.php/munipress/index" target="_blank">{translate key="signpost.munispace"}</a></li>
+        <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace"}" target="_blank">{translate key="signpost.munispace"}</a></li>
         <li><a href="http://digilib.phil.muni.cz/" target="_blank">{translate key="signpost.digilib"}</a></li>
         <li><a href="http://is.muni.cz/elportal/studovna.pl" target="_blank">{translate key="signpost.elportal"}</a></li>
         <li><a href="http://eknihy.knihovna.cz/" target="_blank">{translate key="signpost.knihovnictvi"}</a></li>
