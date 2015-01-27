@@ -51,7 +51,7 @@
                                 {translate key="filtr.filtrovat"}:
                             </div>
                                 <form class="pkp_form" action="#">
-                                    <div id="filterCategoryContainer">
+                                    <div id="filterFacultyContainer" class="filtr_kontejner">
                                         <select class="applyPlugin selectMenu" size="1" name="fakulty" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta="FAKULTA_CESTA" anchor="monographListContainer"}'.replace('FAKULTA_CESTA', this.options[this.selectedIndex].value))">
                                                 <option {if !$filtrovaniFakulta} selected="selected"{/if} value="">{translate key="filtr.fakulty"}</option>
                                             {iterate from=fakulty item=fakulta}
@@ -61,7 +61,7 @@
                                     </div>                                
                                 </form> 
                                 <form class="pkp_form" action="#">
-                                    <div id="filterCategoryContainer">
+                                    <div id="filterCategoryContainer" class="filtr_kontejner">
                                         <select class="applyPlugin selectMenu" size="1" name="obory" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort=$trideni obor="OBOR_CESTA" rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}'.replace('OBOR_CESTA', this.options[this.selectedIndex].value))">
                                                 <option {if !$filtrovaniObor} selected="selected"{/if} value="">{translate key="filtr.obory"}</option>
                                             {iterate from=obory item=obor}

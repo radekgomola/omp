@@ -154,7 +154,7 @@
 	<message key="spotlight.spotlights">Spotlights</message>
 	<message key="spotlight.noneExist">There are no current spotlights.</message>
 	<!--<message key="spotlight.title.homePage">In the Spotlight</message>-->
-        <message key="spotlight.title.homePage">For Your Interest</message>
+        <message key="spotlight.title.homePage">Featured books</message>
 	<message key="spotlight.author">Author, </message>
 	<message key="grid.content.spotlights.spotlightItemTitle">Spotlight Item</message>
 	<message key="grid.content.spotlights.category.homepage">Homepage</message>
@@ -575,7 +575,7 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
         <message key="navigation.prodejny">Bookstores at MU</message>
         <message key="navigation.objednavkaVMuniPressu.zprava">mailto:%6e%61%6d%75%40%72%65%63%74%2e%6d%75%6e%69%2e%63%7a?subject=Publication order&amp;body=Dear Sir/Madam, &#xD;&#xA;&#xD;&#xA;%0A%0A I would like to order a book published by Masaryk University Press: &#xD;&#xA;&#xD;&#xA; &#xD;&#xA;&#xD;&#xA;%0A%0A Purchaser name: &#xD;&#xA;%0A Company name, ID No., VAT No.: &#xD;&#xA;%0A Address: &#xD;&#xA;&#xD;&#xA;%0A%0A Preferred shipping option: (personal pick up + cash payment / cash on delivery / postal package + advance invoice payment)&#xD;&#xA;&#xD;&#xA;%0A%0A Please contact me to arrange the details of my order. &#xD;&#xA;%0A Yours sincerely, &#xD;&#xA;</message>
         <message key="navigation.munispace.books">Books</message>
-        <message key="navigation.munispace.coursebooks">Coursebooks</message>
+        <message key="navigation.munispace.coursebooks">Textbooks</message>
         <message key="navigation.munispace.proceedings">Proceedings</message>
         <message key="navigation.munispace.signpost">Libraries</message>
         <message key="navigation.munispace.journals">Journals</message>

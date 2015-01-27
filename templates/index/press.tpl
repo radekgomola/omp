@@ -12,7 +12,6 @@
 {/strip}
 
 {call_hook name="Templates::Index::press"}
-
 {if $publishedMonographs|@count > 0}
 	{* Include the new releases *}
 	{include file="catalog/monographs.tpl" publishedMonographs=$publishedMonographs monographListTitleKey="navigation.newReleases"}

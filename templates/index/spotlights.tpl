@@ -8,10 +8,11 @@
 * Display spotlights on a press' home page.
 *}
 <div id="spotlightsHome">
-    <h3 class="pkp_helpers_text_left pkp_helpers_munipress_underline" style="margin-top: 10px;">{translate key="spotlight.title.homePage"}</h3>
-    <ul style="margin-top: 10px;">
-        <table>
+    <h2 class="pkp_helpers_text_left pkp_helpers_munipress_underline nadpis">{translate key="spotlight.title.homePage"}</h2>
+    <table>
             <tr><td>
+    <ul>
+        
             {foreach from=$spotlights item=spotlight name=loop}
                 {assign var="item" value=$spotlight->getSpotlightItem()}
                 <li  class="pkp_helpers_align_left">
@@ -93,15 +94,16 @@
                         {/if}
                     </div>
             {/foreach}
-        </li>            
-        </td></tr><tr><td>
+        </li>         
+    </ul>
+    </td></tr><tr><td>
+                    <ul class="cist_vice">
             {foreach from=$content item=cistVice}
                     <li class="pkp_helpers_align_left">
                     {$cistVice}
                     </li>
                     
             {/foreach}
+                    </ul>
             </td></tr></table>
-            
-    </ul>
 </div>
