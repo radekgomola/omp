@@ -44,7 +44,7 @@ class BrowseVypsaneBlockPlugin extends BlockPlugin {
 	 * @param $templateMgr PKPTemplateManager
 	 * @return string
 	 */
-	function getContents($templateMgr, $request = null) {
+	function getContents(&$templateMgr, $request = null) {
 		$press = $request->getPress();
 
 		// Provide a list of series to browse
