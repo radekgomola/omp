@@ -35,7 +35,7 @@ class CoverHandler extends PKPHandler {
 	 * @param $args array
 	 * @param $roleAssignments array
 	 */
-	function authorize($request, &$args, $roleAssignments) {
+	function authorize($request, &$args, $roleAssignments, $enforceRestrictedSite = true) {
 		import('classes.security.authorization.OmpPublishedMonographAccessPolicy');
 		$this->addPolicy(new OmpPublishedMonographAccessPolicy($request, $args, $roleAssignments));
 		return parent::authorize($request, $args, $roleAssignments);
