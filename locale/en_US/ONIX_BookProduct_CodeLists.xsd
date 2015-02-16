@@ -383,7 +383,7 @@
 					<xs:documentation>E-publication identifier controlled by JPOIID's Committee for Research and Management of Electronic Publishing Codes.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>-->
-                        <xs:enumeration value="28">
+                        <xs:enumeration value="27">
 				<xs:annotation>
 					<xs:documentation>ISSN</xs:documentation>
 					<xs:documentation>unique eight-digit number used to identify a periodical publication at a specific media type. It is internationally accepted as a fundamental identifier for distinguishing between identical serial titles and facilitating checking and ordering procedures, collection management, legal deposit, interlibrary loans etc.</xs:documentation>

@@ -38,9 +38,9 @@
                     <a href="{if $multipleContexts}{url router=$smarty.const.ROUTE_PAGE context="index" page="admin" op="index"}{else}{url router=$smarty.const.ROUTE_PAGE page="admin" op="index"}{/if}"><img src="{$baseUrl}/images/design/button_admin.png" alt="settings"/></a>
                 {/if}
             {/if}
-            {if $multipleContexts}
+            {*{if $multipleContexts}
                 {include file="header/contextSwitcher.tpl"}
-            {/if}
+            {/if}*}
         {elseif !$notInstalled}
             {if !$hideRegisterLink}
             <a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="register"}" class="button_link"><img src="{$baseUrl}/images/design/button_register.png" alt="register"/></a>

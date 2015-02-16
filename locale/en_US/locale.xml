@@ -880,4 +880,6 @@ Masaryk University</message>
     <message key="munipress.fakulty.Rmu">Rector's office</message>
     
     <message key="catalog.souvisejiciPublikace">Related publications</message>
+    
+    <message key="login.bezRegistrace">Registrations are not allowed for now.</message>
 </locale>

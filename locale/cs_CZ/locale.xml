@@ -812,4 +812,6 @@
 
     <message key="catalog.souvisejiciPublikace">Související publikace</message>
     
+    <message key="login.bezRegistrace">Momentálně nejsou registrace povoleny.</message>
+    
 </locale>

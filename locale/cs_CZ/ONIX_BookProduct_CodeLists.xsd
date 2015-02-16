@@ -361,7 +361,7 @@
 			</xs:enumeration>-->
 			<xs:enumeration value="24">
 				<xs:annotation>
-					<xs:documentation>Co-publisher's ISBN-13</xs:documentation>
+					<xs:documentation>ISBN-13 koedice</xs:documentation>
 					<xs:documentation>An ISBN-13 assigned by a co-publisher. The 'main' ISBN sent with ID type code 03 and/or 15 should always be the ISBN that is used for ordering from the supplier identified in Supply Detail. However, ISBN rules allow a co-published title to carry more than one ISBN. The co-publisher should be identified in an instance of the &lt;Publisher&gt; composite, with the applicable &lt;PublishingRole&gt; code.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -383,7 +383,7 @@
 					<xs:documentation>E-publication identifier controlled by JPOIID's Committee for Research and Management of Electronic Publishing Codes.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>-->
-                        <xs:enumeration value="28">
+                        <xs:enumeration value="27">
 				<xs:annotation>
 					<xs:documentation>ISSN</xs:documentation>
 					<xs:documentation>unique eight-digit number used to identify a periodical publication at a specific media type. It is internationally accepted as a fundamental identifier for distinguishing between identical serial titles and facilitating checking and ordering procedures, collection management, legal deposit, interlibrary loans etc.</xs:documentation>
