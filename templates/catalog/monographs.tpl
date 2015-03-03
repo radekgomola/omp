@@ -159,7 +159,7 @@
                     <div class="vypis_polozek">
                         {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
                     </div>
-                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs sort=$trideni}{* This generates the individual page links *}
+                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta}{* This generates the individual page links *}
                 </div>
                 
             </div>
@@ -174,7 +174,7 @@
                 {else}
 
 		{iterate from=publishedMonographs item=publishedMonograph name=loop}
-			{include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph inline=true vyhledavaniAutori=$vyhledavaniAutori}
+                        {include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph inline=true vyhledavaniAutori=$vyhledavaniAutori}
 		{/iterate}
                 {/if}
 		</ul>

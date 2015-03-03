@@ -494,7 +494,8 @@ class MonographDAO extends SubmissionDAO {
                 'eng' => 'filtr.jazyky.eng',
                 'slo' => 'filtr.jazyky.slo',
                 'ger' => 'filtr.jazyky.ger',
-                'por' => 'filtr.jazyky.por'
+                'por' => 'filtr.jazyky.por',
+                'bul' => 'filtr.jazyky.bul'
             );
 	}
         
@@ -508,7 +509,8 @@ class MonographDAO extends SubmissionDAO {
                 'eng' => 'english',
                 'slo' => 'slovak',
                 'ger' => 'german',
-                'por' => 'portuguese'
+                'por' => 'portuguese',
+                'bul' => 'bulgarian',
             );
 	}
 }

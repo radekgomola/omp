@@ -164,6 +164,8 @@
                                 {assign var=url value=$author->getUrl()|strip_unsafe_html}
                                 {assign var=authorId value=$author->getId()}
                                 {assign var=autorovyPublikace value=$autorskePublikace[$authorId]}
+                                {assign var=titulyPred value=$author->getTitulyPred()}
+                                {assign var=titulyZa value=$author->getTitulyZa()}
                                 
                                 <p>{if $biography != '' || $url != '' || $autorovyPublikace}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
                                         <strong>{$author->getFullName()}</strong></a>
@@ -183,7 +185,7 @@
                                         </div>
                                         <div class="highslide-body">
                                             <h3>
-                                                {$author->getFullName()}
+                                                {if $titulyPred}{$titulyPred} {/if}{$author->getFullName()}{if $titulyZa}, {$titulyZa}{/if}
                                             </h3>
                                             {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$autor->getUrl()|escape}</a><br/>{/if}
                                             {if $uco != '' && $uco != '0'}

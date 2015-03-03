@@ -17,7 +17,11 @@
          {if $keStazeniUrl}
             <div class="oneLink">
                 <a href="{$keStazeniUrl}" target="_blank">
-                    <img src="{$baseUrl}/images/design/download_square_small.png"/>{translate key="submission.keStazeni"}
+                    {if $publicationFormat->getLocalizedName() == "HTML"}
+                        <img src="{$baseUrl}/images/design/see_eye_small.png"/>{translate key="submission.keShlednuti"}
+                    {else}
+                        <img src="{$baseUrl}/images/design/download_square_small.png"/>{translate key="submission.keStazeni"}
+                    {/if}
                 </a>
             </div>
         {/if}
@@ -33,11 +37,11 @@
         
 
         {foreach from=$availableFiles[$publicationFormatId] item=availableFile}{* There will be at most one of these *}
-                {if $availableFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF && !$calameoHash}
+{*                {if $availableFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF && !$calameoHash}
                     {url|assign:downloadUrl op="view" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
-                {else}
+                {else}*}
                     {url|assign:downloadUrl op="download" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
-                {/if}
+{*                {/if}*}
 
 
                 <a href="{$downloadUrl}">

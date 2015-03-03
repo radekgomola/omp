@@ -724,7 +724,7 @@ Masaryk University</message>
     <message key="submission.poznamka">Note</message>
     <message key="submission.dedikace">Dedication</message>
     <message key="submission.informace.verejne">Public information</message>
-    <message key="submission.a_kolektiv">et al.</message>
+    <message key="submission.a_kolektiv"><![CDATA[et&nbsp;al.]]></message>
     <message key="submission.ostatni">Others</message>
     <message key="submission.poradiVydani">Issue number</message>
     <message key="submission.typ_02_58">Type 02/58</message>
@@ -750,6 +750,7 @@ Masaryk University</message>
     <message key="submission.aKol">et al.</message>
     <message key="submission.url.keStazeni">Download URL</message>
     <message key="submission.keStazeni">Download HERE</message>
+    <message key="submission.keShlednuti">Watch HERE</message>
     
     
     <message key="informace.url.web">Go to www</message>
@@ -786,12 +787,16 @@ Masaryk University</message>
     <message key="filtr.jazyky.slo">Slovak</message>
     <message key="filtr.jazyky.ger">German</message>
     <message key="filtr.jazyky.por">Portuguese</message>
+    <message key="filtr.jazyky.bul">Bulgarian</message>
     <message key="filtr.filtrovat">Filter</message>
     <message key="filtr.tridit">Order</message>
     <message key="filtr.fakulty">All Faculties</message>
     <message key="sorting.alphabetically">Alphabetically</message>
     <message key="sorting.byPublishingDate">By Publishing Date</message>
     <message key="sorting.byLastModificationDate">By Last Modification Date</message>
+    <message key="filtr.speckat">Spec. cat.</message>
+    <message key="filtr.speckat.nezarazeno">Unclassified</message>
+    <message key="filtr.speckat.ke_kontrole">For control</message>
     
     <message key="author.publikace">Authors publications</message>
     

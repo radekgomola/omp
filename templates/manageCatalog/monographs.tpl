@@ -45,7 +45,7 @@
                                 <div class="vypis_polozek">
                                     {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
                                 </div>
-                                {page_links anchor="manageMonographsContainer" name="managerCatalogPaging" iterator=$publishedMonographs}
+                                {page_links anchor="manageMonographsContainer" name="managerCatalogPaging" iterator=$publishedMonographs sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta}
                             </div>
                             <div style="font-size:14px;">
                                 {translate key="filtr.filtrovat"}:
@@ -81,7 +81,7 @@
                                 </div>
                             </form>
                             <form class="pkp_form" action="#">
-                                <div id="filterLanguageContainer">
+                                <div id="filterLanguageContainer" class="filter_kontejner">
                                     <select class="applyPlugin selectMenu" size="1" name="jazyky" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk="FILTR_JAZYK" fakulta=$filtrovaniFakulta anchor="monographListContainer"}'.replace('FILTR_JAZYK', this.options[this.selectedIndex].value))">
                                             <option {if !$filtrovaniJazyk} selected="selected"{/if} value="">{translate key="filtr.jazyky"}</option>
                                         {foreach from=$filtrJazyky key=jedenJazykKlic item=jedenJazyk}
@@ -97,27 +97,39 @@
                                 {translate key="filtr.tridit"}:                           
                            </div>
                            
-                            <div class="pkp_helpers_align_left">
+                            <div class="pkp_helpers_align_left" style="clear:both">
                                 {if $trideni && $trideni == 'lex_desc'}
                                 <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="lex_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.alphabetically"}</a> | 
                             {else}
                                 <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="lex_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc' || $trideni == 'change_asc' || $trideni == 'change_desc'} stejne {else}asc{/if}">{translate key="sorting.alphabetically"}</a> | 
                             {/if}
                             {if $trideni && $trideni == 'pub_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="pub_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.byPublishingDate"}</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="pub_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.byPublishingDate"}</a> |
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="pub_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || $trideni == 'change_asc' || $trideni == 'change_desc' || !$trideni} stejne {else}asc{/if}">{translate key="sorting.byPublishingDate"}</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="pub_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || $trideni == 'change_asc' || $trideni == 'change_desc' || !$trideni} stejne {else}asc{/if}">{translate key="sorting.byPublishingDate"}</a> |
                             {/if}
                             {if $trideni && $trideni == 'change_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="change_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.byLastModificationDate"}</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="change_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.byLastModificationDate"}</a> |
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="change_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || $trideni == 'pub_asc' || $trideni == 'pub_desc' || !$trideni} stejne {else}asc{/if}">{translate key="sorting.byLastModificationDate"}</a>
-                            {/if}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort="change_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || $trideni == 'pub_asc' || $trideni == 'pub_desc' || !$trideni} stejne {else}asc{/if}">{translate key="sorting.byLastModificationDate"}</a> |
+                            {/if}                                
                             </div>
-                            
+                            <div class="pkp_helpers_aighn_right" style="padding-right:5px">
+                           <form class="pkp_form" action="#" >
+                                <div id="filterSpeckatContainer" style="width: 200px; float: right;">
+                                    <select class="applyPlugin selectMenu" size="1" name="speckat" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="manageCatalog" sort=$trideni speckat=FILTR_SPECKAT anchor="monographListContainer"}'.replace('FILTR_SPECKAT', this.options[this.selectedIndex].value))">
+                                            <option {if $speckat !="nezarazeno" && $speckat != "ke_kontrole_pro_munipress"} selected="selected"{/if} value="">{translate key="filtr.speckat"}</option>
+                                            <option {if $speckat =="nezarazeno"}selected="selected"{/if} value="nezarazeno">{translate key="filtr.speckat.nezarazeno"}</option>
+                                            <option {if $speckat =="ke_kontrole_pro_munipress"}selected="selected"{/if} value="ke_kontrole_pro_munipress">{translate key="filtr.speckat.ke_kontrole"}</option>
+                                    </select>
+                                </div>
+                           </form>
+                            </div>
                         </div>                     
                             
                     {/if}
+                    <br />
+                    <br />
                     <br />
                     <br />
                     <ul class="pkp_manageCatalog_monographList pkp_helpers_container_center">

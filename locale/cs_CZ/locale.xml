@@ -558,7 +558,7 @@
     <message key="submission.poznamka.description">Poznámka se zobrazuje u příspěvku v části "Více informací" pod informacemi o jednotlivých formátech.</message>
     <message key="submission.dedikace">Dedikace</message>
     <message key="submission.informace.verejne">Veřejné informace</message>
-    <message key="submission.a_kolektiv">a kol.</message>
+    <message key="submission.a_kolektiv"><![CDATA[a&nbsp;kol.]]></message>
     <message key="submission.ostatni">Další</message>
     <message key="submission.poradiVydani">Pořadí vydání</message>
     <message key="submission.typ_02_58">Typ 02/58</message>
@@ -585,6 +585,7 @@
     <message key="submission.aKol">a kol.</message>
     <message key="submission.url.keStazeni">URL ke stažení</message>
     <message key="submission.keStazeni">Ke stažení ZDE</message>
+    <message key="submission.keShlednuti">Ke shlédnutí ZDE</message>
     
        
     <message key="informace.url.web">Přejít na www</message>
@@ -742,12 +743,16 @@
     <message key="filtr.jazyky.slo">Slovenština</message>
     <message key="filtr.jazyky.ger">Němčina</message>
     <message key="filtr.jazyky.por">Portugalština</message>
+    <message key="filtr.jazyky.bul">Bulharština</message>
     <message key="filtr.filtrovat">Filtrovat</message>
     <message key="filtr.tridit">Třídit</message>
     <message key="filtr.fakulty">Všechny fakulty</message>
     <message key="sorting.alphabetically">Abecedně</message>
     <message key="sorting.byPublishingDate">Podle data vydání</message>
     <message key="sorting.byLastModificationDate">Podle data poslední změny</message>
+    <message key="filtr.speckat">Spec. kat.</message>
+    <message key="filtr.speckat.nezarazeno">Nezařazeno</message>
+    <message key="filtr.speckat.ke_kontrole">Ke kontrole</message>
 
     
 
