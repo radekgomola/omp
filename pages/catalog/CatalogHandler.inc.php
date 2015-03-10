@@ -124,6 +124,7 @@ class CatalogHandler extends Handler {
 	 */
 	function category($args, $request) {
 		$templateMgr = TemplateManager::getManager($request);
+                $locale = AppLocale::getLocale();
 		$press = $request->getPress();
                 $trideni = $request->getUserVar('sort');
                 $rok = $request->getUserVar('rok');
@@ -137,9 +138,9 @@ class CatalogHandler extends Handler {
 		$categoryPath = array_shift($args);
 		$category =& $categoryDao->getByPath($categoryPath, $press->getId());
                 // Provide a list of categories to browse
-		$obory = $categoryDao->getByParentIdNotEmpty(1,$press->getId());
+		$obory = $categoryDao->getByParentIdNotEmpty(1,$press->getId(), $locale);
 		$templateMgr->assign('obory', $obory);
-                $fakulty= $categoryDao->getByParentIdNotEmpty(32,$press->getId());
+                $fakulty= $categoryDao->getByParentIdNotEmpty(32,$press->getId(), $locale);
 		$templateMgr->assign('fakulty', $fakulty);
                 
                 $monographDao = DAORegistry::getDAO('MonographDAO');

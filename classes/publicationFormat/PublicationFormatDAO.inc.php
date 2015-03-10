@@ -68,7 +68,7 @@ class PublicationFormatDAO extends RepresentationDAO {
                         LEFT JOIN publication_format_settings pfs ON (pf.publication_format_id = pfs.publication_format_id AND pfs.setting_name=\'name\' AND pfs.locale=\'cs_CZ\')   
                         LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			WHERE	submission_id = ?
-                        ORDER BY pfs.setting_value',
+                        ORDER BY pf.physical_format DESC, pfs.setting_value',
 			(int) $submissionId
 		);
 
@@ -106,7 +106,7 @@ class PublicationFormatDAO extends RepresentationDAO {
                         LEFT JOIN publication_format_settings pfs ON (pf.publication_format_id = pfs.publication_format_id AND pfs.setting_name=\'name\' AND pfs.locale=\'cs_CZ\')   
                         LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			WHERE	submission_id = ? AND is_approved = 1
-                        ORDER BY pfs.setting_value',
+                        ORDER BY pf.physical_format DESC, pfs.setting_value',
 			(int) $submissionId
 		);
 

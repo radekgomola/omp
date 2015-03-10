@@ -294,6 +294,21 @@ class CategoryDAO extends DAO {
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
 
+        function getByPressIdOrdered($pressId, $rangeInfo = null, $locale = 'cs_CZ') {
+		// The strange ORDER BY clause is to return subcategories
+		// immediately after their parent category's entry.
+		$result = $this->retrieveRange(
+			'SELECT	*
+			FROM	categories c
+                        LEFT JOIN category_settings cs ON (c.category_id = cs.category_id AND cs.setting_name=\'title\' AND cs.locale = ?)
+			WHERE	c.press_id = ?
+			ORDER BY CASE WHEN c.parent_id = 0 THEN c.category_id * 2 ELSE (c.parent_id * 2) + 1 END ASC, cs.setting_value',
+			array($locale, (int) $pressId)
+		);
+
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+        
 	/**
 	 * Retrieve the number of categories for a press.
 	 * @return DAOResultFactory containing Category ordered by sequence
@@ -328,13 +343,33 @@ class CategoryDAO extends DAO {
 		);
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
+        
+        /**
+	 * Retrieve all categories for a parent category.
+	 * @return DAOResultFactory containing Category ordered by sequence
+	 */
+	function getByParentIdLocale($parentId, $pressId = null, $rangeInfo = null, $locale='cs_CZ') {
+		$params = array((int) $parentId);
+		if ($pressId) $params[] = (int) $pressId;
+
+		$result = $this->retrieveRange(
+			'SELECT	*
+			FROM	categories c
+                        LEFT JOIN category_settings cs ON (c.category_id = cs.category_id AND cs.setting_name=\'title\' AND cs.locale = \'cs_CZ\')
+			WHERE	parent_id = ?
+			' . ($pressId?' AND press_id = ?':'').'
+                        ORDER BY cs.setting_value',
+			$params
+		);
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
 
         /**
 	 * Retrieve all categories for a parent category.
 	 * @return DAOResultFactory containing Category ordered by sequence
 	 */
-	function getByParentIdNotEmpty($parentId, $pressId = null) {
-		$params = array((int) $parentId);
+	function getByParentIdNotEmpty($parentId, $pressId = null, $locale = 'cs_CZ') {
+		$params = array($locale, (int) $parentId);
 		if ($pressId) $params[] = (int) $pressId;
 
 		$result = $this->retrieveRange(
@@ -342,9 +377,11 @@ class CategoryDAO extends DAO {
                         FROM	categories c
                                 RIGHT JOIN submission_categories sc ON (sc.category_id = c.category_id) 
                                 LEFT JOIN published_submissions ps ON sc.submission_id = ps.submission_id                            
+                                LEFT JOIN category_settings cs ON (c.category_id = cs.category_id AND cs.setting_name=\'title\' AND cs.locale = ?)
                         WHERE	c.parent_id = ? AND ps.date_published IS NOT NULL
 			' . ($pressId?' AND c.press_id = ?':'') . '
-                        GROUP BY c.category_id',
+                        GROUP BY c.category_id
+                        ORDER BY cs.setting_value',
 			$params
 		);
 		return new DAOResultFactory($result, $this, '_fromRow');

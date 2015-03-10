@@ -156,7 +156,7 @@
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 
 			<br />
-                        {translate key="catalog.autori"}:
+{*                        {translate key="catalog.autori"}:*}
                         {foreach from=$authors item=author}
                             {if $author->getZobrazAutori() == 1}
                                 {assign var=uco value=$author->getUCO()|strip_unsafe_html}

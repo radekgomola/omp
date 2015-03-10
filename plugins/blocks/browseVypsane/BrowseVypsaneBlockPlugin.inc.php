@@ -46,7 +46,7 @@ class BrowseVypsaneBlockPlugin extends BlockPlugin {
 	 */
 	function getContents(&$templateMgr, $request = null) {
 		$press = $request->getPress();
-
+                $locale = AppLocale::getLocale();
 		// Provide a list of series to browse
 		$seriesDao = DAORegistry::getDAO('SeriesDAO');
 		$series = $seriesDao->getByPressId($press->getId());
@@ -54,7 +54,7 @@ class BrowseVypsaneBlockPlugin extends BlockPlugin {
 
 		// Provide a list of categories to browse
 		$categoryDao = DAORegistry::getDAO('CategoryDAO');
-		$categories = $categoryDao->getByPressId($press->getId());
+		$categories = $categoryDao->getByPressIdOrdered($press->getId(), null, $locale);
                 
                 $kategoriePole = array();
                 while ($result = $categories->next()) {
