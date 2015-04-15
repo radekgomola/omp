@@ -64,14 +64,39 @@
 
 		</div>
                 {/if}
-		{assign var=categories value=$publishedMonograph->getCategories()}
+		{*{assign var=categories value=$publishedMonograph->getCategories()}
 		{if !$categories->wasEmpty()}
 			<h3><a href="#">{translate key="catalog.relatedCategories"}</a></h3>
 			<ul class="relatedCategories">
 				{iterate from=categories item=category}
 					<li><a href="{url op="category" path=$category->getPath()}">{$category->getLocalizedTitle()|strip_unsafe_html}</a></li>
-				{/iterate}{* categories *}
+				{/iterate}
 			</ul>
-		{/if}{* !$categories->wasEmpty() *}
+		{/if}*}{* !$categories->wasEmpty() *}
+                {assign var=categories value=$publishedMonograph->getCategories()}
+            
 	</div>
+        <div class="souvisejiciKategorie"> 
+            {if !$categories->wasEmpty()}
+                    <h4>{translate key="catalog.relatedCategories"}</h4>
+                    <ul>
+                        {iterate from=categories item=category}
+                            {if $category->getPath() != "ke_kontrole_pro_munipress"}
+                                <li><a href="{url op="category" path=$category->getPath()}">{$category->getLocalizedTitle()|strip_unsafe_html}</a></li>
+                            {/if}
+                        {/iterate}{* categories *}
+                    </ul>
+            {/if} 
+        </div>
+        <div class="souvisejiciPublikace"> 
+            
+            
+            {if $souvisejiciPublikace}
+                <h4>{translate key="catalog.souvisejiciPublikace"}</a></h4>   
+               {foreach from=$souvisejiciPublikace item=jednaPublikace}
+                   {include file="catalog/monograph.tpl" publishedMonograph=$jednaPublikace inline=true vyhledavaniAutori=1 souvisejiciPublikace=1}
+               {/foreach}                    
+               {assign var=viceInformaci value=1}
+           {/if}
+        </div>
 </div>

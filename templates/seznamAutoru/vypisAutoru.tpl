@@ -48,6 +48,7 @@
         {if count($poleAutoru) > 0}
             
              <ul class="seznamAutoru">
+                 {strip}
     {foreach from=$poleAutoru item=autor}              
                     
                     <li><a href="{url op="vypisAutoruBio" path=$autor->getId()}" onclick="return hs.htmlExpand(this, {ldelim}objectType: 'iframe'{rdelim})">
@@ -67,6 +68,7 @@
                         
             </li>        
     {/foreach}
+    {/strip}
     </ul>
    {/if}
 </div>

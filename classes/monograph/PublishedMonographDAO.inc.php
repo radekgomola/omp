@@ -31,7 +31,7 @@ class PublishedMonographDAO extends MonographDAO {
 	 * @param $rangeInfo object optional
 	 * @return DAOResultFactory
 	 */
-	function getByPressIdFiltered($pressId, $searchText = null, $rangeInfo = null, $trideni = null, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
+	function getByPressIdFiltered($pressId, $searchText = null, $rangeInfo = null, $trideni = null, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null, $speckat = null) {
 		$primaryLocale = AppLocale::getPrimaryLocale();
 		$locale = AppLocale::getLocale();
 
@@ -59,8 +59,25 @@ class PublishedMonographDAO extends MonographDAO {
                     case "pub_desc":
                         $setrid .='munis.datum_vydani DESC';
                         break;
+                    case "change_asc":
+                        $setrid .= 'ps.date_published ASC';
+                        break;
+                    case "change_desc":
+                        $setrid .= 'ps.date_published DESC';
+                        break;
                     default:                       
                         $setrid .= 'st.setting_value ASC';
+                }
+                
+                if($speckat == "ke_kontrole_pro_munipress"){
+                    $help = 1;
+                    $ke_kontrole = 1;
+                    $params[] = $speckat;
+                } elseif ($speckat == "nezarazeno"){ 
+                    $nezarazeno = 1;
+                }else{
+                    $help = 0;
+                    $speckat = '';
                 }
                 
                 $categoryDao = DAORegistry::getDAO('CategoryDAO');
@@ -70,14 +87,14 @@ class PublishedMonographDAO extends MonographDAO {
                     $oboryPole[] = $result->getPath();
                 }
 
-                if ($obor && in_array($obor, $oboryPole)) {
+                if ($obor && in_array($obor, $oboryPole) && !$help) {
                     $params[] = $obor;
                 } else {
                     $obor = '';
                 }
                                
                 $rok_vydani = (int) $rok_vydani;
-                if ($rok_vydani && $rok_vydani<10000 && $rok_vydani>1900){
+                if ($rok_vydani && $rok_vydani<10000 && $rok_vydani>1900 && !$help){
                     $params[] = $rok_vydani."-01-01";
                     $params[] = $rok_vydani."-12-31";
                 } else {
@@ -86,7 +103,7 @@ class PublishedMonographDAO extends MonographDAO {
                 
                 $monographDao = DAORegistry::getDAO('MonographDAO');
                 $jazykyPole = $monographDao -> getLanguagesForDao();
-                if ($jazyk && array_key_exists($jazyk, $jazykyPole)) {
+                if ($jazyk && array_key_exists($jazyk, $jazykyPole) && !$help) {
                     $params[] = $jazykyPole[$jazyk];
                 } else {
                     $jazyk = '';
@@ -98,17 +115,17 @@ class PublishedMonographDAO extends MonographDAO {
                     $fakultyPole[] = $result->getPath();
                 }
 
-                if ($fakulta && in_array($fakulta, $fakultyPole)) {
+                if ($fakulta && in_array($fakulta, $fakultyPole) && !$help) {
                     $params[] = $fakulta;
                 } else {
                     $fakulta = '';
-                }
+                }                
                 
                 $result = $this->retrieveRange(
 			'SELECT	DISTINCT
                               ps.*,
 				s.*,
-                                munis.*,
+                                munis.datum_vydani,
 				COALESCE(f.seq, ?) AS order_by,
 				' . $this->_getFetchColumns() . '
 			FROM	published_submissions ps
@@ -126,6 +143,8 @@ class PublishedMonographDAO extends MonographDAO {
 LEFT JOIN controlled_vocab_entries cve ON (cv.controlled_vocab_id = cve.controlled_vocab_id)
 JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cves.controlled_vocab_entry_id AND cves.setting_name = \'submissionLanguage\' AND LOWER(cves.setting_value) = ?))':'' ) . '
                                 ' . ($fakulta ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '  
+                                ' . ($nezarazeno ?' AND s.submission_id NOT IN (SELECT sn.submission_id FROM submission_categories sn)':'' ) . ' 
+                                ' . ($ke_kontrole ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '  
 			ORDER BY ' .$setrid,
 			$params,
 			$rangeInfo
@@ -167,6 +186,12 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
                         break;
                     case "pub_desc":
                         $setrid .='munis.datum_vydani DESC';
+                        break;
+                    case "change_asc":
+                        $setrid .= 's.last_modified ASC';
+                        break;
+                    case "change_desc":
+                        $setrid .= 's.last_modified DESC';
                         break;
                     default:                       
                         $setrid .= 'st.setting_value ASC';
@@ -472,6 +497,12 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
                         break;
                     case "pub_desc":
                         $setrid .='munis.datum_vydani DESC';
+                        break;
+                    case "change_asc":
+                        $setrid .= 's.last_modified ASC';
+                        break;
+                    case "change_desc":
+                        $setrid .= 's.last_modified DESC';
                         break;
                     default:                       
                         $setrid .= 'st.setting_value ASC';

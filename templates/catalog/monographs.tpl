@@ -30,7 +30,8 @@
 	{else}
 		{translate|assign:"monographListTitle" key="catalog.browseTitles"}
 	{/if}
-        <h3 class="pkp_helpers_munipress_underline">{$monographListTitle}</h3>
+        {*{if $title !='false'}<h3 class="pkp_helpers_munipress_underline">{$monographListTitle}</h3>{/if}*}
+            <hr />
         {if $paging != 'false' }
             
             {if !$vyhledavaniAutori}
@@ -41,7 +42,7 @@
                 {if $category}
                     {if $category->getId() != 32 && $category->getParentId() !=32}
                         <form class="pkp_form" action="#">
-                            <div id="filterCategoryContainer">
+                            <div id="filterFacultyContainer" class="filtr_kontejner">
                                 <select class="applyPlugin selectMenu" size="1" name="fakulty" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta="FAKULTA_CESTA" anchor="monographListContainer"}'.replace('FAKULTA_CESTA', this.options[this.selectedIndex].value))">
                                         <option {if !$filtrovaniFakulta} selected="selected"{/if} value="">{translate key="filtr.fakulty"}</option>
                                     {iterate from=fakulty item=fakulta}
@@ -53,7 +54,7 @@
                     {/if}
                     {if $category->getId() != 1 && $category->getParentId() !=1}                         
                         <form class="pkp_form" action="#">
-                            <div id="filterCategoryContainer">
+                            <div id="filterCategoryContainer" class="filtr_kontejner">
                                 <select class="applyPlugin selectMenu" size="1" name="obory" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort=$trideni obor="OBOR_CESTA" rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}'.replace('OBOR_CESTA', this.options[this.selectedIndex].value))">
                                         <option {if !$filtrovaniObor} selected="selected"{/if} value="">{translate key="filtr.obory"}</option>
                                     {iterate from=obory item=obor}
@@ -86,7 +87,7 @@
                     </form> 
                 {else}
                         <form class="pkp_form" action="#">
-                            <div id="filterCategoryContainer">
+                            <div id="filterCategoryContainer" class="filtr_kontejner">
                                 <select class="applyPlugin selectMenu" size="1" name="obory" onchange="location.href=('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" sort=$trideni obor="OBOR_CESTA" rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}'.replace('OBOR_CESTA', this.options[this.selectedIndex].value))">
                                         <option {if !$filtrovaniObor} selected="selected"{/if} value="">{translate key="filtr.obory"}</option>
                                     {iterate from=obory item=obor}
@@ -129,26 +130,26 @@
                         </div>
                         {if $category}
                             {if $trideni && $trideni == 'lex_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">Abecedně</a> | 
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.alphabetically"}</a> | 
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">Abecedně</a> | 
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">{translate key="sorting.alphabetically"}</a> | 
                             {/if}
                             {if $trideni && $trideni == 'pub_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">Podle data vydání</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.byPublishingDate"}</a>
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">Podle data vydání</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="pub_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">{translate key="sorting.byPublishingDate"}</a>
                             {/if}
                        
                         {else}
                             {if $trideni && $trideni == 'lex_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="lex_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">Abecedně</a> | 
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="lex_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.alphabetically"}</a> | 
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="lex_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">Abecedně</a> | 
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="lex_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'pub_asc' || $trideni == 'pub_desc'} stejne {else}asc{/if}">{translate key="sorting.alphabetically"}</a> | 
                             {/if}
                             {if $trideni && $trideni == 'pub_desc'}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="pub_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">Podle data vydání</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="pub_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.byPublishingDate"}</a>
                             {else}
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="pub_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">Podle data vydání</a>
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" sort="pub_desc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting {if $trideni == 'lex_asc' || $trideni == 'lex_desc' || !$trideni} stejne {else}asc{/if}">{translate key="sorting.byPublishingDate"}</a>
                             {/if}
                         {/if}
                     {/if}
@@ -158,12 +159,13 @@
                     <div class="vypis_polozek">
                         {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
                     </div>
-                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs sort=$trideni}{* This generates the individual page links *}
+                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta}{* This generates the individual page links *}
                 </div>
                 
             </div>
         {/if}
 	{if $count>0}
+            <div class="monografie_seznam">
  		<ul class="pkp_helpers_clear" style="margin-left: 5px;">
                 {if $search=='ano'}
                     {foreach from=$publishedMonographs item=publishedMonograph}
@@ -172,10 +174,19 @@
                 {else}
 
 		{iterate from=publishedMonographs item=publishedMonograph name=loop}
-			{include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph inline=true vyhledavaniAutori=$vyhledavaniAutori}
+                        {include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph inline=true vyhledavaniAutori=$vyhledavaniAutori}
 		{/iterate}
                 {/if}
 >>>>>>> testovaci-omp
 		</ul>
+            </div>
 	{/if}
+        {if $paging != 'false' }                
+                <div class="pkp_helpers_align_right paging_dole pagingPanel">
+                    <div class="vypis_polozek">
+                        {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
+                    </div>
+                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$publishedMonographs sort=$trideni}{* This generates the individual page links *}
+                </div>
+        {/if}
 </div>

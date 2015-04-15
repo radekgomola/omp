@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/blocks/browseAuthors/locale/cs_CZ/locale.xml
+  *
+  * Copyright (c) 2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for this plugin.
+  *
+  -->
+ 
+<locale name="cs_CZ" full_name="Čeština">
+	<message key="plugins.block.browseAuthors">Prohlížet Vypsané - část autoři</message>
+	<message key="plugins.block.browseAuthors.displayName">Blok prohlédávání - část autoři</message>
+	<message key="plugins.block.browseAuthors.description">Tento plugin poskytuje odkaz na procházení autorů.</message>
+</locale>

@@ -154,7 +154,7 @@
 	<message key="spotlight.spotlights">Spotlights</message>
 	<message key="spotlight.noneExist">There are no current spotlights.</message>
 	<!--<message key="spotlight.title.homePage">In the Spotlight</message>-->
-        <message key="spotlight.title.homePage">Actuality</message>
+        <message key="spotlight.title.homePage">Featured books</message>
 	<message key="spotlight.author">Author, </message>
 	<message key="grid.content.spotlights.spotlightItemTitle">Spotlight Item</message>
 	<message key="grid.content.spotlights.category.homepage">Homepage</message>
@@ -311,7 +311,7 @@
 	<message key="navigation.infoForAuthors.long">Publish with Munipress</message>
 	<message key="navigation.infoForLibrarians.long">Information For Librarians</message>
 	<!--<message key="navigation.newReleases">New Releases</message>-->
-        <message key="navigation.newReleases">Novelties</message>
+        <message key="navigation.newReleases">News</message>
 	<message key="navigation.published">Published</message>
 	<message key="navigation.wizard">Wizard</message>
 	<message key="navigation.linksAndMedia">Links and Social Media</message>
@@ -575,7 +575,7 @@ Your server currently supports mbstring: <strong>{$supportsMBString}</strong>]]>
         <message key="navigation.prodejny">Bookstores at MU</message>
         <message key="navigation.objednavkaVMuniPressu.zprava">mailto:%6e%61%6d%75%40%72%65%63%74%2e%6d%75%6e%69%2e%63%7a?subject=Publication order&amp;body=Dear Sir/Madam, &#xD;&#xA;&#xD;&#xA;%0A%0A I would like to order a book published by Masaryk University Press: &#xD;&#xA;&#xD;&#xA; &#xD;&#xA;&#xD;&#xA;%0A%0A Purchaser name: &#xD;&#xA;%0A Company name, ID No., VAT No.: &#xD;&#xA;%0A Address: &#xD;&#xA;&#xD;&#xA;%0A%0A Preferred shipping option: (personal pick up + cash payment / cash on delivery / postal package + advance invoice payment)&#xD;&#xA;&#xD;&#xA;%0A%0A Please contact me to arrange the details of my order. &#xD;&#xA;%0A Yours sincerely, &#xD;&#xA;</message>
         <message key="navigation.munispace.books">Books</message>
-        <message key="navigation.munispace.coursebooks">Coursebooks</message>
+        <message key="navigation.munispace.coursebooks">Textbooks</message>
         <message key="navigation.munispace.proceedings">Proceedings</message>
         <message key="navigation.munispace.signpost">Libraries</message>
         <message key="navigation.munispace.journals">Journals</message>
@@ -672,7 +672,7 @@ Masaryk University</message>
     <message key="munispace.ostatni.description"><![CDATA[<p>Masaryk University was the first Czech university to sign the <a href="http://openaccess.mpg.de/Berlin-Declaration" target="_blank">Berlin Declaration on Open Access to Knowledge in Sciences and Humanities</a> in 2010 and thus has engaged in worldwide access of outcomes of scientific research. </p>
 
 <p>Open access publications of Masaryk University are available in these digital libraries:</p>]]> </message>
-    <message key="munispace.ostatni.napisteNam"><![CDATA[Do you know about any other library that should be in the list? Please let us know via <a href="mailto:%6d%75%6e%69%70%72%65%73%73%40%70%72%65%73%73%2e%6d%75%6e%69%2e%63%7a " target="_blank">munipress@press.muni.cz</a>!]]></message>
+    <message key="munispace.ostatni.napisteNam"><![CDATA[Do you know about any other library that should be in the list? Please let us know at <a href="mailto:%6d%75%6e%69%70%72%65%73%73%40%70%72%65%73%73%2e%6d%75%6e%69%2e%63%7a " target="_blank">munipress@press.muni.cz</a>!]]></message>
     <message key="signpost.munispace">Munispace reading room</message>
     <message key="signpost.digilib">Digital library of the Faculty of Arts</message>
     <message key="signpost.elportal">Elportal – electronic textbooks of MU</message>
@@ -683,6 +683,7 @@ Masaryk University</message>
     <message key="signpost.knihovnaFSPS">Portal of electronic textbooks of the Faculty of Sports studies</message>
     <message key="signpost.kinantropologie">Publications of the Cooperation in Kinanthropology project, Faculty of Sports studies</message>
     <message key="signpost.tvodicka">http://www.fsps.muni.cz/~tvodicka/library/</message>
+    <message key="signpost.zurnalistika">Books by the Department of Media Studies and Journalism FSS MU</message>
     
     
     <message key="catalog.autori">Authors</message>
@@ -695,7 +696,7 @@ Masaryk University</message>
     <message key="submission.rights.typ">Rights: type</message>
     <message key="submission.rights.drzitel">Rights: holder</message>
     <message key="submission.rights.trvani">Rights: expiration</message>
-    <message key="submission.viceInformaci">More informations</message>
+    <message key="submission.viceInformaci">More information</message>
     <!--Metadata munipress-->
         
     <message key="submission.licence">Rights</message>
@@ -719,16 +720,16 @@ Masaryk University</message>
     <message key="submission.pocetStran">Number of Pages</message>
     <message key="submission.muPracoviste">MU workplace</message>
     <message key="submission.url.oc">Url on-line bookstore</message>
-    <message key="submission.url.web">Url web</message>
+<!--    <message key="submission.url.web">Url web</message>-->
     <message key="submission.bibliografickaCitace">Bibliographic citation</message>
     <message key="submission.poznamka">Note</message>
     <message key="submission.dedikace">Dedication</message>
     <message key="submission.informace.verejne">Public information</message>
-    <message key="submission.a_kolektiv">et al.</message>
+    <message key="submission.a_kolektiv"><![CDATA[et&nbsp;al.]]></message>
     <message key="submission.ostatni">Others</message>
     <message key="submission.poradiVydani">Issue number</message>
     <message key="submission.typ_02_58">Type 02/58</message>
-    <message key="submission.url.web">URL web</message>
+    <message key="submission.url.web">Web page</message>
     <message key="submission.souvisejiciPublikace">Related publications</message>
     <message key="submission.klicovaSlova">Keywords</message>
     <message key="submission.jazyky">Languages</message>
@@ -750,6 +751,7 @@ Masaryk University</message>
     <message key="submission.aKol">et al.</message>
     <message key="submission.url.keStazeni">Download URL</message>
     <message key="submission.keStazeni">Download HERE</message>
+    <message key="submission.keShlednuti">Watch HERE</message>
     
     
     <message key="informace.url.web">Go to www</message>
@@ -775,20 +777,29 @@ Masaryk University</message>
     <message key="browse.faculties">Faculties &amp; workplaces</message>
     <message key="browse.byAuthors">Browse by Authors</message>
     <message key="search.authorIndex">Browse by Authors</message>
-    <message key="browse.obory">Branches</message>
+    <message key="browse.obory">Subjects</message>
     <message key="browse.zobrazit">Show</message>
     <message key="browse.skryt">Hide</message>
-    <message key="filtr.obory">Branches - all</message>
-    <message key="filtr.roky">Years - all</message>
-    <message key="filtr.jazyky">Languages - all</message>
+    <message key="filtr.obory">All Subjects</message>
+    <message key="filtr.roky">All Years</message>
+    <message key="filtr.jazyky">All Languages</message>
     <message key="filtr.jazyky.cze">Czech</message>
     <message key="filtr.jazyky.eng">English</message>
     <message key="filtr.jazyky.slo">Slovak</message>
     <message key="filtr.jazyky.ger">German</message>
     <message key="filtr.jazyky.por">Portuguese</message>
+    <message key="filtr.jazyky.bul">Bulgarian</message>
     <message key="filtr.filtrovat">Filter</message>
     <message key="filtr.tridit">Order</message>
-    <message key="filtr.fakulty">Faculties - all</message>
+    <message key="filtr.fakulty">All Faculties</message>
+    <message key="sorting.alphabetically">Alphabetically</message>
+    <message key="sorting.byPublishingDate">By Publishing Date</message>
+    <message key="sorting.byLastModificationDate">By Last Modification Date</message>
+    <message key="filtr.speckat">Spec. cat.</message>
+    <message key="filtr.speckat.nezarazeno">Unclassified</message>
+    <message key="filtr.speckat.ke_kontrole">For control</message>
+    
+    <message key="author.publikace">Authors publications</message>
     
     <!--Doi crossref-->
     <message key="doiCrossref.aktualni.zobraz"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(zobrazit)]]>
@@ -844,6 +855,7 @@ Masaryk University</message>
     <message key="author.munipress.tituly_za">Titles after name</message>
     <message key="author.munipress.rodneCislo">personal identification number</message>
     <message key="author.munipress.mu">MU number</message>
+    <message key="author.munipress.uco">UČO (public)</message>
     <message key="author.munipress.poznamka">Note</message>
     <message key="author.munipress.druhePrijmeni">Second Last name</message>
     <message key="author.munipress.obcanskeJmeno">Civil First name</message>
@@ -851,13 +863,17 @@ Masaryk University</message>
     <message key="author.munipress.honorar">Fee</message>
     <message key="author.munipress.honorarVyplaceno">Fee paid</message>
     <message key="author.munipress.stylZobrazeni">Style of displaying:</message>
-    <message key="author.munipress.zobrazeni.zobrazitVHlavicce">In the header</message>
+    <message key="author.munipress.zobrazeni.zobrazitVHlavicce">In the header (under title)</message>
     <message key="author.munipress.zobrazeni.zobrazitMeziAutory">Between authors</message>
     <message key="author.munipress.zobrazeni.zobrazitVOstatnich">In the section More information</message>
     
     <message key="monograph.publicationFormat.calameoHash">Calameo hash code</message>
     
     <message key="submission.datumVydani">Publication year</message>
+    <message key="submission.manazer.datumVydani">Publication date</message>
+    <message key="submission.manazer.datumPosledniZmeny">Last modification date</message>
+    
+    
     <message key="munipress.fakulty.esf">Faculty of Economics</message>
     <message key="munipress.fakulty.fi">Faculty of Informatics</message>
     <message key="munipress.fakulty.fss">Faculty of Social Studies</message>
@@ -868,4 +884,8 @@ Masaryk University</message>
     <message key="munipress.fakulty.pf">Faculty of Law</message>
     <message key="munipress.fakulty.prf">Faculty of Science</message>
     <message key="munipress.fakulty.Rmu">Rector's office</message>
+    
+    <message key="catalog.souvisejiciPublikace">Related publications</message>
+    
+    <message key="login.bezRegistrace">Registrations are not allowed for now.</message>
 </locale>

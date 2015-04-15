@@ -8,14 +8,15 @@
 * Display spotlights on a press' home page.
 *}
 <div id="spotlightsHome">
-{*    <h2 class="pkp_helpers_text_left pkp_helpers_munipress_underline">{translate key="spotlight.title.homePage"}</h2>*}
-    <ul>
-        <table>
+    <h2 class="pkp_helpers_text_left pkp_helpers_munipress_underline nadpis">{translate key="spotlight.title.homePage"}</h2>
+    <table>
             <tr><td>
+    <ul>
+        
             {foreach from=$spotlights item=spotlight name=loop}
                 {assign var="item" value=$spotlight->getSpotlightItem()}
                 <li  class="pkp_helpers_align_left">
-                    <h3 class="pkp_helpers_text_center pkp_helpers_munipress_underline" style="margin-right:10px;">{$spotlight->getLocalizedTitle()|strip_unsafe_html}</h3>
+                   {* <h3 class="pkp_helpers_text_center pkp_helpers_munipress_underline" style="margin-right:10px;">{$spotlight->getLocalizedTitle()|strip_unsafe_html}</h3>*}
                     <div class="pkp_catalog_spotlight" {if $smarty.foreach.loop.iteration == 3}style="margin-right:0px;"{/if}>
                         {if $spotlight->getAssocType() == $smarty.const.SPOTLIGHT_TYPE_BOOK}
                             
@@ -93,15 +94,16 @@
                         {/if}
                     </div>
             {/foreach}
-        </li>            
-        </td></tr><tr><td>
+        </li>         
+    </ul>
+    </td></tr><tr><td>
+                    <ul class="cist_vice">
             {foreach from=$content item=cistVice}
                     <li class="pkp_helpers_align_left">
                     {$cistVice}
                     </li>
                     
             {/foreach}
+                    </ul>
             </td></tr></table>
-            
-    </ul>
 </div>

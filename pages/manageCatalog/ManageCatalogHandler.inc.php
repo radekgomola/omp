@@ -128,6 +128,9 @@ class ManageCatalogHandler extends Handler {
                 $obor = $request->getUserVar('obor');
                 $jazyk = $request->getUserVar('jazyk');
                 $fakulta = $request->getUserVar('fakulta');
+                $speckat = $request->getUserVar('speckat');
+                
+                $templateMgr->assign('speckat', $speckat);
                
 		// Get the category
 		$categoryDao = DAORegistry::getDAO('CategoryDAO');
@@ -152,7 +155,7 @@ class ManageCatalogHandler extends Handler {
 		// Fetch the monographs to display
 		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
                 $rangeInfo = $this->getRangeInfo($request, 'managerCatalogPaging');
-		$publishedMonographs =& $publishedMonographDao->getByPressIdFiltered($press->getId(), null, $rangeInfo, $trideni, $obor, $rok, $jazyk, $fakulta);
+		$publishedMonographs =& $publishedMonographDao->getByPressIdFiltered($press->getId(), null, $rangeInfo, $trideni, $obor, $rok, $jazyk, $fakulta, $speckat);
 		$templateMgr->assign('publishedMonographs', $publishedMonographs);
                 
                 $templateMgr->assign('itemsPerPageHelp', $rangeInfo->getCount());  

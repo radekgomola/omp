@@ -33,7 +33,6 @@
     
     {assign var="munipress" value="munipress.fakulty."}    
     {translate|assign:"muPracoviste" key="munipress.fakulty.$muPracovisteCode"}
-    {assign var=authors value=$publishedMonograph->getAuthors()}
     
     {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
     {foreach from=$publicationFormats item=publicationFormat}
@@ -44,7 +43,7 @@
     
 	<div class="bookInfoHeader">
 		<h3>{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}</h3>
-		<div class="authorName">{$publishedMonograph->getAuthorString()}{if $publishedMonograph->getAKolektiv()==1}{translate key="submission.aKol"}{/if}</div>
+		<div class="authorName">{$publishedMonograph->getAuthorString()}{if $publishedMonograph->getAKolektiv()==1} {translate key="submission.a_kolektiv"}{/if}</div>
 	</div>
 	<div id="bookInfoTabs">
 		<ul>
@@ -80,12 +79,12 @@
                         </li>
                         {assign var=viceInformaci value=1}
                     {/if}
-                    {if !empty($muPracovisteCode)}
+                    {*{if !empty($muPracovisteCode)}
                         <li>
                             <strong>{translate key="submission.muPracoviste"}</strong> <span class="vpravo">{$muPracoviste}</span>
                         </li>
                         {assign var=viceInformaci value=1}
-                    {/if}
+                    {/if}*}
                     {if !empty($urlWeb)}
                         <li>
                             <strong>{translate key="submission.url.web"}</strong> <span class="vpravo"><a href={$urlWeb} target="_blank">{translate key="informace.url.web"}</a></span>
@@ -101,6 +100,42 @@
                         {assign var=viceInformaci value=1}
                         {/if}
                     {/foreach}
+                    {if $keywords}
+                        <li>
+                            <strong>{translate key="common.keywords"}</strong>
+                            <span class="vpravo">
+                                {assign var=prvni value=1}
+                                {foreach from=$keywords item=klicoveSlovo}
+                                    {if $prvni}
+                                        {$klicoveSlovo}
+                                        {assign var=prvni value=0}
+                                    {else}
+                                    , {$klicoveSlovo}
+                                    {/if}
+                                {/foreach}
+                            </span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}
+                    {if $languages}
+                        <li>
+                            <strong>{translate key="common.languages"}</strong>
+                            <span class="vpravo">
+                                {strip}
+                                    {assign var=prvni value=1}
+                                    {foreach from=$languages item=jedenJazyk}
+                                        {if $prvni}
+                                            {$jedenJazyk}
+                                            {assign var=prvni value=0}
+                                        {else}
+                                            , {$jedenJazyk}
+                                        {/if}
+                                    {/foreach}
+                                {/strip}
+                            </span>
+                        </li>
+                        {assign var=viceInformaci value=1}
+                    {/if}                    
                     </ul>                
                     </div>
                     <div class="textoveInfo">
@@ -115,74 +150,80 @@
                             <strong>{translate key="submission.dedikace"}</strong> <br />
                             {$dedikace}
                         {/if}
-                    </div>
-
+                    </div>                    
                 </div>
 		<div id="abstractTab">
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 
 			<br />
-                        
-                        {translate key="catalog.autori"}:
-			{foreach from=$authors item=author}
+{*                        {translate key="catalog.autori"}:*}
+                        {foreach from=$authors item=author}
                             {if $author->getZobrazAutori() == 1}
-                            {assign var=uco value=$author->getUCO()|strip_unsafe_html}
-                            {assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
-                            {assign var=url value=$author->getUrl()|strip_unsafe_html}
-                            <p>{if $biography != '' || $url != ''}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
-                                    <strong>{$author->getFullName()}</strong></a>
-				{elseif $uco != '' && $uco !='0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>
+                                {assign var=uco value=$author->getUCO()|strip_unsafe_html}
+                                {assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
+                                {assign var=url value=$author->getUrl()|strip_unsafe_html}
+                                {assign var=authorId value=$author->getId()}
+                                {assign var=autorovyPublikace value=$autorskePublikace[$authorId]}
+                                {assign var=titulyPred value=$author->getTitulyPred()}
+                                {assign var=titulyZa value=$author->getTitulyZa()}
+                                
+                                <p>{if $biography != '' || $url != '' || $autorovyPublikace}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
+                                        <strong>{$author->getFullName()}</strong></a>
+                               {* {elseif $uco != '' && $uco !='0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>*}
                                 {else}
                                     <strong>{$author->getFullName()}</strong>
                                 {/if}</p>
-                                 
-                                    {if $biography != '' || $url != ''}
-                                        <div class="highslide-html-content" id="autor_bio_{$author->getId()}">
-                                            <div class="highslide-header">
-                                                <ul>
-                                                    <li class="highslide-close">
-                                                        <a href="#" onclick="return hs.close(this)">{translate key="highslide.zavrit"}</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="highslide-body">
-                                                <h3>
-                                                    {$author->getFullName()}
-                                                </h3>
-                                                {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$autor->getUrl()|escape}</a><br/>{/if}
-                                                {if $uco != '' && $uco != '0'}
-                                                    <table style="border:none">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="padding-right:15px;">
-                                                                    {translate key="vizitka.identifikace"}
-                                                                </td><td>
-                                                                    {$uco|escape} <em>{translate key="vizitka.uco"}</em>
-                                                                </td>
-                                                            </tr><tr>
-                                                                <td>                    
-                                                                    {translate key="vizitka.url"}
-                                                                </td><td>
-                                                                    <a href="http://www.muni.cz/people/{$uco|escape:"quotes"}" target="_new">http://www.muni.cz/people/{$uco|escape}</a><br/>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                {/if}
-                                                {if $biography != ''}
-                                                    <p>{$biography}</p>
-                                                {/if}
-                                            </div>
-                                            <div class="highslide-footer">
-                                                <div>
-                                                    <span class="highslide-resize" title="Resize">
-                                                        <span></span>
-                                                    </span>
-                                                </div>
+
+                                {if $biography != '' || $url != '' || $autorovyPublikace}
+                                    <div class="highslide-html-content" id="autor_bio_{$author->getId()}">
+                                        <div class="highslide-header">
+                                            <ul>
+                                                <li class="highslide-close">
+                                                    <a href="#" onclick="return hs.close(this)">{translate key="highslide.zavrit"}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="highslide-body">
+                                            <h3>
+                                                {if $titulyPred}{$titulyPred} {/if}{$author->getFullName()}{if $titulyZa}, {$titulyZa}{/if}
+                                            </h3>
+                                            {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$autor->getUrl()|escape}</a><br/>{/if}
+                                            {if $uco != '' && $uco != '0'}
+                                                <table style="border:none">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="padding-right:25px; font-weight: bold;">
+                                                                {translate key="vizitka.identifikace"}
+                                                            </td><td>
+                                                                {$uco|escape} <em>{translate key="vizitka.uco"}</em>
+                                                            </td>
+                                                        </tr><tr>
+                                                            <td style="font-weight: bold;">                    
+                                                                {translate key="vizitka.url"}
+                                                            </td><td>
+                                                                <a href="http://www.muni.cz/people/{$uco|escape:"quotes"}" target="_new">http://www.muni.cz/people/{$uco|escape}</a><br/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            {/if}
+                                            {if $biography != ''}
+                                                <p>{$biography}</p>
+                                            {/if}
+                                            <div class="autorovy_publikace">
+                                                {include file="catalog/book/authorsMonographs.tpl" publishedMonographs=$autorovyPublikace vyhledavaniAutori="true" title ='false'}
                                             </div>
                                         </div>
-                                    {/if}
+                                        <div class="highslide-footer">
+                                            <div>
+                                                <span class="highslide-resize" title="Resize">
+                                                    <span></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 {/if}
+                            {/if}
 {*=======
 				{if $author->getIncludeInBrowse()}
 					<p>{translate key="catalog.aboutTheAuthor" roleName=$author->getLocalizedUserGroupName()}: <strong>{$author->getFullName()}</strong></p>

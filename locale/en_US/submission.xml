@@ -24,7 +24,7 @@
 	<message key="submission.workType.editedVolume">Edited Volume</message>
 	<message key="submission.workType.authoredWork">Monograph</message>-->
 
-	<message key="submission.synopsis">Anotation</message>
+	<message key="submission.synopsis">Summary</message>
         <!--<message key="submission.synopsis">Synopsis</message>-->
 	<message key="submission.workflowType">Type of Editorial Workflow</message>
 	<message key="submission.workflowType.description">A monograph is a work authored wholly by one or more authors. An edited volume has different authors for each chapter (with the chapter details entered later in this process.)</message>
@@ -44,7 +44,7 @@
 	<message key="submission.publicationFormats">Publication Formats</message>
 	<message key="submission.proofs">Proofs</message>
 	<message key="submission.download">Download</message>
-	<message key="submission.sharing">Share This</message>
+	<message key="submission.sharing">Share</message>
 	<message key="manuscript.submission">Manuscript Submission</message>
 	<message key="submission.round"><![CDATA[Round&nbsp;{$round}]]></message>
 	<message key="submissions.queuedReview">In Review</message>
@@ -128,5 +128,5 @@
 	<message key="submission.event.publicationMetadataUpdated">The publication format metadata for "{$formatName}" was updated.</message>
 	<message key="submission.event.publicationFormatCreated">The publication format "{$formatName}" was created.</message>
 	<message key="submission.event.publicationFormatRemoved">The publication format "{$formatName}" was removed.</message>
-	<message key="submission.submit.titleAndSummary">Title and Summary</message>
+	<message key="submission.submit.titleAndSummary">Title and Summary (public)</message>
 </locale>

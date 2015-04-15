@@ -21,6 +21,9 @@ import('lib.pkp.classes.linkAction.LinkAction');
 import('lib.pkp.classes.core.JSONMessage');
 
 class CatalogHandler extends Handler {
+    
+        var $yearStart = 2010;
+        var $yearEnd = 2015;
 	/**
 	 * Constructor
 	 */
@@ -62,13 +65,13 @@ class CatalogHandler extends Handler {
 
                 $categoryDao = DAORegistry::getDAO('CategoryDAO');
                 // Provide a list of categories to browse
-		$obory = $categoryDao->getByParentId(1,$press->getId());
+		$obory = $categoryDao->getByParentIdNotEmpty(1,$press->getId());
 		$templateMgr->assign('obory', $obory);
-                $fakulty= $categoryDao->getByParentId(32,$press->getId());
+                $fakulty= $categoryDao->getByParentIdNotEmpty(32,$press->getId());
 		$templateMgr->assign('fakulty', $fakulty);
                 
                 $monographDao = DAORegistry::getDAO('MonographDAO');
-                $templateMgr->assign('filtrRoky', $monographDao->getYears(2015,2000));
+                $templateMgr->assign('filtrRoky', $monographDao->getYears($this->yearEnd,$this->yearStart));
                 $templateMgr->assign('filtrJazyky', $monographDao->getLanguagesForFilter());            
                 
                 $templateMgr->assign('filtrovaniObor', $obor);
@@ -121,6 +124,7 @@ class CatalogHandler extends Handler {
 	 */
 	function category($args, $request) {
 		$templateMgr = TemplateManager::getManager($request);
+                $locale = AppLocale::getLocale();
 		$press = $request->getPress();
                 $trideni = $request->getUserVar('sort');
                 $rok = $request->getUserVar('rok');
@@ -134,13 +138,13 @@ class CatalogHandler extends Handler {
 		$categoryPath = array_shift($args);
 		$category =& $categoryDao->getByPath($categoryPath, $press->getId());
                 // Provide a list of categories to browse
-		$obory = $categoryDao->getByParentId(1,$press->getId());
+		$obory = $categoryDao->getByParentIdNotEmpty(1,$press->getId(), $locale);
 		$templateMgr->assign('obory', $obory);
-                $fakulty= $categoryDao->getByParentId(32,$press->getId());
+                $fakulty= $categoryDao->getByParentIdNotEmpty(32,$press->getId(), $locale);
 		$templateMgr->assign('fakulty', $fakulty);
                 
                 $monographDao = DAORegistry::getDAO('MonographDAO');
-                $templateMgr->assign('filtrRoky', $monographDao->getYears(2015,2000));
+                $templateMgr->assign('filtrRoky', $monographDao->getYears($this->yearEnd,$this->yearStart));
                 $templateMgr->assign('filtrJazyky', $monographDao->getLanguagesForFilter());            
                 
                 $templateMgr->assign('filtrovaniObor', $obor);

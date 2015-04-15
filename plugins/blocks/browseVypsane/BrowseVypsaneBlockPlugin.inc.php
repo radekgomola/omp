@@ -44,9 +44,9 @@ class BrowseVypsaneBlockPlugin extends BlockPlugin {
 	 * @param $templateMgr PKPTemplateManager
 	 * @return string
 	 */
-	function getContents($templateMgr, $request = null) {
+	function getContents(&$templateMgr, $request = null) {
 		$press = $request->getPress();
-
+                $locale = AppLocale::getLocale();
 		// Provide a list of series to browse
 		$seriesDao = DAORegistry::getDAO('SeriesDAO');
 		$series = $seriesDao->getByPressId($press->getId());
@@ -54,8 +54,17 @@ class BrowseVypsaneBlockPlugin extends BlockPlugin {
 
 		// Provide a list of categories to browse
 		$categoryDao = DAORegistry::getDAO('CategoryDAO');
-		$categories = $categoryDao->getByPressId($press->getId());
-		$templateMgr->assign('browseCategories', $categories);
+		$categories = $categoryDao->getByPressIdOrdered($press->getId(), null, $locale);
+                
+                $kategoriePole = array();
+                while ($result = $categories->next()) {
+                    $pocet = $categoryDao->getPublicationCoutByCategoryId($result->getId(), $press->getId());
+//                    echo $result->getPath()." ".$pocet." <br/>";
+                    if(!$result->getParentId() || $pocet > 0){
+                        $kategoriePole[] = $result;
+                    }
+                }
+		$templateMgr->assign('browseCategories', $kategoriePole);
 
 		// If we're currently viewing a series or catalog, detect it
 		// so that we can highlight the current selection in the

@@ -65,8 +65,10 @@ class PublicationFormatDAO extends RepresentationDAO {
 		$result = $this->retrieve(
 			'SELECT pf.*, munipf.*
 			FROM	publication_formats pf                        
+                        LEFT JOIN publication_format_settings pfs ON (pf.publication_format_id = pfs.publication_format_id AND pfs.setting_name=\'name\' AND pfs.locale=\'cs_CZ\')   
                         LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
-			WHERE	submission_id = ?',
+			WHERE	submission_id = ?
+                        ORDER BY pf.physical_format DESC, pfs.setting_value',
 			(int) $submissionId
 		);
 
@@ -101,8 +103,10 @@ class PublicationFormatDAO extends RepresentationDAO {
 		$result = $this->retrieve(
 			'SELECT pf.*, munipf.*
 			FROM	publication_formats  pf
+                        LEFT JOIN publication_format_settings pfs ON (pf.publication_format_id = pfs.publication_format_id AND pfs.setting_name=\'name\' AND pfs.locale=\'cs_CZ\')   
                         LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
-			WHERE	submission_id = ? AND is_approved = 1',
+			WHERE	submission_id = ? AND is_approved = 1
+                        ORDER BY pf.physical_format DESC, pfs.setting_value',
 			(int) $submissionId
 		);
 

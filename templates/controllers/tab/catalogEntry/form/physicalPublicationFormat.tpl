@@ -8,7 +8,7 @@
  * Physical publication format form fields for the catalog entry form.
  *}
 {* Hardcover fields *}
-<div class="pkp_helpers_align_right pkp_helpers_half">
+{*<div class="pkp_helpers_align_right pkp_helpers_half">
 	{fbvFormArea id="pageCounts" title="monograph.publicationFormat.pageCounts" class="border"}
 		{fbvFormSection for="frontMatter" title="monograph.publicationFormat.frontMatterCount"}
 			{fbvElement type="text" name="frontMatter" id="frontMatter" value=$frontMatter maxlength="255" size=$fbvStyles.size.MEDIUM}
@@ -23,7 +23,7 @@
 			{fbvElement type="select" from=$returnableIndicatorCodes selected=$returnableIndicatorCode translate=false id="returnableIndicatorCode" inline="true"}
 		{/fbvFormSection}
 	{/fbvFormArea}
-</div>
+</div>*}
 <div id="dimensionsContainer" class="pkp_helpers_half left">
 	{fbvFormArea id="productDimensions" title="monograph.publicationFormat.productDimensions" class="border"}
 		{fbvFormSection title="monograph.publicationFormat.productHeight" for="productHeight"}
@@ -42,8 +42,8 @@
 			{fbvElement type="text"  name="weight" id="weight" value=$weight maxlength="255" size=$fbvStyles.size.SMALL inline="true"}
 			{fbvElement type="select" from=$weightUnitCodes selected=$weightUnitCode translate=false id="weightUnitCode" inline="true"}
 		{/fbvFormSection}
-		{fbvFormSection title="monograph.publicationFormat.countryOfManufacture" for="country"}
+		{*{fbvFormSection title="monograph.publicationFormat.countryOfManufacture" for="country"}
 			{fbvElement type="select" from=$countriesIncludedCodes selected=$countryManufactureCode translate=false id="countryManufactureCode" inline="true"}
-		{/fbvFormSection}
+		{/fbvFormSection}*}
 	{/fbvFormArea}
 </div>

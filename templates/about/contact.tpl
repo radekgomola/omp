@@ -16,13 +16,13 @@
 {include file="common/linkToEditPage.tpl" editUrl=$editUrl}
 
 {if !empty($contactInfo.mailingAddress)}
-<h3>{translate key="common.mailingAddress"}</h3>
+{*<h3>{translate key="common.mailingAddress"}</h3>*}
 <p>
 	{$contactInfo.mailingAddress|nl2br}
 </p>
 <div class="separator"></div>
 {/if}
-
+{*
 {if not ($contactInfo.contactTitle == '' && $contactInfo.contactAffiliation == '' && $contactInfo.contactMailingAddress == '' && empty($contactInfo.contactPhone) && empty($contactInfo.contactFax) && empty($contactInfo.contactEmail))}
 <h3>{translate key="about.contact.principalContact"}</h3>
 <p>
@@ -66,6 +66,6 @@
 		{translate key="about.contact.email"}: {mailto address=$contactInfo.supportEmail|escape encode="hex"}<br />
 	{/if}
 </p>
-{/if}
+{/if}*}
 
 {include file="common/footer.tpl"}
