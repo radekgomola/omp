@@ -177,7 +177,6 @@
                         {include file="catalog/monograph.tpl" publishedMonograph=$publishedMonograph inline=true vyhledavaniAutori=$vyhledavaniAutori}
 		{/iterate}
                 {/if}
->>>>>>> testovaci-omp
 		</ul>
             </div>
 	{/if}
