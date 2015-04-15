@@ -81,7 +81,9 @@
                     <h4>{translate key="catalog.relatedCategories"}</h4>
                     <ul>
                         {iterate from=categories item=category}
+                            {if $category->getPath() != "ke_kontrole_pro_munipress"}
                                 <li><a href="{url op="category" path=$category->getPath()}">{$category->getLocalizedTitle()|strip_unsafe_html}</a></li>
+                            {/if}
                         {/iterate}{* categories *}
                     </ul>
             {/if} 

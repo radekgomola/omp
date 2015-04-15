@@ -62,7 +62,7 @@
                         <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace"}" target="_self">{translate key="navigation.munispace.link"}</a>
                             <ul>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace_books"}" target="_self">{translate key="navigation.munispace.books"}</a></li>
-                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace_coursebooks"}" target="_self">{translate key="navigation.munispace.coursebooks"} </a></li>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace_textbooks"}" target="_self">{translate key="navigation.munispace.coursebooks"} </a></li>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace_proceedings"}" target="_self">{translate key="navigation.munispace.proceedings"} </a></li>
                                 <li><a href="https://journals.muni.cz" target="_blank">{translate key="navigation.munispace.journals"} </a></li>
                             </ul>
@@ -113,7 +113,7 @@
                         <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace"}" target="_self">{translate key="navigation.munispace.link"}</a>
                             <ul>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace_books"}" target="_self">{translate key="navigation.munispace.books"}</a></li>
-                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace_coursebooks"}" target="_self">{translate key="navigation.munispace.coursebooks"} </a></li>
+                                <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace_textbooks"}" target="_self">{translate key="navigation.munispace.coursebooks"} </a></li>
                                 <li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munispace_proceedings"}" target="_self">{translate key="navigation.munispace.proceedings"} </a></li>
                                 <li><a href="https://journals.muni.cz" target="_blank">{translate key="navigation.munispace.journals"} </a></li>
                             </ul>

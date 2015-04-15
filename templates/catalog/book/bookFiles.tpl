@@ -17,7 +17,7 @@
          {if $keStazeniUrl}
             <div class="oneLink">
                 <a href="{$keStazeniUrl}" target="_blank">
-                    {if $publicationFormat->getLocalizedName() == "HTML"}
+                    {if $publicationFormat->getLocalizedName() == "E-kniha (HTML)" || $publicationFormat->getLocalizedName() == "E-book (HTML)"}
                         <img src="{$baseUrl}/images/design/see_eye_small.png"/>{translate key="submission.keShlednuti"}
                     {else}
                         <img src="{$baseUrl}/images/design/download_square_small.png"/>{translate key="submission.keStazeni"}

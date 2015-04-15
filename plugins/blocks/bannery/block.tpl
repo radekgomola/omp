@@ -63,7 +63,7 @@
     *}
     <div><a href="https://journals.muni.cz/" target="_blank"><img src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" alt="journal.muni.cz"/></a></div>
     <div><a href="http://www.muni.cz/banner/229" target="_blank"><img src="{$baseUrl}/images/img/bannery/12.png" class="link_img bannery" alt="discovery"/></a></div>
-    <div><a href="http://en.calameo.com/read/00395057973c8fe7c36a6" target="_blank"><img src="{$baseUrl}/images/img/bannery/05.png" class="link_img bannery" alt="catalog"/></a></div>
+    <div><a href="http://en.calameo.com/read/00395057906581093eeb9" target="_blank"><img src="{$baseUrl}/images/img/bannery/katalog_J-L_2015.png" class="link_img bannery" alt="catalog"/></a></div>
     
   </div>
 </div>
