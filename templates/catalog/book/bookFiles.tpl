@@ -9,6 +9,7 @@
 *}
 {assign var=calameoHash value=$publicationFormat->getLocalizedCalameoHash()}
 {assign var=keStazeniUrl value=$publicationFormat->getLocalizedUrlStazeni()}
+{assign var=urlYtb value=$publicationFormat->getLocalizedUrlYtb()}
 {if !empty($availableFiles[$publicationFormatId]) || $calameoHash || $keStazeniUrl}
 <li>    
     <strong>{$publicationFormat->getLocalizedName()|escape|truncate:100:"..."}</strong>
@@ -22,6 +23,13 @@
                     {else}
                         <img src="{$baseUrl}/images/design/download_square_small.png"/>{translate key="submission.keStazeni"}
                     {/if}
+                </a>
+            </div>
+        {/if}
+        {if $urlYtb}
+            <div class="oneLink">
+                <a href="{$urlYtb}" target="_blank">
+                        <img src="{$baseUrl}/images/design/ytb.png"/>{translate key="submission.keShlednuti.ytb"}
                 </a>
             </div>
         {/if}

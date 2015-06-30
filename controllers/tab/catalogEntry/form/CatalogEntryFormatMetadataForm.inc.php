@@ -179,7 +179,8 @@ class CatalogEntryFormatMetadataForm extends Form {
                         'tiskarna' => $publicationFormat->getTiskarna(),
                         'bibliografickaCitace' => $publicationFormat->getBibliografickaCitace(null), // Localized
                         'urlStazeni' => $publicationFormat->getUrlStazeni(null), // Localized
-                        'calameoHash' => $publicationFormat->getCalameoHash(null)// Localized
+                        'calameoHash' => $publicationFormat->getCalameoHash(null),// Localized
+                        'urlYtb' => $publicationFormat->getUrlYtb(null)// Localized
 		);
 
 		// initialize the pubId fields.
@@ -227,7 +228,9 @@ class CatalogEntryFormatMetadataForm extends Form {
                         'tiskarna', 
                         'bibliografickaCitace',
                         'urlStazeni',
-                        'calameoHash'
+                        'calameoHash',
+                        'urlYtb'
+                    
 		));
 
 		// consider the additional field names from the public identifer plugins
@@ -308,7 +311,7 @@ class CatalogEntryFormatMetadataForm extends Form {
                 $publicationFormat->setBibliografickaCitace($this->getData('bibliografickaCitace'), NULL);
                 $publicationFormat->setUrlStazeni($this->getData('urlStazeni'), NULL);
                 $publicationFormat->setCalameoHash($this->getData('calameoHash'), null);
-                
+                $publicationFormat->setUrlYtb($this->getData('urlYtb'), null);
                 
                 
 

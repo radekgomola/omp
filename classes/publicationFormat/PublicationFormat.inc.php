@@ -720,6 +720,32 @@ class PublicationFormat extends Representation {
 	}
         
         /**
+	 * Vraci lokalizovaný odkaz na youtube.com
+	 * @return string
+	 */
+	function getLocalizedUrlYtb() {
+		return $this->getLocalizedData('urlYtb');
+	}
+
+	/**
+	 * Vrací odkaz ke stazeni publikace
+	 * @param $locale
+	 * @return string
+	 */
+	function getUrlYtb($locale) {
+		return $this->getData('urlYtb', $locale);
+	}
+
+	/**
+	 * Nastavuje odkaz na youtube.com
+	 * @param urlYtb string
+	 * @param $locale
+	 */
+	function setUrlYtb($urlYtb, $locale) {
+		return $this->setData('urlYtb', $urlYtb, $locale);
+	}
+        
+        /**
 	 * Get tiskarnu
 	 * @return text
 	 */
