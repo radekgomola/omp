@@ -113,7 +113,7 @@ class ManageCatalogHandler extends Handler {
 			);
                 
                 /************
-                 * MUNIPRESS - zobrazeni publikovanych monografii plus strizeni, strankova a filtrovani
+                 * MUNIPRESS - zobrazeni publikovanych monografii plus setrizeni, strankovani a filtrovani
                 *************/
                 // Set up the monograph list template
 		$press = $request->getPress();
@@ -129,6 +129,8 @@ class ManageCatalogHandler extends Handler {
                 $jazyk = $request->getUserVar('jazyk');
                 $fakulta = $request->getUserVar('fakulta');
                 $speckat = $request->getUserVar('speckat');
+                
+                $vse = $request->getUserVar('all');
                 
                 $templateMgr->assign('speckat', $speckat);
                
@@ -152,13 +154,25 @@ class ManageCatalogHandler extends Handler {
                 $templateMgr->assign('filtrovaniJazyk', $jazyk);
                 $templateMgr->assign('filtrovaniFakulta', $fakulta);
                 
+                
 		// Fetch the monographs to display
 		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
-                $rangeInfo = $this->getRangeInfo($request, 'managerCatalogPaging');
+                
+                
+                if($vse == "true"){
+                    $templateMgr->assign('itemsPerPageHelp', 100000); 
+                    $rangeInfo = null;
+                    $templateMgr->assign('all', "true");
+                } else {
+                    $templateMgr->assign('all', "false");
+                    $rangeInfo = $this->getRangeInfo($request, 'managerCatalogPaging');
+                    $templateMgr->assign('itemsPerPageHelp', $rangeInfo->getCount());  
+                }
+                
 		$publishedMonographs =& $publishedMonographDao->getByPressIdFiltered($press->getId(), null, $rangeInfo, $trideni, $obor, $rok, $jazyk, $fakulta, $speckat);
 		$templateMgr->assign('publishedMonographs', $publishedMonographs);
                 
-                $templateMgr->assign('itemsPerPageHelp', $rangeInfo->getCount());  
+                
                 $templateMgr ->assign('trideni',$trideni);
                 
                 

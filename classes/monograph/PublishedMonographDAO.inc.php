@@ -786,6 +786,34 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
 			)
 		);
 	}
+        
+        /**
+	 * Retrieve all published monographs in a category.
+	 * @param $categoryId int
+	 * @param $pressId int
+	 * @param $rangeInfo object optional
+	 * @return DAOResultFactory
+	 */
+	function getBySameCategories($monographyId, $rangeInfo = null) {
+                $subjects = array();
+
+		$result = $this->retrieve(
+			'SELECT submission_id FROM 
+                        (SELECT sc.submission_id, group_concat(sc.category_id) AS kategorie FROM submission_categories sc WHERE submission_id != ? AND category_id != 45 GROUP BY sc.submission_id ORDER BY sc.category_id) AS select1 
+                        INNER JOIN 
+                        (SELECT group_concat(sc2.category_id) AS kategorie FROM submission_categories sc2 WHERE submission_id = ? AND category_id != 45 ORDER BY sc2.category_id) AS select2
+                        ON select1.kategorie = select2.kategorie', array($monographyId, $monographyId)
+		);
+                
+		while (!$result->EOF) {
+                        
+			$subjects[] = $result->fields[0];
+			$result->MoveNext();
+		}
+
+		$result->Close();
+		return $subjects;
+	}
 }
 
 ?>

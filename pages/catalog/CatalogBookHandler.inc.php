@@ -159,13 +159,28 @@ class CatalogBookHandler extends Handler {
                 $submissionSubjectDao = DAORegistry::getDAO('SubmissionSubjectDAO');
                 $allPublikace = $submissionSubjectDao->getSubjects($publishedMonograph->getId(), $locales);
                 $souvisejiciPublikace = array();
-                
-                foreach($allPublikace[$locale] as $idPublikace){
+
+                If(sizeof($allPublikace[$locale]) <=0){
+                    $vyberPublikaci = $publishedMonographsDao->getBySameCategories($publishedMonograph->getId());
+                    $velikostPole = sizeof($vyberPublikaci);
+                    If($velikostPole<=5) {
+                        $idPublikaciProVypis = $vyberPublikaci;
+                    } else {
+                        shuffle($vyberPublikaci);
+                        for ($i=0; $i < 3; $i++){
+                            
+                            $idPublikaciProVypis[] = $vyberPublikaci[$i];
+                        }
+                    }
+                } else{
+                    $idPublikaciProVypis = $allPublikace[$locale];
+                }
+                foreach($idPublikaciProVypis as $idPublikace){
                     $publikace = $publishedMonographsDao->getById($idPublikace);
                     if($publikace){
                         $souvisejiciPublikace[] = $publikace;
                     }
-                    
+
                 }
                 
                 $templateMgr->assign('souvisejiciPublikace', $souvisejiciPublikace);

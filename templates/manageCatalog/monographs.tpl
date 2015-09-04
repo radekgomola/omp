@@ -46,6 +46,11 @@
                                     {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
                                 </div>
                                 {page_links anchor="manageMonographsContainer" name="managerCatalogPaging" iterator=$publishedMonographs sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta speckat=$speckat}
+                                {if $all == "true"}
+                                    <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" all="false" anchor="monographListContainer"}" target="_self">{translate key="sorting.all.stranky"}</a> 
+                                {else}
+                                    | <a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog" all="true" anchor="monographListContainer"}" target="_self">{translate key="sorting.all.vse"}</a>  
+                                {/if}
                             </div>
                             <div style="font-size:14px;">
                                 {translate key="filtr.filtrovat"}:
