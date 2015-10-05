@@ -193,7 +193,8 @@ class CatalogBookHandler extends Handler {
                 $autorskePublikace[] = array();
                 foreach($authors as $jedenAutor){
                     $authorId = $jedenAutor -> getId();
-                    $autorskePublikace[$authorId] = $publishedMonographDao->getByAuthorId($authorId);
+//                    $autorskePublikace[$authorId] = $publishedMonographDao->getByAuthorId($authorId);
+                    $autorskePublikace[$authorId] = $publishedMonographDao->getByAuthor($jedenAutor);
                 }
 
                 $templateMgr->assign('autorskePublikace', $autorskePublikace);             

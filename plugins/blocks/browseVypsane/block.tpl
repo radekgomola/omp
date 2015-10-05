@@ -38,9 +38,15 @@
                 {if $active}
                     {assign var=activeFaculties value=true}{else}{assign var=active value=false}
                 {/if}
-                {capture append='faculties'}
-                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta}" class="{if $active}munipress_helpers_bold munipress_helpers_black{/if}">{$name}</a>
-                {/capture}
+                {if $id == 44}
+                    {capture append='ostatni'}
+                        <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta}" class="{if $active}munipress_helpers_bold munipress_helpers_black{/if}">{$name}</a>
+                    {/capture}
+                {else}
+                    {capture append='faculties'}
+                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta}" class="{if $active}munipress_helpers_bold munipress_helpers_black{/if}">{$name}</a>
+                    {/capture}
+                {/if}
             {elseif $categoryParentId == 1}    
                 {if $active}
                     {assign var=activeBranches value=true}{else}{assign var=active value=false}
@@ -103,6 +109,11 @@
        {capture assign=fakulty}
             <ul class="block_ul">
                 {foreach from=$faculties item=jeden}
+                        <li>
+                            {$jeden}
+                        </li>
+                {/foreach}
+                {foreach from=$ostatni item=jeden}
                         <li>
                             {$jeden}
                         </li>

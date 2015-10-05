@@ -890,4 +890,6 @@ Masaryk University</message>
     <message key="catalog.souvisejiciPublikace">Similarly publications</message>
     
     <message key="login.bezRegistrace">Registrations are not allowed for now.</message>
+    
+    <message key="abeceda.vse">All</message>
 </locale>

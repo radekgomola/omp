@@ -823,4 +823,5 @@
     <message key="login.bezRegistrace">Momentálně nejsou registrace povoleny.</message>
     <message key="submission.submit.includeInBrowse">Umožnit vyhledat/zobrazit autora</message>
     
+    <message key="abeceda.vse">Vše</message>
 </locale>
