@@ -115,6 +115,9 @@
                 {fbvFormSection label="submission.url.keStazeni" for="urlWeb"}
                         {fbvElement type="text" name="urlStazeni" multilingual="true" id="urlStazeni" value=$urlStazeni maxlength="255" readonly=$readOnly}
                 {/fbvFormSection}
+                {fbvFormSection label="submission.url.youtube" for="urlYtb"}
+                        {fbvElement type="text" name="urlYtb" multilingual="true" id="urlYtb" value=$urlYtb maxlength="255" readonly=$readOnly}
+                {/fbvFormSection}
 		{fbvFormSection for="calameoHash" label="monograph.publicationFormat.calameoHash"}
                         {fbvElement type="text" multilingual=true name="calameoHash" id="calameoHash" value=$calameoHash maxlength="255" readonly=$readOnly }
 		{/fbvFormSection}

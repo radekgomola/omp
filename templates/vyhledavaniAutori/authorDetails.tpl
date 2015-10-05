@@ -9,7 +9,7 @@
  *
  *}
 {strip}        
-{assign var="pageTitleName" value=$author->getFullName()}
+{assign var="pageTitleName" value=$author->getFullName(false, true)|escape}
 {include file="munipressCommon/headerBio.tpl"}
 {/strip}
 <div id="authorDetails">

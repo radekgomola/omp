@@ -132,17 +132,20 @@ class AuthorDAO extends PKPAuthorDAO {
 				aspl.locale AS primary_locale,
 				a.suffix AS suffix,
 				a.user_group_id AS user_group_id,
-				a.country
+				a.country,
+                                ma.tituly_pred,
+                                ma.tituly_za
 			FROM	authors a
 				LEFT JOIN author_settings aspl ON (a.author_id = aspl.author_id AND aspl.setting_name = ? AND aspl.locale = ?)
 				LEFT JOIN author_settings asl ON (a.author_id = asl.author_id AND asl.setting_name = ? AND asl.locale = ?)
+                                LEFT JOIN munipress_author_metadata ma ON (a.author_id = ma.author_id)
 				JOIN submissions s ON (a.submission_id = s.submission_id)
                         
 			WHERE	s.status = ' . STATUS_PUBLISHED . ' ' .
 				(isset($pressId)?'AND s.context_id = ? ':'') . '
 				AND (a.last_name IS NOT NULL AND a.last_name <> \'\')' .
 				$initialSql . '
-                        GROUP BY a.email
+                        GROUP BY a.email,ma.tituly_pred,ma.tituly_za
 			ORDER BY a.last_name, a.first_name',
 			$params,
 			$rangeInfo

@@ -15,7 +15,7 @@
 	<message key="plugins.paymethod.manual.displayName">Manuální platba poplatků</message>
 	<message key="plugins.paymethod.manual.description">Manažer ručně zaznamená přijetí uživatelovy platby (mimo tento software).</message>
 	<message key="plugins.paymethod.manual">Manuální platba poplatků</message>
-	<message key="plugins.paymethod.manual.settings">Nastavení manuálůní plateb</message>
+	<message key="plugins.paymethod.manual.settings">Nastavení manuálních plateb</message>
 	<message key="plugins.paymethod.manual.settings.instructions">Instrukce</message>
 	<message key="plugins.paymethod.manual.settings.manualInstructions">Instrukce uživatelům ohledně manuálního zaplacení poplatků.</message>
 

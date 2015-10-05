@@ -730,7 +730,7 @@ Masaryk University</message>
     <message key="submission.poradiVydani">Issue number</message>
     <message key="submission.typ_02_58">Type 02/58</message>
     <message key="submission.url.web">Web page</message>
-    <message key="submission.souvisejiciPublikace">Related publications</message>
+    <message key="submission.souvisejiciPublikace">Similarly publications</message>
     <message key="submission.klicovaSlova">Keywords</message>
     <message key="submission.jazyky">Languages</message>
     <message key="submission.informace.munipress">Munipress information</message>
@@ -795,6 +795,8 @@ Masaryk University</message>
     <message key="sorting.alphabetically">Alphabetically</message>
     <message key="sorting.byPublishingDate">By Publishing Date</message>
     <message key="sorting.byLastModificationDate">By Last Modification Date</message>
+    <message key="sorting.all.stranky">Paging</message>
+    <message key="sorting.all.vse">Show all</message>
     <message key="filtr.speckat">Spec. cat.</message>
     <message key="filtr.speckat.nezarazeno">Unclassified</message>
     <message key="filtr.speckat.ke_kontrole">For control</message>
@@ -885,7 +887,9 @@ Masaryk University</message>
     <message key="munipress.fakulty.prf">Faculty of Science</message>
     <message key="munipress.fakulty.Rmu">Rector's office</message>
     
-    <message key="catalog.souvisejiciPublikace">Related publications</message>
+    <message key="catalog.souvisejiciPublikace">Similarly publications</message>
     
     <message key="login.bezRegistrace">Registrations are not allowed for now.</message>
+    
+    <message key="abeceda.vse">All</message>
 </locale>

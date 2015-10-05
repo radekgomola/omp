@@ -366,7 +366,7 @@ class PublicationFormatDAO extends RepresentationDAO {
 	 * @return array
 	 */
 	function getLocaleFieldNames() {
-		return array('name', 'calameoHash', 'bibliografickaCitace', 'urlStazeni');
+		return array('name', 'calameoHash', 'bibliografickaCitace', 'urlStazeni', 'urlYtb');
 	}
 
 	/**

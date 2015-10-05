@@ -563,7 +563,7 @@
     <message key="submission.poradiVydani">Pořadí vydání</message>
     <message key="submission.typ_02_58">Typ 02/58</message>
     <message key="submission.url.web">Webová stránka</message>
-    <message key="submission.souvisejiciPublikace">Související publikace</message>
+    <message key="submission.souvisejiciPublikace">Podobné publikace</message>
     <message key="submission.klicovaSlova">Klíčová slova</message>
     <message key="submission.jazyky.description">Je nutné vyplnit jazyky i anglicky pro potřeby filtrování podle jazyků.</message>
     <message key="submission.jazyky">Jazyky</message>
@@ -751,6 +751,8 @@
     <message key="sorting.alphabetically">Abecedně</message>
     <message key="sorting.byPublishingDate">Podle data vydání</message>
     <message key="sorting.byLastModificationDate">Podle data poslední změny</message>
+    <message key="sorting.all.stranky">Stránkování</message>
+    <message key="sorting.all.vse">Zobraz vše</message>
     <message key="filtr.speckat">Spec. kat.</message>
     <message key="filtr.speckat.nezarazeno">Nezařazeno</message>
     <message key="filtr.speckat.ke_kontrole">Ke kontrole</message>
@@ -816,8 +818,10 @@
     <message key="munipress.fakulty.prf">Přírodovědecká fakulta</message>
     <message key="munipress.fakulty.Rmu">Rektorát</message>
 
-    <message key="catalog.souvisejiciPublikace">Související publikace</message>
+    <message key="catalog.souvisejiciPublikace">Podobné publikace</message>
     
     <message key="login.bezRegistrace">Momentálně nejsou registrace povoleny.</message>
+    <message key="submission.submit.includeInBrowse">Umožnit vyhledat/zobrazit autora</message>
     
+    <message key="abeceda.vse">Vše</message>
 </locale>

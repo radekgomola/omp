@@ -286,6 +286,58 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
         
+          /**
+	 * Retrieve all published monographs for author.
+	 * @param $authorId int
+	 * @return DAOResultFactory
+	 */
+	function getByAuthor($user) {
+		$primaryLocale = AppLocale::getPrimaryLocale();
+		$locale = AppLocale::getLocale();
+
+		$params = array_merge(
+			array(REALLY_BIG_NUMBER),
+			$this->_getFetchParameters(),
+			array(
+				ASSOC_TYPE_PRESS
+			)
+		);
+                
+                $params[] = $user->getFirstName();
+                $params[] = $user->getLastName();
+                $params[] = $user->getEmail();
+                $params[] = $tituly_pred = $user->getTitulyPred();
+                $params[] = $tituly_za =$user->getTitulyZa();
+
+                $result = $this->retrieveRange(
+			'SELECT	DISTINCT
+                                ps.*,
+				s.*,
+                                munis.*,
+                                
+				COALESCE(f.seq, ?) AS order_by,
+				' . $this->_getFetchColumns() . '
+			FROM	published_submissions ps
+				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
+				' . $this->_getFetchJoins() . '
+                                LEFT JOIN authors a ON s.submission_id = a.submission_id
+				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
+				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
+                                LEFT JOIN munipress_author_metadata ma ON (a.author_id = ma.author_id)
+			WHERE	ps.date_published IS NOT NULL 
+                                    AND a.first_name = ?
+                                    AND a.last_name = ?  
+                                    AND a.email = ?
+                                    ' . ($tituly_pred ?' AND ma.tituly_pred = ? ': '').'
+                                    ' . ($tituly_za ?' AND ma.tituly_za = ? ': '').'
+			ORDER BY st.setting_value',
+			$params
+		);
+
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+        
         /**
 	 * Retrieve all published monographs for author.
 	 * @param $authorId int
@@ -785,6 +837,34 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
 				(int) $publishedMonograph->getId()
 			)
 		);
+	}
+        
+        /**
+	 * Retrieve all published monographs in a category.
+	 * @param $categoryId int
+	 * @param $pressId int
+	 * @param $rangeInfo object optional
+	 * @return DAOResultFactory
+	 */
+	function getBySameCategories($monographyId, $rangeInfo = null) {
+                $subjects = array();
+
+		$result = $this->retrieve(
+			'SELECT submission_id FROM 
+                        (SELECT sc.submission_id, group_concat(sc.category_id) AS kategorie FROM submission_categories sc WHERE submission_id != ? AND category_id != 45 GROUP BY sc.submission_id ORDER BY sc.category_id) AS select1 
+                        INNER JOIN 
+                        (SELECT group_concat(sc2.category_id) AS kategorie FROM submission_categories sc2 WHERE submission_id = ? AND category_id != 45 ORDER BY sc2.category_id) AS select2
+                        ON select1.kategorie = select2.kategorie', array($monographyId, $monographyId)
+		);
+                
+		while (!$result->EOF) {
+                        
+			$subjects[] = $result->fields[0];
+			$result->MoveNext();
+		}
+
+		$result->Close();
+		return $subjects;
 	}
 }
 
