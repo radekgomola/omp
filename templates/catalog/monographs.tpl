@@ -121,13 +121,14 @@
                 </div>
             {/if}
             <div class="pagingPanel">
-                <div class="pkp_helpers_align_left">
+                <div class="blok_trideni">
                     
                     {if !$vyhledavaniAutori}
                         
                         <div class="popis">
                              {translate key="filtr.tridit"}:                           
                         </div>
+                        <div class="typy_trideni">
                         {if $category}
                             {if $trideni && $trideni == 'lex_desc'}
                                 <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$cesta sort="lex_asc" obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta anchor="monographListContainer"}" target="_self" class="sorting desc">{translate key="sorting.alphabetically"}</a> | 
@@ -153,9 +154,10 @@
                             {/if}
                         {/if}
                     {/if}
+                    </div>
                 </div>
                 
-                <div class="pkp_helpers_align_right">
+                <div class="blok_strankovani">
                     <div class="vypis_polozek">
                         {page_info iterator=$publishedMonographs itemsPerPage=$itemsPerPageHelp}{* This displays the "Items x-y of z" text *}
                     </div>

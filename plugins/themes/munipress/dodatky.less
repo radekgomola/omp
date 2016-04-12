@@ -61,23 +61,27 @@ img.connectUs{
 }
 
 img.bannery{
-    padding-bottom: 5px;
+    margin-bottom: 5px;
     width: 180px;
     height: 65px;
 }
+
+img {
+    padding: 0px;
+    margin: 2px 2px 0;
+}
 img.link_img{
-    -webkit-transform:scale(1.0); /*Webkit: Scale down image to 0.8x original size*/
-    -moz-transform:scale(1.0); /*Mozilla scale version*/
-    -o-transform:scale(1.0); /*Opera scale version*/
-    -webkit-transition-duration: 0.5s; /*Webkit: Animation duration*/
-    -moz-transition-duration: 0.5s; /*Mozilla duration version*/
-    -o-transition-duration: 0.5s; /*Opera duration version*/
+    transition: 0.3s ease-out;
+    -webkit-transition: 0.3s ease-out; /*Webkit: Animation duration*/
+    -moz-transition: 0.3s ease-out; /*Mozilla duration version*/
+    -o-transition: 0.3s ease-out; /*Opera duration version*/
 }
 
 img.link_img:hover{
-    -webkit-transform:scale(1.1); /*Webkit: Scale up image to 1.2x original size*/
-    -moz-transform:scale(1.1); /*Mozilla scale version*/
-    -o-transform:scale(1.1); /*Opera scale version*/
+/*    -webkit-transform:scale(1.1); Webkit: Scale up image to 1.2x original size
+    -moz-transform:scale(1.1); Mozilla scale version
+    -o-transform:scale(1.1); Opera scale version*/
+    box-shadow: 0 0 9px 1px #003366 !important;
 }
 
 .reverzne{

@@ -69,6 +69,10 @@ class PublishedMonographDAO extends MonographDAO {
                         $setrid .= 'st.setting_value ASC';
                 }
                 
+                if (!$setrid || $setrid == "") $setrid = 'st.setting_value ASC';
+                
+                $ke_kontrole = 0;
+                $nezarazeno = 0;
                 if($speckat == "ke_kontrole_pro_munipress"){
                     $help = 1;
                     $ke_kontrole = 1;
@@ -176,26 +180,26 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
 			$params[] = $params[] = $params[] = "%$searchText%";
 		}
                 
-                $setrid = '';
-                switch($trideni) {                    
-                    case "lex_desc":
-                        $setrid .='st.setting_value DESC';
-                        break;
-                    case "pub_asc":                         
-                        $setrid .= 'munis.datum_vydani ASC';
-                        break;
-                    case "pub_desc":
-                        $setrid .='munis.datum_vydani DESC';
-                        break;
-                    case "change_asc":
-                        $setrid .= 's.last_modified ASC';
-                        break;
-                    case "change_desc":
-                        $setrid .= 's.last_modified DESC';
-                        break;
-                    default:                       
-                        $setrid .= 'st.setting_value ASC';
-                }
+                $setrid = 'st.setting_value ASC';
+//                switch($trideni) {                    
+//                    case "lex_desc":
+//                        $setrid .='st.setting_value DESC';
+//                        break;
+//                    case "pub_asc":                         
+//                        $setrid .= 'munis.datum_vydani ASC';
+//                        break;
+//                    case "pub_desc":
+//                        $setrid .='munis.datum_vydani DESC';
+//                        break;
+//                    case "change_asc":
+//                        $setrid .= 's.last_modified ASC';
+//                        break;
+//                    case "change_desc":
+//                        $setrid .= 's.last_modified DESC';
+//                        break;
+//                    default:                       
+//                        $setrid .= 'st.setting_value ASC';
+//                }
 //		$result = $this->retrieveRange(
 //			'SELECT	' . ($searchText !== null?'DISTINCT ':'') . '
 //				ps.*,

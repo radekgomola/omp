@@ -7,7 +7,7 @@
 <div class="block" id="sidebarInformation">
 {*	<span class="blockTitle">{translate key="plugins.block.distribuce.link"}</span>*}
 
-<div style="padding-left: 5px;">	
+<div class="blok_banneru">	
     {*<!-- Jssor Slider Begin -->
     <!-- You can move inline styles to css file or css block. -->
     <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 180px;
@@ -61,9 +61,8 @@
     </div>
     <!-- Jssor Slider End -->
     *}
-    <div><a href="https://journals.muni.cz/" target="_blank"><img src="{$baseUrl}/images/img/bannery/03.png" class="link_img bannery" alt="journal.muni.cz"/></a></div>
-    <div><a href="http://www.muni.cz/banner/229" target="_blank"><img src="{$baseUrl}/images/img/bannery/12.png" class="link_img bannery" alt="discovery"/></a></div>
-    <div><a href="http://en.calameo.com/read/00395057906581093eeb9" target="_blank"><img src="{$baseUrl}/images/img/bannery/katalog_J-L_2015.png" class="link_img bannery" alt="catalog"/></a></div>
-    
+    <div class="banner_blok"><a href="https://journals.muni.cz/" target="_blank"><img src="{$baseUrl}/images/img/bannery/journals.png" class="link_img bannery" alt="journal.muni.cz"/></a></div>
+    <div class="banner_blok"><a href="http://issuu.com/munipress/docs/katalog-aw1516-issuu" target="_blank"><img src="{$baseUrl}/images/img/bannery/katalog_2015-podzim.png" class="link_img bannery" alt="catalog"/></a></div>
+    <div class="banner_blok"><a href="http://www.muni.cz/banner/229" target="_blank"><img src="{$baseUrl}/images/img/bannery/12.png" class="link_img bannery" alt="discovery"/></a></div>
   </div>
 </div>

@@ -892,4 +892,9 @@ Masaryk University</message>
     <message key="login.bezRegistrace">Registrations are not allowed for now.</message>
     
     <message key="abeceda.vse">All</message>
+    <message key="munipress.citarna.header"><![CDATA[<strong>Masaryk University</strong> reading room]]></message>
+    
+    <message key="catalog.book.link">Short link</message>
+    <message key="catalog.book.qrcode">QR code</message>
+    <message key="catalog.book.generateqrcode">Generate QR code</message>
 </locale>

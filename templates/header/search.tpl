@@ -13,31 +13,24 @@
     {rdelim});
 </script>
 
-<div class="pkp_structure_search pkp_helpers_align_right">
-    <div class="munipress_search" >
-        <form id="topSearchForm" action="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="results"}" method="post">
-            <fieldset>
-                <button class="go">{*{translate key="common.go"}*}<img src="{$baseUrl}/images/design/button_search.png" alt="search"/></button>
-                <input id="topSearchFormField" name="query" value="{$searchQuery|escape}" type="text" {*title="{translate key="common.searchCatalog"}..."*} />
-                
-            </fieldset>
-        </form>
-    </div>
+<div class="pkp_structure_search_user">
     <div class="munipress_user">
         {if $isUserLoggedIn}
             <div class="profile">{translate key="user.hello"}&nbsp;<a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="profile"}">{$loggedInUsername|escape}</a></div>
                 {*{null_link_action id="toggleHelp" key="help.toggleInlineHelpOn"}*}
-
-            {if $isUserLoggedInAs}
-                <a href="{url router=$smarty.const.ROUTE_PAGE page="login" op="signOutAsUser"}"><img src="{$baseUrl}/images/design/button_logout.png" alt="logout"/></a>
-                {else}
-                <a href="{url router=$smarty.const.ROUTE_PAGE page="login" op="signOut"}"><img src="{$baseUrl}/images/design/button_logout.png" alt="logout"/></a>
+            
+            <div class="profile_akce">
+                {if $isUserLoggedInAs}
+                    <a href="{url router=$smarty.const.ROUTE_PAGE page="login" op="signOutAsUser"}"><img src="{$baseUrl}/images/design/button_logout.png" alt="logout"/></a>
+                    {else}
+                    <a href="{url router=$smarty.const.ROUTE_PAGE page="login" op="signOut"}"><img src="{$baseUrl}/images/design/button_logout.png" alt="logout"/></a>
                 {/if}
                 {if $isUserLoggedIn}
-                    {if array_intersect(array(ROLE_ID_SITE_ADMIN), $userRoles)}
-                    <a href="{if $multipleContexts}{url router=$smarty.const.ROUTE_PAGE context="index" page="admin" op="index"}{else}{url router=$smarty.const.ROUTE_PAGE page="admin" op="index"}{/if}"><img src="{$baseUrl}/images/design/button_admin.png" alt="settings"/></a>
+                        {if array_intersect(array(ROLE_ID_SITE_ADMIN), $userRoles)}
+                        <a href="{if $multipleContexts}{url router=$smarty.const.ROUTE_PAGE context="index" page="admin" op="index"}{else}{url router=$smarty.const.ROUTE_PAGE page="admin" op="index"}{/if}"><img src="{$baseUrl}/images/design/button_admin.png" alt="settings"/></a>
+                    {/if}
                 {/if}
-            {/if}
+            </div>
             {*{if $multipleContexts}
                 {include file="header/contextSwitcher.tpl"}
             {/if}*}
@@ -49,3 +42,15 @@
             {/if}
     </div>
 </div>
+<div class="pkp_structure_search">
+    <div class="munipress_search" >
+        <form id="topSearchForm" action="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="results"}" method="post">
+            <fieldset>
+                <button class="go">{*{translate key="common.go"}*}<img src="{$baseUrl}/images/design/button_search.png" alt="search"/></button>
+                <input id="topSearchFormField" name="query" value="{$searchQuery|escape}" type="text" {*title="{translate key="common.searchCatalog"}..."*} />
+                
+            </fieldset>
+        </form>
+    </div>
+</div>
+

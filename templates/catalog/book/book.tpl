@@ -19,6 +19,7 @@
 {include file="catalog/book/bookSpecs.tpl" bookImageLinkUrl=$bookImageLinkUrl}
 
 {include file="catalog/book/bookInfo.tpl"}
+{include file="catalog/book/souvisejiciPublikace.tpl"}
 
 {include file="catalog/book/googlescholar.tpl"}
 {include file="catalog/book/dublincore.tpl"}

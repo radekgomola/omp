@@ -88,15 +88,4 @@
                     </ul>
             {/if} 
         </div>
-        <div class="souvisejiciPublikace"> 
-            
-            
-            {if $souvisejiciPublikace}
-                <h4>{translate key="catalog.souvisejiciPublikace"}</a></h4>   
-               {foreach from=$souvisejiciPublikace item=jednaPublikace}
-                   {include file="catalog/monograph.tpl" publishedMonograph=$jednaPublikace inline=true vyhledavaniAutori=1 souvisejiciPublikace=1}
-               {/foreach}                    
-               {assign var=viceInformaci value=1}
-           {/if}
-        </div>
 </div>

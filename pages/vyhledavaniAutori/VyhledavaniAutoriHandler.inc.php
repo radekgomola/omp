@@ -32,16 +32,16 @@ class VyhledavaniAutoriHandler extends Handler {
 	 * @param $request PKPRequest
 	 */
 	function index($args, $request) {
-		$this->validate();
+		
 		$this->setupTemplate($request, true);
-
+                
 		$press =& $request->getPress();
 
                 $pismeno = isset($args[0])?$args[0]:null;
                 
 		$authorDao =& DAORegistry::getDAO('AuthorDAO');
-                $templateMgr =& TemplateManager::getManager();
-
+                $templateMgr =& TemplateManager::getManager($request);
+                $this->validate();
                 // Show the author index
                 
                
@@ -54,7 +54,7 @@ class VyhledavaniAutoriHandler extends Handler {
                 $authors = $autoriPole = null;
 
                 if($pismeno){
-                    $autori =& $authorDao->getAuthorsAlphabetizedByPressGrouped(
+                    $autori = $authorDao->getAuthorsAlphabetizedByPressGrouped(
                             isset($press)?$press->getId():null,
                             null
                     );              

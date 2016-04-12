@@ -17,7 +17,7 @@ import('lib.pkp.classes.security.PKPRoleDAO');
 import('classes.monograph.AuthorDAO');
 import('classes.monograph.MonographDAO');
 import('classes.monograph.PublishedMonographDAO');
-
+import('lib.pkp.classes.core.JSONMessage');
 
 class SeznamAutoruHandler extends Handler {
 	/**
@@ -30,7 +30,7 @@ class SeznamAutoruHandler extends Handler {
 	/**
 	 * Display authors page.
 	 */
-	function index(&$args, $request) {
+	function index($args, $request) {
 		$this->addCheck(new HandlerValidatorPress($this));
 		$this->validate();
 		$this->setupTemplate($request);
@@ -38,13 +38,13 @@ class SeznamAutoruHandler extends Handler {
                 $pismeno = isset($args[0])?$args[0]:'A';
 //
 		$press =& Request::getPress();
-		$templateMgr =& TemplateManager::getManager();
+		$templateMgr =& TemplateManager::getManager($request);
 		
                 // Don't use the Editorial Team feature. Generate
                 // Editorial Team information using Role info.
                 $roleDao =& DAORegistry::getDAO('RoleDAO');
                 
-                $autori =& $roleDao->getUsersByRoleId(ROLE_ID_AUTHOR, $press->getId());
+                $autori = $roleDao->getUsersByRoleId(ROLE_ID_AUTHOR, $press->getId());
                 $autori =& $autori->toArray();
                 
                 $abeceda = array('A', 'B', 'C', 'D','E',  
@@ -107,11 +107,11 @@ class SeznamAutoruHandler extends Handler {
                 
                 $publishEmail = false;
 
-		$countryDao =& DAORegistry::getDAO('CountryDAO');
-		if ($user && $user->getCountry() != '') {
-			$country = $countryDao->getCountry($user->getCountry());
-			$templateMgr->assign('country', $country);
-		}
+//		$countryDao =& DAORegistry::getDAO('CountryDAO');
+//		if ($user && $user->getCountry() != '') {
+//			$country = $countryDao->getCountry($user->getCountry());
+//			$templateMgr->assign('country', $country);
+//		}
 
 //                $templateMgr->assign_by_ref('prispevkyMonograph', $prispevkyMonograph);
 		$templateMgr->assign_by_ref('publishEmail', $publishEmail);
@@ -127,7 +127,7 @@ class SeznamAutoruHandler extends Handler {
 	 * Display a biography for an editorial team member.
 	 * @param $args array
 	 */
-	function vypisAutoruBio($args) {
+	function vypisAutoruBio($args, $request) {
 		$this->addCheck(new HandlerValidatorPress($this));
 		$this->validate();
 		$this->setupTemplate($request);

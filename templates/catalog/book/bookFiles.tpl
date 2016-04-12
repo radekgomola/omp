@@ -52,7 +52,7 @@
 {*                {/if}*}
 
 
-                <a href="{$downloadUrl}">
+                <a href="{$downloadUrl}" target="_blank" class="piwik_download">
                     <span title="{$availableFile->getDocumentType()|upper|escape}" class="sprite {$availableFile->getDocumentType()|escape}"></span>                    {if $availableFile->getDirectSalesPrice()}
                     {translate key="payment.directSales.purchase amount=$availableFile->getDirectSalesPrice() currency=$currency"}
                     {else}

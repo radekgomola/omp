@@ -59,7 +59,7 @@
 .pkp_structure_search {
 	margin: 7px 10px 7px 0;
         height: 30px;
-        width: 470px;
+        float: right;
 	input {
 	    min-height: 19px;
             border: 1px solid #ccc;
@@ -67,8 +67,25 @@
             font-size: 100%;
             min-width: 120px;
 	}
-        
+        .munipress_search{
+            display:block;
+            float: right;
+
+            #topSearchFormField{
+                float:right; 
+                margin-top: 2px;
+            }
+        }
+}
+
+.pkp_structure_search_user{
+        margin: 7px 10px 7px 0;
+        height: 30px;
+        width: 200px;
+        float: right;
         .munipress_user{
+            position: relative;
+            float: right;
             img {
                 display: inline;
                 background: url("{$baseUrl}/templates/images/munipressDesign/pozadi_button.png") no-repeat center transparent;
@@ -89,7 +106,6 @@
             margin-right: 10px;
         }
 }
-
 
 .go {
     float: right;

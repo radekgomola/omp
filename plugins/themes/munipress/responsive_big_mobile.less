@@ -1,0 +1,369 @@
+/**
+ * @file plugins/themes/default/styles/responsive_tablet.less
+ * CSS pro responsivni design (pro velky tablet). Zmenšení na 980px
+ */
+
+@media only screen and (max-width : 650px)  and (min-width : 475px) {
+    
+    .pkp_structure_sidebar_right {
+         background-image: url("http://localhost/omp/images/design/background_center.png");
+         float: left;
+         clear: left;
+         margin-right: 5px;
+         margin-left: 0px;
+         padding-left: 0px;
+         width: 160px;
+         position:absolute;
+         bottom: 400px;
+         width:460px;
+         
+         .block{
+             padding-top: 2px;
+         }
+    }
+
+    .pkp_structure_sidebar_left {
+        width: 160px;
+        margin-right: 5px;
+        margin-left: 5px;
+        display: none;
+    }
+    .pkp_structure_sidebar div.block span.blockTitle {
+        font-size: 12px;
+    }
+    
+    .pkp_structure_page {
+        min-width: 460px;
+    }
+    .pkp_structure_content {
+        width: 460px;
+        #sidebarContainer{
+            float:left;
+        }
+    }
+    .pkp_structure_body {
+        .pkp_structure_main {
+            margin-left: 5px;
+            padding-bottom: 170px;
+            max-width: 450px;
+            min-width: 450px;
+        }
+    }
+    
+    .pkp_catalog_monographs .pkp_catalog_monograph {
+        width: 215px;
+    }
+    .pkp_structure_subfoot{
+        margin-left: 5px;
+    }
+    
+    .line {
+        .go {
+            margin-left: 5px;
+        }
+        input {
+            margin-top:3px !important;
+            min-height: 14px;
+        }
+        img, button{
+            -webkit-transform: scale(0.8); //Saf3.1+, Chrome 
+            -moz-transform: scale(0.8);  //FF3.5+ 
+            -ms-transform: scale(0.8);  //IE9 
+            -o-transform: scale(0.8); //Opera 10.5+ 
+            transform: scale(0.8);
+/*            -webkit-transform-origin: right;
+            -moz-transform-origin: right;
+            -ms-transform-origin: right;
+            -o-transform-origin: right;
+            transform-origin: right;*/
+        }
+    }
+    .pkp_structure_search_user {
+        float: left;
+        width: 160px;
+        margin: 3px 0px 0px 5px;
+/*        .munipress_user{
+            float: left;
+        }
+        .profile{
+            font-size: 12px;
+        }
+        .profile_akce{
+            display: flex;
+        }*/
+        
+    }
+    .pkp_structure_search{
+        margin: 3px 10px 0px 0px;
+    }
+    .support_block {
+        float: left;
+        width: 160px;
+    }
+    
+    .pkp_catalog_book {
+        .bookSpecs {
+            .cover_img {
+                width: 150px;
+            }
+        }
+    }
+
+    .ui-tabs .ui-tabs-nav {
+        padding-left: 10px;
+        li a {
+            padding: 0.3em 0.2em;
+        }
+    }
+    
+    .pkp_catalog_book {
+         .bookInfo #viceInfoTab .tabulka_info {
+            width: 270px;
+        }
+        .bookSpecs{
+            padding-right: 9px;
+        }
+    }
+    .pkp_catalog_monographs  {
+        
+        .pkp_catalog_monograph {
+            margin-right: 5px;
+            width: 215px;
+        }
+    }
+    
+    .pkp_catalog_spotlight{
+        width: 100%;
+        clear:left;
+        .pkp_catalog_readMore {
+            margin-top: 10px;
+            width: 100%;
+        }
+    }
+    
+    .pkp_catalog_spotlight-2 {
+        margin-top: 10px;
+        margin-right: 0px;
+    }
+    .pkp_catalog_spotlight-3 {
+        display: none;
+    }
+    
+    .munipress_logo{
+        width: 100%;
+    }
+    
+    .munipress_menu {
+        width: 450px;
+    }
+    
+    .pkp_structure_navigation {
+        margin-left: 5px;
+    }
+    
+    
+    .pkp_structure_head {
+        height: 170px;
+        .pkp_structure_masthead h1 img {
+            max-height: 75px;
+        }
+        .pkp_structure_masthead {
+            height: 75px;
+        }
+    }
+    .pkp_structure_head_siteNav {
+        height: 45px;
+        .pkp_helpers_flatlist {
+            margin-top: 10px;
+        }
+        .zahlavi_munipress {
+            margin-left: 0px;
+        }
+    }
+    
+    .pkp_structure_head_localNav {
+        font-size: 14.5px;
+    }
+    
+    .pkp_structure_head_localNav .sf-menu a {
+        padding-left: 0.4em;
+        padding-right: 0.4em;
+    }
+    .pkp_structure_head_localNav .sf-menu a.sf-with-ul {
+        padding-right: 0.5em;
+    }
+    
+    
+    .blok_banneru {
+        height: 60px;
+        .banner_blok{
+            float:left;
+            width: 140px;
+            img.bannery {
+                -webkit-transform-origin: left;
+                -moz-transform-origin: left;
+                -ms-transform-origin: left;
+                -o-transform-origin: left;
+                transform-origin:left;
+                padding-bottom: 0px;
+                -webkit-transform: scale(0.7);/* Saf3.1+, Chrome */
+                -moz-transform: scale(0.7); /* FF3.5+ */
+                -ms-transform: scale(0.7); /* IE9 */
+                -o-transform: scale(0.7);/* Opera 10.5+ */
+                transform: scale(0.7);
+                width: auto;
+
+            }
+        }
+    }
+    
+    
+    img.link_img:hover{
+        -webkit-transform: scale(0.8);/* Saf3.1+, Chrome */
+        -moz-transform: scale(0.8); /* FF3.5+ */
+        -ms-transform: scale(0.8); /* IE9 */
+        -o-transform: scale(0.8);/* Opera 10.5+ */
+        transform: scale(0.8);
+        z-index: 1000;
+    }
+    
+    .zahlavi_munipress{
+        width: 80%;
+        .zahlavi_obrazek, .vlajka_img_gray {
+            -webkit-transform: scale(0.8);/* Saf3.1+, Chrome */
+            -moz-transform: scale(0.8); /* FF3.5+ */
+            -ms-transform: scale(0.8); /* IE9 */
+            -o-transform: scale(0.8);/* Opera 10.5+ */
+            transform: scale(0.8);
+            -webkit-transform-origin: left;
+            -moz-transform-origin: left;
+            -ms-transform-origin: left;
+            -o-transform-origin: left;
+            transform-origin: left;
+            max-width: 450px;
+        }
+        input.lang_cz_en_small {
+            -webkit-transform: scale(0.8);/* Saf3.1+, Chrome */
+            -moz-transform: scale(0.8); /* FF3.5+ */
+            -ms-transform: scale(0.8); /* IE9 */
+            -o-transform: scale(0.8);/* Opera 10.5+ */
+            transform: scale(0.8);
+            -webkit-transform-origin: left;
+            -moz-transform-origin: left;
+            -ms-transform-origin: left;
+            -o-transform-origin: left;
+            transform-origin: left;
+        }
+
+        input.lang_cz_en_small:hover {
+            -webkit-transform: scale(0.9);/* Saf3.1+, Chrome */
+            -moz-transform: scale(0.9); /* FF3.5+ */
+            -ms-transform: scale(0.9); /* IE9 */
+            -o-transform: scale(0.9);/* Opera 10.5+ */
+            transform: scale(0.9);
+        }
+
+        input.en_small, input.cz_small {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    }
+    
+    .filterPanel{
+        #filterYearsContainer, #filterLanguageContainer{
+            margin-top:5px;
+        }
+    }
+    .munipress_block {
+        
+        img{
+            -webkit-transform: scale(0.8);/* Saf3.1+, Chrome */
+            -moz-transform: scale(0.8); /* FF3.5+ */
+            -ms-transform: scale(0.8); /* IE9 */
+            -o-transform: scale(0.8);/* Opera 10.5+ */
+            transform: scale(0.8);
+            -webkit-transform-origin: left;
+            -moz-transform-origin: left;
+            -ms-transform-origin: left;
+            -o-transform-origin: left;
+            transform-origin: left;
+        }
+    }
+    .support_block {
+        float: left !important;
+        clear: left;
+        margin-top: 10px;
+        margin-left: 5px;
+        
+        .tabulkaZapati{
+            width: 230px;
+        }
+        img{
+            -webkit-transform: scale(0.8);/* Saf3.1+, Chrome */
+            -moz-transform: scale(0.8); /* FF3.5+ */
+            -ms-transform: scale(0.8); /* IE9 */
+            -o-transform: scale(0.8);/* Opera 10.5+ */
+            transform: scale(0.8);
+            -webkit-transform-origin: left;
+            -moz-transform-origin: left;
+            -ms-transform-origin: left;
+            -o-transform-origin: left;
+            transform-origin: left;
+        }   
+    }
+    
+    .loading_container{
+        -webkit-transform: scale(0.75);/* Saf3.1+, Chrome */
+        -moz-transform: scale(0.75); /* FF3.5+ */
+        -ms-transform: scale(0.75); /* IE9 */
+        -o-transform: scale(0.75);/* Opera 10.5+ */
+        transform: scale(0.75);
+        -webkit-transform-origin: left;
+        -moz-transform-origin: left;
+        -ms-transform-origin: left;
+        -o-transform-origin: left;
+        transform-origin: left;
+        top: 80px !important;
+        left: 40% !important;;
+    }
+
+    .pkp_catalog_carousel_wrapper {
+        .carousel_control{
+            top: 35%;
+            width: 30px;
+        }
+        .pkp_catalog_carousel{
+            
+            height: 220px;
+            margin-bottom: 95px;
+            .details_box {
+                left: -115px;
+                min-width: 350px;
+                top: 280px;
+            }
+            li.mover {
+                width:180px;
+                height:220px;
+            }
+        }
+        .pkp_catalog_carousel{
+            height: 270px;
+        }
+    }
+    
+    .pagingPanel {
+        float:left;
+        padding-bottom: 10px;
+    }
+    
+    .paging_dole{
+        width: 450px;
+    }
+    .pkp_catalog_monographs {
+        .typy_trideni, .blok_strankovani {
+            float:left;
+        }
+    }
+}
+/*@end */
+

@@ -1,0 +1,57 @@
+/**
+ * @file plugins/themes/default/styles/responsive_tablet.less
+ * CSS pro responsivni design (pro velky tablet). Zmenšení na 980px
+ */
+
+@media only screen and (max-width : 1210px) and (min-width : 980px)  {
+    
+    .pkp_structure_sidebar_right {
+         background-image: url("http://localhost/omp/images/design/background_left.png");
+         float: left;
+         clear: left;
+         margin-right: 13px;
+         margin-left: 5px;
+         padding-left: 0px;
+         width: 202px;
+    }
+
+    .pkp_structure_content {
+        width: 970px;
+        #sidebarContainer{
+            float:left;
+        }
+    }
+    .pkp_structure_body {
+        .pkp_structure_main {
+            max-width: 740px;
+            min-width: 740px;
+        }
+    }
+    .pkp_structure_sidebar_left {
+        margin-left: 5px;
+    }
+    
+    .pkp_structure_subfoot{
+        margin-left: 5px;
+    }
+    .pkp_structure_search_user, .support_block {
+        float: left;
+    }
+    
+    .munipress_menu {
+        width: 755px;
+    }
+    .pkp_catalog_monographs .pkp_catalog_monograph {
+        margin-right: 5px;
+        width: 240px;
+    }
+    
+    .pkp_catalog_spotlight{
+        width: 235px;
+        .pkp_catalog_readMore {
+            width: 235px;
+        }
+    }
+}
+/*@end */
+

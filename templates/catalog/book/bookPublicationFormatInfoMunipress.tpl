@@ -12,7 +12,7 @@
 {assign var=identificationCodes value=$publicationFormat->getIdentificationCodes()}
 {assign var=identificationCodes value=$identificationCodes->toArray()}
 
-{if $identificationCodes}
+{if $identificationCodes || $publicationFormat->getFileSize()}
     <div class="tabulka_info">
         <h3 style="font-size: 1.1em;">{$publicationFormat->getLocalizedName()}:</h3>
         <ul>

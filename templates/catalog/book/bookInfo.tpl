@@ -20,10 +20,6 @@
 	{rdelim});
 </script>
 
-<script type="text/javascript">
-  hs.minWidth = 1100;
-</script>
-
 <div class="bookInfo">
     {assign var="urlWeb" value=$publishedMonograph->getLocalizedUrlWeb()|strip_unsafe_html}
    
@@ -36,7 +32,7 @@
     
     {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
     {foreach from=$publicationFormats item=publicationFormat}
-        {if $publicationFormat->getCalameoHash() || $publicationFormat->getUrlStazeni()}
+        {if $publicationFormat->getCalameoHash() || $publicationFormat->getUrlStazeni(null)}
             {assign var=zobrazDownload value=1}
         {/if}
     {/foreach}
@@ -167,7 +163,7 @@
                                 {assign var=titulyPred value=$author->getTitulyPred()}
                                 {assign var=titulyZa value=$author->getTitulyZa()}
                                 
-                                <p>{if $biography != '' || $url != '' || $autorovyPublikace}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}' {rdelim} )" class="highslide">
+                                <p>{if $biography != '' || $url != '' || $autorovyPublikace}<a href="#" onclick="return hs.htmlExpand(this, {ldelim} contentId: 'autor_bio_{$author->getId()}', width: 800, minWidth:800{rdelim})" class="highslide">
                                         <strong>{$author->getFullName()}</strong></a>
                                {* {elseif $uco != '' && $uco !='0' && $biography == '' && $url == ''}<a href='http://www.muni.cz/people/{$uco}' class="highslide" target="_blank"><strong>{$author->getFullName()}</strong></a>*}
                                 {else}
@@ -187,7 +183,7 @@
                                             <h3>
                                                 {if $titulyPred}{$titulyPred} {/if}{$author->getFullName()}{if $titulyZa}, {$titulyZa}{/if}
                                             </h3>
-                                            {if $url != ''}<a href="{$url()|escape:"quotes"}" target="_new">{$autor->getUrl()|escape}</a><br/>{/if}
+                                            {if $url != ''}<a href="{$url|escape:"quotes"}" target="_new">{$autor->getUrl()|escape}</a><br/>{/if}
                                             {if $uco != '' && $uco != '0'}
                                                 <table style="border:none">
                                                     <tbody>
@@ -274,16 +270,30 @@
 			{/if}{* useCollapsedView *}
 		</div>
 		{/if}
-		{if !is_null($sharingCode) || !empty($blocks)}
+		
 			<div id="sharingTab">
+                            {if !is_null($sharingCode) || !empty($blocks)}
 				{$sharingCode}
 				{foreach from=$blocks item=block key=blockKey}
 					<div id="socialMediaBlock{$blockKey|escape}" class="pkp_helpers_clear">
 						{$block}
 					</div>
 				{/foreach}
+                            {/if}
+                                <br />
+                                <div class="sharingTabLink">
+                                    <h3>{translate key="catalog.book.link"}</h3>
+                                    <a href="{$baseUrl}/book?id={$publishedMonograph->getId()}" title="{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}">{$baseUrl}/book?id={$publishedMonograph->getId()}</a>
+                                </div>
+                                <br />
+                                <div class="sharingTabQr">
+                                    <h3>{translate key="catalog.book.qrcode"}</h3>
+                                    
+                                    
+                                    <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="qrcode" path=$publishedMonograph->getId()}" onclick="return hs.htmlExpand(this, {ldelim}objectType: 'iframe', width: 400, minWidth:400{rdelim})">{translate key="catalog.book.generateqrcode"}</a>
+                                </div>
 			</div>
-		{/if}
+		
 	</div>
 </div>
 

@@ -824,4 +824,9 @@
     <message key="submission.submit.includeInBrowse">Umožnit vyhledat/zobrazit autora</message>
     
     <message key="abeceda.vse">Vše</message>
+    <message key="munipress.citarna.header"><![CDATA[Čítárna <strong>Masarykovy univerzity</strong>]]></message>
+    
+    <message key="catalog.book.link">Zkrácený odkaz</message>
+    <message key="catalog.book.qrcode">QR kód</message>
+    <message key="catalog.book.generateqrcode">Generovat QR kód</message>
 </locale>

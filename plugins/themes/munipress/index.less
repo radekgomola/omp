@@ -8,7 +8,6 @@
  * @brief Default theme stylesheet
  *
  */
-
 @import url("notificationIcons.css");
 @import url("pnotify.css");
 @import url("superfish.css");
@@ -24,6 +23,7 @@
 /* @group Structure Overrides */
 
 .pkp_structure_head {
+        background-color: #bbbec1;
 	background-image: url("{$baseUrl}/templates/images/munipressDesign/backgroundHeader.png");
         background-repeat: repeat-x;
         height: 110px;
@@ -56,6 +56,15 @@
 .pkp_structure_head_siteNav {
         height: 60px;
 	border-color: #003366;
+        
+        h1{
+            color: #003366;
+            font-size: 26px;
+            text-transform: uppercase;
+            padding-top: 5px;
+            margin-left: 7px;
+            letter-spacing: 2px;
+        }
 }
 
 /* @end */
@@ -121,11 +130,23 @@ p {
 	margin: 0 auto;
 	width: 1200px;
         
+        #sidebarContainer {
+            display: block; 
+            clear: both;
+        }        
 }
-
+.loading_container{
+    position:absolute; 
+    top: 103px; 
+    left:50%;
+}
+ 
 .pkp_structure_body .pkp_structure_main {
     border-top: 1px solid #003366;
     max-width: 765px;
+    min-width: 765px;
+    float:left;
+    padding-bottom: 30px;
 }
 
 .sidebar_help{
@@ -246,8 +267,11 @@ a.task:hover {
 	background-image: none;
 	color: #808080;
 	border-color: transparent;
+        border-style: none none solid;
+        border-width: 0 0 4px;
 	font-weight: bold;
 	border-radius: 0px;
+        padding-bottom: 1px;
 	-moz-border-radius: 0px;
 	-webkit-border-radius: 0px;
 }
@@ -270,11 +294,8 @@ a.task:hover {
 
 .ui-tabs-nav .ui-state-active {
 	border-color: #003366;
-        border-top: 0;
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 4px solid #003366;
-	font-weight: bold;
+        border-style: none none solid;
+        border-width: 0 0 4px;
 }
 
 .ui-tabs-nav .ui-state-active a {
@@ -282,7 +303,9 @@ a.task:hover {
 	margin-bottom: -1px;
         color: #003366;
 }
-
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+	padding-bottom: 0;
+}
 
 
 
@@ -341,21 +364,6 @@ a.task:hover {
 .ui-icon-triangle-1-s { background-position: 1px 2px; }
 .ui-icon-triangle-1-e { background-position: 1px 2px; }
 
-.munipress_search{
-    display:block;
-    float: left;
-    
-    #topSearchFormField{
-        float:right; 
-        margin-top: 2px;
-    }
-}
-
-.munipress_user{
-    position: relative;
-    float: right;
-}
-
 /*block part*/
 
 .block_ul{
@@ -386,48 +394,25 @@ a.task:hover {
    font-weight: bolder !important; 
 }
 
-.pagingPanel{
-    padding-left: 5px;
-    padding-top: 10px;
-    height: 30px;
-    font-size: 14px;
-}
-
-.filterPanel{
-    padding-left: 5px;
-    height:40px; 
-    padding-top: 15px;
-    
-    .filtr_kontejner{
-        padding-right: 5px; 
-        float:left; 
-        min-width: 200px;
-    }
-    
-    #filterYearsContainer{
-        float:left; 
-        padding-right: 5px;
-    }
-    
-    #filterLanguageContainer{
-       float:left;  
-    }
-}
-
-.popis{
-    min-width:60px; 
-    float:left; 
-    font-size: 14px;
-}
-
-.popis_pod{
-    font-size: 14px;
-}
 hr {
 	border: 1px solid #003366;
 	border-width: 0 0 1px 0;
         margin-top: 0px;
 }
+
+.stTabsInnerWrapper {
+    width: 100% !important;
+}
+
+.blok_banneru{
+    padding-left: 5px;
+}
+
+/* Responsivni design - jednotlive velikost */
+@import url("responsive_tablet.less");
+@import url("responsive_small_tablet.less");
+@import url("responsive_big_mobile.less");
+//@import url("responsive_mobile.less");
 
 /*
 

@@ -15,6 +15,7 @@
  */
 
 import('classes.handler.Handler');
+import('classes.tcpdf.tcpdf.Tcpdf_barcodes_2d');
 
 // import UI base classes
 import('lib.pkp.classes.linkAction.LinkAction');
@@ -163,11 +164,11 @@ class CatalogBookHandler extends Handler {
                 If(sizeof($allPublikace[$locale]) <=0){
                     $vyberPublikaci = $publishedMonographsDao->getBySameCategories($publishedMonograph->getId());
                     $velikostPole = sizeof($vyberPublikaci);
-                    If($velikostPole<=5) {
+                    If($velikostPole<=7) {
                         $idPublikaciProVypis = $vyberPublikaci;
                     } else {
                         shuffle($vyberPublikaci);
-                        for ($i=0; $i < 3; $i++){
+                        for ($i=0; $i < 9; $i++){
                             
                             $idPublikaciProVypis[] = $vyberPublikaci[$i];
                         }
@@ -199,20 +200,26 @@ class CatalogBookHandler extends Handler {
 
                 $templateMgr->assign('autorskePublikace', $autorskePublikace);             
                 
-                
+                       
 		// Display
 		$templateMgr->display('catalog/book/book.tpl');
 	}
-
+        
+        
 	/**
 	 * Use an inline viewer to view a published monograph publication
 	 * format file.
 	 * @param $args array
 	 * @param $request PKPRequest
 	 */
-	function view($args, $request) {
-		$this->download($args, $request, true);
+//	function view($args, $request) {
+//		$this->download($args, $request, true);
+//	}
+        
+        function view($args, $request) {
+		echo "jsem zde";
 	}
+
 
 	/**
 	 * Download a published monograph publication format file.
@@ -296,6 +303,23 @@ class CatalogBookHandler extends Handler {
 			$queuedPayment
 		);
 	}
+        
+        /************
+        * MUNIPRESS - QR kódy
+        **********/
+        function qrcode($args, $request) {
+                $bookId=$args[0];
+                $this->validate();
+                $this->setupTemplate($request, true);
+                $width = 10;
+                $height = 10;
+                
+                $typGenerovaní = 'QRCODE';
+                $kvalitaGenerovani = 'H';
+                $zkracenyOdkaz = $request->getBaseUrl()."/book?id=".$bookId;
+                $barcodeobj = new TCPDF2DBarcode($zkracenyOdkaz, $typGenerovaní.','.$kvalitaGenerovani);             
+                $barcodeobj->getBarcodePNG($width, $height);
+        }
 }
 
 ?>
