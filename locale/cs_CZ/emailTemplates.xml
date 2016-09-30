@@ -1,35 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE email_texts SYSTEM "../../lib/pkp/dtd/emailTemplateData.dtd">
 <!--
-* locale/en_US/emailTemplateData.xml
-*
-* Copyright (c) 2014 Simon Fraser University Library
-* Copyright (c) 2003-2014 John Willinsky
-* Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
-*
-* Localized email templates XML file.
+    * locale/cs_CZ/emailTemplateData.xml
+    * Copyright (c) 2014 Masaryk university
+    * Localized email templates XML file.
 -->
 <email_texts locale="cs_CZ">
-    <email_text key="AUDITOR_REQUEST">
-        <subject>Žádost o kontrolu rukopisu</subject>
-        <body>{$auditorName},
-
-            Byly nahrány nové soubory související s příspěvkem "{$submissionTitle}." Žádáme Vás o jejich kontrolu. Pro nakladatelství je důležité, aby uživatelé rukopis kontrolovali v každé fázi publikačního procesu.
-
-            Soubory ke kontrole naleznete na: 
-
-            {$auditUrl}
-
-            Uživatelské jméno:  {$auditorUserName}
-
-            Pokud kontrolu nedokážete provést do {$weekLaterDate}, odpovězte prosím obratem.
-
-            Děkujeme Vám za zvážení této žádosti.
-
-            {$editorialContactSignature}
-        </body>
-        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice korektorovi. Požaduje odpověď na otázku, zda je korektor ochoten zkontrolovat rukopis.</description>
-    </email_text>
     <email_text key="NOTIFICATION">
         <subject>Nové oznámení od {$siteTitle}</subject>
         <body>Obdržel jste nové oznámení od {$siteTitle}.
@@ -227,6 +203,54 @@
             {$submissionAbstract}</body>
         <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice recenzentovi. Žádá recenzenta, aby se vyjádřil, zda je ochoten vypracovat recenzní posudek. Poskytuje detaily o rukopisu, jako je název a abstrakt, termín vypracování posudku a informace o tom, jak rukopis samotný získat. Tato podoba zprávy se používá, je-li zvolena možnost Standardní recenzní řízení (v sekci Správa > Nastavení > Publ. proces > Recenzní řízení) a zároveň je povolena možnost přístupu recenzenta „na jedno kliknutí“.</description> 
     </email_text>
+    <email_text key="REVIEW_REQUEST_REMIND_AUTO">
+		<subject>Manuscript Review Request</subject>
+		<body><![CDATA[Dear {$reviewerName},<br />
+Just a gentle reminder of our request for your review of the submission, &quot;{$submissionTitle},&quot; for {$contextName}. We were hoping to have your response by {$responseDueDate}, and this email has been automatically generated and sent with the passing of that date.
+<br />
+{$messageToReviewer}<br />
+<br />
+Please log into the press web site to indicate whether you will undertake the review or not, as well as to access the submission and to record your review and recommendation.<br />
+<br />
+The review itself is due {$reviewDueDate}.<br />
+<br />
+Submission URL: <a href="{$submissionReviewUrl}">{$submissionReviewUrl}</a><br />
+<br />
+Username: {$reviewerUserName}<br />
+<br />
+Thank you for considering this request.<br />
+<br />
+<br />
+Sincerely,<br />
+{$editorialContactSignature}<br />
+]]></body>
+		<description>This email is automatically sent when a reviewer's confirmation due date elapses (see Review Options under Settings &gt; Workflow &gt; Review) and one-click reviewer access is disabled. Scheduled tasks must be enabled and configured (see the site configuration file).</description>
+	</email_text>
+	<email_text key="REVIEW_REQUEST_REMIND_AUTO_ONECLICK">
+		<subject>Manuscript Review Request</subject>
+		<body><![CDATA[{$reviewerName}:<br />
+Just a gentle reminder of our request for your review of the submission, &quot;{$submissionTitle},&quot; for {$contextName}. We were hoping to have your response by {$responseDueDate}, and this email has been automatically generated and sent with the passing of that date. 
+<br />
+I believe that you would serve as an excellent reviewer of the manuscript. The submission's abstract is inserted below, and I hope that you will consider undertaking this important task for us.<br />
+<br />
+Please log into the press web site to indicate whether you will undertake the review or not, as well as to access the submission and to record your review and recommendation.<br />
+<br />
+The review itself is due {$reviewDueDate}.<br />
+<br />
+Submission URL: <a href="{$submissionReviewUrl}">{$submissionReviewUrl}</a><br />
+<br />
+Thank you for considering this request.<br />
+<br />
+{$editorialContactSignature}<br />
+<br />
+<br />
+<br />
+&quot;{$submissionTitle}&quot;<br />
+<br />
+{$abstractTermIfEnabled}<br />
+{$submissionAbstract}]]></body>
+		<description>This email is automatically sent when a reviewer's confirmation due date elapses (see Review Options under Settings &gt; Workflow &gt; Review) and one-click reviewer access is enabled. Scheduled tasks must be enabled and configured (see the site configuration file).</description>
+	</email_text>
     <email_text key="REVIEW_REQUEST_ATTACHED">
         <subject>Žádost o posudek</subject>
         <body>{$reviewerName},
@@ -274,15 +298,6 @@
 
             {$reviewerName}</body>
         <description>Tuto e-mailovou zprávu zasílá recenzent odpovědnému redaktorovi edice. Je to odpověď na žádost o vypracování recenzního posudku, která editorovi série oznamuje, že žádost byla odmítnuta.</description>
-    </email_text>
-    <email_text key="REVIEW_COMPLETE">
-        <subject>Posudek dokončen</subject>
-        <body>{$editorialContactName},
-
-            Dokončil/a jsem svůj posudek na rukopis "{$submissionTitle}" předložený nakladatelství {$contextName} s doporučeným verdiktem "{$recommendation}".
-
-            {$reviewerName}</body>
-        <description>Tuto e-mailovou zprávu zasílá recenzent odpovědnému redaktorovi edice. Sděluje, že recenzní posudek je dokončen a že komentáře spolu s doporučeným verdiktem byly vloženy do systému.</description>
     </email_text>
     <email_text key="REVIEW_ACK">
         <subject>Děkujeme za posudek</subject>

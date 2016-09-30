@@ -1,52 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
-  <!-- * locale/cs_CZ/manager.xml * * Copyright (c) 2014 Masaryk university * * Localization strings ( ). -->
+  <!-- 
+    * locale/cs_CZ/manager.xml
+    * Copyright (c) 2014 Masaryk university
+    * Localization strings. 
+    -->
   <locale name="cs_CZ" full_name="Čeština">
 
     <message key="manager.language.confirmDefaultSettingsOverwrite">Touto akcí nahradíte všechna nastavení nakladatelství, která se týkají příslušného místního nastavení.</message>
-    <message key="manager.languages.languageInstructions">
-      <![CDATA[OMP může být uživatelům zpřístupněn v jakémkoli podporovaném jazyce. Stejně tak může fungovat jako vícejazyčný systém, poskytující uživatelům možnost přepínání mezi jazyky na každé stránce a umožňující ukládání určitých dat v různých jazykových verzích.<br/><br/>Pokud níže nenacházíte požadovaný jazyk, který MOP jinak podporuje, požádejte svého správce systému, aby jazyk doinstaloval ve svém administračním rozhraní. Instrukce týkající se přidávání nových jazyků jsou k dispozici v dokumentaci OMP.]]>
-    </message>
     <message key="manager.languages.noneAvailable">Litujeme, ale žádné další jazyky nejsou k dispozici. Pokud si přejete v rámci nakladatelství využívat více jazyků, obraťte se na správce systému.</message>
     <message key="manager.languages.primaryLocaleInstructions">Toto bude výchozí jazyk nakladatelství.</message>
-    <message key="manager.reviewForms">Formuláře posudků</message>
-    <message key="manager.reviewForms.completed">Dokončeno</message>
-    <message key="manager.reviewForms.confirmDeletePublished">Potvrdte odstranění zveřejněného formuláře posudku...</message>
-    <message key="manager.reviewForms.confirmDeleteUnpublished">Potvrdte odstranění nezveřejněného formuláře posudku...</message>
-    <message key="manager.reviewForms.create">Vytvořit formulář posudku</message>
-    <message key="manager.reviewForms.description">Popis a pokyny</message>
-    <message key="manager.reviewForms.edit">Formulář posudku</message>
-    <message key="manager.reviewForms.form.titleRequired">Je třeba zadat jméno formuláře posudku.</message>
-    <message key="manager.reviewForms.inReview">Probíhá recenzní řízení</message>
-    <message key="manager.reviewForms.list.description">Recenzentům budou předány k vyplnění zde vytvořené posudkové formuláře (namísto výchozího typu formuláře, který se skládá ze dvou otevřených textových polí - prvního určeného "pro autora a editora," druhého "pouze pro editora"). Použití formulářů se může omezit pro konkrétní sekci nakladatelství - editoři budou mít možnost výběru, kterou možnost pro dané řízení použít. Ve všech případech budou mít editoři možnost připojit recenzní posudky do korespondence s autorem.</message>
-    <message key="manager.reviewForms.noneChosen">Žádný (otevřený) formulář posudku</message>
-    <message key="manager.reviewForms.noneCreated">Žádné formuláře posudků nebyly vytvořeny.</message>
-    <message key="manager.reviewForms.noneUsed">Žádné formuláře posudků nebyly použity.</message>
-    <message key="manager.reviewForms.preview">Náhled formuláře</message>
-    <message key="manager.reviewForms.reviewFormData">Náhled na data formuláře</message>
-    <message key="manager.reviewForms.title">Název</message>
-    <message key="manager.reviewFormElement.changeType">Změnit typ formulářové položky...</message>
-    <message key="manager.reviewFormElements">Formulářové položky</message>
-    <message key="manager.reviewFormElements.addResponseItem">Přidat výběr</message>
-    <message key="manager.reviewFormElements.checkboxes">Zaškrtávací políčka (lze vybrat jednu či více možností)</message>
-    <message key="manager.reviewFormElements.chooseType">Zvolte typ položky</message>
-    <message key="manager.reviewFormElements.confirmDelete">Potvrdte odstranění zveřejněné formulářové položky...</message>
-    <message key="manager.reviewFormElements.copyTo">Kopírovat do:</message>
-    <message key="manager.reviewFormElements.create">Vytvořit novou položku</message>
-    <message key="manager.reviewFormElements.dropdownbox">Rozevírací seznam</message>
-    <message key="manager.reviewFormElements.edit">Upravit formulářovou položku</message>
-    <message key="manager.reviewFormElements.elementType">Typ položky</message>
-    <message key="manager.reviewFormElements.form.elementTypeRequired">Formulářové položce je třeba nastavit typ.</message>
-    <message key="manager.reviewFormElements.form.questionRequired">Formulářové položce je třeba nastavit otázku.</message>
-    <message key="manager.reviewFormElements.noneCreated">Žádné formulářové položky nebyly vytvořeny.</message>
-    <message key="manager.reviewFormElements.possibleResponse">Výběr</message>
-    <message key="manager.reviewFormElements.question">Položka</message>
-    <message key="manager.reviewFormElements.radiobuttons">Rádiová tlačítka (lze vybrat pouze jednu možnost)</message>
-    <message key="manager.reviewFormElements.required">Je třeba nastavit recenzenty.</message>
-    <message key="manager.reviewFormElements.smalltextfield">Textové pole (jedno slovo)</message>
-    <message key="manager.reviewFormElements.textarea">Textové pole (rozšířený text)</message>
-    <message key="manager.reviewFormElements.textfield">Textové pole (jeden řádek)</message>
-    <message key="manager.reviewFormElements.viewable">Zobrazitelné (pro autory)</message>
+    
+    
+    <!-- Series management -->
     <message key="manager.series.form.mustAllowPermission">Ujistěte se prosím, že u každého odpovědného redaktora edice je zaškrtnuto alespoň jedno zaškrtávací políčko.</message>
     <message key="manager.series.form.reviewFormId">Ujistěte se prosím, že jste zvolili platný formulář posudku.</message>
     <message key="manager.series.submissionIndexing">Toto nebude zahrnuto do indexování</message>
@@ -72,14 +38,10 @@
     <message key="manager.series.form.titleRequired">Je třeba zadat název edice.</message>
     <message key="manager.series.noneCreated">Nebyly vytvořeny žádné edice.</message>
     <message key="manager.series.existingUsers">Stávající uživatelé</message>
-    <message key="manager.series.seriesTitle">Název edice</message>
-    <message key="manager.series.noSeriesEditors">
-      <![CDATA[Zatím nebyli určeni žádní redaktoři edice. Přiřaďte nejprve tuto roli alespoň jednomu uživateli v sekci Správa > Nastavení > Uživatelé a role.]]>
-    </message>
-    <message key="manager.series.noCategories">
-      <![CDATA[Zatím nebyly vytvořeny žádné kategorie. Přejete-li si přiřadit této edici kategorie, zavřete tuto sekci a vytvořte nejrve kategorii na kartě Kategorie.]]>
-    </message>
-    <message key="manager.series.restricted">Omezené</message>
+    <message key="manager.series.seriesTitle">Název edice</message>    
+    <message key="manager.series.restricted">Don't allow authors to submit directly to this series.</message>
+    
+    <!-- Settings management -->
     <message key="manager.settings">Nastavení</message>
     <message key="manager.settings.pressSettings">Nastavení nakladatelství</message>
     <message key="manager.settings.press">Nakladatelství</message>
@@ -89,12 +51,16 @@
     <message key="manager.settings.accessDescription">Všechna nastavení týkající se přístupu a správy zabezpečení tohoto nakladatelství (uživatelé, role, možnosti přístupu ke stránce)..</message>
     <message key="manager.settings.websiteDescription">Všechna nastavení týkající se veřejných webových stránek (úvodní stránka, vzhled, jazyk)</message>
     <message key="manager.settings.publicationDescription">Všechna nastavení týkající se publikačního procesu (obecná nastavení, fáze návrhu, fáze recenzního řízení, redakční fáze, výrobní fáze, e-mailové šablony).</message>
-    <message key="manager.settings.publisherInformation">Tato pole nejsou nutná pro obecné používání systému OMP, je je ale třeba vyplnut za účelem vytvoření platných metadat pro ONIX. Použijte je prosím, pokud si přejete používat funkce spojené s ONIX.</message>
+<!--    <message key="manager.settings.publisherInformation">Tato pole nejsou nutná pro obecné používání systému OMP, je je ale třeba vyplnut za účelem vytvoření platných metadat pro ONIX. Použijte je prosím, pokud si přejete používat funkce spojené s ONIX.</message>-->
+    <message key="manager.settings.publisherInformation"><![CDATA[These fields are required to create valid <a href="https://en.wikipedia.org/wiki/ONIX_for_Books">ONIX metadata</a>. Please include them if you wish to publish ONIX metadata.]]></message>
     <message key="manager.settings.publisher">Jméno nakladatelství</message>
     <message key="manager.settings.location">Geografické umístění</message>
     <message key="manager.settings.publisherCode">Kód vydavatele</message>
+    <message key="manager.settings.publisherCodeType">Publisher Code Type</message>
     <message key="manager.settings.publisherCodeType.tip">Máte-li přiděleno jméno a kód vydavatele, zadejte je prosím níže. Tyto údaje budou zahrnuty do obecných metadat. Pole je třeba vyplnit, jestliže pro své publikace chcete vytvářet metadata ONIX.</message>
     <message key="manager.settings.distributionDescription">Všechna nastavení týkající se distribučního procesu (oznámení, indexování, archivace, platby, čtecí nástroje).</message>
+    
+    <!-- Statistics management -->
     <message key="manager.statistics.reports.defaultReport.monographDownloads">Stažené soubory: Monografie</message>
     <message key="manager.statistics.reports.defaultReport.monographAbstract">Zobrazení: Abstrakt monografie</message>
     <message key="manager.statistics.reports.defaultReport.monographAbstractAndDownloads">Abstrakt a stažení monografie</message>
@@ -102,10 +68,15 @@
     <message key="manager.statistics.reports.defaultReport.pressIndexPageViews">Zobrazení: Hlavní stránka nakladatelství</message>
     <message key="manager.statistics.reports.filters.byContext.description">Filtrovat výsledky podle kontextu (edice a/nebo monografie).</message>
     <message key="manager.statistics.reports.filters.byObject.description">Filtrovat výsledky podle typu objektu (nakladatelství, edice, monografie, typy souborů) a/nebo jednoho či více identifikačního čísla (ID) objektu.</message>
+    
+    <!-- Tools management -->
     <message key="manager.tools">Nástroje</message>
     <message key="manager.tools.importExport">
       <![CDATA[Všechny nástroje týkající se importu a exportu dat (nakladatelství, monografie, uživatelé)]]>
     </message>
+    <message key="manager.tools.statistics">Tools to generate reports related to usage statistics (catalog index page view, monograph abstract page views, monograph file downloads)</message>
+    
+    <!-- User management -->
     <message key="manager.users">Správa uživatelů</message>
     <message key="manager.users.availableRoles">Dostupné role</message>
     <message key="manager.users.currentRoles">Aktuální role</message>
@@ -125,11 +96,16 @@
     <message key="manager.people.noAdministrativeRights">
       <![CDATA[Lituji, ale nemáte práva správce nad tímto uživatelem. Příčinou může být: <ul> <li>Uživatel je správce systému</li> <li>Uživatel je aktivní v nakladatelství, jež nespravujete</li> </ul> Tento krok musí vykonat správce systému. ]]>
     </message>
+    
+    <!-- System setup -->
     <message key="manager.system">Nastavení systému</message>
     <message key="manager.system.archiving">Archivace</message>
     <message key="manager.system.reviewForms">Formuláře posudků</message>
     <message key="manager.system.readingTools">Čtecí nástroje</message>
     <message key="manager.system.payments">Platby</message>
+    <message key="user.authorization.pluginLevel">You do not have sufficient privileges to manage this plugin.</message>
+    
+    <!-- Press setup -->
     <message key="manager.pressManagement">Správa nakladatelství</message>
     <message key="manager.setup">Nastavení</message>
     <message key="manager.setup.aboutItemContent">Obsah</message>
@@ -137,41 +113,19 @@
     <message key="manager.setup.addChecklistItem">Přidat položku: Kontrolní seznam</message>
     <message key="manager.setup.addContributor">Přidat přispěvatele</message>
     <message key="manager.setup.addItem">Přidat položku</message>
-    <message key="manager.setup.addItemtoAboutPress">Přidat položku do sekce "O nakladatelství"</message>
-    <message key="manager.setup.additionalContent">Další obsah</message>
-    <message key="manager.setup.additionalContentDescription">Přidejte obsah (prostý text nebo HTML), který se zobrazí na hlavní stránce, pokud nebude nahrán obrázek.</message>
+    <message key="manager.setup.addItemtoAboutPress">Přidat položku do sekce "O nakladatelství"</message>    
     <message key="manager.setup.addNavItem">Přidat položku</message>
     <message key="manager.setup.addSponsor">Přidat sponzorskou organizaci</message>
-    <message key="manager.setup.alternateHeader">Alternativní záhlaví</message>
-    <message key="manager.setup.alternateHeaderDescription">Namísto jména a loga lze zvolit HTML verzi záhlaví, kterou můžete vložit do textového pole níže. Pokud tuto možnost nepožadujete, ponechte pole prázdné.</message>
     <message key="manager.setup.announcements">Oznámení</message>
     <message key="manager.setup.announcementsDescription">Oznámení můžete využívat jako informační kanál pro události a novinky z nakladatelství. Zveřejněná oznámení se zobrazí na stránce Oznámení.</message>
     <message key="manager.setup.announcementsIntroduction">Další informace</message>
     <message key="manager.setup.announcementsIntroductionDescription">Zadejte jakékoli další informace, které by měly zobrazit čtenářům na stránce Oznámení.</message>
     <message key="manager.setup.appearInAboutPress">(Zobrazit v sekci O nakladatelství)</message>
-    <message key="manager.setup.authorCopyrightNotice">Informace o autorských právech</message>
-    <message key="manager.setup.authorCopyrightNoticeAgree">Vyžadovat po autorech, aby při předkládání rukopisu vyjádřili souhlas s Informací o autorských právech.</message>
-    <message key="manager.setup.authorCopyrightNotice.description">
-      <![CDATA[Informace o autorských právech (níže) se objeví v sekci O nakladatelství a ve všech metadatech publikované položky. Ačkoli znění dohody s autory o autorských právech závisí na uvážení nakladatelsví, organizace Public Knowledge Project doporučuje využití licence <a href="http://creativecommons.org" target="_blank" class="action">Creative Commons</a>. Za tímto účelem poskytuje <a href="{$sampleCopyrightWordingUrl}" target="_blank" class="action">návrh na znění Informace o autorských právech</a>, který můžete zkopírovat a vložit do pole níže. Návrh obsahuje možnosti pro nakladatelství, která a) nabízejí otevřený přístup k informacím (Open Access), b) nabízejí otevřený přístup pro starší díla, nebo c) otevřený přístup vůbec neposkytují.]]>
-    </message>
-    <message key="manager.setup.authorGuidelines.description">
-      <![CDATA[Pro příspěvky autorů stanovte určité bibliografické a formátovací standardy (např. <em>Publication Manual of the American Psychological Association</em>, 5. vydání, 2001).Často je užitečné, pokud autorům nabídnete příklady obvyklých citačních formátů, které mají v příspěvcích a knihách využívat.]]>
-    </message>
-    <message key="manager.setup.contributor">Přispěvatel</message>
-    <message key="manager.setup.contributors">Poskytovatelé podpory</message>
-    <message key="manager.setup.contributors.description">Další subjekty nebo organizace, které poskytují finanční nebo věcnou podporu nakladatelství, se objeví v sekci O nakladatelství. Lze připojit poděkování.</message>
     <message key="manager.setup.copyediting">Redaktoři</message>
     <message key="manager.setup.copyeditInstructions">Redakční instrukce</message>
     <message key="manager.setup.copyeditInstructionsDescription">Redakční instrukce budou k dispozici ve fázi redakce rukopisu redaktorům, autorům a editorům sekcí. Níže najdete výchozí soubor pokynů v HTML, který může správce nakladatelství kdykoli změnit nebo nahradit (HTML nebo prostým textem).</message>
     <message key="manager.setup.copyrightNotice">Informace o autorských právech</message>
     <message key="manager.setup.coverage">Záběr</message>
-    <message key="manager.setup.coverageChronExamples">(Např. Evropská renesance; Jurské období; Třetí trimestr atd.)</message>
-    <message key="manager.setup.coverageChronProvideExamples">Uveďte zde příklady příslušných chronologických nebo historických období.</message>
-    <message key="manager.setup.coverageDescription">Odkazuje na geo-prostorové umístění, časový nebo historický záběr a/nebo charakteristiky výzkumného vzorku.</message>
-    <message key="manager.setup.coverageGeoExamples">(např. Iberský poloostrov; Stratosféra; Boreální les atd.)</message>
-    <message key="manager.setup.coverageGeoProvideExamples">Uveďte zde příklady příslušných geo-prostorových nebo geografických umístění.</message>
-    <message key="manager.setup.coverageResearchSampleExamples">(např. věk; pohlaví; etnicita atd.)</message>
-    <message key="manager.setup.coverageResearchSampleProvideExamples">Uveďte zde příklady charakteristik výzkumného vzorku.</message>
     <message key="manager.setup.customizingTheLook">
       <![CDATA[Step 5. Přizpůsobení vzhledu]]>
     </message>
@@ -185,17 +139,17 @@
     <message key="manager.setup.disciplineExamples">(Např. Historie; Vzdělávání; Sociologie; Psychologie; Kulturní studia; Právo)</message>
     <message key="manager.setup.disciplineProvideExamples">Uveďte příklady relevantních akademických oborů tohoto nakladatelství</message>
     <message key="manager.setup.displayCurrentMonograph">Přidat obsah do aktuální monografie (je-li k dispozici).</message>
+    
+    <message key="manager.setup.displayOnHomepage">Homepage Content</message>
+    <message key="manager.setup.displayFeaturedBooks">Display featured books on the home page.</message>
+    <message key="manager.setup.displayInSpotlight">Display books in the spotlight on the home page.</message>
+    <message key="manager.setup.displayNewReleases">Display new releases on the home page.</message>
+        
     <message key="manager.setup.doiPrefix">DOI Prefix</message>
     <message key="manager.setup.doiPrefixDescription">
       <![CDATA[DOI (Digital Object Identifier) Prefix poskytuje organizace <a href="http://www.crossref.org" target="_blank">CrossRef</a>, formát kódu je 10.xxxx (např. 10.1234).]]>
     </message>
     <message key="manager.setup.editorDecision">Rozhodnutí editora</message>
-    <message key="manager.setup.editorialMembers">Přejděte do sekce Členové, kde můžete přidat a/nebo upravovat členy Ediční a redakční rady. Toto lze provést kdykoli během správy nakladatelství.</message>
-    <message key="manager.setup.editorialProcess1">Jeden nebo více editorů mohou základní kroky spravovat i bez nastavených rolí.</message>
-    <message key="manager.setup.editorialProcess2">Výrobní editor má na starosti frontu nových návrhů a obsahy, zatímco editoři sekcí jsou zodpovědni za recenzní řízení a redakci nových rukopisů.</message>
-    <message key="manager.setup.editorialProcess3">Výrobní editor má na starosti frontu nových návrhů, redakci nových rukopisů a obsahy, zatímco editoři sekcí jsou zodpovědni za recenzní řízení.</message>
-    <message key="manager.setup.editorialReviewBoard">Ediční / redakční rada</message>
-    <message key="manager.setup.editorialReviewBoardDescription">Ediční rady v nakladatelstvích dohlížejí nad redakčním řízením, mají vliv na jmenování editorů a v závislosti na reputaci svých členů zajišťují pozici nakladatelství v oboru. Redakční rady hrají podobnou roli, ale vedou navíc také recenzní řízení. Členové redakční rady nebudou mít přístup do administrativního rozhraní systému, ale budou přidáni do seznamu těch, kteří se mohou účastnit recenzního řízení.</message>
     <message key="manager.setup.emailBounceAddress">Adresa pro chybná hlášení</message>
     <message key="manager.setup.emailBounceAddressDescription">Na tuto adresu budou přicházet chybová hlášení o všech nedoručitelných e-mailových zprávách.</message>
     <message key="manager.setup.emailBounceAddressDisabled">
@@ -205,19 +159,19 @@
     <message key="manager.setup.emailHeader">Záhlaví e-mailových zpráv</message>
     <message key="manager.setup.emailHeaderDescription">Předdefinované e-maily, které systém posílá jménem nakladatelství, budou začínat následujícím záhlavím. Jako odesílatel bude uvedena hlavní kontaktní osoba nakladatelství, takže je důležité uvést, že tato hlavní kontaktní osoba není nutně zodpovědná za obsah zprávy.</message>
     <message key="manager.setup.emailSignature">Podpis</message>
-    <message key="manager.setup.emailSignatureDescription">Předdefinované e-maily, které systém posílá jménem nakladatelství, budou končit následujícím podpisem. Tělo předdefinových e-mailových zpráv lze upravit níže.</message>
+    <message key="manager.setup.emailSignatureDescription">Předdefinované e-maily, které systém posílá jménem nakladatelství, budou končit následujícím podpisem.</message>
     <message key="manager.setup.enableAnnouncements">Povolit oznámení.</message>
     <message key="manager.setup.enableAnnouncementsHomepage1">Zobrazit</message>
     <message key="manager.setup.enableAnnouncementsHomepage2">nejnovější oznámení na hlavní stránce nakladatelství.</message>
     <message key="manager.setup.enablePressInstructions">Zveřejnit toto nakladatelství v systému</message>
     <message key="manager.setup.enablePublicMonographId">Vlastní identifikátory budou identifikovat zveřejněné položky.</message>
     <message key="manager.setup.enablePublicGalleyId">Vlastní identifikátory budou identifikovat různé sazby (např. soubory HTML nebo PDF) zveřejněných položek.</message>
-    <message key="manager.setup.enableUserRegistration">Uživatelé si při registraci do nakladatelství mohou zvolit jednu či více z následujících rolí:</message>
-    <message key="manager.setup.enableUserRegistration.author">Autoři (mohou nakladatelství předkládat rukopisy)</message>
-    <message key="manager.setup.enableUserRegistration.reader">Čtenáři (mohou přijímat oznámení a lze je považovat za příznivce nakladatelství)</message>
-    <message key="manager.setup.enableUserRegistration.reviewer">Recenzenti (jsou ochotni vypracovávat recenzní posudky na návrhy)</message>
+<!--    <message key="manager.setup.enableUserRegistration">Uživatelé si při registraci do nakladatelství mohou zvolit jednu či více z následujících rolí:</message>-->
+    <message key="manager.setup.enableUserRegistration">Visitors can register a user account with the press.</message>
+   
     <message key="manager.setup.focusAndScope">Zaměření a oblast působnosti</message>
-    <message key="manager.setup.focusAndScope.description">Zadejte níže prohlášení, které se objeví v sekci O nakladatelství. Toto prohlášení se bude obracet na autory, čtenáře a knihovníky a bude je informovat o publikacích a dalších položkách, které nakladatelství bude vydávat.</message>
+<!--    <message key="manager.setup.focusAndScope.description">Zadejte níže prohlášení, které se objeví v sekci O nakladatelství. Toto prohlášení se bude obracet na autory, čtenáře a knihovníky a bude je informovat o publikacích a dalších položkách, které nakladatelství bude vydávat.</message>-->
+    <message key="manager.setup.focusAndScope.description">Describe to authors, readers, and librarians the range of monographs and other items the press will publish.</message>
     <message key="manager.setup.focusAndScope">Zaměření a oblast působnosti nakladatelství</message>
     <message key="manager.setup.focusScope">Zaměření a oblast působnosti</message>
     <message key="manager.setup.focusScopeDescription">
@@ -237,9 +191,8 @@
     <message key="manager.setup.generalInformation">Obecné informace</message>
     <message key="manager.setup.gettingDownTheDetails">Krok 1. Poznámky k podrobnostem</message>
     <message key="manager.setup.guidelines">Pokyny</message>
+    <message key="manager.setup.inSpotlight">In the Spotlight</message>
     <message key="manager.setup.preparingWorkflow">Krok 3. Příprava publikačního procesu</message>
-    <message key="manager.setup.homepageImage">Obrázek na úvodní stránce</message>
-    <message key="manager.setup.homepageImageDescription">Přidejte obrázek nebo grafický soubor do střední části stránky. Pokud používáte výchozí šablonu a CSS, maximální šířka obrázku bude 750 px pro verzi s jednou lištou a 540 px pro verzi se dvěma lištami. Pokud používáte vlastní šablony nebo CSS, tyto hodnoty se mohou měnit.</message>
     <message key="manager.setup.information.description">Stručný popis nakladatelství pro knihovníky a potenciální autory a čtenáře je k dispozici v sekci Informace na postranním panelu.</message>
     <message key="manager.setup.information.forAuthors">Pro autory</message>
     <message key="manager.setup.information.forLibrarians">Pro knihovníky</message>
@@ -259,19 +212,15 @@
       <![CDATA[Vzhled]]>
     </message>
     <message key="manager.setup.look.description">Záhlaví úvodní stránky, obsah, hlavička nakladatelství, zápatí, navigační panel a styly.</message>
-    <message key="manager.setup.mailingAddress.description">Fyzické sídlo a poštovní adresa nakladatelství.</message>
     <message key="manager.setup.settings">Nastavení</message>
     <message key="manager.setup.management.description">Přístup a zabezpečení, plánování, oznámení, redakce, grafické rozložení a korektury.</message>
     <message key="manager.setup.managementOfBasicEditorialSteps">Správa základních redakční kroků</message>
     <message key="manager.setup.managingPublishingSetup">Nastavení správy a publikace</message>
     <message key="manager.setup.managingThePress">Krok 4. Správa nastavení</message>
+    <message key="manager.setup.newReleases">New Releases</message>
     <message key="manager.setup.noImageFileUploaded">Nebyl nahrán žádný obrazový soubor.</message>
     <message key="manager.setup.noStyleSheetUploaded">Nebyl nahrán žádný soubor stylu.</message>
     <message key="manager.setup.note">Poznámka</message>
-    <message key="manager.setup.notifications">Oznámení o příspěvku autora</message>
-    <message key="manager.setup.notifications.copyPrimaryContact">Odeslat kopii primární kontaktní osobě (identifikované v nastavení kroku 1.).</message>
-    <message key="manager.setup.notifications.copySpecifiedAddress">Poslat kopii na tuto e-mailovou adresu:</message>
-    <message key="manager.setup.notifications.description">Při dokončení procesu návrhu na publikaci se autorům automaticky zasílá děkovná e-mailová zpráva (tu lze zobrazit a upravit s sekci Předdefinované e-mailové zprávy). Kopie této zprávy může být navíc odeslána podle následujících pravidel:</message>
     <message key="manager.setup.notifyAllAuthorsOnDecision">Pokud příspěvek předkládá více autorů, zahrnout při odesílání oznámení e-mailové adresy všech spouautorů, nikoli jen uživatele, který návrh vložil.</message>
     <message key="manager.setup.noUseCopyeditors">Redakční zásahy provede editor nebo editor sekce, který byl návrhu přidělen.</message>
     <message key="manager.setup.noUseLayoutEditors">Editor, resp. edtitor sekce přidělený návrhu připraví soubory (HTML, PDF atd.).</message>
@@ -279,29 +228,18 @@
     <message key="manager.setup.numPageLinks">Odkazy na stránky</message>
     <message key="manager.setup.onlineAccessManagement">Přístup k obsahu nakladatelství</message>
     <message key="manager.setup.onlineIssn">Online ISSN</message>
-    <message key="manager.setup.openAccess">Nakladatelství poskytuje otevřený přístup ke svému obsahu.</message>
-    <message key="manager.setup.openAccessPolicy">Pravidla volného přístupu k dílům (Open Access)</message>
-    <message key="manager.setup.openAccessPolicy.description">Pokud nakladatelství poskytuje čtenářům okamžitý volný přístup k veškerému zveřejněnému obsahu, zadejte pravidla volného přístupu k dílům, která se zobrazí mezi pravidly v sekci O nakladatelství.</message>
-    <message key="manager.setup.peerReview.description">Nastinte zásady recenzního řízení a souvisejících procesů čtenářům a autorům, včetně obvyklého počtu recenzentů, kritérií, podle nichž budou recenzenti návrh hodnotit, typické lhůty, která je pro recenzní řízení potřebná, a principů, na jejichž základě jsou recenzenti oslovováni. Tyto informace se objeví v sekci O nakladatelství.</message>
     <message key="manager.setup.policies">Zásady</message>
     <message key="manager.setup.policies.description">Téma, recenzní řízení, sekce, soukromí, zabezpečení a další informace o položkách.</message>
     <message key="manager.setup.appearanceDescription">Na této stránce můžete nastavit různé součásti vzhledu - včetně prvků záhlaví a zápatí, stylu a grafického tématu a způsobu prezentace informací uživatelům.</message>
     <message key="manager.setup.pressDescription">Popis nakladatelství</message>
-    <message key="manager.setup.pressDescription.description">Zde by se měl objevit obecný popis nakladatelství. Objeví se na úvodní stránce nakladatelství.</message>
+    <message key="manager.setup.pressDescription.description">Tento popis se objeví na veřejně přístupné stránce o nakladatelství</message>
     <message key="manager.setup.pressArchiving">Archivace</message>
     <message key="manager.setup.homepageContent">Obsah úvodní stránky</message>
     <message key="manager.setup.homepageContentDescription">Úvodní stránka nakladatelství ve výchozím nastavení obsahuje navigační odkazy. Následujícími způsoby můžete přidat další obsah hlavní stránky - tyto součásti se objeví v témže pořadí jako zde.</message>
     <message key="manager.setup.pressHomepageContent">Obsah úvodní stránky</message>
     <message key="manager.setup.pressHomepageContentDescription">Úvodní stránka nakladatelství ve výchozím nastavení obsahuje navigační odkazy. Následujícími způsoby můžete přidat další obsah hlavní stránky - tyto součásti se objeví v témže pořadí jako zde.</message>
-    <message key="manager.setup.pressHomepageHeader">Záhlaví úvodní stránky</message>
-    <message key="manager.setup.pressHomepageHeader.altText">Záhlaví úvodní stránky</message>
-    <message key="manager.setup.pressHomepageHeaderDescription">Vyberte si mezi textovou verzí jména nakladatelství a grafickým logem (Lze použít soubory .gif, .jpg nebo .png). Toto záhlaví a případné logo se objeví pouze na úvodní stránce daného nakladatelství. Ve výchozím nastavení se počítá s velikostí záhlaví 180 * 90 px.</message>
     <message key="manager.setup.pressInitials">Iniciály nakladatelství</message>
     <message key="manager.setup.layout">Grafická šablona</message>
-    <message key="manager.setup.logo">Logo nakladatelství</message>
-    <message key="manager.setup.logo.altText">Logo nakladatelství</message>
-    <message key="manager.setup.pageFooter">Zápatí stránky nakladatelství</message>
-    <message key="manager.setup.pageFooterDescription">Toto je zápatí vašeho nakladatelství. Zápatí můžete změnit nebo aktualizovat vložením HTML kódu do pole níže. Příklady: Další navigační lišta, počítadlo atd. Toto zápatí se objeví na každé stránce.</message>
     <message key="manager.setup.pageHeader">Záhlaví stránky nakladatelství</message>
     <message key="manager.setup.pageHeaderDescription">Lze nahrát grafickou verzi jména nakladatelství a jeho logo (soubor .gif, .jpg nebo .png), případně menší verzi loga z hlavní stránky. Tento obrázek se pak bude zobrazovat jako záhlaví stránek daného nakladatelství a nahradí výchozí textovou verzi.</message>
     <message key="manager.setup.pressPolicies">Krok 2. Zásady nakladatelství</message>
@@ -310,12 +248,7 @@
     <message key="manager.setup.styleSheetInvalid">Neplatný formát stylu. Je třeba použít formát .css.</message>
     <message key="manager.setup.pressTheme">Grafické téma nakladatelství</message>
     <message key="manager.setup.contextName">Jméno nakladatelství</message>
-    <message key="manager.setup.principalContact">Hlavní kontakní osoba</message>
-    <message key="manager.setup.principalContactDescription">Tato pozice, kterou lze považovat za hlavního editora, správce či úředníka, bude uváděna na hlavní stránce nakladatelství v sekci Kontakt, spolu s kontaktní osobou technické podpory.</message>
     <message key="manager.setup.printIssn">Tiskové ISSN</message>
-    <message key="manager.setup.privacyStatement">Prohlášení o osobních údajích</message>
-    <message key="manager.setup.privacyStatement2">Prohlášení o osobních údajích</message>
-    <message key="manager.setup.privacyStatement.description">Toto prohlášení se objeví v sekci O nakladatelství, stejně jako na oznámeních spojených s předložením příspěvku nebo s registrací. Níže je uvedeno doporučené prohlášení o osobních údajích, které však lze kdykoli upravit.</message>
     <message key="manager.setup.proofingInstructions">Pokyny ke korekturám</message>
     <message key="manager.setup.proofingInstructionsDescription">Pokyny týkající se korektur budou přístupné korektorům, autorům, grafikům a editorům sekcí ve fázi redakce příspěvku. Níže najdete výchozí soubor pokynů v HTML, který může správce nakladatelství kdykoli změnit nebo nahradit (HTML nebo prostým textem).</message>
     <message key="manager.setup.proofreading">Korektoři</message>
@@ -331,17 +264,16 @@
     <message key="manager.setup.restrictSiteAccess">Uživatelé musí být registrováni a přihlášeni, pokud chtějí navštívit jakoukoli stránku nakladatelství.</message>
     <message key="manager.setup.reviewGuidelines">Zásady vnějšího recenzního řízení</message>
     <message key="manager.setup.reviewGuidelinesDescription">
-      <![CDATA[Zásady vnějšího recenzního řízení poskytují externím recenzentům kritéria pro hodnocení, zda je návrh vhodný pro publikaci. Mohou také zahrnovat jakékoli zvláštní pokyny pro vytvoření funkčního a užitečného posudku. Při přípravě posudku je externím recenzetům předložena stránka se dvěma otevřenými textovými poli - jedno je určeno "pro autora a editora", druhé "pouze pro editora". Správce nakladatelství může případně v sekci Formuláře posudků vytvořit vlastní formulář. Ve všech případech budou mít editoři možnost připojit recenzní posudky do korespondence s autorem.]]></message>
+      Zásady vnějšího recenzního řízení poskytují externím recenzentům kritéria pro hodnocení, zda je návrh vhodný pro publikaci. Mohou také zahrnovat jakékoli zvláštní pokyny pro vytvoření funkčního a užitečného posudku. Při přípravě posudku je externím recenzetům předložena stránka se dvěma otevřenými textovými poli - jedno je určeno "pro autora a editora", druhé "pouze pro editora". Správce nakladatelství může případně v sekci Formuláře posudků vytvořit vlastní formulář. Ve všech případech budou mít editoři možnost připojit recenzní posudky do korespondence s autorem.</message>
       <message key="manager.setup.internalReviewGuidelines">Zásady vnitřního recenzního řízení</message>
       <message key="manager.setup.internalReviewGuidelinesDescription"><![CDATA[Stejně jako v případě vnějšího recenzního řízení poskytnou recenzentům tato kritéria informace o tom, jak návrh ohodnotit. Tyto pokyny jsou určeny pro interní recenzenty, kteří se obvykle účastní recenzního řízení přímo v rámci nakladatelství.]]>
     </message>
     <message key="manager.setup.reviewOptions">Možnosti recenzního řízení</message>
-    <message key="manager.setup.reviewOptions.automatedReminders">Systém může recenzentům zasílat automatické připomínky e-mailem (viz nastavení e-mailů OMP) ve dvou krocích (editor recenzentům také může kdykoli napsat přímo).</message>
+    <message key="manager.setup.reviewOptions.automatedReminders">Automatické připomínání e-mailem.</message>
     <message key="manager.setup.reviewOptions.automatedRemindersDisabled">
-      <![CDATA[<strong>Upozornění:</strong&gt; Aby byla tato možnost aktivní, musí správce systému povolit možnost &lt;tt>scheduled_tasks</tt> v konfiguračním souboru OMP. Jak upozorňuje dokumentace OMP, k povolení této funkce může být třeba dodatečná konfigurace serveru. Ne všechny servery tuto možnost podporují.]]>
+      <![CDATA[<strong>Upozornění:</strong&gt; Aby byla tato možnost aktivní, musí správce systému povolit možnost <tt>scheduled_tasks</tt> v konfiguračním souboru OMP. Jak upozorňuje dokumentace OMP, k povolení této funkce může být třeba dodatečná konfigurace serveru. Ne všechny servery tuto možnost podporují.]]>
     </message>
     <message key="manager.setup.reviewOptions.blindReview">Anonymní recenzní řízení</message>
-    <message key="manager.setup.reviewOptions.noteOnModification">Tyto výchozí hodnoty mohou být během redakčního procesu každého návrhu upraveny.</message>
     <message key="manager.setup.reviewOptions.onQuality">Editoři recenzenty po každém recenzním řízení hodnotí na pětistupňové škále.</message>
     <message key="manager.setup.reviewOptions.restrictReviewerFileAccess">Recenzenti mají přístup k souboru rukopisu pouze po vyslovení souhlasu s účastí v řízení.</message>
     <message key="manager.setup.reviewOptions.reviewerAccess">Přístup recenzentů</message>
@@ -351,7 +283,6 @@
     </message>
     <message key="manager.setup.reviewOptions.reviewerRatings">Hodnocení recenzentů</message>
     <message key="manager.setup.reviewOptions.reviewerReminders">Upomínky recenzentů</message>
-    <message key="manager.setup.reviewOptions.reviewTime">Čas recenzního řízení</message>
     <message key="manager.setup.reviewOptions.showEnsuringLink">Poskytnout odkazy na informaci o anonymním recenzním řízení na stránkách, kde autoři a recenzenti nahrávají soubory.</message>
     <message key="manager.setup.reviewPolicy">Zásady recenzního řízení</message>
     <message key="manager.setup.reviewProcess">Proces recenzního řízení</message>
@@ -376,28 +307,27 @@
     <message key="manager.setup.selectSectionDescription">Sekce, která by pro tento rukopis mohla být vhodná.</message>
     <message key="manager.setup.showGalleyLinksDescription">Vždy zobrazovat odkazy na sazby a informovat o omezeném přístupu.</message>
     <message key="manager.setup.siteAccess">Další omezení systému a přístupu k obsahu</message>
-    <message key="manager.setup.sponsors.description">Názvy organizací (např. akademická sdružení, univerzitní katedry, asociace apod.). Informace o sponzorství bude zobrazena v sekci O nakladatelství. Lze připojit i poděkování.</message>
     <message key="manager.setup.stepsToPressSite">Pět kroků k webové stránce nakladatelství</message>
-    <message key="manager.setup.subjectClassification">Klasifikace tématu</message>
-    <message key="manager.setup.subjectClassificationExamples">(např. klasifikace matematických subjektů; Klasifikace podle Knihovny Kongresu)</message>
     <message key="manager.setup.subjectExamples">(např. Fotosyntéza; Černé díry; Problém čtyř barev; Bayesovská teorie)</message>
     <message key="manager.setup.subjectKeywordTopic">Klíčová slova</message>
     <message key="manager.setup.subjectProvideExamples">Uveďte pro autory pomocné příklady klíčových slov nebo témat.</message>
     <message key="manager.setup.submissionGuidelines">Pokyny k předložení rukopisu</message>
     <message key="manager.setup.submissionPreparationChecklist">Kontrolní seznam pro přípravu rukopisu</message>
-    <message key="manager.setup.submissionPreparationChecklistDescription">Při předložení rukopisu nakladatelství jsou autoři nejprve vyzváni, aby před pokračováním označili každou položku kontrolního seznamu za splněnou. Kontrolní seznam najdete také v sekci O nakladatesltví > Pokyny autorům. Tento seznam lze níže upravovat, všechny položky v seznamu ale budou vyžadovat odškrtnutí před tím, než budou autoři moci v procesu předložení rukopisu pokračovat.</message>
     <message key="maganer.setup.submissionChecklistItemRequired">Je třeba zadat položku kontrolního seznamu.</message>
     <message key="manager.setup.workflow">Proces</message>
     <message key="manager.setup.submissions.description">Pokyny autorům, autorská práva a indexování (včetně registrace).</message>
-    <message key="manager.setup.technicalSupportContact">Kontakt na technickou podporu</message>
-    <message key="manager.setup.technicalSupportContactDescription">Tato osoba bude uvedena na stránce Kontakty nakladatelství k dispozici editorům, autorům a recenzentům. Měla by mít zkušenosti s navigací v rámci systému z perspektivy všech rolí. Protože tento publikační systém vyžaduje jen málo technické podpory, tato činnost by neměla být považována za práci na plný úvazek. Mohou například nastat situace, kdy si autoři nebo recenzenti nebudou vědět rady s pokyny týkajícími se formátů souborů, nebo bude potřeba zajistit, aby byla data nakladatelství pravidelně zálohována.</message>
+    <message key="manager.setup.coverThumbnails">Cover Thumbnails</message>
+    <message key="manager.setup.coverThumbnailsDescription">Set the max width and height of the cover thumbnails. They will be resized when they are larger than these settings but will not be enlarged if they are smaller. The images will never be stretched to fit these dimensions.</message>
+    <message key="manager.setup.coverThumbnailsMaxHeight">Max. height</message>
+    <message key="manager.setup.coverThumbnailsMaxHeightRequired">Cover thumbnails max height is required.</message>
+    <message key="manager.setup.coverThumbnailsMaxWidth">Max. width</message>
+    <message key="manager.setup.coverThumbnailsMaxWidthRequired">Cover thumbnails max width is required.</message>
+    <message key="manager.setup.coverThumbnailsResize">Resize all existing cover thumbnails.</message>
     <message key="manager.setup.typeExamples">(Např. Historické bádání; Kvazi-experimentální; Literární analýza; Šetření / Interview)</message>
     <message key="manager.setup.typeMethodApproach">Typ (metoda/přístup)</message>
     <message key="manager.setup.typeProvideExamples">Uveďte příklady příslušných výzkumných typů, metod a přístupů pro tento výzkumný obor</message>
     <message key="manager.setup.useCopyeditors">Každému návrhu bude přiřazen redaktor.</message>
     <message key="manager.setup.useEditorialReviewBoard">Nakladatelství bude využívat ediční / redakční radu.</message>
-    <message key="manager.setup.useImageLogo">Logo nakladatelství</message>
-    <message key="manager.setup.useImageLogoDescription">Volitelné logo nakladatelství lze nahrát a používat spolu s názvem ve formě textu či obrazu - tak, jak je nastaveno výše.</message>
     <message key="manager.setup.useImageTitle">Titulní obraz</message>
     <message key="manager.setup.useStyleSheet">Šablona stylů nakladatelství</message>
     <message key="manager.setup.useLayoutEditors">Bude určen grafik, který připraví soubory ve formátu HTML, PDF atd. pro elektronickou publikaci.</message>
@@ -405,7 +335,6 @@
     <message key="manager.setup.userRegistration">Registrace uživatele</message>
     <message key="manager.setup.useTextTitle">Text nadpisu</message>
     <message key="manager.setup.volumePerYear">Počet svazků ročně</message>
-    <message key="manager.setup.registerForIndexing">Registrovat nakladatelství k indexování (sběr metadat)</message>
     <message key="manager.setup.publicationFormat.code">Formát</message>
     <message key="manager.setup.publicationFormat.codeRequired">Je třeba vybrat formát.</message>
     <message key="manager.setup.publicationFormat.nameRequired">Tomuto formátu je třeba přiřadit název.</message>
@@ -425,7 +354,7 @@
     <message key="manager.setup.submitToCategories">Povolit návrhy na kategorie</message>
     <message key="manager.setup.submitToSeries">Povolit návrhy na edice</message>
     <message key="manager.setup.issnDescription">
-      <![CDATA[ISSN (International Standard Serial Number, mezinárodní standardní číslo seriálové publikace) je osmimístné číslo, které slouží jako identifikace periodicky vydávaných publikací včetně elektronických. Spravuje jej celosvětová síť Národních center koordinovaná Mezinárodním centrem sídlícím v Paříži, které podporuje UNESCO a francouzská vláda. Číslo lze získat na <a href="http://www.issn.org" target="_blank">webové stránce ISSN</a>. Toto lze provést kdykoli během provozu nakladatelství.]]></message>
+      <![CDATA[ISSN (International Standard Serial Number, mezinárodní standardní číslo seriálové publikace) je osmimístné číslo, které slouží jako identifikace periodicky vydávaných publikací včetně elektronických. Číslo lze získat na <a href="http://www.issn.org" target="_blank">webové stránce ISSN</a>. ]]></message>
       <message key="manager.setup.cataloguingMetadata">Katalogová metadata</message>
       <message key="manager.setup.currentFormats">Aktuální formáty</message>
       <message key="manager.setup.category">Kategorie</message>
@@ -446,16 +375,17 @@
       <message key="manager.files.note">Poznámka: Prohlížeč souborů je pokročilá funkce, která umožňuje přímé zobrazení a manipulaci se soubory a adresáři, které jsou spojeny s nakladatelstvím.</message>
       <message key="manager.setup.authorCopyrightNotice.sample"><![CDATA[<h3>Navržené informace o licenici Creative Commons</h3> <h4>Navržené zásady pro nakladatelství, jež nabízejí otevřený přístup ke svým dílům</h4> Autoři publikující u tohoto nakladatelství souhlasí s následujícími podmínkami: <ol type="a"> <li>Autoři si zachovávají autorská práva a vzdávají se nakladatelských práv na prvotní publikaci díla ve prospěch nakladatelství. Dílo je současně licencováno licencí <a target="_blank" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License</a>, která ostatním umožňuje, aby dílo sdíleli pod podmínkou uvedení autora a tohoto nakladatelství coby prvotního vydavatele.</li> <li>Autoři smějí vstoupit do separátních dodatečných smluvních vztahů zakládajících ne-exkluzivní distribuci verze díla, které nakladatelství publikovalo (např. vložit jej do instituionálního repozitáře nebo jej publikovat v knize), za podmínky uvedení tohoto nakladatelství jako prvotního vydavatele.</li> <li>Autorům je povoleno a podporují se v tom, aby svá díla zveřejnili on-line (např. v institucionálních repozitářích nebo na své webové stránce) před nebo během procesu předložení rukopisu, neboť to může vést k produktivní výměně vědomostí, stejně jako dřívějšímu a rozsáhlejšímu citování jejich díla (Vizte <a target="_blank" href="http://opcit.eprints.org/oacitation-biblio.html">The Effect of Open Access</a>).</li> </ol> <h4>Navrhované zásady pro nakladatelství, která nabízejí otevřený přístup ke svým dílům se zpožděním:</h4> Autoři publikující u tohoto nakladatelství souhlasí s následujícími podmínkami: <ol type="a"> <li>Autoři si zachovávají autorská práva a vzdávají se nakladatelských práv na prvotní publikaci díla ve prospěch nakladatelství [SPECIFIKUJTE ČASOVÉ OBDOBÍ] po publikaci. Dílo je současně licencováno licencí <a target="_blank" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License</a>, která ostatním umožňuje, aby dílo sdíleli pod podmínkou uvedení autora a tohoto nakladatelství coby prvotního vydavatele.</li> <li>Autoři smějí vstoupit do separátních dodatečných smluvních vztahů zakládajících ne-exkluzivní distribuci verze díla, které nakladatelství publikovalo (např. vložit jej do instituionálního repozitáře nebo jej publikovat v knize), za podmínky uvedení tohoto nakladatelství jako prvotního vydavatele.</li> <li>Autorům je povoleno a podporují se v tom, aby svá díla zveřejnili on-line (např. v institucionálních repozitářích nebo na své webové stránce) před nebo během procesu předložení rukopisu, neboť to může vést k produktivní výměně vědomostí, stejně jako dřívějšímu a rozsáhlejšímu citování jejich díla (Vizte <a target="_blank" href="http://opcit.eprints.org/oacitation-biblio.html">The Effect of Open Access</a>).</li> </ol>]]>
     </message>
-    <message key="manager.setup.subjectClassificationDescription">
-      <![CDATA[[Nakladatelství bude využívat klasifikační systém předmětů dostupný na webu.<br /> Název klasifikačního systému]]>
-    </message>
     <message key="manager.setup.basicEditorialStepsDescription">
       <![CDATA[Kroky: Fronta rukopisů > Recenzní řízení > Redakce rukopisu > Obsah.<br/><br/> " Vyberte model pro nakládání s těmito aspekty redakčního procesu. (Vedoucího editora a odpovědné redaktory edicí nastavíte v sekci Editoři ve Správě nakladatelství.)]]>
     </message>
     <message key="manager.setup.referenceLinkingDescription">
       <![CDATA[<p>Jsou dostupné následující nástroje pro nalezení on-line verze díla citovaného autorem:</p> <ol> <li><strong>Přidat čtecí nástroj</strong><p>Správce nakladatelství může mezi čtecí nástroje, které provázejí publikované položky, přidat možnost Nalézt reference. Ta čtenářům umožňuje vložit název citovaného díla a vyhledávat jej v předdefinovaných vědeckých databázích.</p></li> <li><strong>Zahrnout do referencí odkazy</strong><p>Grafický editor může do referencí přidat odkaz na umístění v internetu. Potřeba jsou následující instrukce (které lze upravit).</p></li> </ol>]]>
-    </message>
-    <message key="manager.setup.registerForIndexingDescription"> <![CDATA[Pokud chcete, aby byl obsah tohoto nakladatelství indexován v globálně distribuovaném systému vědeckých databází, <a href="http://pkp.sfu.ca/harvester/add.php" target="_blank">Zaregistrujte</a> URL adresu Vašeho nakladatelství do <a href="http://pkp.sfu.ca/harvester/" target="_blank">systému pro sběr metadat</a> organizace Public Knowledge Project. Tento nástroj sbírá metadata z každé indexované položky v rámci nakladatelství a umožňuje tak přesné souhrnné vyhledávání mezi vědeckými stránkami, které podporují protokol <a href="http://www.openarchives.org/OAI/openarchivesprotocol.htm#Introduction" target="_blank">Open Archives Initiative Protocol for Metadata Harvesting</a>.  <br /><br />  Pokud Váš systémový administrátor již registroval do systému celou stránku, jednotlivá nakladatelství budou indexována automaticky a další registrace již není třeba.  <br /><br />  <a href="http://pkp.sfu.ca/harvester/add.php" target="_blank">Kliknutím sem</a> zadejte <span class="highlight">{$siteUrl}</span>  <strong>adresu stránky</strong> <span class="highlight">{$oaiUrl}</span> do <strong>Archivu OAI</strong>.]]></message>
-  <message key="settings.roles.gridDescription">Role jsou skupiny uživatelů v rámci nakladatelství, kteří mají přístup k různým úrovním oprávnění a souvisejícím procesům. Existuje pět různých úrovní oprávnění: Správci nakladatelství mají přístup ke všemu v rámci nakladatelství (k veškerému obsahu a možnostem); Editoři nakladatelství mají přístup k veškerému obsahu v rámci jejich edic; Asistenti nakladatelství mají přístup ke všem monografiím, které jim explicitně určil editor; Recenzenti mohou vidět a vytvářet posudky, které jim byly přiřazeny; Autoři mohou vidět a pracovat s omezeným množstvím informací u svých vlastních rukopisů. Kromě toho existuje pět různých přiřazených stupňů, ke kterým role mohou získat přístup: Předložení návrhu, vnitřní recenzní řízení, vnější recenzní řízení, Redakce a Výroba.</message>
-  <message key="manager.publication.library">Knihovna nakladatelství</message>
+    </message>  
+    <message key="manager.publication.library">Knihovna nakladatelství</message>
+    <message key="manager.setup.resetPermissions">Reset Monograph Permissions</message>
+    <message key="manager.setup.resetPermissions.confirm">Are you sure you wish to reset permissions data already attached to monographs?</message>
+    <message key="manager.setup.resetPermissions.description">Copyright statement and license information will be permanently attached to published content, ensuring that this data will not change in the case of a press changing policies for new submissions. To reset stored permissions information already attached to published content, use the button below.</message>
+
+    <message key="grid.genres.title.short">Components</message>
+    <message key="grid.genres.title">Monograph Components</message>
 </locale>

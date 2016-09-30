@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
-  <!-- * locale/cs_CZ/default.xml * * Copyright (c) 2014 Masaryk university * * Localization strings ( ). -->
+  <!-- 
+    * locale/cs_CZ/default.xml
+    * Copyright (c) 2014 Masaryk university
+    * Localization strings (Default settings for setup items.). 
+    -->
   <locale name="cs_CZ" full_name="Čeština">
     <message key="default.genres.appendix">Dodatek</message>
     <message key="default.genres.bibliography">Bibliografie</message>
@@ -15,6 +19,8 @@
     <message key="default.genres.photo">Fotografie</message>
     <message key="default.genres.illustration">Ilustrace</message>
     <message key="default.genres.other">Ostatní</message>
+    
+    <!-- Group defaults -->
     <message key="default.groups.name.manager">Vedoucí nakladatelství</message>
     <message key="default.groups.plural.manager">Vedoucí nakladatelství</message>
     <message key="default.groups.abbrev.manager">Ved. nakl.</message>
@@ -30,6 +36,8 @@
     <message key="default.groups.name.volumeEditor">Editor sborníku</message>
     <message key="default.groups.plural.volumeEditor">Editoři sborníku</message>
     <message key="default.groups.abbrev.volumeEditor">VE</message>
+    
+    <!-- Default press settings -->
     <message key="default.pressSettings.checklist.notPreviouslyPublished">Předkládaný text dosud nebyl publikován ani se nenachází v recenzním řízení u jiného nakladatele (případně byla do komentářů připojeno vysvětlení adresované editorovi).</message>
     <message key="default.pressSettings.checklist.fileFormat">Příspěvek je ve formátu Microsoft Word, RTF, OpenDocument nebo WordPerfect.</message>
     <message key="default.pressSettings.checklist.addressesLinked">Tam, kde je to relevantní, jsou k odkazům připojeny internetové odkazy.</message>

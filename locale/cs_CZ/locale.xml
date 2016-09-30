@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
-  <!-- * locale/cs_CZ/locale.xml * * Copyright (c) 2014 Masaryk university * * Localization strings ( ). -->
+  <!-- 
+    * locale/cs_CZ/locale.xml
+    * Copyright (c) 2014 Masaryk university
+    * Localization strings. 
+    -->
   <locale name="cs_CZ" full_name="Čeština">
     <message key="monograph.audience">Audience</message>
     <message key="monograph.coverImage">Obálka</message>
-    <message key="monograph.coverImage.uploadInstructions">Ujistěte se, že výška obrázku nepřesahuje 150 % šířky, jinak se v kolotiči nezobrazí celý.</message>
+    <message key="monograph.currentCoverImageReload">Save your changes to view the new cover image.</message>
     <message key="monograph.currentCoverImage">Aktuální obrázek</message>
     <message key="monograph.audience.rangeQualifier">Rozsah audience (kvalifikátor)</message>
     <message key="monograph.audience.rangeFrom">Rozsah audience (od)</message>
@@ -12,6 +16,9 @@
     <message key="monograph.audience.rangeExact">Rozsah audience (přesná hodnota)</message>
     <message key="monograph.languages">Jazyky (angličtina, francouzština, španělština)</message>
     <message key="monograph.publicationFormats">Publikační formáty</message>
+    <message key="monograph.publicationFormat">Format</message>
+    <message key="monograph.publicationFormatDetails">Details about the available publication format: {$format}</message>
+    <message key="monograph.miscellaneousDetails">Details about this monograph</message>
     <message key="monograph.carousel.publicationFormats">Formáty:</message>
     <message key="monograph.type">Typ příspěvku</message>
     <message key="submission.pageProofs">Sazby ke korektuře</message>
@@ -20,6 +27,8 @@
     </message>
     <message key="monograph.task.addNote">Přidat k úkolu</message>
     <message key="monograph.accessLogoOpen.altText">Otevřený přístup</message>
+    
+    <!-- Metadata field description keys --> 
     <message key="monograph.publicationFormat.imprint">Imprint (Jméno značky)</message>
     <message key="monograph.publicationFormat.pageCounts">Počet stránek</message>
     <message key="monograph.publicationFormat.frontMatterCount">Úvodní stránky</message>
@@ -60,47 +69,69 @@
     <message key="grid.catalogEntry.validPriceRequired">Je třeba zadat platnou cenu.</message>
     <message key="grid.catalogEntry.publicationFormatDetails">Podrobnosti formátu</message>
     <message key="grid.catalogEntry.physicalFormat">Fyzický formát</message>
+    <message key="grid.catalogEntry.remotelyHostedContent">This format will be available at a separate website</message>
+    <message key="grid.catalogEntry.remoteURL">URL of remotely-hosted content</message>
     <message key="grid.catalogEntry.monographRequired">Je třeba zadat identifikační kód.</message>
     <message key="grid.catalogEntry.publicationFormatRequired">Je třeba zvolit publikační formát.</message>
+    <message key="grid.catalogEntry.availability">Availability</message>
     <message key="grid.catalogEntry.isAvailable">K dispozici</message>
     <message key="grid.catalogEntry.proof">Korektura</message>
-    <message key="grid.catalogEntry.availablePublicationFormat.title">Schválení formátu</message>
-    <message key="grid.catalogEntry.availablePublicationFormat.message">
+    <message key="grid.catalogEntry.approvedRepresentation.title">Format Approval</message>
+    <message key="grid.catalogEntry.approvedRepresentation.message"><![CDATA[<p>Approve the metadata for this format. Metadata can be checked from the Catalog Entry panel.</p>]]></message>
+    <message key="grid.catalogEntry.approvedRepresentation.removeMessage"><![CDATA[<p>Indicate that the metadata for this format has not been approved.</p>]]></message>
+    <message key="grid.catalogEntry.availableRepresentation.title">Schválení formátu</message>
+    <message key="grid.catalogEntry.availableRepresentation.message">
       <![CDATA[<p>Tento formát bude nyní <em>zpřístupněn</em> čtenářům prostřednictvím souborů, které se nyní objeví v katalogu a které bude možno stáhnout, a také pomocí dalších kanálů, které si nakladatesltví pro distribuci knihy zvolí.</p>]]>
     </message>
-    <message key="grid.catalogEntry.availablePublicationFormat.removeMessage">
+    <message key="grid.catalogEntry.availableRepresentation.removeMessage">
       <![CDATA[<p>Tento formát bude nyní označen za <em>nepřístupný</em> čtenářům prostřednictvím souborů i pomocí dalších kanálů.</p>]]>
     </message>
-    <message key="grid.catalogEntry.availablePublicationFormat.catalogNotApprovedWarning">Katalogová položka není schválena.</message>
-    <message key="grid.catalogEntry.availablePublicationFormat.notApprovedWarning">Katalogové položce schází schválený formát.</message>
-    <message key="grid.catalogEntry.availablePublicationFormat.proofNotApproved">Korektura nebyla schválena.</message>
+    <message key="grid.catalogEntry.availableRepresentation.catalogNotApprovedWarning">Katalogová položka není schválena.</message>
+    <message key="grid.catalogEntry.availableRepresentation.notApprovedWarning">Katalogové položce schází schválený formát.</message>
+    <message key="grid.catalogEntry.availableRepresentation.proofNotApproved">Korektura nebyla schválena.</message>
+    <message key="grid.catalogEntry.availableRepresentation.approved">Approved</message>
+    <message key="grid.catalogEntry.availableRepresentation.notApproved">Awaiting Approval</message>
+    
+    
+    <!-- publication metadata required form field keys -->
     <message key="grid.catalogEntry.fileSizeRequired">U digitálních souborů je třeba zadat velikost souboru.</message>
     <message key="grid.catalogEntry.productAvailabilityRequired">Je třeba zadat kód dostupnosti publikace.</message>
     <message key="grid.catalogEntry.productCompositionRequired">Je třeba zvolit kód skladby produktu.</message>
+    
+    <!-- assigned identification code grid and form keys -->
     <message key="grid.catalogEntry.identificationCodeValue">Hodnota kódu</message>
     <message key="grid.catalogEntry.identificationCodeType">Typ kódu ONIX</message>
     <message key="grid.catalogEntry.codeRequired">Je třeba zadat identifikační kód.</message>
     <message key="grid.catalogEntry.valueRequired">Je třeba zadat hodnotu.</message>
+    
+    <!-- assigned sales rights grid and form keys -->
     <message key="grid.catalogEntry.salesRights">Prodejní práva</message>
     <message key="grid.catalogEntry.salesRightsValue">Hodnota kódu</message>
     <message key="grid.catalogEntry.salesRightsType">Typ prodejních práv</message>
     <message key="grid.catalogEntry.salesRightsROW">Zbytek světa?</message>
     <message key="grid.catalogEntry.salesRightsROW.tip">Zaškrtnutím této volby označíte prodejní práva této položky jako univerzální pro daný formát. Není pak třeba vybírat země a regiony.</message>
-    <message key="grid.catalogEntry.codeRequired">Je třeba zadat kód.</message>
     <message key="grid.catalogEntry.oneROWPerFormat">Pro tento publikační formát byl již zadán typ prodejních práv pro zbytek světa.</message>
     <message key="grid.catalogEntry.countries">Země</message>
     <message key="grid.catalogEntry.regions">Regiony</message>
     <message key="grid.catalogEntry.included">Zahrnuto</message>
     <message key="grid.catalogEntry.excluded">Vyloučeno</message>
+    
+    <!-- market regions grid and form keys --> 
     <message key="grid.catalogEntry.markets">Trhy</message>
     <message key="grid.catalogEntry.marketTerritory">Území</message>
+    
+    <!-- assigned publication date grid and form keys -->
     <message key="grid.catalogEntry.publicationDates">Data publikace</message>
     <message key="grid.catalogEntry.roleRequired">Je třeba zadat datum.</message>
     <message key="grid.catalogEntry.dateFormatRequired">Je třeba zadat ormát data.</message>
+    
+    <!-- general catalog date keys -->
     <message key="grid.catalogEntry.dateValue">Datum</message>
     <message key="grid.catalogEntry.dateRole">Role</message>
     <message key="grid.catalogEntry.dateFormat">Formát data</message>
     <message key="grid.catalogEntry.dateRequired">Je třeba zadat datum a to tak, aby odpovídatlo zvolenému formátu.</message>
+    
+    <!-- assigned representative information grid and form keys -->
     <message key="grid.catalogEntry.representatives">Zástupci</message>
     <message key="grid.catalogEntry.representativeType">Typ zástupce</message>
     <message key="grid.catalogEntry.agentsCategory">Zástupci</message>
@@ -113,7 +144,6 @@
     <message key="grid.catalogEntry.representativeName">Jméno</message>
     <message key="grid.catalogEntry.roleRequired">Je třeba zadat roli zástupce.</message>
     <message key="grid.catalogEntry.representativePhone">Telefon</message>
-    <message key="grid.catalogEntry.representativeFax">Fax</message>
     <message key="grid.catalogEntry.representativeEmail">E-mailová adresa</message>
     <message key="grid.catalogEntry.representativeWebsite">Webová stránka</message>
     <message key="grid.catalogEntry.representativeIdValue">Identifikační číslo zástupce</message>
@@ -122,15 +152,19 @@
     <message key="grid.action.addRepresentative">Přidat zástupce</message>
     <message key="grid.action.editRepresentative">Upravit tohoto zástupce</message>
     <message key="grid.action.deleteRepresentative">Odstranit tohoto zástupce</message>
-<!--    <message key="spotlight.spotlights">Doporučujeme</message>-->
+
+    <!-- Spotlight grid keys -->
+    <!-- Spotlights management -->
+<!--<message key="spotlight">Doporučení</message>-->
+<!--<message key="spotlight.spotlights">Doporučujeme</message>-->
+    <message key="spotlight">Aktualita</message>
     <message key="spotlight.spotlights">Aktuality</message>
     <message key="spotlight.noneExist">Aktuálně nemáte zvoleny žádné doporučené publikace.</message>
 <!--    <message key="spotlight.title.homePage">Doporučujeme</message>-->
     <message key="spotlight.title.homePage">Mohlo by Vás zajímat</message>
-    <message key="spotlight.author">Autor,</message>
+    <message key="spotlight.author">Autor, </message>
     <message key="grid.content.spotlights.spotlightItemTitle">Doporučená položka</message>
     <message key="grid.content.spotlights.category.homepage">Úvodní stránka</message>
-    <message key="grid.content.spotlights.category.sidebar">Postranní panel</message>
     <message key="grid.content.spotlights.form.location">Umístění doporučených položek</message>
     <message key="grid.content.spotlights.form.item">Zadejte jméno doporučeného titulu (dokončuje se automaticky)</message>
     <message key="grid.content.spotlights.form.title">Doporučený titul</message>
@@ -141,9 +175,15 @@
     <message key="grid.action.editSpotlight">Upravit tuto doporučenou položku</message>
     <message key="grid.action.deleteSpotlight">Odstranit tuto doporučenou položku</message>
     <message key="grid.action.addSpotlight">Přidat doporučenou položku</message>
+    
+    <!-- Editorial policies -->
     <message key="manager.series.open">Otevřít příspěvky</message>
     <message key="manager.series.indexed">Indexované</message>
+    
+    <!-- Library Files -->
     <message key="grid.libraryFiles.column.files">Soubory</message>
+    
+    <!-- OMP specific grid actions -->
     <message key="grid.action.catalogEntry">Zobrazit formulář katalogové položky</message>
     <message key="grid.action.formatInCatalogEntry">Formát je přiřazen katalogové položce</message>
     <message key="grid.action.editFormat">Upravit tento formát</message>
@@ -159,7 +199,6 @@
     <message key="grid.action.releaseMonograph">Označit tento příspěvek jako "právě vydáno"</message>
     <message key="grid.action.manageCategories">Nastavit kategorie tohoto nakladatelství</message>
     <message key="grid.action.manageSeries">Nastavit edice tohoto nakladatelství</message>
-    <message key="grid.action.editApprovedProof">Upravit tuto schválenou sazbu</message>
     <message key="grid.action.addCode">Přidat identifikační kód</message>
     <message key="grid.action.editCode">Upravit tento kód</message>
     <message key="grid.action.deleteCode">Odstranit tento kód</message>
@@ -182,12 +221,16 @@
     <message key="grid.action.proofApproved">Formát byl zkontrolován</message>
     <message key="grid.action.availablePublicationFormat">Schválit / odmítnout tento formát</message>
     <message key="grid.action.formatAvailable">Formát je dostupný a zveřejněný</message>
+    
+    <!-- Review Attachments -->
     <message key="grid.reviewAttachments.add">Přidat přílohu k posouzení</message>
     <message key="grid.reviewAttachments.availableFiles">Dostupné soubory</message>
+    
+    <!-- series/categories/series -->
     <message key="series.series">Edice</message>
-    <message key="series.featured">Důležité</message>
     <message key="series.featured.description">Tato edice se zobrazí v hlavní nabídce</message>
     <message key="series.path">Adresa</message>
+    
     <message key="grid.category.categories">Kategorie</message>
     <message key="grid.category.add">Přidat kategorii</message>
     <message key="grid.category.edit">Upravit kategorii</message>
@@ -202,16 +245,20 @@
     <message key="grid.category.removeText">Opravdu si přejete odstranit tuto kategorii?</message>
     <message key="grid.category.nameRequired">Zadejte prosím název kategorie.</message>
     <message key="grid.category.categoryDetails">Podrobnosti kategorie</message>
+    
+    <!-- Catalog Management -->
     <message key="catalog.manage">Správa katalogu</message>
-    <message key="catalog.manage.homepage">Úvodní stránka</message>
     <message key="catalog.manage.newReleases">Nové publikace</message>
     <message key="catalog.manage.category">Kategorie</message>
     <message key="catalog.manage.series">Edice</message>
-    <message key="catalog.manage.managementIntroduction">Vítejte ve správě katalogu. Na této stránce můžete publikovat nové položky katalogu, upravovat knihy podle kategorií a edic a prohlížet či nastavovat seznamy (důležité knihy, nové publikace).</message>
+    <message key="catalog.manage.series.issn">ISSN</message>
+    <message key="catalog.manage.series.issn.validation">Please enter a valid ISSN.</message>
+    <message key="catalog.manage.series.issn.equalValidation">Online and print ISSN must not be the same.</message>
+    <message key="catalog.manage.series.onlineIssn">Online ISSN</message>
+    <message key="catalog.manage.series.printIssn">Print ISSN</message>
     <message key="catalog.selectSeries">Vybrat edici</message>
     <message key="catalog.selectCategory">Vybrat kategorii</message>
-    <message key="catalog.manage.entryDescription">Vyplněním nezbytných informací na kartě Monografie zveřejníte knihu v katalogu. Na příslušné kartě katalogové položky lze doplnit katalogové informace ke každému knižním formátu. Specifikace metadat knih vychází z ONIX, což je mezinárodní standard komunikace a produktových informací používaný v knižním odvětví.</message>
-    <message key="catalog.manage.spotlightDescription">Na hlavní stránce nakladatelství se zobrazují jména, obálky a stručné popisy tří vybraných publikací (např. publikací označených jako důležité).</message>
+
     <message key="catalog.manage.homepageDescription">Obálky vybraných knih se zobrazují v horní části úvodní stránky - jako skupina obrázků, které lze posouvat. Klikněte na "Důležité". Hvězdičkou přidáte knihu do kolotoče, pomocí vykřičníku ji zařadíte do skupiny "právě vydáno". Kliknutím a tažením můžete měnit pořadí.</message>
     <message key="catalog.manage.categoryDescription">Klikněte na "Důležité". Hvězdičkou označíte danou knihu jako důležitou v rámci její kategorie. Kliknutím a tažením můžete měnit pořadí.</message>
     <message key="catalog.manage.seriesDescription">Klikněte na "Důležité". Hvězdičkou označíte danou knihu jako důležitou v rámci její kategorie. Kliknutím a tažením můžete měnit pořadí. Edice se vyznačují tím, že je spravuje jeden editor a že mají společný název řady - buď v rámci kategorie nebo nezávisle.</message>
@@ -220,29 +267,77 @@
     <message key="catalog.manage.manageSeries">Spravovat edice</message>
     <message key="catalog.manage.manageCategories">Spravovat kategorie</message>
     <message key="catalog.manage.noMonographs">Nejsou přiděleny žádné monografie.</message>
-    <message key="catalog.browseTitles">Procházet tituly</message>
+    <message key="catalog.manage.featured">Featured</message>
+    <message key="catalog.manage.categoryFeatured">Featured in category</message>
+    <message key="catalog.manage.seriesFeatured">Featured in series</message>
+    <message key="catalog.manage.featuredSuccess">Monograph is featured.</message>
+    <message key="catalog.manage.notFeaturedSuccess">Monograph is not featured.</message>
+    <message key="catalog.manage.newReleaseSuccess">Monograph is marked as a new release.</message>
+    <message key="catalog.manage.notNewReleaseSuccess">Monograph is unmarked as a new release.</message>
+    <message key="catalog.manage.feature.newRelease">New release</message>
+    <message key="catalog.manage.feature.categoryNewRelease">New release in category</message>
+    <message key="catalog.manage.feature.seriesNewRelease">New release in series</message>
+    <message key="catalog.manage.nonOrderable">This monograph is not orderable until it's featured.</message>
+    <message key="catalog.manage.filter.searchByAuthorOrTitle">Search by title or author</message>
+        
+    <!-- Catalog -->    
+    <message key="catalog.noTitles">No titles have been published yet.</message>
+    <message key="catalog.noTitlesNew">No new releases are available at this time.</message>
+    <message key="catalog.noTitlesSearch">No titles were found which matched your search for "{$searchQuery}".</message>
+    <message key="catalog.noTitlesSection">No titles have been published yet for this section.</message>
+    <message key="catalog.browseTitles">{$numTitles} Titles</message>    
+        
     <message key="catalog.feature">Důležité</message>
+    <message key="catalog.featured">Featured</message>
     <message key="catalog.featuredBooks">Důležité knihy</message>
+    <message key="catalog.foundTitleSearch">One title was found which matched your search for "{$searchQuery}".</message>
+    <message key="catalog.foundTitlesSearch">{$number} titles were found which matched your search for "{$searchQuery}".</message>
+    <message key="catalog.allBooks">All Books</message>
+    <message key="catalog.newReleases">New Releases</message>
     <message key="catalog.dateAdded">Přidáno: {$dateAdded}</message>
     <message key="catalog.publicationInfo">Informace o publikaci</message>
-    <message key="catalog.relatedCategories">Související kategorie</message>
-    <message key="catalog.aboutTheAuthor">Informace o autorovi</message>
-    <message key="catalog.noBioInfo">Aktuálně není k dispozici žádná biografie.</message>
+    <message key="catalog.published">Published</message>
+    <message key="catalog.categories">Categories</message>
+    <message key="catalog.parentCategory">Parent Category</message>
+    <message key="catalog.subcategories">Subcategories</message>
+    <message key="catalog.aboutTheAuthor">About the {$roleName}</message>
+    <message key="catalog.coverImageTitle">Cover for {$monographTitle}</message>
     <message key="catalog.loginRequiredForPayment">Poznámka: Před nákupem se nejprve musíte přihlásit. Výběr položky k nákupu Vás přesměruje na přihlašovací stránku. Jakoukoli položku označenou ikonou Otevřený zdroj (Open Access) můžete stáhnout zdarma a bez přihlášení.</message>
+    <message key="catalog.sortBy">Order of monographs</message>
+    <message key="catalog.sortBy.seriesDescription">Choose how to order books in this series.</message>
+    <message key="catalog.sortBy.categoryDescription">Choose how to order books in this category.</message>
+    <message key="catalog.sortBy.catalogDescription">Choose how to order books in the catalog.</message>
+    <message key="catalog.sortBy.titleAsc">Title (A-Z)</message>
+    <message key="catalog.sortBy.titleDesc">Title (Z-A)</message>
+    <message key="catalog.sortBy.datePublishedAsc">Publication date (oldest first)</message>
+    <message key="catalog.sortBy.datePublishedDesc">Publication date (newest first)</message>
+    <message key="catalog.sortBy.seriesPositionAsc">Series position (lowest first)</message>
+    <message key="catalog.sortBy.seriesPositionDesc">Series position (highest first)</message>
+    <message key="catalog.viewableFile.title">{$type} view of the file {$title}</message>
+    <message key="catalog.viewableFile.return">Return to view details about {$monographTitle}</message>    
+    
+    
+    <!--
+     *
+     * COMMON - This section contains the most frequently-used words
+     *
+    -->
     <message key="common.prefix">Prefix</message>
     <message key="common.preview">Náhled</message>
     <message key="common.feature">Důležité</message>
     <message key="common.searchCatalog">Hledejte v naší produkci</message>
     <message key="common.moreInfo">Více informací</message>
-    <message key="common.plusMore">+ další</message>
+
     <message key="common.listbuilder.completeForm">Vyplňte prosím celý formulář.</message>
     <message key="common.listbuilder.selectValidOption">Vyberte prosím platnou položku ze seznamu.</message>
     <message key="common.listbuilder.itemExists">Stejnou položku nelze přidat dvakrát.</message>
-    <message key="common.catalogInformation">Katalogové informace je (vedle jména a abstraktu) třeba vyplnit při prvotním zadávání díla do systému.</message>
-    <message key="common.prefixAndTitle.tip">Pokud kniha začíná nějakým prefixem, například anglickým "A'" nebo "The" (nebo něčím podobným, co má být vyňato z lexikografického třídění) vložte slovo do pole pro Prefix.</message>
+    
+    <!-- Common Messages -->
     <message key="common.openMonographPress">Open Monograph Press</message>
     <message key="common.omp">OMP</message>
     <message key="common.homePageHeader.altText">Záhlaví úvodní stránky</message>
+    
+    <!-- Navigation -->
     <message key="navigation.catalog">Produkce</message>
     <message key="navigation.competingInterestPolicy">Zásady týkající se střetu zájmů</message>
     <message key="navigation.catalog.manage">Spravovat</message>
@@ -259,28 +354,37 @@
     <message key="navigation.published">Zveřejněno</message>
     <message key="navigation.wizard">Průvodce</message>
     <message key="navigation.linksAndMedia">Odkazy a sociální média</message>
+    
+    <!-- Common Press Terms -->
     <message key="press.presses">Nakladatelství</message>
     <message key="press.path">Adresa</message>
     <message key="context.context">Nakladatelství</message>
+    <message key="context.current">Current Press:</message>
     <message key="context.select">Vybrat nakladatelství...</message>
+    
+    <!-- User -->
     <message key="user.noRoles.selectUsersWithoutRoles">Zahrnout uživatele, kteří v nakladatelství nemají stanovenou roli.</message>
     <message key="user.noRoles.submitMonograph">Předložit příspěvek</message>
     <message key="user.noRoles.submitMonographRegClosed">Předložit rukopis: Registrace autorů v tuto chvíli není povolena.</message>
     <message key="user.noRoles.regReviewer">Registrace recenzenta</message>
     <message key="user.noRoles.regReviewerClosed">Registrace recenzenta: Registrace recenzentů v tuto chvíli není povolena.</message>
+    
+    <!-- OMP-specific Roles --> 
     <message key="user.role.manager">Vedoucí nakladatelství</message>
     <message key="user.role.pressEditor">Vedoucí editor/ka</message>
-    <message key="user.role.seriesEditor">Odpovědný redaktor/ka</message>
+    <message key="user.role.subEditor">Odpovědný redaktor/ka</message>
     <message key="user.role.assistant">Asistent/ka</message>
     <message key="user.role.copyeditor">Redaktor/ka</message>
     <message key="user.role.proofreader">Korektor/ka</message>
     <message key="user.role.productionEditor">Výrobní editor/ka</message>
     <message key="user.role.managers">Vedoucí vydavatelství</message>
-    <message key="user.role.seriesEditors">Odpovědní redaktoři</message>
+    <message key="user.role.subEditors">Odpovědní redaktoři</message>
     <message key="user.role.editors">Editoři</message>
     <message key="user.role.copyeditors">Redaktoři</message>
     <message key="user.role.proofreaders">Korektoři</message>
     <message key="user.role.productionEditors">Výrobní editoři</message>
+    
+    <!-- Registration -->
     <message key="user.register.completeForm">Vyplněním tohoto formuláře se zaregistrujete do nakladatelství.</message>
     <message key="user.register.selectContext">Vyberte nakladatelství, do kterého se chcete registrovat.</message>
     <message key="user.register.noContexts">V systému aktuálně nejsou žádná nakladatelství k registraci.</message>
@@ -300,7 +404,11 @@
     <message key="user.register.reviewerDescription">Ochoten účastnit se recenzního řízení pro publikace vložené do systému.</message>
     <message key="user.register.reviewerInterests">Zadejte recenzní zájmy (výzkumné oblasti a metody):</message>
     <message key="user.register.form.userGroupRequired">Musíte vybrat alespoň jednu roli</message>
+    
+    <!-- Site index -->
     <message key="site.pressView">Zobrazit webovou stránku nakladatelství</message>
+    
+    <!-- About The Press -->
     <message key="about.pressContact">Kontakt</message>
     <message key="about.aboutThePress">O nakladatelství</message>
     <message key="about.editorialTeam"><![CDATA[Redakční&nbsp;tým]]></message>
@@ -311,17 +419,14 @@
     <message key="about.sponsors">Sponzoři</message>
     <message key="about.contributors">Poskytovatelé podpory</message>
     <message key="about.onlineSubmissions">Příspěvky online</message>
-    <message key="about.onlineSubmissions.haveAccount">Máte již uživatelské jméno a heslo do nakladatelství {$pressTitle}?</message>
     <message key="about.onlineSubmissions.login">Přihlaste se</message>
-    <message key="about.onlineSubmissions.needAccount">Potřebujete uživatelské jméno a heslo?</message>
-    <message key="about.onlineSubmissions.registration">Registrujte se</message>
+    <message key="about.onlineSubmissions.register">Registrujte se</message>
     <message key="about.onlineSubmissions.registrationRequired">Registrace a přihlášení jsou nutné pro předložení návrhu na publikaci online a pro kontrolu jeho stavu.</message>
     <message key="about.authorGuidelines">Pokyny pro autory</message>
     <message key="about.submissionPreparationChecklist">Kontrolní seznam pro přípravu návrhu na publikaci</message>
     <message key="about.submissionPreparationChecklist.description">Autoři jsou v rámci procesu předložení návrhu na publikací povinni ověřit, že jejich příspěvky vyhovují následujícím pravidlům. Příspěvky nesplňující tato pravidla mohou být vráceny.</message>
     <message key="about.copyrightNotice">Informace o autorských právech</message>
     <message key="about.privacyStatement">Prohlášení o osobních údajích</message>
-    <message key="about.peerReviewProcess">Recenzní řízení</message>
     <message key="about.reviewPolicy">Pravidla recenzního řízení</message>
     <message key="about.publicationFrequency">Frekvence vydávání publikací</message>
     <message key="about.openAccessPolicy">Pravidla volného přístupu k dílům</message>
@@ -334,20 +439,24 @@
     <message key="about.aboutOMPSite">
       <![CDATA[Tento systém využívá Open Monograph Press {$ompVersion}, otevřený publikační a nakladatelský systém vyvíjený, podporovaný a svobodně distribuovaný organizací <a href="http://pkp.sfu.ca/">Public Knowledge Project</a> v souladu s licencí GNU General Public.]]>
     </message>
+    
+    <!-- Help -->
     <message key="help.searchReturnResults">Návrat do výsledků hledání</message>
     <message key="help.goToEditPage">Upravit tyto informace na nové stránce</message>
+    
+    <!-- Installer -->
     <message key="installer.ompInstallation">Instalace OMP</message>
     <message key="installer.ompUpgrade">Aktualizace OMP</message>
     <message key="installer.installApplication">Instalovat Open Monograph Press</message>
     <message key="installer.installationInstructions">
-      <![CDATA[ <p>Děkujeme vám za stažení systému <strong>Open Monograph Press {$version}</strong>, který vám přináší organizace Public Knowledge Project. Než budete pokračovat, přečtěte si prosím <a href="{$baseUrl}/docs/README">Poznámky k instalaci</a>, které jsou součástí tohoto balíčku. Další informace o organizaci Public Knowledge Project a jejích softwarových projektech jsou k dispozici na jejích <a href="http://pkp.sfu.ca/" target="_blank">webových stránkách</a>. S chybovými hlášeními a požadavky na technickou podporu Open Monograph Press se prosím obraťte na <a href="http://pkp.sfu.ca/support/forum" target="_blank">fórum technické podpory</a> nebo využijte <a href="http://pkp.sfu.ca/bugzilla/" target="_blank">systém pro hlášení chyb online</a> na stránkách PKP. Ačkoli dáváme přednost kontaktu přes fórum, můžete nám také poslat e-mailovou zprávu na adresu <a href="mailto:pkp.contact@gmail.com">pkp.contact@gmail.com</a>.</p> <h4>Aktualizace</h4> <p>Pokud aktualizujete existující instalaci OMP ve verzi 0.x, pokračujte <a href="{$upgradeUrl}">tudy</a>.</p>]]>
+      <![CDATA[ <p>Děkujeme vám za stažení systému <strong>Open Monograph Press {$version}</strong>, který vám přináší organizace Public Knowledge Project. Než budete pokračovat, přečtěte si prosím <a href="{$baseUrl}/docs/README">Poznámky k instalaci</a>, které jsou součástí tohoto balíčku. Další informace o organizaci Public Knowledge Project a jejích softwarových projektech jsou k dispozici na jejích <a href="http://pkp.sfu.ca/" target="_blank">webových stránkách</a>. S chybovými hlášeními a požadavky na technickou podporu Open Monograph Press se prosím obraťte na <a href="http://forum.pkp.sfu.ca" target="_blank">fórum technické podpory</a> nebo využijte <a href="http://pkp.sfu.ca/bugzilla/" target="_blank">systém pro hlášení chyb online</a> na stránkách PKP. Ačkoli dáváme přednost kontaktu přes fórum, můžete nám také poslat e-mailovou zprávu na adresu <a href="mailto:pkp.contact@gmail.com">pkp.contact@gmail.com</a>.</p> <h4>Aktualizace</h4> <p>Pokud aktualizujete existující instalaci OMP ve verzi 0.x, pokračujte <a href="{$upgradeUrl}">tudy</a>.</p>]]>
     </message>
     <message key="installer.preInstallationInstructionsTitle">Kroky před instalací</message>
     <message key="installer.preInstallationInstructions">
       <![CDATA[<p>1. Musíte nastavit práva pro zápis následujícím souborům a adresářům (včetně jejich obsahu):</p> <ul> <li><tt>config.inc.php</tt> je zapisovatelný (volitelné): {$writable_config}</li> <li><tt>public/</tt> je zapisovatelný: {$writable_public}</li> <li><tt>cache/</tt> je zapisovatelný: {$writable_cache}</li> <li><tt>cache/t_cache/</tt> je zapisovatelný: {$writable_templates_cache}</li> <li><tt>cache/t_compile/</tt> je zapisovatelný: {$writable_templates_compile}</li> <li><tt>cache/_db</tt> je zapisovatelný: {$writable_db_cache}</li> </ul> <p>2. Musí být vytvořen adresář pro nahrávání souborů a musí být zapisovatelný (viz "Nastavení souborů" níže).</p>]]>
     </message>
     <message key="installer.upgradeInstructions">
-      <![CDATA[<h4>OMP verze {$version}</h4> <p>Děkujeme vám za stažení systému <strong>Open Monograph Press</strong>, který vám přináší organizace Public Knowledge Project. Než budete pokračovat, přečtěte si prosím <a href="{$baseUrl}/docs/README">Poznámky k aktualizaci&lt;/a&gt; and &lt;a href="{$baseUrl}/docs/UPGRADE"&gt;UPGRADE</a>, které jsou součástí tohoto balíčku. Další informace o organizaci Public Knowledge Project a jejích softwarových projektech jsou k dispozici na jejích <a href="http://pkp.sfu.ca/" target="_blank">webových stránkách</a>. S chybovými hlášeními a požadavky na technickou podporu Open Monograph Press se prosím obraťte na <a href="http://pkp.sfu.ca/support/forum" target="_blank">fórum technické podpory</a> nebo využijte <a href="http://pkp.sfu.ca/bugzilla/" target="_blank">systém pro hlášení chyb online</a> na stránkách PKP. Ačkoli dáváme přednost kontaktu přes fórum, můžete nám také poslat e-mailovou zprávu na adresu <a href="mailto:pkp.contact@gmail.com">pkp.contact@gmail.com</a>.</p> <p><strong>Důrazně doporučujeme,</strong> abyste zálohoval/a databázi, strukturu souborů a instalační adresář OMP, než budete pokračovat.</p> <p>Pokud pracujete v <a href="http://www.php.net/features.safe-mode" target="_blank">bezpečném režimu PHP</a>, ujištěte se prosím, že direktiva max_execution_time má v konfiguračním souboru php.ini nastavený vysoký limit. Pokud bude tento nebo jiný limit (např. direktiva Apache TIMEOUT ) dosažen procesu aktualizace se přeruší, může být nutný ruční zásah.</p>]]>
+      <![CDATA[<h4>OMP verze {$version}</h4> <p>Děkujeme vám za stažení systému <strong>Open Monograph Press</strong>, který vám přináší organizace Public Knowledge Project. Než budete pokračovat, přečtěte si prosím <a href="{$baseUrl}/docs/README">Poznámky k aktualizaci&lt;/a&gt; and &lt;a href="{$baseUrl}/docs/UPGRADE"&gt;UPGRADE</a>, které jsou součástí tohoto balíčku. Další informace o organizaci Public Knowledge Project a jejích softwarových projektech jsou k dispozici na jejích <a href="http://pkp.sfu.ca/" target="_blank">webových stránkách</a>. S chybovými hlášeními a požadavky na technickou podporu Open Monograph Press se prosím obraťte na <a href="http://forum.pkp.sfu.ca" target="_blank">fórum technické podpory</a> nebo využijte <a href="http://pkp.sfu.ca/bugzilla/" target="_blank">systém pro hlášení chyb online</a> na stránkách PKP. Ačkoli dáváme přednost kontaktu přes fórum, můžete nám také poslat e-mailovou zprávu na adresu <a href="mailto:pkp.contact@gmail.com">pkp.contact@gmail.com</a>.</p> <p><strong>Důrazně doporučujeme,</strong> abyste zálohoval/a databázi, strukturu souborů a instalační adresář OMP, než budete pokračovat.</p> <p>Pokud pracujete v <a href="http://www.php.net/features.safe-mode" target="_blank">bezpečném režimu PHP</a>, ujištěte se prosím, že direktiva max_execution_time má v konfiguračním souboru php.ini nastavený vysoký limit. Pokud bude tento nebo jiný limit (např. direktiva Apache TIMEOUT ) dosažen procesu aktualizace se přeruší, může být nutný ruční zásah.</p>]]>
     </message>
     <message key="installer.localeSettingsInstructions">
       <![CDATA[Výběrem možnosti UTF-8 u všech nastavení kódování dosáhnete kompletní podpory Unicode. Pozor, tato volba v současnosti vyžaduje databázový server MySQL ve verzi 4.1.1 nebo vyšší nebo PostgreSQL ve verzi 9.1.5 nebo vyšší. Upozorňuejme také, že plná podpora Unicode vyžaduje knihovnu <a href="http://www.php.net/mbstring" target="_blank">mbstring</a> (v novějších instalacích PHP je povolena automaticky). Pokud váš server nesplňuje tyto požadavky, můžete zaznamenat problémy s rozšířenými znakovými sadami. <br /><br /> Váš server aktuálně podporuje mbstring: <strong>{$supportsMBString}</strong>]]>
@@ -369,11 +478,13 @@
       <![CDATA[<h4>POZOR!</h4> <p>Instalátoru se nezdařilo připojit se automaticky ke konfiguračnímu souboru. Před prvním použitím systému prosím otevřete soubor <tt>config.inc.php</tt> ve vhodném textovém editoru a nahraďte jeho obsah textem, který je uveden v poli níže.</p>]]>
     </message>
     <message key="installer.installationComplete">
-      <![CDATA[<p>Instalace OMP byla úspěšně dokončena.</p> <p> <a href="{$loginUrl}">Přihlaste se</a> prosím uživatelským jménem a heslem, které jste zadal/a na předchozí stránce. Pak můžete systém začít používat.</p> <p>Pokud máte zájem o příjem novinek a aktualizací, <strong>registrujte se prosím na <a href="http://pkp.sfu.ca/omp/register" target="_blank">http://pkp.sfu.ca/omp/register</a>.</strong> Pokud máte otázky nebo komentáře, obraťte se prosím na <a href="http://pkp.sfu.ca/support/forum" target="_blank">fórum technické podpory</a>.</p>]]>
+      <![CDATA[<p>Instalace OMP byla úspěšně dokončena.</p> <p> <a href="{$loginUrl}">Přihlaste se</a> prosím uživatelským jménem a heslem, které jste zadal/a na předchozí stránce. Pak můžete systém začít používat.</p> <p>Pokud máte zájem o příjem novinek a aktualizací, <strong>registrujte se prosím na <a href="http://pkp.sfu.ca/omp/register" target="_blank">http://pkp.sfu.ca/omp/register</a>.</strong> Pokud máte otázky nebo komentáře, obraťte se prosím na <a href="http://forum.pkp.sfu.ca" target="_blank">fórum technické podpory</a>.</p>]]>
     </message>
     <message key="installer.upgradeComplete">
-      <![CDATA[<p>Aktualizace OMP na verzi {$version} byla úspěšně dokončena.</p> <p>Nezapomeňte nastavit možnost "installed" v konfiguračním souboru config.inc.php zpět na <em>On</em>.</p> <p>Pokud jste se dosud neregistroval/a máte zájem o příjem novinek a aktualizací, <strong>registrujte se prosím na <a href="http://pkp.sfu.ca/omp/register" target="_blank">http://pkp.sfu.ca/omp/register</a>.</strong> Pokud máte otázky nebo komentáře, obraťte se prosím na <a href="http://pkp.sfu.ca/support/forum" target="_blank">fórum podpory</a>.</p>]]>
+      <![CDATA[<p>Aktualizace OMP na verzi {$version} byla úspěšně dokončena.</p> <p>Nezapomeňte nastavit možnost "installed" v konfiguračním souboru config.inc.php zpět na <em>On</em>.</p> <p>Pokud jste se dosud neregistroval/a máte zájem o příjem novinek a aktualizací, <strong>registrujte se prosím na <a href="http://pkp.sfu.ca/omp/register" target="_blank">http://pkp.sfu.ca/omp/register</a>.</strong> Pokud máte otázky nebo komentáře, obraťte se prosím na <a href="http://forum.pkp.sfu.ca" target="_blank">fórum podpory</a>.</p>]]>
     </message>
+    
+    <!-- Monograph Logs -->
     <message key="log.review.reviewCleared">Kolo č. {$round} recenzního řízení (Recenzent: {$reviewerName}) příspěvku č. {$submissionId} bylo úspěšně uzavřeno.</message>
     <message key="log.review.reviewDueDateSet">Termín pro kolo č. {$round} recenzního řízení příspěvku č. {$submissionId} (Recenzent: {$reviewerName}) byl nastaven na datum {$dueDate}.</message>
     <message key="log.review.reviewDeclined">Recenzent {$reviewerName} odmítl kolo č. {$round} recenzního řízení pro návrh č. {$submissionId}.</message>
@@ -383,10 +494,11 @@
     <message key="log.editor.archived">Návrh na publikaci č. {$submissionId} byl archivován.</message>
     <message key="log.editor.restored">Návrh na publikaci č. {$submissionId} byl znovu zařazen do fronty.</message>
     <message key="log.editor.editorAssigned">Editor {$editorName} byl přiřazen jako editor návrhu na publikaci č. {$submissionId}.</message>
-    <message key="log.editor.submissionExpedited">Editor {$editorName} uspíšil editační proces pro rukopis č. {$submissionId}.</message>
     <message key="log.proofread.assign">{$assignerName} přiřadil korektora {$proofreaderName} ke korekci návrhu na publikaci č. {$submissionId}.</message>
     <message key="log.proofread.complete">Korektor {$proofreaderName} přijal návrh č. {$submissionId} do harmonogramu.</message>
     <message key="log.imported">Uživatel {$userName} importoval rukopis č. {$submissionId}.</message>
+    
+    <!-- Notifications -->
     <message key="notification.addedIdentificationCode">Identifikační kód byl přidán.</message>
     <message key="notification.editedIdentificationCode">Identifikační kód byl upraven.</message>
     <message key="notification.removedIdentificationCode">Identifikační kód byl odstraněn.</message>
@@ -408,7 +520,6 @@
     <message key="notification.addedSpotlight">Doporučená položka byla přidána.</message>
     <message key="notification.editedSpotlight">Doporučená položka byla upravena.</message>
     <message key="notification.removedSpotlight">Doporučená položka byla odstraněna.</message>
-    <message key="notification.removedFooterLink">Odkaz ze zápatí byl odstraněn.</message>
     <message key="notification.savedCatalogMetadata">Metadata katalogu byla uložena.</message>
     <message key="notification.savedPublicationFormatMetadata">Metadata formátu publikace byla uložena.</message>
     <message key="notification.mailListDescription">Pokud chcete být informován/a o novém obsahu, zadejte svou e-mailovou adresu.</message>
@@ -417,10 +528,10 @@
     </message>
     <message key="notification.proofsApproved">Korektury byly schváleny.</message>
     <message key="notification.removedSubmission">Příspěvek byl odstraněn.</message>
+    
+    <!-- Notification Types -->
     <message key="notification.type.submissionSubmitted">Nová monografie, "{$title}," byla vložena.</message>
     <message key="notification.type.editing">Události týkající se redakce</message>
-    <message key="notification.type.metadataModified">Metadata titulu "{$title}" byla změněna.</message>
-    <message key="notification.type.reviewerComment">Recenzent zanechal vzkaz u titulu "{$title}".</message>
     <message key="notification.type.reviewing">Události týkající se recenzního řízení</message>
     <message key="notification.type.site">Události týkající se systému</message>
     <message key="notification.type.submissions">Události týkající se příspěvků</message>
@@ -433,17 +544,19 @@
     <message key="notification.type.roundStatusTitle">Stav kola č. {$round}</message>
     <message key="notification.type.approveSubmission">Tento návrh aktuálně čeká na odsouhlasení katalogové položky. Poté se objeví ve veřejném katalogu.</message>
     <message key="notification.type.approveSubmissionTitle">Čeká na schválení.</message>
-    <message key="notification.type.formatNeedsApprovedSubmission">Před zahrnutím publikačního formátu do katalogu musí být schválena metadata katalogové položky. Schválení metadat katalogové položky provedete na kartě Monografie výše.</message>
+<!--    <message key="notification.type.formatNeedsApprovedSubmission">Před zahrnutím publikačního formátu do katalogu musí být schválena metadata katalogové položky. Schválení metadat katalogové položky provedete na kartě Monografie výše.</message>-->
+    <message key="notification.type.formatNeedsApprovedSubmission">The monograph will not be listed in the catalog until a catalog entry has been created. To add this book to the catalog, click on the Catalog Entry above and find the Catalog tab.</message>    
     <message key="notification.type.configurePaymentMethod.title">Nebyla nastavena žádná platební metoda.</message>
     <message key="notification.type.configurePaymentMethod">Nastavení platební metody je nutné provést ještě před nastavením internetového prodeje.</message>
     <message key="notification.type.visitCatalog">Rukopis byl schválen. Navštivte prosím katalog kliknutím na odkaz výše, kde můžete spravovat katalogové informace.</message>
     <message key="notification.type.visitCatalogTitle">Správa katalogu</message>
+    
+    <!-- Authorization -->
     <message key="user.authorization.invalidReviewAssignment">Přístup byl odepřen. Zdá se, že nejste platným recenzentem tohoto rukopisu.</message>
     <message key="user.authorization.monographAuthor">Přístup byl odepřen. Zdá se, že nejste autorem tohoto rukopisu.</message>
     <message key="user.authorization.monographReviewer">Přístup byl odepřen. Zdá se, že nejste recenzentem, který byl přiřazen tomuto rukopisu.</message>
     <message key="user.authorization.monographFile">Přístup k požadovanému souboru rukopisu byl odepřen.</message>
     <message key="user.authorization.invalidMonograph">Rukopis je neplatný nebo nebyl zadán požadavek na rukopis!</message>
-    <message key="user.authorization.invalidSeriesEditorSubmission">Návrh na editora série je neplatný nebo nebyl zadán požadavek na návrh!</message>
     <message key="user.authorization.noContext">Žádné nakladatelství nenalezeno!</message>
     <message key="user.authorization.seriesAssignment">Pokoušíte se získat přístup k monografii, která není součástí edice, jíž spravujete.</message>
     <message key="user.authorization.workflowStageAssignmentMissing">Přístup odepřen! Nebyla Vám přiřazena žádná funkce v této fázi publikačního procesu.</message>
@@ -454,6 +567,7 @@
     <message key="payment.directSales.catalog">Katalog</message>
     <message key="payment.directSales.approved">Schváleno</message>
     <message key="payment.directSales.priceCurrency">Cena (v {$currency})</message>
+    <message key="payment.directSales.numericOnly">Prices should be numeric only. Do not include currency symbols.</message>
     <message key="payment.directSales.directSales">Přímý prodej</message>
     <message key="payment.directSales.amount">{$amount} ({$currency})</message>
     <message key="payment.directSales.notAvailable">Není k dispozici.</message>
@@ -461,20 +575,30 @@
     <message key="payment.directSales.openAccess">Otevřený přístup (Open Access)</message>
     <message key="payment.directSales.price.description">Formáty souborů mohou být čtenářům zpřístupněny ke stažení z webových stránek nakladatelství - buď zdarma v režimu Open Access, nebo prostřednictvím přímého prodeje (za použití online platební brány podle nastavení v sekci Distribuce). Nastavte režim přístupu pro tento soubor.</message>
     <message key="payment.directSales.validPriceRequired">Platná cena je povinná položka.</message>
-    <message key="payment.directSales.purchase">Nákup: ({$amount} {$currency})</message>
-    <message key="payment.directSales.download">Prohlédnout nebo stáhnout</message>
+    <message key="payment.directSales.purchase">Nákup {$format}: ({$amount} {$currency})</message>
+    <!--<message key="payment.directSales.download">Stáhnout {$format}</message>-->
+    <message key="payment.directSales.download">Prohlédnout nebo stáhnout {$format}</message>
     <message key="payment.directSales.monograph.name">Zakoupit monografii nebo stáhnout kapitolu</message>
     <message key="payment.directSales.monograph.description">Touto transakcí čtenář zaplatí za stažení jednotlivé monografie nebo její kapitoly.</message>
     <message key="debug.notes.currencyListLoad">Seznam měn "{$filename}" načtený z XML</message>
     <message key="debug.notes.helpMappingLoad">Obnovený instrukční soubor XML {$filename}: Hledání {$id}.</message>
     
-    <!-- RT Entities -->
-	<message key="rt.metadata.pkp.peerReviewed">Recenzovaný článek</message>
-        
+    <!-- RT Entities -->      
     <message key="rt.metadata.pkp.dctype">Kniha</message>
+    
+    <!-- General plugin information -->
     <message key="plugins.categories.viewableFiles">Doplňky pro zveřejněné soubory</message>
     <message key="plugins.categories.viewableFiles.description">Doplňky pro zveřejněné typy souborů přidávají podporu pro zobrazování soborů uvnitř stránky (např. přímý náhled na soubory PDF).</message>
     <message key="submission.pdf.download">Stáhnout tento soubor PDF</message>
+    
+    <message key="user.profile.form.showOtherContexts">Register with other presses</message>
+    <message key="user.profile.form.hideOtherContexts">Hide other presses</message>
+    
+    <!--
+    *
+    * MUNIPRESS
+    *
+     -->
     <!--doplnkove lokalizace Munipress-->
     <!--default.xml -->
     <message key="default.pressSettings.proDistributory">

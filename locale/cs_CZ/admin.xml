@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
-  <!-- * locale/cs_CZ/admin.xml * * Copyright (c) 2014 Masaryk university * * Localization strings ( ). -->
+  <!-- 
+    * locale/cs_CZ/admin.xml  
+    * Copyright (c) 2014 Masaryk university 
+    * Localization strings (Site administration). 
+    -->
+  
   <locale name="cs_CZ" full_name="Čeština">
     <message key="admin.hostedPresses">Nakladatelství v systému</message>
     <message key="admin.settings.pressRedirect">Přesměrování na nakladatelství</message>
@@ -19,9 +24,9 @@
     <message key="admin.languages.confirmDisable">Opravdu chcete zakázat toto místní nastavení? Může to mít vliv na všechna nakladatelství, které jej aktuálně používají.</message>
     <message key="admin.systemVersion">Verze OMP</message>
     <message key="admin.systemConfiguration">Konfigurace OMP</message>
-    <message key="admin.systemConfigurationDescription">
+<!--    <message key="admin.systemConfigurationDescription">
       <![CDATA[Nastavení konfikurace OMP: <tt>config.inc.php</tt>.]]>
-    </message>
+    </message>-->
     <message key="admin.presses.pressSettings">Nastavení nakladatelství</message>
     <message key="admin.presses.noneCreated">Nebyla vytvořena žádná nakladatelství.</message>
     <message key="admin.contexts.confirmDelete">Opravdu chcete trvale odstranit toto nakladatelství a veškerý jeho obsah?</message>
@@ -35,6 +40,13 @@
     <message key="admin.presses.enablePressInstructions">Zveřejnit toto nakladatelství v systému</message>
     <message key="admin.presses.pressDescription">Popis nakladatelství</message>
     <message key="admin.presses.addPress">Přidat nakladatelství</message>
+    
+    <message key="admin.settings.oaiRegistrationDescription"><![CDATA[To have the contents of all presses hosted on this site indexed within a globally distributed system of research databases, <a href="http://pkp.sfu.ca/harvester/add.php" target="_blank">register</a> your site's URL with the Public Knowledge Project metadata <a href="http://pkp.sfu.ca/harvester/" target="_blank">harvester</a>. This tool collects the metadata from each indexed item in this press, enabling accurate and collective searching among the research sites that adhere to the <a href="http://www.openarchives.org/OAI/openarchivesprotocol.htm#Introduction" target="_blank">Open Archives Initiative Protocol for Metadata Harvesting</a>.
+<br /><br />
+<a href="http://pkp.sfu.ca/harvester/add.php" target="_blank">Click here</a> and enter <span class="highlight">{$siteUrl}</span> under <strong>Site URL</strong>, and <span class="highlight">{$oaiUrl}</span> under <strong>Base URL for OAI Archive</strong>.
+<br /><br />
+Note that the OAI interface can be disabled for this site by editing the OMP system configuration. Future versions of OMP will allow the OAI interface to be enabled or disabled for individual presses within the site.]]></message>
+
     <message key="admin.overwriteConfigFileInstructions">
       <![CDATA[<h4>VAROVÁNÍ!</div> <p>Systému se nepodařilo automaticky přepsat konfigurační soubor. Pokud chcete změny uplatnit, je nutné otevřít soubor <tt>config.inc.php</tt> ve vhodném textovém editoru a nahradit jeho obsah obsahem textového pole níže.</p>]]>
     </message>

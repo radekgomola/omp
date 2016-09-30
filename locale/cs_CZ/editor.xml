@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
-  <!-- * locale/cs_CZ/editor.xml * * Copyright (c) 2014 Masaryk university * * Localization strings ( ). -->
+  <!-- 
+    * locale/cs_CZ/editor.xml
+    * Copyright (c) 2014 Masaryk university
+    * Localization strings (editor). 
+    -->
   <locale name="cs_CZ" full_name="Čeština">
-    <message key="editor.pressSignoff">Odhlásit nakladatelství</message>
     <message key="editor.submissionArchive">Archiv příspěvků</message>
     <message key="editor.monograph.cancelReview">Zrušit požadavek</message>
     <message key="editor.monograph.clearReview">Odstranit recenzenta</message>
@@ -24,6 +27,8 @@
     <message key="editor.monograph.final.currentFiles">Aktuální pracovní verze souborů</message>
     <message key="editor.monograph.copyediting.currentFiles">Aktuální soubory</message>
     <message key="editor.monograph.copyediting.personalMessageToUser">Zpráva uživateli</message>
+    
+    <!-- Editorial Legend -->
     <message key="editor.monograph.legend.submissionActions">Možnosti příspěvků</message>
     <message key="editor.monograph.legend.submissionActionsDescription">Celkové možnosti týkající se předkládaných příspěvků.</message>
     <message key="editor.monograph.legend.sectionActions">Možnosti sekce</message>
@@ -45,18 +50,12 @@
     <message key="editor.monograph.legend.in_progress">Akce právě probíhá nebo dosud nebyla dokončena</message>
     <message key="editor.monograph.legend.complete">Akce dokončena</message>
     <message key="editor.monograph.legend.uploaded">Soubor nahrán uživatelem uvedeným v záhlaví sloupce</message>
+    
+    <!-- Editorial related -->
     <message key="editor.submission.introduction">V sekci Příspěvek editor po prohlédnutí předložených souborů zvolí příslušný krok (tato akce zároveň odešle oznámení autorovi): Odeslat do vnitřního recenzního řízení (zahrnuje výběr souborů k posouzení); Odeslat do vnějšího recenzního řízení (zahrnuje výběr souborů k posouzení); Přijmout rukopis (zahrnuje výběr souborů pro redakci); Odmítnout rukopis (Předložený rukopis se archivuje).</message>
-    <message key="editor.submission.editorial.finalDraftDescription">
-      <![CDATA[V případě sborníků, kde má každá kapitola jiného autora, může být soubor s rukopisem před redakcí rozdělen na jednotlivé kapitoly. Autoři kapitol mohou na úpravy reagovat, jakmile jsou soubory nahrány do sekce <span class="pkp_help_title">Redakce</span>.]]>
-    </message>
     <message key="editor.monograph.editorial.fairCopy">Čistopis</message>
-    <message key="editor.monograph.editorial.fairCopyDescription">Před tím, než se soubor odešle k redakci, redaktor nahraje čistopis rukopisu za účelem přezkoumání editorem.</message>
-    <message key="editor.submission.production.introduction">
-      <![CDATA[Ve fázi výroby editor vybere formát knihy (např. digitální, paperback atd.) v sekci <span class="pkp_help_title">Publikační formáty</span>, na jejichž základě grafický editor vytvoří dané soubory v tiskové kvalitě. Soubory v tiskové kvalitě jsou v jednotlivých formátech nahrány do sekce <span class="pkp_help_title">Korektura sazby</span>, kde jsou zkorigovány. Kniha je označena za <em>dostupnou</em> (tj. vydanou) v každém formátu podle sekce <span class="pkp_help_title">Publikační formáty</span>, poté, co jsou zkotrolovány a schváleny <em>korekturní výtisky</em> a katalogová položka knihy v katalogu.]]>
-    </message>
-    <message key="editor.submission.production.productionReadyFilesDescription">
-      <![CDATA[Grafický editor připraví verze těchto souborů pro každý publikační formát a poté nahraje patřičné <span class="pkp_help_title">vysázené stránky</span> ke kontrole.]]>
-    </message>
+    
+    <!-- Production/Proof related -->    
     <message key="editor.monograph.proofs">Korekturní výtisky</message>
     <message key="editor.monograph.production.approvalAndPublishing">Schválení a publikace</message>
     <message key="editor.monograph.production.approvalAndPublishingDescription">Prostřednictvím sekce Publikační formáty níže mohou být nahrány různé formáty publikace (jako je pevná vazba, měkká vazba, digitální formát). Tabulku publikačních formátů níže můžete využít jako kontrolní seznam kroků, které je třeba před publikací daného formátu dokončit.</message>
@@ -66,6 +65,5 @@
     <message key="editor.monograph.approvedProofs.edit">Nastavit podmínky stahování</message>
     <message key="editor.monograph.approvedProofs.edit.linkTitle">Nastavit podmínky</message>
     <message key="editor.monograph.proof.addNote">Přidat odpověď</message>
-    <message key="editor.internalReview.introduction">Vnitřní recenzní řízení spočívá v tom, že editor souborům předloženého rukopisu nejprve přiřadí recenzenty, zváží výsledky posudků, poté zvolí příslušnou možnost (tato akce zároveň odešle oznámení autorovi): Vyžádat si přepracovaou verzi (kterou pouze schválí recenzent); Vyžádat si novou verzi (zahájení nového kola recenzního řízení); Odeslat do vnějšího recenzního řízení (zahrnuje výběr souborů k posouzení); Přijmout rukopis (zahrnuje výběr souborů pro odeslání do redakce); Odmítnout rukopis (rukopis se archivuje).</message>
-    <message key="editor.externalReview.introduction">Vnější recenzní řízení sočívá v tom, že editor souborům předloženého rukopisu nejprve přiřadí recenzenty, kteří nejsou spojeni s daným nakladatelstvím. Zváží výsledky posudků, poté zvolí příslušnou možnost (tato akce zároveň odešle oznámení autorovi): Vyžádat si přepracovaou verzi (kterou pouze schválí recenzent); Vyžádat si novou verzi (zahájení nového kola recenzního řízení); Odeslat do vnějšího recenzního řízení (zahrnuje výběr souborů k posouzení); Přijmout rukopis (zahrnuje výběr souborů pro odeslání do redakce); Odmítnout rukopis (rukopis se archivuje).</message>
+    <message key="editor.submission.proof.manageProofFilesDescription">Any files that have already been uploaded to any submission stage can be added to the Proof Files listing by checking the Include checkbox below and clicking Search: all available files will be listed and can be chosen for inclusion.</message>
   </locale>
