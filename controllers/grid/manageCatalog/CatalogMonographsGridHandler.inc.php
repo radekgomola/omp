@@ -16,6 +16,8 @@
 import('lib.pkp.classes.controllers.grid.GridHandler');
 import('lib.pkp.classes.core.JSONMessage');
 
+define('GRID_ITEM_COUNT',30);
+
 class CatalogMonographsGridHandler extends GridHandler {
 
 	/** @var int */
@@ -159,7 +161,8 @@ class CatalogMonographsGridHandler extends GridHandler {
 	function initFeatures($request, $args) {
 		import('lib.pkp.classes.controllers.grid.feature.OrderGridItemsFeature');
 		import('lib.pkp.classes.controllers.grid.feature.InfiniteScrollingFeature');
-		return array(new OrderGridItemsFeature(true, __('catalog.manage.nonOrderable')));
+                return array(new InfiniteScrollingFeature('infiniteScrolling', $this->getItemsNumber()), new OrderGridItemsFeature());
+//		return array(new OrderGridItemsFeature(true, __('catalog.manage.nonOrderable')));
 	}
 
 	/**
@@ -278,6 +281,14 @@ class CatalogMonographsGridHandler extends GridHandler {
 	 */
 	protected function getNewReleaseColumnTitle() {
 		return 'catalog.manage.feature.newRelease';
+	}
+        
+        /**
+	 * Define how many items this grid will start loading.
+	 * @return int
+	 */
+	protected function getItemsNumber() {
+		return GRID_ITEM_COUNT;
 	}
 }
 
