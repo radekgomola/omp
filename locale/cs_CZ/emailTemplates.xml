@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE email_texts SYSTEM "../../lib/pkp/dtd/emailTemplateData.dtd">
+<!--
+    * locale/cs_CZ/emailTemplateData.xml
+    * Copyright (c) 2014 Masaryk university
+    * Localized email templates XML file.
+-->
+<email_texts locale="cs_CZ">
+    <email_text key="NOTIFICATION">
+        <subject>Nové oznámení od {$siteTitle}</subject>
+        <body>Obdržel jste nové oznámení od {$siteTitle}.
+
+            {$notificationContents}
+
+            Odkaz: {$url}
+
+            {$principalContactSignature}</body>
+        <description>Tato e-mailová zpráva se zasílá registrovaným uživatelům, kteří se k odběru oznámení tohoto typu přihlásili.</description>
+    </email_text>
+    <email_text key="NOTIFICATION_MAILLIST">
+        <subject>Nové oznámení od {$siteTitle}</subject>
+        <body>Obdržel jste nové oznámení od {$siteTitle}:
+            --
+            {$notificationContents}
+
+            Odkaz: {$url}
+            --
+
+            Pokud si nadále nepřejete dostávat tato oznámení, klikněte prosím na {$unsubscribeLink}.
+
+            {$principalContactSignature}</body>
+        <description>Tato e-mailová zpráva se zasílá neregistrovaným uživatelům, kteří se přihlásili k odběru oznámení.</description>
+    </email_text>
+    <email_text key="NOTIFICATION_MAILLIST_WELCOME">
+        <subject>Vítejte v odběru novinek {$siteTitle} !</subject>
+        <body>Přihlásil/a jste se k odběru oznámení od {$siteTitle}.
+
+            Potvrďte prosím Váš zájem kliknutím na tento odkaz. Vaše e-mailová adresa se tak přidá na seznam příjemců: {$confirmLink}
+
+            Pokud si nadále nepřejete dostávat oznámení, navštivte prosím {$unsubscribeLink} a zadejte svou e-mailovou adresu a heslo.
+
+            {$principalContactSignature}</body>
+        <description>Tato e-mailová zpráva se zasílá neregistrovanému uživateli, který se právě přihlásil do seznamu příjemců oznámení.</description>
+    </email_text>
+    <email_text key="PASSWORD_RESET_CONFIRM">
+        <subject>Potvrzení obnovy hesla</subject>
+        <body>Obdrželi jsme požadavek na obnovu Vašeho hesla pro vstup na stránku {$siteTitle}.
+
+            Pokud jste o obnovu nepožádal/a, ignorujte prosím tuto zprávu a Vaše heslo se nezmění. Pokud si heslo přejete obnovit, klikněte prosím na odkaz  níže.
+
+            Obnovit mé heslo: {$url}
+
+            {$principalContactSignature}</body>
+        <description>Tato e-mailová zpráva se zasílá registrovanému uživateli, který uvedl, že zapomněl své heslo, případně že se mu nedaří přihlásit. Obsahuje odkaz na stránku, kde si heslo může obnovit .</description>
+    </email_text>
+    <email_text key="PASSWORD_RESET">
+        <subject>Heslo obnoveno</subject>
+        <body>Vaše heslo pro vstup na stránku {$siteTitle} bylo úspěšně obnoveno. Toto uživatelské jméno a heslo si prosím uschovejte, neboť je nezbytné pro přihlášení do Vašeho účtu.
+
+            Vaše uživatelské jméno: {$username}
+            Vaše nové heslo: {$password}
+
+            {$principalContactSignature}</body>
+        <description>Tato e-mailová zpráva se zasílá registrovanému uživateli, který potvrdil svůj zájem o obnovení hesla - tak, jak bylo popsáno v e-mailové zprávě Potvrzení o obnovení hesla.</description>
+    </email_text>
+    <email_text key="USER_REGISTER">
+        <subject>Registrace uživatele nakladatelství</subject>
+        <body>{$userFullName},
+
+            Nyní jste registrovaným uživatelem nakladatelství {$contextName}. V této e-mailové zprávě Vám zasíláme Vaše uživatelské jméno a heslo, které jsou nezbytné pro veškerou spolupráci s nakladatetelstvím prostřednictvím našeho webového systému. Můžete kdykoli požádat o odstranění ze seznamu uživatelů – stačí, když mě kontaktujete.
+
+            Uživatelské jméno: {$username}
+            Heslo:  {$password}
+
+            Děkujeme. S pozdravem,
+            {$principalContactSignature}</body>
+        <description>Tato e-mailová zpráva se zasílá nově registrovanému uživateli. Jejím účelem je přivítat uživatele v systému a poskytnout mu záznam s uživatelským jménem a heslem.</description>
+    </email_text>
+    <email_text key="USER_VALIDATE">
+        <subject>Potvrďte svůj účet</subject>
+        <body>{$userFullName}
+
+            Vytvořil jste nový uživatelský účet u nakladatelství {$contextName}. Než jej však začnete používat, je třeba potvrdit Vaši e-mailovou adresu. To můžete jednoduše učinit kliknutím na odkaz níže:
+
+            {$activateUrl}
+
+            Děkujeme. S pozdravem,
+            {$principalContactSignature}</body>
+        <description>Tato e-mailová zpráva se zasílá nově registrovanému uživateli. Jejím účelem je přivítat uživatele v systému a poskytnout mu záznam s uživatelským jménem a heslem.</description>
+    </email_text>
+    <email_text key="REVIEWER_REGISTER">
+        <subject>Registrace recenzenta u nakladatelství {$contextName}</subject>
+        <body>Vzhledem k Vaši erudici jsme si dovolili registrovat Vaše jméno do databáze recenzentů nakladatelství {$contextName}. Tímto krokem Vám nevznikají žádné povinnosti – pouze nám to umožňuje Vás v budoucnu oslovit s nabídkou vypracování posudku na rukopis, který Vám zašleme. Při pozvání do recenzního řízení budete mít možnost prohlédnout si název a abstrakt tohoto rukopisu. Ve všech případech si budete moci zvolit, zda posudek vypracovat, nebo nabídku odmítnout. Rovněž nás můžete kdykoli požádat o odstranění Vašeho jména ze seznamu recenzentů.
+
+            Přikládáme Vaše uživatelské jméno a heslo, které jsou nezbytné pro veškerou spolupráci s nakladatelstvím prostřednictvím našeho webového systému. Umožní Vám například aktualizovat uživatelský profil včetně zadání případných recenzních témat.
+
+            Uživatelské jméno:  {$username}
+            Heslo:  {$password}
+
+            Děkujeme. S pozdravem,
+            {$principalContactSignature}</body>
+        <description>Tato e-mailová zpráva se zasílá nově registrovanému recenzentovi. Jejím účelem je přivítat recenzenta v systému a poskytnout mu záznam s uživatelským jménem a heslem.</description>
+    </email_text>
+    <email_text key="PUBLISH_NOTIFY">
+        <subject>Nová kniha</subject>
+        <body>Milí čtenáři,
+
+            Nakladatelství {$contextName} právě vydalo svou nejnovější knihu. Najdete ji na adrese {$contextUrl}. Zveme vás k prohlédnutí obsahu přímo zde a také k návštěvě našich webových stránek, kde si můžete procházet další knihy podle svého zájmu.
+
+            Děkujeme za trvalou přízeň!
+            {$editorialContactSignature}</body>
+        <description>Tato e-mailová zpráva se zasílá registrovaným uživatelům prostřednictvím odkazu "Oznámení uživatelům" na domácí stránce editora. Oznamuje čtenářům vydání nové publikace a zve je k návštěvě nakladatelství prostřednictvím přiložené webové adresy.</description>
+    </email_text>
+    <email_text key="SUBMISSION_ACK">
+        <subject>Děkujeme za příspěvek</subject>
+        <body>{$authorName},
+
+            {$contextName} Vám děkuje za předložený rukopis "{$submissionTitle}". Díky našemu publikačnímu systému budete moci na internetu sledovat cestu Vašeho díla celým redakčním procesem. Stačí se přihlásit do webové stránky nakladatelství:
+
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno:  {$authorUsername}
+
+            Pokud máte jakékoli dotazy, obraťte se prosím na mě. Děkujeme Vám, že jste si pro případnou publikaci Vašeho díla vybral/a naše nakladatelství.
+
+            {$editorialContactSignature}</body>
+        <description>Tato e-mailová zpráva (pokud je povolena) se automaticky zasílá autorovi, jakmile dokončí proces předložení rukopisu nakladatelství. Poskytuje informace o možnosti sledovat stav publikačního procesu online a děkuje autorovi za předložený návrh.</description>
+    </email_text>
+    <email_text key="SUBMISSION_ACK_NOT_USER">
+        <subject>Děkujeme za příspěvek</subject>
+        <body>Vážený uživateli,
+
+            {$submitterName} předložil nakladatelství {$contextName} návrh na publikaci "{$submissionTitle}". 
+
+            Pokud máte jakékoli dotazy, obraťte se prosím na mě. Děkujeme Vám, že si pro případnou publikaci Vašeho díla vybíráte naše nakladatelství.
+
+            {$editorialContactSignature}</body>
+        <description>Tato e-mailová zpráva (pokud je povolena) se automaticky zasílá ostatním autorům, kteří v rámci OMP nejsou označeni jako účastníky návrhu na publikaci.</description> 
+    </email_text>
+    <email_text key="SUBMISSION_UNSUITABLE">
+        <subject>Nevhodný příspěvek</subject>
+        <body>{$authorName},
+
+            Při předběžném posouzení Vašeho rukopisu "{$submissionTitle}" jsme došli k závěru, že příspěvek nezapadá do zaměření a pole působnosti nakladatelství {$contextName}. Doporučuji, abyste se seznámil/a s popisem našeho nakladatelství, které najdete v sekci O nakladatelství, stejně jako s aktuálním obsahem našich stánek, kde se dozvíte bližší informace o tom, na jaká díla se soustředíme. Můžete také zvážit, že rukopis nabídnete jinému, vhodnějšímu nakladatelství.
+
+            {$editorialContactSignature}</body>
+    </email_text>
+    <email_text key="EDITOR_ASSIGN">
+        <subject>Přiřazení editora</subject>
+        <body>{$editorialContactName},
+
+            Byl Vám přidělen rukopis"{$submissionTitle}" zaslaný nakladatelství {$contextName}. Vaším úkolem je na tento rukopis coby odpovědný redaktor / odpovědná redaktorka dohlížet v průběhu redakčního procesu.
+
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno:  {$editorUsername}
+
+            Děkujeme. S pozdravem,
+            {$editorialContactSignature}</body>
+        <description>Tato e-mailová zpráva informuje odpovědného redaktora edice, že mu editor přiřadil úkol dohlížet nad návrhem na publikaci během redakčního procesu. Poskytuje informace o rukopisu a o tom, jak se přihlásit do webové stránky nakladatelství.</description>
+    </email_text>
+    <email_text key="REVIEW_REQUEST">
+        <subject>Žádost o posudek</subject>
+        <body> {$reviewerName},
+
+            {$messageToReviewer}
+
+            Přihlaste se prosím do webové stránky nakladatelství do {$responseDueDate} a vyjádřete se, zda jste ochoten / ochotna zúčastnit se recenzního řízení. Najdete zde i samotný rukopis a možnost nahrát svůj posudek a doporučený verdikt.
+
+            Termín odevzdání samotného posudku je {$reviewDueDate}.
+
+            Adresa rukopisu: {$submissionReviewUrl}
+
+            Uživatelské jméno:  {$reviewerUserName}
+
+            Děkujeme Vám za zvážení této žádosti.
+
+
+            S pozdravem, 
+            {$editorialContactSignature}
+        </body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice recenzentovi. Žádá recenzenta, aby se vyjádřil, zda je ochoten vypracovat recenzní posudek. Poskytuje detaily o rukopisu, jako je název a abstrakt, termín vypracování posudku a informace o tom, jak rukopis samotný získat. Tato podoba zprávy se používá, je-li zvolena možnost Standardní recenzní řízení (v sekci Správa > Nastavení > Publ. proces > Recenzní řízení).  (V ostatních případech viz popis možnosti REVIEW_REQUEST_ATTACHED.)</description>
+    </email_text>
+    <email_text key="REVIEW_REQUEST_ONECLICK">
+        <subject>Žádost o posudek</subject>
+        <body>{$reviewerName},
+
+            Domnívám se, že byste byl/a vynikajícím recenzentem nového rukopisu, "{$submissionTitle}", který byl nedávno předložen nakladatelství {$contextName}. Níže přikládám abstrakt tohoto rukopisu. Doufám, že zvážíte, že se tohoto pro nás významného úkolu zhostíte.
+
+            Přihlaste se prosím do webové stránky nakladatelství do {$weekLaterDate} a vyjádřete se, zda jste ochoten / ochotna zúčastnit se recenzního řízení. Najdete zde i samotný rukopis a možnost nahrát svůj posudek a doporučený verdikt.
+
+            Termín odevzdání samotného posudku je {$reviewDueDate}.
+
+            Adresa rukopisu: {$submissionReviewUrl}
+
+            Děkujeme Vám za zvážení této žádosti.
+
+            {$editorialContactSignature}
+
+
+
+            "{$submissionTitle}"
+
+            {$abstractTermIfEnabled}
+            {$submissionAbstract}</body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice recenzentovi. Žádá recenzenta, aby se vyjádřil, zda je ochoten vypracovat recenzní posudek. Poskytuje detaily o rukopisu, jako je název a abstrakt, termín vypracování posudku a informace o tom, jak rukopis samotný získat. Tato podoba zprávy se používá, je-li zvolena možnost Standardní recenzní řízení (v sekci Správa > Nastavení > Publ. proces > Recenzní řízení) a zároveň je povolena možnost přístupu recenzenta „na jedno kliknutí“.</description> 
+    </email_text>
+    <email_text key="REVIEW_REQUEST_REMIND_AUTO">
+		<subject>Manuscript Review Request</subject>
+		<body><![CDATA[Dear {$reviewerName},<br />
+Just a gentle reminder of our request for your review of the submission, &quot;{$submissionTitle},&quot; for {$contextName}. We were hoping to have your response by {$responseDueDate}, and this email has been automatically generated and sent with the passing of that date.
+<br />
+{$messageToReviewer}<br />
+<br />
+Please log into the press web site to indicate whether you will undertake the review or not, as well as to access the submission and to record your review and recommendation.<br />
+<br />
+The review itself is due {$reviewDueDate}.<br />
+<br />
+Submission URL: <a href="{$submissionReviewUrl}">{$submissionReviewUrl}</a><br />
+<br />
+Username: {$reviewerUserName}<br />
+<br />
+Thank you for considering this request.<br />
+<br />
+<br />
+Sincerely,<br />
+{$editorialContactSignature}<br />
+]]></body>
+		<description>This email is automatically sent when a reviewer's confirmation due date elapses (see Review Options under Settings &gt; Workflow &gt; Review) and one-click reviewer access is disabled. Scheduled tasks must be enabled and configured (see the site configuration file).</description>
+	</email_text>
+	<email_text key="REVIEW_REQUEST_REMIND_AUTO_ONECLICK">
+		<subject>Manuscript Review Request</subject>
+		<body><![CDATA[{$reviewerName}:<br />
+Just a gentle reminder of our request for your review of the submission, &quot;{$submissionTitle},&quot; for {$contextName}. We were hoping to have your response by {$responseDueDate}, and this email has been automatically generated and sent with the passing of that date. 
+<br />
+I believe that you would serve as an excellent reviewer of the manuscript. The submission's abstract is inserted below, and I hope that you will consider undertaking this important task for us.<br />
+<br />
+Please log into the press web site to indicate whether you will undertake the review or not, as well as to access the submission and to record your review and recommendation.<br />
+<br />
+The review itself is due {$reviewDueDate}.<br />
+<br />
+Submission URL: <a href="{$submissionReviewUrl}">{$submissionReviewUrl}</a><br />
+<br />
+Thank you for considering this request.<br />
+<br />
+{$editorialContactSignature}<br />
+<br />
+<br />
+<br />
+&quot;{$submissionTitle}&quot;<br />
+<br />
+{$abstractTermIfEnabled}<br />
+{$submissionAbstract}]]></body>
+		<description>This email is automatically sent when a reviewer's confirmation due date elapses (see Review Options under Settings &gt; Workflow &gt; Review) and one-click reviewer access is enabled. Scheduled tasks must be enabled and configured (see the site configuration file).</description>
+	</email_text>
+    <email_text key="REVIEW_REQUEST_ATTACHED">
+        <subject>Žádost o posudek</subject>
+        <body>{$reviewerName},
+
+            Domnívám se, že byste byl/a vynikajícím recenzentem nového rukopisu, "{$submissionTitle}“. Chtěl/a bych Vás požádat, abyste zvážil/a, že se tohoto pro nás významného úkolu zhostíte. Zásady recenzního řízení najdete níže a rukopis samotný je připojen jako příloha této e-mailové zprávy. Váš posudek rukopisu spolu s doporučeným verdiktem byste mi měl/a odeslat do {$reviewDueDate}.
+
+            Odpovězte prosím obratem do {$weekLaterDate}, zda jste ochoten / ochotna posudek vypracovat.
+
+            Děkujeme Vám za zvážení této žádosti.
+
+            {$editorialContactSignature}
+
+
+            Zásady recenzního řízení
+
+            {$reviewGuidelines}
+        </body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice recenzentovi. Žádá recenzenta, aby se vyjádřil, zda je ochoten vypracovat recenzní posudek. Rukopis samotný zpráva zahrnuje v příloze. Tato podoba zprávy se používá, je-li zvolena možnost Recenzní řízení e-mailem (v sekci Správa  > Nastavení > Publ. proces > Recenzní řízení).  (V ostatních případech viz popis možnosti REVIEW_REQUEST.)</description>
+    </email_text>
+    <email_text key="REVIEW_CANCEL">
+        <subject>Žádost o posudek zrušena</subject>
+        <body>{$reviewerName},
+
+            Rozhodli jsme se zrušit svou žádost o vypracování posudku na rukopis "{$submissionTitle}" pro nakladatelství {$contextName}, kterou jsme Vám zaslali. Omlouváme se za všechny nepříjemnosti, které tento krok mohl způsobit, a doufáme, že Vás v budoucnu budeme moci nadále kontaktovat s další žádostí.
+
+            Pokud máte jakékoli dotazy, obraťte se na mě, prosím.
+
+            {$editorialContactSignature}</body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice recenzentovi, který aktuálně vypracovává posudek. Informuje jej, že recenzní řízení bylo zrušeno.</description>
+    </email_text>
+    <email_text key="REVIEW_CONFIRM">
+        <subject>Souhlas s posudkem</subject>
+        <body>{$editorialContactName},
+
+            Jsem ochoten pro nakladatelství {$contextName} vypracovat posudek na rukopis "{$submissionTitle}". Děkuji, že jste si na mě vzpomněli. Mám v plánu posudek odeslat v zadaném termínu, tj. do {$reviewDueDate} nebo dříve.
+
+            {$reviewerName}</body>
+        <description>Tuto e-mailovou zprávu zasílá recenzent odpovědnému redaktorovi edice. Je to odpověď na žádost o vypracování recenzního posudku, která redaktorovi oznamuje, že žádost byla přijata a posudek bude vypracován v požadovaném termínu.</description>
+    </email_text>
+    <email_text key="REVIEW_DECLINE">
+        <subject>Posudek odmítnut</subject>
+        <body>{$editorialContactName},
+
+            Obávám se, že v tomto okamžiku nejsem schopen / schopna pro nakladatelství {$contextName} vypracovat recenzní posudek na rukopis "{$submissionTitle}". Děkuji, že jste si na mě vzpomněli, a neostýchejte se mě příště opět oslovit.
+
+            {$reviewerName}</body>
+        <description>Tuto e-mailovou zprávu zasílá recenzent odpovědnému redaktorovi edice. Je to odpověď na žádost o vypracování recenzního posudku, která editorovi série oznamuje, že žádost byla odmítnuta.</description>
+    </email_text>
+    <email_text key="REVIEW_ACK">
+        <subject>Děkujeme za posudek</subject>
+        <body>{$reviewerName},
+
+            Děkujeme Vám za vypracování recenzního posudku na rukopis "{$submissionTitle}," který byl přeložen nakladatelství {$contextName}. Vážíme si toho, že jste přispěl k udržení kvality děl, která vydáváme.
+
+            {$editorialContactSignature}</body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice. Potvrzuje, že přijal hotový recenzní posudek, a děkuje recenzentovi za jeho pomoc.</description>
+    </email_text>
+    <email_text key="REVIEW_REMIND">
+        <subject>Upozornění: Recenzní posudek</subject>
+        <body>{$reviewerName},
+
+            Toto je pouze zdvožilé upozornění, že nakladatelství {$contextName} očekává Váš recenzní posudek na rukopis "{$submissionTitle}."  Doufáme, že budeme mít tento posudek k dispozici do {$reviewDueDate}, a byli bychom velmi potěšeni, kdybychom jej obdrželi, jakmile jej dokončíte.
+
+            Pokud neznáte své uživatelské jméno a heslo do systému, můžete použít následující odkaz, který heslo obnoví. Nové přihlašovací údaje Vám pak budou poslány e-mailem. {$passwordResetUrl}
+
+            Adresa rukopisu: {$submissionReviewUrl}
+
+            Uživatelské jméno:  {$reviewerUserName}
+
+            Potvrďte prosím, že budete schopen / schopna nám pomoci s tímto nezbytným příspěvkem k činnosti nakladačství. Těším se na Vaši odpověď.
+
+            {$editorialContactSignature}</body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice. Upozorňuje recenzenta, že se blíží termín odevzdání recenzního posudku.</description>
+    </email_text>
+    <email_text key="REVIEW_REMIND_ONECLICK">
+        <subject>Upozornění: Recenzní posudek</subject>
+        <body>{$reviewerName},
+
+            Toto je pouze zdvožilé upozornění, že nakladatelství {$contextName} očekává Váš recenzní posudek na rukopis "{$submissionTitle}."  Doufáme, že budeme mít tento posudek k dispozici do {$reviewDueDate}, a byli bychom velmi potěšeni, kdybychom jej obdrželi, jakmile jej dokončíte.
+
+            Adresa rukopisu: {$submissionReviewUrl}
+
+            Potvrďte prosím, že budete schopen / schopna nám pomoci s tímto nezbytným příspěvkem k činnosti nakladatelství. Těším se na Vaši odpověď.
+
+            {$editorialContactSignature}</body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice. Upozorňuje recenzenta, že se blíží termín odevzdání recenzního posudku.</description>
+    </email_text>
+    <email_text key="REVIEW_REMIND_AUTO">
+        <subject>Automatické upozornění: Recenzní posudek</subject>
+        <body>{$reviewerName},
+
+            Toto je pouze zdvožilé upozornění, že nakladatelství {$contextName} očekává Váš recenzní posudek na rukopis "{$submissionTitle}."  Doufali jsme, že bychom tento posudek mohli mít k dispozici do {$reviewDueDate}. Tato zpráva byla odeslána automaticky, jakmile toto datum uplynulo. Přesto budeme velmi potěšeni, pokud posudek obdržíme, jakmile jej dokončíte.
+
+            Pokud neznáte své uživatelské jméno a heslo do systému, můžete použít následující odkaz, který heslo obnoví. Nové přihlašovací údaje Vám pak budou poslány e-mailem. {$passwordResetUrl}
+
+            Adresa rukopisu: {$submissionReviewUrl}
+
+            Potvrďte prosím, že budete schopen / schopna nám pomoci s tímto nezbytným příspěvkem k činnosti nakladatelství. Těším se na Vaši odpověď.
+
+            {$editorialContactSignature}</body>
+        <description>Tuto e-mailovou adresu systém zasílá automaticky, jakmile uplyne termín odevzdání posudku (viz Možnosti recenzního řízení, které najdete v sekci v sekci Správa > Nastavení > Publ. proces > Recenzní řízení) a zároveň pokud není povolena možnost přístupu recenzenta „jedním kliknutím“. Musí být povoleny a nastaveny naplánované úlohy (viz konfigurační soubor).</description>
+    </email_text>
+    <email_text key="REVIEW_REMIND_AUTO_ONECLICK">
+        <subject>Automatické upozornění: Recenzní posudek</subject>
+        <body>{$reviewerName},
+
+            Toto je pouze zdvožilé upozornění, že nakladatelství {$contextName} očekává Váš recenzní posudek na rukopis "{$submissionTitle}."  Doufali jsme, že bychom tento posudek mohli mít k dispozici do {$reviewDueDate}. Tato zpráva byla odeslána automaticky, jakmile toto datum uplynulo. Přesto budeme velmi potěšeni, pokud posudek obdržíme, jakmile jej dokončíte.
+
+            Adresa rukopisu: {$submissionReviewUrl}
+
+            Potvrďte prosím, že budete schopen / schopna nám pomoci s tímto nezbytným příspěvkem k činnosti nakladatelství. Těším se na Vaši odpověď.
+
+            {$editorialContactSignature}</body>
+        <description>Tuto e-mailovou adresu systém zasílá automaticky, jakmile uplyne termín odevzdání posudku (viz Možnosti recenzního řízení, které najdete v sekci v sekci Správa > Nastavení > Publ. proces > Recenzní řízení) a zároveň pokud je povolena možnost přístupu recenzenta „jedním kliknutím“. Musí být povoleny a nastaveny naplánované úlohy (viz konfigurační soubor).</description>
+    </email_text>
+    <email_text key="EDITOR_DECISION_ACCEPT">
+        <subject>Rozhodnutí editora</subject>
+        <body>{$authorName},
+
+            Dospěli jsme k rozhodnutí ohledně Vašeho návrhu na publikaci "{$submissionTitle}," který jste předložil/a nakladatelství {$contextName}.
+
+            Výsledek recenzního řízení je:
+
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno:  {$authorUsername}
+
+            {$editorialContactSignature}
+        </body>
+        <description>Tuto e-mailovou zprávu zasílá editor nebo odpovědný redaktor edice autorovi. Sděluje mu konečné rozhodnutí týkající se předloženého návrhu na publikaci.</description>
+    </email_text>
+    <email_text key="EDITOR_DECISION_SEND_TO_EXTERNAL">
+        <subject>Rozhodnutí editora</subject>
+        <body>{$authorName},
+
+            Dospěli jsme k rozhodnutí ohledně Vašeho návrhu na publikaci "{$submissionTitle}," který jste předložil/a nakladatelství {$contextName}.
+
+            Výsledek recenzního řízení je:
+
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno:  {$authorUsername}
+
+            {$editorialContactSignature}
+        </body>
+        <description>Tuto e-mailovou zprávu zasílá editor nebo odpovědný redaktor edice autorovi. Sděluje mu, že jeho návrh na publikaci se odesílá k vnějšímu recenznímu řízení.</description>
+    </email_text>
+    <email_text key="EDITOR_DECISION_SEND_TO_PRODUCTION">
+        <subject>Rozhodnutí editora</subject>
+        <body>{$authorName},
+
+            Redakční proces Vašeho rukopisu, "{$submissionTitle}," byl dokončen.  Nyní jej posíláme do tisku.
+
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno: {$authorUsername}
+
+            {$editorialContactSignature}
+        </body>
+        <description>Tuto e-mailovou zprávu zasílá editor nebo odpovědný redaktor edice autorovi. Sděluje mu, že jeho návrh na publikaci se odesílá do tisku.</description>
+    </email_text>
+    <email_text key="EDITOR_DECISION_REVISIONS">
+        <subject>Rozhodnutí editora</subject>
+        <body>{$authorName},
+
+            Dospěli jsme k rozhodnutí ohledně Vašeho návrhu na publikaci "{$submissionTitle}," který jste předložil nakladatelství {$contextName}.
+
+            Výsledek recenzního řízení je:
+
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno:  {$authorUsername}
+
+            {$editorialContactSignature}
+        </body>
+        <description>Tuto e-mailovou zprávu zasílá editor nebo odpovědný redaktor edice autorovi. Sděluje mu konečné rozhodnutí týkající se předloženého návrhu na publikaci.</description>
+    </email_text>
+    <email_text key="EDITOR_DECISION_RESUBMIT">
+        <subject>Rozhodnutí editora</subject>
+        <body>{$authorName},
+
+            Dospěli jsme k rozhodnutí ohledně Vašeho návrhu na publikaci "{$submissionTitle}," který jste předložil/a nakladatelství {$contextName}.
+
+            Výsledek recenzního řízení je:
+
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno:  {$authorUsername}
+
+            {$editorialContactSignature}
+        </body>
+        <description>Tuto e-mailovou zprávu zasílá editor nebo odpovědný redaktor edice autorovi. Sděluje mu konečné rozhodnutí týkající se předloženého návrhu na publikaci.</description>
+    </email_text>
+    <email_text key="EDITOR_DECISION_DECLINE">
+        <subject>Rozhodnutí editora</subject>
+        <body>{$authorName}:
+
+            Dospěli jsme k rozhodnutí ohledně Vašeho návrhu na publikaci "{$submissionTitle}," který jste předložil nakladatelství {$contextName}.
+
+            Výsledek recenzního řízení je:
+
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno:  {$authorUsername}
+
+            {$editorialContactSignature}
+        </body>
+        <description>Tuto e-mailovou zprávu zasílá editor nebo odpovědný redaktor edice autorovi. Sděluje mu konečné rozhodnutí týkající se předloženého návrhu na publikaci.</description>
+    </email_text>
+    <email_text key="COPYEDIT_REQUEST">
+        <subject>Žádost o redakci</subject>
+        <body>{$copyeditorName},
+
+            Rád/a bych Vás požádal/a, abyste se ujal/a redakce rukopisu "{$submissionTitle}", který byl předložen nakladatelství{$contextName}. Postupujte prosím podle následujících pokynů:
+            1. Klikněte na adresu rukopisu níže.
+            2. Přihlaste se do nakladatelství a klikněte na uvedený soubor.
+            3. Vezměte v úvahu Redakční pokyny, které jsou zveřejněny na webové stránce.
+            4. Otevřete stažený soubor a zredigujte jej. Podle potřeby se při tom obracejte na autora pomocí funkce Dotaz na autora. 
+            5. Uložte redigovaný soubor a nahrajte jej do sekce Redakce (Krok 1).
+            6. Odešlete KOMPLETNÍ e-mailovou zprávu editorovi.
+
+            Adresa {$contextName}: {$contextUrl}
+            Adresa rukopisu: {$submissionCopyeditingUrl}
+            Uživatelské jméno:  {$copyeditorUsername}
+
+            {$editorialContactSignature}</body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice redaktorovi. Požaduje v ní zahájení redakčního procesu. Poskytuje informace o rukopisu a o tom, jak jej získat.</description>
+    </email_text>
+    <email_text key="LAYOUT_REQUEST">
+        <subject>Požadavek na sazbu</subject>
+        <body>{$layoutEditorName},
+
+            Návrh na publikaci "{$submissionTitle}", předložený nakladatelství{$contextName}, nyní potřebuje vytvořit sazbu. Postupujte prosím podle následujících pokynů:
+            1. Klikněte na adresu rukopisu níže.
+            2. Přihlaste se do nakladatelství pracujte s grafickou verzí souboru za účelem vytvoření sazby podle kritérií nakladatelství.
+            3. Odešlete KOMPLETNÍ e-mailovou zprávu editorovi.
+
+            Adresa {$contextName}: {$contextUrl}
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno:  {$layoutEditorUsername}
+
+            Pokud v současné době nemůžete úkol provést nebo pokud máte jakékoli dotazy, obraťte se na mě, prosím. Děkuji Vám za Váš příspěvek k činnosti nakladatelství.
+
+            {$editorialContactSignature}</body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice grafickému editorovi. Oznamuje mu, že mu byl přidělen úkol vytvořit sazbu daného rukopisu. Poskytuje informace o rukopisu a o tom, jak jej získat.</description>
+    </email_text>
+    <email_text key="LAYOUT_COMPLETE">
+        <subject>Sazba dokončena</subject>
+        <body>{$editorialContactName},
+
+            Sazba rukopisu "{$submissionTitle}," který byl předložen nakladatelství {$contextName}, byla dokončena. Text je nyní připraven ke korektuře.
+
+            Pokud máte jakékoli dotazy, obraťte se na mě, prosím.
+
+            {$signatureFullName}</body>
+        <description>Tuto e-mailovou zprávu zasílá grafický editor editorovi edice. Oznamuje mu, že sazba byla dokončena.</description>
+    </email_text>
+    <email_text key="INDEX_REQUEST">
+        <subject>Žádost o rejstřík</subject>
+        <body>{$indexerName},
+
+            Návrh na publikaci "{$submissionTitle}" předložený nakladatelství{$contextName} nyní potřebuje vytvořit rejstřík. Postupujte prosím podle následujících pokynů:
+            1. Klikněte na adresu rukopisu níže.
+            2. Přihlaste se do nakladatelství a použijte stránkovací korektury rukopisu za účelem vytvoření sazby podle kritérií nakladatelství.
+            3. Odešlete KOMPLETNÍ e-mailovou zprávu editorovi.
+
+            Adresa {$contextName}: {$contextUrl}
+            Adresa rukopisu: {$submissionUrl}
+            Uživatelské jméno:  {$indexerUsername}
+
+            Pokud v současné době nemůžete úkol provést nebo pokud máte jakékoli dotazy, obraťte se na mě, prosím. Děkuji Vám za Váš příspěvek k činnosti nakladatelství.
+
+            {$editorialContactSignature}</body>
+        <description>Tuto e-mailovou zprávu zasílá odpovědný redaktor edice pracovníkovi odpovědnému za vytvoření rejstříku. Oznamuje mu, že mu byl přidělen úkol vytvořit rejstřík daného rukopisu. Poskytuje informace o rukopisu a o tom, jak jej získat.</description>
+    </email_text>
+    <email_text key="INDEX_COMPLETE">
+        <subject>Rejstřík dokončen</subject>
+        <body>{$editorialContactName},
+
+            Sazba resjtříku rukopisu "{$submissionTitle}," který byl předložen nakladatelství {$contextName}, byla dokončena. Rejstřík je nyní připraven ke korektuře.
+
+            Pokud máte jakékoli dotazy, obraťte se na mě, prosím.
+
+            {$signatureFullName}</body>
+        <description>Tuto e-mailovou zprávu zasílá pracovník odpovědný za vytvoření rejstříku odpovědnému redaktorovi edice. Oznamuje mu, že byl vytvořen rejstřík.</description>
+    </email_text>
+    <email_text key="EMAIL_LINK">
+        <subject>Potenciálně zajímavý rukopis</subject>
+        <body>Myslím, že byste mohl/a mít zájem o příspěvek "{$submissionTitle}" od autora {$authorName}, který vyšel v roč.{$volume}, č.{$number} ({$year}) časopisu{$contextName}. Najdete jej na adrese "{$monographUrl}".</body>
+        <description>Tato e-mailová šablona dává registrovanému uživateli možnost zaslat informaci o textu někomu, kdo by o něj mohl mít zájem. Je dostupná ve Čtecích nástrojích a je třeba, aby ji vedoucí nakladatelství povolil v sekci Čtecí nástroje na administrační stránce.</description>
+    </email_text>
+    <email_text key="NOTIFY_SUBMISSION">
+        <subject>Oznámení o příspěvku</subject>
+        <body>Obdržel/a jste zprávu od uživatele {$sender} týkající se příspěvku"{$submissionTitle}" ({$monographDetailsUrl}):
+
+            {$message}
+
+        </body>
+        <description>Oznámení od uživatele, které lze odeslat z informačního centra příspěvku.</description>
+    </email_text>
+    <email_text key="NOTIFY_FILE">
+        <subject>Oznámení o příspěvku</subject>
+        <body>Obdržel/a jste zprávu od uživatele {$sender} týkající se příspěvku "{$fileName}" in "{$submissionTitle}" ({$monographDetailsUrl}):
+
+            {$message}
+
+        </body>
+        <description>Oznámení od uživatele, odeslané z informačního centra příspěvku.</description>
+    </email_text>
+    <email_text key="NOTIFICATION_CENTER_DEFAULT">
+        <subject>Zpráva týkající se {$contextName}</subject>
+        <body>Zadejte prosím text zprávy.</body>
+        <description>Výchozí (prázdná) zpráva, která je dostupná v informačním centru .</description>
+    </email_text>
+</email_texts>
