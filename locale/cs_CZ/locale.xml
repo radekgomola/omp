@@ -676,13 +676,12 @@
     <message key="submission.ceny">Ceny</message>
     <message key="submission.ceny.kniha">Cena</message>
     <message key="submission.ceny.ekniha">Cena e-kniha</message>
-    <message key="submission.metadata.url.oc">ID pro OC</message>
-    <message key="submission.metadata.url.oc.kniha">ID kniha</message>
-    <message key="submission.metadata.url.oc.ekniha">ID e-kniha</message>
+    <message key="submission.metadata.url.munishop">URL pro Munishop</message>
+    <message key="submission.metadata.url.munishop.kniha">URL kniha</message>
+    <message key="submission.metadata.url.munishop.ekniha">URL e-kniha</message>
     <message key="submission.cena.mena">Kč</message>
     <message key="submission.pocetStran">Počet stran</message>
-    <message key="submission.muPracoviste">Pracoviště MU</message>
-    <message key="submission.url.oc">URL obchodní centrum</message>
+    <message key="submission.url.munishop">URL munishop</message>
     <message key="submission.bibliografickaCitace">Citace</message>
     <message key="submission.generovatCitace">Generovat citace</message>
     <message key="submission.poznamka">Poznámka</message>

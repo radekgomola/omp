@@ -50,23 +50,23 @@
 		{/fbvFormSection}
 	{/fbvFormArea}
 
-	{fbvFormArea id="salesRights"}
+	{*{fbvFormArea id="salesRights"}
 		{fbvFormSection}
 			<!-- Sales rights and regions -->
 			{assign var="divId" value="salesRightsGridContainer"|concat:$representationId|escape}
 			{url|assign:salesGridUrl router=$smarty.const.ROUTE_COMPONENT component="grid.catalogEntry.SalesRightsGridHandler" op="fetchGrid" submissionId=$submissionId representationId=$representationId escape=false}
 			{load_url_in_div id=$divId url=$salesGridUrl}
 		{/fbvFormSection}
-	{/fbvFormArea}
+	{/fbvFormArea}*}
 
-	{fbvFormArea id="marketRegions"}
+	{*{fbvFormArea id="marketRegions"}
 		{fbvFormSection}
 			<!-- Market regions -->
 			{assign var="divId" value="marketsGridContainer"|concat:$representationId|escape}
 			{url|assign:marketsGridUrl router=$smarty.const.ROUTE_COMPONENT component="grid.catalogEntry.MarketsGridHandler" op="fetchGrid" submissionId=$submissionId representationId=$representationId escape=false}
 			{load_url_in_div id=$divId url=$marketsGridUrl}
 		{/fbvFormSection}
-	{/fbvFormArea}
+	{/fbvFormArea}*}
 
 	{fbvFormArea id="publicationDates"}
 		{fbvFormSection}
@@ -77,7 +77,7 @@
 		{/fbvFormSection}
 	{/fbvFormArea}
 
-	{fbvFormArea id="productComposition" class="border"}
+	{*{fbvFormArea id="productComposition" class="border"}
 		{fbvFormSection for="productCompositionCode" title="monograph.publicationFormat.productComposition" required="true"}
 			{fbvElement type="select" from=$productCompositionCodes selected=$productCompositionCode translate=false id="productCompositionCode" required="true" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}
 			{fbvElement type="select" label="monograph.publicationFormat.productFormDetailCode" from=$productFormDetailCodes selected=$productFormDetailCode translate=false id="productFormDetailCode" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}
@@ -89,12 +89,29 @@
 			{fbvElement type="select" from=$productAvailabilityCodes required=true selected=$productAvailabilityCode translate=false id="productAvailabilityCode" required="true"}
 		{/fbvFormSection}
 	{/fbvFormArea}
-
+*}
 	{fbvFormArea id="imprintFormArea" title="monograph.publicationFormat.imprint"}
 		{fbvFormSection for="imprint"}
 			{fbvElement type="text" name="imprint" id="imprint" value=$imprint maxlength="255"}
 		{/fbvFormSection}
 	{/fbvFormArea}
+
+        {fbvFormArea id="verejneInformace" title="submission.informace.verejne" class="border"}
+                {fbvFormSection}
+                        {fbvElement type="text" name="pocetStran" id="pocetStran" value=$pocetStran maxlength="40" inline=true size=$fbvStyles.size.SMALL label="submission.pocetStran"}
+                        {fbvElement type="text" name="poradiVydani" id="poradiVydani" value=$poradiVydani maxlength="40" inline=true size=$fbvStyles.size.SMALL label="submission.poradiVydani"}
+                        <script>
+                            $('input[id^="datumVydani"]').datepicker({ldelim} dateFormat: 'yy-mm-dd' {rdelim});
+                        </script>
+                        {fbvElement type="text" label="submission.manazer.datumVydani" id="datumVydani" name="datumVydani" value=$datumVydani|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
+                {/fbvFormSection}
+                {fbvFormSection label="submission.url.keStazeni" for="urlWeb"}
+                        {fbvElement type="text" name="urlStazeni" multilingual="true" id="urlStazeni" value=$urlStazeni maxlength="255" readonly=$readOnly}
+                {/fbvFormSection}
+                {fbvFormSection label="submission.url.youtube" for="urlYtb"}
+                        {fbvElement type="text" name="urlYtb" multilingual="true" id="urlYtb" value=$urlYtb maxlength="255" readonly=$readOnly}
+                {/fbvFormSection}
+        {/fbvFormArea}                       
 
 	{if $isPhysicalFormat}
 		{include file="controllers/tab/catalogEntry/form/physicalPublicationFormat.tpl"}

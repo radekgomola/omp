@@ -104,6 +104,27 @@ class MonographDAO extends SubmissionDAO {
 		);
 
 		$monograph->setId($this->getInsertId());
+                
+                /* MUNIPRESS */
+                $this->update(
+			sprintf('INSERT INTO munipress_metadata
+				(submission_id, a_kol, cena, cena_ebook, url_munishop, url_munishop_ebook, archiv,poznamka_admin, datum_vydani)
+				VALUES
+				(?, ?, ?, ?, ?, ?, ?, ?, %s)',
+				$this->datetimeToDB($monograph->getDatumVydani())),
+			array(
+                                (int) $monograph->getId(),
+				$monograph->getAKolektiv() ? 1:0,
+				(int) $monograph->getCena(),
+				(int) $monograph->getCenaEbook(),
+				$monograph->getUrlMunishop(),
+				$monograph->getUrlMunishopEbook(),
+                                $monograph->getArchivace() ? 1:0,
+                                $monograph->getPoznamkaAdmin(),
+			)
+		);
+                /*-------------*/
+                
 		$this->updateLocaleFields($monograph);
 
 		return $monograph->getId();
@@ -147,6 +168,33 @@ class MonographDAO extends SubmissionDAO {
 				(int) $monograph->getId(),
 			)
 		);
+                
+                /* MUNIPRESS */
+                $this->update(
+			sprintf('UPDATE munipress_metadata
+				SET	a_kol = ?,
+                                        cena = ?,
+                                        cena_ebook = ?,
+					url_munishop = ?,
+					url_munishop_ebook = ?,
+                                        archiv = ?,
+					poznamka_admin = ?,
+                                        datum_vydani = %s
+				WHERE	submission_id = ?',
+                               $this->datetimeToDB($monograph->getDatumVydani())),			
+			array(
+                                    $monograph->getAKolektiv() ? 1:0,
+                                    (int) $monograph->getCena(),
+                                    (int) $monograph->getCenaEbook(),
+                                    $monograph->getUrlMunishop(),
+                                    $monograph->getUrlMunishopEbook(),
+                                    $monograph->getArchivace() ? 1:0,
+                                    $monograph->getPoznamkaAdmin(),
+                                    (int) $monograph->getId()
+			)
+		);
+                /*---------------*/
+                
 		$this->updateLocaleFields($monograph);
 		$this->flushCache();
 	}
@@ -402,6 +450,56 @@ class MonographDAO extends SubmissionDAO {
 	protected function getCompletionConditions($completed) {
 		return ' ps.date_published IS ' . ($completed?'NOT ':'') . 'NULL ';
 	}
+        
+        /**
+         * MUNIPRESS
+         */
+        /**
+	 * Return a list of Years.
+	 * @return array
+	 */
+	function getYears() {
+            $result = $this->retrieve(
+                    'SELECT DISTINCT DATE_FORMAT(mm.datum_vydani, \'%Y\') AS \'rokvydani\' FROM munipress_metadata mm WHERE mm.datum_vydani IS NOT NULL ORDER BY mm.datum_vydani DESC'
+            );
+            $returner = array();
+            while (!$result->EOF) {
+                    $row = $result->GetRowAssoc(false);
+                    $returner[$row['rokvydani']] = $row['rokvydani'];
+                    $result->MoveNext();
+            }
+            $result->Close();
+            return $returner;
+	}
+        
+        /**
+	 * Return a list of languages.
+	 * @return array
+	 */
+	function getLanguagesForFilter($locale) {         
+
+            if($locale != "en_US" && $locale != "cs_CZ"){
+                $locale = "cs_CZ";
+            }
+            $locale = strtolower($locale);
+            
+            $result = $this->retrieve(
+                    'SELECT DISTINCT LOWER(cves.setting_value) AS lang_key, ml.en_name AS en_us, ml.cz_name AS cs_cz
+                            FROM controlled_vocab_entry_settings cves 
+                            LEFT JOIN munipress_languages ml ON LOWER(cves.setting_value) = LOWER(ml.en_name)
+                            WHERE cves.setting_name = \'submissionLanguage\' AND cves.locale = \'en_US\''
+                    );
+            $returner = array();
+            while (!$result->EOF) {
+                    $row = $result->GetRowAssoc(false);
+                    $returner[$row['lang_key']] = $row[$locale];
+                    $result->MoveNext();
+            }
+            $result->Close();
+            return $returner;
+	}
+        /*-------------------*/
+        
 }
 
 ?>
