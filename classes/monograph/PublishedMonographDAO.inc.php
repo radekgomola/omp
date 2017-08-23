@@ -44,7 +44,38 @@ class PublishedMonographDAO extends MonographDAO {
 		return $this->_getByAssoc($pressId, ASSOC_TYPE_PRESS, $pressId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly);
 	}
 
+        /*MUNIPRESS*/
+        /**
+	 * Retrieve all published monographs in a press.
+	 * @param $pressId int The monograhps press id.
+	 * @param $searchText string optional Search text for title and authors.
+	 * @param $rangeInfo DBResultRange optional Object with result range information.
+	 * @param $sortBy int optional Sort monographs by passed column option.
+	 * @param $sortDirection int optional Sort monographs by passed direction.
+	 * @param $featuredOnly boolean optional Whether the monographs are featured on press or not.
+	 * @param $newReleasedOnly boolean optional Whether the monographs are marked as new releases on press or not.
+	 * @return DAOResultFactory DB Object that fetches monographs objects.
+	 */
+	function getByPressIdFiltered($pressId, $searchText = null, $rangeInfo = null, $sortBy = null, $sortDirection = null, $featuredOnly = false, $newReleasedOnly = false, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null, $speckat = null) {
+		return $this->_getByAssoc($pressId, ASSOC_TYPE_PRESS, $pressId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly, $obor, $rok_vydani, $jazyk, $fakulta, $speckat);
+	}
 
+        /**
+	 * Retrieve all published monographs associated with the passed category id.
+	 * @param $seriesId int The category id monographs are associated with.
+	 * @param $pressId int The monograhps press id.
+	 * @param $searchText string optional Search text for title and authors.
+	 * @param $rangeInfo DBResultRange optional Object with result range information.
+	 * @param $sortBy int optional Sort monographs by passed column option.
+	 * @param $sortDirection int optional Sort monographs by passed direction.
+	 * @param $featuredOnly boolean optional Whether the monographs are featured on category or not.
+	 * @param $newReleasedOnly boolean optional Whether the monographs are marked as new releases on category or not.
+	 * @return DAOResultFactory DB Object that fetches monographs objects.
+	 */
+	function getByCategoryIdFiltered($categoryId, $pressId = null, $searchText = null, $rangeInfo = null, $sortBy = null, $sortDirection = null, $featuredOnly = false, $newReleasedOnly = false, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
+		return $this->_getByAssoc($pressId, ASSOC_TYPE_CATEGORY, $categoryId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly, $obor, $rok_vydani, $jazyk, $fakulta);
+	}
+        /*--------------------*/
 	/**
 	 * Retrieve all published monographs associated with the passed series id.
 	 * @param $seriesId int The series id monographs are associated with.
@@ -77,6 +108,57 @@ class PublishedMonographDAO extends MonographDAO {
 		return $this->_getByAssoc($pressId, ASSOC_TYPE_CATEGORY, $categoryId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly);
 	}
 
+        /*MUNIPRESS*/
+        /**
+	 * Retrieve all published monographs for author.
+	 * @param $user user
+	 * @return DAOResultFactory
+	 */
+	function getByAuthor($user) {
+		$primaryLocale = AppLocale::getPrimaryLocale();
+		$locale = AppLocale::getLocale();
+
+		$params = array_merge(
+			array(REALLY_BIG_NUMBER),
+			array(
+				ASSOC_TYPE_PRESS
+			)
+		);
+                
+                $params[] = $user->getFirstName();
+                $params[] = $user->getLastName();
+                $params[] = $user->getEmail();
+                $params[] = $tituly_pred = $user->getTitulyPred();
+                $params[] = $tituly_za =$user->getTitulyZa();
+
+                $result = $this->retrieveRange(
+			'SELECT	DISTINCT
+                                ps.*,
+				s.*,
+                                munis.*,
+                                
+				COALESCE(f.seq, ?) AS order_by
+			FROM	published_submissions ps
+				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
+                                LEFT JOIN authors a ON s.submission_id = a.submission_id
+				LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\')
+				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
+                                LEFT JOIN munipress_author_metadata ma ON (a.author_id = ma.author_id)
+			WHERE	ps.date_published IS NOT NULL 
+                                    AND a.first_name = ?
+                                    AND a.last_name = ?  
+                                    AND a.email = ?
+                                    ' . ($tituly_pred ?' AND ma.tituly_pred = ? ': '').'
+                                    ' . ($tituly_za ?' AND ma.tituly_za = ? ': '').'
+			ORDER BY st.setting_value',
+			$params
+		);
+
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+        /*-----------------*/
+        
 	/**
 	 * Retrieve featured monographs for the press homepage.
 	 * @param $pressId int
@@ -91,9 +173,11 @@ class PublishedMonographDAO extends MonographDAO {
 		$result = $this->retrieveRange(
 			'SELECT	ps.*,
 				s.*,
+                                munis.*,
 				' . $this->getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->getFetchJoins() . '
 				JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = s.context_id)
 			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
@@ -119,9 +203,11 @@ class PublishedMonographDAO extends MonographDAO {
 		$result = $this->retrieve(
 			'SELECT	s.*,
 				ps.*,
+                                munis.*,
 				' . $this->getFetchColumns() . '
 			FROM	submissions s
 				JOIN published_submissions ps ON (ps.submission_id = s.submission_id)
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->getFetchJoins() . '
 			WHERE	s.submission_id = ?
 				' . ($pressId?' AND s.context_id = ?':'')
@@ -138,6 +224,133 @@ class PublishedMonographDAO extends MonographDAO {
 		return $returner;
 	}
 
+        /*MUNIPRESS*/
+        /**
+	 * Retrieve Published Monographs by monograph ids
+	 * @param $monographIds arra
+	 * @param $pressId int
+	 * @return array
+	 */
+        function getByIds($monographIds, $pressId = null, $metadataApprovedOnly = true) {
+            $returner = array();
+            foreach($monographIds as $key => $value){
+                $returner[$key] = $this->getById($key, $pressId, $metadataApprovedOnly);
+            }
+            
+            return $returner;
+        }
+        
+        /**
+	 * Retrieve Published Monographs by monograph ids
+	 * @param $monographIds arra
+	 * @param $pressId int
+	 * @return array
+	 */
+        function getByIdsCategory($monographIds, $pressId = null, $categoryId = null, $metadataApprovedOnly = true) {
+            $result = $this->retrieve(
+			'SELECT	sc.submission_id AS subId
+			FROM	submission_categories sc JOIN published_submissions ps ON(sc.submission_id = ps.submission_id)
+			WHERE	sc.category_id = ?
+				AND ps.date_published IS NOT NULL',
+			array((int) $categoryId)
+		);
+            
+            $resultArray = $result->GetArray();
+            $submission_ids = array();
+            if($result->RecordCount() > 0){
+                $submission_ids = array_column($resultArray, 0);
+                $submission_ids = array_flip($submission_ids);
+            }
+            $returner = array();
+            if(sizeof($submission_ids)>0){
+                $i=0;
+                foreach($monographIds as $key => $value){
+                    if($i == sizeof($submission_ids)){
+                        break;
+                    }
+                    if(array_key_exists($key, $submission_ids)) {
+                        $returner[$key] = $this->getById($key, $pressId, $metadataApprovedOnly);
+                        $i++;
+                    }
+                    
+                }
+            }
+            return $returner;
+        }
+        
+        /**
+	 * Retrieve Published Monographs by monograph ids
+	 * @param $monographIds arra
+	 * @param $pressId int
+	 * @return array
+	 */
+        function getByIdsSeries($monographIds, $pressId = null, $serieId = null, $metadataApprovedOnly = true) {
+            $result = $this->retrieve(
+			'SELECT	s.submission_id AS subId
+			FROM	submissions s JOIN published_submissions ps ON (s.submission_id = ps.submission_id)
+			WHERE	s.series_id = ?
+				AND ps.date_published IS NOT NULL',
+			array((int) $serieId)
+		);
+            
+            $resultArray = $result->GetArray();
+            $submission_ids = array();
+            if($result->RecordCount() > 0){
+                $submission_ids = array_column($resultArray, 0);
+                $submission_ids = array_flip($submission_ids);
+            }
+            $returner = array();
+            if(sizeof($submission_ids)>0){
+                $i=0;
+                foreach($monographIds as $key => $value){
+                    if($i == sizeof($submission_ids)){
+                        break;
+                    }
+                    if(array_key_exists($key, $submission_ids)) {
+                        $returner[$key] = $this->getById($key, $pressId, $metadataApprovedOnly);
+                        $i++;
+                    }
+                    
+                }
+            }
+            return $returner;
+        }
+        /**
+	 * Get monographs by author ID.
+	 * @param $authorId int
+	 * @return array Monograph
+	 */
+	function getByAuthorId($authorId, $pressId = null, $metadataApprovedOnly = true) {
+                $params = $this->getFetchParameters();
+		$params[] = (int) $authorId;
+		if ($pressId) $params[] = (int) $pressId;
+
+		$result = $this->retrieve(
+			'SELECT	s.*,
+				ps.*,
+                                munis.*,
+                                a.author_id,
+				' . $this->getFetchColumns() . '
+			FROM	submissions s
+				JOIN published_submissions ps ON (ps.submission_id = s.submission_id)
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
+                                LEFT JOIN authors a ON s.submission_id = a.submission_id
+				' . $this->getFetchJoins() . '
+			WHERE	a.author_id = ?
+				' . ($pressId?' AND s.context_id = ?':'')
+				. ($metadataApprovedOnly?' AND ps.date_published IS NOT NULL':''),
+			$params
+		);
+
+		if ($result->RecordCount() != 0) {
+			$returner = $this->_fromRow($result->GetRowAssoc(false));
+		}
+
+		$result->Close();
+		return $returner;
+	}
+        /*-----------------*/
+        
 	/**
 	 * Find published monographs by querying monograph settings.
 	 * @param $settingName string
@@ -151,9 +364,11 @@ class PublishedMonographDAO extends MonographDAO {
 
 		$sql = 'SELECT	ps.*,
 				s.*,
+                                munis.*,
 				' . $this->getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON (ps.submission_id = s.submission_id)
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->getFetchJoins();
 
 		if (is_null($settingValue)) {
@@ -396,14 +611,22 @@ class PublishedMonographDAO extends MonographDAO {
 	 * @param $newReleasedOnly boolean optional Whether the monographs are marked as new releases on associated object or not.
 	 * @return DAOResultFactory DB Object that fetches monographs objects.
 	 */
-	private function _getByAssoc($pressId, $assocType, $assocId, $searchText = null, $rangeInfo = null, $sortBy = null, $sortDirection = null, $featuredOnly = false, $newReleasedOnly = false) {
+	private function _getByAssoc($pressId, $assocType, $assocId, $searchText = null, $rangeInfo = null, $sortBy = null, $sortDirection = null, $featuredOnly = false, $newReleasedOnly = false, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null, $speckat = null) {
 		// Cast parameters.
 		$pressId = (int) $pressId;
 		$assocType = (int) $assocType;
 		$assocId = (int) $assocId;
 		$featuredOnly = (boolean) $featuredOnly;
 		$newReleasedOnly = (boolean) $newReleasedOnly;
-
+                /*MUNIPRESS*/
+                 $locale = AppLocale::getLocale();
+                
+                $obor = $obor; 
+                $rok_vydani = (int) $rok_vydani;
+                $jazyk = $jazyk; 
+                $fakulta = $fakulta;
+                $speckat = $speckat;
+                /*----------*/
 		// If no associated object is passed, return.
 		if (!$assocId || !$assocType) {
 			return new DAOResultFactory();
@@ -470,14 +693,73 @@ class PublishedMonographDAO extends MonographDAO {
 			$params[] = $assocId;
 		}
 
+                 //MUNIPRESS
+                
+                $ke_kontrole = 0;
+                $nezarazeno = 0;
+                if($speckat == "ke_kontrole_pro_munipress"){
+                    $help = 1;
+                    $ke_kontrole = 1;
+                    $params[] = $speckat;
+                } elseif ($speckat == "nezarazeno"){ 
+                    $help = 1;
+                    $nezarazeno = 1;
+                }else{
+                    $help = 0;
+                    $speckat = '';
+                }
+                
+                $categoryDao = DAORegistry::getDAO('CategoryDAO');
+                $oboryIterator = $categoryDao->getByParentId(1,$pressId);
+                $oboryPole = array();
+                while ($result = $oboryIterator->next()) {
+                    $oboryPole[] = $result->getPath();
+                }
+                if ($obor && in_array($obor, $oboryPole) && !$help) {
+                    $params[] = $obor;
+                } else {
+                    $obor = '';
+                }
+                
+                $rok_vydani = (int) $rok_vydani;
+                if ($rok_vydani && $rok_vydani<10000 && $rok_vydani>1900 && !$help){
+                    $params[] = $rok_vydani."-01-01";
+                    $params[] = $rok_vydani."-12-31";
+                } else {
+                    $rok_vydani = '';
+                }
+                
+                if ($jazyk && !$help) {
+                    $params[] = $jazyk;
+                } else {
+                    $jazyk = '';
+                }
+                
+                $fakultyIterator = $categoryDao->getByParentId(32,$pressId);
+                $fakultyPole = array();
+                while ($result = $fakultyIterator->next()) {
+                    $fakultyPole[] = $result->getPath();
+                }
+
+                if ($fakulta && in_array($fakulta, $fakultyPole) && !$help) {
+                    $params[] = $fakulta;
+                } else {
+                    $fakulta = '';
+                } 
+                
+                
+                //Konec MUNIPRESS
+                
 		$result = $this->retrieveRange(
 			'SELECT	' . ($searchText !== null?'DISTINCT ':'') . '
 				ps.*,
 				s.*,
+                                munis.*,
 				COALESCE(f.seq, ?) AS order_by,
 				' . $this->getFetchColumns() . '
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
 				' . $this->getFetchJoins() . '
 				' . ($searchText !== null?'
 					LEFT JOIN authors a ON s.submission_id = a.submission_id
@@ -498,6 +780,14 @@ class PublishedMonographDAO extends MonographDAO {
 				' . ($assocType == ASSOC_TYPE_SERIES?' AND se.series_id = ' . $assocId:'') . '
 				' . ($featuredOnly?' AND (f.assoc_type = ? AND f.assoc_id = ?)':'') . '
 				' . ($newReleasedOnly?' AND (nr.assoc_type = ? AND nr.assoc_id = ?)':'') . '
+                                ' . ($obor ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '
+                                ' . ($rok_vydani ?' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?': '' ) . '
+                                ' . ($jazyk ?' AND s.submission_id IN (SELECT cv.assoc_id FROM controlled_vocabs cv 
+LEFT JOIN controlled_vocab_entries cve ON (cv.controlled_vocab_id = cve.controlled_vocab_id)
+JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cves.controlled_vocab_entry_id AND cves.setting_name = \'submissionLanguage\' AND LOWER(cves.setting_value) = ?))':'' ) . '
+                                ' . ($fakulta ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '  
+                                ' . ($nezarazeno ?' AND s.submission_id NOT IN (SELECT sn.submission_id FROM submission_categories sn)':'' ) . ' 
+                                ' . ($ke_kontrole ?' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))':'' ) . '
 			ORDER BY order_by, '. $this->getSortMapping($sortBy) . ' ' . $this->getDirectionMapping($sortDirection),
 			$params,
 			$rangeInfo
