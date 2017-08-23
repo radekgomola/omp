@@ -34,8 +34,9 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 		if ($contextId) $params[] = (int) $contextId;
 
 		$result = $this->retrieve(
-			'SELECT pf.*
+			'SELECT pf.*, munipf.*
 			FROM	publication_formats pf
+                        LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			' . ($contextId?' JOIN submissions s ON (s.submission_id = pf.submission_id)':'') . '
 			WHERE	pf.publication_format_id = ?' .
 			($submissionId?' AND pf.submission_id = ?':'') .
@@ -63,10 +64,11 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 	function getBySetting($settingName, $settingValue, $submissionId = null, $pressId = null) {
 		$params = array($settingName);
 
-		$sql = 'SELECT	pf.*
+		$sql = 'SELECT	pf.*, munipf.*
 			FROM	publication_formats pf
 				INNER JOIN submissions s ON s.submission_id = pf.submission_id
-				LEFT JOIN published_submissions ps ON pf.submission_id = ps.submission_id ';
+				LEFT JOIN published_submissions ps ON pf.submission_id = ps.submission_id 
+                                LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)';
 		if (is_null($settingValue)) {
 			$sql .= 'LEFT JOIN publication_format_settings pfs ON pf.publication_format_id = pfs.publication_format_id AND pfs.setting_name = ?
 				WHERE	(pfs.setting_value IS NULL OR pfs.setting_value = \'\')';
@@ -141,9 +143,10 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 
 		return new DAOResultFactory(
 			$this->retrieve(
-				'SELECT pf.*
+				'SELECT pf.*, munipf.*
 				FROM	publication_formats pf ' .
 				($contextId?'INNER JOIN submissions s ON (pf.submission_id = s.submission_id) ':'') .
+                                'LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)' .
 				'WHERE	pf.submission_id = ? ' .
 				($contextId?' AND s.context_id = ? ':'') .
 				'ORDER BY pf.seq',
@@ -161,9 +164,10 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 	function getByContextId($pressId) {
 		$params = array((int) $pressId);
 		$result = $this->retrieve(
-			'SELECT pf.*
+			'SELECT pf.*, munipf.*
 			FROM	publication_formats pf
 			JOIN	submissions s ON (s.submission_id = pf.submission_id)
+                        LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			WHERE	s.context_id = ?
 			ORDER BY pf.seq',
 			$params
@@ -179,8 +183,9 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 	 */
 	function getApprovedBySubmissionId($submissionId) {
 		$result = $this->retrieve(
-			'SELECT *
-			FROM	publication_formats
+			'SELECT pf.*
+			FROM	publication_formats pf
+                        LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			WHERE	submission_id = ? AND is_approved = 1
 			ORDER BY seq',
 			(int) $submissionId
@@ -196,6 +201,7 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 	function deleteById($representationId) {
 		// remove settings, then the association itself.
 		$this->update('DELETE FROM publication_format_settings WHERE publication_format_id = ?', (int) $representationId);
+                $this->update('DELETE FROM munipress_publication_formats WHERE publication_format_id = ?', (int) $representationId);
 		return $this->update('DELETE FROM publication_formats WHERE publication_format_id = ?', (int) $representationId);
 	}
 
@@ -255,6 +261,14 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 		$publicationFormat->setReturnableIndicatorCode($row['returnable_indicator_code']);
 		$publicationFormat->setRemoteURL($row['remote_url']);
 		$publicationFormat->setIsAvailable($row['is_available']);
+                
+                 /**********
+                 * MUNIPRESS
+                 ***********/
+                $publicationFormat->setDatumVydani($this->dateFromDB($row['datum_vydani']));
+		$publicationFormat->setPocetStran($row['pocet_stran']);
+                $publicationFormat->setPoradiVydani($row['poradi_vydani']);
+                /*----------------*/
 
 		$this->getDataObjectSettings('publication_format_settings', 'publication_format_id', $row['publication_format_id'], $publicationFormat);
 
@@ -303,6 +317,21 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 		);
 
 		$publicationFormat->setId($this->_getInsertId('publication_formats', 'publication_format_id'));
+                
+                /* MUNIPRESS*/
+                $this->update(
+			sprintf('INSERT INTO munipress_publication_formats
+				(publication_format_id, pocet_stran, datum_vydani, poradi_vydani)
+			VALUES
+				(?, ?, %s, ?)',
+                        $this->datetimeToDB($publicationFormat->getDatumVydani())),
+			array(
+				(int) $publicationFormat->getId(),
+				(int) $publicationFormat->getPocetStran(),
+                                $publicationFormat->getPoradiVydani()
+			)
+		);
+                /*----------------*/
 		$this->updateLocaleFields($publicationFormat);
 
 		return $publicationFormat->getId();
@@ -368,7 +397,23 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 				(int) $publicationFormat->getId()
 			)
 		);
-
+                /*MUNIPRESS*/
+                $this->update(
+			sprintf('UPDATE munipress_publication_formats
+			SET	pocet_stran = ?,
+                                datum_vydani = %s,
+                                poradi_vydani = ?
+			WHERE	publication_format_id = ?',
+                        $this->datetimeToDB($publicationFormat->getDatumVydani())),
+                        array(
+				(int) $publicationFormat->getPocetStran(),
+                                $publicationFormat->getPoradiVydani(),
+                                (int) $publicationFormat->getId(),
+			)
+                               
+		);
+                /*--------------------*/
+                
 		$this->updateLocaleFields($publicationFormat);
 	}
 
@@ -377,7 +422,7 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 	 * @return array
 	 */
 	function getLocaleFieldNames() {
-		return array('name');
+		return array('name', 'urlYtb');
 	}
 
 	/**

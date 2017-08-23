@@ -90,6 +90,9 @@
 		{/fbvFormSection}
 	{/fbvFormArea}
 *}
+        <input type="hidden" name="productAvailabilityCode" value={$productAvailabilityCode} />
+        <input type="hidden" name="productCompositionCode" value={$productCompositionCode} />
+        
 	{fbvFormArea id="imprintFormArea" title="monograph.publicationFormat.imprint"}
 		{fbvFormSection for="imprint"}
 			{fbvElement type="text" name="imprint" id="imprint" value=$imprint maxlength="255"}
@@ -104,9 +107,6 @@
                             $('input[id^="datumVydani"]').datepicker({ldelim} dateFormat: 'yy-mm-dd' {rdelim});
                         </script>
                         {fbvElement type="text" label="submission.manazer.datumVydani" id="datumVydani" name="datumVydani" value=$datumVydani|date_format:"%Y-%m-%d" inline=true size=$fbvStyles.size.MEDIUM}
-                {/fbvFormSection}
-                {fbvFormSection label="submission.url.keStazeni" for="urlWeb"}
-                        {fbvElement type="text" name="urlStazeni" multilingual="true" id="urlStazeni" value=$urlStazeni maxlength="255" readonly=$readOnly}
                 {/fbvFormSection}
                 {fbvFormSection label="submission.url.youtube" for="urlYtb"}
                         {fbvElement type="text" name="urlYtb" multilingual="true" id="urlYtb" value=$urlYtb maxlength="255" readonly=$readOnly}

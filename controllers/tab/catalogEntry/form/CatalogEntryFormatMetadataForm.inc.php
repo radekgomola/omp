@@ -168,7 +168,16 @@ class CatalogEntryFormatMetadataForm extends Form {
 			'technicalProtectionCode' => $publicationFormat->getTechnicalProtectionCode() != '' ? $publicationFormat->getTechnicalProtectionCode() : '00',
 			'returnableIndicatorCode' => $publicationFormat->getReturnableIndicatorCode() != '' ? $publicationFormat->getReturnableIndicatorCode() : 'Y',
 			// the pubId plugin needs the format object.
-			'publicationFormat' => $publicationFormat
+			'publicationFormat' => $publicationFormat,
+                    
+                        /*************
+                         * MUNIPRESS
+                         *************/
+                        'pocetStran' => $publicationFormat->getPocetStran(),
+                        'poradiVydani' => $publicationFormat->getPoradiVydani(),
+                        'datumVydani' => $publicationFormat->getDatumVydani(),
+                        'urlYtb' => $publicationFormat->getUrlYtb(null)// Localized
+                        /*-------------------*/
 		);
 
 		// initialize the pubId fields.
@@ -204,6 +213,12 @@ class CatalogEntryFormatMetadataForm extends Form {
 			'productAvailabilityCode',
 			'technicalProtectionCode',
 			'returnableIndicatorCode',
+                        /*MUNIPRESS*/
+                        'pocetStran',
+                        'poradiVydani',
+                        'datumVydani',
+                        'urlYtb'
+                        /*-----------*/
 		));
 
 		// consider the additional field names from the public identifer plugins
@@ -252,12 +267,24 @@ class CatalogEntryFormatMetadataForm extends Form {
 		$publicationFormat->setTechnicalProtectionCode($this->getData('technicalProtectionCode'));
 		$publicationFormat->setReturnableIndicatorCode($this->getData('returnableIndicatorCode'));
 
+                /************
+                 * MUNIPRESS
+                 ************/
+                
+                $publicationFormat->setPocetStran($this->getData('pocetStran'));
+                $publicationFormat->setPoradiVydani($this->getData('poradiVydani'));
+                $publicationFormat->setDatumVydani($this->getData('datumVydani'));
+                $publicationFormat->setUrlYtb($this->getData('urlYtb'), null);
+                /*-----------*/
+                
 		// consider the additional field names from the public identifer plugins
 		$pubIdPluginHelper = $this->_getPubIdPluginHelper();
 		$pubIdPluginHelper->execute($monograph->getContextId(), $this, $publicationFormat);
 
 		$publicationFormatDao = DAORegistry::getDAO('PublicationFormatDAO');
 		$publicationFormatDao->updateObject($publicationFormat);
+                
+                
 	}
 
 	//

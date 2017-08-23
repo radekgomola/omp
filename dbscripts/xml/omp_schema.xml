@@ -1024,4 +1024,111 @@
 		<field name="payment_method_plugin_name" type="C2" size="80" />
 		<descr>Logs completed (fulfilled) payments.</descr>
 	</table>
+        
+        <!--
+	  *
+	  * TABLE completed_payments
+	  *
+	  -->
+	<table name="completed_payments">
+		<field name="completed_payment_id" type="I8">
+			<KEY />
+			<AUTOINCREMENT/>
+		</field>
+		<field name="timestamp" type="T">
+			<NOTNULL/>
+		</field>
+		<field name="payment_type" type="I8">
+			<NOTNULL/>
+		</field>
+		<field name="press_id" type="I8">
+			<NOTNULL/>
+		</field>
+		<field name="user_id" type="I8" />
+		<!-- NOTE: assoc_id NOT numeric to incorporate file idents -->
+		<field name="assoc_id" type="C2" size="16" />
+		<field name="amount" type="F">
+			<NOTNULL/>
+		</field>
+		<field name="currency_code_alpha" type="C2" size="3" />
+		<field name="payment_method_plugin_name" type="C2" size="80" />
+		<descr>Logs completed (fulfilled) payments.</descr>
+	</table>
+        
+        <!--
+	  *
+	  * TABLE munipress_author_metadata
+	  *
+	  -->
+	<table name="munipress_author_metadata">
+		<field name="munipress_author_id" type="I8">
+			<KEY />
+			<AUTOINCREMENT/>
+		</field>
+		<field name="author_id" type="I8">
+			<NOTNULL/>
+		</field>		
+		<field name="uco" type="I4" />
+		<field name="tituly_pred" type="C2" size="80"/>
+		<field name="tituly_za" type="C2" size="80" />
+                <field name="poznamka" type="X"/>
+                <field name="druhe_prijmeni" type="C2" size="120" />
+                <field name="zobraz_hlavicka" type="I1" />
+                <field name="zobraz_autori" type="I1" />
+                <field name="zobraz_ostatni" type="I1" /> 
+                <descr>Munipress metadata for authors.</descr>
+		<index name="munipress_authors_id">
+			<col>author_id</col>
+		</index>
+	</table>
+        
+        <!--
+	  *
+	  * TABLE munipress_metadata
+	  *
+	  -->
+	<table name="munipress_metadata">
+		<field name="munipress_submission_id" type="I8">
+			<KEY />
+			<AUTOINCREMENT/>
+		</field>
+		<field name="submission_id" type="I8">
+			<NOTNULL/>
+		</field>
+                <field name="a_kol" type="I1" />
+                <field name="cena" type="I4" />
+                <field name="cena_ebook" type="I4" />
+                <field name="url_munishop" type="C2" />
+                <field name="url_munishop_ebook" type="C2" />                
+                <field name="archiv" type="I1" />                
+                <field name="poznamka_admin" type="X" />                  
+                <field name="datum_vydani" type="D" />             
+                
+                <descr>Munipress metadata for submissions.</descr>
+		<index name="munipress_submission_id">
+			<col>submission_id</col>
+		</index>
+	</table>
+        
+         <!--
+	  *
+	  * TABLE munipress_publication_formats
+	  *
+	  -->
+        <table name="munipress_publication_formats">
+		<field name="munipress_publication_format_id" type="I8">
+			<KEY />
+			<AUTOINCREMENT/>
+		</field>
+		<field name="publication_format_id" type="I8">
+			<NOTNULL/>
+		</field>
+                <field name="pocet_stran" type="I4" />                
+                <field name="datum_vydani" type="D" />
+                <field name="poradi_vydani" type="C2" size="120" />
+                <descr>Munipress metadata for publication formats</descr>
+		<index name="munipress_submission_id">
+			<col>publication_format_id</col>
+                </index>
+	</table>
 </schema>

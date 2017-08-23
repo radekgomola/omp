@@ -534,6 +534,86 @@ class PublicationFormat extends Representation {
 
 		return join( __('monograph.publicationFormat.productDimensionsSeparator'), $dimensions );
 	}
+        
+        /***********
+         * MUNIPRESS
+         **************/
+        
+        /**
+	 * Vrací pocet stran 
+	 * @return int
+	 */
+	function getPocetStran() {
+		return $this->getData('pocetStran');
+        }
+
+	/**
+	 * Nastavuje pocet stran
+	 * @param $pocetStran int
+	 */
+	function setPocetStran($pocetStran) {
+		return $this->setData('pocetStran', $pocetStran);
+	}
+        
+         /**
+	 * Vrací poradi vydani
+	 * @return string
+	 */
+	function getPoradiVydani() {
+		return $this->getData('poradiVydani');
+        }
+
+	/**
+	 * Nastavuje poradi vydani
+	 * @param $poradiVydani string
+	 */
+	function setPoradiVydani($poradiVydani) {
+		return $this->setData('poradiVydani', $poradiVydani);
+	}
+        
+        /**
+	 * Vrací poradi vydani
+	 * @return string
+	 */
+	function getDatumVydani() {
+		return $this->getData('datumVydani');
+        }
+
+	/**
+	 * Nastavuje poradi vydani
+	 * @param $datumVydani string
+	 */
+	function setDatumVydani($datumVydani) {
+		return $this->setData('datumVydani', $datumVydani);
+	} 
+
+        /**
+	 * Vraci lokalizovaný odkaz na youtube.com
+	 * @return string
+	 */
+	function getLocalizedUrlYtb() {
+		return $this->getLocalizedData('urlYtb');
+	}
+
+	/**
+	 * Vrací odkaz ke stazeni publikace
+	 * @param $locale
+	 * @return string
+	 */
+	function getUrlYtb($locale) {
+		return $this->getData('urlYtb', $locale);
+	}
+
+	/**
+	 * Nastavuje odkaz na youtube.com
+	 * @param urlYtb string
+	 * @param $locale
+	 */
+	function setUrlYtb($urlYtb, $locale) {
+		return $this->setData('urlYtb', $urlYtb, $locale);
+	}
+
+        /*-----------------*/
 }
 
 ?>
