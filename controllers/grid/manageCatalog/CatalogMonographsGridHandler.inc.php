@@ -131,7 +131,10 @@ class CatalogMonographsGridHandler extends GridHandler {
 		return array(
 			'searchText' => $request->getUserVar('searchText'),
 			'featured' => $request->getUserVar('featured'),
-			'newReleased' => $request->getUserVar('newReleased')
+			'newReleased' => $request->getUserVar('newReleased'),
+                        /*MUNIPRESS*/
+                        'trideni' => $request->getUserVar('trideni')
+                        /***********/
 		);
 	}
 
@@ -150,7 +153,10 @@ class CatalogMonographsGridHandler extends GridHandler {
 		$filterData = array_merge($filterData, array(
 			'searchText' => $request->getUserVar('searchText'),
 			'featured' => $request->getUserVar('featured'),
-			'newReleased' => $request->getUserVar('newReleased')
+			'newReleased' => $request->getUserVar('newReleased'),
+                        /*MUNIPRESS*/
+                        'trideni' => $request->getUserVar('trideni')
+                        /***********/
 		));
 		return parent::renderFilter($request, $filterData);
 	}

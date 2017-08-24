@@ -344,6 +344,21 @@ class CategoryDAO extends DAO {
 
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
+        
+         function getByPressIdOrdered($pressId, $rangeInfo = null, $locale = 'cs_CZ') {
+		// The strange ORDER BY clause is to return subcategories
+		// immediately after their parent category's entry.
+		$result = $this->retrieveRange(
+			'SELECT	c.*
+			FROM	categories c
+				LEFT JOIN categories pc ON (pc.category_id = c.parent_id) AND cs.setting_name=\'title\' AND cs.locale = ?)
+			WHERE	c.press_id = ?
+			ORDER BY (COALESCE(pc.seq, 0)*16384) + CASE WHEN pc.seq IS NULL THEN 16384 * c.seq ELSE c.seq END',
+			array($locale, (int) $pressId)
+		);
+
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
 
 	/**
 	 * Retrieve the number of categories for a press.
@@ -392,6 +407,69 @@ class CategoryDAO extends DAO {
 	function getInsertId() {
 		return $this->_getInsertId('categories', 'category_id');
 	}
+        
+        /*MUNIPRESS*/
+         /**
+	 * Retrieve all categories for a parent category.
+	 * @return DAOResultFactory containing Category ordered by sequence
+	 */
+	function getByParentIdLocale($parentId, $pressId = null, $rangeInfo = null, $locale='cs_CZ') {
+		$params = array($locale, (int) $parentId);
+		if ($pressId) $params[] = (int) $pressId;
+                
+		$result = $this->retrieveRange(
+			'SELECT	*
+			FROM	categories c
+                        LEFT JOIN category_settings cs ON (c.category_id = cs.category_id AND cs.setting_name=\'title\' AND cs.locale = ?)
+			WHERE	parent_id = ?
+			' . ($pressId?' AND press_id = ?':'').'
+                        ORDER BY cs.setting_value',
+			$params
+		);
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+
+        /**
+	 * Retrieve all categories for a parent category.
+	 * @return DAOResultFactory containing Category ordered by sequence
+	 */
+	function getByParentIdNotEmpty($parentId, $pressId = null, $locale = 'cs_CZ') {
+		$params = array($locale, (int) $parentId);
+		if ($pressId) $params[] = (int) $pressId;
+
+		$result = $this->retrieveRange(
+			'SELECT	c.*
+                        FROM	categories c
+                                RIGHT JOIN submission_categories sc ON (sc.category_id = c.category_id) 
+                                LEFT JOIN published_submissions ps ON sc.submission_id = ps.submission_id                            
+                                LEFT JOIN category_settings cs ON (c.category_id = cs.category_id AND cs.setting_name=\'title\' AND cs.locale = ?)
+                        WHERE	c.parent_id = ? AND ps.date_published IS NOT NULL
+			' . ($pressId?' AND c.press_id = ?':'') . '
+                        GROUP BY c.category_id
+                        ORDER BY cs.setting_value',
+			$params
+		);
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+        
+        function getPublicationCoutByCategoryId($categoryId, $pressId = null){
+                $params = array((int) $categoryId);
+		if ($pressId) $params[] = (int) $pressId;
+                
+                $result = $this->retrieve(
+			'SELECT	COUNT(*)
+			FROM	submission_categories sc
+                                LEFT JOIN categories c ON (sc.category_id = c.category_id)
+                                LEFT JOIN published_submissions ps ON (sc.submission_id = ps.submission_id)                                
+			WHERE	sc.category_id = ? AND ps.date_published IS NOT NULL
+                        ' . ($pressId?' AND c.press_id = ?':''),                        
+			$params
+		);
+
+		$returner = $result->fields[0];
+		$result->Close();
+		return $returner;
+        }
 }
 
 ?>

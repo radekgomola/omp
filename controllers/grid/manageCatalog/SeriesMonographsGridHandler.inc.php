@@ -101,7 +101,16 @@ class SeriesMonographsGridHandler extends CatalogMonographsGridHandler {
 	function loadData($request, $filter) {
 		$pressId = $request->getRouter()->getContext($request)->getId();
 		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
-		$monographFactory = $publishedMonographDao->getBySeriesId($filter['seriesId'], $pressId, $filter['searchText'], null, null, null, $filter['featured'], $filter['newReleased']);
+		//$monographFactory = $publishedMonographDao->getBySeriesId($filter['seriesId'], $pressId, $filter['searchText'], null, null, null, $filter['featured'], $filter['newReleased']);
+                /*MUNIPRESS*/
+                $sortBy = $sortDirection = null;
+                if ($filter['trideni']){
+                    $sortBy = $publishedMonographDao->getSortBy($filter['trideni']);
+                    $sortDirection = $publishedMonographDao->getSortDirection($filter['trideni']);
+                }
+		$monographFactory = $publishedMonographDao->getBySeriesId($filter['seriesId'], $pressId, $filter['searchText'], null, $sortBy, $sortDirection, $filter['featured'], $filter['newReleased']);
+                /*--------------*/
+                
 		return $monographFactory->toAssociativeArray();
 	}
 

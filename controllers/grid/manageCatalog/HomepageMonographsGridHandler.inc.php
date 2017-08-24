@@ -37,7 +37,15 @@ class HomepageMonographsGridHandler extends CatalogMonographsGridHandler {
 		$press = $request->getRouter()->getContext($request);
 		$rangeInfo = $this->getGridRangeInfo($request, $this->getId());
 		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
-		$monographFactory = $publishedMonographDao->getByPressId($press->getId(), $filter['searchText'], $rangeInfo, null, null, $filter['featured'], $filter['newReleased']);
+		//$monographFactory = $publishedMonographDao->getByPressId($press->getId(), $filter['searchText'], $rangeInfo, null, null, $filter['featured'], $filter['newReleased']);
+                /*MUNIPRESS*/
+                $sortBy = $sortDirection = null;
+                if ($filter['trideni']){
+                    $sortBy = $publishedMonographDao->getSortBy($filter['trideni']);
+                    $sortDirection = $publishedMonographDao->getSortDirection($filter['trideni']);
+                }
+                $monographFactory = $publishedMonographDao->getByPressId($press->getId(), $filter['searchText'], $rangeInfo, $sortBy, $sortDirection, $filter['featured'], $filter['newReleased']);
+                /***********/
 		return $monographFactory;
 	}
 }
