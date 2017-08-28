@@ -123,11 +123,11 @@ class TemplateManager extends PKPTemplateManager {
                 switch ($router->getRequestedOp($request)) {
                     case 'category':
                         $args = $router->getRequestedArgs($request);
-                        $templateMgr->assign('browseBlockSelectedCategory', reset($args));
+                        $this->assign('browseBlockSelectedCategory', reset($args));
                         break;
                     case 'series':
                         $args = $router->getRequestedArgs($request);
-                        $templateMgr->assign('browseBlockSelectedSeries', reset($args));
+                        $this->assign('browseBlockSelectedSeries', reset($args));
                         break;
                 }
 

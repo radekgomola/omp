@@ -151,9 +151,11 @@
         <div class="header__menu__submenu">
             <ul class="header__menu__submenu__list">
                 {iterate from=kategorieFakulty item=browseCategory}
-                    <li class="header__menu__submenu__item">
-                        <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$browseCategory->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
-                    </li>
+                    {if $browseCategory->getId() != 44}
+                        <li class="header__menu__submenu__item">
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$browseCategory->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
+                        </li>
+                    {/if}
                 {/iterate}
                     <li class="header__menu__submenu__item">
                         <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$kategorieOstatni->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $kategorieOstatni->getPath()|escape}is-active{/if}">{$kategorieOstatni->getLocalizedTitle()|escape}</a>
