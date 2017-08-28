@@ -9,6 +9,7 @@
  *
  * @uses $searchQuery string Previously input search query
  *}
+{* 
 <form class="cmp_form cmp_search" action="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="results"}" method="post" role="search">
 	<input name="query" value="{$searchQuery|escape}" type="text" aria-label="{translate|escape key="common.searchQuery"}">
 	<button type="submit">
@@ -21,4 +22,18 @@
 		<a href="#" class="search_cancel headerSearchCancel" aria-hidden="true"></a>
 		<span class="search_loading" aria-hidden="true"></span>
 	</div>
+</form>*}
+ 
+<form class="search {if $header}header__search{/if}" action="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="results"}" method="post" id="form-search" role="search">
+    <fieldset>
+        <p>
+                <label for="search" class="header__search__label icon icon-search"><span class="vhide">Vyhledávání</span></label>
+                <span class="inp-fix inp-icon inp-icon--after">
+                        <input type="text" name="query" id="search" class="inp-text" placeholder="{translate|escape key="common.searchQuery"}" value="{$searchQuery|escape}"/>
+                        <button type="submit" class="btn-icon icon icon-search">
+                                <span class="vhide">{translate key="common.search"}</span>
+                        </button>
+                </span>
+        </p>
+    </fieldset>
 </form>

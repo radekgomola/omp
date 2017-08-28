@@ -353,7 +353,7 @@ class CategoryDAO extends DAO {
 			FROM	categories c
 				LEFT JOIN categories pc ON (pc.category_id = c.parent_id) AND cs.setting_name=\'title\' AND cs.locale = ?)
 			WHERE	c.press_id = ?
-			ORDER BY (COALESCE(pc.seq, 0)*16384) + CASE WHEN pc.seq IS NULL THEN 16384 * c.seq ELSE c.seq END',
+			ORDER BY (COALESCE(pc.seq, 0)*16384) + CASE WHEN pc.seq IS NULL THEN 16384 * c.seq ELSE cs.setting_value END',
 			array($locale, (int) $pressId)
 		);
 

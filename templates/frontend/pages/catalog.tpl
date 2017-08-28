@@ -14,7 +14,7 @@
 <div class="page page_catalog">
 	{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="navigation.catalog"}
 	<div class="monograph_count">
-		{translate key="catalog.browseTitles" numTitles=$publishedMonographs|@count}
+		{translate key="catalog.browseTitles" numTitles=$publishedMonographs->getCount()}
 	</div>
 
 	{* No published titles *}
@@ -26,7 +26,8 @@
 
 	{* Monograph List *}
 	{else}
-		{include file="frontend/components/monographList.tpl" monographs=$publishedMonographs featured=$featuredMonographIds}
+{*		{include file="frontend/components/monographList.tpl" monographs=$publishedMonographs featured=$featuredMonographIds}*}
+                {include file="frontend/components/monographList.tpl" monographs=$publishedMonographs featured=$featuredMonographs}
 	{/if}
 
 </div><!-- .page -->
