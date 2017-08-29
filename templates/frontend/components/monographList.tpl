@@ -15,7 +15,7 @@
 {if !$heading}
     {assign var="heading" value="h2"}
 {/if}
-<div class="cmp_monographs_list">
+<div class="monographListContainert">
 
     {* Optional title *}
     {*{if $titleKey}
