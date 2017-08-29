@@ -5,11 +5,8 @@
 <div>
     <div class="obrazek">
         <a href="{url page="catalog" op="book" path=$monograph->getId()}">
-            {url|assign:coverImageUrl router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="catalog" submissionId=$monograph->getId() random=$monograph->getId()|uniqid} 
-
-            <img alt="{translate key="catalog.coverImageTitle" monographTitle=$monograph->getLocalizedFullTitle()|strip_tags|escape}" src={$coverImageUrl} class="box-article-list__imgMunipress"/>
-{*            <div class="over">
-            </div>*}
+            
+            <img alt="{translate key="catalog.coverImageTitle" monographTitle=$monograph->getLocalizedFullTitle()|strip_tags|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="thumbnail" submissionId=$monograph->getId() random=$monograph->getId()|uniqid}" class="box-article-list__imgMunipress"/>
         </a>
     </div>
     <p>

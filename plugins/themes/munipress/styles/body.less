@@ -36,20 +36,21 @@ a {
     position: relative;
     width: 100%;
     margin: 0 auto;
-    padding-left: @base;
-    padding-right: @base;
+    padding: 0 15px;
 
     @media( min-width: @screen-tablet ) {
         width: @screen-tablet-container;
-        padding: 0;
+        padding: 0 25px;
     }
 
     @media( min-width: @screen-desktop ) {
         width: @screen-desktop-container;
+        padding: 0 35px;
     }
 
     @media( min-width: @screen-lg-desktop ) {
         width: @screen-lg-desktop-container;
+        padding: 0 35px;
     }
 }
 
@@ -120,9 +121,9 @@ a {
 
 @media( min-width: @screen-desktop ) {
 
-    .pkp_structure_content {
+/*    .pkp_structure_content {
         padding-top: @triple;
-    }
+    }*/
 
     .pkp_structure_sidebar {
         float: right;
