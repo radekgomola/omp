@@ -20,13 +20,13 @@
 	<div class="monograph_count">
 		{translate key="catalog.browseTitles" numTitles=$publishedMonographs|@count}
 	</div>
-
+        
 	{* No published titles in this category *}
 	{if empty($publishedMonographs)}
 		<p>{translate key="catalog.noTitlesNew"}</p>
 
 	{else}
-		{include file="frontend/components/monographList.tpl" monographs=$publishedMonographs}
+		{include file="frontend/components/monographList.tpl" monographsArray=$publishedMonographs filtrovani="false"}
 
 	{/if}
 
