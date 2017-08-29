@@ -1,0 +1,79 @@
+// Base URL
+// The base URL is set appropriately before the LESS stylesheet is compiled and
+// will point to the theme's base directory. The variable can be used to point
+// to image and font assets.
+@baseUrl:                    ''; // Leave empty
+
+// Colors
+@color: #444;
+
+@dark: #000;
+@light: #999;
+@greyDark: #ddd;
+@greyLight: #eee;
+@red: #e51c24;
+@green: #3fb666;
+@orange: #fec107;
+@blue: #3fabb5;
+
+@muni: #002776;
+@law: #7f379b;
+@med: #f01928;
+@sci: #01af40;
+@fi: #f2d45c;
+@fss: #007b69;
+@fsps: #009aa6;
+@phil: #00a3e2;
+@ped: #ffa030;
+@econ: #782328;
+
+@facebook: #3b5998;
+@twitter: #55acee;
+@linkedin: #007bb5;
+@instagram: #3f729b;
+@mail: #999;
+@google: #dd4b39;
+@youtube: #cd201f;
+@github: #000;
+
+@primary: @muni;
+
+@link: @primary;
+@linkVisited: #9a42c7;
+@linkHover: @dark;
+
+@border: @greyDark;
+@borderPrimary: #ccd4e4;
+@borderPrimaryLight: #e5e9f1;
+@background: @greyLight;
+@backgroundPrimary: lighten(@borderPrimaryLight, 4%);
+
+// Color variations of faculties
+@elementsHover: @backgroundPrimary;
+@whiteInvertable: #fff;
+@menuHover: @dark;
+@boxSeparator: @border;
+@selectBg: url("@{baseUrl}/images/muniweb/bg/select.png");
+
+@mMargin: 20px;
+@mMarginSmall: 30px;
+
+// Fonts
+@font: 'Helvetica Neue',  Helvetica, Arial, sans-serif;
+@fontSecondary: 'Meta Web Pro', Tahoma, sans-serif;
+@fontItalic: Georgia, Times, 'Times New Roman', serif;
+@fontConsola: Consolas, monaco, monospace;
+
+// Base font size and line height
+@fontSizeMobile: 15px;
+@fontSize: 16px;
+@fontSizeSmall: 14px;
+@fontSizeSmaller: 12px;
+@lineHeight: 1.5;
+
+// Media queries
+/*@retina: "(-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)";*/
+@mobileL: 480px;
+@tablet: 700px;
+@desktop: 1000px;
+@desktopWide: 1240px;

@@ -1,0 +1,192 @@
+/**
+ * @file plugins/themes/munipress/styles/munipress.less
+ * 
+ * Přidává úpravy šablon do administrátorské části
+*/
+
+.pkp_nav_list {
+    ul{
+        margin-left: 0px;
+    }
+}
+
+#userTasks {
+    .task-count {
+        background-color: fade(#000, 50%);
+        color: fade(#fff, 87%);
+        margin-top: 10px;
+    }
+
+    > a {
+        color: @primary;
+    }
+
+    .header {
+        all: unset;
+    }
+
+    > & a:hover, 
+        > & a:focus {
+        color: #000;
+        & .task-count{
+            background-color: #000;
+            color: #fff;
+        }
+
+    }
+}
+
+.header__search {
+    box-sizing: border-box !important;
+    *:before, *:after{
+        box-sizing: border-box !important;
+    }
+
+}
+
+.pkp_loading {
+    width: 187px;
+    float: right;
+    margin: 10px 0 0 !important;
+
+}
+.message {
+    padding: 15px 0 !important;
+    display: inline-block;
+    //width: 156px;
+}
+
+.pkp_navigation_user_wrapper{
+    padding-right:35px;
+}
+@media(max-width: (@screen-tablet-container - 1)){
+    .pkp_navigation_user_wrapper{
+        padding-right:15px;
+    }
+}
+.pkp_structure_main:before, .pkp_structure_main:after {
+    background: unset;
+}
+
+.pkp_structure_content {
+    width: unset;
+    max-width: @screen-lg-desktop-container;
+}
+
+.pkp_structure_sidebar {
+    width: unset;
+}
+
+.cmp_monographs_list {
+    margin: unset;
+}
+.pkp_structure_main {
+    width: 100%;
+    float: left;
+}
+.userNavFront{
+    li > a {
+        width: 8.5em;
+    }
+    ul {
+        width: 10em;
+    }
+}
+
+.cmp_spotlights {
+    border: unset;
+}   
+
+.btn-dole {
+    position: absolute;
+    bottom: 0px; left: 50%;
+    transform: translate(-50%,-30%);
+    width: 200px;
+
+}
+
+.pkp_screen_reader {
+    left: unset;
+}
+.additional_content{
+    padding-bottom: 20px !important;
+}
+
+.obj_monograph_summary {
+    .cover {
+    width: auto;
+    margin-right: 15px;
+    }
+    .title {
+        font-size: unset;
+    }
+    * > * {
+        margin-left: 0;
+    }
+}
+
+.spotlight_img {
+    width: 110px;
+}
+
+.authorName{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.monograph_full {
+    margin: 15px 0 30px;
+}
+
+#notificationsPopover{
+    top: 45px;
+}
+
+#authorDetails{
+    margin: 15px 20px;
+    .smallSlide {
+        max-width: 170px;
+        float: left;
+        margin-right:10px;
+        font-weight: 700;
+        font-size: 14px;
+        a{
+            text-decoration: none !important;
+        }
+        .obrazek{
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.publication_format .label {
+    font-weight: bold;
+}
+@media (max-width: 699px){
+    .souvisejiciPublikace{
+        display: none;
+    }
+}
+
+.icon-keStazeni{
+    margin-right: 10px;
+}
+.obj_monograph_full, #authors{
+    margin-bottom: 20px;
+}
+
+li.show:before {
+    background: unset;
+}
+
+ul.fields > li:before {
+    background: none;
+}
+
+#monographListContainer {
+    margin-top: 15px;
+}
+.pkp_structure_main .page .about_section {
+    color: #000;
+    font-style: normal;
+}

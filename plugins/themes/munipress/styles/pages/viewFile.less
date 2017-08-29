@@ -1,0 +1,120 @@
+/**
+ * @file plugins/themes/default/styles/pages/viewFile.less
+ *
+ * Copyright (c) 2014-2016 Simon Fraser University Library
+ * Copyright (c) 2003-2016 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * @brief Styles applying to the lightweight page for viewing PDFs
+ * @link templates/frontend/pages/viewPdf.tpl
+ */
+
+.header_viewable_file {
+	z-index: 2;
+	position: relative;
+	background: @bg-base;
+	line-height: @line-header;
+
+	a {
+		text-decoration: none;
+	}
+
+	.return {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: @line-header;
+		height: @line-header;
+		line-height: @line-header;
+		color: @primary;
+		text-align: center;
+		background: @bg;
+
+		&:before {
+			&:extend(.fa);
+			content: @fa-var-arrow-left;
+		}
+
+		&:hover,
+		&:focus {
+			background: @primary-lift;
+			color: #fff;
+		}
+	}
+
+	.title,
+	.download {
+		display: block;
+		font-size: @font-sml;
+		font-weight: @bold;
+	}
+
+	.title {
+		padding-left: @line-header + @base;
+		max-width: 100%;
+		overflow-x: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		color: #fff;
+	}
+
+	.download {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: @line-header;
+		text-align: center;
+		background: @bg;
+
+		&:hover,
+		&:focus {
+			background: @primary-lift;
+			color: #fff;
+		}
+
+		&:before {
+			&:extend(.fa);
+			content: @fa-var-download;
+		}
+
+		.label {
+			position: absolute;
+			top: 0;
+			left: -9999px;
+		}
+	}
+
+	@media(min-width: @screen-tablet) {
+
+		.download {
+			width: auto;
+			padding: 0 @double;
+
+			.label {
+				position: relative;
+				top: auto;
+				left: auto;
+			}
+
+			&:before {
+				margin-right: 0.5em;
+			}
+		}
+	}
+}
+
+.viewable_file_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow-y: hidden;
+
+	iframe {
+		width: 100%;
+		height: 100%;
+		padding-top: @line-header;
+		border: none;
+	}
+}

@@ -1,0 +1,328 @@
+// Typo
+body {
+        
+	/*font: normal (@fontSizeMobile/@lineHeight) @font;*/
+	color: @color;
+	min-width: 320px;
+	@media(min-width: @tablet){
+		font-size: @fontSize;
+	}
+}
+
+// Titles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-family: @fontSecondary;
+	font-weight: bold;
+	line-height: 1.25em;
+	margin: 0.2em 0 .5em;
+	color: @dark;
+	a{
+		text-decoration: none;
+	}
+}
+h1,
+.h1 {
+	font-size: 28px;
+	@media (min-width: @tablet) {
+		font-size: 32px;
+	}
+	@media (min-width: @desktop) {
+		font-size: 36px;
+	}
+}
+h2,
+.h2 {
+	font-size: 24px;
+	@media (min-width: @tablet) {
+		font-size: 28px;
+	}
+	@media (min-width: @desktop) {
+		font-size: 30px;
+	}
+}
+h3,
+.h3{
+	font-size: 18px;
+	@media (min-width: @tablet) {
+		font-size: 21px;
+	}
+	@media (min-width: @desktop) {
+		font-size: 24px;
+	}
+}
+h4,
+.h4{
+	font-size: 14px;
+	@media (min-width: @tablet) {
+		font-size: 16px;
+	}
+	@media (min-width: @desktop) {
+		font-size: 18px;
+	}
+}
+h5,
+.h5{
+	font-size: 14px;
+        text-transform: uppercase;
+	@media (min-width: @tablet) {
+		font-size: 16px;
+	}
+}
+h6,
+.h6{
+	font-size: 14px;
+	text-transform: uppercase;
+	@media (min-width: @tablet) {
+		font-size: 16px;
+	}
+}
+
+// Paragraph
+p {
+	margin: 0 0 1.25em;
+}
+
+// Separator
+hr {
+	border: none;
+	margin: @mMarginSmall 0;
+	height: 1px;
+	border-top: 1px solid @border;
+	overflow: hidden;
+}
+
+// Blockquote
+blockquote {
+	margin: 0 0 1.25em;
+	padding: 0;
+}
+cite{
+	font-family: @fontItalic;
+}
+
+// Links
+a {
+	color: @link;
+	text-decoration: underline;
+	.transition(color .2s);
+	.no-touch &:hover {
+		color: @linkHover;
+	}
+	&:not([href]){
+		opacity: .5;
+		color: @link;
+		cursor: default;
+		text-decoration: line-through;
+	}
+	// &:visited{
+	// 	color: @linkVisited;
+	// }
+}
+
+// Lists
+ul,
+ol {
+	margin: 0 0 1.25em 20px;
+	list-style: none;
+	padding: 0;
+}
+li {
+	padding: 0 0 0 13px;
+	margin: 0 0 .25em;
+	position: relative;
+	ol,
+	ul {
+		&,
+		&:first-child{
+			margin-top: .25em;
+			margin-bottom: 0;
+		}
+	}
+}
+ul {
+	> li {
+		&:before{
+			content: '';
+			position: absolute;
+			left: 0;
+			top: .55em;
+			width: 4px;
+			height: 4px;
+			border-radius: 3px;
+			background: @dark;
+		}
+	}
+}
+ol {
+	counter-reset: item;
+	> li {
+		background: none;
+		padding: 0 0 0 20px;
+		&:before{
+			content: counter(item)".";
+			counter-increment: item;
+			position: absolute;
+			left: 0;
+			top: 4px;
+			font-weight: bold;
+			color: @dark;
+			font-size: 12px;
+		}
+	}
+}
+dl {
+	margin: 0 0 1.25em;
+}
+dt {
+	font-weight: bold;
+	margin: 0;
+}
+dd {
+	margin: 0 0 .75em;
+	padding: 0;
+}
+
+// Tables
+table {
+	width: 100%;
+	clear: both;
+	margin: 0 0 2em;
+	empty-cells: show;
+	border-collapse: collapse;
+	border: none;
+	font-size: 14px;
+	&.table-padded {
+		td,
+		th {
+			&:first-child{
+				padding-left: 10px;
+			}
+			&:last-child{
+				padding-right: 10px;
+			}
+		}
+	}
+
+	@media(max-width: (@mobileL - 1)){
+		display: block;
+		tbody,
+		tr{
+			display: block;
+		}
+		th{
+			display: block;
+			border-bottom-width: 0px;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		td{
+			display: block;
+			padding-top: 0;
+			padding-left: 0;
+			padding-right: 0;
+			border-top-width: 0px;
+			border-bottom-width: 0px;
+			&:last-child{
+				border-bottom-width: 1px;
+			}
+		}
+	}
+}
+td,
+th {
+	vertical-align: top;
+	padding: 11px 10px 9px;
+	border: 1px solid @borderPrimaryLight;
+	border-width: 0 0 1px;
+	text-align: left;
+	&:first-child{
+		padding-left: 0;
+	}
+	&:last-child{
+		padding-right: 0;
+	}
+}
+th {
+	font-weight: bold;
+	color: @dark;
+}
+tbody{
+	tr:last-child{
+		td,
+		th{
+			border-bottom: 0;
+		}
+	}
+}
+thead{
+	text-transform: uppercase;
+	font-weight: bold;
+	color: @dark;
+	th,
+	td{
+		border-width: 0 0 1px;
+		border-color: @borderPrimary;
+	}
+}
+tfoot{
+	font-weight: bold;
+	color: @dark;
+	font-size: 16px;
+	th,
+	td{
+		border-color: @borderPrimary;
+		border-width: 1px 0 0;
+	}
+}
+.table-wrap{
+	border: 1px solid @borderPrimary;
+	padding: 20px;
+	margin: 0 0 1.25em;
+	table{
+		margin: 0;
+	}
+}
+.js .tr-clickable{
+	cursor: pointer;
+	td,
+	th{
+		.transition(e('color .2s, background .2s'));
+	}
+	.no-touch &:hover{
+		td,
+		th{
+			background: @elementsHover;
+		}
+	}
+}
+
+// Images
+img.left{
+	float: left;
+	margin: .25em 30px 10px 0;
+}
+img.right{
+	float: right;
+	margin: .25em 0 10px 30px;
+}
+@media(max-width: (@desktopWide - 1)){
+	img{
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.uppercase {
+    text-transform: uppercase;
+}

@@ -1,0 +1,27 @@
+.box-product-attrs {
+	margin: 0 0 30px;
+	&__list {
+		.reset-ul();
+		.inline-list(auto, 13px);
+		margin: 0 0 -10px -10px;
+	}
+	&__item {
+		min-width: 32px;
+		.reset-ul-li();
+		text-transform: uppercase;
+		background: @greyLight;
+		border: 1px solid @greyDark;
+		text-align: center;
+		margin: 0 0 10px 10px;
+		padding: 0 5px;
+		height: 32px;
+		line-height: 32px;
+		&--color {
+			.text-hide();
+			border-width: 0px;
+		}
+		&--border {
+			border-width: 1px;
+		}
+	}
+}

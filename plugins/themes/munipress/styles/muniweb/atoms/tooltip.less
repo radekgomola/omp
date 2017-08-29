@@ -1,0 +1,166 @@
+.tooltip-link {
+    text-decoration: none;
+    position: relative;
+    padding-right: 20px;
+    display: inline-block;
+    vertical-align: top;
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        right: 20px;
+        border-top: 1px dotted @muni;
+        .transition(border-color .2s);
+    }
+    .no-touch &:hover {
+        &:after {
+            border-color: @color;
+        }
+    }
+    .icon {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: -8px;
+        color: @primary;
+    }
+    .tooltip {
+        cursor: help;
+    }
+}
+
+.tipso_bubble {
+    position: absolute;
+    border-radius: 3px;
+    z-index: 9999;
+    border: 1px solid @borderPrimary;
+    font-size: 14px;
+    line-height: 1.2857em;
+    .tipso_title {
+        border-radius: 3px 3px 0 0;
+    }
+    .tipso_content {
+        text-align: left;
+        padding: 8px 10px;
+    }
+}
+
+/* Tipso Bubble Div */
+.tipso_bubble > .tipso_arrow{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid;
+    pointer-events: none;
+    &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        position: absolute;
+        z-index: -1;
+    }
+}
+.tipso_bubble.top > .tipso_arrow {
+    border-top-color: #000;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    &:before {
+        top: -7px;
+        left: -8px;
+        border-width: 8px 8px 0;
+        border-color: @borderPrimary transparent transparent;
+    }
+}
+.tipso_bubble.bottom > .tipso_arrow {
+    border-bottom-color: #000;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -8px;
+    &:before {
+        bottom: -7px;
+        left: -8px;
+        border-width: 0 8px 8px;
+        border-color: transparent transparent @borderPrimary;
+    }
+}
+.tipso_bubble.left > .tipso_arrow {
+    border-left-color: #000;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    top: 50%;
+    left: 100%;
+    margin-top: -8px;
+    &:before {
+        bottom: -8px;
+        left: -7px;
+        border-width: 8px 0 8px 8px;
+        border-color: transparent transparent transparent @borderPrimary;
+    }
+}
+.tipso_bubble.right > .tipso_arrow {
+    border-right-color: #000;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    top: 50%;
+    right: 100%;
+    margin-top: -8px;
+    &:before {
+        bottom: -8px;
+        right: -7px;
+        border-width: 8px 8px 8px 0;
+        border-color: transparent @borderPrimary transparent transparent;
+    }
+}
+
+.tipso_bubble .top_right_corner,
+.tipso_bubble.top_right_corner {
+    margin: -6px 0 0 -22px;
+    > .tipso_arrow {
+        border-width: 12px 12px 0 0;
+        border-color: #fff transparent;
+        margin: -1px 0 0 -85px;
+        &:before {
+            top: -10px;
+            left: -1px;
+            border-width: 12px 12px 0 0;
+            border-color: @borderPrimary transparent;
+        }
+    }
+}
+
+.tipso_bubble .bottom_right_corner,
+.tipso_bubble.bottom_right_corner  {
+    margin: 6px 0 0 -22px;
+    > .tipso_arrow {
+        border-width: 12px 0 0 12px;
+        border-color: transparent transparent transparent #fff;
+        margin: 0 0 -1px -85px;
+        &:before {
+            top: -14px;
+            left: -13px;
+            border-width: 12px 0 0 12px;
+            border-color: transparent transparent transparent @borderPrimary;
+        }
+    }
+}
+
+.tipso_bubble .top_left_corner,
+.tipso_bubble.top_left_corner {
+    border-bottom-right-radius: 0;
+}
+
+.tipso_bubble .bottom_left_corner,
+.tipso_bubble.bottom_left_corner  {
+    border-top-right-radius: 0;
+}

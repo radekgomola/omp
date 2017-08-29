@@ -1,0 +1,90 @@
+.box-quote {
+	text-align: center;
+	padding: (@mMarginSmall + 15) 0 @mMarginSmall;
+	/*margin-bottom: @mMargin;*/
+	position: relative;
+	&:before {
+		content: '“';
+		font-family: @fontItalic;
+		font-style: italic;
+		font-size: 264px;
+		line-height: 1;
+		position: absolute;
+		top: -20px;
+		left: 50%;
+		margin-left: -75px;
+		color: #eee;
+	}
+	.row-main{
+		blockquote{
+			padding: 0;
+		}
+	}
+	blockquote {
+		max-width: 980px;
+		margin: 0 auto;
+		position: relative;
+		padding: 0 20px;
+	}
+	p {
+		color: @dark;
+		font-family: @fontItalic;
+		font-size: 18px;
+		font-style: italic;
+		margin-bottom: 0;
+	}
+	cite {
+		display: inline-block;
+		font-style: normal;
+		font-family: @font;
+		margin-top: 15px;
+		padding-top: 15px;
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -35px;
+			width: 70px;
+			height: 2px;
+			background: @primary;
+		}
+	}
+
+	&--bg {
+		background: @muni;
+		&:before {
+			color: fade(@dark, 20%);
+		}
+		p,
+		cite {
+			color: #fff;
+		}
+		cite {
+			&:before {
+				background: fade(#fff, 20);
+			}
+		}
+	}
+
+	@media (min-width: @tablet) {
+		padding: (@mMargin + 20) 0 @mMargin;
+		&:before {
+			top: 10px;
+		}
+		p {
+			font-size: 24px;
+		}
+		cite {
+			margin-top: 25px;
+			padding-top: 25px;
+		}
+	}
+
+	@media (min-width: @desktop) {
+		p {
+			font-size: 32px;
+		}
+	}
+}

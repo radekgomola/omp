@@ -1,0 +1,91 @@
+@bxa: ~'.box-accordion';
+
+.box-accordion{
+	margin: 0 0 @mMargin;
+	border: 1px solid @borderPrimary;
+	border-width: 1px 0 0;
+	&__item{
+		border-bottom: 1px solid @borderPrimary;
+		&.is-open{
+			& @{bxa}__title{
+				.icon{
+					&:before{
+						content: @fa-var-minus;
+					}
+				}
+			}
+			& @{bxa}__box{
+				display: block;
+			}
+		}
+	}
+	&__title{
+		margin: 0;
+		font-size: 0px;
+		line-height: 60px;
+		position: relative;
+		&__link{
+			text-decoration: none;
+			display: block;
+			padding: 5px 90px 5px 20px;
+			.transition(e('color .2s, background .2s'));
+			.no-touch &:hover{
+				background: @elementsHover;
+			}
+		}
+		&__name{
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 18px;
+			line-height: 24px;
+		}
+		.icon{
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: -1px;
+			width: 70px;
+			font-size: 0px;
+			color: @primary;
+			&:before{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin: -9px 0 0 -9px;
+				font-size: 18px;
+			}
+		}
+	}
+	&__box{
+		position: relative;
+		overflow: hidden;
+		.js &{
+			display: none;
+		}
+	}
+	&__inner{
+		border-bottom: 2px solid @primary;
+		padding: 0 20px 0;
+	}
+
+	&--bordered{
+		border-width: 1px 1px 0;
+		& @{bxa}__title{
+			.icon{
+				border: 1px solid @borderPrimary;
+				border-width: 0 0 1px 1px;
+			}
+		}
+	}
+
+	@media(min-width: @desktop){
+		&--big{
+			& @{bxa}__title{
+				&__name{
+					font-size: 24px;
+					line-height: 30px;
+				}
+			}
+		}
+	}
+}

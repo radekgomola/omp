@@ -1,0 +1,27 @@
+.crossroad-std{
+	margin: 0 0 @mMargin;
+	.grid{
+		margin-bottom: -20px;
+	}
+	.grid__cell{
+		margin-bottom: 20px;
+		> * {
+			margin-bottom: 0;
+		}
+		> .grid {
+			margin-bottom: -20px;
+		}
+	}
+
+	@media(min-width: @desktopWide){
+		.grid{
+			margin-bottom: -30px;
+		}
+		.grid__cell{
+			margin-bottom: 30px;
+			> .grid {
+				margin-bottom: -30px;
+			}
+		}
+	}
+}

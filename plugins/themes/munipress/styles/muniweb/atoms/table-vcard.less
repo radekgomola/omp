@@ -1,0 +1,37 @@
+.table-vcard {
+	border: 0;
+	width: auto;
+	th,
+	td {
+		border: 0;
+		padding: 0;
+	}
+	th {
+		font-weight: normal;
+	}
+	td {
+		font-weight: bold;
+		color: @dark;
+		padding-left: 20px;
+	}
+
+	@media(max-width: (@mobileL - 1)){
+		th{
+			display: none;
+		}
+		td{
+			display: block;
+			padding: 0 0 5px;
+		}
+	}
+
+	@media(max-width: (@tablet - 1)){
+		th{
+			min-width: 100px;
+		}
+	}
+
+	@media(min-width: @tablet){
+		font-size: 16px;
+	}
+}

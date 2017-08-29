@@ -1,0 +1,142 @@
+.reset-ul(){
+    &{
+	margin: 0;
+    }
+}
+
+.reset-ul-li(){
+    &{
+	position: static;
+	padding: 0;
+	margin: 0;
+	background: none;
+	overflow: visible;
+	background-size: auto;
+	background-position: 0 0;
+	&:before{
+		position: static;
+		left: auto;
+		top: auto;
+		width: auto;
+		height: auto;
+		border-radius: 0;
+		background: none;
+		content: normal;
+	}
+    }
+}
+
+.reset-ol(){
+    &{
+	.reset-ul();
+    }
+}
+
+.reset-ol-li(){
+    &{
+	.reset-ul-li();
+	&:before{
+		content: normal;
+		position: static;
+		left: auto;
+		top: auto;
+	}
+    }
+}
+
+.grid(){
+    &{
+	font-size: 0px;
+	/*text-align: justify;*/
+	text-justify: distribute-all-lines;
+	@media (min--moz-device-pixel-ratio:0) {
+		letter-spacing: -1px;
+	}
+	@media (-webkit-min-device-pixel-ratio: 0) {
+		letter-spacing: -1px;
+	}
+    }
+}
+
+.grid__cell(){
+    &{
+	display: inline-block;
+	vertical-align: top;
+	font-size: @fontSizeMobile;
+	text-align: left;
+	letter-spacing: normal;
+	white-space: normal;
+	@media(min-width: @tablet){
+		font-size: @fontSize;
+	}
+    }
+}
+
+.grid--scroll(){
+    &{
+	position: relative;
+	white-space: nowrap;
+	overflow: hidden;
+	overflow-x: auto;
+	.js &{
+		overflow-x: hidden;
+	}
+    }
+}
+
+.text-hide() {
+    &{
+	font: 0px/0px a;
+	color: transparent;
+	text-decoration: none;
+    }
+}
+
+.clearfix() {
+    &{
+	&:after,
+	&:before{
+		content: '';
+		display: table;
+		clear: both;
+	}
+    }
+}
+
+.grid(@selector: ~'col--', @separator: ~'-', @columns: 12, @rule: ~'width', @coef: 1.11, @i: 1) when (@i =< @columns){
+        @{selector}@{i}@{separator}@{columns}{
+                @{rule}: percentage(@i / (@columns * @coef));
+        }
+        .grid(@selector, @separator, @columns, @rule, @coef, (@i+1));
+}
+
+.inline-list(@width, @fontSize) {
+    &{
+	font-size: 0px;
+	@media (-webkit-min-device-pixel-ratio:0){
+		letter-spacing: -1px;
+	}
+	> * {
+		display: inline-block;
+		letter-spacing: normal;
+		vertical-align: top;
+		width: @width;
+		font-size: @fontSize;
+	}
+    }
+}
+
+.inline-list-extend() {
+    &{
+	white-space: nowrap;
+	position: relative;
+	overflow: hidden;
+	overflow-x: auto;
+	> * > *{
+		white-space: normal;
+	}
+	.js &{
+		overflow-x: hidden;
+	}
+    }
+}

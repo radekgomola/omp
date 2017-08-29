@@ -1,0 +1,36 @@
+.box-gallery {
+	margin-bottom: @mMargin;
+
+	.image {
+		margin-bottom: @mMarginSmall;
+	}
+	.grid {
+		margin-bottom: -@mMarginSmall;
+	}
+
+	.grid--nogutter {
+		margin-bottom: 0;
+		.image {
+			margin-bottom: 0;
+		}
+	}
+
+	@media(max-width: (@tablet - 1)) {
+		.grid {
+			margin-left: -10px;
+			margin-bottom: -10px;
+			&.grid--nogutter {
+				margin-left: 0;
+				.grid__cell {
+					border-left-width: 0;
+				}
+			}
+		}
+		.grid__cell {
+			border-left-width: 10px;
+		}
+		.image {
+			margin-bottom: 10px;
+		}
+	}
+}

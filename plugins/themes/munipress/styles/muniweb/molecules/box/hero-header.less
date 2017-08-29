@@ -1,0 +1,140 @@
+@bxhh: ~'.box-hero-header';
+
+.box-hero-header {
+	position: relative;
+	margin-bottom: @mMarginSmall;
+	min-height: 350px;
+	&--full{
+		min-height: 100vh;
+		& @{bxhh} {
+			&__content{
+				padding-top: 50px;
+				&--bottom{
+					.row-main{
+						&:before{
+							display: inline-block;
+							vertical-align: bottom;
+							height: calc(100vh - 100px);
+							width: 1px;
+							margin-left: -.25em;
+						}
+					}
+					& @{bxhh}{
+						&__content-inner{
+							display: inline-block;
+							vertical-align: bottom;
+							width: 470px;
+							max-width: 99%;
+						}
+					}
+				}
+			}
+		}
+		.header--hero ~ .main > &:first-child{
+			& @{bxhh} {
+				&__content{
+					padding-top: 130px;
+					&--bottom{
+						.row-main{
+							&:before{
+								height: calc(100vh - 180px);
+							}
+						}
+					}
+					@media (min-width: @tablet) {
+						padding-top: 250px;
+						&--bottom{
+							.row-main{
+								&:before{
+									height: calc(100vh - 300px);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&__img {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-size: cover;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+	}
+	&__content {
+		position: relative;
+		padding-top: 130px;
+		padding-bottom: 50px;
+		&--bg {
+			& @{bxhh} {
+				&__content-inner {
+					background: fade(#000, 70%);
+					padding: 15px 20px 5px;
+					margin-bottom: 0;
+					> * {
+						color: #fff;
+					}
+					a {
+						color: #fff;
+						.no-touch &:hover {
+							text-decoration: none;
+						}
+					}
+				}
+			}
+			&--white {
+				& @{bxhh} {
+					&__content-inner {
+						background: fade(#fff, 80%);
+						> * {
+							color: @dark;
+						}
+						a {
+							color: @link;
+							.no-touch &:hover {
+								color: @dark;
+							}
+						}
+					}
+				}
+			}
+		}
+		&--right{
+			text-align: right;
+			& @{bxhh}{
+				&__content-inner{
+					margin-left: auto;
+				}
+			}
+		}
+	}
+	&__content-inner {
+		max-width: 470px;
+		text-align: left;
+	}
+
+	@media (max-width: (@tablet - 1)) {
+		&__content {
+			padding-bottom: 20px;
+		}
+	}
+
+	@media (min-width: @tablet) {
+		margin-bottom: @mMargin;
+		&__content {
+			padding-top: 350px;
+			&--bg {
+				padding-top: 250px;
+				& @{bxhh} {
+					&__content-inner {
+						padding: 20px 20px 10px 40px;
+					}
+				}
+			}
+		}
+	}
+}

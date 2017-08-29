@@ -1,0 +1,115 @@
+@bxgr: ~'.box-grid';
+
+.box-grid{
+	margin: 0 0 @mMargin;
+	.grid {
+		overflow: hidden;
+	}
+	&__inner{
+		font-size: 14px;
+		display: block;
+		text-decoration: none;
+		color: @color;
+		text-align: center;
+		border: 1px solid @borderPrimary;
+		border-width: 1px 0 0 1px;
+		padding: 15px 15px;
+		margin: -2px 0 0 -2px;
+		&:first-child {
+			margin-top: -2px;
+		}
+		&--left {
+			text-align: left;
+		}
+		> *:last-child {
+			margin-bottom: 0;
+		}
+		&[href] {
+			h2 {
+				text-decoration: underline;
+				transition: color .2s;
+			}
+			.no-touch &:hover{
+				color: inherit;
+				h2{
+					color: inherit;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	&--background{
+		.grid{
+			background: @primary;
+		}
+		& @{bxgr}__inner{
+			color: @whiteInvertable;
+			border-color: fade(#fff,20%);
+			&[href] {
+				.no-touch &:hover{
+					color: #fff;
+					h2{
+						color: #fff;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+
+	@media(min-width: @mobileL){
+		&--bordered{
+			.grid{
+				outline: 1px solid @borderPrimary;
+				border: 15px solid #fff;
+			}
+		}
+		&--background{
+			.grid{
+				border: 15px solid @primary;
+			}
+		}
+	}
+
+	@media(min-width: @tablet){
+		&--bordered,
+		&--background{
+			.grid{
+				border-left-width: 0;
+				border-right-width: 0;
+			}
+		}
+	}
+
+	@media(min-width: @desktop){
+		&:not(& @{bxgr}--bordered):not(& @{bxgr}--background) {
+			.grid__cell:first-child {
+				& @{bxgr}__inner--left {
+					padding-left: 2px;
+				}
+			}
+		}
+		&--bordered,
+		&--background{
+			.grid{
+				border-top-width: 20px;
+				border-bottom-width: 20px;
+			}
+		}
+	}
+
+	@media(min-width: @desktopWide){
+		&--bordered,
+		&--background{
+			.grid{
+				border-top-width: 40px;
+				border-bottom-width: 40px;
+			}
+		}
+		&__inner{
+			padding: 15px 40px;
+		}
+
+	}
+}

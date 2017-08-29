@@ -1,0 +1,74 @@
+.show-xs,
+.show-s-up,
+.show-s,
+.show-m-up,
+.show-m,
+.show-l-up,
+.show-l-only,
+.show-xl-up{
+	display: none;
+}
+@media (max-width: (@mobileL - 1)) {
+	.show-xs{
+		display: inherit;
+	}
+	.hide-xs{
+		display: none;
+	}
+}
+@media (min-width: @mobileL) {
+	.show-s-up{
+		display: inherit;
+	}
+	.hide-s-up{
+		display: none;
+	}
+}
+@media (min-width: @mobileL) and (max-width: (@tablet - 1)) {
+	.show-s{
+		display: inherit;
+	}
+	.hide-s{
+		display: none;
+	}
+}
+@media (min-width: @tablet) {
+	.show-m-up{
+		display: inherit;
+	}
+	.hide-m-up{
+		display: none;
+	}
+}
+@media (min-width: @tablet) and (max-width: (@desktop - 1)) {
+	.show-m{
+		display: inherit;
+	}
+	.hide-m{
+		display: none;
+	}
+}
+@media (min-width: @desktop) {
+	.show-l-up{
+		display: inherit;
+	}
+	.hide-l-up{
+		display: none;
+	}
+}
+@media (min-width: @desktop) and (max-width: (@desktopWide - 1)) {
+	.show-l{
+		display: inherit;
+	}
+	.hide-l{
+		display: none;
+	}
+}
+@media (min-width: @desktopWide) {
+	.show-xl-up{
+		display: inherit;
+	}
+	.hide-xl-up{
+		display: none;
+	}
+}

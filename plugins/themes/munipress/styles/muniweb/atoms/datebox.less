@@ -1,0 +1,85 @@
+@dat: ~'.datebox';
+
+.datebox {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	min-width: 70px;
+	text-align: center;
+	font-size: @fontSizeSmall;
+	font-weight: bold;
+	&__day {
+		margin: 0;
+		padding: 4px 10px 3px;
+		background: @color;
+		color: #fff;
+		font-size: @fontSizeSmaller;
+	}
+	&__date {
+		margin: 0;
+		padding: 7px 10px 6px;
+		background: #fff;
+		border: 1px solid @border;
+		border-top: 0;
+		color: @dark;
+	}
+
+	&--old {
+		& @{dat}__day {
+			background: @border;
+			color: @color;
+		}
+	}
+
+	&--muni {
+		& @{dat}__day {
+			background: @muni;
+		}
+	}
+	&--law {
+		& @{dat}__day {
+			background: @law;
+		}
+	}
+	&--med {
+		& @{dat}__day {
+			background: @med;
+		}
+	}
+	&--sci {
+		& @{dat}__day {
+			background: @sci;
+		}
+	}
+	&--fi {
+		& @{dat}__day {
+			background: @fi;
+			color: #000;
+		}
+	}
+	&--fss {
+		& @{dat}__day {
+			background: @fss;
+		}
+	}
+	&--fsps {
+		& @{dat}__day {
+			background: @fsps;
+		}
+	}
+	&--phil {
+		& @{dat}__day {
+			background: @phil;
+		}
+	}
+	&--ped {
+		& @{dat}__day {
+			background: @ped;
+		}
+	}
+	&--econ {
+		& @{dat}__day {
+			background: @econ;
+		}
+	}
+}

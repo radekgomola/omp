@@ -1,0 +1,87 @@
+@bxe: ~'.box-event';
+
+.box-event {
+	margin: 0 0 @mMargin;
+	padding-top: 25px;
+	.datebox {
+		margin-top: -25px;
+		margin-bottom: (27em/16);
+	}
+	&__title {
+		margin-top: 0;
+		font-size: 18px;
+		line-height: (24/18);
+	}
+	&__label {
+		display: inline-block;
+		vertical-align: top;
+		padding: 3px 12px 4px 11px;
+		background: @primary;
+		color: @whiteInvertable;
+		font-size: @fontSizeSmaller;
+		font-weight: 700;
+		&-wrap {
+			margin-top: (12em/16);
+		}
+	}
+	&__content{
+		> :last-child{
+			margin-bottom: 0;
+		}
+	}
+
+	&--side {
+		padding-top: 0;
+		.datebox {
+			float: left;
+			margin-top: 0;
+			margin-left: -100px;
+			margin-bottom: 0;
+		}
+		& @{bxe}__title {
+			margin-bottom: 5px;
+			& ~ * {
+				margin-bottom: 2px;
+			}
+		}
+		& @{bxe}__content {
+			padding-left: 100px;
+			padding-bottom: 0;
+			font-size: @fontSizeSmall;
+			&:after {
+				content: '';
+				display: table;
+				clear: both;
+			}
+		}
+		&& @{bxe}--highlighted {
+			padding-top: 0;
+			.datebox {
+				margin-top: -15px;
+			}
+			& @{bxe}__content {
+				padding: 15px 25px 20px 100px;
+			}
+		}
+	}
+
+	&--highlighted {
+		padding-top: 25px;
+		& @{bxe}__content {
+			background: @primary;
+			color: @whiteInvertable;
+			padding: 0 25px 30px 30px;
+			a {
+				color: @whiteInvertable;
+				.no-touch &:hover {
+					text-decoration: none;
+				}
+			}
+			& @{bxe}__title a {
+				.no-touch &:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
