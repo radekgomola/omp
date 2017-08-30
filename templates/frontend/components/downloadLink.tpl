@@ -24,13 +24,20 @@
 {*Show icon*}
 {if $downloadFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF}
     {assign var=iconType value="icon-file-pdf-o"}
+{elseif $downloadFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_HTML}
+    {assign var=iconType value="icon-eye"}
 {else}
     {assign var=iconType value="icon-download"}
 {/if}
 {* Display the download link *}
 <a href="{$downloadUrl}" class="cmp_download_link {$downloadFile->getDocumentType()}">
     {if $useFilename}
-        {$downloadFile->getLocalizedName()}
+        {if $downloadFile->getDirectSalesPrice()}
+            <span class="icon {$iconType}"></span>{translate key="payment.directSales.purchase" format=$downloadFile->getLocalizedName() amount=$currency->format($downloadFile->getDirectSalesPrice()) currency=$currency->getCodeAlpha()}
+        {else}
+            <span class="icon {$iconType}"></span>{$downloadFile->getLocalizedName()}
+        {/if}
+        <span class="tag tag__format">{$downloadFile->getDocumentType()}, {$downloadFile->getNiceFileSize()}</span>
     {else}
         {if $downloadFile->getDirectSalesPrice()}
             <span class="icon {$iconType}"></span>{translate key="payment.directSales.purchase" format=$publicationFormat->getLocalizedName() amount=$currency->format($downloadFile->getDirectSalesPrice()) currency=$currency->getCodeAlpha()}

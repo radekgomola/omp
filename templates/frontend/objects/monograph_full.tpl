@@ -292,7 +292,7 @@
                                 {foreach from=$publicationFormats item=format}
                                     {assign var=publicationFormatId value=$format->getId()}
 
-                                    {if $format->getIsAvailable()}
+                                    {if $nonChapterFiles|@count > 0 || $format->getLocalizedUrlYtb() || $format->getRemoteUrl()}
                                         <h4>{$format->getLocalizedName()|escape|truncate:100:"..."}</h4>
                                     {/if}
                                     {if $format->getLocalizedUrlYtb()}
@@ -304,8 +304,8 @@
                                     {elseif $format->getRemoteUrl()}
                                         {* Only one resource allowed per format, so mimic single-file-download *}
                                         <div class="pub_format_{$publicationFormatId|escape} pub_format_remote">
-                                            <a href="{$publicationFormat->getRemoteURL()|escape}" target="_blank" class="remote_resource">
-                                                {if $publicationFormat->getLocalizedName() == "E-kniha (HTML)" || $publicationFormat->getLocalizedName() == "E-book (HTML)"}
+                                            <a href="{$format->getRemoteURL()|escape}" target="_blank" class="remote_resource">
+                                                {if $format->getLocalizedName() == "E-kniha (HTML)" || $format->getLocalizedName() == "E-book (HTML)"}
                                                     <span class="icon icon-eye icon-keStazeni"></span>{translate key="submission.keShlednuti"}
                                                 {else}
                                                     <span class="icon icon-download icon-keStazeni"></span>{translate key="submission.keStazeni"}
@@ -313,9 +313,10 @@
                                             </a>{if $format->getFileSize()}<span class="tag tag__format">{$format->getFileSize()} MiB</span>{/if}
                                         </div>
                                     {else}
-
+                                        
                                         {* Only display files that haven't been displayed in a chapter *}
                                         {pluck_files assign=pubFormatFiles files=$nonChapterFiles by="publicationFormat" value=$format->getId()}
+                                        
                                         {if $pubFormatFiles|@count == 1}
                                             <div class="pub_format_{$publicationFormatId|escape} pub_format_single">
 
@@ -326,20 +327,13 @@
 
                                             {* Use an itemized presentation if multiple files exists *}
                                         {elseif $pubFormatFiles|@count > 1}
-                                            <div class="pub_format_{$publicationFormatId|escape}">
-                                                <span class="label">
-                                                    {$publicationFormat->getLocalizedName()|escape}
-                                                </span>
+                                            <div class="pub_format_{$publicationFormatId|escape} pub_format_multi">
+
                                                 <span class="value">
                                                     <ul>
                                                         {foreach from=$pubFormatFiles item=file}
                                                             <li>
-                                                                <span class="name">
-                                                                    {$file->getLocalizedName()|escape}
-                                                                </span>
-                                                                <span class="link">
                                                                     {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency useFilename=true}
-                                                                </span>
                                                             </li>
                                                         {/foreach}
                                                     </ul>
