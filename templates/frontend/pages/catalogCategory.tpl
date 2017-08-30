@@ -25,7 +25,7 @@
 
 	{* Count of monographs in this category *}
 	<div class="monograph_count">
-		{translate key="catalog.browseTitles" numTitles=$publishedMonographs|@count}
+		{translate key="catalog.browseTitles" numTitles=$publishedMonographs->getCount()}
 	</div>
 
 	{* Image and description *}

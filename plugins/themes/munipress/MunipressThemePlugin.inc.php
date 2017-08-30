@@ -148,7 +148,7 @@ class MunipressThemePlugin extends ThemePlugin {
 		// the files within the theme directory
 		$this->addScript('jQuery', $jquery, array('baseUrl' => ''));
 		$this->addScript('jQueryUI', $jqueryUI, array('baseUrl' => ''));
-		$this->addScript('jQueryTagIt', $request->getBaseUrl() . '/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js', array('baseUrl' => ''));
+		//$this->addScript('jQueryTagIt', $request->getBaseUrl() . '/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js', array('baseUrl' => ''));
                 
                 /*MUNIPRESS*/
                 $this->addScript('modernizr-custom', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/muniweb/modernizr-custom.js', array('baseUrl' => ''));
@@ -156,6 +156,7 @@ class MunipressThemePlugin extends ThemePlugin {
                 $this->addScript('slick', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/slick/slick.js', array('baseUrl' => ''));
                 $this->addScript('slick-settings', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/slick/slickslider-settings.js', array('baseUrl' => ''));
                 $this->addScript('lightcase', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lightcase/lightcase.js', array('baseUrl' => ''));
+                $this->addScript('lightcase-settings', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lightcase/lightcase-settings.js', array('baseUrl' => ''));
                 $this->addScript('app-muniweb', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/muniweb/app.js', array('baseUrl' => ''));
                 $this->addScript('app-run', 'App.run({})', array('inline' => true));
                 /**********/

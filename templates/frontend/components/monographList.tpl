@@ -15,7 +15,7 @@
 {if !$heading}
     {assign var="heading" value="h2"}
 {/if}
-<div class="monographListContainert">
+<div id="monographListContainert">
 
     {* Optional title *}
     {*{if $titleKey}
