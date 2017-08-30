@@ -10,56 +10,64 @@
  */
 .page_login {
 
-	// Form
-	.login {
-		margin-bottom: 0;
-		max-width: 17em;
+    margin-bottom: 15px;
+    // Form
+    .login {
+        margin-bottom: 0;
+        max-width: 17em;
 
-		input[type="text"],
-		input[type="password"] {
-			width: 100%;
-		}
-	}
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            font-size: 13px;
+            height: 28px;
+            line-height: 28px;
+            padding: 0 0.5em;
+            margin-bottom: 10px;
+        }
+    }
 
-	.password {
+    .password {
 
-		.label {
+        .label {
 
-			a {
-				float: right;
-				font-size: @font-sml;
-				font-style: normal;
-			}
-		}
-	}
+            a {
+                float: right;
+                font-size: @font-sml;
+                font-style: normal;
+            }
+        }
+    }
 
-	.remember {
-		padding-bottom: 0;
+    .remember {
+        padding-bottom: 0;
 
-		.label {
-			display: inline;
-			font-style: normal;
-		}
-	}
+        .label {
+            display: inline;
+            font-style: normal;
+        }
+    }
 
-	.buttons {
-		.pkp_helpers_clear;
+    .buttons {
+        .pkp_helpers_clear;
 
-		button {
-			&:extend(.cmp_button);
-			float: right;
+        button {
+            &:extend(.cmp_button);
+            float: right;
 
-			&:hover,
-			&:focus {
-				&:extend(.cmp_button:hover);
-			}
-		}
+            &:hover,
+                &:focus {
+                &:extend(.cmp_button:hover);
+            }
+        }
 
-		a {
-			float: right;
-			font-size: @font-sml;
-			line-height: @triple;
-			margin-right: 1em;
-		}
-	}
+        a {
+            float: right;
+            font-size: @font-sml;
+            line-height: @triple;
+            margin-right: 1em;
+        }
+    }
 }

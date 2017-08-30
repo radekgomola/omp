@@ -179,7 +179,7 @@
         </a>
     </li>
     <li class="header__menu__primary__item">
-        <a href="{$baseUrl}/index.php/munispace/contact" class="header__menu__primary__link">
+        <a href="http://www.press.muni.cz/nakladatelstvi/kontakty" class="header__menu__primary__link" target="_blank">
             {translate key="about.contact"}
         </a>
     </li>

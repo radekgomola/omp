@@ -1,6 +1,8 @@
 jQuery(document).ready(function ($) {
     $('a[data-rel^="lightcase:cover"]').lightcase({
-        type: 'image'
+        type: 'image',
+        maxWidth: 1000,
+        maxHeight: 1000
     });
     $('a[data-rel^="lightcase:profile"]').lightcase({
         width: 1000,

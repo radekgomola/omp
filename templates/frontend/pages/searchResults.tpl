@@ -45,11 +45,11 @@
 				{translate key="search.searchAgain"}
 			</a>
 		</div>
-		{include file="frontend/components/monographList.tpl" monographs=$publishedMonographs}
+		{include file="frontend/components/monographList.tpl" monographsArray=$publishedMonographs filtrovani="false"}
 	{/if}
 
 	<a name="search-form"></a>
-	{include file="frontend/components/searchForm_simple.tpl"}
+	{include file="frontend/components/searchForm_simple.tpl" header=false simpleSearch=true}
 
 </div><!-- .page -->
 

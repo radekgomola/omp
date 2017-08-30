@@ -63,6 +63,11 @@
     .pkp_navigation_user_wrapper{
         padding-right:15px;
     }
+    .pkp_structure_content{
+        *,*:before,*:after{
+            box-sizing: border-box;
+        }
+    }
 }
 .pkp_structure_main:before, .pkp_structure_main:after {
     background: unset;
@@ -70,7 +75,7 @@
 
 .pkp_structure_content {
     width: unset;
-    max-width: @screen-lg-desktop;
+    max-width: @screen-lg-desktop;    
 }
 
 .pkp_structure_sidebar {
@@ -203,4 +208,17 @@ ul.fields > li:before {
 .smallSlide-img{
     max-width: 7.5em;
     margin-bottom:5px;
+}
+
+.cmp_download_link .icon{
+    margin-right: 8px;
+}
+
+.simple__search {
+    padding-right: 0;
+    margin-bottom: 15px;
+
+    *, *:before, *:after{
+        box-sizing: border-box;
+    }
 }

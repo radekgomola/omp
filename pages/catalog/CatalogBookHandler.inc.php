@@ -132,6 +132,57 @@ class CatalogBookHandler extends Handler {
 			$templateMgr->assign('currency', $currencyDao->getCurrencyByAlphaCode($currency));
 		}
 
+                /********
+                 * MUNIPRESS
+                 */
+                $site = $request->getSite();
+                $locales = $site->getSupportedLocales();
+                
+                $locale = AppLocale::getLocale();
+                $submissionKeywordDao = DAORegistry::getDAO('SubmissionKeywordDAO');
+                $submissionLanguageDao = DAORegistry::getDAO('SubmissionLanguageDAO');       
+
+                $allKeywords = $submissionKeywordDao->getKeywords($publishedMonograph->getId(), $locales);
+                $templateMgr->assign('keywords', $allKeywords[$locale]);
+
+                $allLanguages = $submissionLanguageDao->getLanguages($publishedMonograph->getId(), $locales);
+                $templateMgr->assign('languages', $allLanguages[$locale]);
+
+                /***********
+                 * MUNIPRESS - použito pro souvisejici publikace
+                 **********/
+                
+                $publishedMonographsDao = DAORegistry::getDAO('PublishedMonographDAO');
+                $submissionSubjectDao = DAORegistry::getDAO('SubmissionSubjectDAO');
+                $allPublikace = $submissionSubjectDao->getSubjects($publishedMonograph->getId(), $locales);
+                $souvisejiciPublikace = array();
+
+                If(sizeof($allPublikace[$locale]) <=0){
+                    $vyberPublikaci = $publishedMonographsDao->getBySameCategories($publishedMonograph->getId());
+                    $velikostPole = sizeof($vyberPublikaci);
+                    If($velikostPole<=7) {
+                        $idPublikaciProVypis = $vyberPublikaci;
+                    } else {
+                        shuffle($vyberPublikaci);
+                        for ($i=0; $i < 6; $i++){
+                            
+                            $idPublikaciProVypis[] = $vyberPublikaci[$i];
+                        }
+                    }
+                } else{
+                    $idPublikaciProVypis = $allPublikace[$locale];
+                }
+                foreach($idPublikaciProVypis as $idPublikace){
+                    $publikace = $publishedMonographsDao->getById($idPublikace);
+                    if($publikace){
+                        $souvisejiciPublikace[] = $publikace;
+                    }
+
+                }
+                
+                $templateMgr->assign('souvisejiciPublikace', $souvisejiciPublikace);
+                
+                /***********************/
 		// Display
 		$templateMgr->display('frontend/pages/book.tpl');
 	}

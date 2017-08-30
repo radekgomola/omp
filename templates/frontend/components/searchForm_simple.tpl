@@ -24,7 +24,7 @@
 	</div>
 </form>*}
  
-<form class="search {if $header}header__search{/if}" action="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="results"}" method="post" id="form-search" role="search">
+<form class="search {if $header}header__search{elseif $simpleSearch}simple__search{/if}" action="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="results"}" method="post" id="form-search" role="search">
     <fieldset>
         <p>
                 <label for="search" class="header__search__label icon icon-search"><span class="vhide">Vyhledávání</span></label>
