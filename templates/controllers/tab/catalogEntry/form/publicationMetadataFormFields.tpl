@@ -111,6 +111,9 @@
                 {fbvFormSection label="submission.url.youtube" for="urlYtb"}
                         {fbvElement type="text" name="urlYtb" multilingual="true" id="urlYtb" value=$urlYtb maxlength="255" readonly=$readOnly}
                 {/fbvFormSection}
+                {fbvFormSection label="submission.url.flipbook" for="flipbook"}
+                        {fbvElement type="text" name="flipbook" id="flipbook" value=$flipbook maxlength="255" }
+                {/fbvFormSection}
         {/fbvFormArea}                       
 
 	{if $isPhysicalFormat}

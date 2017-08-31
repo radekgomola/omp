@@ -14,7 +14,6 @@
 {* Display metadata *}
 {include file="frontend/objects/monographFile_dublinCore.tpl" monograph=$publishedMonograph}
 {include file="frontend/objects/monographFile_googleScholar.tpl" monograph=$publishedMonograph}
-
 <div class="viewable_file_frame">
     <iframe class="viewable_file_frame" src="{$pluginUrl}/pdf.js/web/viewer.html?file={$downloadUrl|escape:"url"}" allowfullscreen webkitallowfullscreen></iframe>
 </div>

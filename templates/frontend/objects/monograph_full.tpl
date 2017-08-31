@@ -341,6 +341,13 @@
                                             </div>
                                         {/if}
                                     {/if}
+                                    {if $format->getFlipbook()}
+                                        <div class="pub_format_{$publicationFormatId|escape} pub_format_remote">
+                                            <a href="{$format->getFlipbook()|escape}" target="_blank" class="cmp_download_link" data-rel="lightcase:flipbook">
+                                                <span class="icon icon-book"></span>{translate key="submission.flipbook"}
+                                            </a>
+                                        </div>
+                                    {/if}
                                 {/foreach}
                             </div>
                         </div>

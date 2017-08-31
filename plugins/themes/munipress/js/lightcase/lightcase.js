@@ -88,9 +88,10 @@
 					data: {}
 				},
 				iframe: {
-					width: 800,
-					height: 500,
-					frameborder: 0
+					width: 1000,
+					height: 800,
+					frameborder: 0,
+                                        allowfullscreen: true
 				},
 				flash: {
 					width: 400,

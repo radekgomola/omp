@@ -226,7 +226,6 @@ class CatalogBookHandler extends Handler {
 		list($fileId, $revision) = array_map(create_function('$a', 'return (int) $a;'), preg_split('/-/', $fileIdAndRevision));
 		import('lib.pkp.classes.file.SubmissionFileManager');
 		$monographFileManager = new SubmissionFileManager($publishedMonograph->getContextId(), $publishedMonograph->getId());
-
 		switch ($submissionFile->getAssocType()) {
 			case ASSOC_TYPE_PUBLICATION_FORMAT: // Publication format file
 				if ($submissionFile->getAssocId() != $publicationFormat->getId() || $submissionFile->getDirectSalesPrice() === null) fatalError('Invalid monograph file specified!');
@@ -239,7 +238,6 @@ class CatalogBookHandler extends Handler {
 				break;
 			default: fatalError('Invalid monograph file specified!');
 		}
-
 		$ompCompletedPaymentDao = DAORegistry::getDAO('OMPCompletedPaymentDAO');
 		$user = $request->getUser();
 		if ($submissionFile->getDirectSalesPrice() === '0' || ($user && $ompCompletedPaymentDao->hasPaidPurchaseFile($user->getId(), $fileIdAndRevision))) {
@@ -252,20 +250,23 @@ class CatalogBookHandler extends Handler {
 			// If inline viewing is requested, permit plugins to
 			// handle the document.
 			PluginRegistry::loadCategory('viewableFiles', true);
-			if ($view) {
+			if ($view) {                                
 				if (HookRegistry::call('CatalogBookHandler::view', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile))) {
 					// If the plugin handled the hook, prevent further default activity.
 					exit();
 				}
 			}
-
+                        
 			// Inline viewer not available, or viewing not wanted.
 			// Download or show the file.
 			$inline = $request->getUserVar('inline')?true:false;
-			if (HookRegistry::call('CatalogBookHandler::download', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile, &$inline))) {
+                        $flipbook = $request->getUserVar('flipbook')?true:false;
+			if (HookRegistry::call('CatalogBookHandler::download', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile, &$inline, &$flipbook))) {
+                            
 				// If the plugin handled the hook, prevent further default activity.
 				exit();
 			}
+                        
 			return $monographFileManager->downloadFile($fileId, $revision, $inline);
 		}
 

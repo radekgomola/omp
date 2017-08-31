@@ -9,8 +9,8 @@ jQuery(document).ready(function ($) {
         maxWidth: 1000
     });
     $('a[data-rel^="lightcase:flipbook"]').lightcase({
-        type: 'iframe',
-        width: 1000,
-        maxWidth: 1000
+        maxHeight: 1000,
+        maxWidth: 1000,
+        type: 'iframe'
     });
 });

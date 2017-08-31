@@ -613,6 +613,21 @@ class PublicationFormat extends Representation {
 		return $this->setData('urlYtb', $urlYtb, $locale);
 	}
 
+        /**
+	 * Vrací url pro flipbook
+	 * @return int
+	 */
+	function getFlipbook() {
+		return $this->getData('flipbook');
+        }
+
+	/**
+	 * Nastavuje url pro flipbookn
+	 * @param $flipbook int
+	 */
+	function setFlipbook($flipbook) {
+		return $this->setData('flipbook', $flipbook);
+	}
         /*-----------------*/
 }
 

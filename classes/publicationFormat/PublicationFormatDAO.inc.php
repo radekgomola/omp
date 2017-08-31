@@ -145,8 +145,8 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 			$this->retrieve(
 				'SELECT pf.*, munipf.*
 				FROM	publication_formats pf ' .
-				($contextId?'INNER JOIN submissions s ON (pf.submission_id = s.submission_id) ':'') .
                                 'LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)' .
+				($contextId?'INNER JOIN submissions s ON (pf.submission_id = s.submission_id) ':'') .
 				'WHERE	pf.submission_id = ? ' .
 				($contextId?' AND s.context_id = ? ':'') .
 				'ORDER BY pf.seq',
@@ -183,7 +183,7 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 	 */
 	function getApprovedBySubmissionId($submissionId) {
 		$result = $this->retrieve(
-			'SELECT pf.*
+			'SELECT pf.*, munipf.*
 			FROM	publication_formats pf
                         LEFT JOIN munipress_publication_formats munipf ON (pf.publication_format_id = munipf.publication_format_id)
 			WHERE	submission_id = ? AND is_approved = 1
@@ -268,6 +268,7 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
                 $publicationFormat->setDatumVydani($this->dateFromDB($row['datum_vydani']));
 		$publicationFormat->setPocetStran($row['pocet_stran']);
                 $publicationFormat->setPoradiVydani($row['poradi_vydani']);
+                $publicationFormat->setFlipbook($row['flipbook']);
                 /*----------------*/
 
 		$this->getDataObjectSettings('publication_format_settings', 'publication_format_id', $row['publication_format_id'], $publicationFormat);
@@ -321,14 +322,15 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
                 /* MUNIPRESS*/
                 $this->update(
 			sprintf('INSERT INTO munipress_publication_formats
-				(publication_format_id, pocet_stran, datum_vydani, poradi_vydani)
+				(publication_format_id, pocet_stran, datum_vydani, poradi_vydani,flipbook)
 			VALUES
 				(?, ?, %s, ?)',
                         $this->datetimeToDB($publicationFormat->getDatumVydani())),
 			array(
 				(int) $publicationFormat->getId(),
 				(int) $publicationFormat->getPocetStran(),
-                                $publicationFormat->getPoradiVydani()
+                                $publicationFormat->getPoradiVydani(),
+                                $publicationFormat->getFlipbook()
 			)
 		);
                 /*----------------*/
@@ -402,13 +404,16 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 			sprintf('UPDATE munipress_publication_formats
 			SET	pocet_stran = ?,
                                 datum_vydani = %s,
-                                poradi_vydani = ?
+                                poradi_vydani = ?,
+                                flipbook = ?
 			WHERE	publication_format_id = ?',
                         $this->datetimeToDB($publicationFormat->getDatumVydani())),
                         array(
 				(int) $publicationFormat->getPocetStran(),
                                 $publicationFormat->getPoradiVydani(),
+                                $publicationFormat->getFlipbook(),
                                 (int) $publicationFormat->getId(),
+                                
 			)
                                
 		);

@@ -176,6 +176,7 @@ class CatalogEntryFormatMetadataForm extends Form {
                         'pocetStran' => $publicationFormat->getPocetStran(),
                         'poradiVydani' => $publicationFormat->getPoradiVydani(),
                         'datumVydani' => $publicationFormat->getDatumVydani(),
+                        'flipbook' => $publicationFormat->getFlipbook(),
                         'urlYtb' => $publicationFormat->getUrlYtb(null)// Localized
                         /*-------------------*/
 		);
@@ -217,6 +218,7 @@ class CatalogEntryFormatMetadataForm extends Form {
                         'pocetStran',
                         'poradiVydani',
                         'datumVydani',
+                        'flipbook',
                         'urlYtb'
                         /*-----------*/
 		));
@@ -274,6 +276,7 @@ class CatalogEntryFormatMetadataForm extends Form {
                 $publicationFormat->setPocetStran($this->getData('pocetStran'));
                 $publicationFormat->setPoradiVydani($this->getData('poradiVydani'));
                 $publicationFormat->setDatumVydani($this->getData('datumVydani'));
+                $publicationFormat->setFlipbook($this->getData('flipbook'));
                 $publicationFormat->setUrlYtb($this->getData('urlYtb'), null);
                 /*-----------*/
                 

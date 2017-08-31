@@ -65,7 +65,7 @@ class HtmlMonographFilePlugin extends GenericPlugin {
 		$inline =& $params[4];
 		$request = Application::getRequest();
 
-		if ($submissionFile && $submissionFile->getFileType() == 'text/html') {
+		if ($submissionFile && ($submissionFile->getFileType() == 'text/html' || $submissionFile->flipbookFileExists())) {
 			$templateMgr = TemplateManager::getManager($request);
 			$templateMgr->addStyleSheet(
 				'htmlArticleGalleyStyles',
@@ -100,11 +100,13 @@ class HtmlMonographFilePlugin extends GenericPlugin {
 		$publicationFormat =& $params[2];
 		$submissionFile =& $params[3];
 		$inline =& $params[4];
+                $flipbook =& $params[5];
 		$request = Application::getRequest();
-
-		if ($submissionFile && $submissionFile->getFileType() == 'text/html') {
+                $flipbook = true;
+		if ($submissionFile && ($submissionFile->getFileType() == 'text/html' || $submissionFile->flipbookFileExists())) {
 			if (!HookRegistry::call('HtmlMonographFilePlugin::monographDownload', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile, &$inline))) {
-				echo $this->_getHTMLContents($request, $publishedMonograph, $publicationFormat, $submissionFile);
+
+            			echo $this->_getHTMLContents($request, $publishedMonograph, $publicationFormat, $submissionFile, $flipbook);
 				$returner = true;
 				HookRegistry::call('HtmlMonographFilePlugin::monographDownloadFinished', array(&$returner));
 				return true;
@@ -123,8 +125,12 @@ class HtmlMonographFilePlugin extends GenericPlugin {
 	 * @return string
 	 */
 	function _getHTMLContents($request, $monograph, $publicationFormat, $submissionFile) {
-		$contents = file_get_contents($submissionFile->getFilePath());
-
+                if($submissionFile->flipbookFileExists()) {
+                    $contents = file_get_contents($submissionFile->getFlipbookPath());
+                } else {
+                    $contents = file_get_contents($submissionFile->getFilePath());
+                }
+//                ($contents);
 		// Replace media file references
 		$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
 		import('lib.pkp.classes.submission.SubmissionFile'); // Constants
@@ -179,7 +185,6 @@ class HtmlMonographFilePlugin extends GenericPlugin {
 		foreach ($paramArray as $key => $value) {
 			$contents = str_replace('{$' . $key . '}', $value, $contents);
 		}
-
 		return $contents;
 	}
 
