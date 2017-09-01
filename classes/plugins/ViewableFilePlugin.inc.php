@@ -51,7 +51,7 @@ abstract class ViewableFilePlugin extends PKPViewableFilePlugin {
 		$chapterDao = DAORegistry::getDAO('ChapterDAO');
 		$genreDao = DAORegistry::getDAO('GenreDAO');
                 
-                $isFlipbook = $submissionFile->flipbookFolderExists(); 
+//                $isFlipbook = $submissionFile->flipbookFolderExists(); 
                 
 		// Find a good candidate for a publication date
 		$publicationDateDao = DAORegistry::getDAO('PublicationDateDAO');

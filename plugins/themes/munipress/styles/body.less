@@ -87,13 +87,13 @@ a {
 
 // Layout scaffold for content and sidebars
 .pkp_structure_main {
-    padding: @base;
+    /*padding: @base;*/
 }
 
 @media( min-width: @screen-phone ) {
 
     .pkp_structure_main {
-        padding: @double;
+        /*padding: @double;*/
     }
 }
 
@@ -110,7 +110,7 @@ a {
             left: 0;
             bottom: 0;
             width: 1px;
-            background: @bg-border-color;
+            /*background: @bg-border-color;*/
         }
 
         &:after {
@@ -121,9 +121,9 @@ a {
 
 @media( min-width: @screen-desktop ) {
 
-/*    .pkp_structure_content {
+    .pkp_structure_content {
         padding-top: @triple;
-    }*/
+    }
 
     .pkp_structure_sidebar {
         float: right;
@@ -132,7 +132,7 @@ a {
 
     .pkp_structure_main {
         float: left;
-        padding: 0 @triple (@triple * 3);
+        /*padding: 0 @triple (@triple * 3);*/
         width: @screen-desktop-container - @sidebar-width;
 
         &:after {

@@ -2,7 +2,7 @@
 * templates/frontend/objects/monograph_slide.tpl
 *
 *}
-<div class="smallSlide">
+<div class="smallSlide" id="smallSlide">
     <div class="smallSlide-img">
         <a href="{url page="catalog" op="book" path=$monograph->getId()}" target="_blank" class="cover">
             <div class="box-article-list__containerMunipress">

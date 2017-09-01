@@ -103,7 +103,7 @@
     }
 }
 
-.grid(@selector: ~'col--', @separator: ~'-', @columns: 12, @rule: ~'width', @coef: 1.11, @i: 1) when (@i =< @columns){
+.grid(@selector: ~'col--', @separator: ~'-', @columns: 12, @rule: ~'width', @coef: 1, @i: 1) when (@i =< @columns){
         @{selector}@{i}@{separator}@{columns}{
                 @{rule}: percentage(@i / (@columns * @coef));
         }

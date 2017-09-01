@@ -74,7 +74,7 @@
                 {if isset($monographsArray)}
 
                     {foreach name="monographListLoop" from=$monographsArray key=key item=monograph}
-                        <li class="grid__cell size--m--book--2-4 size--l--book--4-12">
+                        <li class="grid__cell size--m--2-4 size--l--4-12">
                             {include file="frontend/objects/monograph_summary.tpl" monograph=$monograph}
                         </li>
                         {assign var=counter value=$counter+1}
@@ -83,7 +83,7 @@
                 {else}
                     {iterate name="monographListLoop" from=monographs item=monograph}
                     {assign var=key value = $monograph->getId()}
-                    <li class="grid__cell size--m--book--2-4 size--l--book--4-12">
+                    <li class="grid__cell size--m--2-4 size--l--4-12">
                         {include file="frontend/objects/monograph_summary.tpl" monograph=$monograph}
                     </li>
                     {/iterate}

@@ -20,32 +20,32 @@
 *}
 {*<div class="obj_spotlight {$hasCoverImage} {$type}">
 
-    {if $coverImage}
-        <a class="cover_image" href="{$targetUrl}">
-            <img alt="{$item->getLocalizedFullTitle()|strip_tags|escape}" src="{$coverImageUrl}">
-        </a>
-    {/if}
+{if $coverImage}
+<a class="cover_image" href="{$targetUrl}">
+<img alt="{$item->getLocalizedFullTitle()|strip_tags|escape}" src="{$coverImageUrl}">
+</a>
+{/if}
 
-    <div class="call_to_action">
-        <h3 class="title">
-            {$spotlight->getLocalizedTitle()|escape}
-        </h3>
-        <div class="type">
-            {if $assocType == $smarty.const.SPOTLIGHT_TYPE_SERIES}
-                {translate key="series.series"}
-            {else}
-                {translate key="spotlight"}
-            {/if}
-        </div>
-        {if $description}
-            <div class="description">
-                {$description|strip_unsafe_html}
-            </div>
-        {/if}
-        <a class="read_more" href="{$targetUrl}" title="{translate|escape key="common.readMoreWithTitle" title=$spotlight->getLocalizedTitle()}">
-            {translate key="common.readMore"}
-        </a>
-    </div>
+<div class="call_to_action">
+<h3 class="title">
+{$spotlight->getLocalizedTitle()|escape}
+</h3>
+<div class="type">
+{if $assocType == $smarty.const.SPOTLIGHT_TYPE_SERIES}
+{translate key="series.series"}
+{else}
+{translate key="spotlight"}
+{/if}
+</div>
+{if $description}
+<div class="description">
+{$description|strip_unsafe_html}
+</div>
+{/if}
+<a class="read_more" href="{$targetUrl}" title="{translate|escape key="common.readMoreWithTitle" title=$spotlight->getLocalizedTitle()}">
+{translate key="common.readMore"}
+</a>
+</div>
 </div>*}
 
 <a href="{$targetUrl}" class="box-article-grid box-article-grid--noimg">
@@ -55,7 +55,7 @@
             {if $coverImage}
                 <img alt="{$item->getLocalizedFullTitle()|strip_tags|escape}" src="{$coverImageUrl}" class="spotlight_img">
             {/if}
-            <h2 class="box-article-grid__title">{$spotlight->getLocalizedTitle()|escape}</h2>
+            <h4 class="box-article-grid__title">{$spotlight->getLocalizedTitle()|escape}</h4>
             <p class="box-article-grid__meta meta">
                 <span class="meta__item"><strong>{$authors|strip_unsafe_html}</strong>
             </p>
