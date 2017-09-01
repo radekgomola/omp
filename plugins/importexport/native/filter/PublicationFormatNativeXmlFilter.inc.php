@@ -50,6 +50,10 @@ class PublicationFormatNativeXmlFilter extends RepresentationNativeXmlFilter {
 		$representationNode->setAttribute('approved', $representation->getIsApproved()?'true':'false');
 		$representationNode->setAttribute('available', $representation->getIsAvailable()?'true':'false');
 		$representationNode->setAttribute('physical_format', $representation->getPhysicalFormat()?'true':'false');
+                
+                $this->createOptionalNode($doc, $representationNode, 'pocet_stran', $representation->getPocetStran());
+                $this->createOptionalNode($doc, $representationNode, 'datum_vydani', $representation->getDatumVydani());
+                $this->createOptionalNode($doc, $representationNode, 'poradi_vydani', $representation->getPoradiVydani());
 
 		// If all nexessary press settings exist, export ONIX metadata
 		$context = $this->getDeployment()->getContext();

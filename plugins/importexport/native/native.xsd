@@ -55,6 +55,11 @@
 					<attribute name="approved" type="boolean"/>
 					<attribute name="available" type="boolean"/>
 					<attribute name="physical_format" type="boolean"/>
+                                        
+                                        <!--MUNIPRESS-->
+                                        <attribute name="pocet_stran" type="int"/>
+                                        <attribute name="datum_vydani" type="date"/>
+                                        <attribute name="poradi_vydani" type="string"/>
 				</extension>
 			</complexContent>
 		</complexType>
