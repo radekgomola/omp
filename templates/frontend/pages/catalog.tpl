@@ -12,7 +12,6 @@
 {include file="frontend/components/header.tpl" pageTitle="navigation.catalog"}
 
 <div class="page page_catalog">
-	{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="navigation.catalog"}
 	<div class="monograph_count">
 		{translate key="catalog.browseTitles" numTitles=$publishedMonographs->getCount()}
 	</div>
