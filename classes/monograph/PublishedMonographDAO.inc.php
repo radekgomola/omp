@@ -781,10 +781,9 @@ class PublishedMonographDAO extends MonographDAO {
             $fakulta = '';
         }
 
-
         //Konec MUNIPRESS
         $result = $this->retrieveRange(
-                'SELECT	' . ($searchText !== null ? 'DISTINCT ' : '') . '
+                'SELECT	DISTINCT 
 				ps.*,
 				s.*,
                                 munis.*,
