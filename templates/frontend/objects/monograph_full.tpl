@@ -215,7 +215,7 @@
                                         {url|assign:authorPublications router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori" op="authorPublications" authorId=$authorId}
                                         <div class="sub_item">
                                             <div class="label">
-                                                <a href="{$authorPublications}" data-rel="lightcase:profile">{$author->getFullName()|escape}</a>
+                                                <a href="{$authorPublications}" {*data-rel="lightcase:profile"*}>{$author->getFullName()|escape}</a>
                                                 <div class="role">
                                                     {$author->getLocalizedUserGroupName()|escape}
                                                 </div>
@@ -343,7 +343,7 @@
                                     {/if}
                                     {if $format->getFlipbook()}
                                         <div class="pub_format_{$publicationFormatId|escape} pub_format_remote">
-                                            <a href="{$format->getFlipbook()|escape}" target="_blank" class="cmp_download_link" data-rel="lightcase:flipbook">
+                                            <a href="{$format->getFlipbook()|escape}" class="cmp_download_link" data-rel="lightcase:flipbook">
                                                 <span class="icon icon-book"></span>{translate key="submission.flipbook"}
                                             </a>
                                         </div>

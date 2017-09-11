@@ -10,7 +10,7 @@
 *}
 {strip}        
     {assign var="pageTitleName" value=$author->getFullName(false, true)|escape}
-    {include file="frontend/components/headerBio.tpl"}
+    {include file="frontend/components/header.tpl"}
 {/strip}
 
 <div id="authorDetails" style="border-shadow: 0 1px 5px rgba(63, 105, 160, 0.3) inset;">

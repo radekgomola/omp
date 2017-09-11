@@ -19,8 +19,8 @@
 
 switch ($op) {
 	case 'index':
-		define('HANDLER_CLASS', 'IndexHandler');
-		import('pages.index.IndexHandler');
+		define('HANDLER_CLASS', 'CatalogHandler');
+		import('pages.catalog.CatalogHandler');
 		break;
 }
 
