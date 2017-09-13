@@ -487,7 +487,8 @@ class MonographDAO extends SubmissionDAO {
                     'SELECT DISTINCT LOWER(cves.setting_value) AS lang_key, ml.en_name AS en_us, ml.cz_name AS cs_cz
                             FROM controlled_vocab_entry_settings cves 
                             LEFT JOIN munipress_languages ml ON LOWER(cves.setting_value) = LOWER(ml.en_name)
-                            WHERE cves.setting_name = \'submissionLanguage\' AND cves.locale = \'en_US\''
+                            WHERE cves.setting_name = \'submissionLanguage\' AND cves.locale = \'en_US\'
+                            ORDER BY ml.cz_name'
                     );
             $returner = array();
             while (!$result->EOF) {

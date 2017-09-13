@@ -241,3 +241,46 @@ ul.fields > li:before {
     }
 }
 
+.align-right{
+    text-align: right;
+}
+
+.align-left{
+    text-align: left;
+}
+
+.inline-block {
+    display:inline-block;
+}
+
+.footer-light {    
+    @media (max-width: (@screen-desktop - 1)){
+        .footer-right-block, .footer-left-block {
+        left: 50%;
+        position: absolute !important;
+        transform: translate(-50%, -30%);
+        }
+        .footer-right-block{
+           padding-top: 210px;
+        }
+        .footer-left-block{
+           padding-top: 10px;
+        }
+    }
+}
+.footer-right{
+    width:260px;
+    
+    @media (min-width: @screen-desktop) {
+        margin-top: -20px;
+    }
+    a {
+        margin: 0px !important;
+    }
+    div{
+        width: 49.2%;
+    }
+    img{
+        border: 0;
+    }
+}

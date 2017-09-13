@@ -973,4 +973,7 @@
     <message key="common.homepageNavigationLabel">Domů</message>
     <message key="citace.akol">et al.</message>
     <message key="citace.mu">Brno: Masarykova univerzita</message>
+    
+    <message key="footer.nakladatelstvi"><![CDATA[Nakladatelství <strong>Masarykovy univerzity</strong>]]></message>
+    <message key="footer.contact.adresa">Rybkova 987/19, 602 00 Brno</message>
 </locale>

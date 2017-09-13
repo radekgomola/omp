@@ -20,6 +20,8 @@ import('classes.handler.Handler');
 import('lib.pkp.classes.linkAction.LinkAction');
 import('lib.pkp.classes.core.JSONMessage');
 
+DEFINE('CATALOG_SOUVISEJICI_PUBLIKACE_POCET', 6);
+
 class CatalogBookHandler extends Handler {
 	/**
 	 * Constructor
@@ -164,7 +166,7 @@ class CatalogBookHandler extends Handler {
                         $idPublikaciProVypis = $vyberPublikaci;
                     } else {
                         shuffle($vyberPublikaci);
-                        for ($i=0; $i < 6; $i++){
+                        for ($i=0; $i < CATALOG_SOUVISEJICI_PUBLIKACE_POCET; $i++){
                             
                             $idPublikaciProVypis[] = $vyberPublikaci[$i];
                         }
