@@ -936,4 +936,5 @@ Masaryk University</message>
 
     <message key="footer.nakladatelstvi"><![CDATA[<strong>Masaryk University</strong> Press]]></message>
     <message key="footer.contact.adresa">Rybkova 987/19, 602 00 Brno</message>
+    <message key="filter.reset">RESET</message>
 </locale>

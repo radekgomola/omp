@@ -70,13 +70,38 @@ class CatalogHandler extends Handler {
                 $categoryDao = DAORegistry::getDAO('CategoryDAO');
                 // Provide a list of categories to browse
 		$obory = $categoryDao->getByParentIdNotEmpty(CATEGORY_OBORY,$press->getId(),$locale);
-		$templateMgr->assign('obory', $obory);
+                $oboryPole = $obory->toAssociativeArray();
+                $filtrOboryPocet = Array();
+                foreach ($oboryPole as $value) {
+                    $filtrOboryPocet[$value->getId()] = $publishedMonographDao -> getByPressIdCount($press->getId(), $value->getPath(), $rok, $jazyk, $fakulta);
+                }
+                $templateMgr->assign('obory', $oboryPole);
+                $templateMgr->assign('filtrOboryPocet', $filtrOboryPocet);
+                
                 $fakulty= $categoryDao->getByParentIdNotEmpty(CATEGORY_FAKULTY,$press->getId(),$locale);
-		$templateMgr->assign('fakulty', $fakulty);
+                $fakultyPole = $fakulty->toAssociativeArray();
+                $filtrFakultyPocet = Array();
+                foreach ($fakultyPole as $value) {
+                    $filtrFakultyPocet[$value->getId()] = $publishedMonographDao -> getByPressIdCount($press->getId(), $obor, $rok, $jazyk, $value->getPath());
+                }
+                $templateMgr->assign('fakulty', $fakultyPole);
+                $templateMgr->assign('filtrFakultyPocet', $filtrFakultyPocet);
+		
                 
                 $monographDao = DAORegistry::getDAO('MonographDAO');
                 $templateMgr->assign('filtrRoky', $monographDao->getYears());
+                $filtrRokyPocet = Array();
+                foreach ($monographDao->getYears() as $value) {
+                    $filtrRokyPocet[$value] = $publishedMonographDao -> getByPressIdCount($press->getId(), $obor, $value, $jazyk, $fakulta);
+                }
+                $templateMgr->assign('filtrRokyPocet', $filtrRokyPocet);
+                
                 $templateMgr->assign('filtrJazyky', $monographDao->getLanguagesForFilter($locale));            
+                $filtrJazykyPocet = Array();
+                foreach ($monographDao->getLanguagesForFilter($locale) as $value) {
+                    $filtrJazykyPocet[$value] = $publishedMonographDao -> getByPressIdCount($press->getId(), $obor, $rok, $value, $fakulta);
+                }
+                $templateMgr->assign('filtrJazykyPocet', $filtrJazykyPocet);
                 
                 $templateMgr->assign('filtrovaniObor', $obor);
                 $templateMgr->assign('filtrovaniRok', $rok);
@@ -147,6 +172,7 @@ class CatalogHandler extends Handler {
 		$templateMgr = TemplateManager::getManager($request);
 		$press = $request->getPress();
 		$this->setupTemplate($request);
+                $publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
 
                 /*MUNIPRESS*/
                 $locale = AppLocale::getLocale();
@@ -161,16 +187,42 @@ class CatalogHandler extends Handler {
 		$categoryDao = DAORegistry::getDAO('CategoryDAO');
 		$categoryPath = array_shift($args);
 		$category =& $categoryDao->getByPath($categoryPath, $press->getId());
+                
                 /*MUNIPRESS*/
                 // Provide a list of categories to browse
-		$obory = $categoryDao->getByParentIdNotEmpty(1,$press->getId(), $locale);
-		$templateMgr->assign('obory', $obory);
-                $fakulty= $categoryDao->getByParentIdNotEmpty(32,$press->getId(), $locale);
-		$templateMgr->assign('fakulty', $fakulty);
+		$obory = $categoryDao->getByParentIdNotEmpty(CATEGORY_OBORY,$press->getId(),$locale);
+                $oboryPole = $obory->toAssociativeArray();
+                $filtrOboryPocet = Array();
+                foreach ($oboryPole as $value) {
+                    $filtrOboryPocet[$value->getId()] = $publishedMonographDao -> getByCategoryIdCount($category->getId(), $press->getId(), $value->getPath(), $rok, $jazyk, $fakulta);
+                }
+                $templateMgr->assign('obory', $oboryPole);
+                $templateMgr->assign('filtrOboryPocet', $filtrOboryPocet);
+                
+                $fakulty= $categoryDao->getByParentIdNotEmpty(CATEGORY_FAKULTY,$press->getId(),$locale);
+                $fakultyPole = $fakulty->toAssociativeArray();
+                $filtrFakultyPocet = Array();
+                foreach ($fakultyPole as $value) {
+                    $filtrFakultyPocet[$value->getId()] = $publishedMonographDao -> getByCategoryIdCount($category->getId(), $press->getId(), $obor, $rok, $jazyk, $value->getPath());
+                }
+                $templateMgr->assign('fakulty', $fakultyPole);
+                $templateMgr->assign('filtrFakultyPocet', $filtrFakultyPocet);
+		
                 
                 $monographDao = DAORegistry::getDAO('MonographDAO');
                 $templateMgr->assign('filtrRoky', $monographDao->getYears());
+                $filtrRokyPocet = Array();
+                foreach ($monographDao->getYears() as $value) {
+                    $filtrRokyPocet[$value] = $publishedMonographDao -> getByCategoryIdCount($category->getId(), $press->getId(), $obor, $value, $jazyk, $fakulta);
+                }
+                $templateMgr->assign('filtrRokyPocet', $filtrRokyPocet);
+                
                 $templateMgr->assign('filtrJazyky', $monographDao->getLanguagesForFilter($locale));            
+                $filtrJazykyPocet = Array();
+                foreach ($monographDao->getLanguagesForFilter($locale) as $value) {
+                    $filtrJazykyPocet[$value] = $publishedMonographDao -> getByCategoryIdCount($category->getId(), $press->getId(), $obor, $rok, $value, $fakulta);
+                }
+                $templateMgr->assign('filtrJazykyPocet', $filtrJazykyPocet);            
                 
                 $templateMgr->assign('filtrovaniObor', $obor);
                 $templateMgr->assign('filtrovaniRok', $rok);
@@ -208,15 +260,6 @@ class CatalogHandler extends Handler {
                         $templateMgr->assign('trideni',$trideni);
                         /*------------*/
                         
-                        
-//			$publishedMonographs =& $publishedMonographDao->getByCategoryId($category->getId(), $press->getId());
-//			$templateMgr->assign('publishedMonographs', $publishedMonographs->toAssociativeArray());
-//
-//			// Expose the featured monograph IDs and associated params
-//			$featureDao = DAORegistry::getDAO('FeatureDAO');
-//			$featuredMonographIds = $featureDao->getSequencesByAssoc(ASSOC_TYPE_CATEGORY, $category->getId());
-//			$templateMgr->assign('featuredMonographIds', $featuredMonographIds);
-
 			// Provide a list of new releases to browse
 			$newReleaseDao = DAORegistry::getDAO('NewReleaseDAO');
 			$newReleases = $newReleaseDao->getMonographsByAssoc(ASSOC_TYPE_CATEGORY, $category->getId());
@@ -233,6 +276,10 @@ class CatalogHandler extends Handler {
 		$request->redirect(null, 'catalog');
 	}
 
+        /**
+         * TODO: předělat na Munispace vyber
+         */
+        
 	/**
 	 * View the content of a series.
 	 * @param $args array

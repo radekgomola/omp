@@ -62,6 +62,10 @@ class PublishedMonographDAO extends MonographDAO {
         return $this->_getByAssoc($pressId, ASSOC_TYPE_PRESS, $pressId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly, $obor, $rok_vydani, $jazyk, $fakulta, $speckat);
     }
 
+    function getByPressIdCount($pressId, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
+        return $this->_getByAssocCount($pressId, ASSOC_TYPE_PRESS, $pressId, $obor, $rok_vydani, $jazyk, $fakulta);
+    }
+    
     /**
      * Retrieve all published monographs associated with the passed category id.
      * @param $seriesId int The category id monographs are associated with.
@@ -78,6 +82,9 @@ class PublishedMonographDAO extends MonographDAO {
         return $this->_getByAssoc($pressId, ASSOC_TYPE_CATEGORY, $categoryId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly, $obor, $rok_vydani, $jazyk, $fakulta);
     }
 
+    function getByCategoryIdCount($categoryId, $pressId = null, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
+        return $this->_getByAssocCount($pressId, ASSOC_TYPE_CATEGORY, $categoryId, $obor, $rok_vydani, $jazyk, $fakulta);
+    }
     /* -------------------- */
 
     /**
@@ -826,6 +833,110 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
         return new DAOResultFactory($result, $this, '_fromRow');
     }
 
+    
+    private function _getByAssocCount($pressId, $assocType, $assocId, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
+        // Cast parameters.
+        $pressId = (int) $pressId;
+        $assocType = (int) $assocType;
+        $assocId = (int) $assocId;
+        /* MUNIPRESS */
+        $locale = AppLocale::getLocale();
+
+        $obor = $obor;
+        $rok_vydani = (int) $rok_vydani;
+        $jazyk = $jazyk;
+        $fakulta = $fakulta;
+        /* ---------- */
+        // If no associated object is passed, return.
+        if (!$assocId || !$assocType) {
+            return new DAOResultFactory();
+        } else {
+            // Check if the associated object exists.
+            switch ($assocType) {
+                case ASSOC_TYPE_PRESS:
+                    $assocObject = DAORegistry::getDAO('PressDAO')->getById($assocId);
+                    break;
+                case ASSOC_TYPE_SERIES:
+                    $assocObject = DAORegistry::getDAO('SeriesDAO')->getById($assocId);
+                    break;
+                case ASSOC_TYPE_CATEGORY:
+                    $assocObject = DAORegistry::getDAO('CategoryDAO')->getById($assocId);
+                    break;
+                default:
+                    $assocObject = null;
+            }
+            if (!$assocObject) {
+                assert(false);
+                return new DAOResultFactory();
+            }
+        }
+
+        $params = array_merge($this->getFetchParameters());
+
+        $params = array_merge($params, array($pressId));
+        //MUNIPRESS
+        $categoryDao = DAORegistry::getDAO('CategoryDAO');
+        $oboryIterator = $categoryDao->getByParentId(1, $pressId);
+        $oboryPole = array();
+        while ($result = $oboryIterator->next()) {
+            $oboryPole[] = $result->getPath();
+        }
+        if ($obor && in_array($obor, $oboryPole)) {
+            $params[] = $obor;
+        } else {
+            $obor = '';
+        }
+
+        if ($rok_vydani && $rok_vydani < 10000 && $rok_vydani > 1900) {
+            $params[] = $rok_vydani . "-01-01";
+            $params[] = $rok_vydani . "-12-31";
+        } else {
+            $rok_vydani = '';
+        }
+
+        if ($jazyk) {
+            $params[] = $jazyk;
+        } else {
+            $jazyk = '';
+        }
+
+        $fakultyIterator = $categoryDao->getByParentId(32, $pressId);
+        $fakultyPole = array();
+        while ($result = $fakultyIterator->next()) {
+            $fakultyPole[] = $result->getPath();
+        }
+
+        if ($fakulta && in_array($fakulta, $fakultyPole)) {
+            $params[] = $fakulta;
+        } else {
+            $fakulta = '';
+        }
+
+        //Konec MUNIPRESS
+        $result = $this->retrieve(
+                'SELECT	COUNT(*)
+			FROM	published_submissions ps
+				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
+				' . $this->getFetchJoins() . '
+				' . ($assocType == ASSOC_TYPE_CATEGORY ? '
+					LEFT JOIN submission_categories sc ON (sc.submission_id = s.submission_id AND sc.category_id = ' . $assocId . ')
+					LEFT JOIN series_categories sca ON (sca.series_id = se.series_id)
+					LEFT JOIN categories c ON (c.category_id = sca.category_id AND c.category_id = ' . $assocId . ')
+				' : '') . '
+			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
+				' . ($assocType == ASSOC_TYPE_CATEGORY ? ' AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)' : '') . '
+				' . ($assocType == ASSOC_TYPE_SERIES ? ' AND se.series_id = ' . $assocId : '') . '
+                                ' . ($obor ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
+                                ' . ($rok_vydani ? ' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?' : '' ) . '
+                                ' . ($jazyk ? ' AND s.submission_id IN (SELECT cv.assoc_id FROM controlled_vocabs cv 
+LEFT JOIN controlled_vocab_entries cve ON (cv.controlled_vocab_id = cve.controlled_vocab_id)
+JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cves.controlled_vocab_entry_id AND cves.setting_name = \'submissionLanguage\' AND LOWER(cves.setting_value) = ?))' : '' ) . '
+                                ' . ($fakulta ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ), $params
+        );
+
+        return isset($result->fields[0])? $result->fields[0] : null;
+    }
 }
 
 ?>
