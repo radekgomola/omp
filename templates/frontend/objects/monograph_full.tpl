@@ -580,7 +580,7 @@
             <div class="grid">
                 {foreach from=$souvisejiciPublikace item=monograph}
                     <div class="grid__cell size--s--1-2 size--m--1-4 size--l--2-12">
-                        <a class="pkp_helpers_image_left tooltip" href="{url page="catalog" op="book" path=$monograph->getId()}" target="_blank" title="{$monograph->getLocalizedFullTitle()|strip_tags|escape}">
+                        <a class="pkp_helpers_image_left tooltip" href="" target="_blank" title="{$monograph->getLocalizedFullTitle()|strip_tags|escape}" onclick="location.href='{url page="catalog" op="book" path=$monograph->getId()}';">
                             {assign var=coverImage value=$monograph->getCoverImage()}
                             {if empty($coverImage)}
                                 {assign var=coverImageWidth value="103"}
