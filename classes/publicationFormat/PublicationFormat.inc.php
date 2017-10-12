@@ -622,7 +622,7 @@ class PublicationFormat extends Representation {
         }
 
 	/**
-	 * Nastavuje url pro flipbookn
+	 * Nastavuje url pro flipbook
 	 * @param $flipbook int
 	 */
 	function setFlipbook($flipbook) {

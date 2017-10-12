@@ -122,9 +122,17 @@ class CatalogBookHandler extends Handler {
 					}
 				}
 			}
+                        $remoteResourcesByPublicationFormat = array();
+			foreach ($publishedMonograph->getPublicationFormats(true) as $publicationFormat) {
+				$remoteURL = $publicationFormat->getRemoteURL();
+				if ($remoteURL != null) {
+					$remoteResourcesByPublicationFormat[$publicationFormat->getId()] = $remoteURL;
+				}
+			}
 
-			// Expose variables to template
+                        // Expose variables to template
 			$templateMgr->assign('availableFiles', $filteredAvailableFiles);
+                        $templateMgr->assign('remoteResources', $remoteResourcesByPublicationFormat);
 		}
 
 		// Provide the currency to the template, if configured.

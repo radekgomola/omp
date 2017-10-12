@@ -179,7 +179,7 @@
                                 <a href="#tab-2" class="box-tabs__menu__link js-tab-links">{translate key="submission.chapters"}</a>
                             </li>
                         {/if}
-                        {if $nonChapterFiles|@count || $zobrazDownload}
+                        {if $nonChapterFiles|@count || $remoteResources|@count}
                             <li class="box-tabs__menu__item">
                                 <a href="#tab-3" class="box-tabs__menu__link js-tab-links">{translate key="submission.download"}</a>
                             </li>
@@ -282,7 +282,7 @@
                         </div>
                     {/if}
                     {*Ke stažení*}
-                    {if $nonChapterFiles|@count}
+                    {if $nonChapterFiles|@count || $remoteResources|@count}
                         <div id="tab-3" class="box-tabs__fragment">
                             <a href="#" class="box-tabs__responsive-link">
                                 <span class="box-tabs__responsive-link__name">{translate key="submission.download"}</span>
@@ -562,10 +562,8 @@
                     {/if}
                     {* References *}
                     {if $monograph->getCitations()}
-                        <div class="item references">
-                            <h3 class="label">
-                                {translate key="submission.citations"}
-                            </h3>
+                        <div id="tab-6" class="box-tabs__fragment">
+                            <br />
                             <div class="value">
                                 {$monograph->getCitations()|nl2br}
                             </div>

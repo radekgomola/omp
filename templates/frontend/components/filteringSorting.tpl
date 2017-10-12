@@ -56,7 +56,8 @@
                     <option {if !$filtrovaniJazyk} selected="selected"{/if} value="">{translate key="filtr.jazyky"}</option>
                     {foreach from=$filtrJazyky key=jedenJazykKlic item=jedenJazyk}
                         {if $jedenJazyk != "" && $filtrJazykyPocet[$jedenJazyk] > 0}
-                        <option {if $filtrovaniJazyk == $jedenJazykKlic}selected="selected"{/if} value="{$jedenJazykKlic|escape}">{$jedenJazyk} ({$filtrJazykyPocet[$jedenJazyk]})</option>{/if}
+                        <option {if $filtrovaniJazyk == $jedenJazykKlic}selected="selected"{/if} value="{$jedenJazykKlic|escape}">{$jedenJazyk} ({$filtrJazykyPocet[$jedenJazyk]})</option>
+                        {/if}
                     {/foreach}
                 </select>
             </span>

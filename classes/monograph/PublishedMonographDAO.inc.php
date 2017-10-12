@@ -65,7 +65,7 @@ class PublishedMonographDAO extends MonographDAO {
     function getByPressIdCount($pressId, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
         return $this->_getByAssocCount($pressId, ASSOC_TYPE_PRESS, $pressId, $obor, $rok_vydani, $jazyk, $fakulta);
     }
-    
+
     /**
      * Retrieve all published monographs associated with the passed category id.
      * @param $seriesId int The category id monographs are associated with.
@@ -85,6 +85,7 @@ class PublishedMonographDAO extends MonographDAO {
     function getByCategoryIdCount($categoryId, $pressId = null, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
         return $this->_getByAssocCount($pressId, ASSOC_TYPE_CATEGORY, $categoryId, $obor, $rok_vydani, $jazyk, $fakulta);
     }
+
     /* -------------------- */
 
     /**
@@ -833,7 +834,6 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
         return new DAOResultFactory($result, $this, '_fromRow');
     }
 
-    
     private function _getByAssocCount($pressId, $assocType, $assocId, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
         // Cast parameters.
         $pressId = (int) $pressId;
@@ -842,10 +842,10 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
         /* MUNIPRESS */
         $locale = AppLocale::getLocale();
 
-        $obor = $obor;
+
+        $rok = $rok_vydani;
         $rok_vydani = (int) $rok_vydani;
-        $jazyk = $jazyk;
-        $fakulta = $fakulta;
+
         /* ---------- */
         // If no associated object is passed, return.
         if (!$assocId || !$assocType) {
@@ -881,20 +881,24 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
         while ($result = $oboryIterator->next()) {
             $oboryPole[] = $result->getPath();
         }
-        if ($obor && in_array($obor, $oboryPole)) {
+        if (($obor && in_array($obor, $oboryPole))) {
             $params[] = $obor;
+        } elseif ($obor == "VYBER-MS") {
+            //Do nothing
         } else {
             $obor = '';
         }
 
-        if ($rok_vydani && $rok_vydani < 10000 && $rok_vydani > 1900) {
+        if ($rok_vydani && $rok_vydani < 3000 && $rok_vydani > 1900) {
             $params[] = $rok_vydani . "-01-01";
             $params[] = $rok_vydani . "-12-31";
         } else {
             $rok_vydani = '';
         }
-
-        if ($jazyk) {
+        
+        if($jazyk == "VYBER-MS"){
+            //Do nothing
+        }elseif ($jazyk) {
             $params[] = $jazyk;
         } else {
             $jazyk = '';
@@ -908,16 +912,23 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
 
         if ($fakulta && in_array($fakulta, $fakultyPole)) {
             $params[] = $fakulta;
+        } elseif ($fakulta == "VYBER-MS") {
+            //Do nothing
         } else {
             $fakulta = '';
         }
-
         //Konec MUNIPRESS
         $result = $this->retrieve(
-                'SELECT	COUNT(*)
+                'SELECT	' . ($obor == "VYBER-MS" ? 'sn.category_id, ' : '') . '
+                        ' . ($rok == "VYBER-MS" ? 'DATE_FORMAT(munis.datum_vydani, \'%Y\'), ' : '') . '
+                        ' . ($jazyk == "VYBER-MS" ? 'sl.setting_value, ' : '') . '
+                        ' . ($fakulta == "VYBER-MS" ? 'sn.category_id, ' : '') . '
+                        COUNT(*)
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
                                 LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
+                                ' . ($fakulta == "VYBER-MS" || $obor == "VYBER-MS" ? 'LEFT JOIN submission_categories sn ON (s.submission_id = sn.submission_id)' : '').'
+                                ' . ($jazyk == "VYBER-MS" ? 'LEFT JOIN submission_languages sl ON (s.submission_id = sl.submission_id AND sl.locale = \''.$locale.'\')': '').'
 				' . $this->getFetchJoins() . '
 				' . ($assocType == ASSOC_TYPE_CATEGORY ? '
 					LEFT JOIN submission_categories sc ON (sc.submission_id = s.submission_id AND sc.category_id = ' . $assocId . ')
@@ -927,16 +938,29 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
 			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
 				' . ($assocType == ASSOC_TYPE_CATEGORY ? ' AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)' : '') . '
 				' . ($assocType == ASSOC_TYPE_SERIES ? ' AND se.series_id = ' . $assocId : '') . '
-                                ' . ($obor ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
-                                ' . ($rok_vydani ? ' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?' : '' ) . '
-                                ' . ($jazyk ? ' AND s.submission_id IN (SELECT cv.assoc_id FROM controlled_vocabs cv 
-LEFT JOIN controlled_vocab_entries cve ON (cv.controlled_vocab_id = cve.controlled_vocab_id)
-JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cves.controlled_vocab_entry_id AND cves.setting_name = \'submissionLanguage\' AND LOWER(cves.setting_value) = ?))' : '' ) . '
-                                ' . ($fakulta ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ), $params
+                                ' . ($obor && $obor != "VYBER-MS" ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
+                                ' . ($rok_vydani && $rok != "VYBER-MS" ? ' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?' : '' ) . '
+                                ' . ($jazyk && $jazyk != "VYBER-MS" ? ' AND s.submission_id IN (SELECT sl.submission_id FROM submission_languages sl WHERE s.submission_id = sl.submission_id AND sl.setting_value = ? AND sl.locale = \'en_US\' AND sl.setting_value IS NOT NULL)' : '' ) . '
+                                ' . ($fakulta && $fakulta != "VYBER-MS" ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
+                                
+                ' . ($obor == "VYBER-MS" ? 'GROUP BY sn.category_id' : '' ) . '
+                ' . ($rok == "VYBER-MS" ? 'GROUP BY DATE_FORMAT(munis.datum_vydani, \'%Y\')' : '' ) . '
+                ' . ($jazyk == "VYBER-MS" ? 'AND sl.setting_value IS NOT NULL GROUP BY LOWER(sl.setting_value)' : '' ) . '
+                ' . ($fakulta == "VYBER-MS" ? 'GROUP BY sn.category_id' : '' ) . '
+                ', $params
         );
 
-        return isset($result->fields[0])? $result->fields[0] : null;
+        $counts = array();
+        while (!$result->EOF) {
+            if (sizeof($result->fields) > 1) {
+                $counts[$result->fields[0]] = $result->fields[1];
+            }
+            $result->MoveNext();
+        }
+        $result->Close();
+        return $counts;
     }
+
 }
 
 ?>
