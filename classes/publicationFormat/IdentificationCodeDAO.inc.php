@@ -52,6 +52,33 @@ class IdentificationCodeDAO extends DAO {
 		$result->Close();
 		return $returner;
 	}
+        
+        
+        /*
+         * MUNIPRESS
+         */
+       /**
+	 * Retrieve an identification code by monograph id.
+	 * @param $monographId optional int
+	 * @return Array of IdentificationCodes
+	 */
+	function getByMonographId($monographId){
+                $identificationCodes = Array();
+            
+		$result = $this->retrieve(
+			'SELECT	i.*
+			FROM	identification_codes i
+				JOIN publication_formats pf ON (i.publication_format_id = pf.publication_format_id)
+			WHERE pf.submission_id = ?', (int) $monographId);
+                
+                while (!$result->EOF) {
+			$row = $result->getRowAssoc(false);
+			$identificationCodes[] = $this->_fromRow($row);
+			$result->MoveNext();
+		}
+		return $identificationCodes;
+	}
+       /******************************/
 
 	/**
 	 * Retrieve all identification codes for a publication format
