@@ -375,7 +375,7 @@ class NativeXmlPublicationFormatFilter extends NativeXmlRepresentationFilter {
 	 */
 	function _extractMeasureContent($node, $onixDeployment, &$representation) {
 		$nodeList = $node->getElementsByTagNameNS($onixDeployment->getNamespace(), 'Measure');
-		for ($i = 0 ; $i < $nodeList->length ; $i++) {
+                for ($i = 0 ; $i < $nodeList->length ; $i++) {
 			$n = $nodeList->item($i);
 			$measureType = $this->_extractTextFromNode($node, $onixDeployment, 'MeasureType');
 			$measurement = $this->_extractTextFromNode($node, $onixDeployment, 'Measurement');

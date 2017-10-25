@@ -27,7 +27,9 @@
 	<div class="monograph_count">
 		{translate key="catalog.browseTitles" numTitles=$publishedMonographs->getCount()}
 	</div>
-
+        <h2>
+            {$category->getLocalizedTitle()}
+        </h2>
 	{* Image and description *}
 	{assign var="image" value=$category->getImage()}
 	{assign var="description" value=$category->getLocalizedDescription()|strip_unsafe_html}
