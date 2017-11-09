@@ -154,7 +154,16 @@ class AuthorDAO extends PKPAuthorDAO {
                                 a.include_in_browse AS include_in_browse,
 				0 AS show_title,
 				a.country,
-                                munia.*
+                                munia.munipress_author_id,
+                                munia.author_id,
+                                munia.uco,
+                                munia.poznamka, 
+                                munia.druhe_prijmeni, 
+                                munia.zobraz_hlavicka, 
+                                munia.zobraz_autori, 
+                                munia.zobraz_ostatni,
+                                IFNULL(munia.tituly_pred,\'\') As Tituly_pred, 
+                                IFNULL(munia.tituly_za,\'\') As Tituly_za
 			FROM	authors a
 				LEFT JOIN author_settings aspl ON (a.author_id = aspl.author_id AND aspl.setting_name = ? AND aspl.locale = ?)
 				LEFT JOIN author_settings asl ON (a.author_id = asl.author_id AND asl.setting_name = ? AND asl.locale = ?)
@@ -165,7 +174,7 @@ class AuthorDAO extends PKPAuthorDAO {
                 (isset($pressId) ? 'AND s.context_id = ? ' : '') . '
 				AND (a.last_name IS NOT NULL AND a.last_name <> \'\')' .
                 $initialSql . '
-                        GROUP BY a.email,munia.tituly_pred,munia.tituly_za
+                        GROUP BY a.email,IFNULL(munia.tituly_pred,\'\'),IFNULL(munia.tituly_za,\'\')
 			ORDER BY a.last_name, a.first_name', $params, $rangeInfo
         );
 
@@ -192,8 +201,8 @@ class AuthorDAO extends PKPAuthorDAO {
 			WHERE	a.first_name = ?
                                 AND a.last_name = ?  
                                 AND a.email = ?
-                                ' . ($tituly_pred ? ' AND ma.tituly_pred = ? ' : '') . '
-                                ' . ($tituly_za ? ' AND ma.tituly_za = ? ' : ''), $params
+                                ' . ($tituly_pred ? ' AND ma.tituly_pred = ? ' : ' AND (ma.tituly_pred = \'\' OR IsNull(ma.tituly_pred))') . '
+                                ' . ($tituly_za ? ' AND ma.tituly_za = ? ' : ' AND (ma.tituly_za = \'\' OR IsNull(ma.tituly_za))'), $params
         );
 
         $returner = array();

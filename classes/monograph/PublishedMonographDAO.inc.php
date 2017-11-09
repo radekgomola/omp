@@ -161,8 +161,8 @@ class PublishedMonographDAO extends MonographDAO {
                                     AND a.first_name = ?
                                     AND a.last_name = ?  
                                     AND a.email = ?
-                                    ' . ($tituly_pred ? ' AND ma.tituly_pred = ? ' : '') . '
-                                    ' . ($tituly_za ? ' AND ma.tituly_za = ? ' : '') . '
+                                    ' . ($tituly_pred ? ' AND ma.tituly_pred = ? ' : ' AND (ma.tituly_pred = \'\' OR IsNull(ma.tituly_pred))') . '
+                                    ' . ($tituly_za ? ' AND ma.tituly_za = ? ' : ' AND (ma.tituly_za = \'\' OR IsNull(ma.tituly_za))') . '
 			ORDER BY st.setting_value', $params
         );
 

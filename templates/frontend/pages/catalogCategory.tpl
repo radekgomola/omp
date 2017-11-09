@@ -32,7 +32,7 @@
         </h2>
 	{* Image and description *}
 	{assign var="image" value=$category->getImage()}
-	{assign var="description" value=$category->getLocalizedDescription()|strip_unsafe_html}
+	{assign var="description" value=$category->getLocalizedDescription()}
 	<div class="about_section{if $image} has_image{/if}{if $description} has_description{/if}">
 		{if $image}
 			<div class="cover" href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="fullSize" type="category" id=$category->getId()}">
@@ -40,7 +40,7 @@
 			</div>
 		{/if}
 		<div class="description">
-			{$description|nl2br|strip_unsafe_html}
+			{$description|nl2br}
 		</div>
 	</div>
 

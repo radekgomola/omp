@@ -291,8 +291,8 @@
                             <div class="box-tabs__content">
                                 {foreach from=$publicationFormats item=format}
                                     {assign var=publicationFormatId value=$format->getId()}
-
-                                    {if $nonChapterFiles|@count > 0 || $format->getLocalizedUrlYtb() || $format->getRemoteUrl()}
+                                    {pluck_files assign=pubFormatFiles files=$nonChapterFiles by="publicationFormat" value=$format->getId()}
+                                    {if $pubFormatFiles|@count > 0 || $format->getLocalizedUrlYtb() || $format->getRemoteUrl()}
                                         <h4>{$format->getLocalizedName()|escape|truncate:100:"..."}</h4>
                                     {/if}
                                     {if $format->getLocalizedUrlYtb()}
@@ -315,7 +315,7 @@
                                     {else}
                                         
                                         {* Only display files that haven't been displayed in a chapter *}
-                                        {pluck_files assign=pubFormatFiles files=$nonChapterFiles by="publicationFormat" value=$format->getId()}
+                                       
                                         
                                         {if $pubFormatFiles|@count == 1}
                                             <div class="pub_format_{$publicationFormatId|escape} pub_format_single">
