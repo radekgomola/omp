@@ -350,8 +350,8 @@ class NativeXmlPublicationFormatFilter extends NativeXmlRepresentationFilter {
 
 		for ($i = 0 ; $i < $nodeList->length ; $i++) {
 			$n = $nodeList->item($i);
-			$extentType = $this->_extractTextFromNode($node, $onixDeployment, 'ExtentType');
-			$extentValue = $this->_extractTextFromNode($node, $onixDeployment, 'ExtentValue');
+			$extentType = $this->_extractTextFromNode($n, $onixDeployment, 'ExtentType');
+			$extentValue = $this->_extractTextFromNode($n, $onixDeployment, 'ExtentValue');
 
 			switch ($extentType) {
 				case '08': // Digital
@@ -377,9 +377,9 @@ class NativeXmlPublicationFormatFilter extends NativeXmlRepresentationFilter {
 		$nodeList = $node->getElementsByTagNameNS($onixDeployment->getNamespace(), 'Measure');
                 for ($i = 0 ; $i < $nodeList->length ; $i++) {
 			$n = $nodeList->item($i);
-			$measureType = $this->_extractTextFromNode($node, $onixDeployment, 'MeasureType');
-			$measurement = $this->_extractTextFromNode($node, $onixDeployment, 'Measurement');
-			$measureUnitCode = $this->_extractTextFromNode($node, $onixDeployment, 'MeasureUnitCode');
+			$measureType = $this->_extractTextFromNode($n, $onixDeployment, 'MeasureType');
+			$measurement = $this->_extractTextFromNode($n, $onixDeployment, 'Measurement');
+			$measureUnitCode = $this->_extractTextFromNode($n, $onixDeployment, 'MeasureUnitCode');
 
 			// '01' => 'Height', '02' => 'Width', '03' => 'Thickness', '08' => 'Weight'
 			switch ($measureType) {
