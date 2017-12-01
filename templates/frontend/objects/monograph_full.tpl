@@ -448,7 +448,13 @@
                                                                                 {$pubIdType}
                                                                             </td>
                                                                             <td>
+                                                                            {if $pubIdType == "doi"}
+                                                                                <a href="https://doi.org/{$storedPubId|escape}" title="doi">
+                                                                                    https://doi.org/{$storedPubId|escape}
+                                                                                </a>
+                                                                            {else}
                                                                                 {$storedPubId|escape}
+                                                                            {/if}
                                                                             </td>
                                                                         </tr>
                                                                     {/if}
