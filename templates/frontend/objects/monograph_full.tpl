@@ -145,60 +145,9 @@
                         </div>
                     {/if}
                 </div>
-                {* Copyright statement *}
-                {if $monograph->getCopyrightYear() && $monograph->getLocalizedCopyrightHolder()}
-                    <div class="item copyright">
-                        {translate|escape key="submission.copyrightStatement" copyrightYear=$monograph->getCopyrightYear() copyrightHolder=$monograph->getLocalizedCopyrightHolder()}
-                    </div>
-                {/if}
-
-                {* License *}
-                {if $licenseUrl}
-                    <div class="item license">
-                        {if $ccLicenseBadge}
-                            {$ccLicenseBadge}
-                        {else}
-                            <a href="{$licenseUrl|escape}">
-                                {translate key="submission.license"}
-                            </a>
-                        {/if}
-                    </div>
-                {/if}
-
-                {call_hook name="Templates::Catalog::Book::Details"}
             </div>
 
             <div class="grid__cell size--l--9-12">
-                <div class="box-tabs">
-                    <ul class="box-tabs__menu">
-                        <li class="box-tabs__menu__item">
-                            <a href="#tab-1" class="box-tabs__menu__link js-tab-links is-active">{translate key="submission.synopsis"}</a>
-                        </li>
-                        {if $chapters|@count}
-                            <li class="box-tabs__menu__item">
-                                <a href="#tab-2" class="box-tabs__menu__link js-tab-links">{translate key="submission.chapters"}</a>
-                            </li>
-                        {/if}
-                        {if $nonChapterFiles|@count || $zobrazDownload}
-                            <li class="box-tabs__menu__item">
-                                <a href="#tab-3" class="box-tabs__menu__link js-tab-links">{translate key="submission.download"}</a>
-                            </li>
-                        {/if}
-                        <li class="box-tabs__menu__item">
-                            <a href="#tab-4" class="box-tabs__menu__link js-tab-links">{translate key="submission.viceInformaci"}</a>
-                        </li>
-                        {call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
-                        {if !is_null($sharingCode) || !empty($blocks)}
-                            <li class="box-tabs__menu__item">
-                                <a href="#tab-5" class="box-tabs__menu__link js-tab-links">{translate key="submission.sharing"}</a>
-                            </li>
-                        {/if}
-                        {if $monograph->getCitations()}
-                            <li class="box-tabs__menu__item">
-                                <a href="#tab-6" class="box-tabs__menu__link js-tab-links">{translate key="submission.citations"}</a>
-                            </li>
-                        {/if}
-                    </ul>
                     {*Anotace + autoři*}
                     <div id="tab-1" class="box-tabs__fragment is-active">
                         <a href="#" class="box-tabs__responsive-link">

@@ -53,7 +53,7 @@ class IndexHandler extends Handler {
 
 		if ($press) {
 			// Display the current press home.
-			$this->_displayPressIndexPage($press, $templateMgr);
+			$request->redirect(null, 'catalog');
 		} elseif ($targetPress) {
 			// We're not on a press homepage, but there's one
 			// available; redirect there.
