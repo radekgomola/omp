@@ -977,4 +977,8 @@
     <message key="footer.nakladatelstvi"><![CDATA[Nakladatelství <strong>Masarykovy univerzity</strong>]]></message>
     <message key="footer.contact.adresa">Rybkova 987/19, 602 00 Brno</message>
     <message key="filter.reset">RESET</message>
+    
+    <message key="banner.web.link"></message>
+    <message key="banner.web"></message>
+    <message key="banner.web.description">Web nakladatelství Munipress</message>
 </locale>

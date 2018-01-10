@@ -20,8 +20,8 @@
             </a>
         </li>
         <li class="grid__cell size--m--2-4 size--l--3-12">
-            <a href="http://press.muni.cz" target="_blank">
-                <img src="{$baseUrl}/images/img/bannery/web_munipress.png" alt="Web nakladatelství Munipress" class="box-article-list__imgMunipress box-article-list__imgMunipress--banner" />
+            <a href="http://www.press.muni.cz{translate key="banner.web.link"}" target="_blank">
+                <img src="{$baseUrl}/images/img/bannery/web_munipress{translate key="banner.web"}.png" alt="{translate key="banner.web.description"}" class="box-article-list__imgMunipress box-article-list__imgMunipress--banner" />
             </a>
         </li>
     </ul>
