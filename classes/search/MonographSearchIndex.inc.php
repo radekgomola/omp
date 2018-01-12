@@ -122,7 +122,20 @@ class MonographSearchIndex extends SubmissionSearchIndex {
 		self::updateTextIndex($monographId, SUBMISSION_SEARCH_SUBJECT, (array) $monograph->getSubject(null));
 		self::updateTextIndex($monographId, SUBMISSION_SEARCH_TYPE, $monograph->getType(null));
 		self::updateTextIndex($monographId, SUBMISSION_SEARCH_COVERAGE, (array) $monograph->getCoverage(null));
-		// FIXME Index sponsors too?
+                // FIXME Index sponsors too?
+                /*
+                 * MUNIPRESS
+                 */
+                
+                $identificationCodeText = array();
+		$identificationCodeDao = DAORegistry::getDAO('IdentificationCodeDAO');
+		$identificationCodes = $identificationCodeDao->getByMonographId($monograph->getId());
+                
+                foreach ($identificationCodes as $identificationCode) {
+			array_push($identificationCodeText, $identificationCode->getValue());
+		}
+                self::updateTextIndex($monographId, SUBMISSION_SEARCH_ISBN, $identificationCodeText);
+		
 	}
 
 	/**

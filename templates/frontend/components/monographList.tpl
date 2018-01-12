@@ -69,7 +69,7 @@
         {/if}
     {else}
         {assign var=counter value=1}
-        <div class="crossroad-std">
+        <div class="crossroad-std monografie_seznam">
             <ul class="grid">
                 {if isset($monographsArray)}
 

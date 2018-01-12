@@ -77,13 +77,14 @@ class NativeXmlPublicationFormatFilter extends NativeXmlRepresentationFilter {
 		// Handle metadata in subelements.  Do this after the insertObject() call because it
 		// creates other DataObjects which depend on a representation id.
 		for ($n = $node->firstChild; $n !== null; $n=$n->nextSibling) if (is_a($n, 'DOMElement')) switch($n->tagName) {
-			case 'Product': $this->_processProductNode($n, $this->getDeployment(), $representation); break;
-			case 'submission_file_ref': $this->_processFileRef($n, $deployment, $representation); break;
-                        
                         //MUNIPRESS
                         case 'pocet_stran': $representation->setPocetStran($n->textContent); break;
                         case 'datum_vydani': $representation->setDatumVydani($n->textContent); break;
                         case 'poradi_vydani': $representation->setPoradiVydani($n->textContent); break;
+                        
+                    
+			case 'Product': $this->_processProductNode($n, $this->getDeployment(), $representation); break;
+			case 'submission_file_ref': $this->_processFileRef($n, $deployment, $representation); break;
                         
 			default:
 		}
@@ -349,8 +350,8 @@ class NativeXmlPublicationFormatFilter extends NativeXmlRepresentationFilter {
 
 		for ($i = 0 ; $i < $nodeList->length ; $i++) {
 			$n = $nodeList->item($i);
-			$extentType = $this->_extractTextFromNode($node, $onixDeployment, 'ExtentType');
-			$extentValue = $this->_extractTextFromNode($node, $onixDeployment, 'ExtentValue');
+			$extentType = $this->_extractTextFromNode($n, $onixDeployment, 'ExtentType');
+			$extentValue = $this->_extractTextFromNode($n, $onixDeployment, 'ExtentValue');
 
 			switch ($extentType) {
 				case '08': // Digital
@@ -374,11 +375,11 @@ class NativeXmlPublicationFormatFilter extends NativeXmlRepresentationFilter {
 	 */
 	function _extractMeasureContent($node, $onixDeployment, &$representation) {
 		$nodeList = $node->getElementsByTagNameNS($onixDeployment->getNamespace(), 'Measure');
-		for ($i = 0 ; $i < $nodeList->length ; $i++) {
+                for ($i = 0 ; $i < $nodeList->length ; $i++) {
 			$n = $nodeList->item($i);
-			$measureType = $this->_extractTextFromNode($node, $onixDeployment, 'MeasureType');
-			$measurement = $this->_extractTextFromNode($node, $onixDeployment, 'Measurement');
-			$measureUnitCode = $this->_extractTextFromNode($node, $onixDeployment, 'MeasureUnitCode');
+			$measureType = $this->_extractTextFromNode($n, $onixDeployment, 'MeasureType');
+			$measurement = $this->_extractTextFromNode($n, $onixDeployment, 'Measurement');
+			$measureUnitCode = $this->_extractTextFromNode($n, $onixDeployment, 'MeasureUnitCode');
 
 			// '01' => 'Height', '02' => 'Width', '03' => 'Thickness', '08' => 'Weight'
 			switch ($measureType) {

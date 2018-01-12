@@ -36,30 +36,32 @@
     </div>
     <div class="flow-grid--size-s-l--1  flow-grid--size-m-l--6 flow-grid--size--l--4">
         {iterate from=authors item=author}
-            {assign var=lastAuthorName value=$authorName}
-            {assign var=lastAuthorCountry value=$authorCountry}
+            {if $author->getIncludeInBrowse()}
+                {assign var=lastAuthorName value=$authorName}
+                {assign var=lastAuthorCountry value=$authorCountry}
 
-            {assign var=authorAffiliation value=$author->getLocalizedAffiliation()}
-            {assign var=authorCountry value=$author->getCountry()}
+                {assign var=authorAffiliation value=$author->getLocalizedAffiliation()}
+                {assign var=authorCountry value=$author->getCountry()}
 
-            {assign var=authorFirstName value=$author->getFirstName()}
-            {assign var=authorMiddleName value=$author->getMiddleName()}
-            {assign var=authorLastName value=$author->getLastName()}
-            {assign var=authorId value=$author->getId()}
-            {assign var=authorName value="$authorLastName, $authorFirstName"}
-            {if $authorMiddleName != ''}
-                {assign var=authorName value="$authorName $authorMiddleName"}
+                {assign var=authorFirstName value=$author->getFirstName()}
+                {assign var=authorMiddleName value=$author->getMiddleName()}
+                {assign var=authorLastName value=$author->getLastName()}
+                {assign var=authorId value=$author->getId()}
+                {assign var=authorName value="$authorLastName, $authorFirstName"}
+                {if $authorMiddleName != ''}
+                    {assign var=authorName value="$authorName $authorMiddleName"}
+                {/if}
+                {url|assign:authorPublications router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori" op="authorPublications" authorId=$authorId} 
+                {strip}       
+                    <a href="{$authorPublications}" data-rel="lightcase:profile">{$authorName|escape}</a>
+                {/strip}
+                {if $author->getTitulyPred() || $author->getTitulyZa()} ({/if}
+                {if $author->getTitulyPred()}{$author->getTitulyPred()|escape}{/if}
+                {if $author->getTitulyPred() && $author->getTitulyZa()},{/if}
+                {if $author->getTitulyZa()} {$author->getTitulyZa()}{/if}
+                {if $author->getTitulyPred() || $author->getTitulyZa()}){/if}
+                <br/>
             {/if}
-            {url|assign:authorPublications router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori" op="authorPublications" authorId=$authorId} 
-            {strip}       
-                <a href="{$authorPublications}" data-rel="lightcase:profile">{$authorName|escape}</a>
-            {/strip}
-            {if $author->getTitulyPred() || $author->getTitulyZa()} ({/if}
-            {if $author->getTitulyPred()}{$author->getTitulyPred()|escape}{/if}
-            {if $author->getTitulyPred() && $author->getTitulyZa()},{/if}
-            {if $author->getTitulyZa()} {$author->getTitulyZa()}{/if}
-            {if $author->getTitulyPred() || $author->getTitulyZa()}){/if}
-            <br/>
         {/iterate}
   
     </div>

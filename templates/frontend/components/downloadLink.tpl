@@ -31,7 +31,7 @@
     {assign var=iconType value="icon-download"}
 {/if}
 {* Display the download link *}
-<a href="{$downloadUrl}" class="cmp_download_link {$downloadFile->getDocumentType()}" >
+<a href="{$downloadUrl}" class="cmp_download_link {$downloadFile->getDocumentType()} piwik_download" >
     {if $useFilename}
         {if $downloadFile->getDirectSalesPrice()}
             <span class="icon {$iconType}"></span>{translate key="payment.directSales.purchase" format=$downloadFile->getLocalizedName() amount=$currency->format($downloadFile->getDirectSalesPrice()) currency=$currency->getCodeAlpha()}

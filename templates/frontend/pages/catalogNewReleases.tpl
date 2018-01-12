@@ -21,6 +21,9 @@
         <div class="monograph_count">
             {translate key="catalog.browseTitles" numTitles=$publishedMonographs|@count}
         </div>
+        <h2>
+            {translate key="catalog.newReleases"}
+        </h2>
     </div>
     {* No published titles in this category *}
     {if empty($publishedMonographs)}

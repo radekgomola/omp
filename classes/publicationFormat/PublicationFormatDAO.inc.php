@@ -324,7 +324,7 @@ class PublicationFormatDAO extends RepresentationDAO implements PKPPubIdPluginDA
 			sprintf('INSERT INTO munipress_publication_formats
 				(publication_format_id, pocet_stran, datum_vydani, poradi_vydani,flipbook)
 			VALUES
-				(?, ?, %s, ?)',
+				(?, ?, %s, ?, ?)',
                         $this->datetimeToDB($publicationFormat->getDatumVydani())),
 			array(
 				(int) $publicationFormat->getId(),

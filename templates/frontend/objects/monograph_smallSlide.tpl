@@ -11,7 +11,7 @@
         </a>
     </div>
     <p>
-        <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="book" path=$monograph->getId()}">
+        <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="book" path=$monograph->getId()}" target="_blank" >
             {$monograph->getLocalizedFullTitle()|truncate:100:"…"}
         </a>
     </p>

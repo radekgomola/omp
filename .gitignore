@@ -9,8 +9,9 @@ temp
 .settings/
 .htaccess
 te_ST/
+nbproject/project.xml
 /nbproject/private/
-/nbproject/
+nbproject/
 upravyDB.txt
 problemove_veci_design.txt
 /images

@@ -148,6 +148,36 @@
             </div>
 
             <div class="grid__cell size--l--9-12">
+                <div class="box-tabs">
+                    <ul class="box-tabs__menu">
+                        <li class="box-tabs__menu__item">
+                            <a href="#tab-1" class="box-tabs__menu__link js-tab-links is-active">{translate key="submission.synopsis"}</a>
+                        </li>
+                        {if $chapters|@count}
+                            <li class="box-tabs__menu__item">
+                                <a href="#tab-2" class="box-tabs__menu__link js-tab-links">{translate key="submission.chapters"}</a>
+                            </li>
+                        {/if}
+                        {if $nonChapterFiles|@count || $remoteResources|@count}
+                            <li class="box-tabs__menu__item">
+                                <a href="#tab-3" class="box-tabs__menu__link js-tab-links">{translate key="submission.download"}</a>
+                            </li>
+                        {/if}
+                        <li class="box-tabs__menu__item">
+                            <a href="#tab-4" class="box-tabs__menu__link js-tab-links">{translate key="submission.viceInformaci"}</a>
+                        </li>
+                        {call_hook|assign:"sharingCode" name="Templates::Catalog::Book::BookInfo::Sharing"}
+                        {if !is_null($sharingCode) || !empty($blocks)}
+                            <li class="box-tabs__menu__item">
+                                <a href="#tab-5" class="box-tabs__menu__link js-tab-links">{translate key="submission.sharing"}</a>
+                            </li>
+                        {/if}
+                        {if $monograph->getCitations()}
+                            <li class="box-tabs__menu__item">
+                                <a href="#tab-6" class="box-tabs__menu__link js-tab-links">{translate key="submission.citations"}</a>
+                            </li>
+                        {/if}
+                    </ul>
                     {*Anotace + autoři*}
                     <div id="tab-1" class="box-tabs__fragment is-active">
                         <a href="#" class="box-tabs__responsive-link">
@@ -231,7 +261,7 @@
                         </div>
                     {/if}
                     {*Ke stažení*}
-                    {if $nonChapterFiles|@count}
+                    {if $nonChapterFiles|@count || $remoteResources|@count}
                         <div id="tab-3" class="box-tabs__fragment">
                             <a href="#" class="box-tabs__responsive-link">
                                 <span class="box-tabs__responsive-link__name">{translate key="submission.download"}</span>
@@ -240,8 +270,8 @@
                             <div class="box-tabs__content">
                                 {foreach from=$publicationFormats item=format}
                                     {assign var=publicationFormatId value=$format->getId()}
-
-                                    {if $nonChapterFiles|@count > 0 || $format->getLocalizedUrlYtb() || $format->getRemoteUrl()}
+                                    {pluck_files assign=pubFormatFiles files=$nonChapterFiles by="publicationFormat" value=$format->getId()}
+                                    {if $pubFormatFiles|@count > 0 || $format->getLocalizedUrlYtb() || $format->getRemoteUrl()}
                                         <h4>{$format->getLocalizedName()|escape|truncate:100:"..."}</h4>
                                     {/if}
                                     {if $format->getLocalizedUrlYtb()}
@@ -264,7 +294,7 @@
                                     {else}
                                         
                                         {* Only display files that haven't been displayed in a chapter *}
-                                        {pluck_files assign=pubFormatFiles files=$nonChapterFiles by="publicationFormat" value=$format->getId()}
+                                       
                                         
                                         {if $pubFormatFiles|@count == 1}
                                             <div class="pub_format_{$publicationFormatId|escape} pub_format_single">
@@ -397,7 +427,13 @@
                                                                                 {$pubIdType}
                                                                             </td>
                                                                             <td>
+                                                                            {if $pubIdType == "doi"}
+                                                                                <a href="https://doi.org/{$storedPubId|escape}" title="doi">
+                                                                                    https://doi.org/{$storedPubId|escape}
+                                                                                </a>
+                                                                            {else}
                                                                                 {$storedPubId|escape}
+                                                                            {/if}
                                                                             </td>
                                                                         </tr>
                                                                     {/if}
@@ -511,10 +547,8 @@
                     {/if}
                     {* References *}
                     {if $monograph->getCitations()}
-                        <div class="item references">
-                            <h3 class="label">
-                                {translate key="submission.citations"}
-                            </h3>
+                        <div id="tab-6" class="box-tabs__fragment">
+                            <br />
                             <div class="value">
                                 {$monograph->getCitations()|nl2br}
                             </div>
@@ -531,7 +565,7 @@
             <div class="grid">
                 {foreach from=$souvisejiciPublikace item=monograph}
                     <div class="grid__cell size--s--1-2 size--m--1-4 size--l--2-12">
-                        <a class="pkp_helpers_image_left tooltipMunipress" href="{url page="catalog" op="book" path=$monograph->getId()}" target="_blank" title="{$monograph->getLocalizedFullTitle()|strip_tags|escape}">
+                        <a class="pkp_helpers_image_left tooltip" href="{url page="catalog" op="book" path=$monograph->getId()}" target="_blank" title="{$monograph->getLocalizedFullTitle()|strip_tags|escape}" onclick="location.href='{url page="catalog" op="book" path=$monograph->getId()}';">
                             {assign var=coverImage value=$monograph->getCoverImage()}
                             {if empty($coverImage)}
                                 {assign var=coverImageWidth value="103"}

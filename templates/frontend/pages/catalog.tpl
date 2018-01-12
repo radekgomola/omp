@@ -15,7 +15,9 @@
 	<div class="monograph_count">
 		{translate key="catalog.browseTitles" numTitles=$publishedMonographs->getCount()}
 	</div>
-
+        <h2>
+            {translate key="navigation.catalog"}
+        </h2>
 	{* No published titles *}
 	{if !$publishedMonographs|@count}
 		<h2>

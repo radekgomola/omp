@@ -159,6 +159,25 @@ class MunipressThemePlugin extends ThemePlugin {
                 $this->addScript('lightcase-settings', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lightcase/lightcase-settings.js', array('baseUrl' => ''));
                 $this->addScript('app-muniweb', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/muniweb/app.js', array('baseUrl' => ''));
                 $this->addScript('app-run', 'App.run({})', array('inline' => true));
+                $this->addScript('piwik', '
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push([\'disableCookies\']);
+  _paq.push([\'trackPageView\']);
+  _paq.push([\'enableLinkTracking\']);
+  (function() {
+    var u="//journals.muni.cz/analytics/";
+    _paq.push([\'setTrackerUrl\', u+\'piwik.php\']);
+    _paq.push([\'setSiteId\', \'16\']);
+    var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0];
+    g.type=\'text/javascript\'; g.async=true; g.defer=true; g.src=u+\'piwik.js\'; s.parentNode.insertBefore(g,s);
+  })();
+  $(function() {
+  $(\'.pub_format_remote > a\').click(function() {
+    _paq.push([ \'trackEvent\', \'Flipbook\', \'Click\', $(this).text() ]);
+  });
+});
+', array('inline' => true));
                 /**********/
                 
 		// Load custom JavaScript for this theme

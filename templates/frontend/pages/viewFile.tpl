@@ -43,7 +43,7 @@
 		</span>
 
 		{if $downloadUrl}
-			<a href="{$downloadUrl}" class="download" download>
+			<a href="{$downloadUrl}" class="download piwik_download" download>
 				<span class="label">
 					{translate key="common.download"}
 				</span>

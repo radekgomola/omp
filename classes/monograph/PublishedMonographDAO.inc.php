@@ -62,6 +62,10 @@ class PublishedMonographDAO extends MonographDAO {
         return $this->_getByAssoc($pressId, ASSOC_TYPE_PRESS, $pressId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly, $obor, $rok_vydani, $jazyk, $fakulta, $speckat);
     }
 
+    function getByPressIdCount($pressId, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
+        return $this->_getByAssocCount($pressId, ASSOC_TYPE_PRESS, $pressId, $obor, $rok_vydani, $jazyk, $fakulta);
+    }
+
     /**
      * Retrieve all published monographs associated with the passed category id.
      * @param $seriesId int The category id monographs are associated with.
@@ -76,6 +80,10 @@ class PublishedMonographDAO extends MonographDAO {
      */
     function getByCategoryIdFiltered($categoryId, $pressId = null, $searchText = null, $rangeInfo = null, $sortBy = null, $sortDirection = null, $featuredOnly = false, $newReleasedOnly = false, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
         return $this->_getByAssoc($pressId, ASSOC_TYPE_CATEGORY, $categoryId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly, $obor, $rok_vydani, $jazyk, $fakulta);
+    }
+
+    function getByCategoryIdCount($categoryId, $pressId = null, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
+        return $this->_getByAssocCount($pressId, ASSOC_TYPE_CATEGORY, $categoryId, $obor, $rok_vydani, $jazyk, $fakulta);
     }
 
     /* -------------------- */
@@ -153,8 +161,8 @@ class PublishedMonographDAO extends MonographDAO {
                                     AND a.first_name = ?
                                     AND a.last_name = ?  
                                     AND a.email = ?
-                                    ' . ($tituly_pred ? ' AND ma.tituly_pred = ? ' : '') . '
-                                    ' . ($tituly_za ? ' AND ma.tituly_za = ? ' : '') . '
+                                    ' . ($tituly_pred ? ' AND ma.tituly_pred = ? ' : ' AND (ma.tituly_pred = \'\' OR IsNull(ma.tituly_pred))') . '
+                                    ' . ($tituly_za ? ' AND ma.tituly_za = ? ' : ' AND (ma.tituly_za = \'\' OR IsNull(ma.tituly_za))') . '
 			ORDER BY st.setting_value', $params
         );
 
@@ -781,10 +789,10 @@ class PublishedMonographDAO extends MonographDAO {
             $fakulta = '';
         }
 
-
         //Konec MUNIPRESS
         $result = $this->retrieveRange(
-                'SELECT	DISTINCT
+
+                'SELECT	DISTINCT 
 				ps.*,
 				s.*,
                                 munis.*,
@@ -811,7 +819,7 @@ class PublishedMonographDAO extends MonographDAO {
 				' . ($searchText !== null ? ' AND (st.setting_value LIKE ? OR a.first_name LIKE ? OR a.last_name LIKE ?)' : '') . '
 				' . ($assocType == ASSOC_TYPE_CATEGORY ? ' AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)' : '') . '
 				' . ($assocType == ASSOC_TYPE_SERIES ? ' AND se.series_id = ' . $assocId : '') . '
-				' . ($featuredOnly ? ' AND (f.assoc_type = ? AND f.assoc_id = ?)' : '') . '
+				' . ($featuredOnly ? ' AND (f.assoc_type = ? AND f.assoc_id = ?)' : '') . ' 
 				' . ($newReleasedOnly ? ' AND (nr.assoc_type = ? AND nr.assoc_id = ?)' : '') . '
                                 ' . ($obor ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
                                 ' . ($rok_vydani ? ' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?' : '' ) . '
@@ -825,6 +833,133 @@ JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cv
         );
 
         return new DAOResultFactory($result, $this, '_fromRow');
+    }
+
+    private function _getByAssocCount($pressId, $assocType, $assocId, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
+        // Cast parameters.
+        $pressId = (int) $pressId;
+        $assocType = (int) $assocType;
+        $assocId = (int) $assocId;
+        /* MUNIPRESS */
+        $locale = AppLocale::getLocale();
+
+
+        $rok = $rok_vydani;
+        $rok_vydani = (int) $rok_vydani;
+
+        /* ---------- */
+        // If no associated object is passed, return.
+        if (!$assocId || !$assocType) {
+            return new DAOResultFactory();
+        } else {
+            // Check if the associated object exists.
+            switch ($assocType) {
+                case ASSOC_TYPE_PRESS:
+                    $assocObject = DAORegistry::getDAO('PressDAO')->getById($assocId);
+                    break;
+                case ASSOC_TYPE_SERIES:
+                    $assocObject = DAORegistry::getDAO('SeriesDAO')->getById($assocId);
+                    break;
+                case ASSOC_TYPE_CATEGORY:
+                    $assocObject = DAORegistry::getDAO('CategoryDAO')->getById($assocId);
+                    break;
+                default:
+                    $assocObject = null;
+            }
+            if (!$assocObject) {
+                assert(false);
+                return new DAOResultFactory();
+            }
+        }
+
+        $params = array_merge($this->getFetchParameters());
+
+        $params = array_merge($params, array($pressId));
+        //MUNIPRESS
+        $categoryDao = DAORegistry::getDAO('CategoryDAO');
+        $oboryIterator = $categoryDao->getByParentId(1, $pressId);
+        $oboryPole = array();
+        while ($result = $oboryIterator->next()) {
+            $oboryPole[] = $result->getPath();
+        }
+        if (($obor && in_array($obor, $oboryPole))) {
+            $params[] = $obor;
+        } elseif ($obor == "VYBER-MS") {
+            //Do nothing
+        } else {
+            $obor = '';
+        }
+
+        if ($rok_vydani && $rok_vydani < 3000 && $rok_vydani > 1900) {
+            $params[] = $rok_vydani . "-01-01";
+            $params[] = $rok_vydani . "-12-31";
+        } else {
+            $rok_vydani = '';
+        }
+        
+        if($jazyk == "VYBER-MS"){
+            //Do nothing
+        }elseif ($jazyk) {
+            $params[] = $jazyk;
+        } else {
+            $jazyk = '';
+        }
+
+        $fakultyIterator = $categoryDao->getByParentId(32, $pressId);
+        $fakultyPole = array();
+        while ($result = $fakultyIterator->next()) {
+            $fakultyPole[] = $result->getPath();
+        }
+
+        if ($fakulta && in_array($fakulta, $fakultyPole)) {
+            $params[] = $fakulta;
+        } elseif ($fakulta == "VYBER-MS") {
+            //Do nothing
+        } else {
+            $fakulta = '';
+        }
+        //Konec MUNIPRESS
+        $result = $this->retrieve(
+                'SELECT	' . ($obor == "VYBER-MS" ? 'sn.category_id, ' : '') . '
+                        ' . ($rok == "VYBER-MS" ? 'DATE_FORMAT(munis.datum_vydani, \'%Y\'), ' : '') . '
+                        ' . ($jazyk == "VYBER-MS" ? 'sl.setting_value, ' : '') . '
+                        ' . ($fakulta == "VYBER-MS" ? 'sn.category_id, ' : '') . '
+                        COUNT(*)
+			FROM	published_submissions ps
+				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
+                                ' . ($fakulta == "VYBER-MS" || $obor == "VYBER-MS" ? 'LEFT JOIN submission_categories sn ON (s.submission_id = sn.submission_id)' : '').'
+                                ' . ($jazyk == "VYBER-MS" ? 'LEFT JOIN submission_languages sl ON (s.submission_id = sl.submission_id AND sl.locale = \''.$locale.'\')': '').'
+				' . $this->getFetchJoins() . '
+				' . ($assocType == ASSOC_TYPE_CATEGORY ? '
+					LEFT JOIN submission_categories sc ON (sc.submission_id = s.submission_id AND sc.category_id = ' . $assocId . ')
+					LEFT JOIN series_categories sca ON (sca.series_id = se.series_id)
+					LEFT JOIN categories c ON (c.category_id = sca.category_id AND c.category_id = ' . $assocId . ')
+				' : '') . '
+			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
+				' . ($assocType == ASSOC_TYPE_CATEGORY ? ' AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)' : '') . '
+				' . ($assocType == ASSOC_TYPE_SERIES ? ' AND se.series_id = ' . $assocId : '') . '
+                                ' . ($obor && $obor != "VYBER-MS" ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
+                                ' . ($rok_vydani && $rok != "VYBER-MS" ? ' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?' : '' ) . '
+                                ' . ($jazyk && $jazyk != "VYBER-MS" ? ' AND s.submission_id IN (SELECT sl.submission_id FROM submission_languages sl WHERE s.submission_id = sl.submission_id AND sl.setting_value = ? AND sl.locale = \'en_US\' AND sl.setting_value IS NOT NULL)' : '' ) . '
+                                ' . ($fakulta && $fakulta != "VYBER-MS" ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
+                                
+                ' . ($obor == "VYBER-MS" ? 'GROUP BY sn.category_id' : '' ) . '
+                ' . ($rok == "VYBER-MS" ? 'GROUP BY DATE_FORMAT(munis.datum_vydani, \'%Y\')' : '' ) . '
+                ' . ($jazyk == "VYBER-MS" ? 'AND sl.setting_value IS NOT NULL GROUP BY LOWER(sl.setting_value)' : '' ) . '
+                ' . ($fakulta == "VYBER-MS" ? 'GROUP BY sn.category_id' : '' ) . '
+                ', $params
+        );
+
+        $counts = array();
+        while (!$result->EOF) {
+            if (sizeof($result->fields) > 1) {
+                $counts[$result->fields[0]] = $result->fields[1];
+            }
+            $result->MoveNext();
+        }
+        $result->Close();
+        return $counts;
     }
 
 }

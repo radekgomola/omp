@@ -167,7 +167,11 @@ class MonographSearch extends SubmissionSearch {
 			'subject' => $request->getUserVar('subject'),
 			'type' => $request->getUserVar('type'),
 			'coverage' => $request->getUserVar('coverage'),
-			'indexTerms' => $request->getUserVar('indexTerms')
+			'indexTerms' => $request->getUserVar('indexTerms'),
+                        /*
+                         * MUNIPRESS
+                         */
+                        'isbn' => $request->getUserVar('isbn')
 		);
 
 		// Is this a simplified query from the navigation
@@ -322,7 +326,11 @@ class MonographSearch extends SubmissionSearch {
 			SUBMISSION_SEARCH_DISCIPLINE => 'discipline',
 			SUBMISSION_SEARCH_SUBJECT => 'subject',
 			SUBMISSION_SEARCH_TYPE => 'type',
-			SUBMISSION_SEARCH_COVERAGE => 'coverage'
+			SUBMISSION_SEARCH_COVERAGE => 'coverage',
+                        /*
+                         * MUNIPRESS
+                         */
+                        SUBMISSION_SEARCH_ISBN => 'isbn'
 		);
 	}
 

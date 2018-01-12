@@ -20,6 +20,8 @@ import('classes.handler.Handler');
 import('lib.pkp.classes.linkAction.LinkAction');
 import('lib.pkp.classes.core.JSONMessage');
 
+DEFINE('CATALOG_SOUVISEJICI_PUBLIKACE_POCET', 6);
+
 class CatalogBookHandler extends Handler {
 	/**
 	 * Constructor
@@ -120,9 +122,17 @@ class CatalogBookHandler extends Handler {
 					}
 				}
 			}
+                        $remoteResourcesByPublicationFormat = array();
+			foreach ($publishedMonograph->getPublicationFormats(true) as $publicationFormat) {
+				$remoteURL = $publicationFormat->getRemoteURL();
+				if ($remoteURL != null) {
+					$remoteResourcesByPublicationFormat[$publicationFormat->getId()] = $remoteURL;
+				}
+			}
 
-			// Expose variables to template
+                        // Expose variables to template
 			$templateMgr->assign('availableFiles', $filteredAvailableFiles);
+                        $templateMgr->assign('remoteResources', $remoteResourcesByPublicationFormat);
 		}
 
 		// Provide the currency to the template, if configured.
@@ -164,7 +174,7 @@ class CatalogBookHandler extends Handler {
                         $idPublikaciProVypis = $vyberPublikaci;
                     } else {
                         shuffle($vyberPublikaci);
-                        for ($i=0; $i < 6; $i++){
+                        for ($i=0; $i < CATALOG_SOUVISEJICI_PUBLIKACE_POCET; $i++){
                             
                             $idPublikaciProVypis[] = $vyberPublikaci[$i];
                         }
