@@ -120,17 +120,18 @@ class TemplateManager extends PKPTemplateManager {
                 $this->assign('kategorieOstatni', $ostatni);
 
                 $router = $request->getRouter();
-                switch ($router->getRequestedOp($request)) {
-                    case 'category':
-                        $args = $router->getRequestedArgs($request);
-                        $this->assign('browseBlockSelectedCategory', reset($args));
-                        break;
-                    case 'series':
-                        $args = $router->getRequestedArgs($request);
-                        $this->assign('browseBlockSelectedSeries', reset($args));
-                        break;
+                if (is_a($router, 'PageRouter')) {
+                    switch ($router->getRequestedOp($request)) {
+                        case 'category':
+                            $args = $router->getRequestedArgs($request);
+                            $this->assign('browseBlockSelectedCategory', reset($args));
+                            break;
+                        case 'series':
+                            $args = $router->getRequestedArgs($request);
+                            $this->assign('browseBlockSelectedSeries', reset($args));
+                            break;
+                    }
                 }
-
                 /*********** */
             } else {
                 // Add the site-wide logo, if set for this locale or the primary locale
