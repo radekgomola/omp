@@ -103,7 +103,7 @@ class TemplateManager extends PKPTemplateManager {
                 // reproducing a lot of OMP/OJS-specific logic there.
                 $dispatcher = $request->getDispatcher();
                 $this->assign('contextSettingsUrl', $dispatcher->url($request, ROUTE_PAGE, null, 'management', 'settings', 'press'));
-
+                
                 $this->assign('pageFooter', $context->getLocalizedSetting('pageFooter'));
 
                 /* MUNIPRESS */
@@ -120,6 +120,7 @@ class TemplateManager extends PKPTemplateManager {
                 $this->assign('kategorieOstatni', $ostatni);
 
                 $router = $request->getRouter();
+                        
                 if (is_a($router, 'PageRouter')) {
                     switch ($router->getRequestedOp($request)) {
                         case 'category':
