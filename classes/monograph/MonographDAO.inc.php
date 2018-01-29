@@ -476,17 +476,39 @@ class MonographDAO extends SubmissionDAO {
 	 * Return a list of languages.
 	 * @return array
 	 */
-	function getLanguagesForFilter($locale) {         
-
+//	function getLanguagesForFilter($locale) {         
+//
+//            if($locale != "en_US" && $locale != "cs_CZ"){
+//                $locale = "cs_CZ";
+//            }
+//            $locale = strtolower($locale);
+//            $result = $this->retrieve(
+//                    'SELECT DISTINCT LOWER(cves.setting_value) AS lang_key, ml.en_name AS en_us, ml.cz_name AS cs_cz
+//                            FROM controlled_vocab_entry_settings cves 
+//                            LEFT JOIN munipress_languages ml ON LOWER(cves.setting_value) = LOWER(ml.en_name)
+//                            WHERE cves.setting_name = \'submissionLanguage\' AND cves.locale = \'en_US\'
+//                            ORDER BY 
+//                            ' . ($locale == "cs_cz"?'ml.cz_name':'ml.en_name') 
+//                    );
+//            $returner = array();
+//            while (!$result->EOF) {
+//                    $row = $result->GetRowAssoc(false);
+//                    $returner[$row['lang_key']] = $row[$locale];
+//                    $result->MoveNext();
+//            }
+//            $result->Close();
+//            return $returner;
+//	}
+        
+        function getLanguagesForFilter($locale) {  
             if($locale != "en_US" && $locale != "cs_CZ"){
                 $locale = "cs_CZ";
             }
             $locale = strtolower($locale);
             $result = $this->retrieve(
-                    'SELECT DISTINCT LOWER(cves.setting_value) AS lang_key, ml.en_name AS en_us, ml.cz_name AS cs_cz
-                            FROM controlled_vocab_entry_settings cves 
-                            LEFT JOIN munipress_languages ml ON LOWER(cves.setting_value) = LOWER(ml.en_name)
-                            WHERE cves.setting_name = \'submissionLanguage\' AND cves.locale = \'en_US\'
+                    'SELECT DISTINCT msl.iso AS lang_key, ml.en_name AS en_us, ml.cz_name AS cs_cz
+                            FROM munipress_submission_languages msl 
+                            LEFT JOIN munipress_languages ml ON msl.iso = ml.iso
                             ORDER BY 
                             ' . ($locale == "cs_cz"?'ml.cz_name':'ml.en_name') 
                     );
