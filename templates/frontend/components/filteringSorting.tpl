@@ -49,14 +49,13 @@
                 </select>
             </span>
         </div>
-
         <div class="grid__cell size--l--3-12">
             <span class="inp-fix inp-fix--select">
                 <select class="inp-select" size="1" name="jazyky" onchange="location.href = ('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op=$cath path=$cesta sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk="FILTR_JAZYK" fakulta=$filtrovaniFakulta }'.replace('FILTR_JAZYK', this.options[this.selectedIndex].value))">
                     <option {if !$filtrovaniJazyk} selected="selected"{/if} value="">{translate key="filtr.jazyky"}</option>
                     {foreach from=$filtrJazyky key=jedenJazykKlic item=jedenJazyk}
-                        {if $jedenJazyk != "" && $filtrJazykyPocet[$jedenJazyk] > 0}
-                        <option {if $filtrovaniJazyk == $jedenJazykKlic}selected="selected"{/if} value="{$jedenJazykKlic|escape}">{$jedenJazyk} ({$filtrJazykyPocet[$jedenJazyk]})</option>
+                        {if $jedenJazyk != "" && $filtrJazykyPocet[$jedenJazykKlic] > 0}
+                        <option {if $filtrovaniJazyk == $jedenJazykKlic}selected="selected"{/if} value="{$jedenJazykKlic|escape}">{$jedenJazyk} ({$filtrJazykyPocet[$jedenJazykKlic]})</option>
                         {/if}
                     {/foreach}
                 </select>
