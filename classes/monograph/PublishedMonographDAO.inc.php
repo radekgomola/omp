@@ -926,7 +926,7 @@ class PublishedMonographDAO extends MonographDAO {
 			FROM	published_submissions ps
 				JOIN submissions s ON ps.submission_id = s.submission_id
                                 LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
-                                LEFT JOIN munipress_submission_languages msl ON (s.submission_id = msl.submission_id)
+                                '. ($jazyk == "VYBER-MS" ? 'LEFT JOIN munipress_submission_languages msl ON (s.submission_id = msl.submission_id)' : '' ).'
                                 ' . ($fakulta == "VYBER-MS" || $obor == "VYBER-MS" ? 'LEFT JOIN submission_categories sn ON (s.submission_id = sn.submission_id)' : '').'
 				' . $this->getFetchJoins() . '
 				' . ($assocType == ASSOC_TYPE_CATEGORY ? '
@@ -939,7 +939,7 @@ class PublishedMonographDAO extends MonographDAO {
 				' . ($assocType == ASSOC_TYPE_SERIES ? ' AND se.series_id = ' . $assocId : '') . '
                                 ' . ($obor && $obor != "VYBER-MS" ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
                                 ' . ($rok_vydani && $rok != "VYBER-MS" ? ' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?' : '' ) . '
-                                ' . ($jazyk && $jazyk != "VYBER-MS" ? ' AND msl.iso = ? AND msl.iso IS NOT NULL' : '' ) . '
+                                ' . ($jazyk && $jazyk != "VYBER-MS" ? ' AND s.submission_id IN (SELECT msl.submission_id FROM munipress_submission_languages msl WHERE msl.iso = ? AND msl.iso IS NOT NULL)' : '' ) . '
                                 ' . ($fakulta && $fakulta != "VYBER-MS" ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
                                 
                 ' . ($obor == "VYBER-MS" ? 'GROUP BY sn.category_id' : '' ) . '
