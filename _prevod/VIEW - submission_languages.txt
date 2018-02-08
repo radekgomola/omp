@@ -1,0 +1,7 @@
+CREATE VIEW submission_languages AS
+SELECT s.submission_id, cves.locale, cves.setting_value
+FROM submissions s
+LEFT JOIN controlled_vocabs cv ON (s.submission_id = cv.assoc_id AND cv.symbolic = 'submissionLanguage')
+LEFT JOIN controlled_vocab_entries cve ON (cv.controlled_vocab_id = cve.controlled_vocab_id)
+LEFT JOIN controlled_vocab_entry_settings cves ON (cve.controlled_vocab_entry_id = cves.controlled_vocab_entry_id AND cves.setting_name = 'submissionLanguage')
+WHERE cves.setting_value IS NOT NULL

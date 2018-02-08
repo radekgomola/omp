@@ -157,7 +157,7 @@ class MunipressThemePlugin extends ThemePlugin {
                 $this->addScript('slick-settings', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/slick/slickslider-settings.js', array('baseUrl' => ''));
                 $this->addScript('lightcase', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lightcase/lightcase.js', array('baseUrl' => ''));
                 $this->addScript('lightcase-settings', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lightcase/lightcase-settings.js', array('baseUrl' => ''));
-                $this->addScript('app-muniweb', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/muniweb/app.js', array('baseUrl' => ''));
+                $this->addScript('app-muniweb', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/muniweb/app.min.js', array('baseUrl' => ''));
                 $this->addScript('app-run', 'App.run({})', array('inline' => true));
                 $this->addScript('piwik', '
   var _paq = _paq || [];
