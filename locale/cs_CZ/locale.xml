@@ -981,4 +981,7 @@
     <message key="banner.web.link"></message>
     <message key="banner.web"></message>
     <message key="banner.web.description">Web nakladatelství Munipress</message>
+    
+    <message key="navigation.munispace.oa.link">http://vyzkum.rect.muni.cz/cs/vedecke-vystupy/open-access-a-repozitar-mu</message>
+    <message key="navigation.munispace.oa">Open Access</message>
 </locale>

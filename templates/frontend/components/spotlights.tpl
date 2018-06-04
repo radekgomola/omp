@@ -34,7 +34,9 @@
                     {assign var=coverImage value=$item->getCoverImage()}
                     {url|assign:targetUrl router=$smarty.const.ROUTE_PAGE page="catalog" op="book" path=$item->getBestId()}
                     {url|assign:coverImageUrl router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="thumbnail" submissionId=$item->getId()}
-                    {assign var="authors" value=$item->getAuthorString(false, ",<br />","; ", true)|strip_unsafe_html}
+{*                    {assign var="authors" value=$item->getAuthorString(false, ",<br />","; ", true)|strip_unsafe_html}*}
+                    {assign var="authors" value=$item->getAuthorString(false, ", ","; ", false)|strip_unsafe_html}
+                    {assign var="title" value=$item->getLocalizedFullTitle()|truncate:90:" …"}
                 {elseif $assocType == $smarty.const.SPOTLIGHT_TYPE_SERIES}
                     {assign var=type value="is_series"}
                     {assign var=coverImage value=$item->getImage()}

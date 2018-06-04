@@ -55,11 +55,15 @@
             {if $coverImage}
                 <img alt="{$item->getLocalizedFullTitle()|strip_tags|escape}" src="{$coverImageUrl}" class="spotlight_img">
             {/if}
-            <h4 class="box-article-grid__title">{$spotlight->getLocalizedTitle()|escape}</h4>
+            <h4 class="box-article-grid__title">{*{$spotlight->getLocalizedTitle()|escape}*}{$title|strip_unsafe_html}</h4>
+            {*<p class="box-article-grid__meta meta">
+                <span class="meta__item"><strong>{$authors|strip_unsafe_html}</strong>
+            </p>*}
+        </div>
+        <br />
             <p class="box-article-grid__meta meta">
                 <span class="meta__item"><strong>{$authors|strip_unsafe_html}</strong>
             </p>
-        </div>
         {if $description}
             <p class="box-article-list__desc">
                 {$description|strip_unsafe_html}

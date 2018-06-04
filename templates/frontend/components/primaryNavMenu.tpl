@@ -179,6 +179,11 @@
         </a>
     </li>
     <li class="header__menu__primary__item">
+        <a href="{translate key="navigation.munispace.oa.link"}" class="header__menu__primary__link" target="_blank">
+            {translate key="navigation.munispace.oa"} 
+        </a>
+    </li>
+    <li class="header__menu__primary__item">
         <a href="http://www.press.muni.cz/nakladatelstvi/kontakty" class="header__menu__primary__link" target="_blank">
             {translate key="about.contact"}
         </a>
