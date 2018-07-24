@@ -10,8 +10,8 @@
             </a>
         </li>
         <li class="grid__cell size--m--2-4 size--l--3-12">
-            <a href="{$baseUrl}/public/flipbooks/katalogy/katalog2017podzim/index.html" target="_blank">
-                <img src="https://cdn.muni.cz/media/3009529/katalog2017podzim.png" alt="catalog" class="box-article-list__imgMunipress box-article-list__imgMunipress--banner" />
+            <a href="{$baseUrl}/public/flipbooks/katalogy/katalog2018jaro/index.html" target="_blank">
+                <img src="https://cdn.muni.cz/media/3084793/katalog2018jaro.png" alt="catalog" class="box-article-list__imgMunipress box-article-list__imgMunipress--banner" />
             </a>
         </li>
         <li class="grid__cell size--m--2-4 size--l--3-12">

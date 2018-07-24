@@ -39,7 +39,8 @@
 		</a>
 
 		<span class="title">
-			{$submissionFile->getLocalizedName()|escape}
+{*			{$submissionFile->getLocalizedName()|escape}*}
+                        {$publishedMonograph->getLocalizedTitle()|escape}    
 		</span>
 
 		{if $downloadUrl}

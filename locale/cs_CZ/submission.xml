@@ -117,8 +117,9 @@
     <message key="submission.event.publicationFormatCreated">Publikační formát {$formatName} byl vytvořen.</message>
     <message key="submission.event.publicationFormatRemoved">Publikační formát {$formatName} byl odstraněn.</message>
     <message key="submission.submit.titleAndSummary">Název a abstrakt</message>
-    <message key="workflow.review.externalReview">External Review</message>
-    <message key="editor.submission.decision.sendExternalReview">Send to External Review</message>
+    <message key="workflow.review.externalReview">Externí recenze</message>
+    <message key="editor.submission.decision.sendExternalReview">Poslat k externí recenzi</message>
 
     <message key="submission.upload.fileContents">Submission Component</message>
+    <message key="submission.shortAuthor">{$author} a kol.</message>
   </locale>

@@ -144,6 +144,20 @@
                             </div>
                         </div>
                     {/if}
+                    <div class="box-accordion__item is-open">
+                            <h3 class="box-accordion__title">
+                                <a href="#" class="box-accordion__title__link">
+                                    <span class="box-accordion__title__name">{translate key="submission.sharing"}</span>
+                                    <span class="icon icon-plus"></span>
+                                </a>
+                            </h3>
+                            <div class="box-accordion__box">
+                                <div class="box-accordion__inner" style="padding: 0 5px 0;">
+                                    <a href="{$baseUrl}/book?id={$publishedMonograph->getId()}" title="{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}" style="font-size:14.5px;">{$baseUrl}/book?id={$publishedMonograph->getId()}</a>
+                                    <br/><br />
+                                </div>                                
+                            </div>
+                        </div>
                 </div>
                 {* Copyright statement *}
                 {if $monograph->getCopyrightYear() && $monograph->getLocalizedCopyrightHolder()}
@@ -206,7 +220,7 @@
                             <span class="icon icon-plus"></span>
                         </a>
                         <div class="box-tabs__content">
-                            <p>{$monograph->getLocalizedAbstract()|strip_unsafe_html}</p>
+                            <p>{$monograph->getLocalizedAbstract()}</p>
                             <div class="item authors">
                                 {assign var="authors" value=$monograph->getAuthors()}
                                 {foreach from=$publishedMonograph->getAuthors() item=author}
@@ -571,7 +585,7 @@
                         <div id="tab-6" class="box-tabs__fragment">
                             <br />
                             <div class="value">
-                                {$monograph->getCitations()|nl2br}
+                                {$monograph->getCitations()}
                             </div>
                         </div>
                     {/if}
