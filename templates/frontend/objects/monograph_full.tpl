@@ -1,8 +1,9 @@
 {**
+<<<<<<< HEAD
 * templates/frontend/objects/monograph_full.tpl
 *
-* Copyright (c) 2014-2017 Simon Fraser University Library
-* Copyright (c) 2003-2017 John Willinsky
+* Copyright (c) 2014-2018 Simon Fraser University Library
+* Copyright (c) 2003-2018 John Willinsky
 * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
 *
 * @brief Display a full view of a monograph. Expected to be primary object on
@@ -64,6 +65,8 @@
 * @uses $ccLicenseBadge string An HTML string containing a CC license image and
 *       text. Only appears when license URL matches a known CC license.
 *}
+
+
 <div class="obj_monograph_full">
     {assign var="urlWeb" value=$monograph->getLocalizedUrlWeb()|strip_unsafe_html}
     {assign var="poznamka" value=$monograph->getLocalizedPoznamka()|strip_unsafe_html}
@@ -158,7 +161,7 @@
                                 </div>                                
                             </div>
                         </div>
-                </div>
+                 </div>
                 {* Copyright statement *}
                 {if $monograph->getCopyrightYear() && $monograph->getLocalizedCopyrightHolder()}
                     <div class="item copyright">
@@ -213,7 +216,7 @@
                             </li>
                         {/if}
                     </ul>
-                    {*Anotace + autoři*}
+                    {*Anotace + autoĹ™i*}
                     <div id="tab-1" class="box-tabs__fragment is-active">
                         <a href="#" class="box-tabs__responsive-link">
                             <span class="box-tabs__responsive-link__name">{translate key="submission.synopsis"}</span>
@@ -295,7 +298,7 @@
                             </div>
                         </div>
                     {/if}
-                    {*Ke stažení*}
+                    {*Ke staĹľenĂ­*}
                     {if $nonChapterFiles|@count || $remoteResources|@count}
                         <div id="tab-3" class="box-tabs__fragment">
                             <a href="#" class="box-tabs__responsive-link">
@@ -381,6 +384,8 @@
                                         {assign var=publicationDates value=$publicationFormat->getPublicationDates()}
                                         {assign var=publicationDates value=$publicationDates->toArray()}
                                         {assign var=hasPubId value=false}
+                                        {assign var="isbnAltmetric" value=false}
+                                        {assign var="doiAltmetric" value=false}
                                         {if $enabledPubIdTypes|@count}
                                             {foreach from=$enabledPubIdTypes item=pubIdType}
                                                 {if $publicationFormat->getStoredPubId($pubIdType)}
@@ -409,9 +414,10 @@
                                                             {* DOI's and other identification codes *}
                                                             {if $identificationCodes}
                                                                 {foreach from=$identificationCodes item=identificationCode}
+                                                                        {assign var="isbnAltmetric" value=$identificationCode->getValue()|escape}
                                                                     <tr>
                                                                         <td class="label">
-                                                                            {$identificationCode->getNameForONIXCode()|escape}
+                                                                            {$identificationCode->getNameForONIXCode()|replace:'(15)':''}
                                                                         </td>
                                                                         <td style="width: 75%;">
                                                                             {$identificationCode->getValue()|escape}
@@ -463,6 +469,7 @@
                                                                             </td>
                                                                             <td>
                                                                             {if $pubIdType == "doi"}
+                                                                                {assign var="doiAltmetric" value=$storedPubId|escape}
                                                                                 <a href="https://doi.org/{$storedPubId|escape}" title="doi">
                                                                                     https://doi.org/{$storedPubId|escape}
                                                                                 </a>
@@ -476,6 +483,13 @@
                                                             {/if}
                                                         </tbody>
                                                     </table>
+                                                    {if $doiAltmetric}
+                                                        <a href="https://plu.mx/plum/a/?doi={$doiAltmetric}" class="plumx-details" data-hide-when-empty="true"></a>
+                                                    {elseif $isbnAltmetric}
+                                                        <a href="https://plu.mx/plum/a/?isbn={$isbnAltmetric}" class="plumx-details" data-hide-when-empty="true"></a>
+                                                        
+                                                    {/if}
+                                                    
                                                 </div>
                                             </div>
                                         </div>

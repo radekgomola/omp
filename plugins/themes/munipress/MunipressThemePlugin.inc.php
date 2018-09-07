@@ -159,6 +159,8 @@ class MunipressThemePlugin extends ThemePlugin {
                 $this->addScript('lightcase-settings', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/lightcase/lightcase-settings.js', array('baseUrl' => ''));
                 $this->addScript('app-muniweb', $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js/muniweb/app.min.js', array('baseUrl' => ''));
                 $this->addScript('app-run', 'App.run({})', array('inline' => true));
+                /*PlumX*/
+                $this->addScript('plumx', '//d39af2mgp1pqhg.cloudfront.net/widget-details.js',array('baseUrl' => ''));
                 $this->addScript('piwik', '
   var _paq = _paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
