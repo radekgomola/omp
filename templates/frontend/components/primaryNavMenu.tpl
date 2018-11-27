@@ -174,7 +174,7 @@
         </a>
     </li>
     <li class="header__menu__primary__item">
-        <a href="{$baseUrl}/index.php/munispace/munispaceSignpost" class="header__menu__primary__link">
+        <a href="{$baseUrl}/library/munispaceSignpost" class="header__menu__primary__link">
             {translate key="navigation.munispace.signpost"} 
         </a>
     </li>
