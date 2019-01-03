@@ -111,13 +111,26 @@ class TemplateManager extends PKPTemplateManager {
                 // Provide a list of categories to browse
                 $locale = AppLocale::getLocale();
                 $categoryDao = DAORegistry::getDAO('CategoryDAO');
+                $publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
+                
                 $obory = $categoryDao->getByParentIdLocale(KATEGORIE_OBORY, $context->getId(), null, $locale);
                 $fakulty = $categoryDao->getByParentIdLocale(KATEGORIE_FAKULTY, $context->getId(), null, $locale);
+                $fakultyZlatyFond = $categoryDao->getByParentIdLocale(KATEGORIE_FAKULTY, $context->getId(), null, $locale);
                 $ostatni = $categoryDao->getById(KATEGORIE_OSTATNI, $context->getId());
-
+                
+                $filtrFakultyPocet = $publishedMonographDao->getByPressIdCount($context->getId(), null, null, null, "VYBER-MS");
+                $zlatyFond = $categoryDao->getByPath("zlaty-fond",$context->getId());
+                if ($zlatyFond){
+                    $filtrFakultyPocetZlatyFond = $publishedMonographDao->getByCategoryIdCount($zlatyFond->getId(),$context->getId(), null, null, null, "VYBER-MS");
+                    $this->assign('filtrFakultyPocetMenuZlatyFond', $filtrFakultyPocetZlatyFond);
+                }
                 $this->assign('kategorieObory', $obory);
                 $this->assign('kategorieFakulty', $fakulty);
+                $this->assign('kategorieFakultyZlatyFond', $fakultyZlatyFond);
                 $this->assign('kategorieOstatni', $ostatni);
+                
+                $this->assign('filtrFakultyPocetMenu', $filtrFakultyPocet);
+                
 
                 $router = $request->getRouter();
 

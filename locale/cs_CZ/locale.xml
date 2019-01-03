@@ -984,4 +984,7 @@
     
     <message key="navigation.munispace.oa.link">http://vyzkum.rect.muni.cz/cs/vedecke-vystupy/open-access-a-repozitar-mu</message>
     <message key="navigation.munispace.oa">Open Access</message>
+    <message key="payment.directSales.forRegistered">Pro registrované</message>
+    <message key="navigation.zlatyFond">Zlatý Fond</message>
+    <message key="payment.directSales.forRegistered.view">{$format}: (Přístup vyžaduje registraci)</message>
 </locale>

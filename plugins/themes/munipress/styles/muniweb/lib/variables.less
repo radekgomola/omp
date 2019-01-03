@@ -5,27 +5,29 @@
 @baseUrl:                    ''; // Leave empty
 
 // Colors
-@color: #444;
+@color: #000; //new
 
-@dark: #000;
-@light: #999;
-@greyDark: #ddd;
-@greyLight: #eee;
-@red: #e51c24;
-@green: #3fb666;
-@orange: #fec107;
-@blue: #3fabb5;
+@dark: @color; //new
+@light: #999; //new
+@greyDark: #dcdcdc; //new
+@greyLight: #fafafa; //new
+@greyLighten: fade(@greyLight, 50%); //new
+@red: #f01928; //new
+@orange: #f0b41e; //new
+@blue: #0000dc; //new
+@green: #78c83c; //new
+@crimson: #e51d24; //new
 
-@muni: #002776;
-@law: #7f379b;
-@med: #f01928;
-@sci: #01af40;
-@fi: #f2d45c;
-@fss: #007b69;
-@fsps: #009aa6;
-@phil: #00a3e2;
-@ped: #ffa030;
-@econ: #782328;
+@muni: #0000dc; //new
+@law: #9100dc; //new
+@med: #f01928; //new
+@sci: #01af40; //new
+@fi: #f2d45c; //new
+@fss: #008c78; //new
+@fsps: #009aa6; //new
+@phil: #4bc8ff; //new
+@ped: #ffa02f; //new
+@econ: #b9006e; //new
 
 @facebook: #3b5998;
 @twitter: #55acee;
@@ -35,45 +37,64 @@
 @google: #dd4b39;
 @youtube: #cd201f;
 @github: #000;
+@rss: #ffa333;
 
-@primary: @muni;
+@primary: @muni; //new
 
-@link: @primary;
-@linkVisited: #9a42c7;
-@linkHover: @dark;
+@input: #aaa; //new
+@separator: #ddd;
 
-@border: @greyDark;
+@link: @primary; //new
+@linkVisited: #55008B; //new
+@linkHover: @color; //new
+
+@border: @greyDark; //new
+@borderLight: fade(@greyDark, 50); //new
 @borderPrimary: #ccd4e4;
 @borderPrimaryLight: #e5e9f1;
-@background: @greyLight;
+@background: @greyLight; //new
 @backgroundPrimary: lighten(@borderPrimaryLight, 4%);
 
 // Color variations of faculties
-@elementsHover: @backgroundPrimary;
+@elementsHover: fade(@muni, 50%);
 @whiteInvertable: #fff;
 @menuHover: @dark;
 @boxSeparator: @border;
 @selectBg: url("@{baseUrl}/images/muniweb/bg/select.png");
 
-@mMargin: 20px;
+@menuSecondary: @primary;
+@menuSecondaryLink: @whiteInvertable;
+
+@mMargin: 50px;
 @mMarginSmall: 30px;
 
 // Fonts
-@font: 'Helvetica Neue',  Helvetica, Arial, sans-serif;
-@fontSecondary: 'Meta Web Pro', Tahoma, sans-serif;
+@font: Arial, Helvetica Neue, sans-serif;
+@fontSecondary: @font;
+@fontMuni: 'Muni', Arial, Helvetica Neue, sans-serif;
 @fontItalic: Georgia, Times, 'Times New Roman', serif;
 @fontConsola: Consolas, monaco, monospace;
 
 // Base font size and line height
-@fontSizeMobile: 15px;
-@fontSize: 16px;
+@fontSizeMobile: 16px;
+@fontSize: 18px;
 @fontSizeSmall: 14px;
 @fontSizeSmaller: 12px;
-@lineHeight: 1.5;
+@lineHeight: 1.45;
 
 // Media queries
 /*@retina: "(-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)";*/
 @mobileL: 480px;
-@tablet: 700px;
-@desktop: 1000px;
-@desktopWide: 1240px;
+@tablet: 768px;
+@desktop: 1024px;
+@desktopWide: 1440px;
+
+@h0Size: 33px 45px 54px;
+@h1Size: 32px 40px 48px;
+@h2Size: 28px 32px 40px;
+@h3Size: 24px 24px 32px;
+@h4Size: 18px 21px 24px;
+@h5Size: 18px;
+@h6Size: 16px;
+
+@heroBoxMaxWidth: 800px;

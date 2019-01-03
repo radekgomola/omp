@@ -1,0 +1,141 @@
+@mi: ~'.menu-inside';
+
+.menu-inside{
+	margin: 0 0 @mMargin;
+	font-weight: bold;
+	font-size: 0px;
+	position: relative;
+	overflow: hidden;
+	.scroll-nav{
+		bottom: 1px;
+	}
+	&:before{
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		background: @border;
+	}
+	&__wrap {
+		position: relative;
+		white-space: nowrap;
+		overflow: hidden;
+		margin-top: -25px;
+		&:first-child{
+			margin-top: -25px;
+		}
+	}
+	&__list{
+		.reset-ul();
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	&__item{
+		.reset-ul-li();
+		display: inline-block;
+		vertical-align: top;
+	}
+	&__link{
+		font-size: @fontSize;
+		display: block;
+		text-decoration: none;
+		padding: 20px 15px 10px 15px;
+		position: relative;
+		.transition(e('color .2s, background .2s'));
+		&.with-icon{
+			padding-left: 35px;
+			.icon{
+				position: absolute;
+				left: 15px;
+				top: 50%;
+				font-size: 14px;
+				margin-top: -7px;
+				color: @primary;
+			}
+		}
+		&.is-active{
+			color: @color;
+			&:after{
+				content: '';
+				position: absolute;
+				left: 15px;
+				right: 15px;
+				bottom: 0;
+				height: 2px;
+				background: @color;
+			}
+		}
+		.no-touch &:hover{
+			color: @color;
+		}
+	}
+	&__side{
+		margin: -15px 0 25px;
+		position: relative;
+		z-index: 1;
+	}
+
+
+	&--right{
+		text-align: right;
+	}
+
+	&--center{
+		text-align: center;
+	}
+
+	&--light{
+		font-weight: normal;
+		& @{mi}__wrap{
+			margin: 0;
+			&:first-child{
+				margin: 0;
+			}
+		}
+		& @{mi}__link{
+			font-size: 14px;
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
+	}
+
+	@media (min-width: @tablet) {
+		&.with-side{
+			& @{mi}__wrap{
+				margin-right: 200px;
+			}
+		}
+		&__wrap {
+			margin-bottom: 0;
+		}
+		&__side{
+			float: right;
+			text-align: right;
+			margin-top: -69px;
+			width: 190px;
+			.btn > span{
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+
+		&--right {
+			&.with-side{
+				& @{mi}__wrap{
+					margin-right: 0;
+					margin-left: 200px;
+				}
+			}
+			& @{mi}__side{
+				text-align: left;
+				float: left;
+			}
+		}
+
+		&--center {
+			padding-right: 0;
+		}
+	}
+}

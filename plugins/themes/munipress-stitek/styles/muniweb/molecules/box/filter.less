@@ -1,0 +1,79 @@
+.box-filter {
+	margin-bottom: @mMarginSmall;
+	.box-bg {
+		margin-bottom: 10px;
+	}
+	.tag {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	&__link {
+		margin-bottom: 0;
+	}
+	&__label {
+		font-weight: bold;
+		font-size: 14px;
+		margin: 15px 0 10px;
+		color: @dark;
+	}
+
+	@media (max-width: (@tablet - 1)) {
+		&__btn {
+			display: none;
+		}
+		&__close {
+			position: absolute;
+			top: -59px;
+			right: -15px;
+			.btn {
+				> span {
+					padding-left: 14px;
+					padding-right: 14px;
+				}
+				.icon {
+					margin-left: 0;
+				}
+			}
+			&-text {
+				display: none;
+			}
+		}
+		&__table {
+			table,
+			tbody,
+			tr,
+			td {
+				display: block;
+			}
+			td {
+				border-bottom: 0;
+				padding: 0;
+			}
+			tr {
+				border-bottom: 1px solid @border;
+				padding: 8px 0;
+			}
+		}
+	}
+
+	@media (min-width: @tablet) {
+		margin-bottom: @mMargin;
+		.btn-icon {
+			display: none;
+		}
+		&__link {
+			padding-left: 25px;
+			text-align: right;
+		}
+		&__close {
+			text-align: right;
+		}
+	}
+
+	@media (min-width: @desktop) {
+		&__link {
+			width: 100%;
+			text-align: left;
+		}
+	}
+}

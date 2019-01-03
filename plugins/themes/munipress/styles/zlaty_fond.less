@@ -1,0 +1,601 @@
+/**
+ * @file plugins/themes/default/styles/components.less
+ *
+ * Copyright (c) 2014-2016 Simon Fraser University Library
+ * Copyright (c) 2003-2016 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * @brief Reusable components
+ */
+
+// Button
+.cmp_button {
+	display: inline-block;
+	padding: 0 (@triple / 2);
+	background: #eee;
+	border: 1px solid #aaa;
+	border-top-color: #bbb;
+	border-radius: @radius;
+	box-shadow: inset 0 -1em 1em rgba(0, 0, 0, 0.1);
+	font-size: @font-sml;
+	line-height: @triple - 2; // account for border
+	font-weight: @bold;
+	color: @primary;
+	text-decoration: none;
+	text-shadow: 0px 1px #fff;
+
+	&:hover,
+	&:focus {
+		box-shadow: inset 0 -1em 1em rgba(0, 0, 0, 0.1);
+		background: @primary;
+		border-color: @primary;
+		color: #fff;
+		text-shadow: none;
+	}
+}
+
+// Add an icon to the button
+.cmp_button_icon( @icon ) {
+	position: relative;
+	padding-right: @triple + (@triple / 2);
+	border-right: none;
+
+	&:after {
+		&:extend(.fa);
+		content: @icon;
+		position: absolute;
+		top: -1px; // border;
+		right: 0;
+		width: @triple;
+		height: @triple;
+		border-top-right-radius: @radius;
+		border-bottom-right-radius: @radius;
+		line-height: @triple;
+		text-align: center;
+		background: @primary;
+		box-shadow: inset 0 -1em 1em rgba(0, 0, 0, 0.2);
+		color: #fff;
+	}
+
+	&:hover:after,
+	&:focus:after {
+		box-shadow: inset 0 1em 1em rgba(0, 0, 0, 0.2);
+		background: @primary-lift;
+	}
+}
+
+// Text button with an icon
+.cmp_button_text( @icon ) {
+	display: inline-block;
+	position: relative;
+	padding-right: @triple;
+	font-size: @font-sml;
+	font-weight: @bold;
+	line-height: @triple;
+	color: @primary;
+	text-decoration: none;
+
+	&:after {
+		&:extend(.fa);
+		content: @icon;
+		position: absolute;
+		top: 2px;
+		right: 0;
+		width: @triple;
+		height: @triple;
+		line-height: @triple;
+		text-align: center;
+	}
+
+	&:hover,
+	&:focus {
+		color: @primary-lift;
+	}
+}
+
+// Forms
+// These don't yet follow the component pattern on the frontend, but should
+// eventually once the login/registration templates are incorporated into the
+// frontend template structure.
+.pkp_form {
+
+	fieldset {
+		margin: 0 0 @double;
+		padding: 0;
+		border: none;
+	}
+
+	legend {
+		margin-bottom: @base;
+		font-size: @font-bump;
+		font-weight: @bold;
+		line-height: @double;
+	}
+
+	.fields {
+		&:extend(.pkp_unstyled_list);
+
+		> li {
+			position: relative;
+			padding-bottom: @triple; // Contain errors
+
+			// Nest so we don't grab .error class attached to li
+			.error {
+				position: absolute;
+				left: 0.5em; // Sit off the rounded edge of input fields
+				bottom: 11px; // Sit on the bottom line of the input field above
+				padding: 0 0.5em; // Keep it tight so it doesn't bleed into next field
+				background: @no;
+				border-bottom-left-radius: @radius;
+				border-bottom-right-radius: @radius;
+				font-size: @font-sml;
+				line-height: @double;
+				font-weight: @bold;
+				color: #fff;
+			}
+		}
+	}
+
+	label {
+		display: block;
+	}
+
+	.label {
+		display: block;
+		font-size: @font-sml;
+		font-style: italic;
+
+		.required {
+			color: @no;
+		}
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="url"],
+	input[type="phone"],
+	select,
+	textarea {
+		padding: 0 0.5em;
+		width: 100%;
+		height: @triple - 2; // account for border
+		background: #fff;
+		border: 1px solid #aaa;
+		border-radius: @radius;
+		font-size: @font-sml;
+		line-height: @triple - 2; // account for border
+	}
+
+	textarea {
+		width: 100%;
+		height: 8em;
+	}
+
+	.pkp_form_error {
+		margin-bottom: @base;
+		border-radius: @radius;
+		padding: 0 0.5em;
+		font-weight: @bold;
+		font-size: @font-sml;
+		background: @no;
+		color: #fff;
+	}
+
+	@media(min-width: @screen-phone) {
+
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		input[type="url"],
+		input[type="phone"],
+		select {
+			max-width: 20em;
+		}
+	}
+
+	// Tag-it component
+	// @todo This just duplicates some styles from pkp-lib. We can probably
+	//  find a better way to share styles after beta, or move this to somewhere
+	//  more appropriate in the theme.
+	.tagit {
+		&:extend(.pkp_unstyled_list);
+		&:extend(.pkp_form input[type="text"]);
+		.pkp_helpers_clear();
+
+		// overwrite text field styles
+		max-width: 100%;
+		height: auto;
+
+		> li {
+			display: inline-block;
+
+			&.tagit-choice {
+				margin-right: 0.5em;
+				padding-left: 0.5em;
+				background: @bg;
+				border-radius: @radius;
+				line-height: @double;
+			}
+		}
+
+		input[type="text"] {
+			display: inline-block;
+			border: none;
+			width: inherit;
+			line-height: 30px;
+			height: 30px;
+			vertical-align: top;
+			padding: 0 0.5em;
+		}
+	}
+
+	.tagit-close {
+		padding: 0 0.5em;
+		color: @no;
+	}
+}
+
+// Auto-complete selection fields for tagit component (not nested in .pkp_form)
+.ui-autocomplete {
+	&:extend(.pkp_unstyled_list);
+	width: 20em;
+	padding: 2px;
+	border-radius: @radius;
+	background: @bg-base;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: -@half;
+		left: 1em;
+		width: 0;
+		height: 0;
+		color: @bg-base;
+		border-bottom: @half solid;
+		border-right: @half solid transparent;
+		border-left: @half solid transparent;
+		vertical-align: middle;
+	}
+
+	> li {
+		padding: @half;
+		font-size: @font-sml;
+		line-height: @line-sml;
+		color: #fff;
+		cursor: pointer;
+
+		&:hover,
+		&:focus {
+			background: @bg;
+			color: @text;
+		}
+	}
+}
+
+// Edit link to jump from frontend section to backend editing location
+// It usually appears within a heading element <h*>
+.cmp_edit_link {
+	display: inline-block;
+	margin-left: 1em;
+	font-size: @font-sml;
+	font-weight: @normal;
+	line-height: 1; // Try not to disrupt parent line height
+	vertical-align: middle;
+	text-decoration: none;
+
+	&:before {
+		&:extend(.fa);
+		content: @fa-var-pencil;
+	}
+}
+
+// List of monographs
+.cmp_monographs_list {
+	position: relative;
+	margin: (@triple * 2) -@base;
+	border-top: @bg-border;
+
+	> .title {
+		padding: 0 @base;
+		position: absolute;
+		top: -15px;
+		left: @base;
+		margin: 0;
+		padding: 0 @base;
+		background: @bg;
+		font-size: @font-bump;
+		font-weight: @normal;
+		line-height: @triple;
+		color: @text-light;
+	}
+
+	.obj_monograph_summary {
+		padding: @triple @base;
+		border-bottom: @bg-border;
+	}
+
+	.row:last-child .obj_monograph_summary:last-child,
+	> .obj_monograph_summary:last-child { // if last is a featured monograph
+		border-bottom: none;
+	}
+
+	@media(min-width: @screen-phone) {
+		margin-left: -@double;
+		margin-right: -@double;
+
+		.obj_monograph_summary {
+			padding-left: @double;
+			padding-right: @double;
+		}
+	}
+
+	@media(min-width: @screen-tablet) {
+
+		> .title {
+			left: @double;
+		}
+
+		.obj_monograph_summary {
+			padding: @triple;
+		}
+	}
+
+	@media(min-width: @screen-desktop) {
+		margin-left: -@triple;
+		margin-right: -@triple;
+
+		.obj_monograph_summary {
+			padding: @triple;
+		}
+	}
+
+	@media(min-width: @screen-lg-desktop) {
+		border-top: @bg-border;
+
+		.row {
+			.pkp_helpers_clear;
+			border-bottom: @bg-border;
+		}
+
+		.obj_monograph_summary {
+			position: relative;
+			float: left;
+			width: 50%;
+			border-bottom: none;
+
+			&:first-child {
+				padding-right: @triple;
+				border-top: none;
+				border-right: @bg-border;
+			}
+		}
+
+		.obj_monograph_summary + .obj_monograph_summary {
+			padding-left: @triple;
+			margin-left: -1px; // ensure right/left borders overlap
+			border-left: @bg-border;
+		}
+
+		.obj_monograph_summary.is_featured {
+			float: none;
+			width: 100%;
+			border-right: none;
+			border-left: none;
+			/*border-bottom: @bg-border;*/
+                        border-bottom: none;
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+        .is_featured {
+            border: none;
+        }
+}
+
+// Breadcrumbs
+.cmp_breadcrumbs {
+	display: inline-block;
+
+
+	ol {
+		&:extend(.pkp_unstyled_list);
+		margin-bottom: @triple;
+		padding: 5px 0;
+		line-height: @double;
+		font-size: @font-sml;
+	}
+
+	li {
+		display: inline-block;
+	}
+
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	.separator {
+		color: @text-light;
+		padding: 0 0.5em;
+	}
+
+	.current {
+		color: @text-light;
+
+		h1 {
+			margin: 0;
+			font-size: @font-sml;
+			font-weight: @normal;
+		}
+	}
+}
+
+// Spotlights
+.cmp_spotlights {
+	.pkp_helpers_clear;
+
+	> ul {
+		&:extend(.pkp_unstyled_list);
+	}
+
+	.list {
+		display: none;
+	}
+
+	.spotlights {
+
+		> li {
+			margin-bottom: @triple * 2;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	@media(min-width: @screen-tablet) {
+		padding-left: 0;
+		padding-right: 0;
+/*		border-top: @bg-border;
+		border-bottom: @bg-border;*/
+
+		.list {
+			display: block;
+			position: relative;
+			float: right;
+			width: 35%;
+			font-size: @font-sml;
+
+			// Left border
+			&:before {
+				content: ' ';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 1px;
+				height: 100%;
+				/*border-left: @bg-border;*/
+			}
+
+			a {
+				display: block;
+				padding: @double (@triple / 2);
+				border-left: 5px solid transparent;
+				font-weight: @bold;
+				text-decoration: none;
+
+				&:hover,
+				&:focus {
+					border-left-color: @primary;
+				}
+			}
+
+			> li {
+				/*border-bottom: @bg-border;*/
+			}
+
+			.current {
+
+				a {
+					color: @text-light;
+					border-left-color: @bg;
+
+					&:hover,
+					&:focus {
+						/*border-left-color: @primary;*/
+					}
+				}
+			}
+		}
+
+		.spotlights {
+			float: left;
+			position: relative;
+			width: 65%;
+
+			// Right border
+			&:before {
+				content: ' ';
+				position: absolute;
+				top: 0;
+				right: -1px;
+				width: 1px;
+				height: 100%;
+				border-left: @bg-border;
+			}
+
+			> li {
+				position: absolute;
+				top: 0;
+				left: -9999px;
+				margin-bottom: 0;
+
+				&.current {
+					position: relative;
+					left: auto;
+				}
+			}
+		}
+
+		.obj_spotlight {
+			padding: @triple;
+
+			.description {
+				font-size: @font-sml;
+
+				> p {
+					line-height: @line-sml;
+				}
+			}
+
+			.read_more {
+				float: left;
+			}
+		}
+	}
+}
+
+// Announcements
+.cmp_announcements {
+	&:extend(.pkp_unstyled_list);
+	margin-left: -@base;
+	margin-right: -@base;
+
+	> li {
+		padding: @triple @base;
+		border-bottom: @bg-border;
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+
+	@media(min-width: @screen-phone) {
+		margin-left: -@double;
+		margin-right: -@double;
+
+		> li {
+			padding-left: @double;
+			padding-right: @double;
+		}
+	}
+
+	@media(min-width: @screen-desktop) {
+		margin-left: -@triple;
+		margin-right: -@triple;
+
+		> li {
+			padding-left: @triple;
+			padding-right: @triple;
+		}
+
+	}
+}
+
+// Backlink used on error.tpl and message.tpl
+.cmp_back_link {
+	margin-top: @double;
+}

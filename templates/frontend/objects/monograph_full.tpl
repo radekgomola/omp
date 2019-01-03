@@ -298,7 +298,7 @@
                             </div>
                         </div>
                     {/if}
-                    {*Ke staĹľenĂ­*}
+                    {*Ke stažení*}
                     {if $nonChapterFiles|@count || $remoteResources|@count}
                         <div id="tab-3" class="box-tabs__fragment">
                             <a href="#" class="box-tabs__responsive-link">

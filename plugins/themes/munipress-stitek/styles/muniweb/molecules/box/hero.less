@@ -1,0 +1,251 @@
+@bxh: ~'.box-hero';
+
+.box-hero {
+	position: relative;
+	display: block;
+	margin: 0 0 50px;
+	border: 1px solid transparent;
+	text-decoration: none;
+	color: @color;
+	background: #fff;
+
+	.no-touch &:hover {
+		text-decoration: none;
+		color: @color;
+	}
+	.row-main {
+		position: static;
+	}
+
+	// image
+	&__img {
+		position: relative;
+		top: -1px;
+		margin-left: -16px;
+		margin-right: -16px;
+		overflow: hidden;
+		&:before {
+			content: '';
+			display: block;
+			padding-top: 200px;
+		}
+		img {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			.transform(translate(-50%, -50%));
+			max-width: none;
+			min-height: 100%;
+			min-width: 100%;
+			width: auto;
+			height: auto;
+		}
+	}
+
+	// content
+	&__content {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+		position: relative;
+		z-index: 1;
+	}
+	&__content-inner {
+		display: table-cell;
+		vertical-align: middle;
+		padding: 20px 0px 25px;
+		> * {
+			max-width: 600px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	// in row-main
+	.row-main & &__content-inner {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.row-main & &__img {
+		margin-left: -1px;
+		margin-right: -1px;
+	}
+
+	// particles
+	&__particles {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		right: 0;
+		bottom: 0;
+		overflow: hidden;
+	}
+	&__img ~ &__particles {
+		right: 50%;
+		margin-left: -310px;
+	}
+	&__particles:before{
+		content: '';
+		position: absolute;
+		bottom: 0;
+		margin-bottom: -300px;
+		left: 0;
+		width: 1000px;
+		height: 876px;
+		background-position: 100% 100%;
+		background-image: url("@{baseUrl}/images/muniweb/bg/particles.png");
+		background-repeat: no-repeat;
+	}
+
+	// VARIANTS
+	&--space {
+		margin: @mMargin 0;
+	}
+	&--bordered {
+		border-color: @border;
+	}
+	&--background {
+		background-color: @primary;
+		color: @whiteInvertable;
+		h1, h2, h3, h4, h5, h6, p, ul, ol, a, cite, cite strong {
+			color: @whiteInvertable;
+		}
+		a {
+			.no-touch &:hover {
+				color: @whiteInvertable;
+				text-decoration: none;
+			}
+		}
+	}
+	&--special {
+		background-position: 50% 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border: none;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: fade(#000, 20%);
+		}
+		.row-main {
+			z-index: 1;
+		}
+		h2,
+		h1 {
+			border: solid @whiteInvertable;
+			border-width: 1px 0;
+			display: inline-block;
+			padding: 5px 20px 10px 0;
+			margin-top: 0;
+		}
+		& @{bxh}__content {
+			position: relative;
+			z-index: 1;
+		}
+	}
+
+	// MEDIA
+	@media (min-width: @mobileL) {
+		&__img:before {
+			padding-top: 300px;
+		}
+	}
+
+
+	@media(min-width: @tablet){
+		// image
+		&__img {
+			position: absolute;
+			left: 50%;
+			top: -1px;
+			bottom: -1px;
+			right: -1px;
+			height: auto;
+			overflow: hidden;
+			margin: 0;
+		}
+		// content
+		&__content-inner {
+			padding: 45px 0;
+		}
+
+		&__img ~ &__content {
+			padding: 0;
+			max-width: 50%;
+		}
+		&__img ~ &__content &__content-inner {
+			padding: 30px 30px 30px 0;
+		}
+
+		// in row-main
+		.row-main & &__content-inner {
+			padding-left: 30px;
+		}
+		.row-main & &__img {
+			margin: 0;
+		}
+
+		// img left
+		&--inverse{
+			& @{bxh}{
+				&__img{
+					left: 0;
+					right: 50%;
+				}
+			}
+			.box-hero__content{
+				margin-left: auto;
+			}
+			.box-hero__content .box-hero__content-inner {
+				padding-left: 30px;
+				padding-right: 0;
+			}
+			.row-main & .box-hero__content .box-hero__content-inner {
+				padding-right: 30px;
+			}
+		}
+
+		// VARIANTS
+		&--size-s &__content-inner {
+			height: 300px;
+		}
+		&--size-m &__content-inner {
+			height: 450px;
+		}
+		&--size-l &__content-inner {
+			height: 530px;
+		}
+
+		&--particles &__particles {
+			display: block;
+		}
+	}
+
+	// MEDIA
+	@media(min-width: @desktop){
+		&__img ~ &__content &__content-inner {
+			padding: 60px 70px 60px 0;
+		}
+		.row-main & &__content-inner {
+			padding-left: 60px;
+		}
+
+		// img left
+		&--inverse{
+			.box-hero__content .box-hero__content-inner {
+				padding-left: 70px;
+				padding-right: 0;
+			}
+			.row-main & .box-hero__content .box-hero__content-inner {
+				padding-right: 60px;
+			}
+		}
+	}
+}

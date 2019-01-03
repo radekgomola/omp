@@ -197,6 +197,9 @@ class CatalogBookHandler extends Handler {
 		$templateMgr->display('frontend/pages/book.tpl');
 	}
 
+        function flipbook($args, $request){
+                $this->download($args, $request, false, true);
+        }
 	/**
 	 * Use an inline viewer to view a published monograph publication
 	 * format file.
@@ -213,7 +216,7 @@ class CatalogBookHandler extends Handler {
 	 * @param $request PKPRequest
 	 * @param $view boolean True iff inline viewer should be used, if available
 	 */
-	function download($args, $request, $view = false) {
+	function download($args, $request, $view = false, $flipbook = false) {
 		$dispatcher = $request->getDispatcher();
 		$publishedMonograph = $this->getAuthorizedContextObject(ASSOC_TYPE_PUBLISHED_MONOGRAPH);
 		$this->setupTemplate($request, $publishedMonograph);
@@ -222,7 +225,7 @@ class CatalogBookHandler extends Handler {
 		$monographId = array_shift($args); // Validated thru auth
 		$representationId = array_shift($args);
 		$bestFileId = array_shift($args);
-
+                
 		$publicationFormatDao = DAORegistry::getDAO('PublicationFormatDAO');
 		$publicationFormat = $publicationFormatDao->getByBestId($representationId, $publishedMonograph->getId());
 		if (!$publicationFormat || !$publicationFormat->getIsApproved() || !$publicationFormat->getIsAvailable() || $remoteURL = $publicationFormat->getRemoteURL()) fatalError('Invalid publication format specified.');
@@ -232,10 +235,21 @@ class CatalogBookHandler extends Handler {
 		$submissionFile = $submissionFileDao->getByBestId($bestFileId, $publishedMonograph->getId());
 		if (!$submissionFile) $dispatcher->handle404();
 
-		$fileIdAndRevision = $submissionFile->getFileIdAndRevision();
+                $fileIdAndRevision = $submissionFile->getFileIdAndRevision();
 		list($fileId, $revision) = array_map(create_function('$a', 'return (int) $a;'), preg_split('/-/', $fileIdAndRevision));
 		import('lib.pkp.classes.file.SubmissionFileManager');
 		$monographFileManager = new SubmissionFileManager($publishedMonograph->getContextId(), $publishedMonograph->getId());
+                /*MUNIPRESS - flipbook*/
+                
+                if($flipbook){
+                    $filename = "";
+                    foreach($args as $value){
+                        $filename .= "/".$value;
+                    }
+                    return $monographFileManager->downloadFile($fileId, $revision, true, $filename, $flipbook);
+                }
+                /*********/
+                
 		switch ($submissionFile->getAssocType()) {
 			case ASSOC_TYPE_PUBLICATION_FORMAT: // Publication format file
 				if ($submissionFile->getAssocId() != $publicationFormat->getId() || $submissionFile->getDirectSalesPrice() === null) fatalError('Invalid monograph file specified!');
@@ -244,6 +258,7 @@ class CatalogBookHandler extends Handler {
 				$genreDao = DAORegistry::getDAO('GenreDAO');
 				$genre = $genreDao->getById($submissionFile->getGenreId());
 				if (!$genre->getDependent()) fatalError('Invalid monograph file specified!');
+                                
 				return $monographFileManager->downloadFile($fileId, $revision);
 				break;
 			default: fatalError('Invalid monograph file specified!');
@@ -259,24 +274,21 @@ class CatalogBookHandler extends Handler {
 
 			// If inline viewing is requested, permit plugins to
 			// handle the document.
-			PluginRegistry::loadCategory('viewableFiles', true);
-			if ($view) {                                
-				if (HookRegistry::call('CatalogBookHandler::view', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile))) {
+			PluginRegistry::loadCategory('viewableFiles', true);                                                    
+			if ($view) {   
+				if (HookRegistry::call('CatalogBookHandler::view', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile))) {                               
 					// If the plugin handled the hook, prevent further default activity.
 					exit();
 				}
 			}
-                        
 			// Inline viewer not available, or viewing not wanted.
 			// Download or show the file.
 			$inline = $request->getUserVar('inline')?true:false;
-                        $flipbook = $request->getUserVar('flipbook')?true:false;
-			if (HookRegistry::call('CatalogBookHandler::download', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile, &$inline, &$flipbook))) {
-                            
+                        $flipbook = $submissionFile->getFlipbookChecker();
+			if (HookRegistry::call('CatalogBookHandler::download', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile, &$inline, $flipbook))) {                                          
 				// If the plugin handled the hook, prevent further default activity.
 				exit();
 			}
-                        
 			return $monographFileManager->downloadFile($fileId, $revision, $inline);
 		}
 

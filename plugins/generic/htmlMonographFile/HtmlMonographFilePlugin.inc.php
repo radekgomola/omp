@@ -102,11 +102,13 @@ class HtmlMonographFilePlugin extends GenericPlugin {
 		$inline =& $params[4];
                 $flipbook =& $params[5];
 		$request = Application::getRequest();
-                $flipbook = true;
+                
 		if ($submissionFile && ($submissionFile->getFileType() == 'text/html' || $submissionFile->flipbookFileExists())) {
 			if (!HookRegistry::call('HtmlMonographFilePlugin::monographDownload', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile, &$inline))) {
-
+                                /*MUNIPRESS*/
             			echo $this->_getHTMLContents($request, $publishedMonograph, $publicationFormat, $submissionFile, $flipbook);
+                                /********/
+                                //echo $this->_getHTMLContents($request, $publishedMonograph, $publicationFormat, $submissionFile);
 				$returner = true;
 				HookRegistry::call('HtmlMonographFilePlugin::monographDownloadFinished', array(&$returner));
 				return true;
@@ -124,46 +126,72 @@ class HtmlMonographFilePlugin extends GenericPlugin {
 	 * @param $submissionFile SubmissionFile
 	 * @return string
 	 */
-	function _getHTMLContents($request, $monograph, $publicationFormat, $submissionFile) {
-                if($submissionFile->flipbookFileExists()) {
+	function _getHTMLContents($request, $monograph, $publicationFormat, $submissionFile, /*MUNIPRESS*/ $flipbook = false) {            
+                if($flipbook) {
                     $contents = file_get_contents($submissionFile->getFlipbookPath());
-                } else {
-                    $contents = file_get_contents($submissionFile->getFilePath());
-                }
-//                ($contents);
-		// Replace media file references
-		$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
-		import('lib.pkp.classes.submission.SubmissionFile'); // Constants
-		$embeddableFiles = array_merge(
-			$submissionFileDao->getLatestRevisions($submissionFile->getSubmissionId(), SUBMISSION_FILE_PROOF),
-			$submissionFileDao->getLatestRevisionsByAssocId(ASSOC_TYPE_SUBMISSION_FILE, $submissionFile->getFileId(), $submissionFile->getSubmissionId(), SUBMISSION_FILE_DEPENDENT)
-		);
-
-		foreach ($embeddableFiles as $embeddableFile) {
-			$fileUrl = $request->url(null, 'catalog', 'download', array($monograph->getBestId(), $publicationFormat->getBestId(), $embeddableFile->getBestId()), array('inline' => true));
-			$pattern = preg_quote($embeddableFile->getOriginalFileName());
-
-			$contents = preg_replace(
-					'/([Ss][Rr][Cc]|[Hh][Rr][Ee][Ff]|[Dd][Aa][Tt][Aa])\s*=\s*"([^"]*' . $pattern . ')"/',
-					'\1="' . $fileUrl . '"',
+                    $fileUrl = $request->url(null, 'catalog', 'flipbook', array($monograph->getBestId(), $publicationFormat->getBestId(), $submissionFile->getBestId()));
+                    $contents = preg_replace(
+					'/([Ss][Rr][Cc])\s*="/',
+					'src="' . $fileUrl . '/',
 					$contents
 			);
-
-			// Replacement for Flowplayer
-			$contents = preg_replace(
-					'/[Uu][Rr][Ll]\s*\:\s*\'(' . $pattern . ')\'/',
+                    $contents = preg_replace(
+					'/([Hh][Rr][Ee][Ff])\s*="/',
+					'href="' . $fileUrl . '/',
+					$contents
+			);
+                    $contents = preg_replace(
+					'/([Dd][Aa][Tt][Aa])\s*="/',
+					'data="' . $fileUrl . '/',
+					$contents
+			);
+                   $contents = preg_replace(
+					'/[Uu][Rr][Ll]\s*\:\s*\'/',
 					'url:\'' . $fileUrl . '\'',
 					$contents
 			);
 
 			// Replacement for other players (tested with odeo; yahoo and google player won't work w/ OJS URLs, might work for others)
-			$contents = preg_replace(
-					'/[Uu][Rr][Ll]=([^"]*' . $pattern . ')/',
-					'url=' . $fileUrl ,
+                    $contents = preg_replace(
+					'/[Uu][Rr][Ll]=/',
+					'url=' . $fileUrl.'\'',
 					$contents
 			);
+                } else {
+                    $contents = file_get_contents($submissionFile->getFilePath());
+                    // Replace media file references
+                    $submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
+                    import('lib.pkp.classes.submission.SubmissionFile'); // Constants
+                    $embeddableFiles = array_merge(
+                            $submissionFileDao->getLatestRevisions($submissionFile->getSubmissionId(), SUBMISSION_FILE_PROOF),
+                            $submissionFileDao->getLatestRevisionsByAssocId(ASSOC_TYPE_SUBMISSION_FILE, $submissionFile->getFileId(), $submissionFile->getSubmissionId(), SUBMISSION_FILE_DEPENDENT)
+                    );
 
-		}
+                    foreach ($embeddableFiles as $embeddableFile) {
+                            $fileUrl = $request->url(null, 'catalog', 'download', array($monograph->getBestId(), $publicationFormat->getBestId(), $embeddableFile->getBestId()), array('inline' => true));
+
+                            $pattern = preg_quote($embeddableFile->getOriginalFileName());
+                            $contents = preg_replace(
+                                            '/([Ss][Rr][Cc]|[Hh][Rr][Ee][Ff]|[Dd][Aa][Tt][Aa])\s*=\s*"([^"]*' . $pattern . ')"/',
+                                            '\1="' . $fileUrl . '"',
+                                            $contents
+                            );
+
+                            // Replacement for Flowplayer
+                            $contents = preg_replace(
+                                            '/[Uu][Rr][Ll]\s*\:\s*\'(' . $pattern . ')\'/',
+                                            'url:\'' . $fileUrl . '\'',
+                                            $contents
+                            );
+
+                            // Replacement for other players (tested with odeo; yahoo and google player won't work w/ OJS URLs, might work for others)
+                            $contents = preg_replace(
+                                            '/[Uu][Rr][Ll]=([^"]*' . $pattern . ')/',
+                                            'url=' . $fileUrl ,
+                                            $contents
+                            );
+                    }
+                }
 
 		// Perform replacement for ojs://... URLs
 		$contents = preg_replace_callback(

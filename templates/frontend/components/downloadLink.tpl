@@ -19,8 +19,9 @@
 {*TODO FLIPBOOK*}
 
 {* Generate the download URL *}
-{url|assign:downloadUrl op="view" path=$monograph->getBestId()|to_array:$publicationFormatId:$downloadFile->getBestId()}
+{url|assign:downloadUrl op="view" path=$monograph->getBestId()|to_array:$publicationFormatId:$downloadFile->getBestId():$downloadFile->getFlipbookChecker()}
 {*Show icon*}
+
 {if $downloadFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF}
     {assign var=iconType value="icon-file-pdf-o"}
 {elseif $downloadFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_HTML}
@@ -33,18 +34,26 @@
 {* Display the download link *}
 <a href="{$downloadUrl}" class="cmp_download_link {$downloadFile->getDocumentType()} piwik_download" >
     {if $useFilename}
-        {if $downloadFile->getDirectSalesPrice()}
+        {if $downloadFile->getDirectSalesPrice() && $downloadFile->getSalesType() == "directSales"}
             <span class="icon {$iconType}"></span>{translate key="payment.directSales.purchase" format=$downloadFile->getLocalizedName() amount=$currency->format($downloadFile->getDirectSalesPrice()) currency=$currency->getCodeAlpha()}
+        {elseif $downloadFile->getDirectSalesPrice() && $downloadFile->getSalesType() == "forRegistered"}
+            <span class="icon {$iconType}"></span>{translate key="payment.directSales.forRegistered.view" format=$downloadFile->getLocalizedName()}
         {else}
             <span class="icon {$iconType}"></span>{$downloadFile->getLocalizedName()}
         {/if}
-        <span class="tag tag__format">{$downloadFile->getDocumentType()}, {$downloadFile->getNiceFileSize()}</span>
+        {if !($downloadFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_ZIP && $downloadFile->flipbookFileExists())}
+            <span class="tag tag__format">{$downloadFile->getDocumentType()}, {$downloadFile->getNiceFileSize()}</span>
+        {/if}
     {else}
-        {if $downloadFile->getDirectSalesPrice()}
+        {if $downloadFile->getDirectSalesPrice() && $downloadFile->getSalesType() == "directSales"}
             <span class="icon {$iconType}"></span>{translate key="payment.directSales.purchase" format=$publicationFormat->getLocalizedName() amount=$currency->format($downloadFile->getDirectSalesPrice()) currency=$currency->getCodeAlpha()}
+        {elseif $downloadFile->getDirectSalesPrice() && $downloadFile->getSalesType() == "forRegistered"}
+            <span class="icon {$iconType}"></span>{translate key="payment.directSales.forRegistered.view" format=$publicationFormat->getLocalizedName()}
         {else}
             <span class="icon {$iconType}"></span>{$publicationFormat->getLocalizedName()}
         {/if}
-        <span class="tag tag__format">{$downloadFile->getDocumentType()}, {$downloadFile->getNiceFileSize()}</span>
+        {if !($downloadFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_ZIP && $downloadFile->flipbookFileExists())}
+            <span class="tag tag__format">{$downloadFile->getDocumentType()}, {$downloadFile->getNiceFileSize()}</span>
+        {/if}
     {/if}
 </a>

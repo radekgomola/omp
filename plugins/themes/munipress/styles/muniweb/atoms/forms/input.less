@@ -1,32 +1,27 @@
-/*.inp{*/
 	.inp-text{
 		display: block;
-		border: 1px solid #99a9c8;
+		border: 1px solid @input;
 		padding: 10px 15px;
 		background: #fff;
 		color: @color;
 		font: normal 16px/22px @font;
-		/*height: 44px;*/
 		border-radius: 0px;
-		box-shadow: inset 0 1px 5px fade(#3f69a0, 30%);
 		.appearance(none);
 		.transition(e('color .2s, border-color .2s, background .2s'));
 		.placeholder {
-			color: fade(@color, 75%);
+			color: #595959;
 			opacity: 1;
 			.transition(color .2s);
 		}
 		&:focus{
-			background-color: #fafbfc;
 			border-color: @primary;
 			.placeholder {
-				color: fade(@color, 40%);
+				color: fade(@color, 30%);
 			}
 		}
 		&:disabled{
-			border-color: @border;
-			box-shadow: inset 0 1px 5px fade(#3f69a0, 15%);
-			color: fade(@color, 50%);
+			border-color: fade(@color, 20%);
+			color: fade(@color, 20%);
 		}
 		.error &{
 			border-color: @red;
@@ -34,6 +29,11 @@
 		&--big {
 			height: 60px;
 			padding: 19px 15px;
+		}
+                &--small {
+			padding-top: 4px;
+			padding-bottom: 4px;
+			font-size: 14px;
 		}
 	}
 .inp{
@@ -71,27 +71,31 @@
 
 	// item
 	&-item{
+		font-size: 16px;
 		display: inline-block;
 		vertical-align: top;
 		position: relative;
 		font-weight: normal;
-		padding-left: 30px;
+		padding-left: 29px;
 		cursor: pointer;
 		input{
 			position: absolute;
 			top: 0;
 			left: -5000%;
 			.no-touch &:focus + span:before{
-				border-color: @primary;
+				border-color: @muni;
+			}
+                        &:checked + span:before{
+				border-color: @muni;
 			}
 			&:checked + span:after{
 				opacity: 1;
 			}
 			&:disabled + span{
-				color: @light;
+				color: @input;
 				cursor: default;
 				&:before{
-					border-color: @border;
+					border-color: @input;
 					box-shadow: none;
 				}
 			}
@@ -106,8 +110,7 @@
 				top: 2px;
 			}
 			&:before{
-				border: 1px solid #99a9c8;
-                                box-shadow: inset 0 1px 5px fade(#3f69a0, 40%);
+				border: 1px solid #595959;
 				width: 20px;
 				height: 20px;
 				.transition(border-color .2s);
@@ -121,7 +124,7 @@
 			input{
 				&:disabled + span{
 					&:after{
-						color: @border;
+						color: @input;
 					}
 				}
 			}
@@ -131,12 +134,12 @@
 					position: absolute;
 					top: 3px;
 					left: 0;
-					width: 20px;
-					height: 20px;
+					width: 22px;
+					height: 22px;
 					line-height: 20px;
 					font-size: 11px;
 					text-align: center;
-					color: @primary;
+					color: @muni;
 					content: @fa-var-check;
 				}
 			}
@@ -145,27 +148,42 @@
 			input{
 				&:disabled + span{
 					&:after{
-						background: @border;
+						background: @input;
 					}
 				}
 			}
 			> span{
 				&:before,
 				&:after{
-					border-radius: 10px;
+					border-radius: 50%;
+					width: 22px;
+					height: 22px;
 				}
 				&:after{
-					width: 8px;
-					height: 8px;
+					width: 10px;
+					height: 10px;
 					top: 8px;
 					left: 6px;
-					background: @primary;
+					background: @muni;
 				}
+			}
+		}
+                &--standalone {
+			padding-left: 0;
+			width: 24px;
+			height: 24px;
+			> span {
+				position: relative;
+				margin-left: 2px;
+				height: 100%;
 			}
 		}
 		.error &{
 			color: @red;
 			input{
+                                &:checked + span:before{
+					border-color: @red;
+				}
 				.no-touch &:focus + span:before{
 					border-color: @red;
 				}
@@ -207,6 +225,39 @@
 		&__item{
 			.reset-ul-li();
 			margin: 0 0 .5em;
+		}
+                &--dropdown {
+			padding: 11px 0;
+			margin-bottom: 0;
+			.inp-items {
+				&__item {
+					margin-bottom: 6px;
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+			.inp-item {
+				display: block;
+				font-size: 14px;
+				line-height: (22/14);
+				padding-left: 39px;
+				padding-right: 10px;
+				> span::before {
+					display: none;
+				}
+				&--radio > span::after {
+					top: 6px;
+    				left: 16px;
+				}
+				&--checkbox > span::after {
+					top: 1px;
+					left: 10px;
+				}
+				.no-touch &:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 		&--inline{
 			.inp-items{
@@ -255,6 +306,7 @@ textarea.inp-text{
 
 // label
 label{
+        font-size: 16px;
 	font-weight: bold;
 	.required{
 		font-weight: normal;

@@ -61,6 +61,9 @@ class ApprovedProofForm extends Form {
 			'openAccess' => 'payment.directSales.openAccess',
 			'directSales' => 'payment.directSales.directSales',
 			'notAvailable' => 'payment.directSales.notAvailable',
+                    /*MUNIPRESS*/
+                        'forRegistered' => 'payment.directSales.forRegistered',
+                    /***********/
 		);
 
 		$templateMgr->assign('salesTypes', $salesTypes);
@@ -97,7 +100,14 @@ class ApprovedProofForm extends Form {
 		} elseif ($salesType === 'openAccess') {
 			// Open access
 			$this->approvedProof->setDirectSalesPrice(0);
-		} else { /* $salesType === 'directSales' */
+		} 
+                /*MUNIPRESS*/
+                elseif ($salesType === 'forRegistered') {
+			// For registered only
+			$this->approvedProof->setDirectSalesPrice(-1);
+		} 
+                /********/
+                else { /* $salesType === 'directSales' */
 			// Direct sale
 			$this->approvedProof->setDirectSalesPrice($this->getData('price'));
 		}

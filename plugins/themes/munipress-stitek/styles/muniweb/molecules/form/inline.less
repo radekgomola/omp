@@ -1,0 +1,25 @@
+.form-inline {
+	@media (max-width: (@tablet - 1)) {
+		&__btn {
+			display: none;
+		}
+	}
+
+	@media(min-width: @tablet){
+		display: table;
+		width: 100%;
+		> * {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.btn-icon {
+			display: none;
+		}
+		&--spaced {
+			display: block;
+			> * {
+				display: inline-block;
+			}
+		}
+	}
+}

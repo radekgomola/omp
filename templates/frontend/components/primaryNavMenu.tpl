@@ -7,61 +7,6 @@
 *
 * Primary navigation menu list for OMP
 *}
-{*
-<ul id="navigationPrimary" class="pkp_navigation_primary pkp_nav_list">
-
-{if $enableAnnouncements}
-<li>
-<a href="{url router=$smarty.const.ROUTE_PAGE page="announcement"}">
-{translate key="announcement.announcements"}
-</a>
-</li>
-{/if}
-
-<li>
-<a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">
-{translate key="navigation.catalog"}
-</a>
-</li>
-
-{if $currentPress && ($currentPress->getLocalizedSetting('masthead') || $currentPress->getLocalizedSetting('submissions'))}
-{assign var="submenu_attr" value=" aria-haspopup='true' aria-expanded='false'"}
-{/if}
-<li{$submenu_attr}>
-<a href="{url router=$smarty.const.ROUTE_PAGE page="about"}">
-{translate key="navigation.about"}
-</a>
-{if $submenu_attr}
-<ul>
-<li>
-<a href="{url router=$smarty.const.ROUTE_PAGE page="about"}">
-{translate key="about.aboutContext"}
-</a>
-</li>
-{if $currentPress && $currentPress->getLocalizedSetting('masthead') != ''}
-<li>
-<a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="editorialTeam"}">
-{translate key="about.editorialTeam"}
-</a>
-</li>
-{/if}
-<li>
-<a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="submissions"}">
-{translate key="about.submissions"}
-</a>
-</li>
-{if $currentPress && ($currentPress->getSetting('mailingAddress') || $currentPress->getSetting('contactName'))}
-<li>
-<a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="contact"}">
-{translate key="about.contact"}
-</a>
-</li>
-{/if}
-</ul>
-{/if}
-</li>
-</ul>
-*}
 
 {**
 * templates/frontend/components/primaryNavMenu.tpl
@@ -152,9 +97,12 @@
             <ul class="header__menu__submenu__list">
                 {iterate from=kategorieFakulty item=browseCategory}
                     {if $browseCategory->getId() != 44}
+                        {assign var=kategorieId value=$browseCategory->getId()}
+                        {if $filtrFakultyPocetMenu[$kategorieId] > 0}
                         <li class="header__menu__submenu__item">
                             <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$browseCategory->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
                         </li>
+                        {/if}
                     {/if}
                 {/iterate}
                     <li class="header__menu__submenu__item">
@@ -167,6 +115,29 @@
         <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="newReleases"}" class="header__menu__primary__link">
             {translate key="navigation.newReleases"}
         </a>
+    </li>
+    <li class="header__menu__primary__item with-submenu header__menu__primary__item--dark">
+        <span class="header__menu__primary__links">
+            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="zlaty-fond"}" class="header__menu__primary__link">
+                {translate key="navigation.zlatyFond"}
+                <span class="icon icon-angle-down"></span>
+            </a>
+            <a href="#" class="header__menu__primary__toggle icon icon-plus" aria-hidden="true"></a>
+        </span>
+        <div class="header__menu__submenu">
+            <ul class="header__menu__submenu__list zlaty-fond_prim-nav">
+                {iterate from=kategorieFakultyZlatyFond item=browseCategory}
+                    {if $browseCategory->getId() != 44}
+                        {assign var=kategorieIdZlatyFond value=$browseCategory->getId()}
+                        {if $filtrFakultyPocetMenuZlatyFond[$kategorieIdZlatyFond] > 0}
+                        <li class="header__menu__submenu__item">
+                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="zlaty-fond" fakulta=$browseCategory->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
+                        </li>
+                        {/if}
+                    {/if}
+                {/iterate}
+            </ul>
+        </div>
     </li>
     <li class="header__menu__primary__item">
         <a href="{url router=$smarty.const.ROUTE_PAGE page="vyhledavaniAutori"}" class="header__menu__primary__link">
@@ -188,6 +159,4 @@
             {translate key="about.contact"}
         </a>
     </li>
-
-
 </ul>

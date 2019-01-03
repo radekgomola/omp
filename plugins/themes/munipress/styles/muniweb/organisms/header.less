@@ -6,6 +6,8 @@
     border-bottom: 1px solid @border;
     position: relative;
     z-index: 10;
+    background-color: #fff;
+    border-top: 6px solid #0000dc;
     .pkp_navigation_user {
         .task_count {
             display: inline-block;
@@ -201,7 +203,7 @@
             right: 15px;
             left: 15px;
             top: 52px;
-            font-weight: bold;
+            //font-weight: bold;
             margin-left: 160px;
             .has-toggle &{
                 padding-right: 100px;
@@ -209,7 +211,7 @@
             & @{hmn}{
                 &__primary{
                     font-family: @fontSecondary;
-                    text-transform: uppercase;
+                    //text-transform: uppercase;
                     float: left;
                     font-size: 18px;
                     &__item{
@@ -314,8 +316,9 @@
                                     color: #fff;
                                     .no-touch &:hover,
                                         &.is-active{
-                                        color: #fff;
-                                        background: darken(@muni, 5%);
+                                        color: @muni;
+                                        //background: darken(@muni, 5%);
+                                        background: #fff;
                                     }
                                 }
                             }
@@ -467,9 +470,12 @@
                         padding: 8px 20px;
                         text-decoration: none;
                         font-weight: bold;
+                        
                         .no-touch &:hover,
                             &.is-active{
-                            background: darken(@muni, 5%);
+                            color: @muni !important;
+                            //background: darken(@muni, 5%);
+                            background: #fff;
                         }
                     }
                 }
@@ -1082,7 +1088,7 @@
                 left: 0;
                 right: 0;
                 height: 1px;
-                background: @border;
+                //background: @border;
             }
             & @{hs} {
                 top: 74px;

@@ -32,9 +32,9 @@ class SubmissionFilesUploadBaseForm extends PKPSubmissionFilesUploadBaseForm {
 	 * @param $assocId int optional
 	 */
 	function __construct($request, $template, $submissionId, $stageId, $fileStage,
-			$revisionOnly = false, $reviewRound = null, $revisedFileId = null, $assocType = null, $assocId = null/*, $flipbookChecker=null*/) {
+			$revisionOnly = false, $reviewRound = null, $revisedFileId = null, $assocType = null, $assocId = null, $flipbookChecker=null) {
 		parent::__construct($request, $template, $submissionId, $stageId, $fileStage,
-				$revisionOnly, $reviewRound, $revisedFileId, $assocType, $assocId/*, $flipbookChecker*/);
+				$revisionOnly, $reviewRound, $revisedFileId, $assocType, $assocId, $flipbookChecker);
 	}
 
 	/**

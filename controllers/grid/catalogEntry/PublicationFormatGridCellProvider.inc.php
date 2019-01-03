@@ -178,7 +178,12 @@ class PublicationFormatGridCellProvider extends DataObjectGridCellProvider {
 						$salesTypeString = 'payment.directSales.directSales';
 					} elseif ($salesType == 'notAvailable') {
 						$salesTypeString = 'payment.directSales.notAvailable';
+					} 
+                                        /*MUNIPRESS*/
+                                        elseif ($salesType == 'forRegistered') {
+						$salesTypeString = 'payment.directSales.forRegistered';
 					}
+                                        /*************/
 					return array(new LinkAction(
 						'editApprovedProof',
 						new AjaxModal(

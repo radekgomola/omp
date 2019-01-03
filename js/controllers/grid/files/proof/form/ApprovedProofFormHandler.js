@@ -1,4 +1,4 @@
-/**
+/** 
  * @defgroup js_controllers_grid_files_proof_form
  */
 /**
@@ -38,7 +38,9 @@
 		this.salesType_ = options.salesType;
 
 		// Disable/enable the price field based on sales mode
-		$formElement.find('#notAvailable, #openAccess, #directSales')
+                /*MUNIPRESS*/
+                //$formElement.find('#notAvailable, #openAccess, #directSales')
+                $formElement.find('#notAvailable, #openAccess, #directSales, #forRegistered')
 				.click(this.callbackWrapper(this.checkHandler_));
 
 		var $priceElement = $('input[id^="price"]');
@@ -55,7 +57,14 @@
 			} else if ($priceElement.attr('value') === '0') {
 				$('#openAccess').attr('checked', 'true');
 				$priceElement.attr('disabled', 'true').attr('value', '');
-			} else {
+			} 
+                        /*MUNIPRESS*/
+                        else if ($priceElement.attr('value') === '-1') {
+				$('#forRegistered').attr('checked', 'true');
+				$priceElement.attr('disabled', 'true').attr('value', '');
+			}
+                        /**********/
+                        else {
 				$('#directSales').attr('checked', 'true');
 			}
 		}

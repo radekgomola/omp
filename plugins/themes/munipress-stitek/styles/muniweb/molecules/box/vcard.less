@@ -1,0 +1,210 @@
+@bxvc: ~'.box-vcard';
+
+.box-vcard {
+	margin: 0 0 @mMargin;
+	.table-vcard {
+		clear: none;
+	}
+	&__inner {
+		display: block;
+		text-decoration: none;
+		padding: 15px;
+		border: 1px solid @borderPrimary;
+		color: @color;
+		.clearfix();
+		.transition(box-shadow .2s);
+		.no-touch &[href]:hover {
+			color: @color;
+			box-shadow: 3px 5px 20px fade(#000, 10), 4px 7px 17px fade(#000, 15);
+		}
+	}
+	&__img{
+		text-align: center;
+		margin: 0 0 10px;
+	}
+	&__name {
+		font-size: 21px;
+		margin-bottom: 0;
+		text-align: center;
+	}
+	&__position {
+		margin-bottom: 0;
+		text-align: center;
+	}
+	&__content {
+		display: table-cell;
+		&:after{
+			clear: both;
+			display: block;
+			visibility: hidden;
+			overflow: hidden;
+			height: 0px;
+			line-height: 0px;
+			font-size: xx-large;
+			/*content: " x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x ";*/
+		}
+		hr {
+			margin: 25px 0;
+			border-top-color: @borderPrimaryLight;
+		}
+		strong {
+			color: @dark;
+		}
+		ul {
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			margin: 0;
+
+			&:before {
+				top: .7em;
+			}
+		}
+	}
+	&__foot {
+		background: @elementsHover;
+		margin: 0 -15px -15px;
+		padding: 15px;
+		> *:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&--simple,
+	&--compact {
+		& @{bxvc}__name {
+			color: @muni;
+			font-size: 18px;
+			text-align: left;
+			margin-bottom: 5px;
+		}
+		& @{bxvc}__position {
+			text-align: left;
+		}
+		& @{bxvc}__inner {
+			display: table;
+			width: 100%;
+			padding: 0;
+			> * {
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+		& @{bxvc}__img {
+			width: 105px;
+			float: none;
+			margin: 0;
+			padding: 0;
+			vertical-align: top;
+			img{
+				max-width: none;
+			}
+		}
+		& @{bxvc}__content {
+			padding: 15px;
+			> *:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	&--compact {
+		.table-vcard {
+			font-size: 14px;
+		}
+		& @{bxvc}__position {
+			margin-bottom: 10px;
+		}
+	}
+
+	&--noimg {
+		& @{bxvc}__position {
+			text-align: left;
+		}
+	}
+
+	@media(min-width: @tablet){
+		&__inner{
+			padding: 30px 30px 30px 200px;
+		}
+		&__img{
+			float: left;
+			margin: 0 0 0 -170px;
+			width: 140px;
+			padding-right: 20px;
+		}
+		&__name{
+			font-size: 24px;
+			text-align: left;
+		}
+		&__position{
+			font-size: 16px;
+			text-align: left;
+		}
+		&__foot{
+			margin: 0 -30px -30px -200px;
+			padding: 20px 30px;
+		}
+
+		&--noimg {
+			& @{bxvc}__inner {
+				padding-left: 30px;
+			}
+			& @{bxvc}__foot {
+				margin-left: -30px;
+			}
+		}
+	}
+
+	@media(min-width: @desktop){
+		&--big {
+			& @{bxvc}__inner {
+				padding-left: 300px;
+			}
+			& @{bxvc}__img {
+				margin: 0 0 0 -270px;
+				width: 210px;
+			}
+			& @{bxvc}__foot {
+				padding-left: 300px;
+				margin-left: -300px;
+			}
+		}
+
+		&--simple,
+		&--compact {
+			& @{bxvc}__name {
+				font-size: 24px;
+			}
+			& @{bxvc}__content {
+				padding: 30px;
+			}
+		}
+
+		&--compact {
+			.table-vcard {
+				font-size: 14px;
+			}
+			& @{bxvc}__name {
+				font-size: 18px;
+			}
+			& @{bxvc}__position {
+				font-size: 14px;
+			}
+			& @{bxvc}__content {
+				padding: 15px 30px;
+			}
+		}
+
+		&--noimg {
+			& @{bxvc}__inner {
+				padding-left: 30px;
+			}
+			& @{bxvc}__foot {
+				padding-left: 30px;
+				margin-left: -30px;
+			}
+		}
+	}
+}
