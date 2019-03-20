@@ -317,7 +317,7 @@
     <message key="catalog.sortBy.datePublishedDesc">Dle data (od nejnovější)</message>
     <message key="catalog.sortBy.seriesPositionAsc">Pozice v edici (od nejnižší)</message>
     <message key="catalog.sortBy.seriesPositionDesc">Pozice v edici (od nejvyšší)</message>
-    <message key="catalog.viewableFile.title">{$type} view of the file {$title}</message>
+    <message key="catalog.viewableFile.title">{$title}: Prohlížení formátu {$type}</message>
     <message key="catalog.viewableFile.return">Zpět na detail publikace {$monographTitle}</message>    
     
     
