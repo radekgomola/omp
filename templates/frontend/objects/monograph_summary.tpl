@@ -20,7 +20,7 @@
     </a>
     {if $monograph->getSeriesPosition()}
         <div class="seriesPosition">
-            {$monograph->getSeriesPosition()|escape}
+            sv. {$monograph->getSeriesPosition()|escape}
         </div>
     {/if}
     <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="book" path=$monograph->getBestId()}" class="title">

@@ -92,7 +92,7 @@
                 <div class="box-accordion">
                     {* Series *}
                     {if $series}
-                        <div class="box-accordion__item">
+                        <div class="box-accordion__item is-open"">
                             <h3 class="box-accordion__title">
                                 <a href="#" class="box-accordion__title__link">
                                     <span class="box-accordion__title__name">{translate key="series.series"}</span>
@@ -102,9 +102,9 @@
                             <div class="box-accordion__box">
                                 <div class="box-accordion__inner">
                                     <div class="value">
-                                        <a href="{url page="catalog" op="series" path=$series->getPath()}">
+{*                                        <a href="{url page="catalog" op="series" path=$series->getPath()}">*}
                                             {$series->getLocalizedFullTitle()|escape}
-                                        </a>
+{*                                        </a>*}
                                     </div>
                                     {if $series->getOnlineISSN()}
                                         <div class="sub_item">
@@ -188,9 +188,19 @@
             <div class="grid__cell size--l--9-12">
                 <div class="box-tabs">
                     <ul class="box-tabs__menu">
-                        <li class="box-tabs__menu__item">
-                            <a href="#tab-1" class="box-tabs__menu__link js-tab-links is-active">{translate key="submission.synopsis"}</a>
-                        </li>
+                        {assign var="synopsis" value=$monograph->getLocalizedAbstract()}
+                        {assign var="authors" value=$monograph->getAuthors()}
+                        {assign var="helpCounter" value=0}
+                        {foreach from=$publishedMonograph->getAuthors() item=author}
+                            {if $author->getIncludeInBrowse() && $author->getZobrazAutori() == 1}
+                                {assign var="helpCounter" value=$helpCounter+1}
+                             {/if}
+                        {/foreach}
+                        {if $synopsis != "-" && $helpCounter>0}
+                            <li class="box-tabs__menu__item">
+                                <a href="#tab-1" class="box-tabs__menu__link js-tab-links is-active">{translate key="submission.synopsis"}</a>
+                            </li>
+                        {/if}
                         {if $chapters|@count}
                             <li class="box-tabs__menu__item">
                                 <a href="#tab-2" class="box-tabs__menu__link js-tab-links">{translate key="submission.chapters"}</a>
@@ -395,7 +405,7 @@
                                         {/if}
 
                                         {* Skip if we don't have any information to print about this pub format *}
-                                        {if !$identificationCodes && !$publicationDates && !$hasPubId && !$publicationFormat->getPhysicalFormat() && !$publicationFormat->getFileSize()}
+                                        {if !$identificationCodes && !$publicationDates && !$hasPubId && !$publicationFormat->getPhysicalFormat() && !$publicationFormat->getFileSize() && !$publicationFormat->getPocetStran()}
                                             {php}continue;{/php}
                                         {/if}
 

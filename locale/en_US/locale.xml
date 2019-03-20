@@ -50,7 +50,7 @@
 	<message key="monograph.publicationFormat.returnInformation">Returnable Indicator</message>
 	<!-- Dimension keys -->
 	<message key="monograph.publicationFormat.digitalInformation">Digital Information</message>
-	<message key="monograph.publicationFormat.productDimensions">Physical Dimensions</message>
+	<message key="monograph.publicationFormat.productDimensions">Format</message>
 	<message key="monograph.publicationFormat.productDimensionsSeparator"> x </message>
 	<message key="monograph.publicationFormat.productFileSize">File Size in Mbytes</message>
 	<message key="monograph.publicationFormat.productFileSize.override">Enter your own file size value?</message>
@@ -726,7 +726,7 @@ Masaryk University</message>
     <message key="submission.rights.typ">Rights: type</message>
     <message key="submission.rights.drzitel">Rights: holder</message>
     <message key="submission.rights.trvani">Rights: expiration</message>
-    <message key="submission.viceInformaci">More information</message>
+    <message key="submission.viceInformaci">Description</message>
     <!--Metadata munipress-->
         
     <message key="submission.licence">Rights</message>
@@ -757,7 +757,7 @@ Masaryk University</message>
     <message key="submission.informace.verejne">Public information</message>
     <message key="submission.a_kolektiv"><![CDATA[et&nbsp;al.]]></message>
     <message key="submission.ostatni">Others</message>
-    <message key="submission.poradiVydani">Issue number</message>
+    <message key="submission.poradiVydani">Edition</message>
     <message key="submission.typ_02_58">Type 02/58</message>
     <message key="submission.url.web">Web page</message>
     <message key="submission.souvisejiciPublikace">Similarly publications</message>
@@ -787,8 +787,8 @@ Masaryk University</message>
     
     <message key="informace.url.web">Go to www</message>
     <message key="informace.url.oc">Go to on-line bookstore</message>
-    <message key="informace.doplnkove.zakladni">More information</message>
-    <message key="informace.doplnkove.dalsi">More information - extended</message>
+    <message key="informace.doplnkove.zakladni">Description</message>
+    <message key="informace.doplnkove.dalsi">Description - extended</message>
     
     <message key="plugins.block.category">Editorial lines</message>
     <message key="plugins.block.edice">Series</message>
@@ -809,7 +809,7 @@ Masaryk University</message>
     <message key="browse.byAuthors">Browse by Authors</message>
     <message key="search.authorIndex">Browse by Authors</message>
     <message key="browse.obory">Subjects</message>
-    <message key="browse.fakulty">Faculties</message>
+    <message key="browse.fakulty">MU Faculties</message>
     <message key="browse.authors">Authors</message>
     <message key="browse.zobrazit">Show</message>
     <message key="browse.skryt">Hide</message>
@@ -904,7 +904,7 @@ Masaryk University</message>
     
     <message key="monograph.publicationFormat.calameoHash">Calameo hash code</message>
     
-    <message key="submission.datumVydani">Publication year</message>
+    <message key="submission.datumVydani">Published</message>
     <message key="submission.manazer.datumVydani">Publication date</message>
     <message key="submission.manazer.datumPosledniZmeny">Last modification date</message>
     
@@ -948,4 +948,7 @@ Masaryk University</message>
     <message key="payment.directSales.forRegistered">For Registered Only</message>
     <message key="navigation.zlatyFond">Gold Fund</message>
     <message key="payment.directSales.forRegistered.view">{$format}: (For registered only)</message>
+    <message key="common.vyberte">Choose your country</message>
+    
+    <message key="registration.gdpr"><![CDATA[<em>Osobní údaje budou zpracovávány v souladu s požadavky nařízení Evropského parlamentu a Rady (EU) 2016/679 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES (obecné nařízení o ochraně osobních údajů nebo také GDPR). Zpracovávané údaje jsou neveřejné údaje sloužící výhradně k interním účelům provozovatele Munispace (Masarykova univerzita). Pokud registrace čtenáře bude neaktivní po dobu 1 roku, má se členství v čítárně Munispace za ukončené a provozovatel provede likvidaci osobních údajů (vymazání z počítačové databáze). Pro další přístup do čítárny Munispace a k obsahu vyžadujícímu registraci je nutné registraci obnovit.</em>]]></message>
 </locale>

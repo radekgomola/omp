@@ -168,9 +168,9 @@ class MunipressThemePlugin extends ThemePlugin {
   _paq.push([\'trackPageView\']);
   _paq.push([\'enableLinkTracking\']);
   (function() {
-    var u="//localhost/piwik-pracovni/matomo/";
+    var u="//journals.muni.cz/analytics/";
     _paq.push([\'setTrackerUrl\', u+\'piwik.php\']);
-    _paq.push([\'setSiteId\', \'1\']);
+    _paq.push([\'setSiteId\', \'12\']);
     var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0];
     g.type=\'text/javascript\'; g.async=true; g.defer=true; g.src=u+\'piwik.js\'; s.parentNode.insertBefore(g,s);
   })();

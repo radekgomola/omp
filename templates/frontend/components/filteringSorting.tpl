@@ -12,7 +12,7 @@
         {if !$category || ($category->getId() != 32 && $category->getParentId() !=32)}
             <div class="grid__cell size--l--3-12">
                 <span class="inp-fix inp-fix--select">
-                    <select class="inp-select" id="type-1" size="1" name="fakulty" onchange="location.href = ('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op=$cath path=$cesta sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta="FAKULTA_CESTA"}'.replace('FAKULTA_CESTA', this.options[this.selectedIndex].value))">
+                    <select class="inp-select inp-select--short" id="type-1" size="1" name="fakulty" onchange="location.href = ('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op=$cath path=$cesta sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta="FAKULTA_CESTA"}'.replace('FAKULTA_CESTA', this.options[this.selectedIndex].value))">
                         <option {if !$filtrovaniFakulta} selected="selected"{/if} value="">{translate key="filtr.fakulty"}</option>
                         {foreach from=$fakulty item=fakulta}
                             {assign var=fakultaId value=$fakulta->getId()}
@@ -26,7 +26,7 @@
         {if !$category || ($category->getId() != 1 && $category->getParentId() !=1)}
             <div class="grid__cell size--l--3-12">			
                 <span class="inp-fix inp-fix--select">
-                    <select class="inp-select" size="1" name="obory" onchange="location.href = ('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op=$cath path=$cesta sort=$trideni obor="OBOR_CESTA" rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta}'.replace('OBOR_CESTA', this.options[this.selectedIndex].value))">
+                    <select class="inp-select inp-select--short" size="1" name="obory" onchange="location.href = ('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op=$cath path=$cesta sort=$trideni obor="OBOR_CESTA" rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta}'.replace('OBOR_CESTA', this.options[this.selectedIndex].value))">
                         <option {if !$filtrovaniObor} selected="selected"{/if} value="">{translate key="filtr.obory"}</option>
                         {foreach from=$obory item=obor}           
                             {assign var=oborId value=$obor->getId()}
@@ -39,7 +39,7 @@
         {/if}
         <div class="grid__cell size--l--3-12">
             <span class="inp-fix inp-fix--select">
-                <select class="inp-select" size="1" name="roky" onchange="location.href = ('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op=$cath path=$cesta sort=$trideni obor=$filtrovaniObor rok="FILTR_ROK" jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta }'.replace('FILTR_ROK', this.options[this.selectedIndex].value))">
+                <select class="inp-select inp-select--short" size="1" name="roky" onchange="location.href = ('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op=$cath path=$cesta sort=$trideni obor=$filtrovaniObor rok="FILTR_ROK" jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta }'.replace('FILTR_ROK', this.options[this.selectedIndex].value))">
                     <option {if !$filtrovaniRok} selected="selected"{/if} value="">{translate key="filtr.roky"}</option>
                     {foreach from=$filtrRoky item=jedenRok}
                         {if $filtrRokyPocet[$jedenRok] > 0}
@@ -51,7 +51,7 @@
         </div>
         <div class="grid__cell size--l--3-12">
             <span class="inp-fix inp-fix--select">
-                <select class="inp-select" size="1" name="jazyky" onchange="location.href = ('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op=$cath path=$cesta sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk="FILTR_JAZYK" fakulta=$filtrovaniFakulta }'.replace('FILTR_JAZYK', this.options[this.selectedIndex].value))">
+                <select class="inp-select inp-select--short" size="1" name="jazyky" onchange="location.href = ('{url|escape:"javascript" router=$smarty.const.ROUTE_PAGE page="catalog" op=$cath path=$cesta sort=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk="FILTR_JAZYK" fakulta=$filtrovaniFakulta }'.replace('FILTR_JAZYK', this.options[this.selectedIndex].value))">
                     <option {if !$filtrovaniJazyk} selected="selected"{/if} value="">{translate key="filtr.jazyky"}</option>
                     {foreach from=$filtrJazyky key=jedenJazykKlic item=jedenJazyk}
                         {if $jedenJazyk != "" && $filtrJazykyPocet[$jedenJazykKlic] > 0}

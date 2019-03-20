@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
-  <!-- 
-    * locale/cs_CZ/locale.xml
-    * Copyright (c) 2014 Masaryk university
-    * Localization strings. 
-    -->
-  <locale name="cs_CZ" full_name="Čeština">
+<!-- 
+* locale/cs_CZ/locale.xml
+* Copyright (c) 2014 Masaryk university
+* Localization strings. 
+-->
+<locale name="cs_CZ" full_name="Čeština">
     <message key="monograph.audience">Audience</message>
     <message key="monograph.coverImage">Obálka</message>
     <message key="monograph.currentCoverImageReload">Save your changes to view the new cover image.</message>
@@ -43,7 +43,7 @@
     <message key="monograph.publicationFormat.productAvailability">Dostupnost produktu</message>
     <message key="monograph.publicationFormat.returnInformation">Návratnost</message>
     <message key="monograph.publicationFormat.digitalInformation">Digitální informace</message>
-    <message key="monograph.publicationFormat.productDimensions">Fyzické rozměry</message>
+    <message key="monograph.publicationFormat.productDimensions">Formát</message>
     <message key="monograph.publicationFormat.productFileSize">Velikost souboru v MB</message>
     <message key="monograph.publicationFormat.productFileSize.override">Zadat vlastní velikost?</message>
     <message key="monograph.publicationFormat.productHeight">Výška</message>
@@ -156,12 +156,12 @@
 
     <!-- Spotlight grid keys -->
     <!-- Spotlights management -->
-<!--<message key="spotlight">Doporučení</message>-->
-<!--<message key="spotlight.spotlights">Doporučujeme</message>-->
+    <!--<message key="spotlight">Doporučení</message>-->
+    <!--<message key="spotlight.spotlights">Doporučujeme</message>-->
     <message key="spotlight">Aktualita</message>
     <message key="spotlight.spotlights">Mohlo by Vás zajímat</message>
     <message key="spotlight.noneExist">Aktuálně nemáte zvoleny žádné doporučené publikace.</message>
-<!--    <message key="spotlight.title.homePage">Doporučujeme</message>-->
+    <!--    <message key="spotlight.title.homePage">Doporučujeme</message>-->
     <message key="spotlight.title.homePage">Mohlo by Vás zajímat</message>
     <message key="spotlight.author">Autor, </message>
     <message key="grid.content.spotlights.spotlightItemTitle">Doporučená položka</message>
@@ -354,7 +354,7 @@
     <message key="navigation.infoForLibrarians">Pro knihovníky</message>
     <message key="navigation.infoForAuthors.long">Publikujte s Nakladatelstvím MU Munipress</message>
     <message key="navigation.infoForLibrarians.long">Informace pro knihovníky</message>
-<!--    <message key="navigation.newReleases">Nové publikace</message>-->
+    <!--    <message key="navigation.newReleases">Nové publikace</message>-->
     <message key="navigation.newReleases">Novinky</message>
     <message key="navigation.published">Zveřejněno</message>
     <message key="navigation.wizard">Průvodce</message>
@@ -374,6 +374,11 @@
     <message key="user.noRoles.submitMonographRegClosed">Předložit rukopis: Registrace autorů v tuto chvíli není povolena.</message>
     <message key="user.noRoles.regReviewer">Registrace recenzenta</message>
     <message key="user.noRoles.regReviewerClosed">Registrace recenzenta: Registrace recenzentů v tuto chvíli není povolena.</message>
+    <message key="user.reviewerPrompt">Budete chtít recenzovat pro toto nakladatelství?</message>
+    <message key="user.reviewerPrompt.userGroup">Ano, požádat o roli {$userGroup}.</message>
+    <message key="user.register.contextsPrompt">Do kterého nakladatelství na této stránce se budete chtít registrovat?</message>
+    <message key="user.register.otherContextRoles">Požádat o následující role.</message>
+    <message key="user.register.noContextReviewerInterests">Pokud chcete v nakladatelství rezenzovat publikace, napište prosím níže své oblasti zájmu.</message>
     
     <!-- OMP-specific Roles --> 
     <message key="user.role.manager">Vedoucí nakladatelství</message>
@@ -550,7 +555,7 @@
     <message key="notification.type.roundStatusTitle">Stav kola č. {$round}</message>
     <message key="notification.type.approveSubmission">Tento návrh aktuálně čeká na odsouhlasení katalogové položky. Poté se objeví ve veřejném katalogu.</message>
     <message key="notification.type.approveSubmissionTitle">Čeká na schválení.</message>
-<!--    <message key="notification.type.formatNeedsApprovedSubmission">Před zahrnutím publikačního formátu do katalogu musí být schválena metadata katalogové položky. Schválení metadat katalogové položky provedete na kartě Monografie výše.</message>-->
+    <!--    <message key="notification.type.formatNeedsApprovedSubmission">Před zahrnutím publikačního formátu do katalogu musí být schválena metadata katalogové položky. Schválení metadat katalogové položky provedete na kartě Monografie výše.</message>-->
     <message key="notification.type.formatNeedsApprovedSubmission">The monograph will not be listed in the catalog until a catalog entry has been created. To add this book to the catalog, click on the Catalog Entry above and find the Catalog tab.</message>    
     <message key="notification.type.configurePaymentMethod.title">Nebyla nastavena žádná platební metoda.</message>
     <message key="notification.type.configurePaymentMethod">Nastavení platební metody je nutné provést ještě před nastavením internetového prodeje.</message>
@@ -601,10 +606,10 @@
     <message key="user.profile.form.hideOtherContexts">Hide other presses</message>
     
     <!--
-    *
-    * MUNIPRESS
-    *
-     -->
+   *
+   * MUNIPRESS
+   *
+    -->
     <!--doplnkove lokalizace Munipress-->
     <!--default.xml -->
     <message key="default.pressSettings.proDistributory">
@@ -822,28 +827,28 @@
     
     <!--Pro autory-->
     <message key="proAurory.edicniOddeleni.zobraz"><![CDATA[<h3 class="proAutory">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="proAurory.edicniOddeleni.skryj"><![CDATA[<h3 class="proAutory">Ediční oddělení nebo útvary zajišťující publikační činnost </h3>(skrýt)]]></message>
     <message key="proAurory.odbornaKniha.zobraz"><![CDATA[<h3 class="proAutory">Odborná kniha </h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="proAurory.odbornaKniha.skryj"><![CDATA[<h3 class="proAutory">Odborná kniha</h3>(skrýt)]]></message>
     <message key="proAurory.rukopis.zobraz"><![CDATA[<h3 class="proAutory">Rukopis</h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="proAurory.rukopis.skryj"><![CDATA[<h3 class="proAutory">Rukopis </h3>(skrýt)]]></message>
     <message key="proAurory.recenzniRizeni.zobraz"><![CDATA[<h3 class="proAutory">Recenzní řízení </h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="proAurory.recenzniRizeni.skryj"><![CDATA[<h3 class="proAutory">Recenzní řízení </h3>(skrýt)]]></message>
     <message key="proAurory.navrhovyList.zobraz"><![CDATA[<h3 class="proAutory">Návrhový list </h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="proAurory.navrhovyList.skryj"><![CDATA[<h3 class="proAutory">Návrhový list </h3>(skrýt)]]></message>
     <message key="proAurory.medotikaHodnoceni.zobraz"><![CDATA[<h3 class="proAutory">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="proAurory.medotikaHodnoceni.skryj"><![CDATA[<h3 class="proAutory">Metodika hodnocení výsledků výzkumných organizací a hodnocení výsledků ukončených programů </h3>(skrýt)]]></message>
     <message key="proAurory.licenceCC.zobraz"><![CDATA[<h3 class="proAutory">Licence Creative Commons </h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="proAurory.licenceCC.skryj"><![CDATA[<h3 class="proAutory">Licence Creative Commons </h3>(skrýt)]]></message>
     <message key="proAurory.autorskyZakon.zobraz"><![CDATA[<h3 class="proAutory">Autorský zákon – použití děl jiných autorů ve výuce </h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="proAurory.autorskyZakon.skryj"><![CDATA[<h3 class="proAutory">Autorský zákon – použití děl jiných autorů ve výuce </h3>(skrýt)]]></message>
     
     <message key="plugins.block.category">Ediční řady</message>
@@ -866,7 +871,7 @@
     <message key="search.authorIndex">Procházet podle autorů</message>
     
     <message key="browse.obory">Obory</message>
-    <message key="browse.fakulty">Fakulty</message>
+    <message key="browse.fakulty">Fakulty MU</message>
     <message key="browse.authors">Autoři</message>
     <message key="browse.zobrazit">Zobrazit</message>
     <message key="browse.skryt">Skrýt</message>
@@ -894,22 +899,22 @@
     
 
     <message key="doiCrossref.aktualni.zobraz"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="doiCrossref.aktualni.skryj"><![CDATA[<h3  class="proAutory"><a name="aktualni"></a>Aktuální informace</h3>(skrýt)]]></message>
     <message key="doiCrossref.zakladni.zobraz"><![CDATA[<h3  class="proAutory"><a name="zakladni"></a>Základní informace o&nbsp;DOI a&nbsp;CrossRef</h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="doiCrossref.zakladni.skryj"><![CDATA[<h3  class="proAutory"><a name="zakladni"></a>Základní informace o&nbsp;DOI a&nbsp;CrossRef</h3>(skrýt)]]></message>
     <message key="doiCrossref.povinnosti.zobraz"><![CDATA[<h3  class="proAutory"><a name="povinnosti"></a>Jaké jsou povinnosti členů CrossRef při přidělování DOI?</h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="doiCrossref.povinnosti.skryj"><![CDATA[<h3  class="proAutory"><a name="povinnosti"></a>Jaké jsou povinnosti členů CrossRef při přidělování DOI?</h3>(skrýt)]]></message>
     <message key="doiCrossref.zapojeni.zobraz"><![CDATA[<h3  class="proAutory"><a name="zapojeni"></a>Zapojení MU do DOI/CrossRef</h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="doiCrossref.zapojeni.skryj"><![CDATA[<h3  class="proAutory"><a name="zapojeni"></a>Zapojení MU do DOI/CrossRef</h3>(skrýt)]]></message>
     <message key="doiCrossref.doplnujici.zobraz"><![CDATA[<h3  class="proAutory"><a name="doplnujici"></a>Doplňující informace o&nbsp;DOI/CrossRef</h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="doiCrossref.doplnujici.skryj"><![CDATA[<h3  class="proAutory"><a name="doplnujici"></a>Doplňující informace o&nbsp;DOI/CrossRef</h3>(skrýt)]]></message>
     <message key="doiCrossref.zdroje.zobraz"><![CDATA[<h3  class="proAutory">Hlavní použité zdroje:</h3>(zobrazit)]]>
-</message>
+    </message>
     <message key="doiCrossref.zdroje.skryj"><![CDATA[<h3  class="proAutory">Hlavní použité zdroje:</h3>(skrýt)]]></message>
     
     <message key="informace.publikujteSnami">Publikujte s námi</message>
@@ -987,4 +992,17 @@
     <message key="payment.directSales.forRegistered">Pro registrované</message>
     <message key="navigation.zlatyFond">Zlatý Fond</message>
     <message key="payment.directSales.forRegistered.view">{$format}: (Přístup vyžaduje registraci)</message>
+    <message key="common.vyberte">Vyberte zemi</message>
+    <message key="registration.gdpr"><![CDATA[<em>Osobní údaje budou zpracovávány v souladu s požadavky nařízení Evropského parlamentu a Rady (EU) 2016/679 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES (obecné nařízení o ochraně osobních údajů nebo také GDPR). Zpracovávané údaje jsou neveřejné údaje sloužící výhradně k interním účelům provozovatele Munispace (Masarykova univerzita). Pokud registrace čtenáře bude neaktivní po dobu 1 roku, má se členství v čítárně Munispace za ukončené a provozovatel provede likvidaci osobních údajů (vymazání z počítačové databáze). Pro další přístup do čítárny Munispace a k obsahu vyžadujícímu registraci je nutné registraci obnovit.</em>]]></message>
+    <message key="registration.zlatyFond">Zlatý fond Masarykovy univerzity</message>
+    <message key="registration.zlatyFond.description">Žádost o badatelský přístup do Zlatého fondu Masarykovy univerzity.</message>
+    <message key="registration.zlatyFond.prohlaseni"><![CDATA[<em>Potvrzuji, že jsem v registračním formuláři uvedl přesné, pravdivé a úplné údaje, a že svoji registraci k přístupu do Zlatého fondu MU hodlám využít pouze a jenom pro účely vlastního vědeckého výzkumu, jehož cílem není dosažení přímého nebo nepřímého hospodářského nebo obchodního prospěchu v souladu s § 31 autorského zákona (zák. č. 121/2000 Sb). Jsem si vědom/a toho, že u děl, která nejsou v ZF označena jako „volná“ trvají majetková autorská práva a dílo proto nemohu kopírovat, stahovat, úplatně ani bezúplatně šířit ve fyzické ani elektronické podobě, zpracovávat ani jakkoliv jinak užívat v rozporu s chráněnými právy autora. Jsem si vědom/a možných trestněprávních důsledků plynoucích z porušení zmíněných zákonných ustanovení.</em>]]></message>    
+    <message key="registration.zlatyFond.checkbox">Potvrzuji a žádám o přístup do Zlatého fondu Masarykovy univerzity.</message>
+    <message key="user.profile.form.privacyConsentRequired">Musíte souhlasit s prohlášením o zpracování osobních údajů.</message>
+        <message key="user.profile.form.ageLimitRequired">Pro registraci do čítárny Munispace musíte být starší 15 let. V opačném případě je vyžadována registrace zákonným zástupcem.</message>
+        <message key="user.register.form.ageLimit">Prohlašuji, že jsem starší 15 let.
+        <message key="user.register.form.privacyConsent"><![CDATA[Ano, souhlasím se zpracováním mých osobních údajů.]]></message>
+
+        <message key="user.register.form.privacyConsent.title">Zpracování osobních údajů</message>
+            
 </locale>
