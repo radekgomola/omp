@@ -265,7 +265,7 @@ class CatalogBookHandler extends Handler {
 		}
 		$ompCompletedPaymentDao = DAORegistry::getDAO('OMPCompletedPaymentDAO');
 		$user = $request->getUser();
-		if ($submissionFile->getDirectSalesPrice() === '0' || ($user && $ompCompletedPaymentDao->hasPaidPurchaseFile($user->getId(), $fileIdAndRevision))) {
+		if ($submissionFile->getDirectSalesPrice() === '0' || ($user && $ompCompletedPaymentDao->hasPaidPurchaseFile($user->getId(), $fileIdAndRevision)) || ($user && $user->getZlatyFond())) {
 			// Paid purchase or open access.
 			if (!$user && $press->getSetting('restrictMonographAccess')) {
 				// User needs to register first.
@@ -291,6 +291,11 @@ class CatalogBookHandler extends Handler {
 			}
 			return $monographFileManager->downloadFile($fileId, $revision, $inline);
 		}
+                
+                if ($submissionFile->getDirectSalesPrice() === '-1'){
+                    if (!$user) return $request->redirect(null, 'login', null, null, array('source' => $request->url(null, null, null, array($monographId, $representationId, $bestFileId))));
+                    if ($user && $user->getZlatyFond()==='0') return $request->redirect(null, 'user', 'profile', null, array('source' => $request->url(null, null, null, array($monographId, $representationId, $bestFileId))));
+                }
 
 		// Fall-through: user needs to pay for purchase.
 

@@ -16,8 +16,6 @@
 
 {assign var=publicationFormatId value=$publicationFormat->getBestId()}
 
-{*TODO FLIPBOOK*}
-
 {* Generate the download URL *}
 {url|assign:downloadUrl op="view" path=$monograph->getBestId()|to_array:$publicationFormatId:$downloadFile->getBestId():$downloadFile->getFlipbookChecker()}
 {*Show icon*}
