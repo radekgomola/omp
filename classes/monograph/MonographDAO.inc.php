@@ -13,130 +13,126 @@
  *
  * @brief Operations for retrieving and modifying Monograph objects.
  */
-
 import('classes.monograph.Monograph');
 import('lib.pkp.classes.submission.SubmissionDAO');
 
 class MonographDAO extends SubmissionDAO {
-	/**
-	 * Constructor.
-	 */
-	function __construct() {
-		parent::__construct();
-	}
 
-	/**
-	 * Get a list of fields for which localized data is supported
-	 * @return array
-	 */
-	function getLocaleFieldNames() {
-		return array_merge(parent::getLocaleFieldNames(), array(
-			'copyrightNotice',
-		));
-	}
+    /**
+     * Constructor.
+     */
+    function __construct() {
+        parent::__construct();
+    }
 
-	/**
-	 * Get a list of additional fields that do not have
-	 * dedicated accessors.
-	 * @return array
-	 */
-	function getAdditionalFieldNames() {
-		return array_merge(
-			parent::getAdditionalFieldNames(), array(
-				'coverImage', 'coverImageAltText',
-		));
-	}
+    /**
+     * Get a list of fields for which localized data is supported
+     * @return array
+     */
+    function getLocaleFieldNames() {
+        return array_merge(parent::getLocaleFieldNames(), array(
+            'copyrightNotice',
+        ));
+    }
 
-	/**
-	 * Internal function to return an Monograph object from a row.
-	 * @param $row array
-	 * @return Monograph
-	 */
-	function _fromRow($row) {
-		$monograph = parent::_fromRow($row);
+    /**
+     * Get a list of additional fields that do not have
+     * dedicated accessors.
+     * @return array
+     */
+    function getAdditionalFieldNames() {
+        return array_merge(
+                parent::getAdditionalFieldNames(), array(
+            'coverImage', 'coverImageAltText',
+        ));
+    }
 
-		$monograph->setSeriesId($row['series_id']);
-		$monograph->setSeriesPosition($row['series_position']);
-		$monograph->setSeriesAbbrev(isset($row['series_abbrev'])?$row['series_abbrev']:null);
-		$monograph->setSeriesTitle($row['series_title']);
-		$monograph->setWorkType($row['edited_volume']);
+    /**
+     * Internal function to return an Monograph object from a row.
+     * @param $row array
+     * @return Monograph
+     */
+    function _fromRow($row) {
+        $monograph = parent::_fromRow($row);
 
-		HookRegistry::call('MonographDAO::_fromRow', array(&$monograph, &$row));
+        $monograph->setSeriesId($row['series_id']);
+        $monograph->setSeriesPosition($row['series_position']);
+        $monograph->setSeriesAbbrev(isset($row['series_abbrev']) ? $row['series_abbrev'] : null);
+        $monograph->setSeriesTitle($row['series_title']);
+        $monograph->setWorkType($row['edited_volume']);
 
-		return $monograph;
-	}
+        HookRegistry::call('MonographDAO::_fromRow', array(&$monograph, &$row));
 
-	/**
-	 * Get a new data object representing the monograph.
-	 * @return Monograph
-	 */
-	function newDataObject() {
-		return new Monograph();
-	}
+        return $monograph;
+    }
 
-	/**
-	 * inserts a new monograph into submissions table
-	 * @param Monograph object
-	 * @return Monograph Id int
-	 */
-	function insertObject($monograph) {
-		$monograph->stampModified();
-		$this->update(
-			sprintf('INSERT INTO submissions
+    /**
+     * Get a new data object representing the monograph.
+     * @return Monograph
+     */
+    function newDataObject() {
+        return new Monograph();
+    }
+
+    /**
+     * inserts a new monograph into submissions table
+     * @param Monograph object
+     * @return Monograph Id int
+     */
+    function insertObject($monograph) {
+        $monograph->stampModified();
+        $this->update(
+                sprintf('INSERT INTO submissions
 				(locale, context_id, series_id, series_position, language, date_submitted, date_status_modified, last_modified, status, submission_progress, stage_id, pages, hide_author, edited_volume, citations)
 				VALUES
-				(?, ?, ?, ?, ?, %s, %s, %s, ?, ?, ?, ?, ?, ?, ?)',
-				$this->datetimeToDB($monograph->getDateSubmitted()), $this->datetimeToDB($monograph->getDateStatusModified()), $this->datetimeToDB($monograph->getLastModified())),
-			array(
-				$monograph->getLocale(),
-				(int) $monograph->getContextId(),
-				(int) $monograph->getSeriesId(),
-				$monograph->getSeriesPosition(),
-				$monograph->getLanguage(),
-				$monograph->getStatus() === null ? STATUS_QUEUED : (int) $monograph->getStatus(),
-				$monograph->getSubmissionProgress() === null ? 1 : (int) $monograph->getSubmissionProgress(),
-				$monograph->getStageId() === null ? 1 : (int) $monograph->getStageId(),
-				$monograph->getPages(),
-				(int) $monograph->getHideAuthor(),
-				(int) $monograph->getWorkType(),
-				$monograph->getCitations(),
-			)
-		);
+				(?, ?, ?, ?, ?, %s, %s, %s, ?, ?, ?, ?, ?, ?, ?)', $this->datetimeToDB($monograph->getDateSubmitted()), $this->datetimeToDB($monograph->getDateStatusModified()), $this->datetimeToDB($monograph->getLastModified())), array(
+            $monograph->getLocale(),
+            (int) $monograph->getContextId(),
+            (int) $monograph->getSeriesId(),
+            $monograph->getSeriesPosition(),
+            $monograph->getLanguage(),
+            $monograph->getStatus() === null ? STATUS_QUEUED : (int) $monograph->getStatus(),
+            $monograph->getSubmissionProgress() === null ? 1 : (int) $monograph->getSubmissionProgress(),
+            $monograph->getStageId() === null ? 1 : (int) $monograph->getStageId(),
+            $monograph->getPages(),
+            (int) $monograph->getHideAuthor(),
+            (int) $monograph->getWorkType(),
+            $monograph->getCitations(),
+                )
+        );
 
-		$monograph->setId($this->getInsertId());
-                
-                /* MUNIPRESS */
-                $this->update(
-			sprintf('INSERT INTO munipress_metadata
+        $monograph->setId($this->getInsertId());
+
+        /* MUNIPRESS */
+        $this->update(
+                sprintf('INSERT INTO munipress_metadata
 				(submission_id, a_kol, cena, cena_ebook, url_munishop, url_munishop_ebook, archiv,poznamka_admin, datum_vydani)
 				VALUES
-				(?, ?, ?, ?, ?, ?, ?, ?, %s)',
-				$this->datetimeToDB($monograph->getDatumVydani())),
-			array(
-                                (int) $monograph->getId(),
-				$monograph->getAKolektiv() ? 1:0,
-				(int) $monograph->getCena(),
-				(int) $monograph->getCenaEbook(),
-				$monograph->getUrlMunishop(),
-				$monograph->getUrlMunishopEbook(),
-                                $monograph->getArchivace() ? 1:0,
-                                $monograph->getPoznamkaAdmin(),
-			)
-		);
-                /*-------------*/
-                
-		$this->updateLocaleFields($monograph);
+				(?, ?, ?, ?, ?, ?, ?, ?, %s)', $this->datetimeToDB($monograph->getDatumVydani())), array(
+            (int) $monograph->getId(),
+            $monograph->getAKolektiv() ? 1 : 0,
+            (int) $monograph->getCena(),
+            (int) $monograph->getCenaEbook(),
+            $monograph->getUrlMunishop(),
+            $monograph->getUrlMunishopEbook(),
+            $monograph->getArchivace() ? 1 : 0,
+            $monograph->getPoznamkaAdmin(),
+                )
+        );
+        /* ------------- */
 
-		return $monograph->getId();
-	}
+        $this->updateLocaleFields($monograph);
 
-	/**
-	 * updates a monograph
-	 * @param Monograph object
-	 */
-	function updateObject($monograph) {
-		$this->update(
-			sprintf('UPDATE	submissions
+        return $monograph->getId();
+    }
+
+    /**
+     * updates a monograph
+     * @param Monograph object
+     */
+    function updateObject($monograph) {
+        $this->update(
+                sprintf('UPDATE	submissions
 				SET	locale = ?,
 					series_id = ?,
 					series_position = ?,
@@ -151,27 +147,25 @@ class MonographDAO extends SubmissionDAO {
 					edited_volume = ?,
 					hide_author = ?,
 					citations = ?
-				WHERE	submission_id = ?',
-				$this->datetimeToDB($monograph->getDateSubmitted()), $this->datetimeToDB($monograph->getDateStatusModified()), $this->datetimeToDB($monograph->getLastModified())),
-			array(
-				$monograph->getLocale(),
-				(int) $monograph->getSeriesId(),
-				$monograph->getSeriesPosition(),
-				$monograph->getLanguage(),
-				(int) $monograph->getStatus(),
-				(int) $monograph->getContextId(),
-				(int) $monograph->getSubmissionProgress(),
-				(int) $monograph->getStageId(),
-				(int) $monograph->getWorkType(),
-				(int) $monograph->getHideAuthor(),
-				$monograph->getCitations(),
-				(int) $monograph->getId(),
-			)
-		);
-                
-                /* MUNIPRESS */
-                $this->update(
-			sprintf('UPDATE munipress_metadata
+				WHERE	submission_id = ?', $this->datetimeToDB($monograph->getDateSubmitted()), $this->datetimeToDB($monograph->getDateStatusModified()), $this->datetimeToDB($monograph->getLastModified())), array(
+            $monograph->getLocale(),
+            (int) $monograph->getSeriesId(),
+            $monograph->getSeriesPosition(),
+            $monograph->getLanguage(),
+            (int) $monograph->getStatus(),
+            (int) $monograph->getContextId(),
+            (int) $monograph->getSubmissionProgress(),
+            (int) $monograph->getStageId(),
+            (int) $monograph->getWorkType(),
+            (int) $monograph->getHideAuthor(),
+            $monograph->getCitations(),
+            (int) $monograph->getId(),
+                )
+        );
+
+        /* MUNIPRESS */
+        $this->update(
+                sprintf('UPDATE munipress_metadata
 				SET	a_kol = ?,
                                         cena = ?,
                                         cena_ebook = ?,
@@ -180,349 +174,348 @@ class MonographDAO extends SubmissionDAO {
                                         archiv = ?,
 					poznamka_admin = ?,
                                         datum_vydani = %s
-				WHERE	submission_id = ?',
-                               $this->datetimeToDB($monograph->getDatumVydani())),			
-			array(
-                                    $monograph->getAKolektiv() ? 1:0,
-                                    (int) $monograph->getCena(),
-                                    (int) $monograph->getCenaEbook(),
-                                    $monograph->getUrlMunishop(),
-                                    $monograph->getUrlMunishopEbook(),
-                                    $monograph->getArchivace() ? 1:0,
-                                    $monograph->getPoznamkaAdmin(),
-                                    (int) $monograph->getId()
-			)
-		);
-                /*---------------*/
-                
-		$this->updateLocaleFields($monograph);
-		$this->flushCache();
-	}
+				WHERE	submission_id = ?', $this->datetimeToDB($monograph->getDatumVydani())), array(
+            $monograph->getAKolektiv() ? 1 : 0,
+            (int) $monograph->getCena(),
+            (int) $monograph->getCenaEbook(),
+            $monograph->getUrlMunishop(),
+            $monograph->getUrlMunishopEbook(),
+            $monograph->getArchivace() ? 1 : 0,
+            $monograph->getPoznamkaAdmin(),
+            (int) $monograph->getId()
+                )
+        );
+        /* --------------- */
 
-	/**
-	 * @copydoc SubmissionDAO::deleteById
-	 */
-	function deleteById($submissionId) {
-		parent::deleteById($submissionId);
+        $this->updateLocaleFields($monograph);
+        $this->flushCache();
+    }
 
-		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
-		$publishedMonographDao->deleteById($submissionId);
+    /**
+     * @copydoc SubmissionDAO::deleteById
+     */
+    function deleteById($submissionId) {
+        parent::deleteById($submissionId);
 
-		// Delete chapters and assigned chapter authors.
-		$chapterDao = DAORegistry::getDAO('ChapterDAO');
-		$chapters = $chapterDao->getChapters($submissionId);
-		while ($chapter = $chapters->next()) {
-			// also removes Chapter Author associations
-			$chapterDao->deleteObject($chapter);
-		}
+        $publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
+        $publishedMonographDao->deleteById($submissionId);
 
-		// Delete references to features or new releases.
-		$featureDao = DAORegistry::getDAO('FeatureDAO');
-		$featureDao->deleteByMonographId($submissionId);
+        // Delete chapters and assigned chapter authors.
+        $chapterDao = DAORegistry::getDAO('ChapterDAO');
+        $chapters = $chapterDao->getChapters($submissionId);
+        while ($chapter = $chapters->next()) {
+            // also removes Chapter Author associations
+            $chapterDao->deleteObject($chapter);
+        }
 
-		$newReleaseDao = DAORegistry::getDAO('NewReleaseDAO');
-		$newReleaseDao->deleteByMonographId($submissionId);
+        // Delete references to features or new releases.
+        $featureDao = DAORegistry::getDAO('FeatureDAO');
+        $featureDao->deleteByMonographId($submissionId);
 
-		import('classes.search.MonographSearchIndex');
-		MonographSearchIndex::deleteTextIndex($submissionId);
-	}
+        $newReleaseDao = DAORegistry::getDAO('NewReleaseDAO');
+        $newReleaseDao->deleteByMonographId($submissionId);
 
-	/**
-	 * Get all monographs for a press.
-	 * @param $pressId int
-	 * @return DAOResultFactory containing matching Monographs
-	 */
-	function getByPressId($pressId) {
-		return parent::getByContextId($pressId);
-	}
+        import('classes.search.MonographSearchIndex');
+        MonographSearchIndex::deleteTextIndex($submissionId);
+    }
 
-	/**
-	 * Get unpublished monographs for a press.
-	 * @param $pressId int
-	 * @return DAOResultFactory containing matching Monographs
-	 */
-	function getUnpublishedMonographsByPressId($pressId) {
-		$params = $this->getFetchParameters();
-		$params[] = (int) $pressId;
+    /**
+     * Get all monographs for a press.
+     * @param $pressId int
+     * @return DAOResultFactory containing matching Monographs
+     */
+    function getByPressId($pressId) {
+        return parent::getByContextId($pressId);
+    }
 
-		$result = $this->retrieve(
-			'SELECT	s.*, ps.date_published,
+    /**
+     * Get unpublished monographs for a press.
+     * @param $pressId int
+     * @return DAOResultFactory containing matching Monographs
+     */
+    function getUnpublishedMonographsByPressId($pressId) {
+        $params = $this->getFetchParameters();
+        $params[] = (int) $pressId;
+
+        $result = $this->retrieve(
+                'SELECT	s.*, ps.date_published,
 				' . $this->getFetchColumns() . '
 			FROM	submissions s
 				LEFT JOIN published_submissions ps ON (s.submission_id = ps.submission_id)
 				' . $this->getFetchJoins() . '
 			WHERE	s.context_id = ? AND
 				(ps.submission_id IS NULL OR ps.date_published IS NULL) AND
-				s.submission_progress = 0',
-			$params
-		);
+				s.submission_progress = 0', $params
+        );
 
-		return new DAOResultFactory($result, $this, '_fromRow');
-	}
+        return new DAOResultFactory($result, $this, '_fromRow');
+    }
 
-	/**
-	 * Remove all monographs from an series.
-	 * @param $seriesId int
-	 */
-	function removeMonographsFromSeries($seriesId) {
-		$this->update(
-			'UPDATE submissions SET series_id = null WHERE series_id = ?',
-			(int) $seriesId
-		);
+    /**
+     * Remove all monographs from an series.
+     * @param $seriesId int
+     */
+    function removeMonographsFromSeries($seriesId) {
+        $this->update(
+                'UPDATE submissions SET series_id = null WHERE series_id = ?', (int) $seriesId
+        );
 
-		$this->flushCache();
-	}
+        $this->flushCache();
+    }
 
-	/**
-	 * Associate a category with a monograph.
-	 * @param $monographId int
-	 * @param $categoryId int
-	 */
-	function addCategory($monographId, $categoryId) {
-		$this->update(
-			'INSERT INTO submission_categories
+    /**
+     * Associate a category with a monograph.
+     * @param $monographId int
+     * @param $categoryId int
+     */
+    function addCategory($monographId, $categoryId) {
+        $this->update(
+                'INSERT INTO submission_categories
 				(submission_id, category_id)
 			VALUES
-				(?, ?)',
-			array(
-				(int) $monographId,
-				(int) $categoryId
-			)
-		);
-	}
+				(?, ?)', array(
+            (int) $monographId,
+            (int) $categoryId
+                )
+        );
+    }
 
-	/**
-	 * Unassociate a category with a monograph.
-	 * @param $monographId int
-	 * @param $categoryId int
-	 */
-	function removeCategory($monographId, $categoryId) {
-		$this->update(
-			'DELETE FROM submission_categories WHERE submission_id = ? AND category_id = ?',
-			array(
-				(int) $monographId,
-				(int) $categoryId
-			)
-		);
+    /**
+     * Unassociate a category with a monograph.
+     * @param $monographId int
+     * @param $categoryId int
+     */
+    function removeCategory($monographId, $categoryId) {
+        $this->update(
+                'DELETE FROM submission_categories WHERE submission_id = ? AND category_id = ?', array(
+            (int) $monographId,
+            (int) $categoryId
+                )
+        );
 
-		// If any new release or feature object is associated
-		// with this category delete them.
-		$newReleaseDao = DAORegistry::getDAO('NewReleaseDAO'); /* @var $newReleaseDao NewReleaseDAO */
-		$newReleaseDao->deleteNewRelease($monographId, ASSOC_TYPE_CATEGORY, $categoryId);
+        // If any new release or feature object is associated
+        // with this category delete them.
+        $newReleaseDao = DAORegistry::getDAO('NewReleaseDAO'); /* @var $newReleaseDao NewReleaseDAO */
+        $newReleaseDao->deleteNewRelease($monographId, ASSOC_TYPE_CATEGORY, $categoryId);
 
-		$featureDao = DAORegistry::getDAO('FeatureDAO'); /* @var $featureDao FeatureDAO */
-		$featureDao->deleteFeature($monographId, ASSOC_TYPE_CATEGORY, $categoryId);
-	}
+        $featureDao = DAORegistry::getDAO('FeatureDAO'); /* @var $featureDao FeatureDAO */
+        $featureDao->deleteFeature($monographId, ASSOC_TYPE_CATEGORY, $categoryId);
+    }
 
-	/**
-	 * Unassociate all categories.
-	 * @param $monographId int
-	 */
-	function removeCategories($monographId) {
-		$this->update(
-			'DELETE FROM submission_categories WHERE submission_id = ?',
-			(int) $monographId
-		);
-	}
+    /**
+     * Unassociate all categories.
+     * @param $monographId int
+     */
+    function removeCategories($monographId) {
+        $this->update(
+                'DELETE FROM submission_categories WHERE submission_id = ?', (int) $monographId
+        );
+    }
 
-	/**
-	 * Get the categories associated with a given monograph.
-	 * @param $monographId int The monograph id.
-	 * @param $pressId int (optional) The monograph press id.
-	 * @return DAOResultFactory
-	 */
-	function getCategories($monographId, $pressId = null) {
-		$params = array((int) $monographId);
-		if ($pressId) $params[] = (int) $pressId;
+    /**
+     * Get the categories associated with a given monograph.
+     * @param $monographId int The monograph id.
+     * @param $pressId int (optional) The monograph press id.
+     * @return DAOResultFactory
+     */
+    function getCategories($monographId, $pressId = null) {
+        $params = array((int) $monographId);
+        if ($pressId)
+            $params[] = (int) $pressId;
 
-		$categoryDao = DAORegistry::getDAO('CategoryDAO');
-		$result = $this->retrieve(
-			'SELECT	c.*
+        $categoryDao = DAORegistry::getDAO('CategoryDAO');
+        $result = $this->retrieve(
+                'SELECT	c.*
 			FROM	categories c,
 				submission_categories sc,
 				submissions s
 			WHERE	c.category_id = sc.category_id AND
 				s.submission_id = ? AND
-			' . ($pressId?' c.press_id = s.context_id AND s.context_id = ? AND':'') . '
-				s.submission_id = sc.submission_id',
-			$params
-		);
+			' . ($pressId ? ' c.press_id = s.context_id AND s.context_id = ? AND' : '') . '
+				s.submission_id = sc.submission_id', $params
+        );
 
-		// Delegate category creation to the category DAO.
-		return new DAOResultFactory($result, $categoryDao, '_fromRow');
-	}
+        // Delegate category creation to the category DAO.
+        return new DAOResultFactory($result, $categoryDao, '_fromRow');
+    }
 
-	/**
-	 * Get the categories not associated with a given monograph.
-	 * @param $monographId int
-	 * @return DAOResultFactory
-	 */
-	function getUnassignedCategories($monographId, $pressId = null) {
-		$params = array((int) $monographId);
-		if ($pressId) $params[] = (int) $pressId;
+    /**
+     * Get the categories not associated with a given monograph.
+     * @param $monographId int
+     * @return DAOResultFactory
+     */
+    function getUnassignedCategories($monographId, $pressId = null) {
+        $params = array((int) $monographId);
+        if ($pressId)
+            $params[] = (int) $pressId;
 
-		$categoryDao = DAORegistry::getDAO('CategoryDAO');
-		// The strange ORDER BY clause is to return subcategories
-		// immediately after their parent category's entry.
-		$result = $this->retrieve(
-			'SELECT	c.*
+        $categoryDao = DAORegistry::getDAO('CategoryDAO');
+        // The strange ORDER BY clause is to return subcategories
+        // immediately after their parent category's entry.
+        $result = $this->retrieve(
+                'SELECT	c.*
 			FROM	submissions s
 				JOIN categories c ON (c.press_id = s.context_id)
 				LEFT JOIN submission_categories sc ON (s.submission_id = sc.submission_id AND sc.category_id = c.category_id)
 			WHERE	s.submission_id = ? AND
-				' . ($pressId?' s.context_id = ? AND':'') . '
+				' . ($pressId ? ' s.context_id = ? AND' : '') . '
 				sc.submission_id IS NULL
-			ORDER BY CASE WHEN c.parent_id = 0 THEN c.category_id * 2 ELSE (c.parent_id * 2) + 1 END ASC',
-			$params
-		);
+			ORDER BY CASE WHEN c.parent_id = 0 THEN c.category_id * 2 ELSE (c.parent_id * 2) + 1 END ASC', $params
+        );
 
-		// Delegate category creation to the category DAO.
-		return new DAOResultFactory($result, $categoryDao, '_fromRow');
-	}
+        // Delegate category creation to the category DAO.
+        return new DAOResultFactory($result, $categoryDao, '_fromRow');
+    }
 
-	/**
-	 * Check if an monograph exists with the specified ID.
-	 * @param $monographId int
-	 * @param $pressId int
-	 * @return boolean
-	 */
-	function categoryAssociationExists($monographId, $categoryId) {
-		$result = $this->retrieve(
-			'SELECT COUNT(*) FROM submission_categories WHERE submission_id = ? AND category_id = ?',
-			array((int) $monographId, (int) $categoryId)
-		);
-		$returner = isset($result->fields[0]) && $result->fields[0] == 1 ? true : false;
+    /**
+     * Check if an monograph exists with the specified ID.
+     * @param $monographId int
+     * @param $pressId int
+     * @return boolean
+     */
+    function categoryAssociationExists($monographId, $categoryId) {
+        $result = $this->retrieve(
+                'SELECT COUNT(*) FROM submission_categories WHERE submission_id = ? AND category_id = ?', array((int) $monographId, (int) $categoryId)
+        );
+        $returner = isset($result->fields[0]) && $result->fields[0] == 1 ? true : false;
 
-		$result->Close();
-		return $returner;
-	}
+        $result->Close();
+        return $returner;
+    }
 
-	/**
-	 * @copydoc SubmissionDAO::getFetchParameters()
-	 */
-	protected function getFetchParameters() {
-		$primaryLocale = AppLocale::getPrimaryLocale();
-		$locale = AppLocale::getLocale();
-		return array(
-			'title', $primaryLocale, // Series title
-			'title', $locale, // Series title
-			'abbrev', $primaryLocale, // Series abbreviation
-			'abbrev', $locale, // Series abbreviation
-		);
-	}
+    /**
+     * @copydoc SubmissionDAO::getFetchParameters()
+     */
+    protected function getFetchParameters() {
+        $primaryLocale = AppLocale::getPrimaryLocale();
+        $locale = AppLocale::getLocale();
+        return array(
+            'title', $primaryLocale, // Series title
+            'title', $locale, // Series title
+            'abbrev', $primaryLocale, // Series abbreviation
+            'abbrev', $locale, // Series abbreviation
+        );
+    }
 
-	/**
-	 * @copydoc SubmissionDAO::getFetchColumns()
-	 */
-	protected function getFetchColumns() {
-		return 'COALESCE(stl.setting_value, stpl.setting_value) AS series_title,
+    /**
+     * @copydoc SubmissionDAO::getFetchColumns()
+     */
+    protected function getFetchColumns() {
+        return 'COALESCE(stl.setting_value, stpl.setting_value) AS series_title,
 			COALESCE(sal.setting_value, sapl.setting_value) AS series_abbrev';
-	}
+    }
 
-	/**
-	 * @copydoc SubmissionDAO::getFetchJoins()
-	 */
-	protected function getFetchJoins() {
-		return 'LEFT JOIN series se ON se.series_id = s.series_id
+    /**
+     * @copydoc SubmissionDAO::getFetchJoins()
+     */
+    protected function getFetchJoins() {
+        return 'LEFT JOIN series se ON se.series_id = s.series_id
 			LEFT JOIN series_settings stpl ON (se.series_id = stpl.series_id AND stpl.setting_name = ? AND stpl.locale = ?)
 			LEFT JOIN series_settings stl ON (se.series_id = stl.series_id AND stl.setting_name = ? AND stl.locale = ?)
 			LEFT JOIN series_settings sapl ON (se.series_id = sapl.series_id AND sapl.setting_name = ? AND sapl.locale = ?)
 			LEFT JOIN series_settings sal ON (se.series_id = sal.series_id AND sal.setting_name = ? AND sal.locale = ?)';
-	}
+    }
 
-	/**
-	 * @copydoc SubmissionDAO::getSubEditorJoin()
- 	 */
-	protected function getSubEditorJoin() {
-		return 'JOIN series_editors se ON (se.press_id = s.context_id AND se.user_id = ? AND se.series_id = s.series_id)';
-	}
+    /**
+     * @copydoc SubmissionDAO::getSubEditorJoin()
+     */
+    protected function getSubEditorJoin() {
+        return 'JOIN series_editors se ON (se.press_id = s.context_id AND se.user_id = ? AND se.series_id = s.series_id)';
+    }
 
-	/**
-	 * @copydoc SubmissionDAO::getGroupByColumns()
-	 */
-	protected function getGroupByColumns() {
-		return 's.submission_id, ps.date_published, stl.setting_value, stpl.setting_value, sal.setting_value, sapl.setting_value';
-	}
+    /**
+     * @copydoc SubmissionDAO::getGroupByColumns()
+     */
+    protected function getGroupByColumns() {
+        return 's.submission_id, ps.date_published, stl.setting_value, stpl.setting_value, sal.setting_value, sapl.setting_value';
+    }
 
-	/**
-	 * @copydoc SubmissionDAO::getCompletionConditions()
-	 */
-	protected function getCompletionConditions($completed) {
-		return ' ps.date_published IS ' . ($completed?'NOT ':'') . 'NULL ';
-	}
-        
-        /**
-         * MUNIPRESS
-         */
-        /**
-	 * Return a list of Years.
-	 * @return array
-	 */
-	function getYears() {
-            $result = $this->retrieve(
-                    'SELECT DISTINCT DATE_FORMAT(mm.datum_vydani, \'%Y\') AS \'rokvydani\' FROM munipress_metadata mm WHERE mm.datum_vydani IS NOT NULL ORDER BY mm.datum_vydani DESC'
-            );
-            $returner = array();
-            while (!$result->EOF) {
-                    $row = $result->GetRowAssoc(false);
-                    $returner[$row['rokvydani']] = $row['rokvydani'];
-                    $result->MoveNext();
-            }
-            $result->Close();
-            return $returner;
-	}
-        
-        /**
-	 * Return a list of languages.
-	 * @return array
-	 */
-//	function getLanguagesForFilter($locale) {         
-//
-//            if($locale != "en_US" && $locale != "cs_CZ"){
-//                $locale = "cs_CZ";
-//            }
-//            $locale = strtolower($locale);
-//            $result = $this->retrieve(
-//                    'SELECT DISTINCT LOWER(cves.setting_value) AS lang_key, ml.en_name AS en_us, ml.cz_name AS cs_cz
-//                            FROM controlled_vocab_entry_settings cves 
-//                            LEFT JOIN munipress_languages ml ON LOWER(cves.setting_value) = LOWER(ml.en_name)
-//                            WHERE cves.setting_name = \'submissionLanguage\' AND cves.locale = \'en_US\'
-//                            ORDER BY 
-//                            ' . ($locale == "cs_cz"?'ml.cz_name':'ml.en_name') 
-//                    );
-//            $returner = array();
-//            while (!$result->EOF) {
-//                    $row = $result->GetRowAssoc(false);
-//                    $returner[$row['lang_key']] = $row[$locale];
-//                    $result->MoveNext();
-//            }
-//            $result->Close();
-//            return $returner;
-//	}
-        
-        function getLanguagesForFilter($locale) {  
-            if($locale != "en_US" && $locale != "cs_CZ"){
-                $locale = "cs_CZ";
-            }
-            $locale = strtolower($locale);
-            $result = $this->retrieve(
-                    'SELECT DISTINCT msl.iso AS lang_key, ml.en_name AS en_us, ml.cz_name AS cs_cz
+    /**
+     * @copydoc SubmissionDAO::getCompletionConditions()
+     */
+    protected function getCompletionConditions($completed) {
+        return ' ps.date_published IS ' . ($completed ? 'NOT ' : '') . 'NULL ';
+    }
+
+    /**
+     * MUNIPRESS
+     */
+
+    /**
+     * Return a list of Years.
+     * @return array
+     */
+    function getYears() {
+        $result = $this->retrieve(
+                'SELECT DISTINCT DATE_FORMAT(mm.datum_vydani, \'%Y\') AS \'rokvydani\' FROM munipress_metadata mm WHERE mm.datum_vydani IS NOT NULL ORDER BY mm.datum_vydani DESC'
+        );
+        $returner = array();
+        while (!$result->EOF) {
+            $row = $result->GetRowAssoc(false);
+            $returner[$row['rokvydani']] = $row['rokvydani'];
+            $result->MoveNext();
+        }
+        $result->Close();
+        return $returner;
+    }
+
+    /**
+     * Return a list of languages.
+     * @return array
+     */
+    function getLanguagesForFilter($locale) {
+        if ($locale != "en_US" && $locale != "cs_CZ") {
+            $locale = "cs_CZ";
+        }
+        $locale = strtolower($locale);
+        $result = $this->retrieve(
+                'SELECT DISTINCT msl.iso AS lang_key, ml.en_name AS en_us, ml.cz_name AS cs_cz
                             FROM munipress_submission_languages msl 
                             LEFT JOIN munipress_languages ml ON msl.iso = ml.iso
                             ORDER BY 
-                            ' . ($locale == "cs_cz"?'ml.cz_name':'ml.en_name') 
-                    );
-            $returner = array();
+                            ' . ($locale == "cs_cz" ? 'ml.cz_name' : 'ml.en_name')
+        );
+        $returner = array();
+        while (!$result->EOF) {
+            $row = $result->GetRowAssoc(false);
+            $returner[$row['lang_key']] = $row[$locale];
+            $result->MoveNext();
+        }
+        $result->Close();
+        return $returner;
+    }
+
+    function getLanguagesCodes($array, $locale) {
+
+        $languages = "(";
+        foreach ($array as $language) {
+            if ($languages == "(") {
+                $languages .= "\"" . $language . "\"";
+            } else {
+                $languages .= ",\"" . $language . "\"";
+            }
+        }
+        $languages .= ")";
+        $returner = array();
+        if (sizeof($array) > 0) {
+            $result = $this->retrieve(
+                    'SELECT DISTINCT ml.iso AS lang_key
+                            FROM munipress_languages ml
+                            WHERE' . ($locale == "en_US" ? ' ml.en_name IN ' : ' ml.cz_name IN ') . $languages . '
+                            ORDER BY ml.en_name'
+            );
+
             while (!$result->EOF) {
-                    $row = $result->GetRowAssoc(false);
-                    $returner[$row['lang_key']] = $row[$locale];
-                    $result->MoveNext();
+                $row = $result->GetRowAssoc(false);
+                $returner[] = $row['lang_key'];
+                $result->MoveNext();
             }
             $result->Close();
-            return $returner;
-	}
-        /*-------------------*/
-        
+        }
+        return $returner;
+    }
+
+    /* ------------------- */
 }
 
 ?>

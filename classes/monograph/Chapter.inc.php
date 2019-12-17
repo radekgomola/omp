@@ -143,6 +143,88 @@ class Chapter extends DataObject {
 		}
 		return join(', ', $authorNames);
 	}
+        
+        /*MUNIPRESS*/
+        /**
+	 * Get "localized" submission abstract (if applicable).
+	 * @return string
+	 */
+	function getLocalizedAbstract() {
+		return $this->getLocalizedData('abstract');
+	}
+
+	/**
+	 * Get abstract.
+	 * @param $locale
+	 * @return string
+	 */
+	function getAbstract($locale) {
+		return $this->getData('abstract', $locale);
+	}
+
+	/**
+	 * Set abstract.
+	 * @param $abstract string
+	 * @param $locale
+	 */
+	function setAbstract($abstract, $locale) {
+		$this->setData('abstract', $abstract, $locale);
+	}
+
+        /**
+	 * Get doi of chapter
+	 * @return string
+	 */
+	function getDoi() {
+		return $this->getData('doi');
+	}
+
+	/**
+	 * Set doi of chapter
+	 * @param $doi string
+	 */
+	function setDoi($doi) {
+		return $this->setData('doi', $doi);
+	}
+        
+        /**
+	 * Get doi of chapter
+	 * @return string
+	 */
+	function getPages() {
+		return $this->getData('pages');
+	}
+
+	/**
+	 * Set doi of chapter
+	 * @param $doi string
+	 */
+	function setPages($pages) {
+		return $this->setData('pages', $pages);
+	}
+        
+        /**
+	 * Get doi of chapter
+	 * @return string
+	 */
+	function getReferences() {
+		return $this->getData('references');
+	}
+
+	/**
+	 * Set doi of chapter
+	 * @param $doi string
+	 */
+	function setReferences($references) {
+		return $this->setData('references', $references);
+	}
+        /**
+	 * Get "localized" submission abstract (if applicable).
+	 * @return string
+	 */
+//	function getLocalizedReferences() {
+//		return $this->getLocalizedData('references');
+//	}
 }
 
 ?>

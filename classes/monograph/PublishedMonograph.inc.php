@@ -215,6 +215,45 @@ class PublishedMonograph extends Monograph {
 		$representativeDao = DAORegistry::getDAO('RepresentativeDAO');
 		return $representativeDao->getAgentsByMonographId($this->getId());
 	}
+        
+        function getChapterId() {
+		return $this->getData('chapterId');
+	}
+
+	function setChapterId($chapterId) {
+		return $this->setData('chapterId', $chapterId);
+	}
+        
+        function getChapterName() {
+		return $this->getData('chapterName');
+	}
+
+	function setChapterName($chapterName) {
+		return $this->setData('chapterName', $chapterName);
+	}
+        
+        /**
+	 * Get all authors of this chapter.
+	 * @return DAOResultFactory Iterator of authors
+	 */
+	function getChapterAuthors($monographId, $chapterId) {
+		$chapterAuthorDao = DAORegistry::getDAO('ChapterAuthorDAO'); /* @var $chapterAuthorDao ChapterAuthorDAO */
+		return $chapterAuthorDao->getAuthors($monographId, $chapterId);
+	}
+
+	/**
+	 * Get the author names for this chapter and return them as a string.
+	 * @return string
+	 */
+	function getChapterAuthorNamesAsString($monographId, $chapterId) {
+
+		$authorNames = array();
+		$authors = $this->getChapterAuthors($monographId, $chapterId);
+		while ($author = $authors->next()) {
+			$authorNames[] = $author->getFullName();
+		}
+		return join(', ', $authorNames);
+	}
 }
 
 ?>

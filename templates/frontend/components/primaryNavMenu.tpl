@@ -96,7 +96,7 @@
         <div class="header__menu__submenu">
             <ul class="header__menu__submenu__list">
                 {iterate from=kategorieFakulty item=browseCategory}
-                    {if $browseCategory->getId() != 44}
+                    {if $browseCategory->getId() != 44 && $browseCategory->getId() != 54}
                         {assign var=kategorieId value=$browseCategory->getId()}
                         {if $filtrFakultyPocetMenu[$kategorieId] > 0}
                         <li class="header__menu__submenu__item">
@@ -127,15 +127,16 @@
         <div class="header__menu__submenu">
             <ul class="header__menu__submenu__list zlaty-fond_prim-nav">
                 {iterate from=kategorieFakultyZlatyFond item=browseCategory}
-                    {if $browseCategory->getId() != 44}
+                    {*{if $browseCategory->getId() != 44}*}
                         {assign var=kategorieIdZlatyFond value=$browseCategory->getId()}
                         {if $filtrFakultyPocetMenuZlatyFond[$kategorieIdZlatyFond] > 0}
                         <li class="header__menu__submenu__item">
                             <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="zlaty-fond" fakulta=$browseCategory->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
                         </li>
                         {/if}
-                    {/if}
+{*                    {/if}*}
                 {/iterate}
+                
             </ul>
         </div>
     </li>

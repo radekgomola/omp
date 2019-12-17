@@ -31,6 +31,7 @@ switch ($op) {
 	case 'download':
 	case 'view':
         case 'flipbook':
+        case 'chapter':
 		define('HANDLER_CLASS', 'CatalogBookHandler');
 		import('pages.catalog.CatalogBookHandler');
 		break;

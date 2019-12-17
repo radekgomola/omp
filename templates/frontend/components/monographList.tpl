@@ -39,7 +39,7 @@
     {if $monographs AND $paging != "false"}
         <p class="paging paging--center">
             <span class="paging__pages">
-                {page_links anchor="monographListContainer" name="catalogPaging" iterator=$monographs trideni=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta}
+                {page_links anchor="monographListContainer" name="catalogPaging" iterator=$monographs trideni=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta chapters=$filtrovaniChapters}
             </span>
         </p>
     {/if}
@@ -75,7 +75,11 @@
 
                     {foreach name="monographListLoop" from=$monographsArray key=key item=monograph}
                         <li class="grid__cell size--m--2-4 size--l--4-12">
-                            {include file="frontend/objects/monograph_summary.tpl" monograph=$monograph}
+                            {if $monograph->getChapterId()}
+                                {include file="frontend/objects/monograph_summary_chapter.tpl" monograph=$monograph}
+                            {else}
+                                {include file="frontend/objects/monograph_summary.tpl" monograph=$monograph}
+                            {/if}
                         </li>
                         {assign var=counter value=$counter+1}
                     {/foreach}
@@ -84,7 +88,11 @@
                     {iterate name="monographListLoop" from=monographs item=monograph}
                     {assign var=key value = $monograph->getId()}
                     <li class="grid__cell size--m--2-4 size--l--4-12">
-                        {include file="frontend/objects/monograph_summary.tpl" monograph=$monograph}
+                        {if $monograph->getChapterId()}
+                            {include file="frontend/objects/monograph_summary_chapter.tpl" monograph=$monograph}
+                        {else}
+                            {include file="frontend/objects/monograph_summary.tpl" monograph=$monograph}
+                        {/if}
                     </li>
                     {/iterate}
                 {/if}
@@ -93,7 +101,7 @@
         {if $monographs AND $paging != "false"}
             <p class="paging paging--center">
                 <span class="paging__pages">
-                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$monographs trideni=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta}
+                    {page_links anchor="monographListContainer" name="catalogPaging" iterator=$monographs trideni=$trideni obor=$filtrovaniObor rok=$filtrovaniRok jazyk=$filtrovaniJazyk fakulta=$filtrovaniFakulta chapters=$filtrovaniChapters}
                 </span>
                 <span class="paging__pager">
                     <strong class="paging__pager__item is-active">{page_info iterator=$monographs itemsPerPage=$itemsPerPageHelp}</strong>
@@ -101,22 +109,22 @@
             </p>
         {/if}
     {/if}
-            {*{assign var=counter value=1}
-            {foreach name="monographListLoop" from=$monographs item=monograph key=key}
-                {if is_array($featured) && array_key_exists($key, $featured)}
-                    {php}continue;{/php}
-                {/if}
-                {if $counter is odd by 1}
-                    <div class="row">
-                    {/if}
-                    {include file="frontend/objects/monograph_summary.tpl" monograph=$monograph}
-                    {if $counter is even by 1}
-                    </div>
-                {/if}
-                {assign var=counter value=$counter+1}
-            {/foreach}
-            {* Close .row if we have an odd number of titles *}
-           {* {if $counter > 1 && $counter is even by 1}
-            </div>
-        {/if}*}
+    {*{assign var=counter value=1}
+    {foreach name="monographListLoop" from=$monographs item=monograph key=key}
+    {if is_array($featured) && array_key_exists($key, $featured)}
+    {php}continue;{/php}
+    {/if}
+    {if $counter is odd by 1}
+    <div class="row">
+    {/if}
+    {include file="frontend/objects/monograph_summary.tpl" monograph=$monograph}
+    {if $counter is even by 1}
     </div>
+    {/if}
+    {assign var=counter value=$counter+1}
+    {/foreach}
+    {* Close .row if we have an odd number of titles *}
+    {* {if $counter > 1 && $counter is even by 1}
+    </div>
+    {/if}*}
+</div>

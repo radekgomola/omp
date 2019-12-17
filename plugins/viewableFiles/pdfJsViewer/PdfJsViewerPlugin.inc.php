@@ -74,6 +74,28 @@ class PdfJsViewerPlugin extends ViewableFilePlugin {
 		$router = $request->getRouter();
 		$dispatcher = $request->getDispatcher();
 		$templateMgr = TemplateManager::getManager($request);
+                
+                
+                $site = $request->getSite();
+                $locales = $site->getSupportedLocales();
+                $locale = AppLocale::getLocale();
+                $submissionLanguageDao = DAORegistry::getDAO('SubmissionLanguageDAO');       
+
+                $allLanguages = $submissionLanguageDao->getLanguages($publishedMonograph->getBestId(), $locales);
+                $templateMgr->assign('languages', $allLanguages[$locale]);
+                               
+                $monographDao = DAORegistry::getDAO('MonographDAO');
+                $langCodesArray = $monographDao->getLanguagesCodes($allLanguages[$locale], $locale);
+                $langCodes = "";
+                foreach($langCodesArray as $langCode){
+                    if($langCodes == "") {
+                        $langCodes = $langCode;
+                    } else {
+                        $langCodes .= ",".$langCode;
+                    }
+                }
+                $templateMgr->assign('langCodes', $langCodes);
+                
 		$templateMgr->assign(array(
 			'pluginTemplatePath' => $this->getTemplatePath(),
 			'pluginUrl' => $request->getBaseUrl() . DIRECTORY_SEPARATOR . $this->getPluginPath(),

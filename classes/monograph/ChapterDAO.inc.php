@@ -40,7 +40,9 @@ class ChapterDAO extends DAO {
 		}
 
 		$result = $this->retrieve(
-			'SELECT * FROM submission_chapters WHERE chapter_id = ?' . ($monographId !== null?' AND submission_id = ? ':''),
+			'SELECT sc.*, msc.doi, msc.pages, msc.citations '
+                        . 'FROM submission_chapters sc LEFT JOIN munipress_submission_chapters msc ON sc.chapter_id = msc.chapter_id'
+                        . ' WHERE sc.chapter_id = ?' . ($monographId !== null?' AND sc.submission_id = ? ':''),
 			$params
 		);
 
@@ -58,7 +60,7 @@ class ChapterDAO extends DAO {
 	 * @param $rangeInfo object RangeInfo object (optional)
 	 * @return DAOResultFactory
 	 */
-	function getChapters($monographId, $rangeInfo = null) {
+        function getChapters($monographId, $rangeInfo = null) {
 		$result = $this->retrieveRange(
 			'SELECT chapter_id, submission_id, chapter_seq FROM submission_chapters WHERE submission_id = ? ORDER BY chapter_seq',
 			(int) $monographId,
@@ -68,12 +70,26 @@ class ChapterDAO extends DAO {
 		return new DAOResultFactory($result, $this, '_returnFromRow', array('id'));
 	}
 
+//	function getChapters($monographId, $rangeInfo = null) {
+//		$result = $this->retrieveRange(
+//			'SELECT sc.chapter_id, sc.submission_id, sc.chapter_seq, msc.doi, msc.pages, msc.citations '
+//                        . 'FROM submission_chapters sc LEFT JOIN munipress_submission_chapter msc ON sc.chapter_id = msc.chapter_id'
+//                        . 'WHERE sc.submission_id = ? ORDER BY sc.chapter_seq',
+//			(int) $monographId,
+//			$rangeInfo
+//		);
+//
+//		return new DAOResultFactory($result, $this, '_returnFromRow', array('id'));
+//	}
+
 	/**
 	 * Get the list of fields for which locale data is stored.
 	 * @return array
 	 */
 	function getLocaleFieldNames() {
-		return array('title', 'subtitle');
+//		return array('title', 'subtitle');
+            /*MUNIPRESS*/
+            return array('title', 'subtitle','abstract');
 	}
 
 	/**
@@ -94,6 +110,11 @@ class ChapterDAO extends DAO {
 		$chapter->setId($row['chapter_id']);
 		$chapter->setMonographId($row['submission_id']);
 		$chapter->setSequence($row['chapter_seq']);
+                
+                $chapter->setDoi($row['doi']);
+                $chapter->setReferences($row['citations']);
+                $chapter->setPages($row['pages']);
+                
 		$this->getDataObjectSettings('submission_chapter_settings', 'chapter_id', $row['chapter_id'], $chapter);
 
 		HookRegistry::call('ChapterDAO::_returnFromRow', array(&$chapter, &$row));
@@ -126,9 +147,23 @@ class ChapterDAO extends DAO {
 				(int) $chapter->getSequence()
 			)
 		);
-
-		$chapter->setId($this->getInsertId());
-		$this->updateLocaleFields($chapter);
+                
+                $chapter->setId($this->getInsertId());
+                $this->updateLocaleFields($chapter);
+                
+                $this->update(
+			'INSERT INTO munipress_submission_chapters
+				(chapter_id, doi, pages, citations)
+				VALUES
+				(?, ?, ?, ?)',
+			array(
+				(int) $chapter->getId(),
+				$chapter->getDoi(),
+                                $chapter->getPages(),
+                                $chapter->getReferences()
+			)
+		);		
+		
 		return $chapter->getId();
 	}
 
@@ -147,6 +182,21 @@ class ChapterDAO extends DAO {
 				(int) $chapter->getMonographId(),
 				(int) $chapter->getSequence(),
 				(int) $chapter->getId()
+			)
+		);
+                
+                $this->update(
+			'UPDATE munipress_submission_chapters
+                                SET	doi = ?,
+					pages = ?,
+                                        citations = ?
+				WHERE
+					chapter_id = ?',
+			array(			
+				$chapter->getDoi(),
+                                $chapter->getPages(),
+                                $chapter->getReferences(),
+                                (int) $chapter->getId(),
 			)
 		);
 		$this->updateLocaleFields($chapter);
@@ -168,6 +218,7 @@ class ChapterDAO extends DAO {
 		$this->update('DELETE FROM submission_chapter_authors WHERE chapter_id = ?', (int) $chapterId);
 		$this->update('DELETE FROM submission_chapter_settings WHERE chapter_id = ?', (int) $chapterId);
 		$this->update('DELETE FROM submission_chapters WHERE chapter_id = ?', (int) $chapterId);
+                $this->update('DELETE FROM munipress_submission_chapters WHERE chapter_id = ?', (int) $chapterId);
 	}
 
 	/**

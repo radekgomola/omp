@@ -65,6 +65,7 @@ class CatalogHandler extends Handler {
         $obor = $request->getUserVar('obor');
         $jazyk = $request->getUserVar('jazyk');
         $fakulta = $request->getUserVar('fakulta');
+        $chapters = $request->getUserVar('chapters');
 
         $categoryDao = DAORegistry::getDAO('CategoryDAO');
         // Provide a list of categories to browse
@@ -106,6 +107,7 @@ class CatalogHandler extends Handler {
         $templateMgr->assign('filtrovaniRok', $rok);
         $templateMgr->assign('filtrovaniJazyk', $jazyk);
         $templateMgr->assign('filtrovaniFakulta', $fakulta);
+        $templateMgr->assign('filtrovaniChapters', $chapters);
 
         $sortBy = $sortDirection = null;
 
@@ -120,6 +122,10 @@ class CatalogHandler extends Handler {
 //		$publishedMonographs = $publishedMonographDao->getByPressId($press->getId());
         //*MUNIPRESS*/
         $publishedMonographs = $publishedMonographDao->getByPressIdFiltered($press->getId(), null, $rangeInfo, $sortBy, $sortDirection, false, false, $obor, $rok, $jazyk, $fakulta);
+        
+//        $publishedMonographs = $publishedMonographDao->getByPressIdFilteredChapters($press->getId(), null, $rangeInfo, $sortBy, $sortDirection, false, false, $obor, $rok, $jazyk, $fakulta, null, $chapters);
+        
+        
         $templateMgr->assign('itemsPerPageHelp', $rangeInfo->getCount());
         $templateMgr->assign('trideni', $trideni);
         $templateMgr->assign('sortOptions', $publishedMonographDao->getSortSelectOptions());
@@ -347,16 +353,21 @@ class CatalogHandler extends Handler {
         import('classes.search.MonographSearch');
         $monographSearch = new MonographSearch();
         $error = null;
-        $resultsIterator = $monographSearch->retrieveResults($request, $press, array(null => $query), $error);
-
-        $publishedMonographs = array();
-        while ($result = $resultsIterator->next()) {
-            $publishedMonograph = $result['publishedMonograph'];
-            if ($publishedMonograph) {
-                $publishedMonographs[$publishedMonograph->getId()] = $publishedMonograph;
-            }
-        }
-        $templateMgr->assign('publishedMonographs', $publishedMonographs);
+        //$resultsIterator = $monographSearch->retrieveResults($request, $press, array(null => $query), $error);
+        /*MUNIPRESS*/
+        $publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
+        $resultsIterator = $publishedMonographDao->getByPressId($press->getId(), htmlspecialchars(strip_tags($query)));
+//        print_r($resultsIterator);
+//        $publishedMonographs = array();
+//        while ($result = $resultsIterator->next()) {
+//            $publishedMonograph = $result['publishedMonograph'];
+//            if ($publishedMonograph) {
+//                $publishedMonographs[$publishedMonograph->getId()] = $publishedMonograph;
+//            }
+//        }
+//        $templateMgr->assign('publishedMonographs', $publishedMonographs);
+//        print_r($resultsIterator->toAssociativeArray());
+        $templateMgr->assign('publishedMonographs', $resultsIterator->toAssociativeArray());
 
         // Display
         $templateMgr->display('frontend/pages/searchResults.tpl');

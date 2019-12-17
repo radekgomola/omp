@@ -16,13 +16,28 @@
 
 {* Get URL to the related book *}
 {url|assign:"parentUrl" page="catalog" op="book" path=$publishedMonograph->getBestId()}
+{assign var=categories value=$publishedMonograph->getCategories()}
+{assign var=fakulta value=""}
+{if !$categories->wasEmpty()}
 
+    {iterate from=categories item=category}
+    {if $category->getParentId() == 32}
+        {if $category->getPath() == "pdf"}
+            {assign var=fakulta value ="PEDF"}
+        {else}
+            {assign var=fakulta value =$category->getPath()|upper}
+        {/if}
+    {/if}
+    {/iterate}
+{/if}
+
+{assign var=bookTitle value=$publishedMonograph->getLocalizedTitle()|cat:" | "|cat:$fakulta}
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{translate key="catalog.viewableFile.title" type=$publicationFormat->getLocalizedName()|escape title=$publishedMonograph->getLocalizedTitle()|escape}</title>
+	<title>{translate key="catalog.viewableFile.title" type=$publicationFormat->getLocalizedName()|escape title=$bookTitle|escape}</title>
 
 	{load_header context="frontend" headers=$headers}
 	{load_stylesheet context="frontend" stylesheets=$stylesheets}
@@ -44,7 +59,7 @@
 		</span>
 
 		{if $downloadUrl}
-			<a href="{$downloadUrl}" class="download piwik_download" download>
+			<a href="{$downloadUrl}&fakulta={$fakulta}" class="download piwik_download" download>
 				<span class="label">
 					{translate key="common.download"}
 				</span>

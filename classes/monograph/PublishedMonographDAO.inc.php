@@ -61,6 +61,11 @@ class PublishedMonographDAO extends MonographDAO {
     function getByPressIdFiltered($pressId, $searchText = null, $rangeInfo = null, $sortBy = null, $sortDirection = null, $featuredOnly = false, $newReleasedOnly = false, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null, $speckat = null) {
         return $this->_getByAssoc($pressId, ASSOC_TYPE_PRESS, $pressId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly, $obor, $rok_vydani, $jazyk, $fakulta, $speckat);
     }
+    
+    
+    function getByPressIdFilteredChapters($pressId, $searchText = null, $rangeInfo = null, $sortBy = null, $sortDirection = null, $featuredOnly = false, $newReleasedOnly = false, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null, $speckat = null, $chapters=null) {
+        return $this->_getByAssoc($pressId, ASSOC_TYPE_PRESS, $pressId, $searchText, $rangeInfo, $sortBy, $sortDirection, $featuredOnly, $newReleasedOnly, $obor, $rok_vydani, $jazyk, $fakulta, $speckat, $chapters);
+    }
 
     function getByPressIdCount($pressId, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null) {
         return $this->_getByAssocCount($pressId, ASSOC_TYPE_PRESS, $pressId, $obor, $rok_vydani, $jazyk, $fakulta);
@@ -540,9 +545,12 @@ class PublishedMonographDAO extends MonographDAO {
      * @param $sortBy string
      * @return string
      */
-    static function getSortMapping($sortBy) {
+    static function getSortMapping($sortBy, $chapters) {
         switch ($sortBy) {
             case ORDERBY_TITLE:
+                if ($chapters){
+                    return "CONCAT(IfNull(scht.setting_value,''), st.setting_value)";
+                } 
                 return 'st.setting_value';
             case ORDERBY_DATE_PUBLISHED:
                 //return 'ps.date_published';
@@ -629,7 +637,12 @@ class PublishedMonographDAO extends MonographDAO {
         $publishedMonograph->setAudienceRangeTo($row['audience_range_to']);
         $publishedMonograph->setAudienceRangeExact($row['audience_range_exact']);
         $publishedMonograph->setCoverImage(unserialize($row['cover_image']));
+        
 
+        /*chapters*/
+        $publishedMonograph->setChapterName(($row['chapter_name']));
+        $publishedMonograph->setChapterId(($row['chapter_id']));
+        
         HookRegistry::call('PublishedMonographDAO::_fromRow', array(&$publishedMonograph, &$row));
         return $publishedMonograph;
     }
@@ -650,13 +663,14 @@ class PublishedMonographDAO extends MonographDAO {
      * @param $newReleasedOnly boolean optional Whether the monographs are marked as new releases on associated object or not.
      * @return DAOResultFactory DB Object that fetches monographs objects.
      */
-    private function _getByAssoc($pressId, $assocType, $assocId, $searchText = null, $rangeInfo = null, $sortBy = null, $sortDirection = null, $featuredOnly = false, $newReleasedOnly = false, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null, $speckat = null) {
+    private function _getByAssoc($pressId, $assocType, $assocId, $searchText = null, $rangeInfo = null, $sortBy = null, $sortDirection = null, $featuredOnly = false, $newReleasedOnly = false, $obor = null, $rok_vydani = null, $jazyk = null, $fakulta = null, $speckat = null, $chapters=null) {
         // Cast parameters.
         $pressId = (int) $pressId;
         $assocType = (int) $assocType;
         $assocId = (int) $assocId;
         $featuredOnly = (boolean) $featuredOnly;
         $newReleasedOnly = (boolean) $newReleasedOnly;
+        
         /* MUNIPRESS */
         $locale = AppLocale::getLocale();
 
@@ -665,6 +679,7 @@ class PublishedMonographDAO extends MonographDAO {
         $jazyk = $jazyk;
         $fakulta = $fakulta;
         $speckat = $speckat;
+        $chapters = $chapters;
         /* ---------- */
         // If no associated object is passed, return.
         if (!$assocId || !$assocType) {
@@ -709,6 +724,9 @@ class PublishedMonographDAO extends MonographDAO {
         $params = array_merge(
                 array(REALLY_BIG_NUMBER), $this->getFetchParameters());
 
+        if ($chapters){
+            $params[] = $locale;
+        }
         if ($searchText !== null || $sortBy == ORDERBY_TITLE) {
             $params[] = $locale;
         }
@@ -795,6 +813,7 @@ class PublishedMonographDAO extends MonographDAO {
 				ps.*,
 				s.*,
                                 munis.*,
+                                '. ($chapters ? 'sch.chapter_id, sch.chapter_seq, scht.setting_value AS chapter_name,':'').'
 				COALESCE(f.seq, ?) AS order_by,
 				' . $this->getFetchColumns() . '
 			FROM	published_submissions ps
@@ -802,6 +821,9 @@ class PublishedMonographDAO extends MonographDAO {
                                 LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
                                 LEFT JOIN munipress_submission_languages msl ON (s.submission_id = msl.submission_id)
 				' . $this->getFetchJoins() . '
+                                ' . ($chapters ? 'LEFT JOIN submission_chapters sch ON (s.submission_id = sch.submission_id) '
+//                                        . 'LEFT JOIN submission_chapter_authors scha ON (sch.chapter_id = scha.chapter_id) '
+                                        . 'LEFT JOIN submission_chapter_settings scht ON (sch.chapter_id = scht.chapter_id AND scht.setting_name = \'title\' AND scht.locale = ?) ' : '') . '
 				' . ($searchText !== null ? '
 					LEFT JOIN authors a ON s.submission_id = a.submission_id
 				' : '') . '
@@ -827,7 +849,7 @@ class PublishedMonographDAO extends MonographDAO {
                                 ' . ($fakulta ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '  
                                 ' . ($nezarazeno ? ' AND s.submission_id NOT IN (SELECT sn.submission_id FROM submission_categories sn)' : '' ) . ' 
                                 ' . ($ke_kontrole ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
-			ORDER BY ' . $this->getSortMapping($sortBy) . ' ' . $this->getDirectionMapping($sortDirection), $params, $rangeInfo
+			ORDER BY ' . $this->getSortMapping($sortBy, $chapters) . ' ' . $this->getDirectionMapping($sortDirection), $params, $rangeInfo
         );
 
         return new DAOResultFactory($result, $this, '_fromRow');

@@ -122,4 +122,6 @@
 
     <message key="submission.upload.fileContents">Submission Component</message>
     <message key="submission.shortAuthor">{$author} a kol.</message>
+    <message key="submission.copyrightStatement">Licence</message>
+    <message key="submission.license">Odkaz na znění licence</message>
   </locale>

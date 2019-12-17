@@ -1,4 +1,4 @@
-{**
+ {**
 * templates/frontend/objects/monograph_summary.tpl
 *
 * Copyright (c) 2014-2017 Simon Fraser University Library
@@ -20,6 +20,7 @@
     </a>
     {if $monograph->getSeriesPosition()}
         <div class="seriesPosition">
+            <em>{$monograph->getSeriesTitle()|escape}</em><br/>
             sv. {$monograph->getSeriesPosition()|escape}
         </div>
     {/if}

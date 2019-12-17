@@ -7,12 +7,28 @@
  *
  * Embedded viewing of a HTML galley.
  *}
+{assign var=categories value=$monograph->getCategories()}
+{assign var=fakulta value=""}
+{if !$categories->wasEmpty()}
+
+    {iterate from=categories item=category}
+    {if $category->getParentId() == 32}
+        {if $category->getPath() == "pdf"}
+            {assign var=fakulta value ="PEDF"}
+        {else}
+            {assign var=fakulta value =$category->getPath()|upper}
+        {/if}
+    {/if}
+    {/iterate}
+{/if}
+{assign var=bookTitle value=$monograph->getLocalizedTitle()|cat:" | "|cat:$fakulta}
+
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset={$defaultCharset|escape}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{translate key="catalog.viewableFile.title" type=$publicationFormat->getLocalizedName()|escape title=$monograph->getLocalizedTitle()|escape}</title>
+	<title>{translate key="catalog.viewableFile.title" type=$publicationFormat->getLocalizedName()|escape title=$bookTitle|escape}</title>
 
 	{load_header context="frontend" headers=$headers}
 	{load_stylesheet context="frontend" stylesheets=$stylesheets}

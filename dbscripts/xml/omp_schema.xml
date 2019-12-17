@@ -728,6 +728,28 @@
 		</index>
 	</table>
 
+        <!--
+	  *
+	  * TABLE submission_chapter_authors
+	  *
+	  -->
+	<table name="munipress_submission_chapters">
+		<field name="munipress_chapter_id" type="I8" >
+			<KEY />
+			<AUTOINCREMENT />
+		</field>
+		<field name="chapter_id" type="I8">
+			<NOTNULL />
+		</field>
+		<field name="doi" type="C2" size="255" />
+                <field name="pages" type="C2" size="255" />
+		<field name="citations" type="X"/>
+		<index name="munipress_chapter_pkey">
+			<col>munipress_chapter_id</col>
+			<col>chapter_id</col>
+			<UNIQUE />
+		</index>
+	</table>
 	<!--
 	 *
 	 * TABLE submission_search_keyword_list

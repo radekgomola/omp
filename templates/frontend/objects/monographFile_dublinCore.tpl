@@ -39,7 +39,8 @@
 {/if}*}
 
 {if is_a($monograph, 'PublishedMonograph') && $monograph->getDatePublished()}
-	<meta name="DC.Date.created" scheme="ISO8601" content="{$monograph->getDatumVydani()|date_format:"%Y"}"/>
+<meta name="DC.Date" scheme="ISO8601" content="{$monograph->getDatumVydani()|date_format:"%Y"}"/>
+<meta name="DC.Date.created" scheme="ISO8601" content="{$monograph->getDatumVydani()|date_format:"%Y"}"/>
 {/if}
 
 <meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="{$monograph->getDateSubmitted()|date_format:"%Y-%m-%d"}"/>
@@ -49,33 +50,33 @@
 {/foreach}{/if}
 <meta name="DC.Identifier" content="{$monograph->getId()|escape}/{$publicationFormat->getId()|escape}/{$submissionFile->getFileIdAndRevision()|escape}"/>
 <meta name="DC.Identifier.URI" content="{url page="catalog" op="book" path=$monograph->getId()|to_array:$publicationFormat->getId():$submissionFile->getFileIdAndRevision()}"/>
-<meta name="DC.Language" scheme="ISO639-1" content="{$monograph->getLocale()|truncate:2:''}"/>
+<meta name="DC.Language" scheme="ISO639-2" content="{$langCodes}"/>
 <meta name="DC.Source" content="{$currentPress->getLocalizedName()|strip_tags|escape}"/>
 <meta name="DC.Source.URI" content="{url press=$currentPress->getPath()}"/>
 {if $monograph->getSubject(null)}{foreach from=$monograph->getSubject(null) key=metaLocale item=metaValue}
 	{foreach from=$metaValue|explode:"; " item=dcSubject}
 		{if $dcSubject}
-			<meta name="DC.Subject" xml:lang="{$metaLocale|String_substr:0:2|escape}" content="{$dcSubject|escape}"/>
+<meta name="DC.Subject" xml:lang="{$metaLocale|String_substr:0:2|escape}" content="{$dcSubject|escape}"/>
 		{/if}
 	{/foreach}
 {/foreach}{/if}
 {if $chapter}
-	<meta name="DC.Title" content="{$chapter->getLocalizedTitle()|escape}"/>
+<meta name="DC.Title" content="{$chapter->getLocalizedTitle()|escape}"/>
 	{foreach from=$chapter->getTitle(null) item=alternate key=metaLocale}
 		{if $alternate != $chapter->getLocalizedTitle()}
-		<meta name="DC.Title.Alternative" xml:lang="{$metaLocale|String_substr:0:2|escape}" content="{$alternate|strip_tags|escape}"/>
+<meta name="DC.Title.Alternative" xml:lang="{$metaLocale|String_substr:0:2|escape}" content="{$alternate|strip_tags|escape}"/>
 	{/if}
 	{/foreach}
 {else}
-	<meta name="DC.Title" content="{$monograph->getLocalizedTitle()|escape}"/>
+<meta name="DC.Title" content="{$monograph->getLocalizedTitle()|escape}"/>
 	{foreach from=$monograph->getTitle(null) item=alternate key=metaLocale}
 		{if $alternate != $monograph->getLocalizedTitle()}
-		<meta name="DC.Title.Alternative" xml:lang="{$metaLocale|String_substr:0:2|escape}" content="{$alternate|strip_tags|escape}"/>
+<meta name="DC.Title.Alternative" xml:lang="{$metaLocale|String_substr:0:2|escape}" content="{$alternate|strip_tags|escape}"/>
 	{/if}
 	{/foreach}
 {/if}
 {if $chapter}
-	<meta name="DC.Type" content="Text.Chapter"/>
+<meta name="DC.Type" content="Text.Chapter"/>
 {else}
-	<meta name="DC.Type" content="Text.Book"/>
+<meta name="DC.Type" content="Text.Book"/>
 {/if}

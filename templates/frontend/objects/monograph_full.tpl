@@ -102,9 +102,9 @@
                             <div class="box-accordion__box">
                                 <div class="box-accordion__inner">
                                     <div class="value">
-{*                                        <a href="{url page="catalog" op="series" path=$series->getPath()}">*}
-                                            {$series->getLocalizedFullTitle()|escape}
-{*                                        </a>*}
+                                        {*                                        <a href="{url page="catalog" op="series" path=$series->getPath()}">*}
+                                        {$series->getLocalizedFullTitle()|escape}
+                                        {*                                        </a>*}
                                     </div>
                                     {if $series->getOnlineISSN()}
                                         <div class="sub_item">
@@ -136,6 +136,9 @@
                                 <div class="box-accordion__inner">
                                     <ul>
                                         {iterate from=categories item=category}
+                                        {if $category->getPath() == "zlaty-fond"}
+                                            {assign var="zlatyFond" value=true}
+                                        {/if}
                                         <li>
                                             <a href="{url op="category" path=$category->getPath()}">
                                                 {$category->getLocalizedTitle()|strip_unsafe_html}
@@ -148,20 +151,20 @@
                         </div>
                     {/if}
                     <div class="box-accordion__item is-open">
-                            <h3 class="box-accordion__title">
-                                <a href="#" class="box-accordion__title__link">
-                                    <span class="box-accordion__title__name">{translate key="submission.sharing"}</span>
-                                    <span class="icon icon-plus"></span>
-                                </a>
-                            </h3>
-                            <div class="box-accordion__box">
-                                <div class="box-accordion__inner" style="padding: 0 5px 0;">
-                                    <a href="{$baseUrl}/book?id={$publishedMonograph->getId()}" title="{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}" style="font-size:14.5px;">{$baseUrl}/book?id={$publishedMonograph->getId()}</a>
-                                    <br/><br />
-                                </div>                                
-                            </div>
+                        <h3 class="box-accordion__title">
+                            <a href="#" class="box-accordion__title__link">
+                                <span class="box-accordion__title__name">{translate key="submission.sharing"}</span>
+                                <span class="icon icon-plus"></span>
+                            </a>
+                        </h3>
+                        <div class="box-accordion__box">
+                            <div class="box-accordion__inner" style="padding: 0 5px 0;">
+                                <a href="{$baseUrl}/book?id={$publishedMonograph->getId()}" title="{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}" style="font-size:14.5px;">{$baseUrl}/book?id={$publishedMonograph->getId()}</a>
+                                <br/><br />
+                            </div>                                
                         </div>
-                 </div>
+                    </div>
+                </div>
                 {* Copyright statement *}
                 {if $monograph->getCopyrightYear() && $monograph->getLocalizedCopyrightHolder()}
                     <div class="item copyright">
@@ -194,7 +197,7 @@
                         {foreach from=$publishedMonograph->getAuthors() item=author}
                             {if $author->getIncludeInBrowse() && $author->getZobrazAutori() == 1}
                                 {assign var="helpCounter" value=$helpCounter+1}
-                             {/if}
+                            {/if}
                         {/foreach}
                         {if $synopsis != "-" && $helpCounter>0}
                             <li class="box-tabs__menu__item">
@@ -203,12 +206,16 @@
                         {/if}
                         {if $chapters|@count}
                             <li class="box-tabs__menu__item">
-                                <a href="#tab-2" class="box-tabs__menu__link js-tab-links">{translate key="submission.chapters"}</a>
+                                <a href="#tab-2" class="box-tabs__menu__link js-tab-links">{translate key="submission.content"}</a>
                             </li>
                         {/if}
                         {if $nonChapterFiles|@count || $remoteResources|@count}
                             <li class="box-tabs__menu__item">
-                                <a href="#tab-3" class="box-tabs__menu__link js-tab-links">{translate key="submission.download"}</a>
+                                {if $zlatyFond}
+                                    <a href="#tab-3" class="box-tabs__menu__link js-tab-links">{translate key="submission.read"}</a>
+                                {else}
+                                    <a href="#tab-3" class="box-tabs__menu__link js-tab-links">{translate key="submission.download"}</a>
+                                {/if}
                             </li>
                         {/if}
                         <li class="box-tabs__menu__item">
@@ -225,8 +232,11 @@
                                 <a href="#tab-6" class="box-tabs__menu__link js-tab-links">{translate key="submission.citations"}</a>
                             </li>
                         {/if}
+                        <li class="box-tabs__menu__item">
+                            <a href="#tab-7" class="box-tabs__menu__link js-tab-links">{translate key="submission.statistics"}</a>
+                        </li>
                     </ul>
-                    {*Anotace + autoĹ™i*}
+                    {*Anotace + autoři*}
                     <div id="tab-1" class="box-tabs__fragment is-active">
                         <a href="#" class="box-tabs__responsive-link">
                             <span class="box-tabs__responsive-link__name">{translate key="submission.synopsis"}</span>
@@ -255,56 +265,29 @@
                     </div>
                     {*Kapitoly*}
                     {if $chapters|@count}
-                        <div id="tab-2" class="box-tabs__fragment is-active">
+                        <div id="tab-2" class="box-tabs__fragment">
                             <a href="#" class="box-tabs__responsive-link">
                                 <span class="box-tabs__responsive-link__name">{translate key="submission.chapters"}</span>
                                 <span class="icon icon-plus"></span>
                             </a>
                             <div class="box-tabs__content">
-                                <ul>
-                                    {foreach from=$chapters item=chapter}
-                                        {assign var=chapterId value=$chapter->getId()}
-                                        <li>
-                                            <div class="title">
-                                                {$chapter->getLocalizedTitle()}
-                                                {if $chapter->getLocalizedSubtitle() != ''}
-                                                    <div class="subtitle">
-                                                        {$chapter->getLocalizedSubtitle()|escape}
-                                                    </div>
+                                {foreach from=$chapters item=chapter}
+                                    {assign var=chapterId value=$chapter->getId()}
+                                    <div class="sub_item">
+                                        <div class="label">
+                                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="chapter" path=$monograph->getId()|to_array:$chapter->getId()}" class="title">
+                                                {$chapter->getLocalizedTitle()}{if $chapter->getLocalizedSubtitle() != ''}. {$chapter->getLocalizedSubtitle()|escape}
                                                 {/if}
+                                            </a> {if $chapter->getPages()}({$chapter->getPages()}){/if}
+                                        </div>
+                                        {assign var=chapterAuthors value=$chapter->getAuthorNamesAsString()}
+                                        {if $monograph->getAuthorString() != $chapterAuthors}
+                                            <div class="authors" style="margin-bottom:10px;">
+                                                {$chapterAuthors|escape}
                                             </div>
-                                            {assign var=chapterAuthors value=$chapter->getAuthorNamesAsString()}
-                                            {if $monograph->getAuthorString() != $chapterAuthors}
-                                                <div class="authors">
-                                                    {$chapterAuthors|escape}
-                                                </div>
-                                            {/if}
-                                            {* Display any files that are assigned to this chapter *}
-                                            {pluck_files assign="chapterFiles" files=$availableFiles by="chapter" value=$chapterId}
-                                            {if $chapterFiles|@count}
-                                                <div class="files">
-
-                                                    {* Display chapter files sorted by publication format so that they are ordered
-                                                    consistently across all chapters. *}
-                                                    {foreach from=$publicationFormats item=format}
-                                                        {pluck_files assign="pubFormatFiles" files=$chapterFiles by="publicationFormat" value=$format->getId()}
-
-                                                        {foreach from=$pubFormatFiles item=file}
-
-                                                            {* Use the publication format name in the download link unless a pub format has multiple files *}
-                                                            {assign var=useFileName value=false}
-                                                            {if $pubFormatFiles|@count > 1}
-                                                                {assign var=useFileName value=true}
-                                                            {/if}
-
-                                                            {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency useFilename=$useFileName}
-                                                        {/foreach}
-                                                    {/foreach}
-                                                </div>
-                                            {/if}
-                                        </li>
-                                    {/foreach}
-                                </ul>
+                                        {/if}
+                                    </div>
+                                {/foreach}
                             </div>
                         </div>
                     {/if}
@@ -331,7 +314,7 @@
                                     {elseif $format->getRemoteUrl()}
                                         {* Only one resource allowed per format, so mimic single-file-download *}
                                         <div class="pub_format_{$publicationFormatId|escape} pub_format_remote">
-                                            <a href="{$format->getRemoteURL()|escape}" target="_blank" class="remote_resource">
+                                            <a href="{$format->getRemoteURL()|escape}" target="_blank" class="remote_resource piwik_download" download>
                                                 {if $format->getLocalizedName() == "E-kniha (HTML)" || $format->getLocalizedName() == "E-book (HTML)"}
                                                     <span class="icon icon-eye icon-keStazeni"></span>{translate key="submission.keShlednuti"}
                                                 {else}
@@ -340,15 +323,15 @@
                                             </a>{if $format->getFileSize()}<span class="tag tag__format">{$format->getFileSize()} MiB</span>{/if}
                                         </div>
                                     {else}
-                                        
+
                                         {* Only display files that haven't been displayed in a chapter *}
-                                       
-                                        
+
+
                                         {if $pubFormatFiles|@count == 1}
                                             <div class="pub_format_{$publicationFormatId|escape} pub_format_single">
 
                                                 {foreach from=$pubFormatFiles item=file}
-                                                    {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency}
+                                                    {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency zlatyFond=$zlatyFond}
                                                 {/foreach}
                                             </div>
 
@@ -360,7 +343,7 @@
                                                     <ul>
                                                         {foreach from=$pubFormatFiles item=file}
                                                             <li>
-                                                                    {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency useFilename=true}
+                                                                {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency useFilename=true zlatyFond=$zlatyFond}
                                                             </li>
                                                         {/foreach}
                                                     </ul>
@@ -386,6 +369,8 @@
                                 <span class="icon icon-plus"></span>
                             </a>
                             <div class="box-tabs__content item publication_format box-accordion">
+                                {assign var="isbnAltmetric" value="false"}
+                                {assign var="doiAltmetric" value="false"}
                                 {foreach from=$publicationFormats item="publicationFormat"}
                                     {if $publicationFormat->getIsApproved()}
 
@@ -394,8 +379,6 @@
                                         {assign var=publicationDates value=$publicationFormat->getPublicationDates()}
                                         {assign var=publicationDates value=$publicationDates->toArray()}
                                         {assign var=hasPubId value=false}
-                                        {assign var="isbnAltmetric" value=false}
-                                        {assign var="doiAltmetric" value=false}
                                         {if $enabledPubIdTypes|@count}
                                             {foreach from=$enabledPubIdTypes item=pubIdType}
                                                 {if $publicationFormat->getStoredPubId($pubIdType)}
@@ -424,7 +407,9 @@
                                                             {* DOI's and other identification codes *}
                                                             {if $identificationCodes}
                                                                 {foreach from=$identificationCodes item=identificationCode}
+                                                                    {if $isbnAltmetric == 0}
                                                                         {assign var="isbnAltmetric" value=$identificationCode->getValue()|escape}
+                                                                    {/if}
                                                                     <tr>
                                                                         <td class="label">
                                                                             {$identificationCode->getNameForONIXCode()|replace:'(15)':''}
@@ -478,28 +463,24 @@
                                                                                 {$pubIdType}
                                                                             </td>
                                                                             <td>
-                                                                            {if $pubIdType == "doi"}
-                                                                                {assign var="doiAltmetric" value=$storedPubId|escape}
-                                                                                <a href="https://doi.org/{$storedPubId|escape}" title="doi">
-                                                                                    https://doi.org/{$storedPubId|escape}
-                                                                                </a>
-                                                                            {else}
-                                                                                {$storedPubId|escape}
-                                                                            {/if}
+                                                                                {if $pubIdType == "doi"}
+                                                                                    {if $doiAltmetric == "false"}
+                                                                                        {assign var="doiAltmetric" value=$storedPubId|escape}
+                                                                                    {/if}
+                                                                                    <a href="https://doi.org/{$storedPubId|escape}" title="doi">
+                                                                                        https://doi.org/{$storedPubId|escape}
+                                                                                    </a>
+                                                                                {else}
+                                                                                    {$storedPubId|escape}
+                                                                                {/if}
                                                                             </td>
                                                                         </tr>
                                                                     {/if}
                                                                 {/foreach}
+
                                                             {/if}
                                                         </tbody>
                                                     </table>
-                                                    {if $doiAltmetric}
-                                                        <a href="https://plu.mx/plum/a/?doi={$doiAltmetric}" class="plumx-details" data-hide-when-empty="true"></a>
-                                                    {elseif $isbnAltmetric}
-                                                        <a href="https://plu.mx/plum/a/?isbn={$isbnAltmetric}" class="plumx-details" data-hide-when-empty="true"></a>
-                                                        
-                                                    {/if}
-                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -613,6 +594,13 @@
                             </div>
                         </div>
                     {/if}
+                    {*Statistiky*}
+                    <div id="tab-7" class="box-tabs__fragment">
+                        <br />
+                        <div class="value">
+                            {include file="frontend/components/statistics.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format doiAltmetric=$doiAltmetric isbnAltmetric=$isbnAltmetric}   
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -624,7 +612,7 @@
             <div class="grid">
                 {foreach from=$souvisejiciPublikace item=monograph}
                     <div class="grid__cell size--s--1-2 size--m--1-4 size--l--2-12">
-                        <a class="pkp_helpers_image_left tooltip" href="{url page="catalog" op="book" path=$monograph->getId()}" target="_blank" title="{$monograph->getLocalizedFullTitle()|strip_tags|escape}" onclick="location.href='{url page="catalog" op="book" path=$monograph->getId()}';">
+                        <a class="pkp_helpers_image_left tooltip" href="{url page="catalog" op="book" path=$monograph->getId()}" target="_blank" title="{$monograph->getLocalizedFullTitle()|strip_tags|escape}" onclick="location.href = '{url page="catalog" op="book" path=$monograph->getId()}';">
                             {assign var=coverImage value=$monograph->getCoverImage()}
                             {if empty($coverImage)}
                                 {assign var=coverImageWidth value="103"}

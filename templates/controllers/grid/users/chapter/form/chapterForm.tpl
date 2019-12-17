@@ -32,7 +32,18 @@
 	{fbvFormSection title="metadata.property.displayName.subTitle" for="subTitle"}
 		{fbvElement type="text" name="subtitle" id="subtitle" value=$subtitle maxlength="255" multilingual=true}
 	{/fbvFormSection}
-
+        {fbvFormSection title="common.abstract" for="abstract" required=false}
+            {fbvElement type="textarea" multilingual=true name="abstract" id="abstract" value=$abstract rich="extended" readonly=$readOnly}
+        {/fbvFormSection}
+        {fbvFormSection title="common.doi" for="doi" required=false}
+		{fbvElement type="text" name="doi" id="doi" value=$doi maxlength="255" multilingual=false required=false}
+	{/fbvFormSection}
+        {fbvFormSection title="common.pages" for="pages" required=false}
+		{fbvElement type="text" name="pages" id="pages" value=$pages maxlength="50" multilingual=false required=false}
+	{/fbvFormSection}
+        {fbvFormSection title="common.references" for="references" required=false}
+            {fbvElement type="textarea" multilingual=false name="references" id="references" value=$references rich="extended"}
+        {/fbvFormSection}
 	{fbvFormSection}
 		<!--  Chapter Contributors -->
 		{url|assign:chapterAuthorUrl router=$smarty.const.ROUTE_COMPONENT component="listbuilder.users.ChapterAuthorListbuilderHandler" op="fetch" submissionId=$submissionId chapterId=$chapterId escape=false}

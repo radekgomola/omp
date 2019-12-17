@@ -760,7 +760,7 @@ Masaryk University</message>
     <message key="submission.poradiVydani">Edition</message>
     <message key="submission.typ_02_58">Type 02/58</message>
     <message key="submission.url.web">Web page</message>
-    <message key="submission.souvisejiciPublikace">Similarly publications</message>
+    <message key="submission.souvisejiciPublikace">Similar publications</message>
     <message key="submission.klicovaSlova">Keywords</message>
     <message key="submission.jazyky">Languages</message>
     <message key="submission.informace.munipress">Munipress information</message>
@@ -947,8 +947,18 @@ Masaryk University</message>
     <message key="navigation.munispace.oa">Open Access</message>
     <message key="payment.directSales.forRegistered">For Registered Only</message>
     <message key="navigation.zlatyFond">Gold Fund</message>
-    <message key="payment.directSales.forRegistered.view">{$format}: (For registered only)</message>
+    <message key="payment.directSales.forRegistered.view">{$format}: (For access sign in, please)</message>
     <message key="common.vyberte">Choose your country</message>
     
     <message key="registration.gdpr"><![CDATA[<em>Osobní údaje budou zpracovávány v souladu s požadavky nařízení Evropského parlamentu a Rady (EU) 2016/679 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES (obecné nařízení o ochraně osobních údajů nebo také GDPR). Zpracovávané údaje jsou neveřejné údaje sloužící výhradně k interním účelům provozovatele Munispace (Masarykova univerzita). Pokud registrace čtenáře bude neaktivní po dobu 1 roku, má se členství v čítárně Munispace za ukončené a provozovatel provede likvidaci osobních údajů (vymazání z počítačové databáze). Pro další přístup do čítárny Munispace a k obsahu vyžadujícímu registraci je nutné registraci obnovit.</em>]]></message>
+    
+    <message key="submission.read">Read book</message>
+    <message key="submission.statistics">Statistics</message>
+    <message key="submission.statistics.description">Statistics for the title are counted since 25. 5. 2019.</message>
+    <message key="catalog.altmetrics">Altmetrics</message>
+    <message key="submission.content">Contents</message>
+    <message key="submission.chapter.solo">Chapter</message>
+    <message key="submission.synopsis">Abstract</message>
+    <message key="chapter.references">References</message>
+    <message key="chapter.book">Book</message>
 </locale>

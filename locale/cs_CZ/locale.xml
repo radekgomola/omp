@@ -991,7 +991,7 @@
     <message key="navigation.munispace.oa">Open Access</message>
     <message key="payment.directSales.forRegistered">Pro registrované</message>
     <message key="navigation.zlatyFond">Zlatý Fond</message>
-    <message key="payment.directSales.forRegistered.view">{$format}: (Přístup vyžaduje registraci)</message>
+    <message key="payment.directSales.forRegistered.view">{$format}: (Pro přístup se přihlašte)</message>
     <message key="common.vyberte">Vyberte zemi</message>
     <message key="registration.gdpr"><![CDATA[<em>Osobní údaje budou zpracovávány v souladu s požadavky nařízení Evropského parlamentu a Rady (EU) 2016/679 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES (obecné nařízení o ochraně osobních údajů nebo také GDPR). Zpracovávané údaje jsou neveřejné údaje sloužící výhradně k interním účelům provozovatele Munispace (Masarykova univerzita). Pokud registrace čtenáře bude neaktivní po dobu 1 roku, má se členství v čítárně Munispace za ukončené a provozovatel provede likvidaci osobních údajů (vymazání z počítačové databáze). Pro další přístup do čítárny Munispace a k obsahu vyžadujícímu registraci je nutné registraci obnovit.</em>]]></message>
     <message key="registration.zlatyFond">Zlatý fond Masarykovy univerzity</message>
@@ -1007,4 +1007,16 @@
         <message key="navigation.viewFrontend">Zobrazit stránky</message> 
         <message key="user.profile.identity">Profil</message>
         <message key="user.profile.contact">Kontaktní údaje</message>   
+        
+        <message key="submission.read">Ke čtení</message>
+        <message key="submission.statistics">Statistiky</message>
+        
+        <message key="submission.statistics.description">Zobrazené statistiky se počítají od 25. 5. 2019.</message>
+        
+        <message key="catalog.altmetrics">Alternativní metriky</message>
+        <message key="submission.content">Obsah</message>
+        <message key="submission.chapter.solo">Kapitola</message>
+        <message key="submission.synopsis">Abstrakt</message>
+        <message key="chapter.references">Reference</message>
+        <message key="chapter.book">Publikace</message>
 </locale>

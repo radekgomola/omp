@@ -96,9 +96,19 @@ class ChapterForm extends Form {
 			$this->setData('chapterId', $chapter->getId());
 			$this->setData('title', $chapter->getTitle());
 			$this->setData('subtitle', $chapter->getSubtitle());
+                        /*MUNIPRESS*/
+                        $this->setData('abstract', $chapter->getAbstract());
+                        $this->setData('doi', $chapter->getDoi());
+                        $this->setData('references', $chapter->getReferences());
+                        $this->setData('pages', $chapter->getPages());
 		} else {
 			$this->setData('title', null);
 			$this->setData('subtitle', null);
+                        /*MUNIPRESS*/
+                        $this->setData('abstract', null);
+                        $this->setData('doi');
+                        $this->setData('references');
+                        $this->setData('pages');
 		}
 	}
 
@@ -107,7 +117,9 @@ class ChapterForm extends Form {
 	 * @see Form::readInputData()
 	 */
 	function readInputData() {
-		$this->readUserVars(array('title', 'subtitle', 'authors', 'files'));
+//		$this->readUserVars(array('title', 'subtitle', 'authors', 'files'));
+            /*MUNIPRESS*/
+            $this->readUserVars(array('title', 'subtitle', 'authors', 'files', 'abstract', 'doi','references', 'pages'));
 	}
 
 	/**
@@ -122,6 +134,12 @@ class ChapterForm extends Form {
 		if ($chapter) {
 			$chapter->setTitle($this->getData('title'), null); //Localized
 			$chapter->setSubtitle($this->getData('subtitle'), null); //Localized
+                        /*MUNIPRESS*/
+                        $chapter->setAbstract($this->getData('abstract'), null); //Localized
+                        $chapter->setDoi($this->getData('doi'));
+                        $chapter->setReferences($this->getData('references'));
+                        $chapter->setPages($this->getData('pages'));
+                        /***************/
 			$chapterDao->updateObject($chapter);
 		} else {
 			$monograph = $this->getMonograph();
@@ -130,6 +148,12 @@ class ChapterForm extends Form {
 			$chapter->setMonographId($monograph->getId());
 			$chapter->setTitle($this->getData('title'), null); //Localized
 			$chapter->setSubtitle($this->getData('subtitle'), null); //Localized
+                        /*MUNIPRESS*/
+                        $chapter->setAbstract($this->getData('abstract'), null); //Localized
+                        $chapter->setDoi($this->getData('doi'));
+                        $chapter->setReferences($this->getData('references'));
+                        $chapter->setPages($this->getData('pages'));
+                        /***************/
 			$chapterDao->insertChapter($chapter);
 		}
 
