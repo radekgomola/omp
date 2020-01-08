@@ -100,6 +100,9 @@
 			<col>publication_format_id</col>
 			<col>code</col>
 		</index>
+                <index name="identification_codes_key_munipress">
+			<col>publication_format_id</col>
+		</index>
 	</table>
 
 	<!--

@@ -741,7 +741,7 @@ class PublishedMonographDAO extends MonographDAO {
         );
 
         if ($searchText !== null) {
-            $params[] = $params[] = $params[] = "%$searchText%";
+            $params[] = $params[] = $params[] = $params[] = $params[] = "%$searchText%";
         }
 
         if ($featuredOnly) {
@@ -806,8 +806,7 @@ class PublishedMonographDAO extends MonographDAO {
         } else {
             $fakulta = '';
         }
-
-        //Konec MUNIPRESS
+/*
         $result = $this->retrieveRange(
                 'SELECT	DISTINCT 
 				ps.*,
@@ -839,6 +838,54 @@ class PublishedMonographDAO extends MonographDAO {
 				LEFT JOIN new_releases nr ON (nr.submission_id = s.submission_id AND nr.assoc_type = ? AND nr.assoc_id = ?)
 			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
 				' . ($searchText !== null ? ' AND (st.setting_value LIKE ? OR a.first_name LIKE ? OR a.last_name LIKE ?)' : '') . '
+				' . ($assocType == ASSOC_TYPE_CATEGORY ? ' AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)' : '') . '
+				' . ($assocType == ASSOC_TYPE_SERIES ? ' AND se.series_id = ' . $assocId : '') . '
+				' . ($featuredOnly ? ' AND (f.assoc_type = ? AND f.assoc_id = ?)' : '') . '
+				' . ($newReleasedOnly ? ' AND (nr.assoc_type = ? AND nr.assoc_id = ?)' : '') . '
+                                ' . ($obor ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
+                                ' . ($rok_vydani ? ' AND ? <= munis.datum_vydani AND munis.datum_vydani <= ?' : '' ) . '
+                                ' . ($jazyk ? ' AND msl.iso = ?' : '' ) . '
+                                ' . ($fakulta ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '  
+                                ' . ($nezarazeno ? ' AND s.submission_id NOT IN (SELECT sn.submission_id FROM submission_categories sn)' : '' ) . ' 
+                                ' . ($ke_kontrole ? ' AND s.submission_id IN (SELECT sn.submission_id FROM submission_categories sn JOIN categories cn ON (cn.category_id = sn.category_id AND cn.path = ?))' : '' ) . '
+			ORDER BY ' . $this->getSortMapping($sortBy, $chapters) . ' ' . $this->getDirectionMapping($sortDirection), $params, $rangeInfo
+        );*/
+        //Konec MUNIPRESS
+        $result = $this->retrieveRange(
+                'SELECT	DISTINCT 
+				ps.*,
+				s.*,
+                                munis.*,
+                                '. ($chapters ? 'sch.chapter_id, sch.chapter_seq, scht.setting_value AS chapter_name,':'').'
+				COALESCE(f.seq, ?) AS order_by,
+				' . $this->getFetchColumns() . '
+			FROM	published_submissions ps
+				JOIN submissions s ON ps.submission_id = s.submission_id
+                                LEFT JOIN munipress_metadata munis ON (s.submission_id = munis.submission_id)
+                                
+				' . $this->getFetchJoins() . '
+                                ' . ($chapters ? 'LEFT JOIN submission_chapters sch ON (s.submission_id = sch.submission_id) '
+//                                        . 'LEFT JOIN submission_chapter_authors scha ON (sch.chapter_id = scha.chapter_id) '
+                                        . 'LEFT JOIN submission_chapter_settings scht ON (sch.chapter_id = scht.chapter_id AND scht.setting_name = \'title\' AND scht.locale = ?) ' : '') . '
+				' . ($searchText !== null ? '
+					LEFT JOIN authors a ON s.submission_id = a.submission_id
+                                        LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.locale = ?)
+                                        LEFT JOIN publication_formats pf ON (pf.submission_id = s.submission_id)
+                                        LEFT JOIN publication_format_settings pfs ON (pfs.publication_format_id = pf.publication_format_id AND pfs.setting_name LIKE \'%doi%\')
+                                        LEFT JOIN identification_codes ic ON (ic.publication_format_id = pf.publication_format_id)
+				' : '') . '
+				' . ($sortBy == ORDERBY_TITLE ? '
+					LEFT JOIN submission_settings st ON (st.submission_id = s.submission_id AND st.setting_name = \'title\' AND st.locale = ?)
+				' : '') . '
+				' . ($assocType == ASSOC_TYPE_CATEGORY ? '
+					LEFT JOIN submission_categories sc ON (sc.submission_id = s.submission_id AND sc.category_id = ' . $assocId . ')
+					LEFT JOIN series_categories sca ON (sca.series_id = se.series_id)
+					LEFT JOIN categories c ON (c.category_id = sca.category_id AND c.category_id = ' . $assocId . ')
+				' : '') . '
+				LEFT JOIN features f ON (f.submission_id = s.submission_id AND f.assoc_type = ? AND f.assoc_id = ?)
+				LEFT JOIN new_releases nr ON (nr.submission_id = s.submission_id AND nr.assoc_type = ? AND nr.assoc_id = ?)
+			WHERE	ps.date_published IS NOT NULL AND s.context_id = ?
+				' . ($searchText !== null ? ' AND (st.setting_value LIKE ? OR a.first_name LIKE ? OR a.last_name LIKE ? OR pfs.setting_value LIKE ? OR ic.value LIKE ?)' : '') . '
 				' . ($assocType == ASSOC_TYPE_CATEGORY ? ' AND (c.category_id IS NOT NULL OR sc.category_id IS NOT NULL)' : '') . '
 				' . ($assocType == ASSOC_TYPE_SERIES ? ' AND se.series_id = ' . $assocId : '') . '
 				' . ($featuredOnly ? ' AND (f.assoc_type = ? AND f.assoc_id = ?)' : '') . '

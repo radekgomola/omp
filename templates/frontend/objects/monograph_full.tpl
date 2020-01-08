@@ -496,6 +496,11 @@
                                     </h2>
                                     <div class="box-accordion__box">
                                         <div class="box-accordion__inner">
+                                            TEST
+                                            {call_hook name="citedby"}
+                                            
+                                            
+                                            
                                             <table border="0" style="width: 100%;">
                                                 <tbody>
                                                     {if !empty($urlWeb)}
@@ -588,16 +593,22 @@
                     {* References *}
                     {if $monograph->getCitations()}
                         <div id="tab-6" class="box-tabs__fragment">
-                            <br />
-                            <div class="value">
+                            <a href="#" class="box-tabs__responsive-link">
+                                <span class="box-tabs__responsive-link__name">{translate key="submission.citations"}</span>
+                                <span class="icon icon-plus"></span>
+                            </a>
+                            <div class="box-tabs__content">
                                 {$monograph->getCitations()}
                             </div>
                         </div>
                     {/if}
                     {*Statistiky*}
                     <div id="tab-7" class="box-tabs__fragment">
-                        <br />
-                        <div class="value">
+                        <a href="#" class="box-tabs__responsive-link">
+                                <span class="box-tabs__responsive-link__name">{translate key="submission.statistics"}</span>
+                                <span class="icon icon-plus"></span>
+                            </a>
+                        <div class="box-tabs__content">
                             {include file="frontend/components/statistics.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format doiAltmetric=$doiAltmetric isbnAltmetric=$isbnAltmetric}   
                         </div>
                     </div>
