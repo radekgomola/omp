@@ -302,7 +302,7 @@ class CatalogBookHandler extends Handler {
         $bestFileId = array_shift($args);
 
         $publicationFormatDao = DAORegistry::getDAO('PublicationFormatDAO');
-        $publicationFormat = $publicationFormatDao->getByBestId($representationId, $publishedMonograph->getId());
+        $publicationFormat = $publicationFormatDao->getByBestId($representationId, $publishedMonograph->getId());      
         if (!$publicationFormat || !$publicationFormat->getIsApproved() || !$publicationFormat->getIsAvailable() || $remoteURL = $publicationFormat->getRemoteURL())
             fatalError('Invalid publication format specified.');
 
@@ -312,6 +312,10 @@ class CatalogBookHandler extends Handler {
         if (!$submissionFile)
             $dispatcher->handle404();
 
+        $submissionFileInitCode = $submissionFile->getInitCode();
+        
+        
+        
         $fileIdAndRevision = $submissionFile->getFileIdAndRevision();
         list($fileId, $revision) = array_map(create_function('$a', 'return (int) $a;'), preg_split('/-/', $fileIdAndRevision));
         import('lib.pkp.classes.file.SubmissionFileManager');
@@ -325,7 +329,7 @@ class CatalogBookHandler extends Handler {
             }
             return $monographFileManager->downloadFile($fileId, $revision, true, $filename, $flipbook);
         }
-        /*         * ****** */
+        /*********/
 
         switch ($submissionFile->getAssocType()) {
             case ASSOC_TYPE_PUBLICATION_FORMAT: // Publication format file
@@ -344,7 +348,16 @@ class CatalogBookHandler extends Handler {
         }
         $ompCompletedPaymentDao = DAORegistry::getDAO('OMPCompletedPaymentDAO');
         $user = $request->getUser();
-        if ($submissionFile->getDirectSalesPrice() === '0' || ($user && $ompCompletedPaymentDao->hasPaidPurchaseFile($user->getId(), $fileIdAndRevision)) || ($user && $user->getZlatyFond())) {
+        
+//        error_log("TEST initCode submissionFile = ".$submissionFileInitCode. " user = ".$user->getInitCode());
+        if ($submissionFile->getDirectSalesPrice() === '-1') {
+            if (!$user)
+                return $request->redirect(null, 'login', null, null, array('source' => $request->url(null, null, null, array($monographId, $representationId, $bestFileId))));
+            if ($user && ($user->getInitCode() != $submissionFileInitCode))
+                return $request->redirect(null, 'user', 'profile', null, array('source' => $request->url(null, null, null, array($monographId, $representationId, $bestFileId))));
+        }
+        
+        if ($submissionFile->getDirectSalesPrice() === '0' || ($user && $ompCompletedPaymentDao->hasPaidPurchaseFile($user->getId(), $fileIdAndRevision)) || ($user && $user->getInitCode() == $submissionFileInitCode)) {
             // Paid purchase or open access.
             if (!$user && $press->getSetting('restrictMonographAccess')) {
                 // User needs to register first.
@@ -364,19 +377,13 @@ class CatalogBookHandler extends Handler {
             // Download or show the file.
             $inline = $request->getUserVar('inline') ? true : false;
             $flipbook = $submissionFile->getFlipbookChecker();
-            if (HookRegistry::call('CatalogBookHandler::download', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile, &$inline, $flipbook))) {
+            if (HookRegistry::call('CatalogBookHandler::download', array(&$this, &$publishedMonograph, &$publicationFormat, &$submissionFile, &$inline,$flipbook))) {
                 // If the plugin handled the hook, prevent further default activity.
                 exit();
             }
             return $monographFileManager->downloadFile($fileId, $revision, $inline);
         }
 
-        if ($submissionFile->getDirectSalesPrice() === '-1') {
-            if (!$user)
-                return $request->redirect(null, 'login', null, null, array('source' => $request->url(null, null, null, array($monographId, $representationId, $bestFileId))));
-            if ($user && $user->getZlatyFond() === '0')
-                return $request->redirect(null, 'user', 'profile', null, array('source' => $request->url(null, null, null, array($monographId, $representationId, $bestFileId))));
-        }
 
         // Fall-through: user needs to pay for purchase.
         // Users that are not logged in need to register/login first.

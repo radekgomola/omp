@@ -75,7 +75,7 @@ class ApprovedProofForm extends Form {
 	 * @see Form::readInputData()
 	 */
 	function readInputData() {
-		$this->readUserVars(array('price', 'salesType'));
+		$this->readUserVars(array('price', 'salesType','initCode'));
 	}
 
 	/**
@@ -85,6 +85,7 @@ class ApprovedProofForm extends Form {
 		$this->_data = array(
 			'price' => $this->approvedProof->getDirectSalesPrice(),
 			'salesType' => $this->approvedProof->getSalesType(),
+                        'initCode' =>  $this->approvedProof->getInitCode(),
 		);
 	}
 
@@ -94,6 +95,8 @@ class ApprovedProofForm extends Form {
 	function execute($request) {
 		$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
 		$salesType = $this->getData('salesType');
+                $initCode = $this->getData('initCode');
+                
 		if ($salesType === 'notAvailable') {
 			// Not available
 			$this->approvedProof->setDirectSalesPrice(null);
@@ -112,6 +115,7 @@ class ApprovedProofForm extends Form {
 			$this->approvedProof->setDirectSalesPrice($this->getData('price'));
 		}
 		$this->approvedProof->setSalesType($salesType);
+                $this->approvedProof->setInitCode($initCode);
 		$submissionFileDao->updateObject($this->approvedProof);
 
 		return $this->approvedProof->getFileIdAndRevision();

@@ -355,23 +355,51 @@ class CatalogHandler extends Handler {
         $error = null;
         //$resultsIterator = $monographSearch->retrieveResults($request, $press, array(null => $query), $error);
         /*MUNIPRESS*/
+        error_log("START TEST");
+        $start1 = microtime(true);
         $publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
         $resultsIterator = $publishedMonographDao->getByPressId($press->getId(), htmlspecialchars(strip_tags($query)));
-//        print_r($resultsIterator);
+        
+        $stop1 = microtime(true);
+        $exec1 = $stop1 - $start1;
+        error_log("Cas 1 = " . $exec1);
+        $start2 = microtime(true);
 //        $publishedMonographs = array();
+//        
 //        while ($result = $resultsIterator->next()) {
-//            $publishedMonograph = $result['publishedMonograph'];
+//            $publishedMonograph = $result;
 //            if ($publishedMonograph) {
 //                $publishedMonographs[$publishedMonograph->getId()] = $publishedMonograph;
 //            }
 //        }
+//        
 //        $templateMgr->assign('publishedMonographs', $publishedMonographs);
 //        print_r($resultsIterator->toAssociativeArray());
-        $templateMgr->assign('publishedMonographs', $resultsIterator->toAssociativeArray());
-
+        
+//        $publishedMonographs = $resultsIterator->toAssociativeArray();
+//        $templateMgr->assign('publishedMonographs', $resultsIterator->toAssociativeArray());
+        
+        $templateMgr->assign('publishedMonographs', $resultsIterator);
+        $stop2 = microtime(true);
+        $exec2 = $stop2 - $start2;
+        error_log("Cas 2 = " . $exec2);
         // Display
         $templateMgr->display('frontend/pages/searchResults.tpl');
     }
+    
+    /**
+     * View the results of a Google Custom Search Engine.
+     * @param $args array
+     * @param $request PKPRequest
+     */
+    function resultsGoogle($args, $request) {
+        $templateMgr = TemplateManager::getManager($request);
+        $press = $request->getPress();
+        $this->setupTemplate($request);
+        // Display
+        $templateMgr->display('frontend/pages/searchResultsGoogle.tpl');
+    }
+    
 
     /**
      * Serve the image for a category or series.

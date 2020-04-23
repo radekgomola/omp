@@ -17,7 +17,8 @@
 	{* Breadcrumb *}
 	{include file="frontend/components/breadcrumbs.tpl" type="category" currentTitleKey="common.search"}
 	<div class="monograph_count">
-		{translate key="catalog.browseTitles" numTitles=$publishedMonographs|@count}
+{*		{translate key="catalog.browseTitles" numTitles=$publishedMonographs|@count}*}
+            {translate key="catalog.browseTitles" numTitles=$publishedMonographs->getCount()}
 	</div>
 
 	{* No query - this may happen because of a screen reader, so don't show an
@@ -25,7 +26,8 @@
 	{if $searchQuery == '' }
 
 	{* No published titles *}
-	{elseif !$publishedMonographs|@count}
+{*	{elseif !$publishedMonographs|@count}*}
+        {elseif $publishedMonographs->getCount()<=0}
 		<div class="search_results">
 			{translate key="catalog.noTitlesSearch" searchQuery=$searchQuery}
 			<a href="#search-form">
@@ -36,8 +38,10 @@
 	{* Monograph List *}
 	{else}
 		<div class="search_results">
-			{if $publishedMonographs|@count > 1}
-				{translate key="catalog.foundTitlesSearch" searchQuery=$searchQuery number=$publishedMonographs|@count}
+{*			{if $publishedMonographs|@count > 1}*}
+                        {if $publishedMonographs->getCount() > 1}
+{*				{translate key="catalog.foundTitlesSearch" searchQuery=$searchQuery number=$publishedMonographs|@count}*}
+                                {translate key="catalog.foundTitlesSearch" searchQuery=$searchQuery number=$publishedMonographs->getCount()}
 			{else}
 				{translate key="catalog.foundTitleSearch" searchQuery=$searchQuery}
 			{/if}
@@ -45,7 +49,8 @@
 				{translate key="search.searchAgain"}
 			</a>
 		</div>
-		{include file="frontend/components/monographList.tpl" monographsArray=$publishedMonographs filtrovani="false"}
+{*		{include file="frontend/components/monographList.tpl" monographsArray=$publishedMonographs filtrovani="false"}*}
+                {include file="frontend/components/monographList.tpl" monographs=$publishedMonographs filtrovani="false"}
 	{/if}
 
 	<a name="search-form"></a>

@@ -33,6 +33,7 @@
 	{load_header context="frontend" headers=$headers}
 	{load_stylesheet context="frontend" stylesheets=$stylesheets}
 	{load_script context="frontend" scripts=$scripts}
+
 </head>
 <body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
 

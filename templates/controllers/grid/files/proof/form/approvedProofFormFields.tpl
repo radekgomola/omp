@@ -18,3 +18,7 @@
 	{fbvElement type="text" id="price" label=$priceLabel subLabelTranslate=false size=$fbvStyles.size.MEDIUM value=$price maxlength="255"}
 	<p>{translate key="payment.directSales.numericOnly"}</p>
 {/fbvFormSection}
+{fbvFormSection for="initCode"}
+	{translate|assign:"initCodeLabel" key="munipress.payment.directSales.initCode"}
+	{fbvElement type="text" id="initCode" label=$initCodeLabel subLabelTranslate=false size=$fbvStyles.size.MEDIUM value=$initCode maxlength="255"}
+{/fbvFormSection}

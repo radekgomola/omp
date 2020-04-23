@@ -133,19 +133,22 @@
                                 </a>
                             </h3>
                             <div class="box-accordion__box">
-                                <div class="box-accordion__inner">
-                                    <ul>
+                                <div class="box-accordion__inner" style="padding: 0 5px 0; font-size:14.5px; line-height:20px;">
+{*                                    <ul>*}
                                         {iterate from=categories item=category}
                                         {if $category->getPath() == "zlaty-fond"}
-                                            {assign var="zlatyFond" value=true}
+                                            {assign var="initCode" value="zlaty-fond"}
+                                        {elseif $category->getPath() == "munipomaha"}
+                                            {assign var="initCode" value="munipomaha"}
                                         {/if}
-                                        <li>
+{*                                        <li>*}
                                             <a href="{url op="category" path=$category->getPath()}">
                                                 {$category->getLocalizedTitle()|strip_unsafe_html}
-                                            </a>
-                                        </li>
+                                            </a><br />
+{*                                        </li>*}
                                         {/iterate}
-                                    </ul>
+                                        <br />
+{*                                    </ul>*}
                                 </div>
                             </div>
                         </div>
@@ -158,32 +161,43 @@
                             </a>
                         </h3>
                         <div class="box-accordion__box">
-                            <div class="box-accordion__inner" style="padding: 0 5px 0;">
-                                <a href="{$baseUrl}/book?id={$publishedMonograph->getId()}" title="{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}" style="font-size:14.5px;">{$baseUrl}/book?id={$publishedMonograph->getId()}</a>
+                            <div class="box-accordion__inner" style="padding: 0 5px 0; font-size:14.5px; line-height:20px;">
+                                <a href="{$baseUrl}/book?id={$publishedMonograph->getId()}" title="{$publishedMonograph->getLocalizedFullTitle()|strip_unsafe_html}">{$baseUrl}/book?id={$publishedMonograph->getId()}</a>
                                 <br/><br />
                             </div>                                
                         </div>
                     </div>
+
+                    {* License *}
+                    {if $licenseUrl}
+                        <div class="box-accordion__item is-open">
+                            <h3 class="box-accordion__title">
+                                <a href="#" class="box-accordion__title__link">
+                                    <span class="box-accordion__title__name">{translate key="submission.license"}</span>
+                                    <span class="icon icon-plus"></span>
+                                </a>
+                            </h3>
+                            <div class="box-accordion__box">
+                                <div class="box-accordion__inner" style="padding: 0 5px 0; font-size:14.5px; line-height:20px;">
+                                    {if $ccLicenseBadge}
+                                        {$ccLicenseBadge}
+                                    {else}
+                                        <a href="{$licenseUrl|escape}">
+                                            {translate key="submission.license"}
+                                        </a>
+                                    {/if}
+                                    <br />
+                                </div>                                
+                            </div>
+                        </div>
+                    {/if}
                 </div>
                 {* Copyright statement *}
-                {if $monograph->getCopyrightYear() && $monograph->getLocalizedCopyrightHolder()}
-                    <div class="item copyright">
-                        {translate|escape key="submission.copyrightStatement" copyrightYear=$monograph->getCopyrightYear() copyrightHolder=$monograph->getLocalizedCopyrightHolder()}
-                    </div>
-                {/if}
-
-                {* License *}
-                {if $licenseUrl}
-                    <div class="item license">
-                        {if $ccLicenseBadge}
-                            {$ccLicenseBadge}
-                        {else}
-                            <a href="{$licenseUrl|escape}">
-                                {translate key="submission.license"}
-                            </a>
-                        {/if}
-                    </div>
-                {/if}
+                {*{if $monograph->getCopyrightYear() && $monograph->getLocalizedCopyrightHolder()}
+                <div class="item copyright">
+                {translate|escape key="submission.copyrightStatement" copyrightYear=$monograph->getCopyrightYear() copyrightHolder=$monograph->getLocalizedCopyrightHolder()}
+                </div>
+                {/if}*}
 
                 {call_hook name="Templates::Catalog::Book::Details"}
             </div>
@@ -211,7 +225,7 @@
                         {/if}
                         {if $nonChapterFiles|@count || $remoteResources|@count}
                             <li class="box-tabs__menu__item">
-                                {if $zlatyFond}
+                                {if $initCode == "zlaty-fond"}
                                     <a href="#tab-3" class="box-tabs__menu__link js-tab-links">{translate key="submission.read"}</a>
                                 {else}
                                     <a href="#tab-3" class="box-tabs__menu__link js-tab-links">{translate key="submission.download"}</a>
@@ -232,9 +246,16 @@
                                 <a href="#tab-6" class="box-tabs__menu__link js-tab-links">{translate key="submission.citations"}</a>
                             </li>
                         {/if}
+                        {*TEST = {$citedbyCounter}
+                        {if $citedbyCounter > 0}
+                            <li class="box-tabs__menu__item">
+                                <a href="#tab-7" class="box-tabs__menu__link js-tab-links">{translate key="plugins.generic.citedby.title"}</a>
+                            </li>
+                        {/if}*}
                         <li class="box-tabs__menu__item">
-                            <a href="#tab-7" class="box-tabs__menu__link js-tab-links">{translate key="submission.statistics"}</a>
+                            <a href="#tab-8" class="box-tabs__menu__link js-tab-links">{translate key="submission.statistics"}</a>
                         </li>
+                        
                     </ul>
                     {*Anotace + autoři*}
                     <div id="tab-1" class="box-tabs__fragment is-active">
@@ -331,7 +352,7 @@
                                             <div class="pub_format_{$publicationFormatId|escape} pub_format_single">
 
                                                 {foreach from=$pubFormatFiles item=file}
-                                                    {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency zlatyFond=$zlatyFond}
+                                                    {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency initCode=$initCode}
                                                 {/foreach}
                                             </div>
 
@@ -343,7 +364,7 @@
                                                     <ul>
                                                         {foreach from=$pubFormatFiles item=file}
                                                             <li>
-                                                                {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency useFilename=true zlatyFond=$zlatyFond}
+                                                                {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency useFilename=true initCode=$initCode}
                                                             </li>
                                                         {/foreach}
                                                     </ul>
@@ -496,11 +517,6 @@
                                     </h2>
                                     <div class="box-accordion__box">
                                         <div class="box-accordion__inner">
-                                            TEST
-                                            {call_hook name="citedby"}
-                                            
-                                            
-                                            
                                             <table border="0" style="width: 100%;">
                                                 <tbody>
                                                     {if !empty($urlWeb)}
@@ -602,15 +618,31 @@
                             </div>
                         </div>
                     {/if}
-                    {*Statistiky*}
-                    <div id="tab-7" class="box-tabs__fragment">
+                    {*Cited By*}
+                    {*<div id="tab-7" class="box-tabs__fragment">
                         <a href="#" class="box-tabs__responsive-link">
-                                <span class="box-tabs__responsive-link__name">{translate key="submission.statistics"}</span>
-                                <span class="icon icon-plus"></span>
-                            </a>
+                            <span class="box-tabs__responsive-link__name">{translate key="submission.statistics"}</span>
+                            <span class="icon icon-plus"></span>
+                        </a>
+                            
                         <div class="box-tabs__content">
+                            {call_hook name="citedby"}   
+                        </div>
+                        
+                    </div>*}
+                    {*statistiky*}
+                    <div id="tab-8" class="box-tabs__fragment">
+                        <a href="#" class="box-tabs__responsive-link">
+                            <span class="box-tabs__responsive-link__name">{translate key="submission.statistics"}</span>
+                            <span class="icon icon-plus"></span>
+                        </a>
+
+                        <div class="box-tabs__content">
+                            {call_hook name="citedby"}  
+                            <hr />
                             {include file="frontend/components/statistics.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format doiAltmetric=$doiAltmetric isbnAltmetric=$isbnAltmetric}   
                         </div>
+                        
                     </div>
                 </div>
             </div>

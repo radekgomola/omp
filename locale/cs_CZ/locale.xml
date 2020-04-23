@@ -1011,7 +1011,7 @@
         <message key="submission.read">Ke čtení</message>
         <message key="submission.statistics">Statistiky</message>
         
-        <message key="submission.statistics.description">Zobrazené statistiky se počítají od 25. 5. 2019.</message>
+        <message key="submission.statistics.description">Zobrazené statistiky se počítaji ode dne vystavení, nejdříve však od 25. 5. 2019.</message>
         
         <message key="catalog.altmetrics">Alternativní metriky</message>
         <message key="submission.content">Obsah</message>
@@ -1019,4 +1019,11 @@
         <message key="submission.synopsis">Abstrakt</message>
         <message key="chapter.references">Reference</message>
         <message key="chapter.book">Publikace</message>
+        
+        <message key="banner.erp">Portál elektronických zdrojů MU</message>
+        <message key="banner.zaverecnePrace">Databáze závěrečných prací (IS MU)</message>
+        <message key="banner.katalog">Knihovní katalog</message>
+        <message key="banner.repozitar">Repozitář</message>
+        <message key="banner.knihovny">Knihovny MU</message>
+        <message key="navigation.munipomaha">MUNI pomáhá</message>
 </locale>

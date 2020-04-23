@@ -33,6 +33,7 @@ class SubmissionFilesUploadBaseForm extends PKPSubmissionFilesUploadBaseForm {
 	 */
 	function __construct($request, $template, $submissionId, $stageId, $fileStage,
 			$revisionOnly = false, $reviewRound = null, $revisedFileId = null, $assocType = null, $assocId = null, $flipbookChecker=null) {
+                    error_log("TEST = ".$flipbookChecker);
 		parent::__construct($request, $template, $submissionId, $stageId, $fileStage,
 				$revisionOnly, $reviewRound, $revisedFileId, $assocType, $assocId, $flipbookChecker);
 	}

@@ -24,6 +24,7 @@ switch ($op) {
 	case 'series':
 	case 'thumbnail':
 	case 'results':
+        case 'resultsGoogle':
 		define('HANDLER_CLASS', 'CatalogHandler');
 		import('pages.catalog.CatalogHandler');
 		break;

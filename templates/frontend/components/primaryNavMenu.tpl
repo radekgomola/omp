@@ -74,9 +74,12 @@
                     <div class="header__menu__subbox__box">
                         <ul class="header__menu__subbox__list">
                             {iterate from=kategorieObory item=browseCategory}
-                            <li class="header__menu__subbox__list__item">
-                                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$browseCategory->getPath()|escape}" class="header__menu__subbox__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
-                            </li>
+                            {assign var=kategorieId value=$browseCategory->getId()}
+                            {if $filtrFakultyPocetMenu[$kategorieId] > 0}
+                                <li class="header__menu__subbox__list__item">
+                                    <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$browseCategory->getPath()|escape}" class="header__menu__subbox__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
+                                </li>
+                            {/if}
                             {/iterate}
                         </ul>
                     </div>
@@ -92,22 +95,22 @@
             </a>
             <a href="#" class="header__menu__primary__toggle icon icon-plus" aria-hidden="true"></a>
         </span>
-            
+
         <div class="header__menu__submenu">
             <ul class="header__menu__submenu__list">
                 {iterate from=kategorieFakulty item=browseCategory}
-                    {if $browseCategory->getId() != 44 && $browseCategory->getId() != 54}
-                        {assign var=kategorieId value=$browseCategory->getId()}
-                        {if $filtrFakultyPocetMenu[$kategorieId] > 0}
+                {if $browseCategory->getId() != 44 && $browseCategory->getId() != 54}
+                    {assign var=kategorieId value=$browseCategory->getId()}
+                    {if $filtrFakultyPocetMenu[$kategorieId] > 0}
                         <li class="header__menu__submenu__item">
                             <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$browseCategory->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
                         </li>
-                        {/if}
                     {/if}
+                {/if}
                 {/iterate}
-                    <li class="header__menu__submenu__item">
-                        <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$kategorieOstatni->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $kategorieOstatni->getPath()|escape}is-active{/if}">{$kategorieOstatni->getLocalizedTitle()|escape}</a>
-                    </li>
+                <li class="header__menu__submenu__item">
+                    <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path=$kategorieOstatni->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $kategorieOstatni->getPath()|escape}is-active{/if}">{$kategorieOstatni->getLocalizedTitle()|escape}</a>
+                </li>
             </ul>
         </div>
     </li>
@@ -127,16 +130,16 @@
         <div class="header__menu__submenu">
             <ul class="header__menu__submenu__list zlaty-fond_prim-nav">
                 {iterate from=kategorieFakultyZlatyFond item=browseCategory}
-                    {*{if $browseCategory->getId() != 44}*}
-                        {assign var=kategorieIdZlatyFond value=$browseCategory->getId()}
-                        {if $filtrFakultyPocetMenuZlatyFond[$kategorieIdZlatyFond] > 0}
-                        <li class="header__menu__submenu__item">
-                            <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="zlaty-fond" fakulta=$browseCategory->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
-                        </li>
-                        {/if}
-{*                    {/if}*}
+                {*{if $browseCategory->getId() != 44}*}
+                {assign var=kategorieIdZlatyFond value=$browseCategory->getId()}
+                {if $filtrFakultyPocetMenuZlatyFond[$kategorieIdZlatyFond] > 0}
+                    <li class="header__menu__submenu__item">
+                        <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="zlaty-fond" fakulta=$browseCategory->getPath()|escape}" class="header__menu__submenu__link {if $browseBlockSelectedCategory == $browseCategory->getPath()|escape}is-active{/if}">{$browseCategory->getLocalizedTitle()|escape}</a>
+                    </li>
+                {/if}
+                {*                    {/if}*}
                 {/iterate}
-                
+
             </ul>
         </div>
     </li>
@@ -155,9 +158,18 @@
             {translate key="navigation.munispace.oa"} 
         </a>
     </li>
-    <li class="header__menu__primary__item">
+    {*<li class="header__menu__primary__item">
         <a href="http://www.press.muni.cz/nakladatelstvi/kontakty" class="header__menu__primary__link" target="_blank">
             {translate key="about.contact"}
         </a>
-    </li>
+    </li>*}
+    {if $isUserLoggedIn && $userInitCode == "munipomaha"}
+        <li class="header__menu__primary__item header__menu__primary__item--dark">
+            <span class="header__menu__primary__links">
+                <a href="{url router=$smarty.const.ROUTE_PAGE page="catalog" op="category" path="munipomaha"}" class="header__menu__primary__link" style="color:red;">
+                    {translate key="navigation.munipomaha"}
+                </a>
+            </span>        
+        </li>
+    {/if}
 </ul>

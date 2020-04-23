@@ -954,11 +954,17 @@ Masaryk University</message>
     
     <message key="submission.read">Read book</message>
     <message key="submission.statistics">Statistics</message>
-    <message key="submission.statistics.description">Statistics for the title are counted since 25. 5. 2019.</message>
+    <message key="submission.statistics.description">Statistics for the title are counted since the publication day, but soonest from 25. 5. 2019.</message>
     <message key="catalog.altmetrics">Altmetrics</message>
     <message key="submission.content">Contents</message>
     <message key="submission.chapter.solo">Chapter</message>
     <message key="submission.synopsis">Abstract</message>
     <message key="chapter.references">References</message>
     <message key="chapter.book">Book</message>
+    <message key="banner.erp">Electronic resources portal</message>
+     <message key="banner.zaverecnePrace">Thesis archive (IS MU)</message>
+        <message key="banner.katalog">Library Catalogue</message>
+        <message key="banner.repozitar">Repository</message>
+        <message key="banner.knihovny">MU Libraries</message>
+        <message key="navigation.munipomaha">MUNI helps</message>
 </locale>

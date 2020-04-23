@@ -65,7 +65,7 @@
                                     <div class="pub_format_{$publicationFormatId|escape} pub_format_single">
 
                                         {foreach from=$pubFormatFiles item=file}
-                                            {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency zlatyFond=$zlatyFond fakulta=$fakulta}
+                                            {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency initCode=$initCode fakulta=$fakulta}
                                         {/foreach}
                                     </div>
 
@@ -77,7 +77,7 @@
                                             <ul>
                                                 {foreach from=$pubFormatFiles item=file}
                                                     <li>
-                                                        {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency useFilename=true zlatyFond=$zlatyFond fakulta=$fakulta}
+                                                        {include file="frontend/components/downloadLink.tpl" downloadFile=$file monograph=$monograph publicationFormat=$format currency=$currency useFilename=true initCode=$initCode fakulta=$fakulta}
                                                     </li>
                                                 {/foreach}
                                             </ul>
